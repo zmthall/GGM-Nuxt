@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseUiButton to="/" variant="cta">Testing</BaseUiButton>
+        <BaseUiAction to="/" variant="cta">Testing</BaseUiAction>
     </div>
 </template>
 
