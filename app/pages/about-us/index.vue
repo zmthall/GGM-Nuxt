@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <BaseUiAction to="/" variant="cta">Testing</BaseUiAction>
-    </div>
+<div>
+about-us
+</div>
 </template>
 
 <script setup lang='ts'>
 defineOptions({
     name: 'HomePage'
 })
-
 </script>
 
 <style>

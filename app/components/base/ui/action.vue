@@ -45,7 +45,7 @@
 import type { ButtonTypes, VariantType } from '@/app/models/BaseComponents';
 
 defineOptions({
-    name: 'BaseButton'
+    name: 'BaseUiAction'
 })
 
 const emit = defineEmits<{
