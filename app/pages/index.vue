@@ -1,6 +1,7 @@
 <template>
     <div>
-        <BaseUiAction to="/" variant="cta">Testing</BaseUiAction>
+        <!-- <BaseUiAction variant="cta">Testing</BaseUiAction> -->
+         <BaseUiAction variant="primary">Button</BaseUiAction>
     </div>
 </template>
 
@@ -8,7 +9,6 @@
 defineOptions({
     name: 'HomePage'
 })
-
 </script>
 
 <style>

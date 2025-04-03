@@ -29,27 +29,36 @@ export default {
         main: "0.5s",
       },
       zIndex: {
-        1: '1',
-        2: '2',
-        3: '3',
-        4: '4',
-        5: '5',
-      }
+        1: "1",
+        2: "2",
+        3: "3",
+        4: "4",
+        5: "5",
+      },
     },
     keyframes: {
-        fill: {
-            from: {
-                top: '100px',
-                transform: 'translateX(-50%) rotate(0deg)',
-            },
-            to: {
-                top: '-50px',
-                transform: 'translateX(-50%) rotate(360deg)',
-            },
+      fill: {
+        from: {
+          top: "100px",
+          transform: "translateX(-50%) rotate(0deg)",
         },
+        to: {
+          top: "-50px",
+          transform: "translateX(-50%) rotate(360deg)",
+        },
+      },
+      spin: {
+        from: {
+          transform: "rotate(0)",
+        },
+        to: {
+          transform: "rotate(360deg)",
+        },
+      },
     },
     animation: {
-        fill: 'fill 3s ease-out forwards',
-    }
+      fill: "fill 3s ease-out forwards",
+      spin: "spin 1s linear infinite",
+    },
   },
 };

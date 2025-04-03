@@ -6,7 +6,7 @@ Prepare
 
 <script setup lang='ts'>
     defineOptions({
-        name: 'PrepareForFirstRidePage'
+        name: 'HowToPrepareForFirstRidePage'
     })
 </script>
 

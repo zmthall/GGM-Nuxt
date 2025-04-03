@@ -6,7 +6,7 @@
             { 'secondary-style': isSecondary },
             { 'cta-style group': isCTA },
             'inline-block button-style']" :to="to ?? '#'">
-            <div :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s]': isCTA }, 'content-wrapper pointer-events-none']">
+            <div :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s] content-wrapper': isCTA }, 'p-4 relative pointer-events-none']">
                 <slot />
             </div>
         </NuxtLink>
@@ -19,7 +19,7 @@
             { 'cta-style group': isCTA },
             'inline-block button-style']" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
         >
-            <div :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s]': isCTA }, 'content-wrapper pointer-events-none']">
+            <div :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s] content-wrapper': isCTA }, 'p-4 relative pointer-events-none']">
                 <slot />
             </div>
         </a>
@@ -34,7 +34,7 @@
             ]" :type="type ?? 'button'" @click="emit('click')"
         >
             <div 
-            :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s]': isCTA }, 'content-wrapper pointer-events-none']">
+            :class="[{ 'group-hover:before:animate-fill group-hover:duration-[1.5s] content-wrapper': isCTA }, 'p-4 relative pointer-events-none']">
                 <slot />
             </div>
         </button>
@@ -117,10 +117,6 @@ const isCTA = computed(() => {
 }
 .cta-style {
     @apply bg-transparent border-2 border-brand-primary text-brand-primary hover:text-brand-secondary overflow-hidden duration-[0.5s];
-}
-
-.content-wrapper {
-    @apply p-4 relative;
 }
 
 .content-wrapper::before {
