@@ -1,9 +1,9 @@
-import tailwindTheme from './tailwindConfig/index'
+import tailwindConfig from './tailwindConfig'
 
 export default {
   theme: {
     extend: {
-      tailwindTheme
+      ...tailwindConfig
     },
   },
 };

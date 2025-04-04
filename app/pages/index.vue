@@ -1,6 +1,7 @@
 <template>
     <div>
-        <!-- <BaseUiAction variant="cta">Button</BaseUiAction> -->
+        <BaseUiTooltip variant="click">Testing</BaseUiTooltip>
+         <!-- <BaseUiAction>Testing</BaseUiAction> -->
         Home Page
     </div>
 </template>
