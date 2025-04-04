@@ -1,7 +1,7 @@
 <template>
-<div>
-find-us
-</div>
+    <div>
+        find-us
+    </div>
 </template>
 
 <script setup lang='ts'>
@@ -10,6 +10,4 @@ defineOptions({
 })
 </script>
 
-<style>
-
-</style>
+<style></style>

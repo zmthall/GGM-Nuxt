@@ -1,15 +1,13 @@
 <template>
-<div>
-ride-cancellation
-</div>
+    <div>
+        ride-cancellation
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'RideCancellationPolicyPage'
-    })
+defineOptions({
+    name: 'RideCancellationPolicyPage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>

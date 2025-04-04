@@ -1,15 +1,13 @@
 <template>
-<div>
-Prepare
-</div>
+    <div>
+        Prepare
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'HowToPrepareForFirstRidePage'
-    })
+defineOptions({
+    name: 'HowToPrepareForFirstRidePage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>

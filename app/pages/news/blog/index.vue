@@ -1,12 +1,12 @@
 <template>
     <div>
-        assisted-living
+        Blog posts
     </div>
 </template>
 
 <script setup lang='ts'>
 defineOptions({
-    name: 'AssistedLivingPage'
+    name: 'BlogPostsPage'
 })
 </script>
 

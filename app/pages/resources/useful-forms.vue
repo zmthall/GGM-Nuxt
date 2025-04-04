@@ -1,15 +1,13 @@
 <template>
-<div>
-useful-forms
-</div>
+    <div>
+        useful-forms
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'UsefulFormsPage'
-    })
+defineOptions({
+    name: 'UsefulFormsPage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>

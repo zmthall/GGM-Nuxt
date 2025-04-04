@@ -1,15 +1,13 @@
 <template>
-<div>
-FAQ
-</div>
+    <div>
+        FAQ
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'FAQPage'
-    })
+defineOptions({
+    name: 'FAQPage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>

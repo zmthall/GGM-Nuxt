@@ -1,7 +1,7 @@
 <template>
     <div>
-        <!-- <BaseUiAction variant="cta">Testing</BaseUiAction> -->
-         <BaseUiAction variant="primary">Button</BaseUiAction>
+        <!-- <BaseUiAction variant="cta">Button</BaseUiAction> -->
+        Home Page
     </div>
 </template>
 

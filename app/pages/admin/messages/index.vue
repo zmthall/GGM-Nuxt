@@ -1,12 +1,12 @@
 <template>
     <div>
-        assisted-living
+        Messages
     </div>
 </template>
 
 <script setup lang='ts'>
 defineOptions({
-    name: 'AssistedLivingPage'
+    name: 'AdminMessagesPage'
 })
 </script>
 

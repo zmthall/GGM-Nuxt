@@ -1,7 +1,7 @@
 <template>
-<div>
-nemt
-</div>
+    <div>
+        nemt
+    </div>
 </template>
 
 <script setup lang='ts'>
@@ -10,6 +10,4 @@ defineOptions({
 })
 </script>
 
-<style>
-
-</style>
+<style></style>

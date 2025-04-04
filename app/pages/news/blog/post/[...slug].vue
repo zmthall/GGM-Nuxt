@@ -1,15 +1,13 @@
 <template>
-<div>
-community
-</div>
+    <div>
+        Blog Post
+    </div>
 </template>
 
 <script setup lang='ts'>
 defineOptions({
-    name: 'CommunityPage'
+    name: 'BlogPostPage'
 })
 </script>
 
-<style>
-
-</style>
+<style></style>

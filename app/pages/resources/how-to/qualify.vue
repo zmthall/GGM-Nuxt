@@ -1,15 +1,13 @@
 <template>
-<div>
-Qualify
-</div>
+    <div>
+        Qualify
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'HowToQualifyPage'
-    })
+defineOptions({
+    name: 'HowToQualifyPage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>

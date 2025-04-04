@@ -1,15 +1,13 @@
 <template>
-<div>
-schedule-a-ride
-</div>
+    <div>
+        schedule-a-ride
+    </div>
 </template>
 
 <script setup lang='ts'>
-    defineOptions({
-        name: 'HowToScheduleARidePage'
-    })
+defineOptions({
+    name: 'HowToScheduleARidePage'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>
