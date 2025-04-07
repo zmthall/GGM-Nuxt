@@ -2,7 +2,7 @@
     <div>
         Home Page
         <div class="flex px-8">
-            <BaseFormInput type="text" placeholder="testing"/>
+            <BaseFormTextarea label="testing" name="test" type="password"/>
         </div>
     </div>
 </template>

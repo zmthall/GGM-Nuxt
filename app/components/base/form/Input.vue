@@ -1,7 +1,10 @@
 <template>
     <div class="relative w-full mt-4">
+        <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1">{{ label }}</label>
         <input 
+            :id="name"
             ref="inputRef"
+            :name="name"
             :class="['border-2 w-full rounded-md p-1 text-sm font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
             :type="type" :placeholder="placeholder">
         <button 
@@ -29,10 +32,14 @@ const inputRef = ref<HTMLInputElement | null>(null)
 
 const props = withDefaults(defineProps<{
     type?: "text" | "number" | "email" | "password";
+    name?: string | undefined;
     placeholder?: string | undefined;
+    label?: string | undefined
 }>(), {
     type: "text",
-    placeholder: undefined
+    placeholder: undefined,
+    name: undefined,
+    label: undefined
 })
 
 const isPassword = computed(() => {
