@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseUiTooltip variant="click">Testing</BaseUiTooltip>
+        <BaseUiTooltip variant="hover">Testing how this does when the text is longer</BaseUiTooltip>
          <!-- <BaseUiAction>Testing</BaseUiAction> -->
         Home Page
     </div>

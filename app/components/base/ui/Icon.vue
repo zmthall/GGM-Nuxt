@@ -1,6 +1,6 @@
 <template>
     <Icon 
-        :class="[customClass, color, hoverColor, size, { 'animate-spin': spin }, 'pointer-events-none']" :name="name"
+        :class="[customClass, hoverColor, color, size, { 'animate-spin': spin }]" :name="name"
         :aria-label="ariaLabel ?? title ?? ''" :role="role ?? ''" :title="title ?? undefined" 
     />
 </template>
@@ -24,7 +24,7 @@ withDefaults(defineProps<{
     {
         size: 'size-8',
         color: 'text-brand-primary',
-        hoverColor: undefined,
+        hoverColor: 'text-brand-secondary',
         customClass: undefined,
         ariaLabel: undefined,
         role: undefined,
