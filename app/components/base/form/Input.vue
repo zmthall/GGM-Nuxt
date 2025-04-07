@@ -1,6 +1,6 @@
 <template>
     <div class="relative w-full mt-4">
-        <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1">{{ label }}</label>
+        <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <input 
             :id="name"
             ref="inputRef"
