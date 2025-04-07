@@ -1,7 +1,9 @@
 <template>
     <div>
         Home Page
-        <BaseFormCheckbox name="test">Testing</BaseFormCheckbox>
+        <div class="flex px-8">
+            <BaseFormInput type="text" placeholder="testing"/>
+        </div>
     </div>
 </template>
 

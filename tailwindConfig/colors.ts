@@ -1,6 +1,7 @@
 export const colors = {
   brand: {
     primary: "#121b75",
+    "primary-50": "#121b7580",
     secondary: "#eae39e",
     "main-font": "#dddddd",
     "link-hover": "#ada985",
