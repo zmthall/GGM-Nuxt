@@ -4,6 +4,7 @@
         <input 
             :id="name"
             ref="inputRef"
+            v-model="textValue"
             :name="name"
             :class="['border-2 w-full rounded-md p-1 text-sm font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
             :type="type" :placeholder="placeholder">
@@ -65,6 +66,8 @@ const toggleShowPassword = () => {
         }
     }
 }
+
+const textValue = defineModel<string>();
 </script>
 
 <style></style>

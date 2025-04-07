@@ -1,8 +1,9 @@
 <template>
     <div>
         Home Page
-        <div class="flex px-8">
-            <BaseFormRadios v-model="testing" name="testing" :values="['test1', 'test2']" :labels="['Test 1', 'Test 2']"/>
+        <div class="px-8">
+            <BaseFormInput />
+            <BaseFormSelect v-model="testing"/>
         </div>
     </div>
 </template>
@@ -12,12 +13,12 @@ defineOptions({
     name: 'HomePage'
 })
 
-const testing = ref('test1')
-
+const testing = ref<string>('testing')
 
 watch(testing, (newValue) => {
     console.log(newValue)
 })
+
 </script>
 
 <style>

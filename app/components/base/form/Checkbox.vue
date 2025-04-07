@@ -22,9 +22,7 @@ withDefaults(defineProps<{
     
 })
 
-const isChecked = ref(false)
-
-
+const isChecked = defineModel<boolean>()
 </script>
 
 <style></style>
