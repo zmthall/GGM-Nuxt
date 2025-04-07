@@ -1,8 +1,7 @@
 <template>
     <div>
-        <BaseUiTooltip variant="hover">Testing how this does when the text is longer</BaseUiTooltip>
-         <!-- <BaseUiAction>Testing</BaseUiAction> -->
         Home Page
+        <BaseFormCheckbox name="test">Testing</BaseFormCheckbox>
     </div>
 </template>
 

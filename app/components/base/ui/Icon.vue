@@ -24,7 +24,7 @@ withDefaults(defineProps<{
     {
         size: 'size-8',
         color: 'text-brand-primary',
-        hoverColor: 'text-brand-secondary',
+        hoverColor: undefined,
         customClass: undefined,
         ariaLabel: undefined,
         role: undefined,
