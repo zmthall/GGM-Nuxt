@@ -8,10 +8,13 @@
             :type :placeholder :autocomplete>
         <button 
             v-if="isPassword" :class="['absolute flex items-center right-4 cursor-pointer', {'top-1/2 -translate-y-1/2': !hasLabel, 'top-[57%]': hasLabel}]"
+            type="button"
             @click="toggleShowPassword">
-            <BaseUiIcon v-if="isPasswordShown" name="solar:eye-closed-bold" size="size-5" color="text-gray-200"
+            <BaseUiIcon 
+                v-if="isPasswordShown" name="solar:eye-closed-bold" size="size-5" color="text-gray-200"
                 hover-color="hover:text-brand-primary" />
-            <BaseUiIcon v-else name="solar:eye-bold" size="size-5" color="text-gray-200"
+            <BaseUiIcon 
+                v-else name="solar:eye-bold" size="size-5" color="text-gray-200"
                 hover-color="hover:text-brand-primary" />
         </button>
     </div>

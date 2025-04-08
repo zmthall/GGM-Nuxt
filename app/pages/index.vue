@@ -1,9 +1,6 @@
 <template>
     <div>
         Home Page
-        <div class="px-8">
-            <BaseFormToggleSwitch v-model='testing' name="test" label="Testing"/>
-        </div>
     </div>
 </template>
 
@@ -11,13 +8,6 @@
 defineOptions({
     name: 'HomePage'
 })
-
-const testing = ref<boolean>(true)
-
-watch(testing, (newValue) => {
-    console.log(newValue)
-})
-
 </script>
 
 <style>
