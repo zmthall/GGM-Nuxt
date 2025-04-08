@@ -2,8 +2,7 @@
     <div>
         Home Page
         <div class="px-8">
-            <BaseFormInput />
-            <BaseFormSelect v-model="testing" :values="['testing', 'test1', 'test2']" :labels="['Testing', 'Test 1', 'Test 2']" />
+            <BaseFormToggleSwitch v-model='testing' name="test" label="Testing"/>
         </div>
     </div>
 </template>
@@ -13,7 +12,7 @@ defineOptions({
     name: 'HomePage'
 })
 
-const testing = ref<string>('testing')
+const testing = ref<boolean>(true)
 
 watch(testing, (newValue) => {
     console.log(newValue)
