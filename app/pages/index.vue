@@ -3,7 +3,7 @@
         Home Page
         <div class="px-8">
             <BaseFormInput />
-            <BaseFormSelect v-model="testing"/>
+            <BaseFormSelect v-model="testing" :values="['testing', 'test1', 'test2']" :labels="['Testing', 'Test 1', 'Test 2']" />
         </div>
     </div>
 </template>
