@@ -60,6 +60,5 @@ export default defineNuxtConfig({
   robots: {
     blockNonSeoBots: true,
     disallow: ['/admin'],
-    allow: ['/admin/login']
   }
 })
