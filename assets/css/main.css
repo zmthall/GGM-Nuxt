@@ -1,0 +1,3 @@
+.link {
+    @apply font-semibold underline text-brand-primary hover:text-brand-link-hover
+}
