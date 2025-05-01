@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     '@nuxtjs/tailwindcss',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxtjs/robots'
   ],
   runtimeConfig: {
     public: {
@@ -55,5 +56,10 @@ export default defineNuxtConfig({
       { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
     ],
     xslTips: false,
+  },
+  robots: {
+    blockNonSeoBots: true,
+    disallow: ['/admin'],
+    allow: ['/admin/login']
   }
 })
