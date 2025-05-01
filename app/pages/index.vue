@@ -1,6 +1,21 @@
 <template>
-    <div class="h-[400dvh]">
-        Home Page
+    <div>
+        <BaseLayoutPageHeroSection>
+            <h1 class="flex flex-col relative items-center text-center mb-4 pb-4 bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0" >
+                <span class="text-3xl sm:text-4xl">
+                    Welcome to
+                </span>
+                <span class="text-6xl sm:text-7xl font-extrabold font-headings text-brand-secondary">
+                    Golden Gate Manor
+                </span>
+                <span class="text-2xl sm:text-3xl">
+                    PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
+                </span>
+            </h1>
+            <p class="text-xl text-center">
+                Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
+            </p>
+        </BaseLayoutPageHeroSection>
     </div>
 </template>
 
@@ -27,6 +42,8 @@ defineOptions({
 })
 </script>
 
-<style>
-
+<style scoped>
+    .bg-color::before {
+        background: linear-gradient(to right, transparent, #121f75 50%, transparent);
+    }
 </style>
