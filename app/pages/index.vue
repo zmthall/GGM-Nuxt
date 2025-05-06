@@ -21,7 +21,7 @@
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
             <BaseLayoutPageSection>
-                <BaseLayoutCard class="sm:shadow-primary sm:w-4/5 sm:mx-auto xl:w-1/2" :shadow="false">
+                <BaseLayoutCard class="sm:shadow-primary sm:w-4/5 sm:mx-auto xl:w-3/4 2xl:w-1/2" :shadow="false">
                     <div class="px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
                         <div>
