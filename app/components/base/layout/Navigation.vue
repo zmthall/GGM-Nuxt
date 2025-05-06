@@ -1,5 +1,5 @@
 <template>
-    <div class="sticky top-0 z-10">
+    <div class="sticky top-0 z-15">
         <nav class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary">
             <ul class="grid grid-cols-8 h-[35px]">
                 <li 
@@ -26,7 +26,7 @@
             </ul>
         </nav>
         <header
-            class="sm:hidden sticky top-0 left-0 w-full bg-brand-background-header text-white flex items-center justify-between px-4 h-[50px]">
+            class="sm:hidden sticky top-0 left-0 w-full bg-brand-background-header text-white flex items-center justify-between px-4 h-[50px] z-10">
             <div class="flex justify-between items-center">
                 <NuxtLink to="/">
                     <NuxtImg 

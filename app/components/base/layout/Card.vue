@@ -1,19 +1,11 @@
 <template>
-    <div v-if="hydrated">
-        <NuxtLink v-if="fullClickable" :to :class="['block p-6 shadow-primary rounded-lg group', width]">
-            <div :class="['flex flex-col justify-center items-center']">
-                <NuxtImg v-if="src" :src :class="[imgSize]"/>
-                <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color="'group-hover:text-brand-primary' ?? hoverColor" custom-class="transition-colors duration-500 ease-in-out" class="block" />
-                <slot />
-                <BaseUiAction v-if="cta" :to :href :variant :new-page :no-follow :size="ctaSize" :styling="ctaClass" :hover-group="true">{{ cta }}</BaseUiAction>
-            </div>
-        </NuxtLink>
-        <div v-if="!fullClickable" :class="[width, 'p-6 shadow-primary rounded-lg flex flex-col justify-center items-center', { 'group': hoverGroup}]">
+    <div :class="['p-6 items-center rounded-lg overflow-hidden h-full flex flex-col justify-between', { 'group': hoverGroup, 'shadow-primary': shadow}]">
+        <div class="flex flex-col items-center">
             <NuxtImg v-if="src" :src :class="[imgSize]"/>
-            <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color custom-class="transition-colors duration-500 ease-in-out" class="block" />
+            <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color="hoveringColor" custom-class="transition-colors duration-500 ease-in-out" class="block" />
             <slot />
-            <BaseUiAction v-if="cta" :to :href :variant :new-page :no-follow :size="ctaSize" :styling="ctaClass" :hover-group="hoverGroup">{{ cta }}</BaseUiAction>
         </div>
+        <BaseUiAction v-if="cta" :to :href :variant :new-page :no-follow :size="ctaSize" :styling="ctaClass" :hover-group="hoverGroup">{{ cta }}</BaseUiAction>
     </div>
 </template>
 
@@ -22,11 +14,10 @@ defineOptions({
     name: "BaseLayoutCard"
 })
 
-const hydrated = ref(false)
-onMounted(() => hydrated.value = true)
+// const hydrated = ref(false)
+// onMounted(() => hydrated.value = true)
 
-withDefaults(defineProps<{
-    width: string;
+const props = withDefaults(defineProps<{
     src?: string;
     iconName?: string;
     iconSize?: string;
@@ -42,7 +33,7 @@ withDefaults(defineProps<{
     variant?: string;
     newPage?: boolean;
     noFollow?: boolean;
-    fullClickable?: boolean;
+    shadow?: boolean;
 }>(), {
     accentColor: 'text-gray-500',
     hoverColor: undefined,
@@ -59,7 +50,12 @@ withDefaults(defineProps<{
     variant: undefined,
     newPage: false,
     noFollow: false,
-    fullClickable: false
+    shadow: true
+})
+
+const hoveringColor = computed(() => {
+    if(props.hoverGroup) return props.hoverColor ? props.hoverColor : 'group-hover:text-brand-primary'
+    else return props.hoverColor ? props.hoverColor : 'group-hover:text-brand-primary'
 })
 </script>
 

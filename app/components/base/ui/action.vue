@@ -131,7 +131,7 @@ const isCTA = computed(() => {
 }
 
 .secondary-style {
-    @apply bg-brand-secondary transition-colors ease-in-out text-brand-primary duration-main border-brand-primary border-2 hover:bg-brand-primary hover:text-white;
+    @apply bg-brand-secondary transition-colors ease-in-out text-brand-primary duration-main border-brand-primary border-2 hover:border-brand-secondary hover:bg-brand-primary hover:text-brand-secondary;
 }
 
 .secondary-style-group {
