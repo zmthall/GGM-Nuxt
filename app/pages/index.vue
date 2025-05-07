@@ -21,8 +21,8 @@
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
             <BaseLayoutPageSection>
-                <BaseLayoutCard class="sm:shadow-primary sm:w-4/5 sm:mx-auto xl:w-3/4 2xl:w-1/2" :shadow="false">
-                    <div class="px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4 2xl:w-1/2" :shadow="false">
+                    <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
                         <div>
                             <img src="" alt="Golden Gate Manor operations in action" class="rounded-xl shadow-md w-full h-auto object-cover">
