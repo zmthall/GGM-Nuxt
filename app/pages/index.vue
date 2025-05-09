@@ -1,3 +1,4 @@
+import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 <template>
     <div>
         <!-- Page Hero Section -->
@@ -114,7 +115,90 @@
     
             <!-- Why People Choose Us -->
             <BaseLayoutPageSection>
-                
+                <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
+                    <h2 class="hidden text-lg font-headings text-center font-bold text-brand-primary">Why People Choose Golden Gate Manor</h2>
+                    <h3 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">
+                        <span class="text-gray-500">
+                            More Than a Ride.
+                        </span>
+                        <span class="text-brand-primary ">
+                            More Than a Business.
+                        </span>
+                    </h3>
+                    <p class="text-lg sm:text-2xl">
+                        We're Colorado's longest-running NEMT provider — and so much more. Golden Gate Manor Inc. connects assisted living, transportation, medical supplies, and community support 
+                        under one roof to make life easier for the people who need it most.
+                    </p>
+                </div>
+
+                <div class="space-y-2 mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
+                    <h3 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">A Mission Rooted in Care, Built for Independence</h3>
+                    <p class="text-lg sm:text-2xl">
+                        At Golden Gate Manor Inc., we believe true care is rooted in connection. As a family-owned company proudly based in Pueblo, Colorado, we've built more than a network of services — we've built a support system. Whether it's a ride across town, a comfortable place to live, or access to essential medical equipment, our goal is simple: help people live fully, independently, and with dignity.
+                    </p>
+                    <p class="text-lg sm:text-2xl">
+                        We don't just serve the community — we're part of it. From sponsoring local events to hosting school supply giveaways and partnering with organizations that uplift the underserved, we believe giving back is just as important as showing up. Our team works hard, plays hard, and shows up with heart.
+                    </p>
+                    <p class="text-lg sm:text-2xl">
+                        When you choose Golden Gate Manor, you're choosing more than a company — you're joining a community that cares.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">What Sets Us Apart</h2>
+                    <div class="sm:grid sm:grid-cols-2 sm:gap-8">
+                         <!-- Two-column layout -->
+                         <div class="space-y-2 mb-4 px-2">
+                              <!-- Left Column: Paragraph + Cards -->
+                              <div class="flex flex-col gap-8">
+                                  <!-- 4 Pillar Cards -->
+                                  <BaseLayoutCard>
+                                    <div>
+                                        <h3 class="font-extrabold font-headings text-lg">Community-First Approach</h3>
+                                        <p>
+                                            We're locally grown and Pueblo-proud. Our mission is to bridge gaps in care and make vital services more accessible for seniors and people with special needs.
+                                        </p>
+                                    </div>
+                                  </BaseLayoutCard>
+                                  <BaseLayoutCard>
+                                    <div>
+                                        <h3 class="font-extrabold font-headings text-lg">Proven Track Record</h3>
+                                        <p>
+                                            We're Colorado's oldest non-emergency medical transportation provider — built on reliability, compassion, and dedication that spans decades. With a fleet of over 50 vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable, on-time transportation backed by the resources to deliver.
+                                        </p>
+                                    </div>
+                                  </BaseLayoutCard>
+                                  <BaseLayoutCard>
+                                    <div>
+                                        <h3 class="font-extrabold font-headings text-lg">Umbrella of Care</h3>
+                                        <p>
+                                            From assisted living to medical equipment to neighborhood gas stations, we offer a seamless network of services for comfort, independence, and convenience.
+                                        </p>
+                                    </div>
+                                  </BaseLayoutCard>
+                                  <BaseLayoutCard>
+                                    <div>
+                                        <h3 class="font-extrabold font-headings text-lg">People Over Profit</h3>
+                                        <p>
+                                            We prioritize care, dignity, and real community impact. Our team is trained to lead with empathy, act with integrity, and treat your family like our own.
+                                        </p>
+                                    </div>
+                                  </BaseLayoutCard>
+                              </div>
+                          </div>
+                          <!-- Testimonial (supporting statement) -->
+                          <aside class="bg-gray-400 p-4 text-black rounded-lg text-xl sm:text-white sm:h-max sm:px-12 sm:py-28 sm:my-auto sm:bg-brand-primary">
+                              <blockquote class="space-y-4">
+                                  <span>"Golden Gate Manor helped my mom stay independent and cared for without feeling alone. It's not just a service — it's a lifeline."</span>
+                                  <footer>— Jessica M., Family Member</footer>
+                              </blockquote>
+                          </aside>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-4">
+                    <BaseUiAction href="/company/about-us" class="px-8 py-4 text-2xl">Explore Our Impact</BaseUiAction>
+                </div>
             </BaseLayoutPageSection>
     
             <!-- 👉 Events & Community Highlights -->
@@ -123,9 +207,9 @@
             </BaseLayoutPageSection>
 
             <!-- Schedule a Ride CTA -->
-            <BaseLayoutPageCTA title="Need a Ride? We’re Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride">
+            <BaseLayoutPageCTA title="Need a Ride? We're Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride">
                 <p class="text-xl">
-                    Whether it’s a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
+                    Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
                 </p>
             </BaseLayoutPageCTA>
 

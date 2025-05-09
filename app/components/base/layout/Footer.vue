@@ -1,4 +1,3 @@
-import { useStaticData } from '../../../composables/staticData';
 <template>
     <footer class="flex flex-col">
         <!-- Top Information Header -->
@@ -280,13 +279,29 @@ import { useStaticData } from '../../../composables/staticData';
             </div>
         </div>
 
-        <!-- Bottom Copyright Footer -->
-        <div class="sm:flex sm:justify-between items-center px-2 py-3 bg-brand-primary text-white border-t-2 border-t-white/50">
-            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline">© 2024 Golden Gate Manor, Inc.</NuxtLink>
+
+        <!-- <div class="sm:flex sm:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50">
+            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline block">© 2024 Golden Gate Manor, Inc.</NuxtLink>
             <nav>
-                <ul class="sm:flex items-center h-full">
-                    <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="px-4 border-l first-of-type:border-l-0 hover:text-brand-secondary hover:underline h-full">
-                        <NuxtLink :to="policyLink.slug">{{ policyLink.name }}</NuxtLink>
+                max-md:w-max max-md:mx-auto max-md:mb-4
+
+                max-md:grid max-md:grid-cols-2 max-md:justify-center 
+                <ul class="sm:flex sm:items-center sm:flex-wrap h-full">
+                    <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="px-4 md:border-l md:first-of-type:border-l-0 hover:text-brand-secondary hover:underline h-max">
+                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.slug" class="flex w-max">{{ policyLink.name }}</NuxtLink>
+                        <a v-else :href="policyLink.slug" class="flex w-max">{{ policyLink.name }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div> -->
+        <!-- Bottom Copyright Footer -->
+        <div class="md:flex md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
+            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-4 md:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
+            <nav class="flex justify-center">
+                <ul class="grid grid-cols-2 sm:flex text-left gap-2 w-max">
+                    <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">
+                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</NuxtLink>
+                        <a v-else :href="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</a>
                     </li>
                 </ul>
             </nav>

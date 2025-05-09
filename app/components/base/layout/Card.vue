@@ -12,10 +12,7 @@
 <script setup lang='ts'>
 defineOptions({
     name: "BaseLayoutCard"
-})
-
-// const hydrated = ref(false)
-// onMounted(() => hydrated.value = true)
+});
 
 const props = withDefaults(defineProps<{
     src?: string;
@@ -51,12 +48,12 @@ const props = withDefaults(defineProps<{
     newPage: false,
     noFollow: false,
     shadow: true
-})
+});
 
 const hoveringColor = computed(() => {
     if(props.hoverGroup) return props.hoverColor ? props.hoverColor : 'group-hover:text-brand-primary'
     else return props.hoverColor ? props.hoverColor : 'group-hover:text-brand-primary'
-})
+});
 </script>
 
 <style>
