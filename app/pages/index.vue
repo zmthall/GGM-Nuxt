@@ -202,8 +202,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             </BaseLayoutPageSection>
     
             <!-- 👉 Events & Community Highlights -->
-            <BaseLayoutPageSection bg="alt">
-                
+            <BaseLayoutPageSection v-if="events" bg="alt">
+                <div />
             </BaseLayoutPageSection>
 
             <!-- Schedule a Ride CTA -->
@@ -214,8 +214,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             </BaseLayoutPageCTA>
 
             <!-- Blog / News -->
-            <BaseLayoutPageSection bg="alt">
-                
+            <BaseLayoutPageSection v-if="blog || news" bg="alt">
+                <div />
             </BaseLayoutPageSection>
         </BaseLayoutPageWrapper>
     </div>
