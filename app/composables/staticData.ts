@@ -35,7 +35,7 @@ export const useStaticData = () => {
           { id: "location", name: "Find Us", slug: "/company/location" },
           { id: "policies", name: "Policies", slug: "/company/policies" },
           { id: "contact", name: "Contact Us", slug: "/company/contact-us" },
-          { id: "join", name: "Join Our Team", slug: "/company/join-our-team" },
+          { id: "join", name: "Join Our Team", slug: "/company/employment" },
         ],
       },
       {
@@ -64,7 +64,7 @@ export const useStaticData = () => {
   
     const footerNavLinks = [
       { id: "footer-schedule-a-ride", name: "Schedule a Ride", slug: "/resources/schedule-a-ride", icon: "akar-icons:schedule" },
-      { id: "footer-join-our-team", name: "Join Our Team", slug: "/company/join-our-team", icon: "fluent:people-team-add-20-filled" },
+      { id: "footer-join-our-team", name: "Join Our Team", slug: "/company/employment", icon: "fluent:people-team-add-20-filled" },
       { id: "footer-contact-us", name: "Contact Us", slug: "/company/contact-us", icon: "material-symbols:stacked-email"},
       { id: "footer-support-center", name: "Support Center", slug: "/resources/support-center", icon: "material-symbols:contact-support-rounded" },
       { id: "footer-assisted-living", name: "Assisted Living Information", slug: "/assisted-living", icon: "material-symbols:family-home" },

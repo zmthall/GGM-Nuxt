@@ -14,16 +14,18 @@ defineOptions({ name: 'BaseLayoutPageSection' })
 
 const props = withDefaults(defineProps<{
     bg?: 'default' | 'alt';
+    margin?: 'default' | 'top' | undefined;
     class?: string;
     styling?: string;
 }>(), {
     bg: 'default',
+    margin: undefined,
     class: '',
     styling: undefined
 })
 
 const sectionClasses = computed(() => [
-    'w-full py-12 sm:py-16',
+    props.margin === 'default' ? 'w-full py-12 sm:py-16' : props.margin === 'top' ? 'w-full pt-4 pb-12 sm:pt-8 sm:pb-16' : '',
     props.bg === 'default' && 'bg-[#e8e8e8]', // cool stone
     props.bg === 'alt' && 'bg-brand-primary/5',    // soft light blue
     props.class

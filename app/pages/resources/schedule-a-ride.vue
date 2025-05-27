@@ -1,6 +1,6 @@
 <template>
     <div>
-        Schedule a ride
+        <ScheduleARideForm />
     </div>
 </template>
 

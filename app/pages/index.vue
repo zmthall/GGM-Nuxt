@@ -21,7 +21,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
         </BaseLayoutPageHeroSection>
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
-            <BaseLayoutPageSection>
+            <BaseLayoutPageSection margin="default">
                 <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4 2xl:w-1/2" :shadow="false">
                     <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
@@ -43,7 +43,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 </BaseLayoutCard>
             </BaseLayoutPageSection>
             <!-- Services Card Grid -->
-            <BaseLayoutPageSection bg="alt" styling="flex flex-col">
+            <BaseLayoutPageSection margin="default" bg="alt" styling="flex flex-col">
                 <h2 class="text-center font-headings font-extrabold flex flex-col mb-8 text-4xl">
                     <span class="text-gray-500">
                         Services
@@ -112,9 +112,16 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                     </NuxtLink>
                 </div>
             </BaseLayoutPageSection>
+
+            <!-- Schedule a Ride CTA -->
+            <BaseLayoutPageCTA title="Need a Ride? We're Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride">
+                <p class="text-xl">
+                    Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
+                </p>
+            </BaseLayoutPageCTA>
     
             <!-- Why People Choose Us -->
-            <BaseLayoutPageSection>
+            <BaseLayoutPageSection margin="default">
                 <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
                     <h2 class="hidden text-lg font-headings text-center font-bold text-brand-primary">Why People Choose Golden Gate Manor</h2>
                     <h3 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">
@@ -146,7 +153,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 
                 <div>
                     <h2 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">What Sets Us Apart</h2>
-                    <div class="sm:grid sm:grid-cols-2 sm:gap-8">
+                    <div class="sm:grid sm:grid-cols-2 sm:gap-8 md:mx-12">
                          <!-- Two-column layout -->
                          <div class="space-y-2 mb-4 px-2">
                               <!-- Left Column: Paragraph + Cards -->
@@ -206,15 +213,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 <div />
             </BaseLayoutPageSection>
 
-            <!-- Schedule a Ride CTA -->
-            <BaseLayoutPageCTA title="Need a Ride? We're Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride">
-                <p class="text-xl">
-                    Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
-                </p>
-            </BaseLayoutPageCTA>
-
             <!-- Blog / News -->
-            <BaseLayoutPageSection v-if="blog || news" bg="alt">
+            <BaseLayoutPageSection v-if="blogs || news" bg="alt">
                 <div />
             </BaseLayoutPageSection>
         </BaseLayoutPageWrapper>
@@ -222,6 +222,11 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 </template>
 
 <script setup lang='ts'>
+const news = undefined;
+const blogs = undefined;
+const events = undefined;
+
+
 useHead({
     titleTemplate: null,
 })

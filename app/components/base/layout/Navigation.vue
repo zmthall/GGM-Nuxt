@@ -1,6 +1,6 @@
 <template>
     <div class="sticky top-0 z-15">
-        <nav class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary">
+        <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary">
             <ul class="grid grid-cols-8 h-[35px]">
                 <li 
                     v-for="navLink in staticData.navLinks" :key="navLink.name" class="relative"
@@ -60,7 +60,7 @@
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
                         </button>
                     </div>
-                    <nav class="overflow-y-auto w-full">
+                    <nav v-if="staticData" class="overflow-y-auto w-full">
                         <ul class="flex flex-col w-max mx-auto gap-3">
                             <li v-for="navLink in staticData.navLinks" :key="navLink.name">
                                 <NuxtLink 
