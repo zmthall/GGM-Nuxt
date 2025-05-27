@@ -1,7 +1,7 @@
 <template>
-<div>
-    Needed
-</div>
+    <div>
+        Needed
+    </div>
 </template>
 
 <script setup lang='ts'>

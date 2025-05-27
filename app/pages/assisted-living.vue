@@ -70,28 +70,30 @@
               <a href="" class="">GET FREE CONSULTATION</a>
           </div>
       </div>
-    <div class="">
-        <h2 class="">See For Yourself</h2>
+      </BaseLayoutPageSection>
+      <BaseLayoutPageSection margin="default" bg="alt">
         <div class="">
+            <h2 class="">See For Yourself</h2>
             <div class="">
-                <h3 class="">
-                    Call Us Today
-                </h3>
-                <p class="">
-                    Set up an appointment to visit our facilities. Meet our staff, residents, and see for yourself all that Golden Gate Manor, Inc. has to offer.
-                </p>
+                <div class="">
+                    <h3 class="">
+                        Call Us Today
+                    </h3>
+                    <p class="">
+                        Set up an appointment to visit our facilities. Meet our staff, residents, and see for yourself all that Golden Gate Manor, Inc. has to offer.
+                    </p>
+                </div>
+                <div class="">
+                    <h3 class="">
+                        More Details
+                    </h3>
+                    <p class="">
+                        Golden Gate Manor, Inc. happily provides brochures, cards, tours, Respite Care, and lunches for interested residents.
+                    </p>
+                </div>
             </div>
-            <div class="">
-                <h3 class="">
-                    More Details
-                </h3>
-                <p class="">
-                    Golden Gate Manor, Inc. happily provides brochures, cards, tours, Respite Care, and lunches for interested residents.
-                </p>
-            </div>
+            <BaseUiAction href="/company/contact-us" class="">Contact Us</BaseUiAction>
         </div>
-        <a href="" class=""></a>
-    </div>
     </BaseLayoutPageSection>
   </div>
 </template>

@@ -3,10 +3,10 @@
         <!-- Page Banner -->
         <BaseLayoutPageBanner />
         <!-- Main Content -->
-        <BaseLayoutPageSection class="non-medical-transportation-top-page page-content">
+        <BaseLayoutPageSection class="" margin="top">
             <!-- <img src="/images/suv-train.jpg" alt="Picture of Golden Gate Manor Transportation infront of Train Depot Car in Pueblo"> -->
-            <h2 class="section-title">Overview of Non-Medical Transportation</h2>
-            <p class="section-text">
+            <h2 class="">Overview of Non-Medical Transportation</h2>
+            <p class="">
                 It may not always be possible to depend solely on assistance 
                 from family members, friends, or public transportation in order 
                 to travel to the places you need to be. Golden Gate Manor 
@@ -15,7 +15,7 @@
                 fleet of over 40 plus vehicles, you can count on us to get you 
                 where you need to be.
             </p>
-            <p class="section-text">
+            <p class="">
                 We are proud to offer Non-Medical Transportation to eligible 
                 Medicaid recipients in Pueblo and Otero Counties. Whether you 
                 need to run personal errands, attend a family event, or just 
@@ -27,9 +27,9 @@
                 <a href="/contact-us/schedule-a-ride" class="cta-button schedule-a-ride">Schedule A Ride</a>
             </div>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection class="non-medical-transportation-middle-page page-content">
+        <BaseLayoutPageSection class="" margin="default" bg="alt">
             <h2 class="section-title">How Do I Schedule a Ride?</h2>
-            <p class="section-text">
+            <p class="">
                 If you have never used our services, please contact the 
                 Department of Human Services (DHS) at <a rel="nofollow" href="tel:719-583-6900">(719) 583-6900</a> to
                 determine your eligibility. If you are on Medicaid and on the 
@@ -38,17 +38,17 @@
                 first ride with Golden Gate Manor Transportation or Pueblo City 
                 Cab, contact us by calling <a rel="nofollow" href="tel:<%- company.phone_number_dispatch %>">Dispatch Number Needed</a>.
             </p>
-            <p class="section-text">
+            <p class="">
                 Drivers and appointments are available 24 hours a day, 7 days a 
                 week, including holidays. Pueblo City Cab is open 24 hours a day 
                 365 days a year. Please contact us 24-48 hours before your trip;
                 otherwise, we may not be able to guarantee availability.
             </p>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection class="non-medical-transportation-bottom-page page-content">
+        <BaseLayoutPageSection class="" margin="default">
             <div class="non-medical-transportation-bottom-page-wrapper">
                 <h2 class="section-title">What Information Do I Need?</h2>
-                <p class="section-text">
+                <p class="">
                     Before riding with Golden Gate Manor Transportation, eligibility 
                     must be approved by the Department of Human Services (DHS); be 
                     prepared before contacting us, by first contacting DHS at 
@@ -61,7 +61,7 @@
                     pertinent information relating to the trip will be requested 
                     while on the phone.
                 </p>
-                <p class="section-text">
+                <p class="">
                     Thank you for choosing Golden Gate Manor/Pueblo City Cab for all 
                     your Non-Medical Transportation needs! We look forward to 
                     serving you! If you have any further questions or concerns, 

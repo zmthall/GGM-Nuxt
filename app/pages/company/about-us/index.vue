@@ -3,7 +3,7 @@
     <!-- Page Banner -->
     <BaseLayoutPageBanner />
     <!-- Top Page -->
-    <section class="">
+    <BaseLayoutPageSection class="" margin="top">
       <!-- <img src="/images/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor Transportation cars lined up in front of dispatch office building."> -->
       <h2 class="section-title">About Us</h2>
       <p class="section-text">
@@ -15,10 +15,10 @@
           href="tel:<%- company.phone_number_nemt %>">Need NEMT Number</a>.
       </p>
       <a href="/contact-us" class="cta-button contact-us-page">Contact Us</a>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- Assisted Living -->
-    <section class="about-us-assisted-living-section section-content">
+    <BaseLayoutPageSection class="" margin="default" bg="alt">
       <div class="page-content">
         <h2 class="section-title">
           Assisted Living
@@ -56,10 +56,10 @@
         <img src="/images/pages/about-us/golden-valley.jpeg" alt="Golden View 525 West 9th St. Pueblo, CO 81003">
         <img src="/images/pages/about-us/golden-view.jpeg" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004">
       </div>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- Transportation Services -->
-    <section class="about-us-transportation-section page-content section-content">
+    <BaseLayoutPageSection class="" margin="default">
       <h2 class="section-title">
         Transportation Services
       </h2>
@@ -81,10 +81,10 @@
           </p>
         </div>
       </div>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- Medical Supply -->
-    <section class="about-us-medical-supply-section page-content section-content">
+    <BaseLayoutPageSection class="" margin="default" bg="alt">
       <h2 class="section-title">
         Medical Supplies
       </h2>
@@ -105,10 +105,10 @@
         <img class="section-image image-right" src="/images/pages/about-us/medical-supply-store.jpeg"
           alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue.">
       </div>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- Gas Station -->
-    <section class="about-us-gas-station-section page-content section-content">
+    <BaseLayoutPageSection class="" margin="default">
       <h2 class="section-title">
         Gas Station
       </h2>
@@ -140,10 +140,10 @@
       </div>
       <a href="/gas-and-goods" class="cta-button gas-station-about-us"><span class="read-more-plus">+ </span>Learn
         More</a>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- Our Team -->
-    <section class="about-us-our-team-section page-content section-content">
+    <BaseLayoutPageSection class="" margin="default" bg="alt">
       <h2 class="section-title">
         Our Team
       </h2>
@@ -171,7 +171,7 @@
         <li class="section-list-item section-text">Outside agencies, to recruit and properly place individuals in need
           of services.</li>
       </ul>
-    </section>
+    </BaseLayoutPageSection>
   </div>
 </template>
 

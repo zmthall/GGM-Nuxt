@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Top Page -->
-    <BaseLayoutPageSection class="non-emergency-transportation-top-page page-content">
+    <BaseLayoutPageSection class="" margin="top">
       <div class="non-emergency-transportation-top-page-left">
         <p class="section-text">
           Non-Emergent Medical Transportation (NEMT) is transportation
@@ -52,7 +52,7 @@
     </BaseLayoutPageSection>
 
     <!-- Transportation Information -->
-    <BaseLayoutPageSection class="nemt-transportation-information page-content">
+    <BaseLayoutPageSection class="" margin="default" bg="alt">
       <h2 class="section-title">Transportation Information</h2>
       <div class="nemt-information-wrapper">
         <div class="nemt-transportation-information-faq">
@@ -220,7 +220,7 @@
     </BaseLayoutPageSection>
 
     <!-- Eligible Places of Service -->
-    <BaseLayoutPageSection class="nemt-transportation-eligible-places page-content margin-top-s" data-eligible-places-container>
+    <BaseLayoutPageSection class="" data-eligible-places-container margin="default">
       <h2 class="section-title">Eligible Places of Services</h2>
       <div class="nemt-transportation-eligible-places-wrapper">
         <div class="nemt-transportation-eligible-places-text nemt-transportation-content">
@@ -264,7 +264,7 @@
 
     <!-- Driver Safety -->
 
-    <BaseLayoutPageSection class="nemt-transportation-driver-safety page-content">
+    <BaseLayoutPageSection class="" margin="default" bg="alt">
       <div class="nemt-transportation-driver-safety-text-content">
           <h2 class="section-title driver-safety">
               <span class="top-header-text">Safe Drivers</span>
