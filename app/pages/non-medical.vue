@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Page Banner -->
-        <BaseLayoutPageBanner />
+        <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo"/>
         <!-- Main Content -->
         <BaseLayoutPageSection class="" margin="top">
             <!-- <img src="/images/suv-train.jpg" alt="Picture of Golden Gate Manor Transportation infront of Train Depot Car in Pueblo"> -->

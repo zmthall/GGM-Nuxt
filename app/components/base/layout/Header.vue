@@ -24,7 +24,7 @@
                     <BaseIcon name="ic:sharp-arrow-drop-down" hover-color="group-hover:text-brand-light-gray" />
                 </button>
                 <div 
-                    v-if="contactOpen"
+                    v-if="contactOpen && staticData"
                     ref="contactPopup"
                     class="absolute right-0 translate-y-4 flex bg-brand-background-header drop-shadow-[0px_0px_4px_rgba(0,0,0,0.2)] rounded-lg p-2 arrow-top z-20"
                     >

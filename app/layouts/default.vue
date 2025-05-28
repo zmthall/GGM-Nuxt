@@ -18,16 +18,22 @@ defineOptions({
 
 const staticData = useStaticData()
 
-useHead({
-  titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
-  script: [
-    {
-      key: 'ld-json-org',
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(staticData.orgSchema)
-    }
-  ]
-})
+if(staticData) {
+  useHead({
+    titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
+    script: [
+      {
+        key: 'ld-json-org',
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(staticData.orgSchema)
+      },
+      {
+        src: 'https://app.aminos.ai/js/chat_plugin.js',
+        'data-bot-id': '27311',
+      },
+    ]
+  })
+}
 
 useSeoMeta({
   author: 'Zachary Thallas',
