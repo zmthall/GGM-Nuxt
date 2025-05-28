@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
     ctaClass?: string;
     href?: string;
     to?: string;
-    variant?: string;
+    variant?: "cta" | "primary" | "secondary" | undefined;
     newPage?: boolean;
     noFollow?: boolean;
     shadow?: boolean;

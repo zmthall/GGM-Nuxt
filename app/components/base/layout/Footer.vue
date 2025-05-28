@@ -4,14 +4,14 @@
         <div class="bg-brand-primary text-white px-6 py-10 grid grid-cols-1 gap-12 grid-flow-row md:grid-cols-2 2xl:grid-cols-4">
             <!-- Mission statement and social branding -->
             <div>
-                <h2 class="flex flex-col text-brand-secondary font-bold font-headings capitalize text-xl">
+                <h2 class="flex flex-col text-brand-secondary font-bold capitalize text-xl">
                     <span class="border-b border-b-brand-secondary inline-block pb-1 mb-2">Golden Gate Manor Inc:</span>
                     <span>People who value their quality of life can depend on us</span>
                 </h2>
                 <p>Our Mission:</p>
                 <p>To improve the quality of life, each and every day.</p>
                 <p>Follow Us:</p>
-                <div class="flex gap-2">
+                <div v-if="staticData" class="flex gap-2">
                     <nav>
                         <ul class="flex gap-2">
                             <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
@@ -26,7 +26,7 @@
             <!-- Location information -->
             <div>
                 <h2
-                    class="flex flex-col text-brand-secondary font-bold font-headings border-b border-b-brand-secondary pb-1 mb-2 text-xl">
+                    class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
                     Locations</h2>
                 <ul class="flex flex-col gap-4">
                     <li class="flex flex-col">
@@ -231,9 +231,9 @@
             <!-- Quick Links -->
             <div>
                 <h2
-                    class="flex flex-col text-brand-secondary font-bold font-headings border-b border-b-brand-secondary pb-1 mb-2 text-xl">
+                    class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
                     Quick Links</h2>
-                <nav>
+                <nav v-if="staticData">
                     <ul class="flex flex-col gap-4 font-semibold">
                         <li v-for="navLink in staticData.footerNavLinks" :key="navLink.id">
                             <NuxtLink 
@@ -249,7 +249,7 @@
             <!-- Office Hours -->
             <div>
                 <h2
-                    class="flex flex-col text-brand-secondary font-bold font-headings border-b border-b-brand-secondary pb-1 mb-2 text-xl">
+                    class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
                     Office Hours</h2>
                 <ul class="text-2xl mb-2">
                     <li class="flex justify-between">
@@ -295,7 +295,7 @@
             </nav>
         </div> -->
         <!-- Bottom Copyright Footer -->
-        <div class="md:flex md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
+        <div v-if="staticData" class="md:flex md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
             <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-4 md:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
             <nav class="flex justify-center">
                 <ul class="grid grid-cols-2 sm:flex text-left gap-2 w-max">

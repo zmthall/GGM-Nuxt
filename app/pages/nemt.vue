@@ -33,7 +33,8 @@
             </tr>
           </tbody>
         </table>
-        <a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener nofollow"
+        <a 
+          href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener nofollow"
           class="form-button">
           <div class="nemt-form-button-text-wrapper">
             <span class="top-btn-text nemt-text-span">
@@ -44,10 +45,11 @@
         </a>
       </div>
       <div class="non-emergency-transportation-top-page-right">
-        <iframe width="100%" height="350" src="https://www.youtube.com/embed/fJ8_uvrsYXo?si=qhdETT5Lqh8IiQSm"
+        <iframe 
+          width="100%" height="350" src="https://www.youtube.com/embed/fJ8_uvrsYXo?si=qhdETT5Lqh8IiQSm"
           title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
       </div>
     </BaseLayoutPageSection>
 
@@ -73,7 +75,8 @@
               <div class="faqs-list-content" data-faqs-container="1">
                 <p class="faqs-text">
                   To help us serve you better, please schedule your ride
-                  at least 24 hours in advance by calling <a rel="nofollow"
+                  at least 24 hours in advance by calling <a 
+                    rel="nofollow"
                     href="tel:<%- company.phone_number_nemt %>">Need NEMT Number</a> between 8:00 AM
                   and 4:00 PM, Monday through Friday. This allows us the
                   necessary time to arrange your transportation efficiently.
@@ -94,7 +97,8 @@
               <div class="faqs-list-content" data-faqs-container="2">
                 <p class="faqs-text">
                   If you need to cancel a ride, please call at least two hours
-                  before your scheduled pick-up time at <a rel="nofollow"
+                  before your scheduled pick-up time at <a 
+                    rel="nofollow"
                     href="tel:<%- company.phone_number_nemt %>">Need NEMT Number</a>.
                 </p>
                 <p class="faqs-text">
@@ -134,7 +138,8 @@
                   form must be filled out, which is found
                   within the
                 </p>
-                <a href="/pdfs/Medical Certificate of Transportation Service.pdf" target="_blank"
+                <a 
+                  href="/pdfs/Medical Certificate of Transportation Service.pdf" target="_blank"
                   rel="noopener nofollow" class="link-spacing">Medical Certificate of Transportation Service Form</a>
               </div>
             </li>
@@ -192,7 +197,8 @@
               Need NEMT Number
             </span>
           </a>
-          <a rel="nofollow" href="tel:<%- company.phone_number_dispatch_toll %>"
+          <a 
+            rel="nofollow" href="tel:<%- company.phone_number_dispatch_toll %>"
             class="nemt-page-anchor dark-background">
             <span class="nemt-span-logo">
               <BaseIcon name="ic:round-call" />
@@ -253,9 +259,11 @@
           </ul>
         </div>
         <div class="nemt-transportation-eligible-places-map nemt-transportation-content">
-          <div class="GGMT-service-area-map-container" aria-modal="true" role="button" aria-hidden="true"
+          <div 
+            class="GGMT-service-area-map-container" aria-modal="true" role="button" aria-hidden="true"
             data-map-container>
-            <img src="/images/pages/nemt/ggmt-service-map.jpg"
+            <img 
+              src="/images/pages/nemt/ggmt-service-map.jpg"
               alt="Map of Colorado Counties serviceable area that includes all of Colorado excluding: Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe counties">
           </div>
         </div>

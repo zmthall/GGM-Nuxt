@@ -1,4 +1,4 @@
 export const fontFamily = {
-  headings: ["Noto Serif", "serif"],
-  main: ["Cabin", "sans-serif"],
+  headings: ['"Noto Serif"', 'serif'],
+  main: ['"Cabin"', 'sans-serif'],
 };

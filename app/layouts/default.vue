@@ -31,7 +31,23 @@ if(staticData) {
         src: 'https://app.aminos.ai/js/chat_plugin.js',
         'data-bot-id': '27311',
       },
-    ]
+    ],
+    link: [
+    {
+      rel: 'preload',
+      href: '/fonts/Cabin-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    },
+    {
+      rel: 'preload',
+      href: '/fonts/NotoSerif-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    }
+  ]
   })
 }
 
@@ -59,9 +75,5 @@ const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 
   body {
     overflow-y: auto;
-  }
-
-  html {
-    @apply font-main;
   }
 </style>

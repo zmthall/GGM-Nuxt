@@ -7,7 +7,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 <span class="text-3xl sm:text-4xl">
                     Welcome to
                 </span>
-                <span class="text-6xl sm:text-7xl font-extrabold font-headings text-brand-secondary">
+                <span class="text-6xl sm:text-7xl font-extrabold text-brand-secondary">
                     Golden Gate Manor
                 </span>
                 <span class="text-2xl sm:text-3xl">
@@ -44,7 +44,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             </BaseLayoutPageSection>
             <!-- Services Card Grid -->
             <BaseLayoutPageSection margin="default" bg="alt" styling="flex flex-col">
-                <h2 class="text-center font-headings font-extrabold flex flex-col mb-8 text-4xl">
+                <h2 class="text-center font-extrabold flex flex-col mb-8 text-4xl">
                     <span class="text-gray-500">
                         Services
                     </span>
@@ -54,7 +54,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                     <NuxtLink to="/assisted-living">
                         <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
-                                <h2 class="text-center font-headings font-extrabold flex flex-col mb-4 text-xl mt-2">
+                                <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Assisted</span>
                                     <span class="text-brand-primary">Living</span>
                                 </h2>
@@ -69,7 +69,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                     <NuxtLink to="/nemt">
                         <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
-                                <h2 class="text-center font-headings font-extrabold flex flex-col mb-4 text-xl mt-2">
+                                <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">NEMT</span>
                                     <span class="text-brand-primary">Transportation</span>
                                 </h2>
@@ -83,7 +83,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                     <NuxtLink to="/non-medical">
                         <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
-                                <h2 class="text-center font-headings font-extrabold flex flex-col mb-4 text-xl mt-2">
+                                <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Non-Medical</span>
                                     <span class="text-brand-primary">Transportation</span>
                                 </h2>
@@ -98,7 +98,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                    <NuxtLink to="/medical-supplies">
                         <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
-                                <h2 class="text-center font-headings font-extrabold flex flex-col mb-4 text-xl mt-2">
+                                <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Durable Medical</span>
                                     <span class="text-brand-primary">Equipment/Supplies</span>
                                 </h2>
@@ -123,8 +123,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             <!-- Why People Choose Us -->
             <BaseLayoutPageSection margin="default">
                 <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
-                    <h2 class="hidden text-lg font-headings text-center font-bold text-brand-primary">Why People Choose Golden Gate Manor</h2>
-                    <h3 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">
+                    <h2 class="hidden text-lg text-center font-bold text-brand-primary">Why People Choose Golden Gate Manor</h2>
+                    <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
                         <span class="text-gray-500">
                             More Than a Ride.
                         </span>
@@ -139,7 +139,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 </div>
 
                 <div class="space-y-2 mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
-                    <h3 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">A Mission Rooted in Care, Built for Independence</h3>
+                    <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">A Mission Rooted in Care, Built for Independence</h3>
                     <p class="text-lg sm:text-2xl">
                         At Golden Gate Manor Inc., we believe true care is rooted in connection. As a family-owned company proudly based in Pueblo, Colorado, we've built more than a network of services — we've built a support system. Whether it's a ride across town, a comfortable place to live, or access to essential medical equipment, our goal is simple: help people live fully, independently, and with dignity.
                     </p>
@@ -152,7 +152,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-headings text-center font-bold text-brand-primary flex flex-col mb-4">What Sets Us Apart</h2>
+                    <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">What Sets Us Apart</h2>
                     <div class="sm:grid sm:grid-cols-2 sm:gap-8 md:mx-12">
                          <!-- Two-column layout -->
                          <div class="space-y-2 mb-4 px-2">
@@ -161,7 +161,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                                   <!-- 4 Pillar Cards -->
                                   <BaseLayoutCard>
                                     <div>
-                                        <h3 class="font-extrabold font-headings text-lg">Community-First Approach</h3>
+                                        <h3 class="font-extrabold text-lg">Community-First Approach</h3>
                                         <p>
                                             We're locally grown and Pueblo-proud. Our mission is to bridge gaps in care and make vital services more accessible for seniors and people with special needs.
                                         </p>
@@ -169,7 +169,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                                   </BaseLayoutCard>
                                   <BaseLayoutCard>
                                     <div>
-                                        <h3 class="font-extrabold font-headings text-lg">Proven Track Record</h3>
+                                        <h3 class="font-extrabold text-lg">Proven Track Record</h3>
                                         <p>
                                             We're Colorado's oldest non-emergency medical transportation provider — built on reliability, compassion, and dedication that spans decades. With a fleet of over 50 vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable, on-time transportation backed by the resources to deliver.
                                         </p>
@@ -177,7 +177,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                                   </BaseLayoutCard>
                                   <BaseLayoutCard>
                                     <div>
-                                        <h3 class="font-extrabold font-headings text-lg">Umbrella of Care</h3>
+                                        <h3 class="font-extrabold text-lg">Umbrella of Care</h3>
                                         <p>
                                             From assisted living to medical equipment to neighborhood gas stations, we offer a seamless network of services for comfort, independence, and convenience.
                                         </p>
@@ -185,7 +185,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                                   </BaseLayoutCard>
                                   <BaseLayoutCard>
                                     <div>
-                                        <h3 class="font-extrabold font-headings text-lg">People Over Profit</h3>
+                                        <h3 class="font-extrabold text-lg">People Over Profit</h3>
                                         <p>
                                             We prioritize care, dignity, and real community impact. Our team is trained to lead with empathy, act with integrity, and treat your family like our own.
                                         </p>

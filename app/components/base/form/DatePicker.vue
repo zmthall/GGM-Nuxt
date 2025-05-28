@@ -37,7 +37,6 @@ const props = defineProps<{
 const inputRef = ref<HTMLInputElement | null>(null)
 
 onMounted(() => {
-  console.log(modelValue.value)
   if (inputRef.value) {
     flatpickr(inputRef.value, {
       defaultDate: props.startDate || modelValue.value,

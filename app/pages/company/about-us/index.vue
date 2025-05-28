@@ -11,7 +11,8 @@
         compassionate, and direct care to members of our community in Pueblo, CO. Our services include assisted living,
         medical and non-medical transportation services, and medical supply sales. Keep reading to learn more about
         Golden
-        Gate Manor, and feel free to contact us with any questions! You can reach us at <a rel="nofollow"
+        Gate Manor, and feel free to contact us with any questions! You can reach us at <a 
+          rel="nofollow"
           href="tel:<%- company.phone_number_nemt %>">Need NEMT Number</a>.
       </p>
       <a href="/contact-us" class="cta-button contact-us-page">Contact Us</a>
@@ -49,7 +50,8 @@
         </ul>
       </div>
       <div class="house-image-container">
-        <img src="/images/pages/about-us/golden-gate-manor-1.jpeg"
+        <img 
+          src="/images/pages/about-us/golden-gate-manor-1.jpeg"
           alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004">
         <img src="/images/pages/about-us/golden-gate-manor-2.jpeg" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004">
         <img src="/images/pages/about-us/golden-horizon.jpeg" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005">
@@ -64,7 +66,8 @@
         Transportation Services
       </h2>
       <div class="section-content-image-container text-first">
-        <img class="section-image image-left" src="/images/pages/about-us/transportation-services.jpeg"
+        <img 
+          class="section-image image-left" src="/images/pages/about-us/transportation-services.jpeg"
           alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office.">
         <div class="section-text-wrapper">
           <p class="section-text">
@@ -102,7 +105,8 @@
             experience, and we are here to support you every step of the way.
           </p>
         </div>
-        <img class="section-image image-right" src="/images/pages/about-us/medical-supply-store.jpeg"
+        <img 
+          class="section-image image-right" src="/images/pages/about-us/medical-supply-store.jpeg"
           alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue.">
       </div>
     </BaseLayoutPageSection>
@@ -113,7 +117,8 @@
         Gas Station
       </h2>
       <div class="section-content-image-container text-first">
-        <img class="section-image image-left" src="/images/pages/about-us/gas-station-about-us1.jpg"
+        <img 
+          class="section-image image-left" src="/images/pages/about-us/gas-station-about-us1.jpg"
           alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office.">
         <div class="section-text-wrapper">
           <p class="section-text">
