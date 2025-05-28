@@ -4,7 +4,7 @@
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
         <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Passenger Information</h2>
         <BaseFormInput v-model="form.name" autocomplete="name" name="Name" label="Name" placeholder="First and Last" />
-        <BaseFormDatePicker id="dob" v-model="form.dob" autocomplete="bday" label="Date of Birth" placeholder="Select your birthdate"/>
+        <BaseFormDatePicker id="dob" v-model="form.dob" autocomplete="bday" label="Date of Birth" placeholder="Select your birthdate" start-date="January 1, 2000"/>
         <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" label="Phone Number" name="phone" placeholder="(555) 555-5555" />
         <BaseFormInput v-model="form.med_id" type="text" autocomplete="off" name="medicaid" label="Medicaid ID" placeholder="Enter your Medicaid ID" />
       </BaseLayoutPageSection>
@@ -18,7 +18,7 @@
             <p>If you have any questions or concerns regarding our ability to accommodate a trip please call us at <a href="tel:719-543-2525" class="text-brand-primary underline">(719) 543-2525</a>.</p>
           </div>
         </PleaseNote>
-        <BaseFormDatePicker id="apt_date" v-model="form.apt_date" autocomplete="off" label="Appointment Date" placeholder="Select a Date" />
+        <BaseFormDatePicker id="apt_date" v-model="form.apt_date" autocomplete="off" label="Appointment Date" placeholder="Select a Date" min-date/>
         <BaseFormTimePicker id="apt_time" v-model="form.apt_time" autocomplete="off" label="Appointment Time" placeholder="Select a Time" />
         <BaseFormInput v-model="form.pickup_address" type="text" autocomplete="street-address" name="pickup-address" label="Pickup Address" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
         <BaseFormInput v-model="form.dropoff_address" type="text" autocomplete="street-address" name="dropoff-address" label="Drop-Off Address" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 const form = ref({
   name: '',
-  dob: '',
+  dob: undefined,
   phone: '',
   med_id: '',
   apt_date: '',

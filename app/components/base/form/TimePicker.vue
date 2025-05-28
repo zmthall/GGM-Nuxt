@@ -16,7 +16,7 @@
       :placeholder="placeholder"
       readonly
       class="border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input"
-    />
+    >
   </div>
 </template>
 

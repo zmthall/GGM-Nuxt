@@ -24,24 +24,28 @@ defineOptions({ name: 'BaseFormDatePicker' })
 const modelValue = defineModel<string>()
 
 // Props
-defineProps<{
+const props = defineProps<{
   label?: string;
   name?: string;
   id?: string;
   placeholder?: string;
   autocomplete?: string;
+  startDate?: string;
+  minDate?: boolean;
 }>()
 
 const inputRef = ref<HTMLInputElement | null>(null)
 
 onMounted(() => {
+  console.log(modelValue.value)
   if (inputRef.value) {
     flatpickr(inputRef.value, {
-      defaultDate: modelValue.value || undefined,
-      dateFormat: 'Y-m-d',
-      onChange: ([selectedDate]) => {
+      defaultDate: props.startDate || modelValue.value,
+      dateFormat: 'F j, Y',
+      minDate: props.minDate ? new Date(Date.now() + 1 * 24 * 60 * 60 * 1000) : undefined,
+      onChange: ([selectedDate], dateStr) => {
         if (selectedDate) {
-          modelValue.value = selectedDate.toISOString().slice(0, 10)
+          modelValue.value = dateStr
         }
       },
     })
