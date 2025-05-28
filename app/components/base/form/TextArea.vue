@@ -1,5 +1,5 @@
 <template>
-<div class="w-full mt-4">
+<div class="w-full">
     <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
     <textarea
         :id="name"

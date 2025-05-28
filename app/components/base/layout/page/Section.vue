@@ -13,7 +13,7 @@
 defineOptions({ name: 'BaseLayoutPageSection' })
 
 const props = withDefaults(defineProps<{
-    bg?: 'default' | 'alt';
+    bg?: 'default' | 'alt' | 'transparent';
     margin?: 'default' | 'top' | undefined;
     class?: string;
     styling?: string;
@@ -26,8 +26,7 @@ const props = withDefaults(defineProps<{
 
 const sectionClasses = computed(() => [
     props.margin === 'default' ? 'w-full py-12 sm:py-16' : props.margin === 'top' ? 'w-full pt-4 pb-12 sm:pt-8 sm:pb-16' : '',
-    props.bg === 'default' && 'bg-[#e8e8e8]', // cool stone
-    props.bg === 'alt' && 'bg-brand-primary/5',    // soft light blue
+    props.bg === 'default' ? 'bg-[#e8e8e8]' : props.bg === 'alt' ? 'bg-brand-primary/5' : props.bg === 'transparent' && 'bg-transparent', // cool stone | soft light blue | transparent
     props.class
 ])
 </script>

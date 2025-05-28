@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  css: ["./assets/css/main.css"],
+  css: ["./assets/css/main.css", "flatpickr/dist/flatpickr.min.css"],
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',

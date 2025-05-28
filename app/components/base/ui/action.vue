@@ -51,8 +51,6 @@
 </template>
 
 <script setup lang='ts'>
-import type { ButtonTypes, ButtonVariantType } from '@/app/models/BaseComponents';
-
 defineOptions({
     name: 'BaseUiAction'
 })
@@ -62,8 +60,8 @@ const emit = defineEmits<{
 }>()
 
 const props = withDefaults(defineProps<{
-    type?: ButtonTypes; // Used for buttons to distinguish type of button for accessibility
-    variant?: ButtonVariantType; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
+    type?: "button" | "submit" | "reset"; // Used for buttons to distinguish type of button for accessibility
+    variant?: 'primary' | 'cta' | 'secondary'; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
     size?: string;
     styling?: string;
     href?: string;
