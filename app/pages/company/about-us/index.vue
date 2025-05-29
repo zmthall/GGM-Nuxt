@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page Banner -->
-    <BaseLayoutPageBanner />
+    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building"/>
     <!-- Top Page -->
     <BaseLayoutPageSection class="" margin="top">
       <!-- <img src="/images/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor Transportation cars lined up in front of dispatch office building."> -->

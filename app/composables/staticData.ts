@@ -340,6 +340,65 @@ export const useStaticData = () => {
         }
       ]
     }
+
+    const company = {
+      name: 'Golden Gate Manor, Inc.',
+      admin: {
+        address: '612 S. Union Ave., Pueblo CO, 81004',
+        phone: '719-696-8032',
+        fax: '719-696-8548',
+        hours: '8:00AM-4:00PM Monday to Friday'
+      },
+      trans: {
+        address: '648 S. Union Ave., Pueblo CO, 81004',
+        phone: {
+          dispatch: '719-543-2525',
+          office: '719-544-3231'
+        },
+        fax: '719-544-4187'
+      },
+      medical: {
+        name: 'Golden Gate Medical Supply',
+        address: '612 S. Union Ave., Pueblo CO, 81004',
+        phone: '719-569-7361',
+        fax: '719-696-8548',
+        hours: '8:00AM-4:00PM Monday to Friday'
+      },
+      assitedLiving: {
+        houses: {
+          ggm1: {
+            address: '606 W. Abriendo Ave., Pueblo CO, 81004',
+            phone: '719-583-9132'
+          }, 
+          ggm2: {
+            address: '1219 Lake Ave., Pueblo CO, 81004',
+            phone: '719-542-0201'
+          },
+          valley: {
+            address: '1033 E. Evans Ave., Pueblo CO, 81004',
+            phone: '719-545-0152'
+          },
+          horizon: {
+            address: '2109 Chautard Dr., Pueblo CO, 81005',
+            phone: '719-564-8110'
+          },
+          view: {
+            address: '525 W. 9th St., Pueblo CO, 81003',
+            phone: '719-543-7320'
+          }
+        }
+      },
+      gasStation: {
+        ggmc1: {
+          address: '1242 S. Prairie Ave., Pueblo CO, 81005',
+          phone: '719-561-0062'
+        },
+        ggmc2: {
+          address: '1103 N. Elizabeth St., Pueblo CO, 81003',
+          phone: '719-253-9840'
+        }
+      }
+    }
   
     return {
       navLinks,
@@ -347,7 +406,8 @@ export const useStaticData = () => {
       footerPolicyLinks,
       socialHandles,
       contactServices,
-      orgSchema
+      orgSchema,
+      company
     };
   } catch (err) {
     console.error('Composable error (StaticData):', err)
