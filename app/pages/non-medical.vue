@@ -50,29 +50,31 @@
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
         <BaseLayoutPageSection margin="default">
-            <BaseLayoutPageContainer class="space-y-4">
-                <h2 class="text-2xl font-bold text-brand-primary">What Information Do I Need?</h2>
-                <p class="text-xl text-brand-main-text">
-                    Before riding with Golden Gate Manor Transportation, eligibility 
-                    must be approved by the Department of Human Services (DHS); be 
-                    prepared before contacting us, by first contacting DHS at 
-                    <a rel="nofollow" href="tel:719-583-6900" class="link">719-583-6900</a> for eligibility approval. 
-                    Once eligibility is approved, contact us by calling 
-                    <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`">
-                      {{ company?.trans.phone.dispatch }}
-                    </a> and be ready to provide your name and pickup address as 
-                    well as the destination you are traveling to. Any other 
-                    pertinent information relating to the trip will be requested 
-                    while on the phone.
-                </p>
-                <p class="text-xl text-brand-main-text">
-                    Thank you for choosing Golden Gate Manor/Pueblo City Cab for all 
-                    your Non-Medical Transportation needs! We look forward to 
-                    serving you! If you have any further questions or concerns, 
-                    please contact us so that we can help.
-                </p>
+            <BaseLayoutPageContainer class="space-y-4 flex">
+                <div>
+                    <h2 class="text-2xl font-bold text-brand-primary">What Information Do I Need?</h2>
+                    <p class="text-xl text-brand-main-text">
+                        Before riding with Golden Gate Manor Transportation, eligibility 
+                        must be approved by the Department of Human Services (DHS); be 
+                        prepared before contacting us, by first contacting DHS at 
+                        <a rel="nofollow" href="tel:719-583-6900" class="link">719-583-6900</a> for eligibility approval. 
+                        Once eligibility is approved, contact us by calling 
+                        <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`">
+                          {{ company?.trans.phone.dispatch }}
+                        </a> and be ready to provide your name and pickup address as 
+                        well as the destination you are traveling to. Any other 
+                        pertinent information relating to the trip will be requested 
+                        while on the phone.
+                    </p>
+                    <p class="text-xl text-brand-main-text">
+                        Thank you for choosing Golden Gate Manor/Pueblo City Cab for all 
+                        your Non-Medical Transportation needs! We look forward to 
+                        serving you! If you have any further questions or concerns, 
+                        please contact us so that we can help.
+                    </p>
+                </div>
+                <img src="/images/pages/non-medical/information.png" alt="Question mark symbol" class="hidden lg:block">
             </BaseLayoutPageContainer>
-            <!-- <img src="/images/information.png" alt="Question mark symbol"> -->
         </BaseLayoutPageSection>
     </div>
 </template>
