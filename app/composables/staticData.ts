@@ -369,6 +369,10 @@ export const useStaticData = () => {
         hours: '8:00AM-4:00PM Monday to Friday'
       },
       assitedLiving: {
+        name: 'Golden Gate Manor Assisted Living',
+        address: '612 S. Union Ave., Puebo CO, 81004',
+        phone: '719-696-8032',
+        fax: '719-696-8548',
         houses: {
           ggm1: {
             address: '606 W. Abriendo Ave., Pueblo CO, 81004',
