@@ -1,5 +1,5 @@
 <template>
-    <div :class="['p-6 items-center rounded-lg overflow-hidden h-full flex flex-col justify-between', { 'group': hoverGroup, 'shadow-primary': shadow}]">
+    <div :class="['items-center rounded-lg overflow-hidden h-full flex flex-col justify-between', { 'group': hoverGroup, 'shadow-primary': shadow, 'p-6': hasPadding}]">
         <div class="flex flex-col items-center">
             <NuxtImg v-if="src" :src :class="[imgSize]"/>
             <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color="hoveringColor" custom-class="transition-colors duration-500 ease-in-out" class="block" />
@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<{
     newPage?: boolean;
     noFollow?: boolean;
     shadow?: boolean;
+    hasPadding?: boolean;
 }>(), {
     accentColor: 'text-gray-500',
     hoverColor: undefined,
@@ -47,6 +48,7 @@ const props = withDefaults(defineProps<{
     variant: undefined,
     newPage: false,
     noFollow: false,
+    hasPadding: true,
     shadow: true
 });
 
