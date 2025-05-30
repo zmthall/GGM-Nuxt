@@ -6,7 +6,7 @@
         <BaseLayoutPageSection class="" margin="top">
             <BaseLayoutPageContainer class="space-y-4">
                 <!-- <img src="/images/suv-train.jpg" alt="Picture of Golden Gate Manor Transportation infront of Train Depot Car in Pueblo"> -->
-                <h2 class="text-2xl font-bold text-brand-primary flex flex-col">Overview of Non-Medical Transportation</h2>
+                <h2 class="text-2xl font-bold text-brand-primary">Overview of Non-Medical Transportation</h2>
                 <p class="text-xl text-brand-main-text">
                     It may not always be possible to depend solely on assistance 
                     from family members, friends, or public transportation in order 
@@ -31,7 +31,7 @@
         </BaseLayoutPageSection>
         <BaseLayoutPageSection margin="default" bg="alt">
             <BaseLayoutPageContainer class="space-y-4">
-                <h2 class="text-2xl font-bold text-brand-primary flex flex-col">How Do I Schedule a Ride?</h2>
+                <h2 class="text-2xl font-bold text-brand-primary">How Do I Schedule a Ride?</h2>
                 <p class="text-xl text-brand-main-text">
                     If you have never used our services, please contact the 
                     Department of Human Services (DHS) at <a rel="nofollow" href="tel:719-583-6900">(719) 583-6900</a> to
@@ -51,7 +51,7 @@
         </BaseLayoutPageSection>
         <BaseLayoutPageSection margin="default">
             <BaseLayoutPageContainer class="space-y-4">
-                <h2 class="text-2xl font-bold text-brand-primary flex flex-col mb-4">What Information Do I Need?</h2>
+                <h2 class="text-2xl font-bold text-brand-primary">What Information Do I Need?</h2>
                 <p class="text-xl text-brand-main-text">
                     Before riding with Golden Gate Manor Transportation, eligibility 
                     must be approved by the Department of Human Services (DHS); be 
