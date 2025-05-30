@@ -3,7 +3,7 @@
     :class="[
         ...sectionClasses,
         styling || '',
-        'px-2 sm:px-4 lg:px-8 w-full'
+        { 'px-2 sm:px-4 lg:px-8 w-full': padding }
     ]">
         <slot />
     </section>
@@ -15,13 +15,15 @@ defineOptions({ name: 'BaseLayoutPageSection' })
 const props = withDefaults(defineProps<{
     bg?: 'default' | 'alt' | 'transparent';
     margin?: 'default' | 'top' | undefined;
+    padding?: boolean;
     class?: string;
     styling?: string;
 }>(), {
     bg: 'default',
     margin: undefined,
     class: '',
-    styling: undefined
+    styling: undefined,
+    padding: true
 })
 
 const sectionClasses = computed(() => [

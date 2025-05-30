@@ -49,8 +49,9 @@
                 </div>
             </div>
         </BaseLayoutPageSection>
+        
       <!-- Assisted Living Carousel -->
-    <AssitedLivingCarousel />
+    <!-- <AssitedLivingCarousel /> -->
 
       <!-- Bottom Page -->
     <BaseLayoutPageSection margin="default">

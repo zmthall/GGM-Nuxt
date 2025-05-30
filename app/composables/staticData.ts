@@ -343,6 +343,9 @@ export const useStaticData = () => {
 
     const company = {
       name: 'Golden Gate Manor, Inc.',
+      phone: '719-544-3231',
+      hours: '8:00AM-4:00PM Monday to Friday',
+      address: '648 S. Union Ave., Pueblo CO, 81004',
       admin: {
         address: '612 S. Union Ave., Pueblo CO, 81004',
         phone: '719-696-8032',
@@ -353,9 +356,10 @@ export const useStaticData = () => {
         address: '648 S. Union Ave., Pueblo CO, 81004',
         phone: {
           dispatch: '719-543-2525',
-          office: '719-544-3231'
+          office: '719-544-3231',
         },
-        fax: '719-544-4187'
+        fax: '719-544-4187',
+        hours: '8:00AM-4:00PM Monday to Friday'
       },
       medical: {
         name: 'Golden Gate Medical Supply',
