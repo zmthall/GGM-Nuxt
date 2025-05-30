@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1200px] mx-auto">
+  <BaseLayoutPageContainer>
     <!-- Business Location Map -->
     <BaseLayoutPageSection margin="pTop">
       <BaseInteractiveLocationMap styling="w-full h-[500px]" />
@@ -32,7 +32,7 @@
         </BaseLayoutPageListItem>
       </div>
     </BaseLayoutPageSection>
-  </div>
+  </BaseLayoutPageContainer>
 </template>
 
 <script setup lang='ts'>

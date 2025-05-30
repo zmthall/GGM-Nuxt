@@ -1,6 +1,6 @@
 <template>
   <form>
-    <div class="mx-4 my-8 p-2 bg-white rounded-lg lg:shadow-primary lg:w-[75%] lg:mx-auto lg:p-8 xl:w-[60%] space-y-8">
+    <div class="sm:mx-4 mt-4 sm:my-8 px-2 py-8 bg-white sm:rounded-lg lg:shadow-primary lg:w-[75%] lg:mx-auto lg:p-8 xl:w-[60%] space-y-8">
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
         <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Passenger Information</h2>
         <BaseFormInput v-model="form.name" autocomplete="name" name="Name" label="Name" placeholder="First and Last" />
@@ -54,11 +54,6 @@ const form = ref({
   notes: '',
   acknowledge: false
 })
-
-watch(form, (newValue) => {
-console.log(newValue)
-}, {deep: true})
-
 </script>
 
 <style>

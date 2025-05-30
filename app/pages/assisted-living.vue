@@ -2,7 +2,7 @@
   <div>
     <BaseLayoutPageSection margin="top">
       <!-- Top Page -->
-      <div class="">
+      <BaseLayoutPageContainer class="">
           <!-- Left Side -->
             <div class="">
                 <h2>
@@ -20,42 +20,42 @@
             <div class="">
               <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" class=""/>
             </div>
-        </div>
-            </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="default" bg="alt">
+        </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+    <BaseLayoutPageSection margin="default" bg="alt">
+        <BaseLayoutPageContainer class="">
             <div class="">
-                <div class="">
-                    <h2 class="">ASSISTED LIVING AMENITIES</h2>
-                    <p class="">One monthly fee provides an appointed semi-private or private room, and a wide range of services and amenities for residents 18 and older, including but not limited to:</p>
-                    <div class=""> 
-                        <ul class="">
-                            <li class="">24-hour staffing</li>
-                            <li class="">Assistance with bathing, dressing, and personal hygiene</li>
-                            <li class="">On-call Nurse</li>
-                            <li class="">Medication management</li>
-                        </ul>
-                        <ul class="">
-                            <li class="">Three nutritious daily meals, including snacks</li>
-                            <li class="">Food available 24 Hours</li>
-                            <li class="">Multiple TV & lounge rooms</li>
-                            <li class="">Free Wi-Fi & cable</li>
-                        </ul>
-                        <ul class="">
-                            <li class="">Appointment scheduling & reminders</li>
-                            <li class="">Transportation to medical appointments, groups, activities, etc.</li>
-                            <li class="">Accompany to appointments (if necessary)</li>
-                        </ul>
-                    </div>
+                <h2 class="">ASSISTED LIVING AMENITIES</h2>
+                <p class="">One monthly fee provides an appointed semi-private or private room, and a wide range of services and amenities for residents 18 and older, including but not limited to:</p>
+                <div class=""> 
+                    <ul class="">
+                        <li class="">24-hour staffing</li>
+                        <li class="">Assistance with bathing, dressing, and personal hygiene</li>
+                        <li class="">On-call Nurse</li>
+                        <li class="">Medication management</li>
+                    </ul>
+                    <ul class="">
+                        <li class="">Three nutritious daily meals, including snacks</li>
+                        <li class="">Food available 24 Hours</li>
+                        <li class="">Multiple TV & lounge rooms</li>
+                        <li class="">Free Wi-Fi & cable</li>
+                    </ul>
+                    <ul class="">
+                        <li class="">Appointment scheduling & reminders</li>
+                        <li class="">Transportation to medical appointments, groups, activities, etc.</li>
+                        <li class="">Accompany to appointments (if necessary)</li>
+                    </ul>
                 </div>
             </div>
-        </BaseLayoutPageSection>
+        </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
         
       <!-- Assisted Living Carousel -->
     <!-- <AssitedLivingCarousel /> -->
 
       <!-- Bottom Page -->
     <BaseLayoutPageSection margin="default">
-        <div class="">
+        <BaseLayoutPageContainer class="">
           <div class="">
               <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" alt="Stock photo of a nurse and a resident" />
           </div>
@@ -70,10 +70,10 @@
               </p>
               <a href="" class="">GET FREE CONSULTATION</a>
           </div>
-      </div>
-      </BaseLayoutPageSection>
-      <BaseLayoutPageSection margin="default" bg="alt">
-        <div class="">
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+    <BaseLayoutPageSection margin="default" bg="alt">
+        <BaseLayoutPageContainer class="">
             <h2 class="">See For Yourself</h2>
             <div class="">
                 <div class="">
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <BaseUiAction href="/company/contact-us" class="">Contact Us</BaseUiAction>
-        </div>
+        </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
 </template>
