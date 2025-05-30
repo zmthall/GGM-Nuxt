@@ -75,7 +75,7 @@
             src="/images/pages/about-us/transportation-services.jpeg"
             format="webp"
             sizes="600px sm:650px md:600px"
-            class="rounded-lg shadow-primary" 
+            class="rounded-lg shadow-primary w-full" 
             alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." />
           <div class="space-y-4">
             <p class="text-xl text-brand-main-text">
@@ -119,7 +119,7 @@
             src="/images/pages/about-us/medical-supply-store.jpeg"
             format="webp"
             sizes="400px sm:650px md:600px"
-            class="rounded-lg shadow-primary" 
+            class="rounded-lg shadow-primary h-max" 
             alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue." />
         </div>
       </BaseLayoutPageContainer>
