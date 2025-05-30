@@ -3,7 +3,7 @@
         <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary">
             <ul class="grid grid-cols-8 h-[35px]">
                 <li 
-                    v-for="navLink in staticData.navLinks" :key="navLink.name" class="relative"
+                    v-for="navLink in staticData.navLinks" :key="navLink.id" class="relative"
                     @mouseenter="toggleSublinks(navLink.name)" @mouseleave="toggleSublinks(null)"
                     @focusin="toggleSublinks(navLink.name)" @focusout="toggleSublinks(null)">
                     <NuxtLink 
@@ -60,15 +60,32 @@
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
                         </button>
                     </div>
-                    <nav v-if="staticData" class="overflow-y-auto w-full">
-                        <ul class="flex flex-col w-max mx-auto gap-3">
-                            <li v-for="navLink in staticData.navLinks" :key="navLink.name">
+                    <nav v-if="staticData" class="overflow-y-auto w-full flex flex-col items-center">
+                        <ul class="flex flex-col items-center gap-3 w-full">
+                            <li v-for="navLink in staticData.navLinks" :key="navLink.id" class="w-3/4">
                                 <NuxtLink 
-                                    :to="navLink.slug" class="text-brand-primary font-semibold text-center flex justify-center items-center"
+                                    v-if="!navLink.sublinks"
+                                    :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
                                     @click="toggleDrawer">
                                     {{ navLink.name }} 
-                                    <BaseIcon  v-if="navLink.sublinks" name="material-symbols:arrow-drop-down-rounded"/>
                                 </NuxtLink>
+                                <button 
+                                    v-if="navLink.sublinks" class="text-brand-primary group hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
+                                    @click="toggleMobileSublinks(navLink.name, $event)"
+                                    >
+                                    {{ navLink.name }}
+                                    <BaseIcon name="material-symbols:arrow-drop-down-rounded" class="pointer-events-none group-hover:text-brand-link-hover"/>
+                                </button>
+                                <ul v-if="navLink.sublinks" :class="['flex flex-col gap-2 w-full sublink-mobile-nav relative bg-gray-50']">
+                                    <template v-for="(sublink, idx) in navLink.sublinks" :key="sublink.id">
+                                        <li v-if="idx === 0" class="before:top-0 before:absolute before:w-full before:h-[2px] before:bg-gray-200">
+                                            <NuxtLink :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2">{{ navLink.name }}</NuxtLink>
+                                        </li>
+                                        <li>
+                                            <NuxtLink :to="sublink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2">{{ sublink.name }}</NuxtLink>
+                                        </li>
+                                    </template>
+                                </ul>
                             </li>
                         </ul>
                     </nav>
@@ -101,6 +118,12 @@ const toggleSublinks = (name: string | null) => {
 const isSublinkActive = (name: string | null) => {
     if (name === null) return false
     return name === activeSublink.value
+}
+
+const toggleMobileSublinks = (name: string, event: MouseEvent) => {
+    activeSublink.value = name;
+    const button = event.target as HTMLElement;
+    button.nextElementSibling?.classList.toggle('active')
 }
 
 </script>
@@ -142,5 +165,15 @@ const isSublinkActive = (name: string | null) => {
     max-height: 1000px;
     -webkit-transform: perspective(400) rotate3d(0, 0, 0, 0);
     transform: rotate3d(0, 0, 0, 0);
+}
+
+.sublink-mobile-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.sublink-mobile-nav.active {
+    max-height: 1000px;
 }
 </style>
