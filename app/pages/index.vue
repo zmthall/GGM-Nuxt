@@ -128,7 +128,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                         <span class="text-gray-500">
                             More Than a Ride.
                         </span>
-                        <span class="text-brand-primary ">
+                        <span class="text-brand-primary">
                             More Than a Business.
                         </span>
                     </h3>
