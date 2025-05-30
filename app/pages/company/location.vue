@@ -1,45 +1,43 @@
 <template>
-  <div>
+  <div class="max-w-[1200px] mx-auto">
     <!-- Business Location Map -->
-    <BaseInteractiveLocationMap />
+    <BaseLayoutPageSection margin="pTop">
+      <BaseInteractiveLocationMap styling="w-full h-[500px]" />
+    </BaseLayoutPageSection>
 
     <!-- Business Information -->
-    <section class="business-information-section">
-      <div class="business-information-wrapper">
-        <div class="contact-info-container content-information-container">
-          <h2 class="content-title bolded-text">Contact Information</h2>
-          <p class="content-text"><span class="bolded-text">Need Company Name</span></p>
-          <p class="content-text"><span class="bolded-text">Address: </span>Need Transportation Address</p>
-          <p class="content-text">Need Transportation Company Address</p>
-          <p class="content-text"><span class="bolded-text">Phone: </span><a rel="nofollow"
-              href="tel:<%- company.phone_number_nemt %>" class="primary-link">Need NEMT Number</a></p>
-        </div>
-        <div class="reservation-hours-container content-information-container">
-          <h2 class="content-title bolded-text">Reservation Hours</h2>
-          <p class="content-text reservation-days-hours">
-            <span class="bolded-text">Need Business Days</span>
-            <span>Need Business Hours></span>
-          </p>
-        </div>
-        <div class="get-connected-container content-information-container">
-          <h2 class="content-title bolded-text">Get Connected</h2>
-          <a rel="nofollow" href="<%- company.social.facebook.href %>" class="facebook-page-link">
-            <div class="social-logo-wrapper">
-              <ul>
-                <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
-                  <NuxtLink :to="socialHandle.url"><BaseIcon :name="socialHandle.icon" /></NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </a>
-        </div>
+    <BaseLayoutPageSection margin="default">
+      <div>
+        <BaseLayoutPageListItem has-left-border class="my-4 font-bold">
+          <h2 class="text-2xl text-brand-primary mb-4">Contact Information</h2>
+          <p><span>{{ company?.name }}</span></p>
+          <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="nofollow noopener" target="_blank" class="link">{{ company?.address }}</a></p>
+          <p><span>Phone: </span><a 
+              rel="nofollow noopener"
+              :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a></p>
+        </BaseLayoutPageListItem>
+        <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
+          <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>
+          <p class="border-b border-b-black w-max">{{ company?.hours }}</p>
+        </BaseLayoutPageListItem>
+        <BaseLayoutPageListItem class="mt-12 font-bold" has-left-border>
+          <h2 class="text-2xl font-bold text-brand-primary mb-4">Get Connected</h2>
+          <div>
+            <ul v-if="staticData" class="flex gap-4">
+              <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
+                <NuxtLink :to="socialHandle.url"><BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" /></NuxtLink>
+              </li>
+            </ul>
+          </div>
+        </BaseLayoutPageListItem>
       </div>
-    </section>
+    </BaseLayoutPageSection>
   </div>
 </template>
 
 <script setup lang='ts'>
 const staticData = useStaticData()
+const company = staticData?.company
 
 definePageMeta({
   title: 'Golden Gate Manor Service Locations',
