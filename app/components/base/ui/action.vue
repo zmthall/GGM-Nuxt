@@ -8,8 +8,8 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'inline-block button-style', size, styling]" :to="to ?? '#'">
-            <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none']">
+            'inline-block button-style', size]" :to="to ?? '#'">
+            <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
             </div>
         </NuxtLink>
@@ -23,9 +23,9 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'inline-block button-style', size, styling]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
+            'inline-block button-style', size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
         >
-            <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none']">
+            <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
             </div>
         </a>
@@ -39,11 +39,11 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'button-style', size, styling
+            'button-style', size,
             ]" :type="type ?? 'button'" @click="emit('click')"
         >
             <div 
-            :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none']">
+            :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
             </div>
         </button>

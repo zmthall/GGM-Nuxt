@@ -9,7 +9,7 @@
         </p>
         <div class="mt-6">
             <slot />
-            <BaseUiAction variant="secondary" :to styling="py-4 px-8 mt-4">
+            <BaseUiAction v-if="hasButton" variant="secondary" :to styling="py-4 px-8 mt-4">
               {{ buttonLabel }}
             </BaseUiAction>
         </div>
@@ -18,10 +18,14 @@
   </template>
   
   <script setup lang="ts">
-  defineProps<{
+  withDefaults(defineProps<{
     title: string
     description?: string
     buttonLabel: string
     to: string;
-  }>()
+    hasButton?: boolean
+  }>(), {
+    description: undefined,
+    hasButton: true
+  })
   </script>  
