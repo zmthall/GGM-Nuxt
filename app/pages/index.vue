@@ -17,7 +17,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             <p class="text-xl text-center">
                 Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
             </p>
-            <BaseUiAction styling="mt-4 py-4 px-8 uppercase text-2xl" to="/company/contact-us">Contact Us</BaseUiAction>
+            <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
         </BaseLayoutPageHeroSection>
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
