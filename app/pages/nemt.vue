@@ -49,7 +49,7 @@
           <iframe 
             width="100%" height="350" src="https://www.youtube.com/embed/fJ8_uvrsYXo?si=qhdETT5Lqh8IiQSm"
             title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
         </div>
       </BaseLayoutPageContainer>
