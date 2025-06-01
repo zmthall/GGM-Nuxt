@@ -31,8 +31,13 @@ export default defineNuxtConfig({
           auth: true, // Just as example. Can be any other service.
         },
       },
+      googleMapsKey: process.env.GMAPS_KEY,
       siteUrl: process.env.SITE_URL || 'http://localhost'
     }
+  },
+  typescript: {
+    // ensures TS sees the Google Maps ambient types
+    tsConfig: { compilerOptions: { types: ['google.maps'] } }
   },
   app: {
     buildAssetsDir: "assets",

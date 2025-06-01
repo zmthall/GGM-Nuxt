@@ -81,7 +81,7 @@
                             Our homes provide residents with their own bed, dresser, closet space, shared bathrooms, private bathrooms and common areas. 
                             This is the best type of housing for the elderly and, people experiencing a mental illness which may affect their ability to perform their daily tasks.
                         </p>
-                        <BaseUiAction to="/resources/contact-us" class="self-center mt-8 py-4 px-8">GET FREE CONSULTATION</BaseUiAction>
+                        <BaseUiAction to="/company/contact-us" class="self-center mt-8 py-4 px-8">GET FREE CONSULTATION</BaseUiAction>
                     </div>
                 </div>
             </BaseLayoutCard>
