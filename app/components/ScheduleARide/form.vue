@@ -26,7 +26,7 @@
       </BaseLayoutPageSection>
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
         <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Agree to Terms</h2>
-        <BaseFormCheckbox v-model="form.acknowledge" name="attestation">I certify the information provided is accurate to the best of my knowledge.</BaseFormCheckbox>
+        <BaseFormCheckbox v-model="form.acknowledge" name="attestation"><p>I certify the information provided is accurate to the best of my knowledge and that I have read Golden Gate Manor's <NuxtLink to="/company/policies/ride-cancellation" rel="noopener" target="_blank" class="link" @click.stop>Ride Cancellation Policy</NuxtLink>.</p></BaseFormCheckbox>
         <BaseUiAction type="submit" class="py-4 px-8 block !mt-8">Submit Request</BaseUiAction>
       </BaseLayoutPageSection>
     </div>
