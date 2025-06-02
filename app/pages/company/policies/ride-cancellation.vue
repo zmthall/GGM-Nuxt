@@ -88,7 +88,7 @@
           <h2 class="text-2xl font-bold text-brand-primary mb-2">How to Cancel</h2>
           <ol class="list-decimal ml-8 text-xl text-brand-main-text">
             <li>
-              <p>Call Our Customer Service Representatives:</p>
+              <p>Call Our Customer Service Representatives/Dispatch:</p>
               <ul class="list-disc ml-8">
                 <li><p>Administrative phones are staffed 8:00AM to 4:00PM. Call <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.</p></li>
                 <li><p>If after hours call our dispatch line, which is 24/7,  at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>.</p></li>
