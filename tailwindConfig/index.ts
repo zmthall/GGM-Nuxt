@@ -9,6 +9,7 @@ import { transitionDuration } from "./transitionDuration";
 import { zIndex } from "./zIndex";
 import { dropShadow } from "./dropShadow"
 import { height } from "./height";
+import { listStyleType } from "./listStyleType";
 
 export default {
   colors,
@@ -22,4 +23,5 @@ export default {
   keyframes,
   animation,
   dropShadow,
+  listStyleType,
 };
