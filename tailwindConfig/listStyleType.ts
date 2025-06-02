@@ -1,4 +1,5 @@
 export const listStyleType = {
   square: 'square',
-  circle: 'circle'
+  circle: 'circle',
+  roman: 'upper-roman',
 };
