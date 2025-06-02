@@ -1,7 +1,7 @@
 <template>
   <form>
     <div>
-      <BaseLayoutPageSection :padding="false" class="space-y-1">
+      <BaseLayoutPageSection :padding="false" class="space-y-1" bg="transparent">
         <BaseFormSelect 
           v-model="form.reason"
           :values="['general', 'complaint', 'question', 'transportation', 'assisted_living', 'medical_supply', 'accessibility']" 
