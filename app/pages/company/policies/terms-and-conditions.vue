@@ -3,7 +3,7 @@
     <BaseLayoutPageContainer class="space-y-4">
       <div>
         <h2 class="text-2xl font-bold text-brand-primary">Website Terms & Conditions</h2>
-        <div class="ml-4 mt-2">
+        <div class="mt-2">
           <p><span class="font-bold">Document Owner:</span> Golden Gate Manor Inc.</p>
           <p><span class="font-bold">Version:</span> v1.0</p>
           <p><span class="font-bold">Last Updated:</span> June 1, 2025</p>

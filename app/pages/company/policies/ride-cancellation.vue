@@ -3,7 +3,7 @@
       <BaseLayoutPageContainer class="space-y-4">
         <div>
           <h2 class="text-2xl font-bold text-brand-primary">Ride Cancellation & No-Show Policy</h2>
-          <div class="ml-4 mt-2">
+          <div class="mt-2">
             <p><span class="font-bold">Applies To:</span> Non-Emergency Medical Transportation (NEMT), Non-Medical DSS/DHS-approved rides, and Pueblo City Cab on-demand services operated by Golden Gate Manor Inc.</p>
             <p><span class="font-bold">Version:</span> v1.0</p>
             <p><span class="font-bold">Last Updated:</span> June 1, 2025</p>
