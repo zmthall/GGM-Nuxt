@@ -2,6 +2,7 @@
   <BaseLayoutPageSection margin="top" bg="transparent">
     <BaseLayoutPageContainer class="space-y-4">
       <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-brand-primary">Our Commitment</h2>
         <p class="text-xl text-brand-main-text">
             As a business serving the public good, we are committed to 
             providing digital accessibility for people with disabilities. 
