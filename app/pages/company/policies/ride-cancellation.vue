@@ -205,7 +205,7 @@
         <div>
           <h2 class="text-2xl font-bold text-brand-primary">Contact</h2>
           <p class="text-xl text-brand-main-text">
-            Questions about this policy or appeals of recorded strikes may be directed this email <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below.
+            Questions about this policy or appeals of recorded strikes may be directed to <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below.
           </p>
           <ContactUsForm class="bg-white mt-8 p-4 md:p-8 rounded-lg md:w-3/4 mx-auto" />
         </div>
