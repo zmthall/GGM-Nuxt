@@ -16,7 +16,7 @@
                         <p>This form is specifically for general inquiries and 
                         customer service-related matters. If you need to schedule a ride 
                         with our transportation service, please use our dedicated 
-                        <a href="/contact-us/schedule-a-ride" class="link">Schedule A Ride</a> form.</p>
+                        <NuxtLink to="/resources/schedule-a-ride" class="link">Schedule A Ride</NuxtLink> form.</p>
                         <p>We prioritize ride requests submitted 
                         through that form and cannot guarantee accommodation for rides 
                         requested through this contact form. We appreciate your 

@@ -1,74 +1,74 @@
 <template>
-  <div>
     <!-- Top Page -->
-    <section class="community-outreach-top-page page-content section-content">
-      <!-- <%- include('../../components/community-outreach-carousel', { 
-        outreachImages: outreachImages, 
-        helper: helper 
-    }) %> -->
-      <p class="section-text">
-        Here at Golden Gate Manor, we're on a mission to enhance
-        lives daily. Our commitment to establishing an environment
-        that is welcoming and comfortable reflects our core objectives. We
-        strive to connect with our community, reaching as many individuals as
-        possible to foster independence. This mindset shapes our goals and
-        propels us to discover innovative ways to participate within the
-        community. As a family-owned business, we deeply value community impact.
-      </p>
-      <p class="section-text">
-        We are proud supporters of local initiatives like CASA and district
-        schools. Each year, we're driven to expand our community reach,
-        consistently working towards our mission of improving lives. If Golden
-        Gate Manor is participating in events explore the upcoming events
-        below/reach out for more details. If we aren't currently participating
-        in community events during a time when you have an event ongoing, please
-        reach out to us to discuss our involvement; we will get back to you with
-        our availability as soon as we can.
-      </p>
-      <a href="/contact-us" class="cta-button community">Contact Us</a>
-    </section>
-    <!-- Company Events/Community Events -->
-    <!-- <section class="community-outreach-top-page page-content section-content">
-      <% if(events.upcoming.length !==0) { %>
-        <h2 class="section-title">Upcoming Events for Golden Gate Manor, Inc:</h2>
-        <% } %>
-          <% for(const idx in events.upcoming) { %>
-            <div class="event-container">
-              <div class="event-left-info">
-                <% if(events.upcoming[idx].date.day_end !="" ) { %>
-                  <span class="event-from-date event-date"><%- events.upcoming[idx].date.month %> <%-
-                        events.upcoming[idx].date.day %></span>
-                  <span class="event-to-wrapper">to</span>
-                  <span class="event-to-date event-date"><%- events.upcoming[idx].date.month_end %> <%-
-                        events.upcoming[idx].date.day_end %></span>
-                  <% } else { %>
-                    <span class="event-date-month"><%- events.upcoming[idx].date.month %></span>
-                    <span class="event-date-day"><%- events.upcoming[idx].date.day %></span>
-                    <% } %>
-              </div>
-              <div class="event-right-info">
-                <div class="event-information-wrapper">
-                  <div class="event-top-information">
-                    <h3 class="event-title"><%- events.upcoming[idx].name %></h3>
-                    <p class="event-location-name"><%- events.upcoming[idx].location.name %></p>
-                    <p class="event-location-address"><%- events.upcoming[idx].location.address %></p>
+    <BaseLayoutPageSection margin="top">
+      <BaseLayoutPageContainer class="space-y-4 flex flex-col">
+        <!-- <%- include('../../components/community-outreach-carousel', { 
+          outreachImages: outreachImages, 
+          helper: helper 
+      }) %> -->
+        <p class="text-xl text-brand-main-text">
+          Here at Golden Gate Manor, we're on a mission to enhance
+          lives daily. Our commitment to establishing an environment
+          that is welcoming and comfortable reflects our core objectives. We
+          strive to connect with our community, reaching as many individuals as
+          possible to foster independence. This mindset shapes our goals and
+          propels us to discover innovative ways to participate within the
+          community. As a family-owned business, we deeply value community impact.
+        </p>
+        <p class="text-xl text-brand-main-text">
+          We are proud supporters of local initiatives like CASA and district
+          schools. Each year, we're driven to expand our community reach,
+          consistently working towards our mission of improving lives. If Golden
+          Gate Manor is participating in events explore the upcoming events
+          below/reach out for more details. If we aren't currently participating
+          in community events during a time when you have an event ongoing, please
+          reach out to us to discuss our involvement; we will get back to you with
+          our availability as soon as we can.
+        </p>
+        <BaseUiAction to="/company/contact-us" class="py-6 px-16 mx-auto self-center">Contact Us</BaseUiAction>
+      <!-- Company Events/Community Events -->
+      <!-- <section class="community-outreach-top-page page-content section-content">
+        <% if(events.upcoming.length !==0) { %>
+          <h2 class="section-title">Upcoming Events for Golden Gate Manor, Inc:</h2>
+          <% } %>
+            <% for(const idx in events.upcoming) { %>
+              <div class="event-container">
+                <div class="event-left-info">
+                  <% if(events.upcoming[idx].date.day_end !="" ) { %>
+                    <span class="event-from-date event-date"><%- events.upcoming[idx].date.month %> <%-
+                          events.upcoming[idx].date.day %></span>
+                    <span class="event-to-wrapper">to</span>
+                    <span class="event-to-date event-date"><%- events.upcoming[idx].date.month_end %> <%-
+                          events.upcoming[idx].date.day_end %></span>
+                    <% } else { %>
+                      <span class="event-date-month"><%- events.upcoming[idx].date.month %></span>
+                      <span class="event-date-day"><%- events.upcoming[idx].date.day %></span>
+                      <% } %>
+                </div>
+                <div class="event-right-info">
+                  <div class="event-information-wrapper">
+                    <div class="event-top-information">
+                      <h3 class="event-title"><%- events.upcoming[idx].name %></h3>
+                      <p class="event-location-name"><%- events.upcoming[idx].location.name %></p>
+                      <p class="event-location-address"><%- events.upcoming[idx].location.address %></p>
+                    </div>
+                    <div class="event-description-container event-bottom-information">
+                      <p class="event-description section-text" data-event-expand-container="<%- idx %>"><%-
+                          events.upcoming[idx].description %></p>
+                      <button type="button" class="event-button expand-button"
+                        data-event-expand-btn="<%- idx %>">more</button>
+                    </div>
                   </div>
-                  <div class="event-description-container event-bottom-information">
-                    <p class="event-description section-text" data-event-expand-container="<%- idx %>"><%-
-                        events.upcoming[idx].description %></p>
-                    <button type="button" class="event-button expand-button"
-                      data-event-expand-btn="<%- idx %>">more</button>
+                  <div class="event-more-info-button-wrapper">
+                    <a href="<%- events.upcoming[idx].url %>" target="_blank" rel="noopener noreferrer nofollow"
+                      class="event-more-info-btn cta-button"><span class="read-more-plus">+ </span>More Info</a>
                   </div>
                 </div>
-                <div class="event-more-info-button-wrapper">
-                  <a href="<%- events.upcoming[idx].url %>" target="_blank" rel="noopener noreferrer nofollow"
-                    class="event-more-info-btn cta-button"><span class="read-more-plus">+ </span>More Info</a>
-                </div>
               </div>
-            </div>
-            <% } %>
-    </section> -->
-  </div>
+              <% } %>
+      </section> -->
+    </BaseLayoutPageContainer>
+  </BaseLayoutPageSection>
 </template>
 
 <script setup lang='ts'>
