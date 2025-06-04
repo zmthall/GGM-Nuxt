@@ -307,13 +307,7 @@
             </ul>
           </div>
           <div class="lg:w-1/2">
-            <div 
-              class="" aria-modal="true" role="button" aria-hidden="true"
-              data-map-container>
-              <img 
-                src="/images/pages/nemt/ggmt-service-map.jpg"
-                alt="Map of Colorado Counties serviceable area that includes all of Colorado excluding: Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe counties">
-            </div>
+            <BaseInteractiveServiceAreaMap />
           </div>
         </div>
       </BaseLayoutPageContainer>

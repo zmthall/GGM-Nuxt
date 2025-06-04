@@ -3,12 +3,8 @@
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
         <BaseInteractiveImageCarousel 
-          :tile-count="1" 
           transition-type="fade"
-          :images
-          >
-          test
-        </BaseInteractiveImageCarousel>
+          :images />
         <p class="text-xl text-brand-main-text">
           Here at Golden Gate Manor, we're on a mission to enhance
           lives daily. Our commitment to establishing an environment
@@ -72,7 +68,6 @@
             </div>
             <% } %>
     </section> -->
-  </div>
 </template>
 
 <script setup lang='ts'>

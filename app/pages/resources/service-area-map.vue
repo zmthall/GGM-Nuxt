@@ -1,6 +1,6 @@
 <template>
     <div>
-        temp
+        <BaseInteractiveServiceAreaMap />
     </div>
 </template>
 
