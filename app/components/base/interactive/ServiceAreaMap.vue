@@ -31,13 +31,13 @@ const props = defineProps<{
 
 const marginStyling = computed(() => {
   const map: Record<number, string> = {
-    2: 'm-2',
-    4: 'm-4',
-    6: 'm-6',
-    8: 'm-8',
-    10: 'm-10',
-    12: 'm-12',
-    14: 'm-14',
+    2: 'mx-2 my-2 md:m-2',
+    4: 'mx-4 my-4 md:m-4',
+    6: 'mx-4 my-6 md:m-6',
+    8: 'mx-4 my-8 md:m-8',
+    10: 'mx-4 my-10 md:m-10',
+    12: 'mx-4 my-12 md:m-12',
+    14: 'mx-4 my-14 md:m-14',
   }
   return props.margin !== undefined ? map[props.margin] ?? '' : ''
 })
