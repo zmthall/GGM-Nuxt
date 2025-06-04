@@ -3,8 +3,7 @@
       <BaseLayoutPageContainer class="space-y-4">
         <div>
           <h2 class="text-2xl font-bold text-brand-primary">Ride Cancellation & No-Show Policy</h2>
-          <div class="ml-4 mt-2">
-            <p><span class="font-bold">Applies To:</span> Non-Emergency Medical Transportation (NEMT), Non-Medical DSS/DHS-approved rides, and Pueblo City Cab on-demand services operated by Golden Gate Manor Inc.</p>
+          <div class="mt-2">
             <p><span class="font-bold">Version:</span> v1.0</p>
             <p><span class="font-bold">Last Updated:</span> June 1, 2025</p>
           </div>
@@ -19,7 +18,7 @@
           <ul class="list-disc ml-8 text-xl text-brand-main-text">
             <li>NEMT rides (Medicaid-funded)</li>
             <li>Non-medical transportation authorized by DSS/DHS</li>
-            <li>Pueblo City Cab on-demand and pre-scheduled service</li>
+            <li>Pueblo City Cab non-emergency medical transportation (NEMT) on-demand and pre-scheduled service</li>
           </ul>
         </div>
         <div>
@@ -50,7 +49,7 @@
               </tr>
               <tr>
                 <td class="border border-black p-4">Strike</td>
-                <td class="border border-black p-4">A recorded no‑show or &lt;2hrs cancellation counted toward enforcement limits.</td>
+                <td class="border border-black p-4">A recorded no-show or &lt;2hrs cancellation counted toward enforcement limits.</td>
               </tr>
             </tbody>
           </table>
@@ -69,7 +68,7 @@
               <tr>
                 <td class="border border-black p-2 sm:p-4">Local trips (≤40mi round-trip)</td>
                 <td class="border border-black p-2 sm:p-4">≥24hrs</td>
-                <td class="border border-black p-2 sm:p-4">≥2hrs</td>
+                <td class="border border-black p-2 sm:p-4">≥2hrs or during initial check-in phone call</td>
               </tr>
               <tr>
                 <td class="border border-black p-2 sm:p-4">Long-distance (>40mi round-trip)</td>
@@ -140,31 +139,31 @@
           </table>
           <ul class="list-disc ml-8 text-xl text-brand-main-text">
             <li>
-              <p>3 strikes within a rolling 30-day period → Service suspension (“fired as a client”).</p>
+              <p>Accumulation of three strikes results in service suspension and discontinuation of all client services. This policy protects our ability to serve community members who need these essential services and follow established guidelines.</p>
             </li>
             <li>
-              <p>Strikes remain on record for 1 calendar year and then expire.</p>
+              <p>We diligently track and record all strikes on client accounts due to the importance of maintaining service standards, and these records are maintained permanently without expiration.</p>
             </li>
             <li>
-              <p>Reinstatement is at the sole discretion of Golden Gate Manor Inc.; the company is under no obligation to reconsider suspended riders.</p>
+              <p>Reinstatement decisions are made at the sole discretion of Golden Gate Manor Inc. The company reserves the right to deny reinstatement requests without obligation to reconsider.</p>
             </li>
           </ul>
         </div>
         <div>
           <h2 class="text-2xl font-bold text-brand-primary mb-2">Exceptions</h2>
-          <p class="text-xl text-brand-main-text">Golden Gate Manor Inc. may waive strikes for:</p>
+          <p class="text-xl text-brand-main-text">Golden Gate Manor Inc. may waive strikes under the following circumstances:</p>
           <ul class="list-disc ml-8 text-xl text-brand-main-text">
             <li>
               <p>Documented medical emergencies or hospital admission</p>
             </li>
             <li>
-              <p>Severe weather or declared road closures</p>
+              <p>Severe weather conditions or official road closures</p>
             </li>
             <li>
-              <p>Dispatch/driver error</p>
+              <p>Dispatch or driver error</p>
             </li>
           </ul>
-          <p class="text-xl text-brand-main-text">Waivers are granted case-by-case; habitual abuse may override individual excuses.</p>
+          <p class="text-xl text-brand-main-text">All waiver requests are evaluated on a case-by-case basis. Clients with a pattern of recurring issues may be denied waivers regardless of individual circumstances.</p>
         </div>
         <div>
           <h2 class="text-2xl font-bold text-brand-primary mb-2">Rescheduling After Cancellation</h2>
@@ -205,7 +204,7 @@
         <div>
           <h2 class="text-2xl font-bold text-brand-primary">Contact</h2>
           <p class="text-xl text-brand-main-text">
-            Questions about this policy or appeals of recorded strikes may be directed to <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below.
+            Questions about this policy or appeals of recorded strikes may be directed to <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below. Golden Gate Manor Inc. requires all correspondence to be respectful and appropriate. We reserve the right to ignore communications that are harassing or unprofessional in nature.
           </p>
           <ContactUsForm class="bg-white mt-8 p-4 md:p-8 rounded-lg md:w-3/4 mx-auto" />
         </div>
