@@ -1,5 +1,5 @@
 <template>
-  <BaseLayoutPageSection margin="top">
+  <BaseLayoutPageSection :padding="false" :styling="marginStyling">
     <BaseLayoutPageContainer>
          <ClientOnly>
            <div
@@ -20,8 +20,29 @@
   </BaseLayoutPageSection>
 </template>
 
-<script setup>
-const flourishContainer = ref(null)
+<script setup lang="ts">
+defineOptions({
+    name: 'BaseInteractiveServiceAreaMap'
+})
+
+const props = defineProps<{
+  margin?: number;
+}>()
+
+const marginStyling = computed(() => {
+  const map: Record<number, string> = {
+    2: 'm-2',
+    4: 'm-4',
+    6: 'm-6',
+    8: 'm-8',
+    10: 'm-10',
+    12: 'm-12',
+    14: 'm-14',
+  }
+  return props.margin !== undefined ? map[props.margin] ?? '' : ''
+})
+
+const flourishContainer = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (import.meta.client) {
