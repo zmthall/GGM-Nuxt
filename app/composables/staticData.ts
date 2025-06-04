@@ -407,6 +407,54 @@ export const useStaticData = () => {
         }
       }
     }
+
+    const houses = [
+        {
+          id: "ghorizon",
+          images: [],
+          name: "Golden Horizon",
+          address: "2109 Chautard Drive Pueblo, CO 81005",
+          additional: "",
+          mapsURL:
+            "https://www.google.com/maps/place/2109+Chautard+Dr,+Pueblo,+CO+81005/",
+        },
+        {
+          id: "ggmi",
+          images: [],
+          name: "Golden Gate Manor I",
+          address: "606 West Abriendo Ave. Pueblo, CO 81004",
+          additional: "",
+          mapsURL:
+            "https://www.google.com/maps/place/606+W+Abriendo+Ave,+Pueblo,+CO+81004/",
+        },
+        {
+          id: "gview",
+          images: [],
+          name: "Golden View",
+          address: "525 West 9th Street Pueblo, CO 81003",
+          additional: "*Handicap accessible facility",
+          mapsURL:
+            "https://www.google.com/maps/place/525+W+9th+St,+Pueblo,+CO+81003/",
+        },
+        {
+          id: "gvalley",
+          images: [],
+          name: "Golden Valley",
+          address: "1033 East Evans Pueblo, CO 81004",
+          additional: "*Offering private bedrooms & bathrooms",
+          mapsURL:
+            "https://www.google.com/maps/place/1033+E+Evans+Ave,+Pueblo,+CO+81004/",
+        },
+        {
+          id: "ggmii",
+          images: [],
+          name: "Golden Gate Manor II",
+          address: "1219 Lake Ave Pueblo, CO 81004",
+          additional: "",
+          mapsURL:
+            "https://www.google.com/maps/place/1219+Lake+Ave,+Pueblo,+CO+81004/",
+        },
+      ]
   
     return {
       navLinks,
@@ -415,7 +463,8 @@ export const useStaticData = () => {
       socialHandles,
       contactServices,
       orgSchema,
-      company
+      company,
+      houses
     };
   } catch (err) {
     console.error('Composable error (StaticData):', err)

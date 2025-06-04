@@ -1,32 +1,37 @@
 <template>
   <div>
     <!-- Top Page -->
-    <section class="community-outreach-top-page page-content section-content">
-      <!-- <%- include('../../components/community-outreach-carousel', { 
-        outreachImages: outreachImages, 
-        helper: helper 
-    }) %> -->
-      <p class="section-text">
-        Here at Golden Gate Manor, we're on a mission to enhance
-        lives daily. Our commitment to establishing an environment
-        that is welcoming and comfortable reflects our core objectives. We
-        strive to connect with our community, reaching as many individuals as
-        possible to foster independence. This mindset shapes our goals and
-        propels us to discover innovative ways to participate within the
-        community. As a family-owned business, we deeply value community impact.
-      </p>
-      <p class="section-text">
-        We are proud supporters of local initiatives like CASA and district
-        schools. Each year, we're driven to expand our community reach,
-        consistently working towards our mission of improving lives. If Golden
-        Gate Manor is participating in events explore the upcoming events
-        below/reach out for more details. If we aren't currently participating
-        in community events during a time when you have an event ongoing, please
-        reach out to us to discuss our involvement; we will get back to you with
-        our availability as soon as we can.
-      </p>
-      <a href="/contact-us" class="cta-button community">Contact Us</a>
-    </section>
+    <BaseLayoutPageSection margin="top">
+      <BaseLayoutPageContainer class="flex flex-col space-y-4">
+        <BaseInteractiveImageCarousel 
+          :tile-count="1" 
+          transition-type="fade"
+          :images
+          >
+          test
+        </BaseInteractiveImageCarousel>
+        <p class="text-xl text-brand-main-text">
+          Here at Golden Gate Manor, we're on a mission to enhance
+          lives daily. Our commitment to establishing an environment
+          that is welcoming and comfortable reflects our core objectives. We
+          strive to connect with our community, reaching as many individuals as
+          possible to foster independence. This mindset shapes our goals and
+          propels us to discover innovative ways to participate within the
+          community. As a family-owned business, we deeply value community impact.
+        </p>
+        <p class="text-xl text-brand-main-text">
+          We are proud supporters of local initiatives like CASA and district
+          schools. Each year, we're driven to expand our community reach,
+          consistently working towards our mission of improving lives. If Golden
+          Gate Manor is participating in events explore the upcoming events
+          below/reach out for more details. If we aren't currently participating
+          in community events during a time when you have an event ongoing, please
+          reach out to us to discuss our involvement; we will get back to you with
+          our availability as soon as we can.
+        </p>
+        <BaseUiAction to="/company/contact-us" class="self-center !mt-8 py-6 px-12">Contact Us</BaseUiAction>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
     <!-- Company Events/Community Events -->
     <!-- <section class="community-outreach-top-page page-content section-content">
       <% if(events.upcoming.length !==0) { %>
@@ -54,7 +59,7 @@
                     <p class="event-location-address"><%- events.upcoming[idx].location.address %></p>
                   </div>
                   <div class="event-description-container event-bottom-information">
-                    <p class="event-description section-text" data-event-expand-container="<%- idx %>"><%-
+                    <p class="event-description text-xl text-brand-main-text" data-event-expand-container="<%- idx %>"><%-
                         events.upcoming[idx].description %></p>
                     <button type="button" class="event-button expand-button"
                       data-event-expand-btn="<%- idx %>">more</button>
@@ -93,6 +98,19 @@ useSeoMeta({
 defineOptions({
   name: 'CommunityPage'
 })
+
+const images = [
+  {
+    id: 'test1',
+    src: '/images/pages/about-us/about-us-car-lineup.jpeg',
+    alt: 'testing ALT 1'
+  },
+  {
+    id: 'test2',
+    src: '/images/pages/about-us/transportation-services.jpeg',
+    alt: 'testing ALT 2'
+  }
+]
 </script>
 
 <style></style>
