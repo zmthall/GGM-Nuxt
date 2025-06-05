@@ -1,12 +1,10 @@
 <template>
-    <div class="flex items-center">
+    <div class="flex w-full h-[300px]">
         <button class="" @click="prevImage"><BaseIcon name="codicon:triangle-left"/></button>
-        <ul class="w-full h-[500px] overflow-hidden relative">
-            <div class="w-full h-full">
-                <li v-for="image in images" :key="image.id" class="w-full h-full absolute flex items-center">
-                    <NuxtImg :src="image.src" :alt="image.alt" class="w-max h-full object-contain" />
-                </li>
-            </div>
+        <ul class="w-full h-full relative overflow-hidden">
+            <li v-for="(image, idx) in images" :key="image.id" :class="['w-full h-full absolute flex items-center', {'hidden': idx !== currentIdx}]">
+                <NuxtImg :src="image.src" :alt="image.alt" class="w-full h-max" />
+            </li>
         </ul>
         <button class="" @click="nextImage"><BaseIcon name="codicon:triangle-right"/></button>
     </div>
