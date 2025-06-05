@@ -71,6 +71,8 @@
 </template>
 
 <script setup lang='ts'>
+import type { FetchImages } from '../../models/ImagesData';
+
 definePageMeta({
   title: 'Community Outreach and Events',
   breadcrumbLabel: 'Community'
@@ -93,18 +95,41 @@ defineOptions({
   name: 'CommunityPage'
 })
 
-const images = [
-  {
-    id: 'test1',
-    src: '/images/pages/about-us/about-us-car-lineup.jpeg',
-    alt: 'testing ALT 1'
-  },
-  {
-    id: 'test2',
-    src: '/images/pages/about-us/transportation-services.jpeg',
-    alt: 'testing ALT 2'
+interface CommunityImagesResponse {
+  slots: Record<string, {
+    id: string;
+    src: string;
+    alt: string;
+  }>
+}
+
+const images = ref<FetchImages>([])
+const loading = ref(true)
+
+const fetchImages = async (): Promise<void> => {
+  try {
+    loading.value = true
+    const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
+      baseURL: 'https://api.goldengatemanor.com'
+    })
+    
+    images.value = Object.entries(response.slots).map(([key, slot]) => ({
+      id: key,
+      src: slot.src,
+      alt: slot.alt
+    }))
+  } catch (error) {
+    console.error('Failed to fetch images:', error)
+    images.value = []
+  } finally {
+    loading.value = false
   }
-]
+}
+
+onMounted(async () => {
+  await fetchImages()
+  console.log(images.value)
+})
 </script>
 
 <style></style>
