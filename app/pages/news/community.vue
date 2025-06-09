@@ -94,7 +94,7 @@ const events = ref<FetchEvents>([
     title: 'Pueblo Senior Resource Fair',
     location: 'Pueblo Convention Center',
     address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
   },
   {
@@ -103,7 +103,7 @@ const events = ref<FetchEvents>([
     title: 'Pueblo Senior Resource Fair',
     location: 'Pueblo Convention Center',
     address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
   },
   {
@@ -112,7 +112,7 @@ const events = ref<FetchEvents>([
     title: 'Pueblo Senior Resource Fair',
     location: 'Pueblo Convention Center',
     address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
   }
 ])

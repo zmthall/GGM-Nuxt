@@ -1,8 +1,8 @@
 <template>
   <ul class="my-4 space-y-8">
-    <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row md:gap-4 md:max-w-[75%]">
+    <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row md:max-w-[75%]">
       <!-- Left/Top Event (date) -->
-      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:w-48 sm:flex sm:flex-col sm:justify-center">
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
         <div class="flex flex-col">
           <span>{{ getDateMonth(event.date) }}</span>
           <span>{{ getDateDay(event.date) }}</span>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <!-- Right/Bottom Event (description) -->
-      <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:items-center">
+      <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:gap-4 md:items-center">
         <div>
           <h3 class="font-extrabold text-xl mb-2">{{ event.title }}</h3>
           <p class="leading-none font-semibold">{{  event.location }}</p>
