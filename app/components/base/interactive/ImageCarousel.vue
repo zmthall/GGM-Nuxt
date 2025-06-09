@@ -5,10 +5,14 @@
         </button>
         
         <ul class="w-full lg:w-4/5 h-full rounded-lg overflow-hidden relative bg-black">
-            <button class="absolute hidden sm:flex top-4 left-4 z-5 bg-gray-500/10 group hover:bg-gray-500 rounded-full transition-color duration-500 ease-in-out" @click="toggleAutoPlay">
+            <div v-if="!imageLoaded[0]" class="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">Loading Images...</div>
+            <button v-if="imageLoaded[0]" class="absolute hidden sm:flex top-4 left-4 z-5 bg-gray-500/10 group hover:bg-gray-500 rounded-full transition-color duration-500 ease-in-out" @click="toggleAutoPlay">
                 <BaseIcon v-if="isAutoPlaying" name="material-symbols:pause-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
                 <BaseIcon v-else name="material-symbols:play-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
             </button>
+            <!-- <button v-if="imageLoaded[0]" class="absolute hidden sm:flex bg-gray-200/10 px-2 text-gray-800/40 rounded-lg top-4 right-4 z-5 hover:bg-gray-200/80 hover:text-gray-800/80">
+                View More
+            </button> -->
             <li v-for="(image, idx) in images" :key="image.id" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
                 <div class="relative w-full h-full bg-gray-800">
                     <!-- Skeleton loader background -->
@@ -46,7 +50,6 @@ defineOptions({
 })
 
 const props = defineProps<{
-    transitionType: 'fade' | 'slide' | 'zoom' | 'flip' | 'bounce' | 'elastic' | 'rotate' | 'blur' | 'scale';
     containerClass?: string;
     slideContainerClass?: string;
     slideClass?: string;

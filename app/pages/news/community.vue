@@ -3,7 +3,6 @@
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
         <BaseInteractiveImageCarousel 
-          transition-type="fade"
           :images />
         <p class="text-xl text-brand-main-text">
           Here at Golden Gate Manor, we're on a mission to enhance
@@ -126,9 +125,8 @@ const fetchImages = async (): Promise<void> => {
   }
 }
 
-onMounted(async () => {
-  await fetchImages()
-  console.log(images.value)
+onMounted(() => {
+  fetchImages()
 })
 </script>
 
