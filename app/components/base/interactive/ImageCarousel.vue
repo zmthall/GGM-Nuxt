@@ -5,6 +5,10 @@
         </button>
         
         <ul class="w-full lg:w-4/5 h-full rounded-lg overflow-hidden relative bg-black">
+            <button class="absolute hidden sm:flex top-4 left-4 z-5 bg-gray-500/10 group hover:bg-gray-500 rounded-full transition-color duration-500 ease-in-out" @click="toggleAutoPlay">
+                <BaseIcon v-if="isAutoPlaying" name="material-symbols:pause-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
+                <BaseIcon v-else name="material-symbols:play-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
+            </button>
             <li v-for="(image, idx) in images" :key="image.id" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
                 <div class="relative w-full h-full bg-gray-800">
                     <!-- Skeleton loader background -->
@@ -35,6 +39,7 @@
 
 <script setup lang='ts'>
 import type { FetchImages } from '../../../models/ImagesData';
+import { useDebounce } from '../../../composables/debounce';
 
 defineOptions({
     name: 'BaseInteractiveCarousel'
@@ -65,6 +70,38 @@ const prevImage = () => {
     else currentIdx.value = props.images.length - 1
 }
 
+const isAutoPlaying = ref<boolean>(false);
+const imageAutoPlay = ref<ReturnType<typeof setInterval> | null>(null);
+
+const clearAutoPlay = () => {
+    if (imageAutoPlay.value !== null) {
+        clearInterval(imageAutoPlay.value);
+        imageAutoPlay.value = null;
+        isAutoPlaying.value = false;
+    }
+};
+
+const handleResize = useDebounce(() => {
+    if (window.innerWidth < 620 && isAutoPlaying.value) {
+        clearAutoPlay();
+    }
+}, 250); // 250ms debounce delay
+
+const toggleAutoPlay = () => {
+    isAutoPlaying.value = !isAutoPlaying.value;
+
+    if (isAutoPlaying.value) {
+        // Start autoplay
+        imageAutoPlay.value = setInterval(nextImage, 5000);
+    } else {
+        // Stop autoplay
+        if (imageAutoPlay.value !== null) {
+            clearInterval(imageAutoPlay.value);
+            imageAutoPlay.value = null;
+        }
+    }
+};
+
 const hideImage = (idx: number) => {
     return currentIdx.value !== idx
 }
@@ -79,6 +116,8 @@ const onImageError = (idx: number) => {
 
 // Preload the first few images
 onMounted(() => {
+    // Ending the autoPlay if resized before 620px
+    window.addEventListener('resize', handleResize);
     // Mark first image as priority
     if (props.images.length > 0) {
         nextTick(() => {
@@ -86,6 +125,11 @@ onMounted(() => {
         })
     }
 })
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', handleResize);
+    clearAutoPlay();
+});
 </script>
 
 <style scoped>
