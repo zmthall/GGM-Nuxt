@@ -1,12 +1,12 @@
 <template>
-    <div class="flex w-full h-[300px]">
-        <button class="" @click="prevImage"><BaseIcon name="codicon:triangle-left"/></button>
-        <ul class="w-full h-full relative overflow-hidden">
-            <li v-for="(image, idx) in images" :key="image.id" :class="['w-full h-full absolute flex items-center', {'hidden': idx !== currentIdx}]">
-                <NuxtImg :src="image.src" :alt="image.alt" class="w-full h-max" />
+    <div class="flex justify-center items-center aspect-video lg:aspect-auto h-[300px] sm:h-[400px] md:h-[500px] w-full mb-4 relative">
+        <button class="absolute left-0 z-5 w-[50px] bg-gray-200/20 hover:bg-gray-200/80 h-full sm:relative sm:h-1/3 sm:bg-brand-primary sm:rounded-l-full sm:border-t-2 sm:border-l-2 sm:border-b-2 sm:border-brand-secondary group sm:hover:bg-brand-secondary sm:hover:border-brand-primary transition-colors duration-500 ease-in-out" @click="prevImage"><BaseIcon name="codicon:triangle-left" color="text-gray-200/50 sm:text-brand-secondary" hover-color="group-hover:text-brand-primary sm:group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out"/></button>
+        <ul class="w-full lg:w-4/5 h-full rounded-lg overflow-hidden relative bg-black">
+            <li v-for="(image, idx) in images" :key="image.id" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
+                <NuxtImg :src="image.src" :alt="image.alt" class="w-full h-full object-cover object-top"/>
             </li>
         </ul>
-        <button class="" @click="nextImage"><BaseIcon name="codicon:triangle-right"/></button>
+        <button class="absolute right-0 z-5 w-[50px] bg-gray-200/20 hover:bg-gray-200/80 h-full sm:relative sm:h-1/3 sm:bg-brand-primary sm:rounded-r-full sm:border-t-2 sm:border-r-2 sm:border-b-2 sm:border-brand-secondary group sm:hover:bg-brand-secondary sm:hover:border-brand-primary transition-colors duration-500 ease-in-out" @click="nextImage"><BaseIcon name="codicon:triangle-right" color="text-gray-200/50 sm:text-brand-secondary" hover-color="group-hover:text-brand-primary sm:group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out"/></button>
     </div>
 </template>
 
@@ -25,7 +25,6 @@ const props = defineProps<{
     images: FetchImages;
 }>();
 
-const imageContainer = ref<HTMLLIElement | null>(null);
 // const autoScrollInterval = ref<NodeJS.Timeout | null>(null);
 const currentIdx = ref<number>(0)
 
@@ -41,6 +40,12 @@ const prevImage = () => {
     if(prevIdx !== -1)
         currentIdx.value--
     else currentIdx.value = props.images.length - 1
+}
+
+const hideImage = (idx: number) => {
+    if(currentIdx.value !== idx) {
+        return true;
+    } else return false
 }
 </script>
 
