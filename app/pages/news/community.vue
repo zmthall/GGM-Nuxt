@@ -1,9 +1,9 @@
 <template>
+  <div>
     <!-- Top Page -->
-    <BaseLayoutPageSection margin="top">
+    <BaseLayoutPageSection margin="pTop">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
-        <BaseInteractiveImageCarousel 
-          :images />
+        <BaseInteractiveImageCarousel :images />
         <p class="text-xl text-brand-main-text">
           Here at Golden Gate Manor, we're on a mission to enhance
           lives daily. Our commitment to establishing an environment
@@ -26,51 +26,20 @@
         <BaseUiAction to="/company/contact-us" class="self-center !mt-8 py-6 px-12">Contact Us</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <!-- Company Events/Community Events -->
-    <!-- <section class="community-outreach-top-page page-content section-content">
-      <% if(events.upcoming.length !==0) { %>
-        <h2 class="section-title">Upcoming Events for Golden Gate Manor, Inc:</h2>
-        <% } %>
-          <% for(const idx in events.upcoming) { %>
-            <div class="event-container">
-              <div class="event-left-info">
-                <% if(events.upcoming[idx].date.day_end !="" ) { %>
-                  <span class="event-from-date event-date"><%- events.upcoming[idx].date.month %> <%-
-                        events.upcoming[idx].date.day %></span>
-                  <span class="event-to-wrapper">to</span>
-                  <span class="event-to-date event-date"><%- events.upcoming[idx].date.month_end %> <%-
-                        events.upcoming[idx].date.day_end %></span>
-                  <% } else { %>
-                    <span class="event-date-month"><%- events.upcoming[idx].date.month %></span>
-                    <span class="event-date-day"><%- events.upcoming[idx].date.day %></span>
-                    <% } %>
-              </div>
-              <div class="event-right-info">
-                <div class="event-information-wrapper">
-                  <div class="event-top-information">
-                    <h3 class="event-title"><%- events.upcoming[idx].name %></h3>
-                    <p class="event-location-name"><%- events.upcoming[idx].location.name %></p>
-                    <p class="event-location-address"><%- events.upcoming[idx].location.address %></p>
-                  </div>
-                  <div class="event-description-container event-bottom-information">
-                    <p class="event-description text-xl text-brand-main-text" data-event-expand-container="<%- idx %>"><%-
-                        events.upcoming[idx].description %></p>
-                    <button type="button" class="event-button expand-button"
-                      data-event-expand-btn="<%- idx %>">more</button>
-                  </div>
-                </div>
-                <div class="event-more-info-button-wrapper">
-                  <a href="<%- events.upcoming[idx].url %>" target="_blank" rel="noopener noreferrer nofollow"
-                    class="event-more-info-btn cta-button"><span class="read-more-plus">+ </span>More Info</a>
-                </div>
-              </div>
-            </div>
-            <% } %>
-    </section> -->
+
+    <!-- Bottom Page -->
+    <BaseLayoutPageSection margin="default">
+      <BaseLayoutPageContainer>
+        <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
+        <CommunityEvents :events />
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+  </div>
 </template>
 
 <script setup lang='ts'>
-import type { FetchImages } from '../../models/ImagesData';
+import type { FetchEvents } from '../../models/EventsData.js';
+import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData';
 
 definePageMeta({
   title: 'Community Outreach and Events',
@@ -94,13 +63,6 @@ defineOptions({
   name: 'CommunityPage'
 })
 
-interface CommunityImagesResponse {
-  slots: Record<string, {
-    id: string;
-    src: string;
-    alt: string;
-  }>
-}
 
 const images = ref<FetchImages>([])
 const loading = ref(true)
@@ -124,6 +86,36 @@ const fetchImages = async (): Promise<void> => {
     loading.value = false
   }
 }
+
+const events = ref<FetchEvents>([
+  {
+    id: 'test',
+    date: new Date('8/10/2025').toISOString(),
+    title: 'Pueblo Senior Resource Fair',
+    location: 'Pueblo Convention Center',
+    address: '320 Central Main St., Pueblo CO, 81003',
+    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+  },
+  {
+    id: 'test2',
+    date: new Date('8/10/2025').toISOString(),
+    title: 'Pueblo Senior Resource Fair',
+    location: 'Pueblo Convention Center',
+    address: '320 Central Main St., Pueblo CO, 81003',
+    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+  },
+  {
+    id: 'test3',
+    date: new Date('8/10/2025').toISOString(),
+    title: 'Pueblo Senior Resource Fair',
+    location: 'Pueblo Convention Center',
+    address: '320 Central Main St., Pueblo CO, 81003',
+    description: 'Free event - open to the public featuring local organizations. Come join us and we can give more information about our services.',
+    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+  }
+])
 
 onMounted(() => {
   fetchImages()
