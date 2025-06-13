@@ -79,10 +79,10 @@
                                 <ul v-if="navLink.sublinks" :class="['flex flex-col gap-2 w-full sublink-mobile-nav relative bg-gray-50']">
                                     <template v-for="(sublink, idx) in navLink.sublinks" :key="sublink.id">
                                         <li v-if="idx === 0" class="before:top-0 before:absolute before:w-full before:h-[2px] before:bg-gray-200">
-                                            <NuxtLink :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2">{{ navLink.name }}</NuxtLink>
+                                            <NuxtLink :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ navLink.name }}</NuxtLink>
                                         </li>
                                         <li>
-                                            <NuxtLink :to="sublink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2">{{ sublink.name }}</NuxtLink>
+                                            <NuxtLink :to="sublink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ sublink.name }}</NuxtLink>
                                         </li>
                                     </template>
                                 </ul>
