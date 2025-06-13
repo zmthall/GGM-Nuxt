@@ -3,7 +3,7 @@
         <!-- Page Banner -->
         <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo"/>
         <!-- Main Content -->
-        <BaseLayoutPageSection class="" margin="top">
+        <BaseLayoutPageSection margin="top">
             <BaseLayoutPageContainer class="space-y-4">
                 <!-- <img src="/images/suv-train.jpg" alt="Picture of Golden Gate Manor Transportation infront of Train Depot Car in Pueblo"> -->
                 <h2 class="text-2xl font-bold text-brand-primary">Overview of Non-Medical Transportation</h2>
