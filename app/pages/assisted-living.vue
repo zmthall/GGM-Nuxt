@@ -19,7 +19,7 @@
                 </div>
                 <!-- Right Side -->
                 <div class="h-[400px] lg:w-2/5">
-                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" class="w-max h-[400px] mx-auto sm:rounded-lg md:shadow-primary"/>
+                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="60" class="w-max h-[400px] mx-auto sm:rounded-lg md:shadow-primary"/>
                 </div>
             </div>
         </BaseLayoutPageContainer>
@@ -69,7 +69,7 @@
                 <div class="flex flex-col w-full gap-8 md:flex-row">
                     <!-- Left Side -->
                     <div class="md:w-1/2">
-                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" format="webp" alt="Stock photo of a nurse and a resident" class="w-full h-full object-cover"/>
+                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" format="webp" quality="60" alt="Stock photo of a nurse and a resident" class="w-full h-full object-cover"/>
                     </div>
                     <!-- Right Side -->
                     <div class="p-4 flex flex-col md:w-1/2">

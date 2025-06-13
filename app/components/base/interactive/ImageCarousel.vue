@@ -24,6 +24,8 @@
                     <NuxtImg 
                         :src="image.src" 
                         :alt="image.alt" 
+                        format="avif"
+                        quality="60"
                         placeholder 
                         loading="lazy" 
                         class="w-full h-full object-cover object-top transition-opacity duration-300"

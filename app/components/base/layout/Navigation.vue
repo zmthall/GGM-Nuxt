@@ -30,7 +30,7 @@
             <div class="flex justify-between items-center">
                 <NuxtLink to="/">
                     <NuxtImg 
-                        src="/images/layout/logo.png" sizes="xs:300px" alt="Golden Gate Manor Inc. Logo"
+                        src="/images/layout/logo.png" sizes="xs:300px" quality="60" alt="Golden Gate Manor Inc. Logo"
                         format="webp" class="max-xs:w-[225px] xs:w-[300px]" />
                 </NuxtLink>
             </div>
@@ -54,7 +54,7 @@
                         <NuxtLink 
                             to="/" class="font-bold text-brand-primary text-xl"
                             @click="toggleDrawer">
-                            <NuxtImg src="/images/layout/Full company GGM Logo.png" sizes="sm:250px" format="webp" />
+                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="60" sizes="sm:250px" format="webp" />
                         </NuxtLink>
                         <button class="absolute top-3 right-3" @click="toggleDrawer">
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />

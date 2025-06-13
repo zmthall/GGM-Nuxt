@@ -56,11 +56,11 @@
         </div>
       </BaseLayoutPageContainer>
       <div class="hidden xl:flex xl:justify-center xl:gap-12 xl:mt-8">
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
       </div>
     </BaseLayoutPageSection>
 
@@ -74,6 +74,7 @@
           <NuxtImg 
             src="/images/pages/about-us/transportation-services.jpeg"
             format="webp"
+            quality="60"
             sizes="600px sm:650px md:600px"
             class="rounded-lg shadow-primary w-full" 
             alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." />
@@ -118,6 +119,7 @@
           <NuxtImg 
             src="/images/pages/about-us/medical-supply-store.jpeg"
             format="webp"
+            quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary h-max" 
             alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue." />
@@ -135,6 +137,7 @@
           <NuxtImg 
             src="/images/pages/about-us/gas-station-about-us1.jpg"
             format="webp"
+            quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary"
             alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." 

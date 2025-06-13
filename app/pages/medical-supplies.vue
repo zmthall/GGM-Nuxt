@@ -32,7 +32,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/mobility.jpg" class="rounded-xl shadow-primary" />
+              <NuxtImg src="/images/pages/medical-supplies/mobility.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
             </div>
           </li>
           <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/wound-care.jpg" class="rounded-xl shadow-primary" />
+              <NuxtImg src="/images/pages/medical-supplies/wound-care.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
             </div>
           </li>
           <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
@@ -75,7 +75,7 @@
                </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/ostomy.jpg" class="rounded-xl shadow-primary" />
+              <NuxtImg src="/images/pages/medical-supplies/ostomy.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
             </div>
           </li>
           <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
@@ -96,7 +96,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/incontinence.jpg" class="rounded-xl shadow-primary" />
+              <NuxtImg src="/images/pages/medical-supplies/incontinence.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
             </div>
           </li>
           <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/urology.jpg" class="rounded-xl shadow-primary" />
+              <NuxtImg src="/images/pages/medical-supplies/urology.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
             </div>
           </li>
         </ul>
