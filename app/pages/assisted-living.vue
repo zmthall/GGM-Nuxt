@@ -18,8 +18,8 @@
                     <p class="">Non-Emergency Medical Transportation (NEMT) is transportation to and from covered non-emergency medical appointments or services; provided through Colorado&#39;s Medicaid program Health First Colorado. With our fleet of over 40 vehicles, we make sure that our residents make it to and from their appointments on time.</p>
                 </div>
                 <!-- Right Side -->
-                <div class="h-[400px] lg:w-2/5">
-                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="60" class="w-max h-[400px] mx-auto sm:rounded-lg md:shadow-primary"/>
+                <div class="sm:h-[400px] lg:w-2/5">
+                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="60" class="w-full sm:w-max sm:h-[400px] mx-auto sm:rounded-lg md:shadow-primary"/>
                 </div>
             </div>
         </BaseLayoutPageContainer>

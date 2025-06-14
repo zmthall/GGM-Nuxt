@@ -1,6 +1,6 @@
 <template>
     <div class="sticky top-0 z-15">
-        <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary">
+        <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
             <ul class="grid grid-cols-8 h-[35px]">
                 <li 
                     v-for="navLink in staticData.navLinks" :key="navLink.id" class="relative"
@@ -50,17 +50,17 @@
                 <aside 
                     v-if="mobileNavDrawerOpen"
                     class="fixed top-0 right-0 h-full w-[80%] max-w-sm flex flex-col items-center bg-white z-20 shadow-md px-4 py-8 sm:hidden">
-                    <div class="mb-4 border-b-2 border-b-slate-50 pb-4">
+                    <div class="mb-4 border-b-2 border-b-slate-50 pb-4 max-w-[250px] aspect-[5/4]">
                         <NuxtLink 
-                            to="/" class="font-bold text-brand-primary text-xl"
+                            to="/" class="font-bold text-brand-primary text-xl w-full"
                             @click="toggleDrawer">
-                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="60" sizes="sm:250px" format="webp" />
+                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="1" width="250" format="webp" class="w-full h-full object-contain" />
                         </NuxtLink>
                         <button class="absolute top-3 right-3" @click="toggleDrawer">
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
                         </button>
                     </div>
-                    <nav v-if="staticData" class="overflow-y-auto w-full flex flex-col items-center">
+                    <nav v-if="staticData" class="overflow-y-auto w-full flex flex-col items-center" aria-label="Mobile Navigation">
                         <ul class="flex flex-col items-center gap-3 w-full">
                             <li v-for="navLink in staticData.navLinks" :key="navLink.id" class="w-3/4">
                                 <NuxtLink 
