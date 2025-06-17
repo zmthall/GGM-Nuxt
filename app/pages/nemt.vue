@@ -68,9 +68,9 @@
                     id="eligibility"
                     :active-id="activeAccordionId"
                     label="WHO IS ELIGIBLE?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                    :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'eligibility' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                    :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'eligibility' ? 'border-b border-b-black' : ''}`"
+                    :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'eligibility' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                       <p class="text-xl text-brand-main-text">
                         Your client may be eligible if they have a
@@ -84,9 +84,9 @@
                     id="how-to-schedule" 
                     :active-id="activeAccordionId"
                     label="HOW DO THEY SCHEDULE A RIDE?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                    :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'how-to-schedule' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                    :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'how-to-schedule' ? 'border-b border-b-black' : ''}`"
+                    :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'how-to-schedule' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
@@ -114,9 +114,9 @@
                     id="how-to-cancel" 
                     :active-id="activeAccordionId"
                     label="HOW DO THEY CANCEL A RIDE?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                    :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'how-to-cancel' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                    :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'how-to-cancel' ? 'border-b border-b-black' : ''}`"
+                    :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'how-to-cancel' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
@@ -140,9 +140,9 @@
                     id="services-covered" 
                     :active-id="activeAccordionId"
                     label="WHICH SERVICES ARE COVERED?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                    :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'services-covered' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                    :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'services-covered' ? 'border-b border-b-black' : ''}`"
+                    :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'services-covered' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <p class="text-xl text-brand-main-text">
                       We provide transportation assistance for
@@ -157,9 +157,9 @@
                     id="client-approval" 
                     :active-id="activeAccordionId"
                     label="HOW DOES THE CLIENT GET APPROVED?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                    :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'client-approval' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                    :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'client-approval' ? 'border-b border-b-black' : ''}`"
+                    :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'client-approval' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
@@ -188,9 +188,9 @@
                     id="when-to-be-ready" 
                     :active-id="activeAccordionId"
                     label="WHEN SHOULD THEY BE READY FOR THEIR RIDE?"
-                    main-class="bg-gray-200 rounded-lg hover:font-extrabold group hover:bg-gray-300 overflow-hidden"
-                    button-class="px-4 py-2 w-full text-left border-b border-b-black"
-                    content-class="bg-gray-200 group-hover:bg-gray-300 px-4 py-2"
+                  :main-class="`bg-gray-200 rounded-lg overflow-hidden group ${activeAccordionId !== 'when-to-be-ready' ? 'hover:font-extrabold hover:bg-gray-300' : ''}`"
+                  :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'when-to-be-ready' ? 'border-b border-b-black' : ''}`"
+                  :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'when-to-be-ready' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <p class="text-xl text-brand-main-text">
                       When you call us for a ride, we will give you
@@ -212,14 +212,14 @@
                   <p class="text-xl text-white">
                     Once approved, please call at least 48 hours before your
                     appointment to schedule a ride. Reservation hours are Monday
-                    to Friday, 8:00 AM – 4:00 PM. To cancel a scheduled ride,
+                    to Friday, 8:00 AM - 4:00 PM. To cancel a scheduled ride,
                     please call at least two hours before your scheduled pick-up.
                   </p>
                 </li>
                 <li class="pl-8 relative">
                   <BaseIcon name="material-symbols:bookmark-check-rounded" class="text-white absolute left-0" />
                   <p class="text-xl text-white">
-                    Our office is open Monday to Friday, 8:00 AM – 4:00 PM, for any
+                    Our office is open Monday to Friday, 8:00 AM - 4:00 PM, for any
                     questions, cancellations, or urgent care appointments. Urgent
                     appointments are scheduled based on availability; therefore trips are not always guaranteed.
                   </p>
