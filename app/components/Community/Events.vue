@@ -1,6 +1,6 @@
 <template>
   <ul class="my-4 space-y-8">
-    <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row lg:max-w-[75%]">
+    <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
         <div class="flex flex-col">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <!-- Right/Bottom Event (description) -->
-      <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:gap-4 md:items-center">
+      <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:gap-4 md:items-center w-full md:justify-between">
         <div>
           <h3 class="font-extrabold text-xl mb-2">{{ event.title }}</h3>
           <p class="leading-none font-semibold">{{  event.location }}</p>
@@ -23,7 +23,8 @@
             <p :class="[{ 'expand': expandedStates[idx] }, 'event-description leading-[1.2] mt-4 mb-2 text-[20px] text-zinc-600 font-semibold']">
               {{ event.description }}
             </p>
-            <button class="font-extrabold text-lg" @click="toggleDescription(idx)">
+            <button 
+              class="font-extrabold text-lg" @click="toggleDescription(idx)">
               <span v-if="expandedStates[idx]">less</span>
               <span v-else>more</span>
             </button>
@@ -36,12 +37,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { FetchEvents } from '../../models/EventsData.js';
+import type { EventsData } from '../../models/EventsData.js';
 
 const expandedStates = ref<boolean[]>([]);
 
 const props = withDefaults(defineProps<{
-  events: FetchEvents;
+  events: EventsData;
   style?: 'default' | 'small';
 }>(), {
   style: 'default'

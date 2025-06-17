@@ -31,14 +31,19 @@
     <BaseLayoutPageSection margin="default">
       <BaseLayoutPageContainer>
         <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
-        <CommunityEvents :events />
+        <div v-if="eventLoading" class="my-4 font-extrabold animate-pulse text-2xl">
+          <p>
+            Loading Events...
+          </p>
+        </div>
+        <CommunityEvents v-else :events />
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
 </template>
 
 <script setup lang='ts'>
-import type { FetchEvents } from '../../models/EventsData.js';
+import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
 import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData';
 
 definePageMeta({
@@ -65,11 +70,13 @@ defineOptions({
 
 
 const images = ref<FetchImages>([])
-const loading = ref(true)
+const events = ref<EventsData>([])
+const imageLoading = ref<boolean>(true)
+const eventLoading = ref<boolean>(true)
 
 const fetchImages = async (): Promise<void> => {
   try {
-    loading.value = true
+    imageLoading.value = true
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
       baseURL: 'https://api.goldengatemanor.com'
     })
@@ -83,42 +90,59 @@ const fetchImages = async (): Promise<void> => {
     console.error('Failed to fetch images:', error)
     images.value = []
   } finally {
-    loading.value = false
+    imageLoading.value = false
   }
 }
 
-const events = ref<FetchEvents>([
-  {
-    id: 'test',
-    date: new Date('8/10/2025').toISOString(),
-    title: 'Pueblo Senior Resource Fair',
-    location: 'Pueblo Convention Center',
-    address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
-  },
-  {
-    id: 'test2',
-    date: new Date('8/10/2025').toISOString(),
-    title: 'Pueblo Senior Resource Fair',
-    location: 'Pueblo Convention Center',
-    address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
-  },
-  {
-    id: 'test3',
-    date: new Date('8/10/2025').toISOString(),
-    title: 'Pueblo Senior Resource Fair',
-    location: 'Pueblo Convention Center',
-    address: '320 Central Main St., Pueblo CO, 81003',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-    link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+const fetchEvents = async (): Promise<void> => {
+  try {
+    eventLoading.value = true;
+    const response = await $fetch<CommunityEventsResponse>('/api/events', {
+      baseURL: 'https://api.goldengatemanor.com'
+    })
+
+    events.value = response.data;
+  } catch (error) {
+    console.error('Failed to fetch events:', error)
+    events.value = []
+  }  finally {
+    eventLoading.value = false
   }
-])
+}
+
+// const events = ref<EventsData>([
+//   {
+//     id: 'test',
+//     date: new Date('8/10/2025').toISOString(),
+//     title: 'Pueblo Senior Resource Fair',
+//     location: 'Pueblo Convention Center',
+//     address: '320 Central Main St., Pueblo CO, 81003',
+//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
+//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+//   },
+//   {
+//     id: 'test2',
+//     date: new Date('8/10/2025').toISOString(),
+//     title: 'Pueblo Senior Resource Fair',
+//     location: 'Pueblo Convention Center',
+//     address: '320 Central Main St., Pueblo CO, 81003',
+//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
+//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+//   },
+//   {
+//     id: 'test3',
+//     date: new Date('8/10/2025').toISOString(),
+//     title: 'Pueblo Senior Resource Fair',
+//     location: 'Pueblo Convention Center',
+//     address: '320 Central Main St., Pueblo CO, 81003',
+//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
+//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
+//   }
+// ])
 
 onMounted(() => {
   fetchImages()
+  fetchEvents()
 })
 </script>
 

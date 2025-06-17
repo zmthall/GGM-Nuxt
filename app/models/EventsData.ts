@@ -1,4 +1,4 @@
-export type FetchEvents = {
+export type EventsData = {
         id: string;
         date: string;
         dateTo?: string;
@@ -8,3 +8,13 @@ export type FetchEvents = {
         description: string;
         link: string;
 }[]
+
+export interface CommunityEventsResponse {
+  success: boolean;
+  data: EventsData;
+  pagination: {
+    hasNextPage: boolean;
+    pageSize: number;
+    count: number;
+  };
+}
