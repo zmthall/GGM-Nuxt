@@ -2,7 +2,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 <template>
     <div>
         <!-- Page Hero Section -->
-        <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg">
+        <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg" centered>
             <h1 class="flex flex-col relative items-center text-center mb-4 pb-4 bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0" >
                 <span class="text-3xl sm:text-4xl">
                     Welcome to

@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="!isHomePage" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
+  <nav v-if="!isHomePage && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
     <ol class="flex">
       <li>
         <NuxtLink to="/" class="text-brand-primary underline hover:text-brand-link-hover">Home</NuxtLink>
@@ -19,6 +19,13 @@
 <script setup lang="ts">
 const route = useRoute()
 const router = useRouter()
+
+const hideBreadcrumb = ref<boolean>(false)
+
+watchEffect(() => {
+  const matchedRoute = router.getRoutes().find(r => r.path === route.path)
+  hideBreadcrumb.value = matchedRoute?.meta?.breadcrumb === false
+})
 
 const isHomePage = computed(() => route.path === '/')
 
@@ -43,7 +50,7 @@ const breadcrumbs = computed(() => {
     if (matchedRoute?.meta?.breadcrumb === false) return
 
     // Determine label
-    let label = toLabel(segment)
+    let label;
 
     const rawTitle = typeof matchedRoute?.meta?.title === 'string' ? matchedRoute.meta.title : null
     const customLabel = typeof matchedRoute?.meta?.breadcrumbLabel === 'string' ? matchedRoute.meta.breadcrumbLabel : null

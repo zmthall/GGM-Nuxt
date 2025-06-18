@@ -1,183 +1,187 @@
 <template>
   <div>
     <!-- Top Page Hero Shots -->
-    <section class="employment-page-hero-shot">
-      <div class="employement-hero-shot-wrapper">
-        <h1 class="employment-page-title">
-          <span class="employement-page-title-span employment-page-top-title">Looking for work?</span>
-          <span class="employement-page-title-span employment-page-bottom-title">
-            We are looking for potential employees who are:
-            <ul class="employment-page-what-we-want">
-              <li class="employment-page-want-item">Reliable and punctual</li>
-              <li class="employment-page-want-item">Solution oriented</li>
-              <li class="employment-page-want-item">Friendly to customers and associates</li>
-              <li class="employment-page-want-item">Team oriented</li>
-              <li class="employment-page-want-item">Eager to learn</li>
-            </ul>
-          </span>
-        </h1>
-        <a href="/about-us/employment/apply?select=general" class="cta-button employement-opportunity-button">Apply
-          Now!</a>
-      </div>
-    </section>
+    <BaseLayoutPageHeroSection src="/images/pages/employment/employment-hero.webp" styling="max-sm:w-full">
+      <BaseInteractiveFloatingCard styling="xs:absolute max-xs:w-full xs:top-8 xs:left-8">
+        <h1 class="text-3xl font-extrabold">Looking for work?</h1>
+        <p class="mt-8 font-bold">We are looking for potential employees who are:</p>
+        <ul class="">
+          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Reliable and punctual</li>
+          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Solution oriented</li>
+          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Friendly to customers and associates</li>
+          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Team oriented</li>
+          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Eager to learn</li>
+        </ul>
+        <BaseUiAction to="/company/employment/apply" class="mt-4 p-4">Apply Now!</BaseUiAction>
+      </BaseInteractiveFloatingCard>
+    </BaseLayoutPageHeroSection>
 
     <!-- Job Opportunities -->
-    <section class="employment-page-opportunities" data-job-opportunities>
-      <h2 class="employment-page section-title opportunities">Job Opportunities</h2>
-      <div class="employment-page-opportunity-cards-container">
-        <div class="employment-page-opportunity-card transportation">
-          <div class="opportunity-card-front transportion">
-            <h2 class="opportunity-card-title">Transportation</h2>
-            <p class="opportunity-card-description">Join our team of dedicated drivers and dispatchers</p>
-          </div>
-          <div class="opportunity-card-back transportation">
-            <h2 class="job-opportunity-list-title">Transportation Positions</h2>
-            <div class="department-positions">
-              <h3 class="opportunity-card-title">City Cab</h3>
-              <ul class="job-opportunity-list-items">
-                <li class="job-opportunity-list-item"><span class="list-item text">Dispatcher</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="transportation|city_cab|dispatch" data-modal-state="closed">Job Description</button>
-                </li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Driver</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="transportation|city_cab|driver" data-modal-state="closed">Job Description</button>
-                </li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Admin Assist.</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="transportation|city_cab|admin_assistant" data-modal-state="closed">Job
-                    Description</button></li>
-              </ul>
+    <BaseLayoutPageSection margin="default">
+      <h2 class="text-2xl text-center font-bold text-brand-primary">Job Opportunities</h2>
+      <div class="flex flex-col items-center mt-8 gap-8 md:grid md:grid-cols-2 md:w-max md:mx-auto lg:flex lg:flex-row lg:flex-wrap lg:w-full lg:justify-center">
+        <BaseInteractiveFlipCard src="/images/pages/employment/ggmt-flipcard.jpg">
+          <template #front>
+            <div class="flex flex-col justify-between h-full font-extrabold">
+                <h2 class="text-2xl">Transportation</h2>
+                <p>Join our team of dedicated drivers and dispatchers</p>
             </div>
-            <div class="department-positions">
-              <h3 class="opportunity-card-title">Non-Emergency</h3>
-              <ul class="job-opportunity-list-items">
-                <li class="job-opportunity-list-item"><span class="list-item text">Customer Service</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="transportation|ggmt|csr" data-modal-state="closed">Job Description</button></li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Driver</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="transportation|ggmt|driver" data-modal-state="closed">Job Description</button></li>
-              </ul>
+          </template>
+          <template #back>
+            <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Transportation Positions</h2>
+            <div class="flex flex-col h-full justify-between">
+              <div>
+                <BaseLayoutPageListItem title="City Cab" has-left-border small-border small-text class="mt-4">
+                  <ul>
+                    <li>Dispatcher — <button type="button" class="link">Job Description</button></li>
+                    <li>Driver — <button type="button" class="link">Job Description</button></li>
+                    <li>Admin Asst. — <button type="button" class="link">Job Description</button></li>
+                  </ul>
+                </BaseLayoutPageListItem>
+                <BaseLayoutPageListItem title="Non-Emergency" has-left-border small-border small-text class="mt-4">
+                  <ul>
+                    <li>Customer Service — <button type="button" class="link">Job Description</button></li>
+                    <li>Driver — <button type="button" class="link">Job Description</button></li>
+                  </ul>
+                </BaseLayoutPageListItem>
+              </div>
+              <div class="mt-4 self-center">
+                <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+              </div>
             </div>
-            <a href="/about-us/employment/apply?select=transportation_general" class="cta-button employment-page">Apply
-              Now</a>
-          </div>
-        </div>
-        <div class="employment-page-opportunity-card assisted-living">
-          <div class="opportunity-card-front assisted-living">
-            <h2 class="opportunity-card-title">Assisted Living</h2>
-            <p class="opportunity-card-description">Care for our community with compassion</p>
-          </div>
-          <div class="opportunity-card-back assisted-living">
-            <h2 class="job-opportunity-list-title">Assisted Living Positions</h2>
-            <div class="department-positions">
-              <h3 class="opportunity-card-title">Assisted Care Facility</h3>
-              <ul class="job-opportunity-list-items">
-                <li class="job-opportunity-list-item"><span class="list-item text">QMAP</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="assisted_living|qmap" data-modal-state="closed">Job Description</button></li>
-                <li class="job-opportunity-list-item"><span class="list-item text">PCP</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="assisted_living|pcp" data-modal-state="closed">Job Description</button></li>
-              </ul>
+          </template>
+        </BaseInteractiveFlipCard>
+        <BaseInteractiveFlipCard src="/images/pages/employment/ggmal-flipcard.jpg">
+          <template #front>
+            <div class="flex flex-col justify-between h-full font-extrabold">
+              <h2 class="text-2xl">Assisted Living</h2>
+              <p>Care for our community with compassion</p>
             </div>
-            <a href="/about-us/employment/apply?select=al_general" class="cta-button employment-page">Apply Now</a>
-          </div>
-        </div>
-        <div class="employment-page-opportunity-card medical-supply-store">
-          <div class="opportunity-card-front medical-supply-store">
-            <h2 class="opportunity-card-title">Medical Supply</h2>
-            <p class="opportunity-card-description">Support our community's health and well-being</p>
-          </div>
-          <div class="opportunity-card-back medical-supply-store">
-            <h2 class="job-opportunity-list-title">Medical Supply Positions</h2>
-            <div class="department-positions">
-              <h3 class="opportunity-card-title">DME Store</h3>
-              <ul class="job-opportunity-list-items">
-                <li class="job-opportunity-list-item"><span class="list-item text">DME Specialist</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="medical_supply|dme_specialist" data-modal-state="closed">Job Description</button>
-                </li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Delivery Driver</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="medical_supply|delivery_tech" data-modal-state="closed">Job Description</button>
-                </li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Inventory Tech.</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="medical_supply|inventory_tech" data-modal-state="closed">Job Description</button>
-                </li>
-              </ul>
+          </template>
+          <template #back>
+            <div>
+              <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Assisted Living Positions</h2>
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <BaseLayoutPageListItem title="Assisted Care Facility" has-left-border small-border small-text class="mt-4">
+                    <ul>
+                      <li>
+                        QMAP — <button type="button" class="link">Job Description</button>
+                      </li>
+                      <li>PCP — <button type="button" class="link">Job Description</button></li>
+                    </ul>
+                  </BaseLayoutPageListItem>
+                </div>
+                <div class="mt-4 self-center">
+                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                </div>
+              </div>
             </div>
-            <a href="/about-us/employment/apply?select=ms_general" class="cta-button employment-page">Apply Now</a>
-          </div>
-        </div>
-        <div class="employment-page-opportunity-card gas-station">
-          <div class="opportunity-card-front gas-station">
-            <h2 class="opportunity-card-title">Gas Station</h2>
-            <p class="opportunity-card-description">Join us on our newest adventure</p>
-          </div>
-          <div class="opportunity-card-back gas-station">
-            <h2 class="job-opportunity-list-title">Gas Station Positions</h2>
-            <div class="department-positions">
-              <h3 class="opportunity-card-title">Convenience Store</h3>
-              <ul class="job-opportunity-list-items">
-                <li class="job-opportunity-list-item"><span class="list-item text">Manager</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="gas_station|manager" data-modal-state="closed">Job Description</button></li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Assistant Manager</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="gas_station|asm" data-modal-state="closed">Job Description</button></li>
-                <li class="job-opportunity-list-item"><span class="list-item text">Attendant</span><span
-                    class="list-item divider"></span><button type="button" class="list-item modal-button"
-                    data-modal-btn="gas_station|attendant" data-modal-state="closed">Job Description</button></li>
-              </ul>
+          </template>
+        </BaseInteractiveFlipCard>
+        <BaseInteractiveFlipCard src="/images/pages/employment/ggms-flipcard.jpg">
+          <template #front>
+            <div class="flex flex-col justify-between h-full font-extrabold">
+              <h2 class="text-2xl">Medical Supply</h2>
+              <p>Support our community's health and well-being</p>
             </div>
-            <a href="/about-us/employment/apply?select=gs_general" class="cta-button employment-page">Apply Now</a>
-          </div>
-        </div>
+          </template>
+          <template #back>
+            <div>
+              <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Medical Supply Positions</h2>
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <BaseLayoutPageListItem title="DME Store" has-left-border small-border small-text class="mt-4">
+                    <ul>
+                      <li>DME Specialist — <button type="button" class="link">Job Description</button>
+                      </li>
+                      <li>Delivery Driver — <button type="button" class="link">Job Description</button>
+                      </li>
+                      <li>Inventory Tech. — <button type="button" class="link">Job Description</button>
+                      </li>
+                    </ul>
+                  </BaseLayoutPageListItem>
+                </div>
+                <div class="mt-4 self-center">
+                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                </div>
+              </div>
+            </div>
+          </template>
+        </BaseInteractiveFlipCard>
+        <BaseInteractiveFlipCard src="/images/pages/employment/ggmc-flipcard.jpg">
+          <template #front>
+            <div class="flex flex-col justify-between h-full font-extrabold">
+              <h2 class="text-2xl">Gas Station</h2>
+              <p>Join us on our newest adventure</p>
+            </div>
+          </template>
+          <template #back>
+            <div>
+              <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Gas Station Positions</h2>
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <BaseLayoutPageListItem title="Convenience Store" has-left-border small-border small-text class="mt-4">
+                    <ul>
+                      <li>Manager — <button type="button" class="link">Job Description</button></li>
+                      <li>Assistant Manager — <button type="button" class="link">Job Description</button></li>
+                      <li>Attendant — <button type="button" class="link">Job Description</button></li>
+                    </ul>
+                  </BaseLayoutPageListItem>
+                </div>
+                <div class="mt-4 self-center">
+                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                </div>
+              </div>
+            </div>
+          </template>
+        </BaseInteractiveFlipCard>
       </div>
-    </section>
+    </BaseLayoutPageSection>
 
     <!-- CTA Section -->
-    <section class="employment-page-section cta">
-      <h2 class="employment-page section-title cta">Explore Career Opportunities</h2>
-      <p class="employement-page section-text cta">
-        We're always on the lookout for passionate individuals to join our diverse team!
-        As our company expands, new opportunities arise across our different businesses.
-        Discover where you can make an impact!
-      </p>
-      <a href="/about-us/employment/apply?select=general" class="secondary-button">Join Our Team</a>
-    </section>
+    <BaseLayoutPageCTA 
+      title="Explore Career Opportunities"
+      description="We're always on the lookout for passionate individuals to join our diverse team!
+      As our company expands, new opportunities arise across our different businesses.
+      Discover where you can make an impact!"
+      to="/company/employment/apply?select=general"
+      button-label="Join Our Team"
+    />
 
     <!-- About Us Section -->
-    <section class="employment-page-section about-us page-content">
-      <h2 class="employment-page section-title">About Golden Gate Manor Inc.</h2>
-      <p class="mission-statement section-text">
-        PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US.
-      </p>
-      <p class="section-text">Welcome to Golden Gate Manor! Here at Golden Gate Manor, Our
-        Mission Is Simple: To Improve The Quality of Life Each and Every Day. We
-        are a family-owned and operated facility that offers highly personalized,
-        compassionate, and direct care to members of our community in Pueblo, CO.
-        Our services include assisted living, medical and non-medical transportation
-        services, and medical supply sales.
-      </p>
-      <h2 class="employment-page section-title">Our Team</h2>
-      <p class="section-text">The management team at Golden Gate Manor brings over 35 years
-        of experience in caring and providing for older adults, individuals with mental illness,
-        and overseeing transportation operations. Our mission is to foster a welcoming and relaxing
-        environment, whether someone is living in our assisted living or utilizing our transportation services.
-        Fostering this environment is part of our standard of care and this is an expectation from all employees
-        working at Golden Gate Manor.</p>
-      <a href="/about-us" class="cta-button"><span class="read-more-plus">+ </span><span>Learn More</span></a>
-    </section>
+    <BaseLayoutPageSection margin="default">
+      <BaseLayoutPageContainer class="space-y-8">
+        <section class="space-y-1">
+          <h2 class="text-2xl font-bold text-brand-primary">About Golden Gate Manor Inc.</h2>
+          <p class="text-xl text-brand-main-text">PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US.</p>
+          <p class="text-xl text-brand-main-text">Welcome to Golden Gate Manor! Here at Golden Gate Manor, Our
+          Mission Is Simple: To Improve The Quality of Life Each and Every Day. We
+          are a family-owned and operated facility that offers highly personalized,
+          compassionate, and direct care to members of our community in Pueblo, CO.
+          Our services include assisted living, medical and non-medical transportation
+          services, and medical supply sales.</p>
+        </section>
+        <section class="space-y-1">
+          <h2 class="text-2xl font-bold text-brand-primary">Our Team</h2>
+          <p class="text-xl text-brand-main-text">The management team at Golden Gate Manor brings over 35 years
+            of experience in caring and providing for older adults, individuals with mental illness,
+            and overseeing transportation operations. Our mission is to foster a welcoming and relaxing
+            environment, whether someone is living in our assisted living or utilizing our transportation services.
+            Fostering this environment is part of our standard of care and this is an expectation from all employees
+            working at Golden Gate Manor.
+          </p>
+        </section>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
   </div>
 </template>
 
 <script setup lang='ts'>
+import { BaseLayoutPageCTA, BaseLayoutPageSection, BaseUiAction } from '#components'
+
 definePageMeta({
-  title: 'Join Our Team',
+  breadcrumb: false
 })
 
 useHead({

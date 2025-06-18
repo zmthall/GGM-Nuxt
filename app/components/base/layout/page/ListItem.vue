@@ -1,7 +1,7 @@
 <template>
-  <div :class="[{'before:w-2 before:bg-brand-primary before:rounded-lg before:absolute before:h-[110%] before:left-0 before:top-1/2 before:-translate-y-1/2 pl-4': hasLeftBorder, 'relative': hasIcon || hasLeftBorder}, padding]">
+  <div :class="[{'before:bg-brand-primary before:rounded-lg before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 pl-4': hasLeftBorder, 'before:w-2 before:h-[110%]': !smallBorder, 'before:w-1 before:h-[105%]': smallBorder, 'relative': hasIcon || hasLeftBorder}, padding]">
     <BaseIcon v-if="hasIcon" :size="iconSize" :name="iconName" class="absolute left-0 top-1/2 -translate-y-1/2"/>
-    <div class="text-lg">
+    <div :class="[{'text-lg': !smallText, 'text-sm': smallText}]">
       <h3 v-if="title" :class="[{'text-xl font-bold': !titleClass}, titleClass]">{{ title }}</h3>
       <slot />
     </div>
@@ -13,6 +13,8 @@ const props = withDefaults(defineProps<{
   title?: string;
   hasIcon?: boolean;
   hasLeftBorder?: boolean;
+  smallBorder?: boolean;
+  smallText?: boolean;
   titleClass?: string;
   iconName?: string;
   size?: number;
