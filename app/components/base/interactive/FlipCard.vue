@@ -50,6 +50,12 @@ const backgroundStyle = computed(() =>
 
 .opportunity-card-front {
   position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  z-index: 0;
 }
 
 .opportunity-card-back,
@@ -66,15 +72,6 @@ const backgroundStyle = computed(() =>
   box-shadow: 2px 5px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   overflow: hidden;
-}
-
-.opportunity-card-front {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
-  z-index: 0;
 }
 
 .opportunity-card-content {
