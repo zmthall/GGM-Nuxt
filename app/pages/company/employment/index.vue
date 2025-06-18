@@ -33,15 +33,15 @@
               <div>
                 <BaseLayoutPageListItem title="City Cab" has-left-border small-border small-text class="mt-4">
                   <ul>
-                    <li>Dispatcher — <button type="button" class="link">Job Description</button></li>
-                    <li>Driver — <button type="button" class="link">Job Description</button></li>
-                    <li>Admin Asst. — <button type="button" class="link">Job Description</button></li>
+                    <li>Dispatcher — <button type="button" class="link" data-select="city_cab-dispatch" @click="openModal">Job Description</button></li>
+                    <li>Driver — <button type="button" class="link" data-select="city_cab-driver" @click="openModal">Job Description</button></li>
+                    <li>Admin Asst. — <button type="button" class="link" data-select="city_cab-admin_assistant" @click="openModal">Job Description</button></li>
                   </ul>
                 </BaseLayoutPageListItem>
                 <BaseLayoutPageListItem title="Non-Emergency" has-left-border small-border small-text class="mt-4">
                   <ul>
-                    <li>Customer Service — <button type="button" class="link">Job Description</button></li>
-                    <li>Driver — <button type="button" class="link">Job Description</button></li>
+                    <li>Customer Service — <button type="button" class="link" data-select="ggmt-csr" @click="openModal">Job Description</button></li>
+                    <li>Driver — <button type="button" class="link" data-select="ggmt-driver" @click="openModal">Job Description</button></li>
                   </ul>
                 </BaseLayoutPageListItem>
               </div>
@@ -66,9 +66,9 @@
                   <BaseLayoutPageListItem title="Assisted Care Facility" has-left-border small-border small-text class="mt-4">
                     <ul>
                       <li>
-                        QMAP — <button type="button" class="link">Job Description</button>
+                        QMAP — <button type="button" class="link" data-select="assisted_living-qmap" @click="openModal">Job Description</button>
                       </li>
-                      <li>PCP — <button type="button" class="link">Job Description</button></li>
+                      <li>PCP — <button type="button" class="link" data-select="assisted_living-pcp" @click="openModal">Job Description</button></li>
                     </ul>
                   </BaseLayoutPageListItem>
                 </div>
@@ -93,11 +93,11 @@
                 <div>
                   <BaseLayoutPageListItem title="DME Store" has-left-border small-border small-text class="mt-4">
                     <ul>
-                      <li>DME Specialist — <button type="button" class="link">Job Description</button>
+                      <li>DME Specialist — <button type="button" class="link" data-select="ggms-dme_specialist" @click="openModal">Job Description</button>
                       </li>
-                      <li>Delivery Driver — <button type="button" class="link">Job Description</button>
+                      <li>Delivery Driver — <button type="button" class="link" data-select="ggms-deliver_tech" @click="openModal">Job Description</button>
                       </li>
-                      <li>Inventory Tech. — <button type="button" class="link">Job Description</button>
+                      <li>Inventory Tech. — <button type="button" class="link" data-select="ggms-inventory_tech" @click="openModal">Job Description</button>
                       </li>
                     </ul>
                   </BaseLayoutPageListItem>
@@ -123,9 +123,9 @@
                 <div>
                   <BaseLayoutPageListItem title="Convenience Store" has-left-border small-border small-text class="mt-4">
                     <ul>
-                      <li>Manager — <button type="button" class="link">Job Description</button></li>
-                      <li>Assistant Manager — <button type="button" class="link">Job Description</button></li>
-                      <li>Attendant — <button type="button" class="link">Job Description</button></li>
+                      <li>Manager — <button type="button" class="link" data-select="ggmc-manager" @click="openModal">Job Description</button></li>
+                      <li>Assistant Manager — <button type="button" class="link" data-select="ggmc-assistant_manager" @click="openModal">Job Description</button></li>
+                      <li>Attendant — <button type="button" class="link" data-select="ggmc-attendant" @click="openModal">Job Description</button></li>
                     </ul>
                   </BaseLayoutPageListItem>
                 </div>
@@ -142,9 +142,7 @@
     <!-- CTA Section -->
     <BaseLayoutPageCTA 
       title="Explore Career Opportunities"
-      description="We're always on the lookout for passionate individuals to join our diverse team!
-      As our company expands, new opportunities arise across our different businesses.
-      Discover where you can make an impact!"
+      description="We're always on the lookout for passionate individuals to join our diverse team! As our company expands, new opportunities arise across our different businesses. Discover where you can make an impact!"
       to="/company/employment/apply?select=general"
       button-label="Join Our Team"
     />
@@ -174,11 +172,18 @@
         </section>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
+
+    <EmploymentModal v-model="modalOpen" :modal-content="modalContent" @close="clearModalContent"/>
   </div>
 </template>
 
 <script setup lang='ts'>
 import { BaseLayoutPageCTA, BaseLayoutPageSection, BaseUiAction } from '#components'
+import type { JobDescription, JobDescriptionFetch } from '../../../models/JobDescription.js'
+
+const modalOpen = ref<boolean>(false)
+const modalContent = ref<JobDescription | null>(null)
+const loadingModal = ref<boolean>(false);
 
 definePageMeta({
   breadcrumb: false
@@ -204,6 +209,41 @@ useSeoMeta({
 defineOptions({
   name: 'JobOpportunityPage'
 })
+
+const openModal = async (event: Event) => {
+  try {
+    loadingModal.value = true;
+
+    if (event.target) {
+      const target = event.target as HTMLElement;
+      const select = target.getAttribute('data-select')
+
+      if (!select) {
+        console.error('No data-select attribute found')
+        return
+      }
+
+      const modalFetch = await $fetch(`/api/jobs/${select}`, {
+        baseURL: 'https://api.goldengatemanor.com/'
+      }) as JobDescriptionFetch;
+
+      loadingModal.value = false;
+
+      document.body.classList.add('no-scroll');
+
+      if(modalFetch.success) {
+        modalContent.value = modalFetch.data;
+        modalOpen.value = true;
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching job data:', error)
+  }
+}
+
+const clearModalContent = () => {
+  modalContent.value = null;
+}
 </script>
 
 <style></style>
