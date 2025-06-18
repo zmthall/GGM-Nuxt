@@ -78,7 +78,7 @@
                                 </button>
                                 <ul v-if="navLink.sublinks" :class="['flex flex-col gap-2 w-full sublink-mobile-nav relative bg-gray-50']">
                                     <template v-for="(sublink, idx) in navLink.sublinks" :key="sublink.id">
-                                        <li v-if="idx === 0" class="before:top-0 before:absolute before:w-full before:h-[2px] before:bg-gray-200">
+                                        <li v-if="idx === 0 && navLink.id !== 'company'" class="before:top-0 before:absolute before:w-full before:h-[2px] before:bg-gray-200">
                                             <NuxtLink :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ navLink.name }}</NuxtLink>
                                         </li>
                                         <li>
@@ -125,6 +125,28 @@ const toggleMobileSublinks = (name: string, event: MouseEvent) => {
     const button = event.target as HTMLElement;
     button.nextElementSibling?.classList.toggle('active')
 }
+
+const handleResize = () => {
+  if (window.innerWidth >= 640) {
+    mobileNavDrawerOpen.value = false
+    document.body.classList.remove('no-scroll')
+    document.documentElement.classList.remove('no-scroll')
+    activeSublink.value = null
+
+    const activeDropdowns = document.querySelectorAll('.sublink-mobile-nav.active')
+    activeDropdowns.forEach((el) => el.classList.remove('active'))
+  }
+}
+
+const debouncedResize = useDebounce(handleResize, 100)
+
+onMounted(() => {
+  window.addEventListener('resize', debouncedResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', debouncedResize)
+})
 
 </script>
 

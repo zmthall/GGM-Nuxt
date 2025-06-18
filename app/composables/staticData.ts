@@ -27,6 +27,16 @@ export const useStaticData = () => {
         slug: "/medical-supplies",
       },
       {
+        // id: "news",
+        // name: "News",
+        // slug: "/news",
+        id: "community", name: "Community", slug: "/news/community"
+        // sublinks: [
+        //   { id: "community", name: "Community", slug: "/news/community" },
+        //   // { id: "blog", name: "Blog", slug: "/news/blog" },
+        // ],
+      },
+      {
         id: "company",
         name: "Company",
         slug: "/company/about-us",
@@ -36,15 +46,6 @@ export const useStaticData = () => {
           { id: "policies", name: "Policies", slug: "/company/policies" },
           { id: "contact", name: "Contact Us", slug: "/company/contact-us" },
           { id: "join", name: "Join Our Team", slug: "/company/employment" },
-        ],
-      },
-      {
-        id: "news",
-        name: "News",
-        slug: "/news",
-        sublinks: [
-          { id: "blog", name: "Blog", slug: "/news/blog" },
-          { id: "community", name: "Community", slug: "/news/community" },
         ],
       },
       {
