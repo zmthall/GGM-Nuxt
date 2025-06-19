@@ -46,7 +46,7 @@
                 </BaseLayoutPageListItem>
               </div>
               <div class="mt-4 self-center">
-                <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                <BaseUiAction to="/company/employment/apply?select=transportation_general" class="py-2 px-4">Apply Now</BaseUiAction>
               </div>
             </div>
           </template>
@@ -73,7 +73,7 @@
                   </BaseLayoutPageListItem>
                 </div>
                 <div class="mt-4 self-center">
-                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                  <BaseUiAction href="/company/employment/apply?select=al_general" class="py-2 px-4">Apply Now</BaseUiAction>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@
                   </BaseLayoutPageListItem>
                 </div>
                 <div class="mt-4 self-center">
-                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                  <BaseUiAction href="/company/employment/apply?select=ms_general" class="py-2 px-4">Apply Now</BaseUiAction>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@
                   </BaseLayoutPageListItem>
                 </div>
                 <div class="mt-4 self-center">
-                  <BaseUiAction href="#" class="py-2 px-4">Apply Now</BaseUiAction>
+                  <BaseUiAction href="/company/employment/apply?select=gs_general" class="py-2 px-4">Apply Now</BaseUiAction>
                 </div>
               </div>
             </div>

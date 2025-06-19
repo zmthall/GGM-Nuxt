@@ -6,11 +6,11 @@
         <div class="space-y-4">
           <div class="md:w-1/2">
             <BaseFormSelect 
-              v-model="application.personal.select"
+              v-model="application.personal.select as string"
               name="position"
               label="Position"
               :labels="['Transportation - General', 'Transportation Dispatcher', 'Taxi Driver', 'Administrative Assistant', 'Customer Service Representative', 'NEMT Driver', 'Assisted Living - General', 'QMAP', 'PCP', 'Medical Supply - General', 'DME Specialist', 'Delivery Technician', 'Inventory Technician', 'Gas Station - General', 'Gas Station Manager', 'Gas Station Assistant Manager', 'Gas Station Attendant', 'General Application']"
-              :values="['transportation_general', 'city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant', 'ggmt-csr', 'ggmt-driver', 'al_general', 'assisted_living-qmap', 'assisted_living-pcp', 'ms_general', 'medical_supply-dme_specialist', 'medical_supply-delivery_tech', 'medical_supply-inventory_tech', 'gs_general', 'gas_station-manager', 'gas_station-assistant_manager', 'gas_station-attendant', 'general']"
+              :values="['transportation_general', 'city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant', 'ggmt-csr', 'ggmt-driver', 'al_general', 'assisted_living-qmap', 'assisted_living-pcp', 'ms_general', 'ggms-dme_specialist', 'ggms-deliver_tech', 'ggms-inventory_tech', 'gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']"
             />
           </div>
           <div class="flex flex-col md:flex-row gap-4">
@@ -91,12 +91,14 @@
 </template>
 
 <script lang="ts" setup>
-const notAllowedToAskFelony = ['gs_general', 'gas_station-manager', 'gas_station-assistant_manager', 'gas_station-attendant', 'general']
-const drivingPositions = ['transportation_general', 'city_cab-driver', 'ggmt-driver', 'medical_supply-inventory_tech', 'medical_supply-delivery_tech']
+const route = useRoute()
+
+const notAllowedToAskFelony = ['gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']
+const drivingPositions = ['transportation_general', 'city_cab-driver', 'ggmt-driver', 'ggms-inventory_tech', 'ggms-deliver_tech']
 
 const application = reactive({
   personal: {
-    select: '',
+    select: route.query.select || '',
     firstName: '',
     lastName: '',
     address: '',
@@ -130,11 +132,11 @@ const application = reactive({
 })
 
 const showFelonyQuestion = computed(() => {
-  return !notAllowedToAskFelony.includes(application.personal.select)
+  return !notAllowedToAskFelony.includes(application.personal.select as string)
 })
 
 const showDrivingSection = computed(() => {
-  return drivingPositions.includes(application.personal.select)
+  return drivingPositions.includes(application.personal.select as string)
 })
 </script>
 

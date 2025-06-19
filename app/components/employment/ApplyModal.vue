@@ -162,8 +162,11 @@ const continueAttestation = () => {
     attestationError.value = true;
 }
 
-onMounted(() => {
-  document.body.classList.add('no-scroll');
+// Set body class immediately when component loads
+useHead({
+  bodyAttrs: {
+    class: computed(() => (noticeModalOpen.value || attestationModalOpen.value) ? 'no-scroll' : '')
+  }
 })
 </script>
 
