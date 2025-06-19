@@ -1,5 +1,6 @@
 <template>
-    <div class="mx-4 mt-4 max-w-[400px]">
+    <div class="mt-4 max-w-[400px]">
+        <label v-if="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <label
             class="relative border-2 hover:border-brand-primary border-brand-primary/50 bg-white hover:bg-zinc-200 rounded-lg flex flex-col p-16 cursor-pointer group hover:shadow-input transition-color duration-500 ease-in-out"
             :for="name" @dragenter.prevent @dragleave.prevent @dragover.prevent @drop.prevent="handleDrop">
@@ -42,9 +43,11 @@ const props = withDefaults(defineProps<{
     name: string;
     multiple?: boolean
     maxSize?: number;
+    label?: string;
 }>(), {
     multiple: false,
-    maxSize: 10485760
+    maxSize: 10485760,
+    label: undefined
 })
 
 const fileData = defineModel<FileWrapper[] >()

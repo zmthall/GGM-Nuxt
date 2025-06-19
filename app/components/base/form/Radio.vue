@@ -1,11 +1,9 @@
 <template>
-<div>
-    <label :for="value" class="inline-flex items-center gap-2">
-        <input :id="value" v-model="checkedValue" class="appearance-none peer/input" type="radio" :value="value" :name="name" >
+    <label :for="`${name}-${value}`" class="inline-flex items-center gap-2">
+        <input :id="`${name}-${value}`" v-model="checkedValue" class="appearance-none peer/input" type="radio" :value="value" :name="name" >
         <div :class="['size-6 border-2 rounded-full bg-white hover:border-brand-primary cursor-pointer relative radio-input hover:before:bg-brand-primary/50 peer-checked/input:before:bg-brand-primary peer-checked/input:border-brand-primary peer-checked/input:shadow-input']" />
         <slot />
     </label>
-</div>
 </template>
 
 <script setup lang='ts'>

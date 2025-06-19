@@ -71,6 +71,7 @@ const props = withDefaults(defineProps<{
     newPage?: boolean;
     noFollow?: boolean;
     bgDark?: boolean;
+    center?: boolean;
     hoverGroup?: boolean;
     iconBefore?: string;
     iconAfter?: string;

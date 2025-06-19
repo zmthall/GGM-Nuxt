@@ -9,7 +9,7 @@
         </select>
 
         <!-- Custom chevron icon -->
-        <div :class="['pointer-events-none absolute inset-y-0 right-3 flex items-center', { 'mt-4': !label, 'mt-5': label }]">
+        <div :class="['pointer-events-none absolute inset-y-0 right-3 flex items-center', { 'mt-4': !label, 'mt-7': label }]">
             <BaseIcon name="mdi:chevron-down" size="size-5" color="text-gray-200" hover-color="group-hover:text-brand-primary/50" custom-class="group-focus-within:text-brand-primary/50"/>
         </div>
     </div>
