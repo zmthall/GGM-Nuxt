@@ -358,13 +358,13 @@
                   :content-class="`bg-[#5DADE2] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'cost-of-assisted-living' ? 'group-hover:bg-[#5DADE2]/50' : ''}`"
                   @update:active-id="updateIdAssistedLiving">
                     <div class="space-y-4">
-                      <p>
+                      <p class="text-xl text-white">
                         Without insurance, out-of-pocket expenses depend on your monthly income, plus there would be monthly fees. The best answer regarding cost would be to contact us directly for a personalized quote.
                       </p>
-                      <p>
+                      <p class="text-xl text-white">
                         With Medicaid, there would be an out-of-pocket expense of $797, and Medicaid would cover the rest of the out-of-pocket expenses. There is also a specific amount of spending money allotted, which would require further conversations to understand the exact amount as it can change.
                       </p>
-                      <p>
+                      <p class="text-xl text-white">
                         <NuxtLink to="/company/contact-us" class="link">Contact us</NuxtLink> directly to discuss your specific situation and get accurate pricing information.
                       </p>
                     </div>
