@@ -52,7 +52,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 </h2>
                 <div class="flex justify-center flex-wrap gap-8">
                     <NuxtLink to="/assisted-living">
-                        <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Assisted</span>
@@ -67,7 +67,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                         </BaseLayoutCard>
                     </NuxtLink>
                     <NuxtLink to="/nemt">
-                        <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">NEMT</span>
@@ -81,7 +81,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                         </BaseLayoutCard>
                     </NuxtLink>
                     <NuxtLink to="/non-medical">
-                        <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Non-Medical</span>
@@ -96,7 +96,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                         </BaseLayoutCard>
                     </NuxtLink>
                    <NuxtLink to="/medical-supplies">
-                        <BaseLayoutCard class="bg-brand-background sm:w-[400px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Durable Medical</span>
