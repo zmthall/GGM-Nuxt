@@ -20,7 +20,7 @@
     }>()
 
     const emit = defineEmits<{
-        (e: 'update:active-id', id: string): void
+        'update:active-id': [id: string]
     }>()
 
     const isActive = computed(() => props.activeId === props.id)
