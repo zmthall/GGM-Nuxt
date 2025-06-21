@@ -1,6 +1,6 @@
 <template>
     <div :class="mainClass">
-        <button :id :class="[buttonClass, 'text-xl']" @click="toggleActive">{{ label }}</button>
+        <button :id :class="[buttonClass, 'text-xl uppercase']" @click="toggleActive">{{ label }}</button>
         <transition name="accordion">
             <div v-show="isActive" :class="['overflow-hidden max-h-[1000px]', contentClass]">
                 <slot />
