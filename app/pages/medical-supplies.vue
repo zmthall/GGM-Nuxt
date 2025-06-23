@@ -17,6 +17,27 @@
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">
+                  Orthotic Shoes
+                </span>
+                <span>
+                  Professional Foot Care Solutions
+                </span>
+              </h3>
+              <p class="text-xl text-brand-main-text">
+                Your feet carry you through life, and they deserve professional-grade care and comfort. Our Dr. Comfort orthotic shoe collection combines therapeutic benefits with everyday wearability, designed specifically for those who need specialized foot support. Whether you're managing diabetes, arthritis, or other foot-related health concerns, our selection of Dr. Comfort shoes provides the medical-grade support your healthcare provider recommends without sacrificing style or comfort. Our experienced team works closely with you and your physician to ensure proper fitting and appropriate coverage, understanding that proper footwear is essential to your overall health and mobility. We're committed to keeping you comfortable, confident, and moving forward.
+              </p>
+              <div class="mt-4 w-max self-center space-x-8">
+                <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
+              </div>
+            </div>
+            <div class="sm:p-4">
+              <NuxtImg src="/images/pages/medical-supplies/orthotic-shoes.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" />
+            </div>
+          </li>
+          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+            <div class="md:w-1/2 flex flex-col">
+              <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
+                <span class="text-gray-500">
                   Mobility Aids
                 </span>
                 <span>
