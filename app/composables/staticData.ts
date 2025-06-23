@@ -33,7 +33,7 @@ export const useStaticData = () => {
         id: "community", name: "Community", slug: "/news/community"
         // sublinks: [
         //   { id: "community", name: "Community", slug: "/news/community" },
-        //   // { id: "blog", name: "Blog", slug: "/news/blog" },
+        //   { id: "blog", name: "Blog", slug: "/news/blog" },
         // ],
       },
       {
@@ -53,7 +53,7 @@ export const useStaticData = () => {
         name: "Resources",
         slug: "/resources",
         sublinks: [
-          { id: "community-resources", name: "Community Resources", slug: "/resources/community-resources" },
+          // { id: "community-resources", name: "Community Resources", slug: "/resources/community-resources" },
           { id: "support-center", name: "Support Center", slug: "/resources/support-center" },
           { id: "faq", name: "FAQ", slug: "/resources/faq" },
           { id: "map", name: "Service Area Map", slug: "/resources/service-area-map" },
