@@ -54,7 +54,6 @@ export const useStaticData = () => {
         slug: "/resources",
         sublinks: [
           // { id: "community-resources", name: "Community Resources", slug: "/resources/community-resources" },
-          { id: "support-center", name: "Support Center", slug: "/resources/support-center" },
           { id: "faq", name: "FAQ", slug: "/resources/faq" },
           { id: "map", name: "Service Area Map", slug: "/resources/service-area-map" },
           { id: "forms", name: "Forms & Documents", slug: "/resources/forms-and-documents" },
@@ -67,7 +66,6 @@ export const useStaticData = () => {
       { id: "footer-schedule-a-ride", name: "Schedule a Ride", slug: "/resources/schedule-a-ride", icon: "akar-icons:schedule" },
       { id: "footer-join-our-team", name: "Join Our Team", slug: "/company/employment", icon: "fluent:people-team-add-20-filled" },
       { id: "footer-contact-us", name: "Contact Us", slug: "/company/contact-us", icon: "material-symbols:stacked-email"},
-      { id: "footer-support-center", name: "Support Center", slug: "/resources/support-center", icon: "material-symbols:contact-support-rounded" },
       { id: "footer-assisted-living", name: "Assisted Living Information", slug: "/assisted-living", icon: "material-symbols:family-home" },
       { id: "footer-locations", name: "View Locations", slug: "/company/location", icon: "material-symbols:location-on" },
       { id: "footer-medical-supplies", name: "Shop Medical Supplies", url: "https://www.goldengatemedicalsupply.com", icon: "material-symbols:medical-information"},

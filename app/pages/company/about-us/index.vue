@@ -242,7 +242,7 @@ useSeoMeta({
 
 
 defineOptions({
-  name: 'HomePage'
+  name: 'AboutUSPage'
 })
 </script>
 

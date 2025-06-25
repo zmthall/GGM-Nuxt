@@ -1,9 +1,3 @@
-<template>
-  <div>
-    Company
-  </div>
-</template>
-
 <script setup lang="ts">
 defineOptions({
   name: "CompanyPage"

@@ -8,7 +8,8 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'inline-block button-style', size]" :to="to ?? '#'">
+            { 'inline-block button-style': variant !== 'blank'}
+            , size]" :to="to ?? '#'">
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
             </div>
@@ -23,7 +24,8 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'inline-block button-style', size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
+            { 'inline-block button-style': variant !== 'blank'}
+            , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
@@ -39,7 +41,8 @@
             { 'secondary-style-group': (isSecondary && hoverGroup) },
             { 'cta-style group/cta': (isCTA && !hoverGroup) },
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            'button-style', size,
+            { 'button-style': variant !== 'blank'}
+            , size,
             ]" :type="type ?? 'button'" @click="emit('click')"
         >
             <div 
@@ -61,7 +64,7 @@ const emit = defineEmits<{
 
 const props = withDefaults(defineProps<{
     type?: "button" | "submit" | "reset"; // Used for buttons to distinguish type of button for accessibility
-    variant?: 'primary' | 'cta' | 'secondary'; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
+    variant?: 'primary' | 'cta' | 'secondary' | 'blank'; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
     size?: string;
     styling?: string;
     href?: string;
