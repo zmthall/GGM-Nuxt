@@ -21,11 +21,13 @@
   withDefaults(defineProps<{
     title: string
     description?: string
-    buttonLabel: string
-    to: string;
+    buttonLabel?: string
+    to?: string;
     hasButton?: boolean
   }>(), {
     description: undefined,
-    hasButton: true
+    hasButton: true,
+    to: undefined,
+    buttonLabel: undefined
   })
   </script>  
