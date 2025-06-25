@@ -135,7 +135,7 @@
         </h2>
         <div class="flex flex-col gap-4 space-y-4 lg:flex-row lg:gap-12">
           <NuxtImg 
-            src="/images/pages/about-us/gas-station-about-us1.jpg"
+            src="/images/pages/about-us/gas-station-about-us3.jpg"
             format="webp"
             quality="60"
             sizes="400px sm:650px md:600px"

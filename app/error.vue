@@ -1,13 +1,17 @@
 <!-- layouts/error.vue -->
 <template>
-  <div class="min-h-screen flex flex-col justify-center items-center text-center p-8 bg-brand-background text-brand-primary">
-    <h1 class="text-4xl font-bold mb-4">Oops!</h1>
-    <p class="text-xl mb-2">An error occurred:</p>
-    <p class="text-red-500 font-mono mb-6">{{ error.statusCode }} – {{ error.message }}</p>
-
-    <NuxtLink to="/" class="text-brand-secondary underline hover:text-brand-primary">
-      Go back home
-    </NuxtLink>
+  <div class="min-h-screen flex flex-col justify-center items-center p-8 bg-brand-background">
+    <div class="flex items-center text-[200px] text-brand-primary">
+      <span>4</span>
+      <BaseIcon name="game-icons:flat-tire" size="size-40"/>
+      <span>4</span>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h1 class="text-4xl font-extrabold text-brand-primary">Page not found</h1>
+      <p class="text-2xl text-brand-main-text">
+        Uh oh, we seem to have ran into a problem trying to locate the page you're looking for. Try going to the <button class="link" @click="goBack">previous page</button> or <NuxtLink to="/" class="link">go back home</NuxtLink>.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -16,12 +20,12 @@ defineOptions({
   name: "ErrorPages"
 })
 
-defineProps<{
-  error: {
-    statusCode: number
-    statusMessage?: string
-    message: string
-    stack?: string
+const goBack = () => {
+  if (window.history.length > 1) {
+    window.history.back()
+  } else {
+    // fallback if no history (e.g. direct 404 visit)
+    navigateTo('/')
   }
-}>()
+}
 </script>
