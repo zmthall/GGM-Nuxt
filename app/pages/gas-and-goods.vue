@@ -39,7 +39,7 @@
     <BaseLayoutPageCTA title="What We Offer" :has-button="false">
       <div class="flex gap-8 justify-center flex-wrap my-8">
         <BaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-          <h3 class="text-brand-primary text-xl font-bold">Quality Fuel Options Available</h3>
+          <h3 class="text-brand-primary text-xl font-bold">Fuel Options Available</h3>
           <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
             <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Regular Unleaded</li>
             <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Premium Unleaded</li>
