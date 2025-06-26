@@ -51,7 +51,7 @@
                   </p>
                 </div>
               </div>
-              <div class="w-full md:w-3/4 mx-auto lg:w-1/2">
+              <div class="w-full md:w-3/4 mx-auto lg:w-1/2 rounded-lg overflow-hidden shadow-primary p-4 bg-brand-background">
                 <BaseInteractiveServiceAreaMap />
               </div>
             </div>
