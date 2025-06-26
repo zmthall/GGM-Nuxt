@@ -26,7 +26,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                     <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
                         <div>
-                            <img src="" alt="Golden Gate Manor operations in action" class="rounded-xl shadow-md w-full h-auto object-cover">
+                            <NuxtImg src="" alt="Golden Gate Manor operations in action" class="rounded-xl shadow-md w-full h-auto object-cover" />
                         </div>
     
                         <!-- Text Content -->

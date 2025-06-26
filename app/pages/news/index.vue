@@ -1,13 +1,7 @@
-<template>
-    <div>
-        News
-    </div>
-</template>
-
 <script setup lang='ts'>
 definePageMeta({
-  title: 'Golden Gate Manor News and Blogs',
-  breadcrumbLabel: 'News & Blogs'
+  redirect: '/news/community',
+  breadcrumb: false
 })
 
 const runtimeConfig = useRuntimeConfig()

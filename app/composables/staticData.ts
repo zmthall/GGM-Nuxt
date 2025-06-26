@@ -356,6 +356,7 @@ export const useStaticData = () => {
         phone: {
           dispatch: '719-543-2525',
           office: '719-544-3231',
+          tollFree: '844-543-2525'
         },
         fax: '719-544-4187',
         hours: '8:00AM-4:00PM Monday to Friday'
