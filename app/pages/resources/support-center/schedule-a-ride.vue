@@ -11,6 +11,12 @@
                 <p class="text-xl text-brand-main-text">
                   Our goal is to ensure all transportation services go smoothly by clearly outlining each step and addressing any specific questions you may have about the scheduling process.
                 </p>
+                <p class="text-xl text-brand-main-text">
+                  If you have any questions about the process and would like to contact use directly feel free to reach out and we will get back to you as soon as possible.
+                </p>
+                <div class="flex justify-center">
+                  <BaseUiAction to="/company/contact-us" class="py-4 px-8">Reach Out</BaseUiAction>
+                </div>
               </div>
               <div class="lg:w-1/2">
                 <NuxtImg src="/images/pages/how-to-schedule-a-ride/calendar.jpg" quality="60" format="webp" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
@@ -25,7 +31,7 @@
                 <h2 class="text-2xl font-bold text-brand-primary">Before You Start: Are You Ready to Schedule?</h2>
                 <p class="text-xl text-brand-main-text">
                   <span class="font-bold">First-time riders: </span>
-                  Visit our Getting Ready for Your First Ride guide first to ensure you have all required documentation and understand the eligibility requirements.
+                  Visit our <NuxtLink to="/resources/support-center/prepare-for-first-ride" class="link">Getting Ready for Your First Ride</NuxtLink> guide first to ensure you have all required documentation and understand the eligibility requirements.
                 </p>
                 <p class="text-xl text-brand-main-text">
                   <span class="font-bold">Returning riders: </span>
