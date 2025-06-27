@@ -12,7 +12,7 @@
                   Our goal is to ensure all transportation services go smoothly by clearly outlining each step and addressing any specific questions you may have about the scheduling process.
                 </p>
                 <p class="text-xl text-brand-main-text">
-                  If you have any questions about the process and would like to contact use directly feel free to reach out and we will get back to you as soon as possible.
+                  If you have any questions about the process and would like to contact us directly feel free to reach out and we will get back to you as soon as possible.
                 </p>
                 <div class="flex justify-center">
                   <BaseUiAction to="/company/contact-us" class="py-4 px-8">Reach Out</BaseUiAction>
