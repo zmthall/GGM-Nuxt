@@ -37,16 +37,15 @@
                     <li class="flex gap-2"><BaseIcon name="material-symbols:bookmark-check-rounded" class="shrink-0"/>Have current Health First Colorado (Medicaid) insurance</li>
                     <li class="flex gap-2"><BaseIcon name="material-symbols:bookmark-check-rounded" class="shrink-0" />Live in our service area (see map)</li>
                     <li class="flex gap-2"><BaseIcon name="material-symbols:bookmark-check-rounded" class="shrink-0" />Be going to a Medicaid-approved appointment</li>
-                    <li class="flex gap-2"><BaseIcon name="material-symbols:bookmark-check-rounded" class="shrink-0" />Not have access to other transportation options</li>
                     <li class="flex gap-2"><BaseIcon name="material-symbols:bookmark-check-rounded" class="shrink-0" />Have a completed Medical Certificate of Transportation Services (for medical necessity)</li>
                   </ul>
                 </div>
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">Our Service Area</h2>
-                  <p class="text-xl text-brand-main-text font-bold">
+                  <p class="text-xl text-brand-main-text">
                     We proudly serve most of Colorado, excluding the Denver metro counties of Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe due to contractual agreements. We also are not available most of Northern Colorado due to distance restrictions.
                   </p>
-                  <p class="text-xl text-brand-main-text font-bold">
+                  <p class="text-xl text-brand-main-text">
                     Need help determining eligibility? Call us at <a :href="`tel:${company?.trans.phone.office}`">{{ company?.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
                   </p>
                 </div>
