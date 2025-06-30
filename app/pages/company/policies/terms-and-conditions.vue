@@ -159,6 +159,6 @@ defineOptions({
 
 <style scoped>
 .marker-black li::marker {
-  color: black !important;
+  color: black;
 }
 </style>
