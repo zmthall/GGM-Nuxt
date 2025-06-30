@@ -32,7 +32,8 @@ export default defineNuxtConfig({
         },
       },
       googleMapsKey: process.env.GMAPS_KEY,
-      siteUrl: process.env.SITE_URL || 'http://localhost'
+      siteUrl: process.env.SITE_URL || 'http://localhost',
+      recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
     }
   },
   typescript: {
