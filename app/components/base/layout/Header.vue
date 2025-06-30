@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center">
             <NuxtLink to="/">
                 <NuxtImg 
-                    src="/images/layout/logo-new.png" sizes="md:300px lg:450px 2xl:500px"
+                    src="/images/layout/logo.png" sizes="md:300px lg:450px 2xl:500px"
                     alt="Golden Gate Manor Inc. Logo" format="webp" quality="60" />
             </NuxtLink>
         </div>
