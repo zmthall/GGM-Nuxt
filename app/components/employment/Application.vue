@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="submitApplication">
     <div class="sm:mx-4 sm:mt-4 sm:my-8 px-2 py-8 bg-white sm:rounded-lg lg:shadow-primary lg:w-[75%] lg:mx-auto lg:p-8 xl:w-[60%] space-y-8">
       <BaseLayoutPageSection bg="transparent">
         <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary/20 mb-4">Personal Information</h2>
@@ -91,6 +91,9 @@
 </template>
 
 <script lang="ts" setup>
+import { useRecaptcha } from '../../composables/messages/recaptcha';
+
+const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
 const route = useRoute()
 
 const notAllowedToAskFelony = ['gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']
@@ -131,6 +134,15 @@ const application = reactive({
   }
 })
 
+onMounted(() => {
+  loadRecaptcha()
+})
+
+// Clean up ReCAPTCHA when component unmounts
+onUnmounted(() => {
+  unloadRecaptcha()
+})
+
 const showFelonyQuestion = computed(() => {
   return !notAllowedToAskFelony.includes(application.personal.select as string)
 })
@@ -138,6 +150,234 @@ const showFelonyQuestion = computed(() => {
 const showDrivingSection = computed(() => {
   return drivingPositions.includes(application.personal.select as string)
 })
+
+const isSubmitting = ref(false)
+const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
+
+const validateApplicationForm = () => {
+  const position = application.personal.select as string;
+  const isDrivingPosition = drivingPositions.includes(position)
+  const canAskFelony = !notAllowedToAskFelony.includes(position)
+
+  // Always required fields
+  if (!application.personal.firstName || 
+      !application.personal.lastName || 
+      !application.personal.address || 
+      !application.personal.phoneNumber ||
+      !application.personal.over18 ||
+      !application.personal.citizen ||
+      !application.work.learnedAboutUs ||
+      !application.work.employmentType ||
+      !application.work.availability ||
+      !application.work.dateAvailableToStart) {
+    return {
+      success: false,
+      message: 'Please fill in all required personal and work information fields'
+    }
+  }
+
+  // Position selection validation
+  if (!position) {
+    return {
+      success: false,
+      message: 'Please select a position to apply for'
+    }
+  }
+
+  // Age validation
+  if (application.personal.over18 !== 'yes') {
+    return {
+      success: false,
+      message: 'You must be over 18 to apply'
+    }
+  }
+
+  // Citizenship validation
+  if (application.personal.citizen !== 'yes') {
+    return {
+      success: false,
+      message: 'You must be a US citizen or authorized to work in the US'
+    }
+  }
+
+  // Felony validation (only for positions where we can ask)
+  if (canAskFelony && !application.personal.felony) {
+    return {
+      success: false,
+      message: 'Please answer the felony conviction question'
+    }
+  }
+
+  // Driving position specific validations
+  if (isDrivingPosition) {
+    // Required driving fields
+    if (!application.driving.hasEndorsements ||
+        !application.driving.hasAccidents ||
+        !application.driving.hasTrafficConvictions ||
+        !application.driving.hasMVR) {
+      return {
+        success: false,
+        message: 'Please complete all driving-related questions for this position'
+      }
+    }
+
+    // Driver's license file requirement
+    if (!application.driving.driversLicense || application.driving.driversLicense.length === 0) {
+      return {
+        success: false,
+        message: 'Driver\'s license copy is required for driving positions'
+      }
+    }
+
+    // MVR requirement
+    if (application.driving.hasMVR === 'yes' && 
+        (!application.driving.MVR || application.driving.MVR.length === 0)) {
+      return {
+        success: false,
+        message: 'Please upload your MVR document'
+      }
+    }
+
+    // Endorsements details
+    if (application.driving.hasEndorsements === 'yes' && !application.driving.endorsements.trim()) {
+      return {
+        success: false,
+        message: 'Please provide details about your endorsements'
+      }
+    }
+
+    // Accidents details
+    if (application.driving.hasAccidents === 'yes' && !application.driving.accidents.trim()) {
+      return {
+        success: false,
+        message: 'Please provide details about your accidents'
+      }
+    }
+
+    // Traffic convictions details
+    if (application.driving.hasTrafficConvictions === 'yes' && !application.driving.trafficConvictions.trim()) {
+      return {
+        success: false,
+        message: 'Please provide details about your traffic convictions'
+      }
+    }
+  }
+
+  // "Other" explanation validation
+  if (application.work.learnedAboutUs === 'other' && !application.work.otherExplain.trim()) {
+    return {
+      success: false,
+      message: 'Please explain how you learned about us'
+    }
+  }
+
+  // Date validation
+  const startDate = new Date(application.work.dateAvailableToStart)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0) // Reset time to compare just dates
+  
+  if (startDate < today) {
+    return {
+      success: false,
+      message: 'Available start date cannot be in the past'
+    }
+  }
+
+  // All validations passed
+  return {
+    success: true,
+    message: 'Application is valid'
+  }
+}
+
+const submitApplication = async () => {
+  try {
+    isSubmitting.value = true
+    submitResult.value = null
+    
+    // Validate required fields
+    const validation = validateApplicationForm()
+    if(!validation.success) {
+      submitResult.value = {
+        success: false,
+        message: validation.message
+      }
+      return
+    }
+  
+    const token = await executeRecaptcha('application_form')
+    
+    const verification = await verifyWithServer(token)
+    
+    if (verification.success && verification.data?.valid) {
+      // TODO: Submit actual form data to your contact endpoint
+      // const contactResponse = await $fetch('/api/contact', {
+      //   method: 'POST',
+      //   body: form
+      // })
+      
+      submitResult.value = {
+        success: true,
+        message: 'Application submitted successfully!',
+        score: verification.data.score
+      }
+      
+      // Reset form
+      Object.assign(application, {
+        personal: {
+          select: route.query.select || '',
+          firstName: '',
+          lastName: '',
+          address: '',
+          phoneNumber: '',
+          over18: 'no',
+          citizen: 'no',
+          felony: 'no',
+        },
+        driving: {
+          hasEndorsements: 'no',
+          endorsements: '',
+          hasAccidents: 'no',
+          accidents: '',
+          hasTrafficConvictions: 'no',
+          trafficConvictions: '',
+          hasMVR: 'no',
+          MVR: [],
+          driversLicense: []
+        },
+        work: {
+          learnedAboutUs: '',
+          otherExplain: '',
+          hasWorkedAtGoldenGate: 'no',
+          employmentType: 'full-time',
+          availability: '',
+          willingToWorkOvertime: 'no',
+          preferablePayRate: '',
+          dateAvailableToStart: '',
+          resume: []
+        }
+      })
+
+      setTimeout(() => {
+        submitResult.value = null;
+      }, 5000);
+    } else {
+      submitResult.value = {
+        success: false,
+        message: verification.message || 'ReCAPTCHA verification failed'
+      }
+    }
+    
+  } catch (error) {
+    console.error('Form submission error:', error)
+    submitResult.value = {
+      success: false,
+      message: (error as Error).message || 'An error occurred while submitting the form'
+    }
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <style>

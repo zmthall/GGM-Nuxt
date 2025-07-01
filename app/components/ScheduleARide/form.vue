@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="submitRequest">
     <div class="sm:mx-4 mt-4 sm:my-8 px-2 py-8 bg-white sm:rounded-lg lg:shadow-primary lg:w-[75%] lg:mx-auto lg:p-8 xl:w-[60%] space-y-8">
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
         <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Passenger Information</h2>
@@ -42,7 +42,10 @@
 </template>
 
 <script lang="ts" setup>
-const form = ref({
+import { useRecaptcha } from '../../composables/messages/recaptcha';
+const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
+
+const form = reactive({
   name: '',
   dob: undefined,
   phone: '',
@@ -54,6 +57,85 @@ const form = ref({
   notes: '',
   acknowledge: false
 })
+
+onMounted(() => {
+  loadRecaptcha()
+})
+
+// Clean up ReCAPTCHA when component unmounts
+onUnmounted(() => {
+  unloadRecaptcha()
+})
+
+const isSubmitting = ref(false)
+const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
+
+
+const submitRequest = async () => {
+  try {
+    isSubmitting.value = true
+    submitResult.value = null
+    
+    // Validate required fields
+    if (!form.name || !form.dob || !form.phone || !form.med_id || !form.apt_date || !form.apt_time || !form.pickup_address || !form.dropoff_address || !form.acknowledge) {
+      submitResult.value = {
+        success: false,
+        message: 'Please fill in all required fields'
+      }
+      return
+    }
+  
+    const token = await executeRecaptcha('schedule_form')
+    
+    const verification = await verifyWithServer(token)
+    
+    if (verification.success && verification.data?.valid) {
+      // TODO: Submit actual form data to your contact endpoint
+      // const contactResponse = await $fetch('/api/contact', {
+      //   method: 'POST',
+      //   body: form
+      // })
+      
+      submitResult.value = {
+        success: true,
+        message: 'Request submitted successfully!',
+        score: verification.data.score
+      }
+      
+      // Reset form
+      Object.assign(form, {
+        name: '',
+        dob: undefined,
+        phone: '',
+        med_id: '',
+        apt_date: '',
+        apt_time: '',
+        pickup_address: '',
+        dropoff_address: '',
+        notes: '',
+        acknowledge: false
+      })
+
+      setTimeout(() => {
+        submitResult.value = null;
+      }, 5000);
+    } else {
+      submitResult.value = {
+        success: false,
+        message: verification.message || 'ReCAPTCHA verification failed'
+      }
+    }
+    
+  } catch (error) {
+    console.error('Form submission error:', error)
+    submitResult.value = {
+      success: false,
+      message: (error as Error).message || 'An error occurred while submitting the form'
+    }
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <style>
