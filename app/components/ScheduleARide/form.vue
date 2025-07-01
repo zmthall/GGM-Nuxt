@@ -6,6 +6,7 @@
         <BaseFormInput v-model="form.name" autocomplete="name" name="Name" label="Name" placeholder="First and Last" />
         <BaseFormDatePicker id="dob" v-model="form.dob" autocomplete="bday" label="Date of Birth" placeholder="Select your birthdate" start-date="January 1, 2000"/>
         <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" label="Phone Number" name="phone" placeholder="(555) 555-5555" />
+        <BaseFormInput v-model="form.email" type="email" autocomplete="email" label="Email" name="email" placeholder="email@email.com" />
         <BaseFormInput v-model="form.med_id" type="text" autocomplete="off" name="medicaid" label="Medicaid ID" placeholder="Enter your Medicaid ID" />
       </BaseLayoutPageSection>
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
@@ -29,16 +30,21 @@
         <BaseFormCheckbox v-model="form.acknowledge" name="attestation"><p>I certify the information provided is accurate to the best of my knowledge and that I have read Golden Gate Manor's <NuxtLink to="/company/policies/ride-cancellation" rel="noopener" target="_blank" class="link" @click.stop>Ride Cancellation Policy</NuxtLink>.</p></BaseFormCheckbox>
         <BaseUiAction type="submit" class="py-4 px-8 block !mt-8">Submit Request</BaseUiAction>
       </BaseLayoutPageSection>
+      <div 
+        v-if="submitResult" class="mt-4 p-3 rounded-md" 
+        :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+        <div v-if="submitResult.success && submitResult.score" class="text-sm">
+          Message sent successfully!
+        </div>
+        <div v-else>
+          Message failed to send. Please try again.
+        </div>
+      </div>
+      <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
+        Submitting message, please wait...
+      </div>
     </div>
   </form>
-  <!-- First and Last
-  Pickup Address
-  Pickup address
-  Drop-Off Address
-  Drop-Off address
-  Notes/Messages/Special Requirements
-  If you need anything specific, such as a wheelchair accessible van, request it here.
-  Agree to Terms -->
 </template>
 
 <script lang="ts" setup>
@@ -49,6 +55,7 @@ const form = reactive({
   name: '',
   dob: undefined,
   phone: '',
+  email: '',
   med_id: '',
   apt_date: '',
   apt_time: '',
@@ -70,14 +77,13 @@ onUnmounted(() => {
 const isSubmitting = ref(false)
 const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
 
-
 const submitRequest = async () => {
   try {
     isSubmitting.value = true
     submitResult.value = null
     
     // Validate required fields
-    if (!form.name || !form.dob || !form.phone || !form.med_id || !form.apt_date || !form.apt_time || !form.pickup_address || !form.dropoff_address || !form.acknowledge) {
+    if (!form.name || !form.dob || !form.phone || !form.email || !form.med_id || !form.apt_date || !form.apt_time || !form.pickup_address || !form.dropoff_address || !form.acknowledge) {
       submitResult.value = {
         success: false,
         message: 'Please fill in all required fields'
@@ -90,11 +96,20 @@ const submitRequest = async () => {
     const verification = await verifyWithServer(token)
     
     if (verification.success && verification.data?.valid) {
-      // TODO: Submit actual form data to your contact endpoint
-      // const contactResponse = await $fetch('/api/contact', {
-      //   method: 'POST',
-      //   body: form
-      // })
+      console.log(JSON.stringify(form))
+      await $fetch('/api/email/ride-request', {
+        baseURL: 'https://api.goldengatemanor.com',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...form,
+          dob: new Date(form.dob).toISOString().split('T')[0],
+          apt_date: new Date(form.apt_date).toISOString().split('T')[0],
+          apt_time: new Date(`${form.apt_date} ${form.apt_time}`).toISOString()
+        })
+      })
       
       submitResult.value = {
         success: true,
@@ -107,6 +122,7 @@ const submitRequest = async () => {
         name: '',
         dob: undefined,
         phone: '',
+        email: '',
         med_id: '',
         apt_date: '',
         apt_time: '',
