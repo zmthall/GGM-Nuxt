@@ -27,11 +27,11 @@ if(staticData) {
         type: 'application/ld+json',
         innerHTML: JSON.stringify(staticData.orgSchema)
       },
-      {
-        src: 'https://app.aminos.ai/js/chat_plugin.js',
-        'data-bot-id': '27311',
-      },
-    ],
+      ...(import.meta.client ? [{
+          src: 'https://app.aminos.ai/js/chat_plugin.js',
+          'data-bot-id': '27311',
+        }] : []),
+      ],
     link: [
     {
       rel: 'preload',
