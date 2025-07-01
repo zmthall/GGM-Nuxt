@@ -141,3 +141,6 @@ div#chat_app .sc-new-messsages-count {
     width: calc(100vw - 50px);
   }
 }
+
+/* ReCaptcha Styling */
+.grecaptcha-badge { visibility: hidden !important; }

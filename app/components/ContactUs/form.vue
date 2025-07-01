@@ -27,20 +27,27 @@
         <BaseFormTextArea v-model="form.message" name="message" label="Comment/Inquiry/Message*"/>
 
         <BaseUiAction type="submit" class="w-full p-2">Send Message</BaseUiAction>
-        <!-- Add feedback -->
-      <div 
-        v-if="submitResult" class="mt-4 p-3 rounded-md" 
-        :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-        <div v-if="submitResult.success && submitResult.score" class="text-sm">
-          Message sent successfully!
+        <!-- Recaptcha Privacy Notice -->
+        <div class="text-xs text-gray-500">
+          This site is protected by reCAPTCHA and the Google 
+          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 
+          <a href="https://policies.google.com/terms" class="link">Terms of Service</a> apply.
         </div>
-        <div v-else>
-          Message failed to send. Please try again.
+
+          <!-- Add feedback -->
+        <div 
+          v-if="submitResult" class="mt-4 p-3 rounded-md" 
+          :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+          <div v-if="submitResult.success && submitResult.score" class="text-sm">
+            Message sent successfully!
+          </div>
+          <div v-else>
+            Message failed to send. Please try again.
+          </div>
         </div>
-      </div>
-      <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
-        Submitting message, please wait...
-      </div>
+        <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
+          Submitting message, please wait...
+        </div>
       </BaseLayoutPageSection>
     </div>
   </form>
