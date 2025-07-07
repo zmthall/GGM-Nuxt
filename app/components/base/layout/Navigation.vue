@@ -1,7 +1,7 @@
 <template>
     <div class="sticky top-0 z-15">
         <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
-            <ul class="grid grid-cols-8 h-[35px]">
+            <ul :class="['grid h-[35px]', gridColumns]">
                 <li 
                     v-for="navLink in staticData.navLinks" :key="navLink.id" class="relative"
                     @mouseenter="toggleSublinks(navLink.name)" @mouseleave="toggleSublinks(null)"
@@ -100,9 +100,27 @@ defineOptions({
     name: "BaseLayoutNavigation"
 })
 
+
 const staticData = useStaticData();
 const mobileNavDrawerOpen = ref<boolean>(false)
 const activeSublink = ref<string | null>(null)
+
+console.log(staticData?.navLinks.length)
+
+const gridColumns = computed(() => {
+    const colMap: Record<number, string> = {
+        1: 'grid-cols-1',
+        2: 'grid-cols-2', 
+        3: 'grid-cols-3',
+        4: 'grid-cols-4',
+        5: 'grid-cols-5',
+        6: 'grid-cols-6',
+        7: 'grid-cols-7',
+        8: 'grid-cols-8',
+        9: 'grid-cols-9'
+    }
+    return colMap[staticData?.navLinks.length || 1] || 'grid-cols-1'
+})
 
 const toggleDrawer = () => {
     mobileNavDrawerOpen.value = !mobileNavDrawerOpen.value

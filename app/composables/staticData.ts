@@ -27,6 +27,11 @@ export const useStaticData = () => {
         slug: "/medical-supplies",
       },
       {
+        id: 'gas-and-goods',
+        name: 'Gas',
+        slug: '/gas-and-goods'
+      },
+      {
         // id: "news",
         // name: "News",
         // slug: "/news",

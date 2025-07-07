@@ -56,11 +56,11 @@
         </div>
       </BaseLayoutPageContainer>
       <div class="hidden xl:flex xl:justify-center xl:gap-12 xl:mt-8">
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
-        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
+        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
+        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
+        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
       </div>
     </BaseLayoutPageSection>
 
@@ -165,8 +165,6 @@
             </p>
           </div>
         </div>
-        <BaseUiAction to="/gas-and-goods" class="py-4 px-8 !mt-16 mx-auto self-center"><span>+ </span>Learn
-          More</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
