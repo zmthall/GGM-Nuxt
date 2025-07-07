@@ -7,11 +7,11 @@ export default defineNuxtConfig({
   },
   css: ["./assets/css/main.css", "flatpickr/dist/flatpickr.min.css"],
   modules: [
-    '@nuxt/content',
+    // '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/scripts',
+    // '@nuxt/scripts',
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     '@nuxtjs/tailwindcss',
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         },
       },
       googleMapsKey: process.env.GMAPS_KEY,
-      siteUrl: process.env.SITE_URL || 'http://localhost',
+      siteUrl: process.env.SITE_URL,
       recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
     }
   },
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
   },
   image: {
     provider: 'ipx',
-    format: ['avif', 'webp'], // Fallback chain
+    format: ['webp'], // Fallback chain
     ipx: {
       maxAge: 60 * 60 * 24 * 30, // 30 days
     }

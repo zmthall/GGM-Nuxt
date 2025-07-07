@@ -10,7 +10,7 @@
               name="position"
               label="Position"
               :labels="['Transportation - General', 'Transportation Dispatcher', 'Taxi Driver', 'Administrative Assistant', 'Customer Service Representative', 'NEMT Driver', 'Assisted Living - General', 'QMAP', 'PCP', 'Medical Supply - General', 'DME Specialist', 'Delivery Technician', 'Inventory Technician', 'Gas Station - General', 'Gas Station Manager', 'Gas Station Assistant Manager', 'Gas Station Attendant', 'General Application']"
-              :values="['transportation_general', 'city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant', 'ggmt-csr', 'ggmt-driver', 'al_general', 'assisted_living-qmap', 'assisted_living-pcp', 'ms_general', 'ggms-dme_specialist', 'ggms-deliver_tech', 'ggms-inventory_tech', 'gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']"
+              :values="['transportation_general', 'city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant', 'ggmt-csr', 'ggmt-driver', 'al_general', 'acf-qmap', 'acf-pcp', 'ms_general', 'medical_supply-dme_specialist', 'medical_supply-deliver_tech', 'medical_supply-inventory_tech', 'gs_general', 'gas_station-manager', 'gas_station-assistant_manager', 'gas_station-attendant', 'general']"
             />
           </div>
           <div class="flex flex-col md:flex-row gap-4">
@@ -35,15 +35,15 @@
         <div class="space-y-4">
           <div class="md:w-1/2 space-y-2">
             <BaseFormRadios v-model="application.driving.hasEndorsements" name="has-endorsements" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Do you have any additional driving endorsements?" styling="flex gap-2" />
-            <BaseFormTextArea v-if="application.driving.hasEndorsements === 'yes'" name="endorsements" label="Please list any additional driving endorsements:" />
+            <BaseFormTextArea v-if="application.driving.hasEndorsements === 'yes'" v-model="application.driving.endorsements" name="endorsements" label="Please list any additional driving endorsements:" />
           </div>
           <div class="md:w-1/2 space-y-2">
             <BaseFormRadios v-model="application.driving.hasAccidents" name="has-accidents" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Have you had a traffic accident in the past 3 years?" styling="flex gap-2"/>
-            <BaseFormTextArea v-if="application.driving.hasAccidents === 'yes'" name="accidents" label="Please explain the traffic accident(s):" />
+            <BaseFormTextArea v-if="application.driving.hasAccidents === 'yes'" v-model="application.driving.accidents" name="accidents" label="Please explain the traffic accident(s):" />
           </div>
           <div class="md:w-1/2 space-y-2">
             <BaseFormRadios v-model="application.driving.hasTrafficConvictions" name="has-traffic-convications" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Have you had any traffic convictions in the past 3 years (besides parking violations)?" styling="flex gap-2"/>
-            <BaseFormTextArea v-if="application.driving.hasTrafficConvictions === 'yes'" name="traffic-convictions" label="Please explain the traffic conviction(s):" />
+            <BaseFormTextArea v-if="application.driving.hasTrafficConvictions === 'yes'" v-model="application.driving.trafficConvictions" name="traffic-convictions" label="Please explain the traffic conviction(s):" />
           </div>
           <div class="space-y-2">
             <BaseFormRadios v-model="application.driving.hasMVR" name="has-mvr" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Do you have a recent Motor Vehicle Record (MVR) from within the last 30 days?" styling="flex gap-2"/>
@@ -76,28 +76,49 @@
             <BaseFormInput v-model="application.work.preferablePayRate" name="pay_rate" type="number" label="What is your preferable pay rate? (Hourly)"/>
           </div>
           <div class="md:w-1/2">
-            <BaseFormDatePicker id="start-date" min-date label="What date would you be available to start work?" name="start-date" placeholder="mm/dd/yyyy"/>
+            <BaseFormDatePicker id="start-date" v-model="application.work.dateAvailableToStart" min-date label="What date would you be available to start work?" name="start-date" placeholder="mm/dd/yyyy"/>
           </div>
           <div>
             <BaseFormFileUpload v-model="application.work.resume" name="resume" label="Attach Your Resume:"/>
           </div>
         </div>
       </BaseLayoutPageSection>
-      <div class="flex w-full justify-center">
+      <div>
         <BaseUiAction type="submit" class="p-2">Submit Application</BaseUiAction>
+        <div class="text-xs text-gray-500 mt-2">
+          This site is protected by reCAPTCHA and the Google 
+          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 
+          <a href="https://policies.google.com/terms" class="link">Terms of Service</a> apply.
+        </div>
       </div>
+
+      <div 
+        v-if="submitResult" class="mt-4 p-3 rounded-md" 
+        :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+        <div v-if="submitResult.success && submitResult.score" class="text-sm">
+          Message sent successfully!
+        </div>
+        <div v-else>
+          {{ submitResult.message }}
+        </div>
+      </div>
+      <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
+        Submitting message, please wait...
+      </div>
+
     </div>
   </form>
 </template>
 
 <script lang="ts" setup>
 import { useRecaptcha } from '../../composables/messages/recaptcha';
+import type { FileObject } from '../../models/Application.js';
 
 const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
 const route = useRoute()
 
 const notAllowedToAskFelony = ['gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']
-const drivingPositions = ['transportation_general', 'city_cab-driver', 'ggmt-driver', 'ggms-inventory_tech', 'ggms-deliver_tech']
+const drivingPositions = ['transportation_general', 'city_cab-driver', 'ggmt-driver', 'medical_supply-inventory_tech', 'medical_supply-deliver_tech']
 
 const application = reactive({
   personal: {
@@ -168,7 +189,6 @@ const validateApplicationForm = () => {
       !application.personal.citizen ||
       !application.work.learnedAboutUs ||
       !application.work.employmentType ||
-      !application.work.availability ||
       !application.work.dateAvailableToStart) {
     return {
       success: false,
@@ -310,11 +330,59 @@ const submitApplication = async () => {
     const verification = await verifyWithServer(token)
     
     if (verification.success && verification.data?.valid) {
-      // TODO: Submit actual form data to your contact endpoint
-      // const contactResponse = await $fetch('/api/contact', {
-      //   method: 'POST',
-      //   body: form
-      // })
+      console.log('Application data:', application)
+      
+      // Create FormData for file uploads
+      const formData = new FormData()
+      
+      // Add the application data as a JSON string
+      formData.append('applicationData', JSON.stringify({
+        personal: application.personal,
+        driving: {
+          ...application.driving,
+          MVR: [], // Remove file objects
+          driversLicense: [] // Remove file objects
+        },
+        work: {
+          ...application.work,
+          resume: [] // Remove file objects
+        }
+      }))
+      
+      // Add files individually
+      // MVR files
+      if (application.driving.MVR && application.driving.MVR.length > 0) {
+        application.driving.MVR.forEach((fileObj: FileObject) => {
+          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
+            formData.append('MVR', fileObj.file as File)
+          }
+        })
+      }
+      
+      // Driver's License files
+      if (application.driving.driversLicense && application.driving.driversLicense.length > 0) {
+        application.driving.driversLicense.forEach((fileObj: {id: string, file: File}) => {
+          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
+            formData.append('dl', fileObj.file as File)
+          }
+        })
+      }
+      
+      // Resume files
+      if (application.work.resume && application.work.resume.length > 0) {
+        application.work.resume.forEach((fileObj: {id: string, file: File}) => {
+          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
+            formData.append('resume', fileObj.file as File)
+          }
+        })
+      }
+      
+      // Submit with FormData (don't set Content-Type header - browser will set it automatically)
+      await $fetch('/api/application/submit', {
+        baseURL: 'https://api.goldengatemanor.com/',
+        method: 'POST',
+        body: formData // No headers needed for FormData
+      })
       
       submitResult.value = {
         success: true,
@@ -322,7 +390,7 @@ const submitApplication = async () => {
         score: verification.data.score
       }
       
-      // Reset form
+      // Reset form...
       Object.assign(application, {
         personal: {
           select: route.query.select || '',

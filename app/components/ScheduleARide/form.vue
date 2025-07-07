@@ -103,7 +103,6 @@ const submitRequest = async () => {
     const verification = await verifyWithServer(token)
     
     if (verification.success && verification.data?.valid) {
-      console.log(JSON.stringify(form))
       await $fetch('/api/email/ride-request', {
         baseURL: 'https://api.goldengatemanor.com',
         method: 'POST',

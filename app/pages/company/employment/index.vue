@@ -66,9 +66,9 @@
                   <BaseLayoutPageListItem title="Assisted Care Facility" has-left-border small-border small-text class="mt-4">
                     <ul>
                       <li>
-                        QMAP — <button type="button" class="link" data-select="assisted_living-qmap" @click="openModal">Job Description</button>
+                        QMAP — <button type="button" class="link" data-select="acf-qmap" @click="openModal">Job Description</button>
                       </li>
-                      <li>PCP — <button type="button" class="link" data-select="assisted_living-pcp" @click="openModal">Job Description</button></li>
+                      <li>PCP — <button type="button" class="link" data-select="acf-pcp" @click="openModal">Job Description</button></li>
                     </ul>
                   </BaseLayoutPageListItem>
                 </div>
@@ -93,11 +93,11 @@
                 <div>
                   <BaseLayoutPageListItem title="DME Store" has-left-border small-border small-text class="mt-4">
                     <ul>
-                      <li>DME Specialist — <button type="button" class="link" data-select="ggms-dme_specialist" @click="openModal">Job Description</button>
+                      <li>DME Specialist — <button type="button" class="link" data-select="medical_supply-dme_specialist" @click="openModal">Job Description</button>
                       </li>
-                      <li>Delivery Driver — <button type="button" class="link" data-select="ggms-deliver_tech" @click="openModal">Job Description</button>
+                      <li>Delivery Driver — <button type="button" class="link" data-select="medical_supply-deliver_tech" @click="openModal">Job Description</button>
                       </li>
-                      <li>Inventory Tech. — <button type="button" class="link" data-select="ggms-inventory_tech" @click="openModal">Job Description</button>
+                      <li>Inventory Tech. — <button type="button" class="link" data-select="medical_supply-inventory_tech" @click="openModal">Job Description</button>
                       </li>
                     </ul>
                   </BaseLayoutPageListItem>
@@ -123,9 +123,9 @@
                 <div>
                   <BaseLayoutPageListItem title="Convenience Store" has-left-border small-border small-text class="mt-4">
                     <ul>
-                      <li>Manager — <button type="button" class="link" data-select="ggmc-manager" @click="openModal">Job Description</button></li>
-                      <li>Assistant Manager — <button type="button" class="link" data-select="ggmc-assistant_manager" @click="openModal">Job Description</button></li>
-                      <li>Attendant — <button type="button" class="link" data-select="ggmc-attendant" @click="openModal">Job Description</button></li>
+                      <li>Manager — <button type="button" class="link" data-select="gas_station-manager" @click="openModal">Job Description</button></li>
+                      <li>Assistant Manager — <button type="button" class="link" data-select="gas_station-assistant_manager" @click="openModal">Job Description</button></li>
+                      <li>Attendant — <button type="button" class="link" data-select="gas_station-attendant" @click="openModal">Job Description</button></li>
                     </ul>
                   </BaseLayoutPageListItem>
                 </div>

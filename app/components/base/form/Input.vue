@@ -101,7 +101,7 @@ const restrictPhoneInput = (e: KeyboardEvent) => {
   }
 };
 
-const textValue = defineModel<string>();
+const textValue = defineModel<string | number>();
 </script>
 
 <style></style>
