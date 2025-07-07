@@ -25,7 +25,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
                     <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
-                        <div class="w-full h-96 max-sm:hidden">
+                        <div class="w-full h-96 max-sm:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
                             <BaseInteractiveAutoImageCarousel :images />
                         </div>
     

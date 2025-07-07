@@ -13,10 +13,10 @@
           format="webp"
           :width="400"
           :height="300"
-          quality="35"
+          quality="50"
           sizes="sm:300px md:400px lg:500px xl:600px"
           preload
-          class="w-full h-full object-cover object-top"
+          class="w-full h-full object-cover object-middle"
         />
       </li>
     </ul>
