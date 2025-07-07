@@ -12,7 +12,7 @@
           :alt="image.alt" 
           format="avif"
           quality="60"
-          placeholder 
+          preload
           class="w-full h-full object-cover object-top"
         />
       </li>
