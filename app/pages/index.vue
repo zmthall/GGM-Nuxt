@@ -22,11 +22,11 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
             <BaseLayoutPageSection margin="default">
-                <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4 2xl:w-1/2" :shadow="false">
-                    <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
+                    <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
-                        <div>
-                            <NuxtImg src="" alt="Golden Gate Manor operations in action" class="rounded-xl shadow-md w-full h-auto object-cover" />
+                        <div class="w-full h-96 max-sm:hidden">
+                            <BaseInteractiveAutoImageCarousel :images />
                         </div>
     
                         <!-- Text Content -->
@@ -196,8 +196,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                           <!-- Testimonial (supporting statement) -->
                           <aside class="bg-gray-400 p-4 text-black rounded-lg text-xl sm:text-white sm:h-max sm:px-12 sm:py-28 sm:my-auto sm:bg-brand-primary">
                               <blockquote class="space-y-4">
-                                  <span>"Golden Gate Manor helped my mom stay independent and cared for without feeling alone. It's not just a service — it's a lifeline."</span>
-                                  <footer>— Jessica M., Family Member</footer>
+                                  <span>"Wonderful people, wonderful service, always on time . Actually willing to stop and let me get a bite to eat or use the bathroom."</span>
+                                  <footer>— Felicity F.</footer>
                               </blockquote>
                           </aside>
                     </div>
@@ -247,6 +247,49 @@ useSeoMeta({
 defineOptions({
     name: 'HomePage'
 })
+
+const images = [
+    { 
+        id: '1',
+        src: '/images/home-images/transportation-services.jpeg',
+        alt: 'Golden Gate Manor Transportation and City Cab LLC cars next to eachother.'
+    },
+    { 
+        id: '2',
+        src: '/images/home-images/golden-gate-manor-1.jpeg',
+        alt: 'Golden Gate Manor 1, house image.'
+    },
+    { 
+        id: '3',
+        src: '/images/home-images/golden-gate-manor-2.jpeg',
+        alt: 'Golden Gate Manor 2, house image.'
+    },
+    { 
+        id: '4',
+        src: '/images/home-images/golden-horizon.jpeg',
+        alt: 'Golden Horizon, house image.'
+    },
+    { 
+        id: '5',
+        src: '/images/home-images/golden-valley.jpeg',
+        alt: 'Golden Valley, house image.'
+    },
+    { 
+        id: '6',
+        src: '/images/home-images/golden-view.jpeg',
+        alt: 'Golden View, house image.'
+    },
+    { 
+        id: '7',
+        src: '/images/home-images/medical-supply-store.jpeg',
+        alt: 'Golden Gate Medical Supply inside the store.'
+    },
+    { 
+        id: '8',
+        src: '/images/home-images/gas-station.jpg',
+        alt: 'Golden Gate Gas & Goods external picture of gas station.'
+    }
+]
 </script>
 
 <style scoped>
