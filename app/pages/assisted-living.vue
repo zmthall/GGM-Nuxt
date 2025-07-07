@@ -3,7 +3,7 @@
     <BaseLayoutPageSection margin="top">
       <!-- Top Page -->
       <BaseLayoutPageContainer class="">
-            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
+            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4 max-sm:hidden">
                 <span class="text-gray-500">
                     Golden Gate Manor
                 </span>

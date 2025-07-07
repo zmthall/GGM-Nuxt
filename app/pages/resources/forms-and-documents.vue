@@ -59,7 +59,7 @@
                 </ul>
               </div>
             </div>
-            <div v-if="activeNavId === 'ggms' || allActive">
+            <div v-if="activeNavId === 'ggms' || allActive" class="max-sm:mt-4">
               <h2 class="text-2xl font-bold text-brand-primary">Medical Supply Forms & Documents</h2>
               <ul class="space-y-4 mt-4">
                 <li>

@@ -2,7 +2,7 @@
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
         <div>
-          <h2 class="text-2xl font-bold text-brand-primary">Ride Cancellation & No-Show Policy</h2>
+          <h2 class="text-2xl font-bold text-brand-primary max-sm:hidden">Ride Cancellation & No-Show Policy</h2>
           <div class="mt-2">
             <p><span class="font-bold">Version:</span> v1.0</p>
             <p><span class="font-bold">Last Updated:</span> June 1, 2025</p>

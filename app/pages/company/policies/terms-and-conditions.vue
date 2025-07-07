@@ -2,7 +2,7 @@
   <BaseLayoutPageSection margin="top">
     <BaseLayoutPageContainer class="space-y-4">
       <div>
-        <h2 class="text-2xl font-bold text-brand-primary">Website Terms & Conditions</h2>
+        <h2 class="text-2xl font-bold text-brand-primary max-sm:hidden">Website Terms & Conditions</h2>
         <div class="mt-2">
           <p><span class="font-bold">Document Owner:</span> Golden Gate Manor Inc.</p>
           <p><span class="font-bold">Version:</span> v1.0</p>
