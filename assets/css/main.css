@@ -125,7 +125,7 @@ div#chat_app .sc-launcher.opened::before {
 }
 
 div#chat_app .sc-chat-window {
-  bottom: 110px;
+  bottom: 140px;
 }
 
 div#chat_app .sc-new-messsages-count {
