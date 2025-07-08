@@ -1,15 +1,16 @@
 <template>
   <div class="flex flex-col">
     <label v-if="label" :for="id" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
-    <input
-      :id="id"
-      ref="inputRef"
-      type="text"
-      :name="name"
-      :autocomplete
-      :placeholder="placeholder"
-      readonly
-      class='border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input'>
+      <input
+        :id="id"
+        ref="inputRef"
+        type="text"
+        :name="name"
+        :autocomplete
+        :placeholder="placeholder"
+        readonly
+        class='border-2 text-left sm:w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input'
+      >
   </div>
 </template> 
 
@@ -46,7 +47,7 @@ onMounted(() => {
         if (selectedDate) {
           modelValue.value = dateStr
         }
-      },
+      }
     })
 
     // sync initial value
@@ -60,3 +61,9 @@ watch(modelValue, (newVal) => {
   }
 })
 </script>
+
+<style>
+input::-webkit-date-and-time-value {
+    text-align: left;
+}
+</style>
