@@ -1,5 +1,5 @@
 <template>
-  <ul class="my-4 space-y-8">
+  <ul v-if="events.length !== 0" class="my-4 space-y-8">
     <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
@@ -34,6 +34,9 @@
       </div>
     </li>
   </ul>
+  <div v-else class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
+    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">New events are being planned! Check back soon or <nuxt-link to="/company/contact-us" class="link">contact us</nuxt-link> to stay updated.</p>
+  </div>
 </template>
 
 <script lang="ts" setup>

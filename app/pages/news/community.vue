@@ -72,7 +72,7 @@ defineOptions({
 const images = ref<FetchImages>([])
 const events = ref<EventsData>([])
 const imageLoading = ref<boolean>(true)
-const eventLoading = ref<boolean>(true)
+const eventLoading = ref<boolean>(false)
 
 const fetchImages = async (): Promise<void> => {
   try {
@@ -109,36 +109,6 @@ const fetchEvents = async (): Promise<void> => {
     eventLoading.value = false
   }
 }
-
-// const events = ref<EventsData>([
-//   {
-//     id: 'test',
-//     date: new Date('8/10/2025').toISOString(),
-//     title: 'Pueblo Senior Resource Fair',
-//     location: 'Pueblo Convention Center',
-//     address: '320 Central Main St., Pueblo CO, 81003',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
-//   },
-//   {
-//     id: 'test2',
-//     date: new Date('8/10/2025').toISOString(),
-//     title: 'Pueblo Senior Resource Fair',
-//     location: 'Pueblo Convention Center',
-//     address: '320 Central Main St., Pueblo CO, 81003',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
-//   },
-//   {
-//     id: 'test3',
-//     date: new Date('8/10/2025').toISOString(),
-//     title: 'Pueblo Senior Resource Fair',
-//     location: 'Pueblo Convention Center',
-//     address: '320 Central Main St., Pueblo CO, 81003',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod commodi nesciunt rem tempore accusantium cupiditate placeat laudantium harum dolores perferendis nisi praesentium adipisci velit eveniet voluptatibus modi, ut ab vel hic eligendi veritatis eum asperiores aspernatur! Praesentium ratione et vel odit architecto hic! Aspernatur earum corporis, perferendis nisi voluptatem voluptate mollitia! Voluptates ullam nemo quisquam corrupti nihil ab neque praesentium, in delectus nostrum, fugiat a laborum. Fugiat neque ipsam ratione explicabo saepe odio! Ex non id excepturi modi est, voluptate adipisci facere ullam sit deserunt magni odit quisquam similique cumque. Velit quidem placeat ab tempora autem odio iure? Ducimus.',
-//     link: 'https://seniorsbluebook.com/events/2025-pueblo-senior-resource-fair/1743696000'
-//   }
-// ])
 
 onMounted(() => {
   fetchImages()
