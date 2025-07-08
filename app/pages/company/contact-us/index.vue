@@ -4,7 +4,7 @@
         <BaseLayoutPageSection margin="pTop" class="md:grid md:grid-cols-2 md:max-w-[1200px] md:mx-auto md:gap-8">
         <!-- Left Page -->
             <div class="space-y-2">
-                <h2 class="font-extrabold text-2xl">GET IN TOUCH:</h2>
+                <h2 class="font-extrabold text-2xl max-sm:hidden">GET IN TOUCH:</h2>
                 <p class="text-xl ">
                     Send us a message to get in touch with one of our team members. 
                     We're here to address any inquiries, questions, or concerns you 

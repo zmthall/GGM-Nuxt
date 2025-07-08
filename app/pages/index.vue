@@ -3,20 +3,22 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
     <div>
         <!-- Page Hero Section -->
         <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg" centered>
-            <h1 class="flex flex-col relative items-center text-center mb-4 pb-4 bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0" >
-                <span class="text-3xl sm:text-4xl">
-                    Welcome to
-                </span>
-                <span class="text-6xl sm:text-7xl font-extrabold text-brand-secondary">
-                    Golden Gate Manor
-                </span>
-                <span class="text-2xl sm:text-3xl">
-                    PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
-                </span>
-            </h1>
-            <p class="text-xl text-center">
-                Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
-            </p>
+            <div class="w-full p-4">
+                <h1 class="flex flex-col relative items-center text-center mb-4 pb-4 bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0" >
+                    <span class="text-3xl sm:text-4xl">
+                        Welcome to
+                    </span>
+                    <span class="text-6xl sm:text-7xl font-extrabold text-brand-secondary">
+                        Golden Gate Manor
+                    </span>
+                    <span class="text-2xl sm:text-3xl">
+                        PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
+                    </span>
+                </h1>
+                <p class="text-xl text-center">
+                    Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
+                </p>
+            </div>
             <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
         </BaseLayoutPageHeroSection>
         <BaseLayoutPageWrapper>

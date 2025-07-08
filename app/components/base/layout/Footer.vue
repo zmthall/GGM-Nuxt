@@ -12,7 +12,7 @@
                 <p>To improve the quality of life, each and every day.</p>
                 <p>Follow Us:</p>
                 <div v-if="staticData" class="flex gap-2">
-                    <nav>
+                    <nav aria-label="social media handle navigation">
                         <ul class="flex gap-2">
                             <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
                                 <a :href="socialHandle.url" rel="noopener noreferrer nofollow" target="_blank">
@@ -233,7 +233,7 @@
                 <h2
                     class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
                     Quick Links</h2>
-                <nav v-if="staticData">
+                <nav v-if="staticData" aria-label="Footer Navigation/Business description">
                     <ul class="flex flex-col gap-4 font-semibold">
                         <li v-for="navLink in staticData.footerNavLinks" :key="navLink.id">
                             <NuxtLink 
@@ -295,10 +295,10 @@
             </nav>
         </div> -->
         <!-- Bottom Copyright Footer -->
-        <div v-if="staticData" class="md:flex md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
-            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-4 md:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
-            <nav class="flex justify-center">
-                <ul class="grid grid-cols-2 sm:flex text-left gap-2 w-max">
+        <div v-if="staticData" class="flex flex-col min-[875px]:flex-row md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
+            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-2 min-[875px]:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
+            <nav class="flex justify-center" aria-label="Footer Navigation">
+                <ul class="flex flex-wrap justify-center sm:flex text-left gap-2 w-max">
                     <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">
                         <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</NuxtLink>
                         <a v-else :href="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</a>

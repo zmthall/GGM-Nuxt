@@ -1,5 +1,5 @@
 <template>
-    <header class="max-sm:hidden flex items-center justify-between p-3 bg-brand-background-header h-header">
+    <header class="max-md:hidden flex items-center justify-between p-3 bg-brand-background-header h-header">
         <!-- Left Header -->
         <div class="flex justify-between items-center">
             <NuxtLink to="/">

@@ -1,6 +1,6 @@
 <template>
     <div class="sticky top-0 z-15">
-        <nav v-if="staticData" class="main-nav max-sm:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
+        <nav v-if="staticData" class="main-nav max-md:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
             <ul :class="['grid h-[35px]', gridColumns]">
                 <li 
                     v-for="navLink in staticData.navLinks" :key="navLink.id" class="relative"
@@ -26,7 +26,7 @@
             </ul>
         </nav>
         <header
-            class="sm:hidden sticky top-0 left-0 w-full bg-brand-background-header text-white flex items-center justify-between px-4 h-[50px] z-10">
+            class="md:hidden sticky top-0 left-0 w-full bg-brand-background-header text-white flex items-center justify-between px-4 h-[50px] z-10">
             <div class="flex justify-between items-center">
                 <NuxtLink to="/">
                     <NuxtImg 
@@ -41,7 +41,7 @@
         <Teleport to="body">
             <Transition name="mobile-nav">
                 <div 
-                    v-if="mobileNavDrawerOpen" class="fixed inset-0 bg-black/50 sm:hidden z-20"
+                    v-if="mobileNavDrawerOpen" class="fixed inset-0 bg-black/50 md:hidden z-20"
                     @click.self="toggleDrawer" />
             </Transition>
         </Teleport>
@@ -49,7 +49,7 @@
             <Transition name="mobile-nav">
                 <aside 
                     v-if="mobileNavDrawerOpen"
-                    class="fixed top-0 right-0 h-full w-[80%] max-w-sm flex flex-col items-center bg-white z-20 shadow-md px-4 py-8 sm:hidden">
+                    class="fixed top-0 right-0 h-full w-[80%] max-w-sm flex flex-col items-center bg-white z-20 shadow-md px-4 py-8 md:hidden">
                     <div class="mb-4 border-b-2 border-b-slate-50 pb-4 max-w-[250px] aspect-[5/4]">
                         <NuxtLink 
                             to="/" class="font-bold text-brand-primary text-xl w-full"
