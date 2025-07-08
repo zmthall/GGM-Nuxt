@@ -84,7 +84,7 @@ div#chat_app .sc-launcher {
   width: 70px;
   height: 70px;
   overflow: hidden;
-  bottom: 33px;
+  bottom: 60px;
   z-index: 1;
 }
 
@@ -117,7 +117,7 @@ div#chat_app .sc-header {
 }
 
 div#chat_app .talk-bubble-right {
-  bottom: 40px;
+  bottom: 65px;
 }
 
 div#chat_app .sc-launcher.opened::before {
@@ -131,7 +131,7 @@ div#chat_app .sc-chat-window {
 div#chat_app .sc-new-messsages-count {
   position: fixed;
   right: 25px;
-  bottom: 80px;
+  bottom: 105px;
   top: unset;
   left: unset;
 }
@@ -139,6 +139,22 @@ div#chat_app .sc-new-messsages-count {
 @media (max-width: 590px) {
   .sc-user-input--picker-wrapper div.sc-emoji-picker {
     width: calc(100vw - 50px);
+  }
+
+  div#chat_app .sc-launcher {
+    bottom: 150px;
+  }
+
+  div#chat_app .sc-new-messsages-count {
+    bottom: 200px;
+  }
+
+  div#chat_app .talk-bubble-right {
+    bottom: 155px;
+  }
+
+  div#chat_app .sc-chat-window {
+    bottom: 0px;
   }
 }
 
