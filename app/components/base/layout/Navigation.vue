@@ -105,8 +105,6 @@ const staticData = useStaticData();
 const mobileNavDrawerOpen = ref<boolean>(false)
 const activeSublink = ref<string | null>(null)
 
-console.log(staticData?.navLinks.length)
-
 const gridColumns = computed(() => {
     const colMap: Record<number, string> = {
         1: 'grid-cols-1',

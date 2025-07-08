@@ -330,7 +330,7 @@ const submitApplication = async () => {
     const verification = await verifyWithServer(token)
     
     if (verification.success && verification.data?.valid) {
-      console.log('Application data:', application)
+      ('Application data:', application)
       
       // Create FormData for file uploads
       const formData = new FormData()
