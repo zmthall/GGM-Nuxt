@@ -18,16 +18,16 @@ defineOptions({
 
 const staticData = useStaticData()
 
-useHead({
-  script: [
-    {
-      src: 'https://app.aminos.ai/js/chat_plugin.js',
-      'data-bot-id': '27311',
-    }
-  ]
-}, {
-  mode: 'client' // This ensures it only runs on client side
-})
+// useHead({
+//   script: [
+//     {
+//       src: 'https://app.aminos.ai/js/chat_plugin.js',
+//       'data-bot-id': '27311',
+//     }
+//   ]
+// }, {
+//   mode: 'client' // This ensures it only runs on client side
+// })
 
 if(staticData) {
   useHead({
@@ -38,6 +38,10 @@ if(staticData) {
         type: 'application/ld+json',
         innerHTML: JSON.stringify(staticData.orgSchema)
       },
+      {
+        src: 'https://app.aminos.ai/js/chat_plugin.js',
+        'data-bot-id': '27311',
+      }
       ],
     link: [
     {
