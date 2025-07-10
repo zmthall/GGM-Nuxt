@@ -20,6 +20,29 @@ defineOptions({
   name: "ErrorPages"
 })
 
+const runtimeConfig = useRuntimeConfig()
+
+useSeoMeta({
+  title: 'Golden Gate Gas & Goods',
+  ogTitle: 'Golden Gate Gas & Goods',
+  description: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
+  ogDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
+  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
+  twitterTitle: 'Golden Gate Gas & Goods',
+  twitterDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
+  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  meta: [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+    }
+  ]
+})
+
 const goBack = () => {
   if (window.history.length > 1) {
     window.history.back()

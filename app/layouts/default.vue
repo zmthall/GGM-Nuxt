@@ -18,17 +18,6 @@ defineOptions({
 
 const staticData = useStaticData()
 
-// useHead({
-//   script: [
-//     {
-//       src: 'https://app.aminos.ai/js/chat_plugin.js',
-//       'data-bot-id': '27311',
-//     }
-//   ]
-// }, {
-//   mode: 'client' // This ensures it only runs on client side
-// })
-
 if(staticData) {
   useHead({
     titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
@@ -36,12 +25,14 @@ if(staticData) {
       {
         key: 'ld-json-org',
         type: 'application/ld+json',
-        innerHTML: JSON.stringify(staticData.orgSchema)
+        innerHTML: JSON.stringify(staticData.orgSchema),
+        'data-schema': 'organization' // 
       },
       {
         src: 'https://app.aminos.ai/js/chat_plugin.js',
         'data-bot-id': '27311',
-      }
+        tagPriority: "high"
+      },
       ],
     link: [
     {

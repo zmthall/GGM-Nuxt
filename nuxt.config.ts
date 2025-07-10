@@ -42,6 +42,11 @@ export default defineNuxtConfig({
   },
   app: {
     buildAssetsDir: "assets",
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      }
+    }
   },
   sitemap: {
     sitemaps: {
@@ -66,11 +71,20 @@ export default defineNuxtConfig({
     blockNonSeoBots: true,
     disallow: ['/admin'],
   },
+  seo: {
+    meta: {
+      viewport: {
+        width: 'device-width',
+        initialScale: 1,
+        userScalable: 'yes'
+      }
+    }
+  },
   image: {
     provider: 'ipx',
     format: ['webp'], // Fallback chain
     ipx: {
       maxAge: 60 * 60 * 24 * 30, // 30 days
     }
-  }
+  },
 })

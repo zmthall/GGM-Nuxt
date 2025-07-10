@@ -1,7 +1,7 @@
 <template>
     <div :class="['items-center rounded-lg overflow-hidden h-full flex flex-col justify-between', { 'group': hoverGroup, 'shadow-primary': shadow, 'p-6': hasPadding}]">
         <div class="flex flex-col items-center">
-            <NuxtImg v-if="src" :src :class="[imgSize]" format="avif"/>
+            <!-- <NuxtImg v-if="src" :src :class="[imgSize]" format="avif"/> -->
             <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color="hoveringColor" custom-class="transition-colors duration-500 ease-in-out" class="block" />
             <slot />
         </div>

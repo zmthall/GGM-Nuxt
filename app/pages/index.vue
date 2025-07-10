@@ -27,7 +27,7 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
                 <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
                     <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
-                        <div class="w-full h-96 max-sm:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
+                        <div class="w-full h-[450px] max-sm:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
                             <BaseInteractiveAutoImageCarousel :images />
                         </div>
     
@@ -235,13 +235,13 @@ useHead({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-    title: 'Golden Gate Manor Inc. | Reliable Transportation & Assisted Living',
-    ogTitle: 'Golden Gate Manor Inc. | Reliable Transportation & Assisted Living',
-    description: 'Golden Gate Manor Inc. offers dependable Non-Emergency Medical Transportation (NEMT), assisted living services, and medical supplies throughout Southern Colorado.',
-    ogDescription: 'Golden Gate Manor Inc. offers dependable Non-Emergency Medical Transportation (NEMT), assisted living services, and medical supplies throughout Southern Colorado.',
+    title: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
+    ogTitle: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
+    description: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
+    ogDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
     ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-    twitterTitle: 'Golden Gate Manor Inc. | Reliable Transportation & Assisted Living',
-    twitterDescription: 'Golden Gate Manor Inc. offers dependable Non-Emergency Medical Transportation (NEMT), assisted living services, and medical supplies throughout Southern Colorado.',
+    twitterTitle: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
+    twitterDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })

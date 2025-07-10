@@ -89,7 +89,7 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Personal & Non-Medical Transportation',
+  title: 'Personal & Non-Medical Transportation in Pueblo Colorado',
   ogTitle: 'Personal & Non-Medical Transportation',
   description: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
   ogDescription: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
