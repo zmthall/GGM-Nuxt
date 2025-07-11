@@ -86,12 +86,12 @@ export const useStaticData = () => {
     ];
   
     const socialHandles = [
-      { id: "google-social", name: "Google", icon: "uim:google", url: "https://www.google.com/search?q=golden+gate+manor+inc" },
-      { id: "facebook-social", name: "Facebook", icon: "bi:facebook", url: "https://www.facebook.com/GoldenGateTransportation" },
-      { id: "twitter-social", name: "", icon: "line-md:twitter-x-alt", url: "https://x.com/GoldenGateManor" },
-      { id: "linkedin-social", name: "", icon: "brandico:linkedin-rect", url: "https://www.linkedin.com/company/golden-gate-manor/"},
-      { id: "instagram-social", name: "", icon: "simple-icons:instagram", url: "https://www.instagram.com/goldengatemanor/" },
-      { id: "youtube-social", name: "", icon: "entypo-social:youtube", url: "https://www.youtube.com/@GoldenGateManor" },
+      { id: "google-social", name: "Google", icon: "uim:google", url: "https://www.google.com/search?q=golden+gate+manor+inc", alt: "Look us up on Google" },
+      { id: "facebook-social", name: "Facebook", icon: "bi:facebook", url: "https://www.facebook.com/GoldenGateTransportation", alt: "Follow us on Facebook" },
+      { id: "twitter-social", name: "", icon: "line-md:twitter-x-alt", url: "https://x.com/GoldenGateManor", alt: "Follow us on Twitter" },
+      { id: "linkedin-social", name: "", icon: "brandico:linkedin-rect", url: "https://www.linkedin.com/company/golden-gate-manor/", alt: "Follow us on LinkedIn"},
+      { id: "instagram-social", name: "", icon: "simple-icons:instagram", url: "https://www.instagram.com/goldengatemanor/", alt: "Follow us on Instagram" },
+      { id: "youtube-social", name: "", icon: "entypo-social:youtube", url: "https://www.youtube.com/@GoldenGateManor", alt: "Follow our content on YouTube" },
     ];
   
     const contactServices = [

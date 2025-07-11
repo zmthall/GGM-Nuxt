@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page Banner -->
-    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building"/>
+    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" image-height="464" image-width="935"/>
     <!-- Top Page -->
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
@@ -56,11 +56,11 @@
         </div>
       </BaseLayoutPageContainer>
       <div class="hidden xl:flex xl:justify-center xl:gap-12 xl:mt-8">
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
-        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
-        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
-        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" title="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110"  loading="lazy" width="400" height="266"/>
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" title="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" title="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" title="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" title="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
       </div>
     </BaseLayoutPageSection>
 
@@ -77,7 +77,12 @@
             quality="60"
             sizes="600px sm:650px md:600px"
             class="rounded-lg shadow-primary w-full" 
-            alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." />
+            alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." 
+            title="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office."
+            loading="lazy"
+            height="416"
+            width="600"
+          />
           <div class="space-y-4">
             <p class="text-xl text-brand-main-text">
               Golden Gate Manor offers Non-Emergency Medical Transportation (NEMT) and
@@ -122,7 +127,11 @@
             quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary h-max" 
-            alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue." />
+            alt="Inside Golden Gate Medical Supply Store at 612 South Union Avenue."
+            title="Inside Golden Gate Medical Supply Store at 612 South Union Avenue."
+            loading="lazy"
+            height="416"
+            width="600" />
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
@@ -140,7 +149,11 @@
             quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary"
-            alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." 
+            alt="Golden Gate Gas and Goods front side of building with Golden Gate Transportation car outside"
+            title="Golden Gate Gas and Goods front side of building with Golden Gate Transportation car outside"
+            loading="lazy"
+            height="416"
+            width="600"
             />
           <div class="space-y-4">
             <p class="text-xl text-brand-main-text">

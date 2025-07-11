@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building"/>
+    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="333" image-width="935"/>
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Golden Gate Gas & Goods Journey</h2>
@@ -88,19 +88,19 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  title: 'Golden Gate Gas & Goods',
+  title: 'Golden Gate Gas & Goods in Pueblo Colorado',
   breadcrumbLabel: 'Gas Stations'
 })
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Golden Gate Gas & Goods',
-  ogTitle: 'Golden Gate Gas & Goods',
-  description: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
-  ogDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
+  title: 'Golden Gate Gas & Goods Pueblo',
+  ogTitle: 'Golden Gate Gas & Goods Pueblo',
+  description: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
+  ogDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
-  twitterTitle: 'Golden Gate Gas & Goods',
-  twitterDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Learn about our current venture into the gas station realm.',
+  twitterTitle: 'Golden Gate Gas & Goods Pueblo',
+  twitterDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
   twitterCard: 'summary_large_image',
 })

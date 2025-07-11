@@ -307,7 +307,7 @@
             </ul>
           </div>
           <div class="lg:w-1/2">
-            <BaseInteractiveServiceAreaMap />
+            <BaseInteractiveServiceAreaMap loading="lazy"/>
           </div>
         </div>
       </BaseLayoutPageContainer>
@@ -334,11 +334,11 @@
             </div>
             <div class="lg:w-1/2">
                 <div class="">
-                    <img src="/images/pages/nemt/vehicle-camera.jpg" alt="Vehicles equipped with front and back facing cameras">
+                    <NuxtImg src="/images/pages/nemt/vehicle-camera.jpg" width="930" height="349" alt="Vehicles equipped with front and back facing cameras" format="webp" loading="lazy" title="Vehicles equipped with front and back facing cameras" />
                 </div>
                 <div class="flex">
-                    <img src="/images/pages/nemt/distracted-driver-recognition.jpg" alt="Cameras recognize distractions" class="w-1/2">
-                    <img src="/images/pages/nemt/dash-cam.jpg" alt="An example of the mounted camera" class="w-1/2">
+                    <NuxtImg src="/images/pages/nemt/distracted-driver-recognition.jpg" width="730" height="411" alt="Cameras recognize distractions" class="w-1/2" format="webp" loading="lazy" title="Cameras recognize distractions" />
+                    <NuxtImg src="/images/pages/nemt/dash-cam.jpg" alt="An example of the mounted camera" width="730" height="411" class="w-1/2" format="webp" loading="lazy" title="An example of the mounted camera" />
                 </div>
             </div>    
           </div>

@@ -17,6 +17,7 @@
                             <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
                                 <a :href="socialHandle.url" rel="noopener noreferrer nofollow" target="_blank">
                                     <BaseIcon :name="socialHandle.icon" color="text-brand-white" hover-color="hover:text-brand-secondary" />
+                                    <span class="sr-only">{{ socialHandle.alt }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -318,4 +319,16 @@ const toggleViewMore = (idx: number) => {
 }
 </script>
 
-<style></style>
+<style scoped>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>

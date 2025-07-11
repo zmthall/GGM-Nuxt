@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Top Page Hero Shots -->
-    <BaseLayoutPageHeroSection src="/images/pages/employment/employment-hero.webp" styling="max-sm:w-full">
+    <BaseLayoutPageHeroSection src="/images/pages/employment/employment-hero.webp" styling="max-sm:w-full" alt="Image of someone looking at jobs in a newspaper" title="Image of someone looking at jobs in a newspaper" loading="eager">
       <BaseInteractiveFloatingCard styling="xs:absolute max-xs:w-full xs:top-8 xs:left-8">
-        <h1 class="text-3xl font-extrabold">Looking for work?</h1>
+        <h1 class="text-3xl font-extrabold">Looking for employment?</h1>
         <p class="mt-8 font-bold">We are looking for potential employees who are:</p>
         <ul class="">
           <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Reliable and punctual</li>

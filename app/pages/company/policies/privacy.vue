@@ -666,7 +666,7 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  title: 'Privacy Policy',
+  title: 'Privacy Policy Golden Gate Manor Inc.',
   breadcrumbLabel: 'Privacy'
 })
 

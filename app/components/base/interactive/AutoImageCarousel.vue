@@ -22,6 +22,8 @@
           sizes="sm:300px md:400px lg:500px xl:600px"
           preload
           class="w-full h-full object-cover"
+          :loading="image.loading"
+          :title="image.title"
         />
       </li>
     </ul>
@@ -29,11 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-interface ImageData {
-  id: string;
-  src: string;
-  alt: string;
-}
+import type { ImageData } from '../../../models/ImagesData.js';
 
 const isPlaying = ref<boolean>(false);
 

@@ -551,7 +551,7 @@
 
 <script setup lang='ts'>
 definePageMeta({
-  title: 'FAQs',
+  title: 'FAQs for Golden Gate Manor Inc.',
 })
 
 const runtimeConfig = useRuntimeConfig()

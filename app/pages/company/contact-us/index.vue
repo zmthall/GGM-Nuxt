@@ -33,6 +33,19 @@
                     <BaseLayoutPageListItem title="Hours" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
                         <span>{{ company?.hours }}</span>
                     </BaseLayoutPageListItem>
+                    <BaseLayoutPageListItem class="mt-4 mb-8 ml-2 font-bold">
+                        <h2 class="text-2xl font-bold uppercase mb-4">Get Connected:</h2>
+                        <div>
+                            <ul v-if="staticData" class="flex gap-4">
+                            <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
+                                <NuxtLink :to="socialHandle.url">
+                                <BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" />
+                                <span class="sr-only">{{ socialHandle.alt }}</span>
+                                </NuxtLink>
+                            </li>
+                            </ul>
+                        </div>
+                    </BaseLayoutPageListItem>
                 </div>
             </div>
             <!-- Right Page -->
@@ -48,7 +61,8 @@
 </template>
 
 <script setup lang='ts'>
-const company = useStaticData()?.company
+const staticData = useStaticData()
+const company = staticData?.company
 
 definePageMeta({
   title: 'Contact Golden Gate Manor Team',

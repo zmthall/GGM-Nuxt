@@ -19,7 +19,7 @@
                 </div>
                 <!-- Right Side -->
                 <div class="sm:h-[400px] lg:w-2/5">
-                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="60" class="w-full sm:w-max sm:h-[400px] mx-auto sm:rounded-lg md:shadow-primary"/>
+                  <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="60" width="179" height="199" class="w-full sm:w-max sm:h-[400px] mx-auto sm:rounded-lg md:shadow-primary" alt="Golden Gate Manor I sign" title="Golden Gate Manor I Sign" loading="eager"/>
                 </div>
             </div>
         </BaseLayoutPageContainer>
@@ -69,7 +69,7 @@
                 <div class="flex flex-col w-full gap-8 md:flex-row">
                     <!-- Left Side -->
                     <div class="md:w-1/2">
-                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" format="webp" quality="60" alt="Stock photo of a nurse and a resident" class="w-full h-full object-cover"/>
+                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" format="webp" width="179" height="199" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="w-full h-full object-cover"/>
                     </div>
                     <!-- Right Side -->
                     <div class="p-4 flex flex-col md:w-1/2">
@@ -93,16 +93,16 @@
 <script setup lang='ts'>
 const runtimeConfig = useRuntimeConfig()
 definePageMeta({
-  title: 'Assisted Living',
+  title: 'Assisted Living in Pueblo Colorado',
 })
 
 useSeoMeta({
-  title: 'Assisted Living in Southern Colorado',
-  ogTitle: 'Assisted Living in Southern Colorado',
+  title: 'Assisted Living in Pueblo Colorado',
+  ogTitle: 'Assisted Living in Pueblo Colorado',
   description: 'Discover compassionate and comfortable assisted living options at Golden Gate Manor Inc., serving seniors across Southern Colorado with dignity and care.',
   ogDescription: 'Discover compassionate and comfortable assisted living options at Golden Gate Manor Inc., serving seniors across Southern Colorado with dignity and care.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
-  twitterTitle: 'Assisted Living in Southern Colorado',
+  twitterTitle: 'Assisted Living in Pueblo Colorado',
   twitterDescription: 'Discover compassionate and comfortable assisted living options at Golden Gate Manor Inc., serving seniors across Southern Colorado with dignity and care.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
   twitterCard: 'summary_large_image',

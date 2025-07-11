@@ -45,8 +45,20 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         lang: 'en'
-      }
-    }
+      },
+      link: [
+        {
+          rel: 'apple-touch-icon',
+          href: '/apple-touch-icon.png' // 180x180px
+        }
+      ],
+      meta: [
+        {
+          name: 'theme-color',
+          content: '#121f75'
+        }
+      ]
+    },
   },
   sitemap: {
     sitemaps: {

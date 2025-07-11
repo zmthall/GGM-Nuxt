@@ -11,7 +11,10 @@
                <img
                  src="https://public.flourish.studio/visualisation/23590816/thumbnail"
                  width="100%"
-                 alt="map visualization"
+                 height="100%"
+                 alt="service area map visualization"
+                 title="Service area map visualization"
+                 :loading
                />
              </noscript>
            </div>
@@ -27,6 +30,7 @@ defineOptions({
 
 const props = defineProps<{
   margin?: number;
+  loading: "lazy" | "eager"
 }>()
 
 const marginStyling = computed(() => {

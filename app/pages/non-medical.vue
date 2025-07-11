@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Page Banner -->
-        <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo"/>
+        <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" image-height="464" image-width="935" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" loading="eager"/>
         <!-- Main Content -->
         <BaseLayoutPageSection margin="top">
             <BaseLayoutPageContainer class="space-y-4">
@@ -73,7 +73,7 @@
                         please contact us so that we can help.
                     </p>
                 </div>
-                <img src="/images/pages/non-medical/information.png" alt="Question mark symbol" class="hidden lg:block">
+                <NuxtImg src="/images/pages/non-medical/information.png" alt="Question mark symbol" title="Question mark symbol" loading="lazy" height="263" width="252" class="hidden lg:block" />
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
     </div>
@@ -83,18 +83,18 @@
 const company = useStaticData()?.company
 
 definePageMeta({
-  title: 'Non-Medical Transportation',
+  title: 'Non-Medical Transportation in Pueblo Colorado',
   breadcrumbLabel: 'Non-Medical'
 })
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Personal & Non-Medical Transportation in Pueblo Colorado',
-  ogTitle: 'Personal & Non-Medical Transportation',
+  title: 'Pueblo Non-Medical Transport',
+  ogTitle: 'Pueblo Non-Medical Transport',
   description: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
   ogDescription: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'Personal & Non-Medical Transportation',
+  twitterTitle: 'Pueblo Non-Medical Transport',
   twitterDescription: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',

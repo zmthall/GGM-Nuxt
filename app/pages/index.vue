@@ -1,20 +1,23 @@
-import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 <template>
     <div>
         <!-- Page Hero Section -->
-        <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg" centered>
+        <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
             <div class="w-full p-4">
-                <h1 class="flex flex-col relative items-center text-center mb-4 pb-4 bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0" >
-                    <span class="text-3xl sm:text-4xl">
-                        Welcome to
-                    </span>
-                    <span class="text-6xl sm:text-7xl font-extrabold text-brand-secondary">
-                        Golden Gate Manor
-                    </span>
-                    <span class="text-2xl sm:text-3xl">
-                        PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
-                    </span>
-                </h1>
+                <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4 ">
+                    <h1 class="text-center flex flex-col" >
+                        <span class="text-3xl">
+                            Welcome to
+                        </span>
+                        <span class="text-6xl font-extrabold text-brand-secondary">
+                            Golden Gate Manor
+                        </span>
+                    </h1>
+                    <h2 class="text-center">
+                        <span class="text-2xl">
+                            PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
+                        </span>
+                    </h2>
+                </div>
                 <p class="text-xl text-center">
                     Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
                 </p>
@@ -125,15 +128,14 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
             <!-- Why People Choose Us -->
             <BaseLayoutPageSection margin="default">
                 <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
-                    <h2 class="hidden text-lg text-center font-bold text-brand-primary">Why People Choose Golden Gate Manor</h2>
-                    <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
+                    <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
                         <span class="text-gray-500">
                             More Than a Ride.
                         </span>
                         <span class="text-brand-primary">
                             More Than a Business.
                         </span>
-                    </h3>
+                    </h2>
                     <p class="text-lg sm:text-2xl">
                         We're Colorado's longest-running NEMT provider — and so much more. Golden Gate Manor Inc. connects assisted living, transportation, medical supplies, and community support 
                         under one roof to make life easier for the people who need it most.
@@ -224,6 +226,8 @@ import { BaseLayoutCard, BaseUiAction } from '../../.nuxt/components';
 </template>
 
 <script setup lang='ts'>
+import type { ImageData } from '../models/ImagesData.js';
+
 const news = undefined;
 const blogs = undefined;
 const events = undefined;
@@ -235,12 +239,12 @@ useHead({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-    title: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
-    ogTitle: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
+    title: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
+    ogTitle: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
     description: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
     ogDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
     ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-    twitterTitle: 'NEMT Transportation Pueblo CO | Medical Transport Southern Colorado | Golden Gate Manor',
+    twitterTitle: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
     twitterDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
@@ -250,46 +254,62 @@ defineOptions({
     name: 'HomePage'
 })
 
-const images = [
+const images: ImageData[] = [
     { 
         id: '1',
         src: '/images/home-images/transportation-services.jpeg',
-        alt: 'Golden Gate Manor Transportation and City Cab LLC cars next to eachother.'
+        alt: 'Golden Gate Manor Transportation and City Cab LLC cars next to eachother.',
+        title: 'Golden Gate Manor Transportation and City Cab LLC cars next to eachother',
+        loading: 'lazy'
     },
     { 
         id: '2',
         src: '/images/home-images/golden-gate-manor-1.jpeg',
-        alt: 'Golden Gate Manor 1, house image.'
+        alt: 'Golden Gate Manor 1, house image.',
+        title: 'Golden Gate Manor 1, house image',
+        loading: 'lazy'
     },
     { 
         id: '3',
         src: '/images/home-images/golden-gate-manor-2.jpeg',
-        alt: 'Golden Gate Manor 2, house image.'
+        alt: 'Golden Gate Manor 2, house image.',
+        title: 'Golden Gate Manor 2, house image',
+        loading: 'lazy'
     },
     { 
         id: '4',
         src: '/images/home-images/golden-horizon.jpeg',
-        alt: 'Golden Horizon, house image.'
+        alt: 'Golden Horizon, house image.',
+        title: 'Golden Horizon, house image',
+        loading: 'lazy'
     },
     { 
         id: '5',
         src: '/images/home-images/golden-valley.jpeg',
-        alt: 'Golden Valley, house image.'
+        alt: 'Golden Valley, house image.',
+        title: 'Golden Valley, house image',
+        loading: 'lazy'
     },
     { 
         id: '6',
         src: '/images/home-images/golden-view.jpeg',
-        alt: 'Golden View, house image.'
+        alt: 'Golden View, house image.',
+        title: 'Golden View, house image',
+        loading: 'lazy'
     },
     { 
         id: '7',
         src: '/images/home-images/medical-supply-store.jpeg',
-        alt: 'Golden Gate Medical Supply inside the store.'
+        alt: 'Golden Gate Medical Supply inside the store.',
+        title: 'Golden Gate Medical Supply inside the store',
+        loading: 'lazy'
     },
     { 
         id: '8',
         src: '/images/home-images/gas-station.jpg',
-        alt: 'Golden Gate Gas & Goods external picture of gas station.'
+        alt: 'Golden Gate Gas & Goods external picture of gas station.',
+        title: 'Golden Gate Gas & Goods external picture of gas station',
+        loading: 'lazy'
     }
 ]
 </script>

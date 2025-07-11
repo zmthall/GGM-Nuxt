@@ -25,7 +25,10 @@
           <div>
             <ul v-if="staticData" class="flex gap-4">
               <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
-                <NuxtLink :to="socialHandle.url"><BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" /></NuxtLink>
+                <NuxtLink :to="socialHandle.url">
+                  <BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" />
+                  <span class="sr-only">{{ socialHandle.alt }}</span>
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -66,4 +69,16 @@ defineOptions({
 })
 </script>
 
-<style></style>
+<style scoped>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
