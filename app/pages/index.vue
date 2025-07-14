@@ -4,22 +4,18 @@
         <BaseLayoutPageHeroSection src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
             <div class="w-full p-4">
                 <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4 ">
+                    <p class="text-3xl">Welcome to</p>
                     <h1 class="text-center flex flex-col" >
-                        <span class="text-3xl">
-                            Welcome to
-                        </span>
                         <span class="text-6xl font-extrabold text-brand-secondary">
                             Golden Gate Manor
                         </span>
-                    </h1>
-                    <h2 class="text-center">
-                        <span class="text-2xl">
-                            PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US
+                        <span class="text-2xl uppercase">
+                            One Company. Many services you can depend on.
                         </span>
-                    </h2>
+                    </h1>
                 </div>
                 <p class="text-xl text-center">
-                    Our mission is simple here at Golden Gate Manor: to improve the quality of life each and every day. We proudly offer transportation services to not only our residents, but to Medicaid approved members of our community. Search our website for additional information or contact us with any questions.
+                    For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.
                 </p>
             </div>
             <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
@@ -38,7 +34,7 @@
                         <div>
                             <h2 class="text-3xl font-extrabold text-brand-primary mb-4">Locally Rooted. Broadly Committed.</h2>
                             <p class="text-base text-brand-dark-gray leading-relaxed mb-6">
-                            Golden Gate Manor is a family-owned company based in Pueblo, Colorado. We provide a wide range of essential services to the Southern Colorado community — including assisted living homes, non-emergency medical transportation (NEMT), non-medical transportation, durable medical equipment and supplies, and gas stations. With dedicated teams across all departments, we work hard to meet the daily needs of our clients while growing with the region we call home.
+                                Golden Gate Manor is a family-owned umbrella company providing Medicaid-approved services including non-emergency medical transportation (NEMT) with wheelchair accessible vans, non-medical transportation, assisted living, durable medical equipment and supplies, and gas stations in Pueblo, Colorado. With dedicated teams across all departments and 20 years of business experience under our belt, 40+ vehicles in our fleet, and five different assisted living house locations; we work hard to meet the daily needs of our clients throughout Southern Colorado. 
                             </p>
                             <BaseUiAction to="/company/about-us" styling="py-4 px-8">
                             Learn More About Us
@@ -64,9 +60,7 @@
                                     <span class="text-brand-primary">Living</span>
                                 </h2>
                                 <p class="mb-4 text-center text-lg">
-                                    Golden Gate Manor, Inc. are highly respected, Medicaid Certified Assisted Living Facilities located in Pueblo, Colorado.
-                                    Trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals,
-                                    transportation and treatment management.
+                                    Golden Gate Manor Assisted Living houses are highly respected, Medicaid-certified facilities located in Pueblo, Colorado. At each of our 5 locations, trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals, transportation, and treatment management.
                                 </p>
                             </div>
                         </BaseLayoutCard>
@@ -79,8 +73,7 @@
                                     <span class="text-brand-primary">Transportation</span>
                                 </h2>
                                 <p class="mb-4 text-center text-lg">
-                                    Non-Emergent Medical Transportation (NEMT) is transportation to and from covered non-emergency medical appointments or
-                                    services. With our 40+ vehicles, we can take you to any appointment within state lines.
+                                    Our fleet of 40+ vehicles, including wheelchair accessible vans, delivers our non-emergency medical transportation (NEMT) service across Southern Colorado and to main appointment areas, such as Denver. Reliably, we will get you to and from covered medical appointments and approved services when you need a helping hand.
                                 </p>
                             </div>
                         </BaseLayoutCard>
@@ -93,9 +86,7 @@
                                     <span class="text-brand-primary">Transportation</span>
                                 </h2>
                                 <p class="mb-4 text-center text-lg">
-                                    We are proud to now offer Non-Medical Transportation to Medicaid eligible disabled and elderly members of Pueblo
-                                    City/County (including Pueblo West). Whether you need to run personal errands, or attend a family event, Golden Gate
-                                    Manor Transportation can get you there.
+                                    We are proud to be one of the only companies in Pueblo County, including Pueblo West, to provide non-medical transportation services to eligible community members who are disabled or elderly receiving Medicaid assistance. We can take you to run personal errands, attend family events, or even just a trip to a place to relax; we're here to help.
                                 </p>
                             </div>
                         </BaseLayoutCard>
@@ -108,9 +99,7 @@
                                     <span class="text-brand-primary">Equipment/Supplies</span>
                                 </h2>
                                 <p class="mb-4 text-center text-lg">
-                                    Golden Gate Medical Supplies is a family-owned provider of durable medical equipment and supplies. We have been serving
-                                    individuals, caregivers, and businesses with a commitment to quality care. Our knowledgeable team offers a wide range of
-                                    products and services to support you.
+                                    Golden Gate Medical Supplies offers high-quality durable medical equipment and supplies with accessible pricing throughout Colorado. We work closely to ensure our commitment to quality care is delivered when and where it's needed. In addition, we provide home delivery and shipping services to make accessibility easier.
                                 </p>
                             </div>
                         </BaseLayoutCard>
@@ -137,21 +126,23 @@
                         </span>
                     </h2>
                     <p class="text-lg sm:text-2xl">
-                        We're Colorado's longest-running NEMT provider — and so much more. Golden Gate Manor Inc. connects assisted living, transportation, medical supplies, and community support 
-                        under one roof to make life easier for the people who need it most.
+                        We are one of Southern Colorado's longest-running non-emergency medical transportation (NEMT) provider - and so much more. Golden Gate Manor Inc. connects our services: assisted living, transportation, medical supplies, gas stations, and community support under one umbrella to make it easier for our clients to receive the care and attention they need when they need it. Being family owned, we understand the need for community driven assistance wrapped in care and compassion; it's not just what we do, it's who we are.
                     </p>
                 </div>
 
                 <div class="space-y-2 mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
                     <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">A Mission Rooted in Care, Built for Independence</h3>
                     <p class="text-lg sm:text-2xl">
-                        At Golden Gate Manor Inc., we believe true care is rooted in connection. As a family-owned company proudly based in Pueblo, Colorado, we've built more than a network of services — we've built a support system. Whether it's a ride across town, a comfortable place to live, or access to essential medical equipment, our goal is simple: help people live fully, independently, and with dignity.
+                        Here at Golden Gate Manor Inc., we believe true care is rooted in connection. With this being said, we've built more than a network of services here in Pueblo, Colorado —we've built a support system. We understand that not all aspects of a person's life are available at all times. Whether it's a ride across town for an appointment, a comfortable place to live, or access to essential durable medical equipment and supplies, our goal is simple: help people live fully, independently, and with dignity. As a family-owned business, we want to make sure that the services received come with compassion and understanding.
                     </p>
                     <p class="text-lg sm:text-2xl">
-                        We don't just serve the community — we're part of it. From sponsoring local events to hosting school supply giveaways and partnering with organizations that uplift the underserved, we believe giving back is just as important as showing up. Our team works hard, plays hard, and shows up with heart.
+                        We don't just serve the community, we are part of it and we believe in investing in the children who will shape our community's future. That's why giving back is just as important as showing up. Our team demonstrates this commitment by sponsoring local events and kids' sports teams, and by partnering with organizations that uplift the underserved. Our team works hard, plays hard, and shows up with heart for a community we are proud to be part of.
                     </p>
+                    <div class="flex justify-center !my-4">
+                        <BaseUiAction class="py-4 px-8" to="/news/community">See Our Community Impact</BaseUiAction>
+                    </div>
                     <p class="text-lg sm:text-2xl">
-                        When you choose Golden Gate Manor, you're choosing more than a company — you're joining a community that cares.
+                        When you choose Golden Gate Manor, you're choosing more than a company, you're joining a community that cares and brings compassion to everything we do. We strive to be more than a business — we strive to be an extended family for those who may need another helping hand.
                     </p>
                 </div>
 
@@ -167,7 +158,7 @@
                                     <div>
                                         <h3 class="font-extrabold text-lg">Community-First Approach</h3>
                                         <p>
-                                            We're locally grown and Pueblo-proud. Our mission is to bridge gaps in care and make vital services more accessible for seniors and people with special needs.
+                                            Our company is locally grown and Pueblo-proud. Our continued mission is to bridge the gaps in different areas of care and make these vital services more accessible for people who need them. Independence, comfort, and compassion should not be a luxury.
                                         </p>
                                     </div>
                                   </BaseLayoutCard>
@@ -175,7 +166,7 @@
                                     <div>
                                         <h3 class="font-extrabold text-lg">Proven Track Record</h3>
                                         <p>
-                                            We're Colorado's oldest non-emergency medical transportation provider — built on reliability, compassion, and dedication that spans decades. With a fleet of over 50 vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable, on-time transportation backed by the resources to deliver.
+                                            We're one of Southern Colorado's oldest non-emergency medical transportation (NEMT) providers, built on reliability, compassion, and dedication that has spanned decades. With over 20 years of experience providing services across different care-based fields and a fleet of 40+ vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable services so that they can make it on time to their appointments and live comfortably. All of our services are backed by our experience and resources to deliver high-quality and specialized care.
                                         </p>
                                     </div>
                                   </BaseLayoutCard>
@@ -183,7 +174,7 @@
                                     <div>
                                         <h3 class="font-extrabold text-lg">Umbrella of Care</h3>
                                         <p>
-                                            From assisted living to medical equipment to neighborhood gas stations, we offer a seamless network of services for comfort, independence, and convenience.
+                                            Golden Gate Manor Inc. connects our services—assisted living, transportation, medical supplies, gas stations, and community support—to offer a seamless network of services for comfort, independence, and convenience. Our community matters to us just as much as the clients we serve.
                                         </p>
                                     </div>
                                   </BaseLayoutCard>
@@ -191,7 +182,7 @@
                                     <div>
                                         <h3 class="font-extrabold text-lg">People Over Profit</h3>
                                         <p>
-                                            We prioritize care, dignity, and real community impact. Our team is trained to lead with empathy, act with integrity, and treat your family like our own.
+                                            We prioritize the needs of our clients, care, and dignity. Our entire team is trained to lead with empathy, act with integrity, and treat your family like our own family. We strive to have real community impact and are proud to be a working part of this community.
                                         </p>
                                     </div>
                                   </BaseLayoutCard>
@@ -205,10 +196,6 @@
                               </blockquote>
                           </aside>
                     </div>
-                </div>
-
-                <div class="flex justify-center mt-4">
-                    <BaseUiAction href="/company/about-us" class="px-8 py-4 text-2xl">Explore Our Impact</BaseUiAction>
                 </div>
             </BaseLayoutPageSection>
     
@@ -239,13 +226,13 @@ useHead({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-    title: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
-    ogTitle: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
-    description: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
-    ogDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
+    title: 'NEMT Transportation Pueblo CO | 40+ Vehicles | Medicaid Approved | Golden Gate Manor',
+    ogTitle: 'NEMT Transportation Pueblo CO | 40+ Vehicles | Medicaid Approved | Golden Gate Manor',
+    description: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Family-owned umbrella company serving Southern Colorado. Call (719) 544-3231.',
+    ogDescription: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Family-owned umbrella company serving Southern Colorado. Call (719) 544-3231.',
     ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-    twitterTitle: 'NEMT Transportation Pueblo CO | Golden Gate Manor Inc.',
-    twitterDescription: 'Medicaid-approved NEMT transportation in Pueblo & Southern Colorado. 40+ vehicle fleet, wheelchair accessible, door-to-door medical transport. Call (719) 544-3231.',
+    twitterTitle: 'NEMT Transportation Pueblo CO | 40+ Vehicles | Medicaid Approved | Golden Gate Manor',
+    twitterDescription: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Family-owned umbrella company serving Southern Colorado. Call (719) 544-3231.',
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })

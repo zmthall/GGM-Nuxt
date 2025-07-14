@@ -107,11 +107,21 @@ export const useStaticData = () => {
     const orgSchema = {
       "@context": "https://schema.org",
       "@type": "MedicalOrganization",
+      "@id": `${runtimeConfig.public.siteUrl}#organization`,
       "name": "Golden Gate Manor Inc.",
       "url": `${runtimeConfig.public.siteUrl}`,
       "logo": `${runtimeConfig.public.siteUrl}/images/logo.png`,
       "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-      "description": "Golden Gate Manor Inc. provides Non-Emergency Medical Transportation (NEMT), assisted living, and medical supply services across Southern Colorado.",
+      "description": "Golden Gate Manor Inc. is a family-owned umbrella company providing Medicaid-approved Non-Emergency Medical Transportation (NEMT), assisted living facilities, durable medical equipment, and convenience services across Southern Colorado. Serving the community for over 20 years with 40+ vehicles and 5 assisted living locations.",
+      "foundingDate": "2008",
+      "legalName": "Golden Gate Manor Inc.",
+      "alternateName": [
+        "Golden Gate Manor", 
+        "GGM",
+        "Golden Gate Medical Supply",
+        "Golden Gate Transportation", 
+        "Golden Gate Gas & Goods"
+      ],
       "telephone": "(719) 696-8032",
       "email": "info@goldengatemanor.com",
       "address": {
@@ -144,12 +154,56 @@ export const useStaticData = () => {
       ],
       "department": [
         {
-          "@type": "MedicalClinic",
-          "name": "Non-Emergency Transportation",
+          "@type": "Service",
+          "@id": `${runtimeConfig.public.siteUrl}/nemt#service`,
+          "name": "Non-Emergency Medical Transportation (NEMT)",
           "url": `${runtimeConfig.public.siteUrl}/nemt`,
           "telephone": "(719) 544-3231",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+            "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+            "areaServed": [
+            {
+              "@type": "State",
+              "name": "Colorado"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Southern Colorado"
+            }
+          ],
+          "eligibility": "Medicaid beneficiaries and private pay patients",
+          "serviceOutput": "Door-to-door medical appointment transportation",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "servicePhone": "(719) 544-3231",
+            "availableLanguage": ["English"]
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Fleet Size",
+              "value": "40+ vehicles"
+            },
+            {
+              "@type": "PropertyValue", 
+              "name": "Accessibility",
+              "value": "Wheelchair accessible vans available"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Service Area",
+              "value": "Statewide Colorado coverage"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Insurance",
+              "value": "Medicaid approved provider"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
           "address": {
             "@type": "PostalAddress",
@@ -161,12 +215,53 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "ResidentialCareOrganization",
+          "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-gate-manor-1`,
           "name": "Golden Gate Manor I",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#ggmi`,
           "telephone": "(719) 583-9132",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "serviceType": "Assisted Living Facility",
+          "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
+           "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "24/7 Supervised Care"
+            },
+            {
+              "@type": "MedicalService", 
+              "name": "Medication Administration"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Daily Living Assistance"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Meal Services"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Transportation Coordination"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Certification",
+              "value": "Medicaid-certified assisted living facility"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Staffing",
+              "value": "24/7 trained staff on-site"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
           "address": {
             "@type": "PostalAddress",
@@ -178,12 +273,53 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "ResidentialCareOrganization",
+          "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-gate-manor-2`, 
           "name": "Golden Gate Manor II",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#ggmii`,
           "telephone": "(719) 542-0201",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "serviceType": "Assisted Living Facility",
+          "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
+           "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "24/7 Supervised Care"
+            },
+            {
+              "@type": "MedicalService", 
+              "name": "Medication Administration"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Daily Living Assistance"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Meal Services"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Transportation Coordination"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Certification",
+              "value": "Medicaid-certified assisted living facility"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Staffing",
+              "value": "24/7 trained staff on-site"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
           "address": {
             "@type": "PostalAddress",
@@ -195,12 +331,53 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "ResidentialCareOrganization",
+          "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-valley`,
           "name": "Golden Valley",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#valley`,
           "telephone": "(719) 545-0152",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "serviceType": "Assisted Living Facility",
+          "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
+           "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "24/7 Supervised Care"
+            },
+            {
+              "@type": "MedicalService", 
+              "name": "Medication Administration"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Daily Living Assistance"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Meal Services"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Transportation Coordination"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Certification",
+              "value": "Medicaid-certified assisted living facility"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Staffing",
+              "value": "24/7 trained staff on-site"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
           "address": {
             "@type": "PostalAddress",
@@ -212,12 +389,53 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "ResidentialCareOrganization",
+          "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-horizon`,
           "name": "Golden Horizon",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#horizon`,
           "telephone": "(719) 564-8110",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "serviceType": "Assisted Living Facility",
+          "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
+           "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "24/7 Supervised Care"
+            },
+            {
+              "@type": "MedicalService", 
+              "name": "Medication Administration"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Daily Living Assistance"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Meal Services"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Transportation Coordination"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Certification",
+              "value": "Medicaid-certified assisted living facility"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Staffing",
+              "value": "24/7 trained staff on-site"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
           "address": {
             "@type": "PostalAddress",
@@ -229,12 +447,53 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "ResidentialCareOrganization",
+          "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-view`,
           "name": "Golden View",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#view`,
           "telephone": "(719) 543-7320",
           "priceRange": "Free with medicaid",
           "openingHours": "Mo-Su 00:00-23:59",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "serviceType": "Assisted Living Facility",
+          "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
+           "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "24/7 Supervised Care"
+            },
+            {
+              "@type": "MedicalService", 
+              "name": "Medication Administration"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Daily Living Assistance"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Meal Services"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Transportation Coordination"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Certification",
+              "value": "Medicaid-certified assisted living facility"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Staffing",
+              "value": "24/7 trained staff on-site"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-assisted-living.png`,
           "address": {
             "@type": "PostalAddress",
@@ -246,11 +505,38 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "MedicalClinic",
+          "@type": "MedicalBusiness",
+          "@id": `${runtimeConfig.public.siteUrl}/medical-supplies#store`,
           "name": "Golden Gate Medical Supply - Medical Supply Store",
           "url": "https://www.goldengatemedicalsupplies.com",
           "telephone": "(719) 569-7361",
-          "priceRange": "Free with specific insurances, HSA, FSA",
+          "priceRange": "Insurance accepted: HSA, FSA, specific insurances",
+          "provider": {
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
+          },
+          "availableService": [
+            {
+              "@type": "MedicalService",
+              "name": "Home Delivery Service"
+            },
+            {
+              "@type": "MedicalService",
+              "name": "Equipment Consultation"
+            }
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Delivery Area",
+              "value": "Statewide Colorado delivery and shipping"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Payment Options",
+              "value": "Insurance, HSA, FSA, private pay"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
           "openingHours": "Mo-Fr 08:00-16:00",
           "address": {
@@ -264,21 +550,52 @@ export const useStaticData = () => {
           "sameAs": ["https://www.goldengatemanor.com/medical-supplies", "https://www.goldengatemedicalsupply.com"]
         },
         {
-          "@type": "Organization",
+          "@type": "Service",
+          "@id": `${runtimeConfig.public.siteUrl}/non-medical#service`,
           "name": "Pueblo City Cab - Non-medical Transportation",
+          "serviceType": "Non-Medical Transportation",
           "url": `${runtimeConfig.public.siteUrl}/non-medical`,
           "telephone": "(719) 543-2525",
           "priceRange": "Varies by distance",
           "openingHours": "Mo-Su 00:00-23:59",
-          "areaServed": {
-            "@type": "Place",
-            "name": "Pueblo, Colorado"
-          },
           "provider": {
-            "@type": "Organization",
-            "name": "Golden Gate Manor Inc."
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "DSS-approved Non-Medical Transportation including errands, shopping, and personal appointments. We also provide out of pocket trips that are charged based on distance.",
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Pueblo",
+              "addressRegion": "Colorado"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Pueblo County"
+            }
+          ],
+          "serviceOutput": "Transportation for personal errands, shopping, and social activities",
+          "eligibility": "Disabled and elderly community members receiving Medicaid assistance",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "servicePhone": "(719) 543-2525"
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Approval",
+              "value": "DSS-approved transportation provider"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Service Types",
+              "value": "Errands, shopping, personal appointments, recreational trips"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Coverage Area",
+              "value": "Pueblo County including Pueblo West"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
           "address": {
             "@type": "PostalAddress",
@@ -291,21 +608,41 @@ export const useStaticData = () => {
           "sameAs": ["https://www.pueblocitycab.com"]
         },
         {
-          "@type": "Organization",
+          "@type": "GasStation",
+          "@id": `${runtimeConfig.public.siteUrl}/gas-and-goods#location1`,
           "name": "Golden Gate Gas & Goods I",
           "url": `${runtimeConfig.public.siteUrl}/gas-and-goods#g&gi`,
           "telephone": "(719) 561-0062",
-          "priceRange": "Varies by item",
+          "priceRange": "Competitive fuel and convenience pricing",
           "openingHours": "Mo-Su 04:00-02:00 gas: Mo-Su 00:00-23:59",
-          "areaServed": {
-            "@type": "Place",
-            "name": "Pueblo, Colorado"
-          },
           "provider": {
-            "@type": "Organization",
-            "name": "Golden Gate Manor Inc."
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Gas station and C-Store. We accept ebt and other payment options, just inquire.",
+          "areaServed": {
+            "@type": "City",
+            "name": "Pueblo",
+            "addressRegion": "Colorado"
+          },
+          "serviceType": "Gas station and convenience store",
+          "paymentAccepted": ["Cash", "Credit Card", "EBT", "SNAP"],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Store Type",
+              "value": "Full-service gas station with convenience store"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Special Services",
+              "value": "EBT and SNAP benefits accepted"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Fuel Availability",
+              "value": "24/7 automated fuel pumps"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
           "address": {
             "@type": "PostalAddress",
@@ -317,21 +654,41 @@ export const useStaticData = () => {
           }
         },
         {
-          "@type": "Organization",
+          "@type": "GasStation",
+          "@id": `${runtimeConfig.public.siteUrl}/gas-and-goods#location2`,
           "name": "Golden Gate Gas & Goods II",
           "url": `${runtimeConfig.public.siteUrl}/gas-and-goods#g&gii`,
           "telephone": "(719) 253-9840",
           "priceRange": "Varies by item",
           "openingHours": "Mo-Su 04:00-02:00 gas: Mo-Su 00:00-23:59",
-          "areaServed": {
-            "@type": "Place",
-            "name": "Pueblo, Colorado"
-          },
           "provider": {
-            "@type": "Organization",
-            "name": "Golden Gate Manor Inc."
+            "@type": "MedicalOrganization",
+            "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Gas station and C-Store. We accept ebt and other payment options, just inquire.",
+          "areaServed": {
+            "@type": "City",
+            "name": "Pueblo",
+            "addressRegion": "Colorado"
+          },
+          "serviceType": "Gas station and convenience store",
+          "paymentAccepted": ["Cash", "Credit Card", "EBT", "SNAP"],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Store Type",
+              "value": "Full-service gas station with convenience store"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Special Services",
+              "value": "EBT and SNAP benefits accepted"
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Fuel Availability",
+              "value": "24/7 automated fuel pumps"
+            }
+          ],
           "image": `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
           "address": {
             "@type": "PostalAddress",
@@ -342,8 +699,29 @@ export const useStaticData = () => {
             "addressCountry": "US"
           }
         }
-      ]
-    }
+      ],
+      "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pueblo",
+        "addressRegion": "Colorado"
+      },
+      {
+        "@type": "AdministrativeArea", 
+        "name": "Southern Colorado"
+      },
+      {
+        "@type": "State",
+        "name": "Colorado"
+      }
+    ],
+    "serviceType": [
+      "Non-Emergency Medical Transportation",
+      "Assisted Living Services", 
+      "Durable Medical Equipment",
+      "Convenience Store Services"
+    ]
+  }
 
     const company = {
       name: 'Golden Gate Manor, Inc.',
