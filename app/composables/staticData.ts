@@ -154,7 +154,7 @@ export const useStaticData = () => {
       ],
       "department": [
         {
-          "@type": "Service",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/nemt#service`,
           "name": "Non-Emergency Medical Transportation (NEMT)",
           "url": `${runtimeConfig.public.siteUrl}/nemt`,
@@ -560,7 +560,7 @@ export const useStaticData = () => {
           "sameAs": ["https://www.goldengatemanor.com/medical-supplies", "https://www.goldengatemedicalsupply.com"]
         },
         {
-          "@type": "Service",
+          "@type": "LocalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/non-medical#service`,
           "name": "Pueblo City Cab - Non-medical Transportation",
           "serviceType": "Non-Medical Transportation",
