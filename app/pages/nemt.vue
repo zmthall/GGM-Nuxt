@@ -266,10 +266,7 @@
                   jurisdiction of Golden Gate Manor in the State of Colorado.
                   This is the areas that we are able to pick our clients up from. 
                   We will still be able to take you to appointments from, for example, Pueblo, Colorado, to Denver, Colorado.
-                </p>
-                <p class="text-xl text-brand-main-text">
-                  Click on the map, or zoom in if you're on a mobile device, to see an
-                  expanded version.
+                  If you have any specific questions if your area is serviceable, don't hesitate to call us and ask. Our customer service representatives will be able to answer all questions regarding our service area.
                 </p>
               </li>
               <li class="pl-8 relative">
