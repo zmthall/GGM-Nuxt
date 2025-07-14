@@ -215,18 +215,20 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "ResidentialCareOrganization",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-gate-manor-1`,
           "name": "Golden Gate Manor I",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#ggmi`,
           "telephone": "(719) 583-9132",
           "priceRange": "Free with medicaid",
+          "serviceType": "Assisted Living Facility",
+          "paymentAccepted": "Medicaid",
+          "currenciesAccepted": "USD",
           "openingHours": "Mo-Su 00:00-23:59",
           "provider": {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Assisted Living Facility",
           "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
            "availableService": [
             {
@@ -273,18 +275,20 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "ResidentialCareOrganization",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-gate-manor-2`, 
           "name": "Golden Gate Manor II",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#ggmii`,
           "telephone": "(719) 542-0201",
           "priceRange": "Free with medicaid",
+          "serviceType": "Assisted Living Facility",
+          "paymentAccepted": "Medicaid",
+          "currenciesAccepted": "USD",
           "openingHours": "Mo-Su 00:00-23:59",
           "provider": {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Assisted Living Facility",
           "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
            "availableService": [
             {
@@ -331,18 +335,20 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "ResidentialCareOrganization",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-valley`,
           "name": "Golden Valley",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#valley`,
           "telephone": "(719) 545-0152",
           "priceRange": "Free with medicaid",
+          "serviceType": "Assisted Living Facility",
+          "paymentAccepted": "Medicaid",
+          "currenciesAccepted": "USD",
           "openingHours": "Mo-Su 00:00-23:59",
           "provider": {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Assisted Living Facility",
           "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
            "availableService": [
             {
@@ -389,18 +395,20 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "ResidentialCareOrganization",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-horizon`,
           "name": "Golden Horizon",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#horizon`,
           "telephone": "(719) 564-8110",
           "priceRange": "Free with medicaid",
+          "serviceType": "Assisted Living Facility",
+          "paymentAccepted": "Medicaid",
+          "currenciesAccepted": "USD",
           "openingHours": "Mo-Su 00:00-23:59",
           "provider": {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Assisted Living Facility",
           "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
            "availableService": [
             {
@@ -447,18 +455,20 @@ export const useStaticData = () => {
           },
         },
         {
-          "@type": "ResidentialCareOrganization",
+          "@type": "MedicalBusiness",
           "@id": `${runtimeConfig.public.siteUrl}/assisted-living#golden-view`,
           "name": "Golden View",
           "url": `${runtimeConfig.public.siteUrl}/assisted-living#view`,
           "telephone": "(719) 543-7320",
           "priceRange": "Free with medicaid",
+          "serviceType": "Assisted Living Facility",
+          "paymentAccepted": "Medicaid",
+          "currenciesAccepted": "USD",
           "openingHours": "Mo-Su 00:00-23:59",
           "provider": {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`
           },
-          "serviceType": "Assisted Living Facility",
           "medicalSpecialty": ["Elderly Care", "Disability Support", "Medication Management"],
            "availableService": [
             {
