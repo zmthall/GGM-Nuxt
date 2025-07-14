@@ -4,19 +4,14 @@
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="md:flex md:items-center gap-8">
         <div class="flex flex-col md:w-1/2 md:space-y-4">
-          <h2 class="hidden md:block md:text-2xl font-bold text-brand-primary">What is Non-Emergency Transportation?</h2>
+          <h2 class="hidden md:block md:text-2xl font-bold text-brand-primary">What is Non-Emergency Transportation (NEMT)?</h2>
           <p class="text-xl text-brand-main-text">
-            Non-Emergent Medical Transportation (NEMT) is transportation
-            to and from covered non-emergency medical appointments and
-            services; if it is a Medicaid approved appointment we can
-            get you there. With our fleet of over 40 vehicles, we can
-            make sure that our clients make it to and from their
-            appointments on time.
+            Non-Emergent Medical Transportation (NEMT) is transportation to and from covered non-emergency medical appointments and services; if it is a Medicaid approved appointment we can get you there. With our fleet of over 40 vehicles, including wheelchair accessible vans, we can make sure that our clients make it to and from their appointments on time anywhere in our serviceable area in Southern Colorado.
           </p>
           <table class="w-full border-collapse bg-[#c6d5e4] my-8">
             <tbody>
               <tr class="nemt-row">
-                <th colspan="2" class="p-4 text-center border-black border-2">Types of Transportation Available in Pueblo</th>
+                <th colspan="2" class="p-4 text-center border-black border-2">Types of Transportation Available in Pueblo, Colorado</th>
               </tr>
               <tr class="nemt-row">
                 <td class="p-4 text-center border-black border-2">Bus</td>
@@ -28,7 +23,12 @@
               </tr>
               <tr class="nemt-row">
                 <td class="p-4 text-center border-black border-2">Private Vehicle</td>
-                <td class="p-4 text-center border-black border-2">Non-Emergency Vehicle</td>
+                <td class="p-4 text-center border-black border-2 font-extrabold">
+                  <div class="flex items-center justify-center">
+                    <BaseIcon name="proicons:checkmark-starburst" color="black" />
+                    Non-Emergency Vehicle
+                  </div>
+                </td>
               </tr>
               <tr class="nemt-row">
                 <td colspan="2" class="p-4 text-center border-black border-2">Mileage Reimbursement</td>
@@ -73,9 +73,7 @@
                     :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'eligibility' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                       <p class="text-xl text-brand-main-text">
-                        Your client may be eligible if they have a
-                        current Medicaid Insurance ID and are going
-                        to a Medicaid approved appointment.
+                        If you have Colorado Medicaid benefits you may be eligible to utilize our services. All you need is a current Medicaid insurance ID and you need to be going to and from an Medicaid approved appointment. We pickup within our service area, which is mostly in Southern Colorado, and we can take you to appointments throughout Colorado including Denver. Our service area is specific to where we are able to pick you up from not for where we are able to take you.
                       </p>
                   </BaseInteractiveAccordionButton>
                 </li>
@@ -90,18 +88,10 @@
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
-                        To help us serve you better, please schedule your ride
-                        at least 24 hours in advance by calling <a 
-                        rel="nofollow"
-                        :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> between 8:00 AM
-                        and 4:00 PM, Monday through Friday. This allows us the
-                        necessary time to arrange your transportation efficiently.
+                        To help us serve you better, please schedule your ride at least 24 hours in advance by calling <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> between 8:00 AM and 4:00 PM, Monday through Friday. This allows us the necessary time to arrange your transportation efficiently.
                       </p>
                       <p class="text-xl text-brand-main-text">
-                        If it is after normal business hours, call our dispatch at
-                        <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">
-                          {{ company?.trans.phone.dispatch }}
-                        </a>.
+                        If it is after normal business hours, call our dispatch at <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>. Our scheduling/dispatch office is open 24/7. Please don't hesitate to reach out if you have any questions.
                       </p>
                     </div>
                     <BaseUiAction to="/resources/schedule-a-ride" class="p-2 mb-4 mt-8">
@@ -120,17 +110,13 @@
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
-                        If you need to cancel a ride, please call at least two hours
-                        before your scheduled pick-up time at <a 
-                        rel="nofollow"
-                        :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.
+                        If you need to cancel a ride, please call at least two hours before your scheduled pick-up time at <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.
                       </p>
                       <p class="text-xl text-brand-main-text">
-                        If it is after
-                        normal business hours, call our dispatch at
-                        <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">
-                          {{ company?.trans.phone.dispatch }}
-                        </a>.
+                        If it is after normal business hours, call our dispatch at <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>.
+                      </p>
+                      <p class="text-xl text-brand-main-text">
+                        Please make sure to read our <NuxtLink to="/company/policies/ride-cancellation" class="link">Ride Cancellation Policy</NuxtLink> to understand proper cancellation procedures.
                       </p>
                     </div>
                   </BaseInteractiveAccordionButton>
@@ -144,12 +130,14 @@
                     :button-class="`px-4 py-2 w-full text-left ${activeAccordionId === 'services-covered' ? 'border-b border-b-black' : ''}`"
                     :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'services-covered' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
-                    <p class="text-xl text-brand-main-text">
-                      We provide transportation assistance for
-                      those services covered by Medicaid. We cannot
-                      transport to services not covered under the
-                      Medicaid program.
-                    </p>
+                      <p class="text-xl text-brand-main-text">
+                        We provide transportation assistance for those services covered by Medicaid. We cannot transport to services not covered under the Medicaid program, such as to and from locations that are not medical appointments. If the service request is farther than 25 miles you will need to fill out a Medical Certificate of Transportation Services beyond 25 Miles form  which is found within the initial paperwork below.
+                      </p>
+                      <BaseUiAction 
+                        href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
+                        rel="noopener nofollow" class="p-2 mb-4 mt-8">
+                        Medical Certificate of Transportation Service Form
+                      </BaseUiAction>
                   </BaseInteractiveAccordionButton>
                 </li>
                 <li>
@@ -163,17 +151,10 @@
                     @update:active-id="updateId">
                     <div class="space-y-4">
                       <p class="text-xl text-brand-main-text">
-                        The attending Physician, Physician’s
-                        Assistant, Nurse Practitioner, Therapist, or
-                        licensed healthcare professional must
-                        complete and sign the Medical Certificate of
-                        Transportation Services.
+                        The attending Physician, Physician's Assistant, Nurse Practitioner, Therapist, or licensed healthcare professional must complete and sign the Medical Certificate of Transportation Services.
                       </p>
                       <p class="text-xl text-brand-main-text">
-                        If a client lives beyond 25 miles from the
-                        Medical Provider then the additional 25 mile
-                        form must be filled out, which is found
-                        within the
+                        If a client lives beyond 25 miles from the Medical Provider then the additional 25 mile form must be filled out, which is found within the initial paperwork below.
                       </p>
                     </div>
                     <BaseUiAction 
@@ -193,12 +174,7 @@
                   :content-class="`bg-gray-200 px-4 py-2 ${activeAccordionId !== 'when-to-be-ready' ? 'group-hover:bg-gray-300' : ''}`"
                     @update:active-id="updateId">
                     <p class="text-xl text-brand-main-text">
-                      When you call us for a ride, we will give you
-                      the timeframe you should be ready to be
-                      picked up by. For shared rides, you may be asked
-                      to be ready earlier than expected. Unexpected
-                      delays may occur due to traffic or weather
-                      conditions.
+                      When you call us for a ride, we will give you the timeframe you should be ready to be picked up by. For shared rides, you may be asked to be ready earlier than expected. Unexpected delays may occur due to traffic or weather conditions, so please keep that in mind when utilizing our services for non-emergency medical transportation (NEMT) needs.
                     </p>
                   </BaseInteractiveAccordionButton>
                 </li>
@@ -283,14 +259,14 @@
                   provider to a Colorado Medicaid covered service.
                 </p>
               </li>
-              <li class="pl-8 relative">
+              <li class="pl-8 relative space-y-4">
                 <BaseIcon name="material-symbols:bookmark-check-rounded" class="text-brand-primary absolute left-0" />
                 <p class="text-xl text-brand-main-text">
                   All regions on the map highligted in green are within the
                   jurisdiction of Golden Gate Manor in the State of Colorado.
-                  We happily service anyone within our serviceable area.
+                  This is the areas that we are able to pick our clients up from. 
+                  We will still be able to take you to appointments from, for example, Pueblo, Colorado, to Denver, Colorado.
                 </p>
-  
                 <p class="text-xl text-brand-main-text">
                   Click on the map, or zoom in if you're on a mobile device, to see an
                   expanded version.
@@ -350,18 +326,18 @@
 
 <script setup lang='ts'>
 definePageMeta({
-  title: 'Non-Emergency Medical Transportation',
+  title: 'Non-Emergency Medical Transportation in Southern Colorado',
   breadcrumbLabel: 'NEMT'
 })
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Non-Emergency Medical Transportation',
-  ogTitle: 'Non-Emergency Medical Transportation',
+  title: 'Non-Emergency Medical Transportation in Southern Colorado',
+  ogTitle: 'Non-Emergency Medical Transportation in Southern Colorado',
   description: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
   ogDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'Non-Emergency Medical Transportation',
+  twitterTitle: 'Non-Emergency Medical Transportation in Southern Colorado',
   twitterDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
