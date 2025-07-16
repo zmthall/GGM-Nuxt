@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   css: ["./assets/css/main.css", "flatpickr/dist/flatpickr.min.css"],
   modules: [
-    // '@nuxt/content',
+    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',

@@ -2,11 +2,11 @@
   <nav v-if="!isHomePage && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
     <ol class="flex">
       <li>
-        <NuxtLink to="/" class="text-brand-primary underline hover:text-brand-link-hover">Home</NuxtLink>
+        <NuxtLink to="/" class="link">Home</NuxtLink>
       </li>
       <li v-for="crumb in breadcrumbs" :key="crumb.path">
         <template v-if="!crumb.isLast">
-          &nbsp;/&nbsp;<NuxtLink :to="crumb.path" class="text-brand-primary underline hover:text-brand-link-hoverw">{{ crumb.label }}</NuxtLink>
+          &nbsp;/&nbsp;<NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
         </template>
         <template v-else>
           <span>&nbsp;/&nbsp;{{ crumb.label }}</span>

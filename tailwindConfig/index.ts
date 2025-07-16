@@ -10,6 +10,8 @@ import { zIndex } from "./zIndex";
 import { dropShadow } from "./dropShadow"
 import { height } from "./height";
 import { listStyleType } from "./listStyleType";
+import { gridTemplateColumns } from "./gridTemplateColumns";
+import { gridColumn } from "./gridColumn";
 
 export default {
   colors,
@@ -24,4 +26,6 @@ export default {
   animation,
   dropShadow,
   listStyleType,
+  gridColumn,
+  gridTemplateColumns
 };

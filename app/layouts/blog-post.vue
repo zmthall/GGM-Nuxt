@@ -1,10 +1,11 @@
 <template>
-  <main class="default bg-brand-background">
+  <main class="blog-post bg-brand-background">
     <!-- Main header and page navigation -->
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
-    <!-- Page headers and breadcrumb with ability to disable on specific pages  -->
-    <BaseLayoutPageHeader v-if="showHeader" :title="dynamicPageHeader"/>
+    
+    <!-- Blog-specific header with post data from store -->
+    <BaseLayoutPageHeader :title="blogTitle || 'Loading...'"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
     <slot />
     <BaseLayoutFooter />
@@ -13,14 +14,14 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: "DefaultPages"
-})
+  name: "BlogPostLayout"
+});
 
 const staticData = useStaticData()
 
 if(staticData) {
   useHead({
-    titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
+    titleTemplate: null,
     script: [
       {
         key: 'ld-json-org',
@@ -57,34 +58,12 @@ useSeoMeta({
   author: 'Zachary Thallas',
 })
 
-// const pageHeader = computed(() => {
-//   return route.meta.title as string | undefined
-// })
-
-
-// Provide a way for pages to set dynamic titles
-
-const dynamicPageHeader = computed(() => {
-  // Try to get injected title first, then fall back to meta title
-  const injectedTitle = inject('pageTitle', null);
-  return injectedTitle || route.meta.title as string | undefined;
-});
-
 const route = useRoute();
-const showHeader = computed(() => route.meta.showPageHeader !== false)
-const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
+const blogStore = useBlogStore();
+const showBreadcrumb = computed(() => !route.meta.customBreadcrumb);
+
+const blogTitle = computed(() => {
+  if(blogStore.currentPost?.title) return `Golden Gate Manor Blog - ${blogStore.currentPost.title}`
+  return 'Golden Gate Manor Blog'
+})
 </script>
-
-<style>
-  html.no-scroll {
-    scrollbar-gutter: stable;
-  }
-
-  body.no-scroll {
-    overflow-y: hidden;
-  }
-
-  body {
-    overflow-y: auto;
-  }
-</style>
