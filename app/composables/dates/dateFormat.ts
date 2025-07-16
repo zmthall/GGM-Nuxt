@@ -85,9 +85,15 @@ export const useDateFormat = () => {
     });
   };
 
-  const formatShortDate = (date: string | Date | undefined): string => {
+  const formatShortDate= (date: string | Date | undefined): string => {
     const parsedDate = parseFlexibleDate(date);
-    return parsedDate ? parsedDate.toLocaleDateString('en-US') : '';
+    if (!parsedDate) return '';
+    
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = parsedDate.getDate().toString().padStart(2, '0');
+    const year = parsedDate.getFullYear();
+    
+    return `${month}/${day}/${year}`;
   };
 
   return {

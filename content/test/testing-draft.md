@@ -1,5 +1,4 @@
 ---
-id: "45124"
 title: "Hello World"
 description: "My first blog post"
 date: 2023-10-06

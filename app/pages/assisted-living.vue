@@ -110,6 +110,7 @@
 const runtimeConfig = useRuntimeConfig()
 definePageMeta({
   title: 'Assisted Living in Pueblo Colorado',
+  breadcrumbLabel: 'Assisted Living'
 })
 
 useSeoMeta({

@@ -4,7 +4,7 @@
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <!-- Page headers and breadcrumb with ability to disable on specific pages  -->
-    <BaseLayoutPageHeader v-if="showHeader" :title="dynamicPageHeader"/>
+    <BaseLayoutPageHeader v-if="showHeader" :title="pageHeader"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
     <slot />
     <BaseLayoutFooter />
@@ -57,18 +57,9 @@ useSeoMeta({
   author: 'Zachary Thallas',
 })
 
-// const pageHeader = computed(() => {
-//   return route.meta.title as string | undefined
-// })
-
-
-// Provide a way for pages to set dynamic titles
-
-const dynamicPageHeader = computed(() => {
-  // Try to get injected title first, then fall back to meta title
-  const injectedTitle = inject('pageTitle', null);
-  return injectedTitle || route.meta.title as string | undefined;
-});
+const pageHeader = computed(() => {
+  return route.meta.title as string | undefined
+})
 
 const route = useRoute();
 const showHeader = computed(() => route.meta.showPageHeader !== false)

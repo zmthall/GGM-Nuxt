@@ -1,11 +1,12 @@
 ---
+id: "20"
 title: "Hello World Testing Copy"
 description: "My first blog post"
-date: 7/16/2025
+date: 7/15/2025
 author: Zachary Thallas
 draft: false
 tags: ["hello", "world"]
-thumbnail: "/images/GGM-Logo-Mobile.png"
+thumbnail: "/images/pages/non-medical/suv-train.jpg"
 thumbnailAlt: "Logo for golden gate manor"
 ---
 

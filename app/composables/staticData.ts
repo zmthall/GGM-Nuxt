@@ -32,16 +32,13 @@ export const useStaticData = () => {
         slug: "/gas-and-goods",
       },
       {
-        // id: "news",
-        // name: "News",
-        // slug: "/news",
-        id: "community",
-        name: "Community",
-        slug: "/news/community",
-        // sublinks: [
-        //   { id: "community", name: "Community", slug: "/news/community" },
-        //   { id: "blog", name: "Blog", slug: "/news/blog" },
-        // ],
+        id: "news",
+        name: "News",
+        slug: "/news",
+        sublinks: [
+          { id: "community", name: "Community", slug: "/news/community" },
+          { id: "blog", name: "Blog", slug: "/news/blog" },
+        ],
       },
       {
         id: "company",

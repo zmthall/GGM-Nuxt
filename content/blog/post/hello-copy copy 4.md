@@ -1,10 +1,13 @@
 ---
-id: "45124"
-title: "Hello World"
+id: "4"
+title: "Hello World Testing Copy"
 description: "My first blog post"
-date: 2023-10-06
-draft: true
+date: 7/15/2025
+author: Zachary Thallas
+draft: false
 tags: ["hello", "world"]
+thumbnail: "/images/pages/non-medical/suv-train.jpg"
+thumbnailAlt: "Logo for golden gate manor"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel tortor vel nibh mollis ultrices quis egestas turpis. Etiam a venenatis diam. Aenean commodo tempor leo in faucibus. Etiam vitae egestas odio. In tristique iaculis felis pretium luctus. Etiam non urna vel enim venenatis tincidunt sit amet sit amet magna. Sed in eleifend massa, sed suscipit est. Duis dignissim, justo pellentesque pretium commodo, nisl lorem sollicitudin enim, ut hendrerit dolor lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis, mauris augue venenatis arcu, eu ultrices mi mauris non nisl.

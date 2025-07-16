@@ -8,6 +8,7 @@ export default defineContentConfig({
         include: "blog/**/*.md",
       },
       schema: z.object({
+        id: z.string(),
         title: z.string(),
         description: z.string().optional(),
         date: z.string().optional(),
