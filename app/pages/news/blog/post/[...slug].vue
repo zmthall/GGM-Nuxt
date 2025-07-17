@@ -32,6 +32,18 @@
             </span>
           </span>
         </div>
+        <div>
+          <!-- Social icons to share page -->
+           <div>
+            <button 
+              @click="socialShare.shareOnFacebook"
+              title="Share on Facebook"
+            >
+              <BaseIcon name="mdi:facebook" hover-color="hover:text-brand-link-hover" />
+              <span class="sr-only">Share on Facebook</span>
+            </button>
+          </div>
+        </div>
       </aside>
     </BaseLayoutPageSection>
   </div>
@@ -41,8 +53,8 @@
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
 
 const route = useRoute();
-const blogStore = useBlogStore();
-const formatDates = useDateFormat()
+const formatDates = useDateFormat();
+const socialShare = useSocialShare();
 
 // Get the slug from the URL
 const slug = Array.isArray(route.params.slug) 
@@ -51,9 +63,6 @@ const slug = Array.isArray(route.params.slug)
 
 // Build the content path
 const contentPath = `/blog/post/${slug}`;
-
-// Set loading state
-blogStore.setLoading(true);
 
 // Fetch the specific post
 const { data: post } = await useAsyncData(`blog-${slug}`, () =>
@@ -76,15 +85,6 @@ if(post.value.draft) {
   })
 }
 
-// Set the post in the store
-blogStore.setCurrentPost(post.value);
-blogStore.setLoading(false);
-
-// Clear the post when leaving the page
-onBeforeUnmount(() => {
-  blogStore.clearCurrentPost();
-});
-
 // Use the blog-post layout
 definePageMeta({
   layout: 'blog-post',
@@ -105,3 +105,5 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 </script>
+
+<style></style>

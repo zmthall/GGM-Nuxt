@@ -120,7 +120,7 @@ defineOptions({
 })
 
 definePageMeta({
-  title: 'Golden Gate Manor Blog | All resources under one umbrella',
+  title: 'Resources & Insights from Golden Gate Manor',
   breadcrumbLabel: 'Blog Posts'
 })
 

@@ -5,7 +5,7 @@
     <BaseLayoutNavigation />
     
     <!-- Blog-specific header with post data from store -->
-    <BaseLayoutPageHeader :title="blogTitle || 'Loading...'"/>
+    <BlogPostHeader title="Golden Gate Manor Blog Post" />
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
     <slot />
     <BaseLayoutFooter />
@@ -59,11 +59,5 @@ useSeoMeta({
 })
 
 const route = useRoute();
-const blogStore = useBlogStore();
 const showBreadcrumb = computed(() => !route.meta.customBreadcrumb);
-
-const blogTitle = computed(() => {
-  if(blogStore.currentPost?.title) return `Golden Gate Manor Blog - ${blogStore.currentPost.title}`
-  return 'Golden Gate Manor Blog'
-})
 </script>
