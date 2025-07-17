@@ -1,13 +1,19 @@
 <template>
     <div>
         <BaseLayoutPageSection margin="top">
-            <BaseLayoutPageContainer class="space-y-16">
+            <BaseLayoutPageContainer>
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
                 <div>
-                    <div v-if="latestPost" class="flex gap-16">
+                    <div v-if="latestPost" class="flex flex-col gap-8 sm:flex-row">
                         <NuxtLink :to="`/news${latestPost.path}`" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
                             <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-1/2">
-                                <div class="h-1/2">
+                                <div class="h-1/2 relative">
+                                    <div>
+                                        <p class="flex items-center gap-2 absolute top-2 left-2 bg-zinc-300/50 p-1 rounded-lg">
+                                            <BaseIcon name="material-symbols:award-star-outline" />
+                                            <span class="text-2xl text-brand-primary font-bold">Latest</span>
+                                        </p>
+                                    </div>
                                     <NuxtImg 
                                         :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
                                         :alt="latestPost.thumbnailAlt || latestPost.title" 
@@ -16,9 +22,9 @@
                                         class="object-cover h-full w-full"
                                     />        
                                 </div>
-                                <div class="flex flex-col sm:flex-row sm:items-center gap-4 py-4 px-8">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-4 py-4 px-8 bg-brand-primary text-white">
                                     <ul class="flex gap-2 items-center max-sm:hidden">
-                                        <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
+                                        <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
                                             {{ tag }}
                                         </li>
                                     </ul>
@@ -26,14 +32,22 @@
                                         Posted on: {{ formatDates.formatShortDate(latestPost.date) }}
                                     </time>
                                 </div>
-                                <div class="flex flex-col justify-between px-8 py-4">
-                                        <h3 class="text-2xl font-bold text-brand-primary">{{ latestPost.title }}</h3>
-                                        <p class="post-body">{{ truncateBodyText(latestPost.body) }}</p>
+                                <div class="flex flex-col justify-between px-8 py-4 bg-brand-primary text-white">
+                                        <h3 class="text-2xl font-bold text-brand-secondary">{{ latestPost.title }}</h3>
+                                        <p class="post-body">{{ truncateBodyText(latestPost.body, 250) }}</p>
                                 </div>
                             </div>
                         </NuxtLink>
-                        <div>
-                            <h3>Staff Picks</h3>
+                        <div v-if="staffPicks && staffPicks.length > 0" class="sm:border-l-2 sm:border-l-brand-primary/20 mx-4 sm:mx-0 sm:ml-8 sm:pl-8 sm:w-1/2">
+                            <h3 class="text-4xl font-bold text-brand-primary mb-4">Staff Picks</h3>
+                            <ul class="space-y-4">
+                                <li v-for="staffPick in staffPicks" :key="staffPick.id" class="group">
+                                    <nuxt-link :to="`/news${staffPick.path}`" class="flex flex-col">
+                                        <span class="text-lg font-bold font-headings sm:group-hover:scale-105">{{ staffPick.title }}</span>
+                                        <span class="text-xl group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105">{{ staffPick.description }}</span>
+                                    </nuxt-link>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
@@ -53,7 +67,7 @@
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
-        <BaseLayoutPageSection margin="default" bg="alt">
+        <BaseLayoutPageSection v-if="posts.length > 0" margin="default" bg="alt">
             <BaseLayoutPageContainer>
                 <div>
                     <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
@@ -82,12 +96,15 @@
                                     </div>
                                     <div class="flex flex-col justify-between px-2 pt-2 pb-4">
                                         <h3 class="text-xl font-bold text-brand-primary">{{ post.title }}</h3>
-                                        <p class="post-body">{{ truncateBodyText(post.body, ) }}</p>
+                                        <p class="post-body">{{ post.body ? truncateBodyText(post.body as MarkdownRoot, 75) : '' }}</p>
                                     </div>
                                 </div>
                             </NuxtLink>
                         </li>
                     </ul>
+                    <div v-if="hasMorePages" class="flex justify-center mt-8">
+                        <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
+                    </div>
                 </div>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
@@ -98,42 +115,107 @@
 import type { MarkdownRoot } from '@nuxt/content'
 import { useDateFormat } from '../../../composables/dates/dateFormat.js'
 
-const formatDates = useDateFormat()
+defineOptions({
+    name: 'BlogPostsPage'
+})
 
 definePageMeta({
-  title: 'Golden Gate Manor Blog Posts',
+  title: 'Golden Gate Manor Blog | All resources under one umbrella',
   breadcrumbLabel: 'Blog Posts'
 })
 
-const route = useRoute()
-const page = computed(() => {
-  const pageParam = route.query.page
-  if (typeof pageParam === 'string') {
-    return parseInt(pageParam) || 1
-  }
-  return 1
+useHead({
+    titleTemplate: null
 })
-const limit = 8 // Posts per page
-const totalPages = ref<number>(0)
+
+const runtimeConfig = useRuntimeConfig()
+useSeoMeta({
+  title: 'Golden Gate Manor Blog | All resources under one umbrella',
+  ogTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
+  description: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
+  ogDescription: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
+  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  twitterTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
+  twitterDescription: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
+  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  twitterCard: 'summary_large_image',
+})
+
+
+const formatDates = useDateFormat()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'description', 'thumbnail', 'thumbnailAlt', 'tags', 'body')
+    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'tags', 'body')
     .order('date', 'DESC')
     .limit(1)
     .first() // Gets the first result as an object instead of array
 })
 
-const { data: posts } = await useAsyncData(route.path, () => {
+
+const { data: staffPicks } = await useAsyncData('blog-staff-picks', () => {
+  return queryCollection('blog')
+    .where('staffPick', '=', true)
+    .select('path', 'id', 'title', 'description')
+    .order('title', 'DESC')
+    .limit(4)
+    .all() // Gets the first result as an object instead of array
+})
+
+interface BlogPost {
+  path: string;
+  id: string;
+  date?: string;
+  title: string;
+  description?: string;
+  thumbnail?: string;
+  thumbnailAlt?: string;
+  tags?: string[]
+  body?: unknown
+}
+
+const posts = ref<BlogPost[]>([])
+
+const page = ref(1)
+const limit = 8
+const isLoading = ref<boolean>(false)
+const hasMorePages = ref<boolean>(true)
+
+// Load initial posts
+const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'id', 'date', 'title', 'description', 'thumbnail', 'thumbnailAlt', 'tags', 'body') // Add whatever fields you need
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'tags', 'body')
     .order('date', 'DESC')
     .limit(limit)
-    .skip((page.value - 1) * limit)
     .all()
 })
+
+posts.value = initialPosts.value || []
+
+const loadMore = async () => {
+  isLoading.value = true
+  page.value++
+  
+  const newPosts = await $fetch('/api/blog/posts', {
+    query: {
+      page: page.value,
+      limit: limit
+    }
+  }) as BlogPost[]
+  
+  if (newPosts?.length) {
+    posts.value.push(...newPosts)
+  } 
+
+  if (newPosts.length < limit) {
+    // This was the last page
+    hasMorePages.value = false
+  }
+  
+  isLoading.value = false
+}
 
 const getFirstParagraph = (body: MarkdownRoot | undefined) => {
     if(body) {
@@ -162,22 +244,11 @@ const truncateBodyText = (body: MarkdownRoot | undefined, maxLength: number = 10
     return truncateText(getFirstParagraph(body), maxLength)
 }
 
-useHead({
-    titleTemplate: null
-})
-
-// useSeoMeta({
-//   title: '',
-//   ogTitle: '',
-//   description: '',
-//   ogDescription: '',
-//   ogImage: '',
-//   twitterCard: 'summary_large_image',
-// })
-
-
-defineOptions({
-    name: 'BlogPostsPage'
+onMounted(() => {
+    if (initialPosts.value && initialPosts.value.length < limit) {
+    // This was the last page
+    hasMorePages.value = false
+  }
 })
 </script>
 

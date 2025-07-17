@@ -16,7 +16,8 @@ export default defineContentConfig({
         draft: z.boolean().optional(),
         tags: z.array(z.string()).optional(),
         thumbnail: z.string().optional(),
-        thumbnailAlt: z.string().optional()
+        thumbnailAlt: z.string().optional(),
+        staffPick: z.boolean().optional()
       }),
     }),
   },
