@@ -100,4 +100,13 @@ export default defineNuxtConfig({
       maxAge: 60 * 60 * 24 * 30, // 30 days
     }
   },
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 4, // include h3 headings
+        }
+      }
+    }
+  }
 })
