@@ -5,7 +5,7 @@
     <BaseLayoutNavigation />
     
     <!-- Blog-specific header with post data from store -->
-    <BlogPostHeader title="Golden Gate Manor Blog Post" />
+    <BlogPostHeader title="Golden Gate Manor Blog Post" class="max-sm:hidden"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
     <slot />
     <BaseLayoutFooter />

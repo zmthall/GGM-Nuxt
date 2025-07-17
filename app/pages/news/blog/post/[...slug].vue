@@ -2,17 +2,39 @@
   <div class="md:grid md:grid-cols-15 md:max-w-[1500px] md:mx-auto">
     <BaseLayoutPageSection margin="top" class="col-span-11 space-y-4">
         <div>
-          <h2 class="text-2xl font-bold text-brand-primary max-sm:hidden">
+          <h2 class="text-2xl font-bold text-brand-primary">
             {{ post?.title }}
           </h2>
           <time v-if="post?.date" :datetime="formatDates.formatDatetime(post.date)">
             Posted On: {{ formatDates.formatDisplayDate(post.date) }}
           </time>
           <p v-if="post?.author">By: {{ post.author }}</p>
+          <div v-if="post?.tags" class="md:hidden">
+          <span v-if="post.tags.length" class="flex gap-2 items-center">
+            <h3>Tags:</h3>
+            <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
+              {{ tag }}
+            </span>
+          </span>
+        </div>
+        </div>
+        <div class="w-full overflow-hidden rounded-lg md:hidden">
+          <NuxtImg 
+            :src="post?.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+            :alt="post?.thumbnailAlt || post?.title" 
+            :title="post?.thumbnailAlt || post?.title" 
+            loading="eager" 
+            sizes="sm:100vw md:50vw lg:400px"
+            class="object-cover w-full h-full" 
+          />        
         </div>
         <ContentRenderer v-if="post" :value="post" class="prose prose-lg space-y-2 text-xl text-brand-main-text" />
+        <div class="md:hidden">
+          <!-- Social icons to share page -->
+          <BlogPostSocialShare />
+        </div>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="top" class="col-span-4 max-md:hidden ">
+    <BaseLayoutPageSection margin="top" class="col-span-4 max-md:hidden">
       <aside class="space-y-4">
         <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
           <NuxtImg 
@@ -34,15 +56,7 @@
         </div>
         <div>
           <!-- Social icons to share page -->
-           <div>
-            <button 
-              @click="socialShare.shareOnFacebook"
-              title="Share on Facebook"
-            >
-              <BaseIcon name="mdi:facebook" hover-color="hover:text-brand-link-hover" />
-              <span class="sr-only">Share on Facebook</span>
-            </button>
-          </div>
+          <BlogPostSocialShare is-aside/>
         </div>
       </aside>
     </BaseLayoutPageSection>
@@ -54,7 +68,6 @@ import { useDateFormat } from '../../../../composables/dates/dateFormat';
 
 const route = useRoute();
 const formatDates = useDateFormat();
-const socialShare = useSocialShare();
 
 // Get the slug from the URL
 const slug = Array.isArray(route.params.slug) 
