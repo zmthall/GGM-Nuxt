@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   
   return queryCollection(event, 'blog')
     .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'description', 'thumbnail', 'thumbnailAlt', 'tags')
+    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'body')
     .order('date', 'DESC')
     .skip((page - 1) * limit)
     .limit(limit)

@@ -70,6 +70,7 @@ export default defineNuxtConfig({
         includeAppSources: true,
         sources: ['/api/sitemap-blog'],
         include: ['/news/blog/**'],
+        exclude: ['/news/blog/post']
       }
     },
     autoLastmod: true,

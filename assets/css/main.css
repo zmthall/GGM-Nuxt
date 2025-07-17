@@ -8,10 +8,12 @@
 
 h1, h2, h3, h4, h5, h6 {
   @apply font-headings;
+  scroll-margin-top: 45px;
 }
 
 html {
   @apply font-main antialiased;
+  scroll-behavior: smooth;
 }
 
 @font-face {

@@ -17,24 +17,28 @@
                                     <NuxtImg 
                                         :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
                                         :alt="latestPost.thumbnailAlt || latestPost.title" 
-                                        :title="latestPost.thumbnailAlt || latestPost.title" 
+                                        :title="latestPost.thumbnailAlt || latestPost.title"
+                                        :width="latestPost.thumbnailWidth || ''"
+                                        :height="latestPost.thumbnailHeight || ''" 
                                         loading="eager"
                                         class="object-cover h-full w-full"
                                     />        
                                 </div>
-                                <div class="flex flex-col sm:flex-row sm:items-center gap-4 py-4 px-8 bg-brand-primary text-white">
-                                    <ul class="flex gap-2 items-center max-sm:hidden">
-                                        <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
-                                            {{ tag }}
-                                        </li>
-                                    </ul>
-                                    <time :datetime="formatDates.formatDatetime(latestPost.date)">
-                                        Posted on: {{ formatDates.formatShortDate(latestPost.date) }}
-                                    </time>
-                                </div>
-                                <div class="flex flex-col justify-between px-8 py-4 bg-brand-primary text-white">
-                                        <h3 class="text-2xl font-bold text-brand-secondary">{{ latestPost.title }}</h3>
-                                        <p class="post-body">{{ truncateBodyText(latestPost.body, 250) }}</p>
+                                <div class="bg-brand-primary">
+                                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
+                                        <ul class="flex gap-2 items-center max-sm:hidden">
+                                            <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
+                                                {{ tag }}
+                                            </li>
+                                        </ul>
+                                        <time :datetime="formatDates.formatDatetime(latestPost.date)">
+                                            Posted on: {{ formatDates.formatShortDate(latestPost.date) }}
+                                        </time>
+                                    </div>
+                                    <div class="flex flex-col justify-between px-8 py-4 text-white">
+                                            <h3 class="text-2xl font-bold text-brand-secondary">{{ latestPost.title }}</h3>
+                                            <p class="post-body">{{ truncateBodyText(latestPost.body, 250) }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </NuxtLink>
@@ -75,28 +79,37 @@
                         <li v-for="post in posts" :key="post.id">
                             <NuxtLink :to="`/news${post.path}`" class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
-                                    <div class="h-1/2">
+                                    <div class="h-1/2 relative">
+                                        <div>
+                                            <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
+                                                <span class="text-sm text-white">Read Time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}</span>
+                                            </p>
+                                        </div>
                                         <NuxtImg 
                                             :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
                                             :alt="post.thumbnailAlt || post.title" 
                                             :title="post.thumbnailAlt || post.title" 
+                                            :width="post.thumbnailWidth || ''"
+                                            :height="post.thumbnailHeight || ''"
                                             loading="eager"
                                             class="object-cover h-full w-full"
                                         />        
                                     </div>
-                                    <div class="flex justify-left gap-4 pt-4 px-2">
-                                        <ul class="flex gap-2 items-center">
-                                            <li v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
-                                                {{ tag }}
-                                            </li>
-                                        </ul>
-                                        <time :datetime="formatDates.formatDatetime(post.date)" class="w-min">
-                                            Posted on: {{ formatDates.formatShortDate(post.date) }}
-                                        </time>
-                                    </div>
-                                    <div class="flex flex-col justify-between px-2 pt-2 pb-4">
-                                        <h3 class="text-xl font-bold text-brand-primary">{{ post.title }}</h3>
-                                        <p class="post-body">{{ post.body ? truncateBodyText(post.body as MarkdownRoot, 75) : '' }}</p>
+                                    <div>
+                                        <div class="flex justify-left gap-2 pt-4 px-2">
+                                            <ul class="flex gap-2 items-center">
+                                                <li v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
+                                                    {{ tag }}
+                                                </li>
+                                            </ul>
+                                            <time :datetime="formatDates.formatDatetime(post.date)" class="w-min">
+                                                Posted on: {{ formatDates.formatShortDate(post.date) }}
+                                            </time>
+                                        </div>
+                                        <div class="flex flex-col justify-between px-2 pt-2 pb-4">
+                                            <h3 class="text-xl font-bold text-brand-primary">{{ post.title }}</h3>
+                                            <p class="post-body">{{ post.body ? truncateBodyText(post.body as MarkdownRoot, 75) : '' }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </NuxtLink>
@@ -114,6 +127,7 @@
 <script setup lang='ts'>
 import type { MarkdownRoot } from '@nuxt/content'
 import { useDateFormat } from '../../../composables/dates/dateFormat.js'
+import { useReading } from '../../../composables/blog/reading.js'
 
 defineOptions({
     name: 'BlogPostsPage'
@@ -132,22 +146,23 @@ const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
   title: 'Golden Gate Manor Blog | All resources under one umbrella',
   ogTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
-  description: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
-  ogDescription: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
+  description: 'Your complete resource hub for healthcare transportation, assisted living, and community services in Southern Colorado. Expert insights."',
+  ogDescription: 'Your complete resource hub for healthcare transportation, assisted living, and community services in Southern Colorado. Expert insights."',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
-  twitterDescription: 'our complete resource for healthcare transportation, assisted living, medical supplies, and community services in Southern Colorado. Expert insights from Golden Gate Manor\'s family of businesses."',
+  twitterDescription: 'Your complete resource hub for healthcare transportation, assisted living, and community services in Southern Colorado. Expert insights."',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })
 
 
 const formatDates = useDateFormat()
+const reading = useReading()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'tags', 'body')
+    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'body')
     .order('date', 'DESC')
     .limit(1)
     .first() // Gets the first result as an object instead of array
@@ -171,6 +186,8 @@ interface BlogPost {
   description?: string;
   thumbnail?: string;
   thumbnailAlt?: string;
+  thumbnailHeight?: string;
+  thumbnailWidth?: string;
   tags?: string[]
   body?: unknown
 }
@@ -186,7 +203,7 @@ const hasMorePages = ref<boolean>(true)
 const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'tags', 'body')
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'body')
     .order('date', 'DESC')
     .limit(limit)
     .all()

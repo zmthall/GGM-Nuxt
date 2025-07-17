@@ -17,6 +17,8 @@ export default defineContentConfig({
         tags: z.array(z.string()).optional(),
         thumbnail: z.string().optional(),
         thumbnailAlt: z.string().optional(),
+        thumbnailHeight: z.string().optional(),
+        thumbnailWidth: z.string().optional(),
         staffPick: z.boolean().optional()
       }),
     }),
