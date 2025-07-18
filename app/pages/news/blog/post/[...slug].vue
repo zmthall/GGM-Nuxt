@@ -71,23 +71,25 @@
             <BaseIcon v-show="!tocDrawerOpen" name="line-md:chevron-double-right" color="text-white" hover-color="group-hover:text-brand-primary" />
             <BaseIcon v-show="tocDrawerOpen" name="line-md:chevron-double-left" color="text-white" hover-color="group-hover:text-brand-primary" />
           </button>
-          <aside v-if="TOC" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-3/4 sm:w-80 bg-brand-primary shadow-primary border-r border-t border-b border-white p-4 overflow-y-auto max-h-[450px] rounded-r-xl z-16 transition-transform ease-in-out duration-500', {'translate-x-0': tocDrawerOpen, '-translate-x-[100%]': !tocDrawerOpen}]" aria-label="Table of Contents">
-            <h2 class="text-brand-secondary text-center text-xl font-bold underline mb-2">Table of Contents</h2>
-            <ul class="ml-5 text-white list-decimal">
-              <li v-for="link in TOC.links" :key="link.id" class="mb-2">
-                <a :href="`#${link.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-0': selectedTOCItem === link.id}]" @click="selectTOCItem(link.id)">{{ link.id }}</a>
-                <ul v-if="link.children" class="ml-4 list-roman">
-                  <li v-for="child in link.children" :key="child.id" class="mt-2">
-                      <a :href="`#${child.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-0': selectedTOCItem === child.id}]" @click="selectTOCItem(child.id)">{{ child.id }}</a>
-                      <ul v-if="link.children" class="ml-4 list-[lower-alpha]">
-                        <li v-for="subchild in child.children" :key="subchild.id" class="mt-2">
-                            <a :href="`#${subchild.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-0': selectedTOCItem === subchild.id}]" @click="selectTOCItem(subchild.id)">{{ subchild.id }}</a>
-                        </li>
-                      </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <aside v-if="TOC" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-3/4 sm:w-80 bg-brand-primary shadow-primary border-r border-t border-b border-white p-4 overflow-y-auto rounded-r-xl z-16 transition-transform ease-in-out duration-500', {'translate-x-0': tocDrawerOpen, '-translate-x-[100%]': !tocDrawerOpen}]" aria-label="Table of Contents">
+            <div class="overflow-y-auto max-h-[450px] ">
+              <h2 class="text-brand-secondary text-center text-xl font-bold underline mb-2">Table of Contents</h2>
+              <ul class="ml-5 text-white list-decimal">
+                <li v-for="link in TOC.links" :key="link.id" class="mb-2">
+                  <a :href="`#${link.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === link.id}]" @click="selectTOCItem(link.id)">{{ link.id }}</a>
+                  <ul v-if="link.children" class="ml-4 list-roman">
+                    <li v-for="child in link.children" :key="child.id" class="mt-2">
+                        <a :href="`#${child.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === child.id}]" @click="selectTOCItem(child.id)">{{ child.id }}</a>
+                        <ul v-if="link.children" class="ml-4 list-[lower-alpha]">
+                          <li v-for="subchild in child.children" :key="subchild.id" class="mt-2">
+                              <a :href="`#${subchild.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === subchild.id}]" @click="selectTOCItem(subchild.id)">{{ subchild.id }}</a>
+                          </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </aside>
       </ClientOnly>
     </Teleport>
