@@ -25,7 +25,7 @@
                                     />        
                                 </div>
                                 <div class="bg-brand-primary">
-                                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
+                                    <div class="flex flex-col flex-wrap sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
                                         <ul class="flex gap-2 items-center max-sm:hidden">
                                             <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
                                                 {{ tag }}
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
                                             <h3 class="text-2xl font-bold text-brand-secondary">{{ latestPost.title }}</h3>
-                                            <p class="post-body">{{ truncateBodyText(latestPost.body, 250) }}</p>
+                                            <p class="post-body">{{ truncateText(latestPost.summary, 250) }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                         />        
                                     </div>
                                     <div>
-                                        <div class="flex justify-left gap-2 pt-4 px-2">
+                                        <div class="flex justify-left gap-2 flex-wrap pt-4 px-2">
                                             <ul class="flex gap-2 items-center">
                                                 <li v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
                                                     {{ tag }}
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
                                             <h3 class="text-xl font-bold text-brand-primary">{{ post.title }}</h3>
-                                            <p class="post-body">{{ post.body ? truncateBodyText(post.body as MarkdownRoot, 75) : '' }}</p>
+                                            <p class="post-body">{{ post.summary ? truncateText(post.summary, 100) : '' }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -128,6 +128,7 @@
 import type { MarkdownRoot } from '@nuxt/content'
 import { useDateFormat } from '../../../composables/dates/dateFormat.js'
 import { useReading } from '../../../composables/blog/reading.js'
+import type { AllPosts } from '../../../models/blog.js'
 
 defineOptions({
     name: 'BlogPostsPage'
@@ -155,14 +156,13 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-
 const formatDates = useDateFormat()
 const reading = useReading()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'body')
+    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary')
     .order('date', 'DESC')
     .limit(1)
     .first() // Gets the first result as an object instead of array
@@ -178,21 +178,7 @@ const { data: staffPicks } = await useAsyncData('blog-staff-picks', () => {
     .all() // Gets the first result as an object instead of array
 })
 
-interface BlogPost {
-  path: string;
-  id: string;
-  date?: string;
-  title: string;
-  description?: string;
-  thumbnail?: string;
-  thumbnailAlt?: string;
-  thumbnailHeight?: string;
-  thumbnailWidth?: string;
-  tags?: string[]
-  body?: unknown
-}
-
-const posts = ref<BlogPost[]>([])
+const posts = ref<AllPosts[]>([])
 
 const page = ref(1)
 const limit = 8
@@ -203,7 +189,7 @@ const hasMorePages = ref<boolean>(true)
 const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'body')
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body')
     .order('date', 'DESC')
     .limit(limit)
     .all()
@@ -220,7 +206,7 @@ const loadMore = async () => {
       page: page.value,
       limit: limit
     }
-  }) as BlogPost[]
+  }) as AllPosts[]
   
   if (newPosts?.length) {
     posts.value.push(...newPosts)
@@ -232,15 +218,6 @@ const loadMore = async () => {
   }
   
   isLoading.value = false
-}
-
-const getFirstParagraph = (body: MarkdownRoot | undefined) => {
-    if(body) {
-        const firstParagraph = body.value[0]
-        if(firstParagraph)
-            return firstParagraph[2]?.toString()
-    }
-    return undefined
 }
 
 const truncateText = (text: string | undefined, maxLength: number = 200): string => {
@@ -255,17 +232,12 @@ const truncateText = (text: string | undefined, maxLength: number = 200): string
   return cleanText.substring(0, maxLength) + '...'
 }
 
-const truncateBodyText = (body: MarkdownRoot | undefined, maxLength: number = 100) => {
-    if(body === undefined) return undefined
-
-    return truncateText(getFirstParagraph(body), maxLength)
-}
-
 onMounted(() => {
-    if (initialPosts.value && initialPosts.value.length < limit) {
-    // This was the last page
-    hasMorePages.value = false
-  }
+    if (initialPosts.value) {
+        if(initialPosts.value.length < limit)
+            // This was the last page
+            hasMorePages.value = false
+    }
 })
 </script>
 

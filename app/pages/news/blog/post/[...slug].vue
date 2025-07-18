@@ -11,13 +11,12 @@
           </time>
           <p v-if="post.author">By: {{ post.author }}</p>
           <div v-if="post.tags" class="md:hidden">
-          <span v-if="post.tags.length" class="flex gap-2 items-center">
-            <h3>Tags:</h3>
-            <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
-              {{ tag }}
+            <span v-if="post.tags.length" class="flex gap-2 items-center">
+              <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
+                {{ tag }}
+              </span>
             </span>
-          </span>
-        </div>
+          </div>
         </div>
         <div class="w-full overflow-hidden rounded-lg md:hidden">
           <NuxtImg 
@@ -53,10 +52,11 @@
         </div>
         <div v-if="post.tags">
           <span v-if="post.tags.length" class="flex gap-2 items-center">
-            <h3>Tags:</h3>
-            <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
-              {{ tag }}
-            </span>
+            <div class="flex gap-2 flex-wrap">
+              <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
+                {{ tag }}
+              </span>
+            </div>
           </span>
         </div>
         <div>
@@ -98,11 +98,14 @@
 
 <script setup lang="ts">
 import { useReading } from '../../../../composables/blog/reading';
+import { useBlogSchema } from '../../../../composables/blog/schema.js';
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
+import type { BlogPost } from '../../../../models/blog.js';
 
 const route = useRoute();
 const formatDates = useDateFormat();
 const reading = useReading();
+const blogSchema = useBlogSchema();
 
 // Get the slug from the URL
 const slug = Array.isArray(route.params.slug) 
@@ -166,8 +169,6 @@ const toggleTOCDrawer = () => {
   tocDrawerOpen.value = !tocDrawerOpen.value;
 }
 
-console.log(TOC)
-
 // Flatten the TOC to get all items (including nested ones)
 const getAllTocItems = (tocData: TocData | undefined): TocItem[] => {
   if (!tocData || !tocData.links) {
@@ -188,6 +189,21 @@ const getAllTocItems = (tocData: TocData | undefined): TocItem[] => {
   traverse(tocData.links)
   return allItems
 }
+
+if(post) {
+  const articleSchema = blogSchema.generateBlogSchema(post.value as BlogPost)
+  useHead({
+    script: [
+            {
+        key: 'ld-json-article',
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(articleSchema),
+        'data-schema': 'article' // 
+      },
+    ]
+  })
+}
+
 
 onMounted(() => {
   const observer = new IntersectionObserver(

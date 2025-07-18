@@ -14,12 +14,13 @@ export default defineContentConfig({
         date: z.string().optional(),
         author: z.string().optional(),
         draft: z.boolean().optional(),
-        tags: z.array(z.string()).optional(),
+        tags: z.array(z.string()).max(2).optional(),
         thumbnail: z.string().optional(),
         thumbnailAlt: z.string().optional(),
         thumbnailHeight: z.string().optional(),
         thumbnailWidth: z.string().optional(),
-        staffPick: z.boolean().optional()
+        staffPick: z.boolean().optional(),
+        summary: z.string()
       }),
     }),
   },

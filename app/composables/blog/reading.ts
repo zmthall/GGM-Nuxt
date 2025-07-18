@@ -2,7 +2,7 @@ import type { MarkdownRoot } from "@nuxt/content";
 
 export const useReading = () => {
 
-  const getReadingTime = (body: MarkdownRoot) => {
+  const getWordCount = (body: MarkdownRoot) => {
     if(!body) return undefined
 
     let count = 0;
@@ -15,10 +15,21 @@ export const useReading = () => {
     
     if(count === 0) return undefined;
 
-    const minutes = Math.ceil(count/250);
-    return minutes === 1 ? '1 minute' : `${minutes} minutes`;
+    return count;
+  }
+
+  const getReadingTime = (body: MarkdownRoot) => {
+    if(!body) return undefined;
+
+    const count = getWordCount(body);
+
+    if(count !== undefined && count !== 0) {
+      const minutes = Math.ceil(count/250);
+      return minutes === 1 ? '1 minute' : `${minutes} minutes`;
+    } else return undefined
   }
   return {
-    getReadingTime
+    getReadingTime,
+    getWordCount
   }
 }
