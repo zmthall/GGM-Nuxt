@@ -96,13 +96,13 @@
                                         />        
                                     </div>
                                     <div>
-                                        <div class="flex justify-left gap-2 flex-wrap pt-4 px-2">
+                                        <div class="flex flex-col justify-left gap-2 pt-4 px-2">
                                             <ul class="flex gap-2 items-center">
                                                 <li v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
                                                     {{ tag }}
                                                 </li>
                                             </ul>
-                                            <time :datetime="formatDates.formatDatetime(post.date)" class="w-min">
+                                            <time :datetime="formatDates.formatDatetime(post.date)">
                                                 Posted on: {{ formatDates.formatShortDate(post.date) }}
                                             </time>
                                         </div>

@@ -56,7 +56,7 @@
               </ul>
             </div>
             <div class="md:w-1/2">
-              <BaseInteractiveServiceAreaMap />
+              <BaseInteractiveServiceAreaMap loading="lazy" />
             </div>
           </div>
           <p class="text-xl text-brand-main-text">

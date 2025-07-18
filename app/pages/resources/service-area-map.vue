@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseInteractiveServiceAreaMap :margin="8"/>
+        <BaseInteractiveServiceAreaMap loading="eager" :margin="8"/>
     </div>
 </template>
 
