@@ -36,7 +36,7 @@
                                         </time>
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
-                                            <h3 class="text-2xl font-bold text-brand-secondary">{{ latestPost.title }}</h3>
+                                            <h3 class="text-2xl font-bold text-brand-secondary post-title">{{ latestPost.title }}</h3>
                                             <p class="post-body">{{ truncateText(latestPost.summary, 250) }}</p>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                             </time>
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
-                                            <h3 class="text-xl font-bold text-brand-primary">{{ post.title }}</h3>
+                                            <h3 class="text-xl font-bold text-brand-primary post-title">{{ post.title }}</h3>
                                             <p class="post-body">{{ post.summary ? truncateText(post.summary, 100) : '' }}</p>
                                         </div>
                                     </div>
@@ -169,13 +169,17 @@ const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
 })
 
 
-const { data: staffPicks } = await useAsyncData('blog-staff-picks', () => {
+const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {
   return queryCollection('blog')
     .where('staffPick', '=', true)
     .select('path', 'id', 'title', 'description')
-    .order('title', 'DESC')
-    .limit(4)
-    .all() // Gets the first result as an object instead of array
+    .all()
+})
+
+const staffPicks = computed(() => {
+  if (!allStaffPicks.value) return []
+  const shuffled = [...allStaffPicks.value].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, 4)
 })
 
 const posts = ref<AllPosts[]>([])
@@ -256,5 +260,14 @@ onMounted(() => {
     .post-body {
         display: block;
     }
+  }
+
+  .post-title {
+    --max-lines: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--max-lines);
   }
 </style>
