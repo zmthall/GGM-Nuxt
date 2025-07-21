@@ -25,7 +25,7 @@
                         :src="image.src" 
                         :alt="image.alt" 
                         format="avif"
-                        quality="60"
+                        quality="80"
                         placeholder 
                         loading="lazy" 
                         class="w-full h-full object-cover object-top transition-opacity duration-300"
@@ -33,6 +33,10 @@
                         @load="onImageLoad(idx)"
                         @error="onImageError(idx)"
                     />
+                    
+                    <div v-if="imageSelection && images.length > 0" class="absolute max-sm:hidden w-3/4 bottom-8 left-1/2 -translate-x-1/2 flex justify-around z-5">
+                        <button v-for="(count, imageIdx) in images.length" :key="count" :class="['w-4 h-4 rounded-full border-2 cursor-pointer hover:bg-brand-primary', { 'bg-brand-primary border-black': imageIdx === currentIdx, 'border-zinc-300': imageIdx !== currentIdx}]" @click="setCurrentIdx(imageIdx)"/>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -56,6 +60,7 @@ const props = defineProps<{
     slideContainerClass?: string;
     slideClass?: string;
     images: FetchImages;
+    imageSelection: boolean;
 }>();
 
 const currentIdx = ref<number>(0)
@@ -117,6 +122,10 @@ const onImageLoad = (idx: number) => {
 
 const onImageError = (idx: number) => {
     imageLoaded.value[idx] = true // Show even if error to prevent permanent loading state
+}
+
+const setCurrentIdx = (idx: number) => {
+    currentIdx.value = idx;
 }
 
 // Preload the first few images
