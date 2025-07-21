@@ -1,6 +1,6 @@
 ---
 id: "1"
-title: "Hello World Testing Copy"
+title: "Hello World Testing Copy but With a Longer Title"
 description: "My first blog post"
 date: 7/16/2025
 author: Zachary Thallas
