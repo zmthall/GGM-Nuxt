@@ -1,6 +1,6 @@
 <template>
     <div v-if="authStore.authorized">
-        Dashboard
+        Account
     </div>
     <div v-else>
         <AdminLogin />
@@ -15,10 +15,8 @@ definePageMeta({
     middleware: ['restricted']
 })
 
-defineOptions({
-    name: 'AdminDashboard'
-})
-
 </script>
 
-<style></style>
+<style>
+
+</style>

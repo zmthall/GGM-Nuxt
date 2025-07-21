@@ -10,7 +10,7 @@ import { getDatabase } from "firebase/database";
 export default defineNuxtPlugin(async () => {
   try {
     const config = useRuntimeConfig();
-    const authStore = useAuthStoreStore();
+    const authStore = useAuthStore();
   
     const firebaseConfig = {
       apiKey: config.public.firebase.apiKey,

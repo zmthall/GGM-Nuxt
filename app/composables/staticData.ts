@@ -187,6 +187,39 @@ export const useStaticData = () => {
       },
     ];
 
+    const adminLinks = [
+    {
+      id: "blog-link",
+      name: "Blogging",
+      slug: "/admin/blog",
+      icon: "streamline:hand-held-tablet-writing-solid",
+    },
+    {
+      id: "community-link",
+      name: 'Community',
+      slug: '/admin/community',
+      icon: 'material-symbols:family-home-rounded'
+    },
+    {
+      id: 'event-link',
+      name: 'Events',
+      slug: '/admin/events',
+      icon: 'material-symbols:edit-calendar-rounded'
+    },
+    {
+      id: 'messaging-link',
+      name: 'Messaging',
+      slug: '/admin/messaging',
+      icon: 'material-symbols:chat'
+    },
+    {
+      id: 'users-link',
+      name: 'User Management',
+      slug: '/admin/users',
+      icon: 'fluent:people-community-12-filled'
+    },
+  ]
+
     const contactServices = [
       { id: "Non-Medical", name: "Non-Medical", number: "(719) 543-2525" },
       { id: "NEMT", name: "NEMT", number: "(719) 544-3231" },
@@ -1053,6 +1086,7 @@ export const useStaticData = () => {
       footerNavLinks,
       footerPolicyLinks,
       socialHandles,
+      adminLinks,
       contactServices,
       orgSchema,
       company,

@@ -1,6 +1,6 @@
 <template>
     <div v-if="authStore.authorized">
-        Dashboard
+        Messages
     </div>
     <div v-else>
         <AdminLogin />
@@ -9,16 +9,14 @@
 
 <script setup lang='ts'>
 const authStore = useAuthStore()
+defineOptions({
+    name: 'AdminMessagesPage'
+})
 
 definePageMeta({
     layout: 'admin',
     middleware: ['restricted']
 })
-
-defineOptions({
-    name: 'AdminDashboard'
-})
-
 </script>
 
 <style></style>

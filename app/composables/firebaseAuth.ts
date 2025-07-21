@@ -5,7 +5,7 @@ import type { Database } from "firebase/database";
 export const useFirebaseAuth = () => {
   try {
     const { $firebase } = useNuxtApp();
-    const authStore = useAuthStoreStore();
+    const authStore = useAuthStore();
   
     const firebase = $firebase as {
       app: FirebaseApp;
@@ -27,9 +27,11 @@ export const useFirebaseAuth = () => {
     try {
       if((email && email.length > 0 && email.includes("@")) && password && password.length > 0) {
         const userCredential = await createUserWithEmailAndPassword(firebase.auth, email, password);
+        authStore.setUser(userCredential.user)
         return userCredential
       } else throw new Error("Failed to create user.")
     } catch (err) {
+      authStore.clearAuth()
       if(err instanceof Error) authStore.error = err.message;
     }
    }
@@ -42,10 +44,12 @@ export const useFirebaseAuth = () => {
             throw new Error("Failed to login, invalid credentials.");
           } else {
             const userCredential = await signInWithEmailAndPassword(firebase.auth, email, password);
+            authStore.setUser(userCredential.user)
             return userCredential
           }
         } else throw new Error("Error, failed to login.")
       } catch (err) {
+        authStore.clearAuth()
         if(err instanceof Error) authStore.error = err.message;
       }
     }
@@ -54,6 +58,7 @@ export const useFirebaseAuth = () => {
       if(authStore.user) {
         try {
           await signOut(firebase.auth);
+          authStore.clearAuth()
           return true;
         } catch (err) {
           if(err instanceof Error) authStore.error = err.message

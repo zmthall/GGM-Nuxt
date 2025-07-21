@@ -131,7 +131,8 @@
             title="Inside Golden Gate Medical Supply Store at 612 South Union Avenue."
             loading="lazy"
             height="416"
-            width="600" />
+            width="600" 
+          />
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>

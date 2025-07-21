@@ -3,7 +3,7 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
 
     try {
         const firebaseAuth = useFirebaseAuth()
-        const authStore = useAuthStoreStore()
+        const authStore = useAuthStore()
         const currentUser = firebaseAuth?.getCurrentUser()
     
         authStore.authorized = !!currentUser
