@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots'
   ],
   runtimeConfig: {
+    apiKey: process.env.API_KEY,
     public: {
       firebase: {
         apiKey: process.env.FIREBASE_API_KEY,

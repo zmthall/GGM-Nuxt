@@ -36,7 +36,7 @@
             Loading Events...
           </p>
         </div>
-        <CommunityEvents v-else :events />
+        <CommunityEvents v-else :events :loading="eventLoading" />
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
@@ -72,7 +72,7 @@ defineOptions({
 const images = ref<FetchImages>([])
 const events = ref<EventsData>([])
 const imageLoading = ref<boolean>(true)
-const eventLoading = ref<boolean>(false)
+const eventLoading = ref<boolean>(true)
 
 const fetchImages = async (): Promise<void> => {
   try {

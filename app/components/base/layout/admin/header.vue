@@ -1,6 +1,6 @@
 
 <template>
-  <div v-if="authStore.authorized && $route.path !== '/admin/login'" class="h-16 bg-brand-primary sticky top-0 px-4 shadow-primary">
+  <div v-if="authStore.authorized && $route.path !== '/admin/login'" class="h-16 bg-brand-primary sticky top-0 px-4 shadow-primary z-15">
     <nav class="w-full h-full flex items-center justify-between">
       <button>
         <BaseIcon name="charm:menu-hamburger" color="text-white" hover-color="hover:text-zinc-500" @click="toggleDashboardDrawer"/>
