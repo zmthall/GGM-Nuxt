@@ -21,9 +21,9 @@
           <button class="absolute top-3 right-3 flex" @click="toggleDashboardDrawer">
               <BaseIcon name="mdi:close" color="text-white" hover-color="hover:text-brand-secondary" />
           </button>
-          <NuxtLink to="/" class="flex items-center text-white hover:text-brand-secondary group absolute top-3 left-3"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-secondary"/> Main Website</NuxtLink>
+          <NuxtLink to="/" class="flex items-center text-white hover:text-brand-secondary group absolute top-3 left-3 no-active"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-secondary"/> Main Website</NuxtLink>
 
-          <NuxtLink to="/admin" class="logo">
+          <NuxtLink to="/admin" class="no-active">
             <h2 class="text-4xl text-center my-14 text-brand-secondary">GGM Admin</h2>
           </NuxtLink>
           <nav class="space-y-4 overflow-y-auto h-full border-t-2 border-t-brand-secondary/20" aria-label="Dashboard navigation">
@@ -101,7 +101,7 @@ onMounted(() => {
     transform: translateX(-100%);
 }
 
-.router-link-active:not(.logo) {
+.router-link-active:not(.no-active) {
   @apply bg-brand-secondary/10 relative after:absolute after:right-0 after:w-2 after:h-full after:bg-brand-secondary after:rounded-l-lg
 }
 
