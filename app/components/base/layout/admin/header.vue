@@ -21,6 +21,8 @@
           <button class="absolute top-3 right-3 flex" @click="toggleDashboardDrawer">
               <BaseIcon name="mdi:close" color="text-white" hover-color="hover:text-brand-secondary" />
           </button>
+          <NuxtLink to="/" class="flex items-center text-white hover:text-brand-secondary group absolute top-3 left-3"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-secondary"/> Main Website</NuxtLink>
+
           <NuxtLink to="/admin" class="logo">
             <h2 class="text-4xl text-center my-14 text-brand-secondary">GGM Admin</h2>
           </NuxtLink>
@@ -28,9 +30,6 @@
             <div class="mt-4">
               <h3 class="text-white font-bold text-xl pl-4">Overview</h3>
               <ul>
-                <li>
-                  <NuxtLink to="/" class="text-white flex items-center gap-4 hover:bg-brand-secondary/20 py-2 px-4" @click="toggleDashboardDrawer"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" />Main Website</NuxtLink>
-                </li>
                 <li>
                   <NuxtLink to="/admin" class="text-white flex items-center gap-4 hover:bg-brand-secondary/20 py-2 px-4" @click="toggleDashboardDrawer"><BaseIcon name="mage:dashboard-4-fill" color="text-white" />Dashboard Home</NuxtLink>
                 </li>
