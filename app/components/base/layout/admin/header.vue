@@ -1,7 +1,7 @@
 
 <template>
   <div v-if="authStore.authorized && $route.path !== '/admin/login'" class="h-16 bg-brand-primary sticky top-0 px-4 shadow-primary z-15">
-    <nav class="w-full h-full flex items-center justify-between">
+    <nav class="w-full h-full flex items-center justify-between" aria-label="Main dashboard navigation toggling">
       <button>
         <BaseIcon name="charm:menu-hamburger" color="text-white" hover-color="hover:text-zinc-500" @click="toggleDashboardDrawer"/>
       </button>
@@ -24,10 +24,13 @@
           <NuxtLink to="/admin" class="logo">
             <h2 class="text-4xl text-center my-14 text-brand-secondary">GGM Admin</h2>
           </NuxtLink>
-          <nav class="space-y-4 overflow-y-auto h-full border-t-2 border-t-brand-secondary/20">
+          <nav class="space-y-4 overflow-y-auto h-full border-t-2 border-t-brand-secondary/20" aria-label="Dashboard navigation">
             <div class="mt-4">
               <h3 class="text-white font-bold text-xl pl-4">Overview</h3>
               <ul>
+                <li>
+                  <NuxtLink to="/" class="text-white flex items-center gap-4 hover:bg-brand-secondary/20 py-2 px-4" @click="toggleDashboardDrawer"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" />Main Website</NuxtLink>
+                </li>
                 <li>
                   <NuxtLink to="/admin" class="text-white flex items-center gap-4 hover:bg-brand-secondary/20 py-2 px-4" @click="toggleDashboardDrawer"><BaseIcon name="mage:dashboard-4-fill" color="text-white" />Dashboard Home</NuxtLink>
                 </li>

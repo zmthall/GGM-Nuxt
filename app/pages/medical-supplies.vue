@@ -17,7 +17,7 @@
           We carry a comprehensive selection of durable medical equipment and supplies curated to meet your everyday health and mobility needs. Our inventory spans from essential daily supplies to specialized mobility equipment, all selected for quality and affordability. If there is something you noticed not within our catalog or not mentioned, just ask about it and we can look into providing it. We work with well-known, trusted vendors in the durable medical equipment and supplies industry.
         </p>
         <ul class="space-y-8 sm:space-y-8">
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">
@@ -38,7 +38,7 @@
               <NuxtImg src="/images/pages/medical-supplies/orthotic-shoes.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Doctor Comfort shoe display" alt="Doctor Comfort shoe display" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">
@@ -60,7 +60,7 @@
               <NuxtImg src="/images/pages/medical-supplies/mobility.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" alt="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" loading="lazy" height="375" width="375" placeholder/>
             </div>
           </li>
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">
@@ -82,7 +82,7 @@
               <NuxtImg src="/images/pages/medical-supplies/wound-care.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Gauze bandages" alt="Gauze bandages" loading="lazy" height="375" width="375" placeholder/>
             </div>
           </li>
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                  <span class="text-gray-500">
@@ -103,7 +103,7 @@
               <NuxtImg src="/images/pages/medical-supplies/ostomy.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Example of Ostomy supplies" alt="Example of Ostomy supplies" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">
@@ -124,7 +124,7 @@
               <NuxtImg src="/images/pages/medical-supplies/incontinence.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Example of incontinence (brief)" alt="Example of incontinence (brief)" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
-          <li class="flex flex-col gap-4 md:flex-row md:gap-8 justify-center max-md:items-center">
+          <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
             <div class="md:w-1/2 flex flex-col">
               <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
                 <span class="text-gray-500">

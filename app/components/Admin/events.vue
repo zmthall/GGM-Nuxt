@@ -17,7 +17,7 @@
       </div>
       <!-- Right/Bottom Event (description) -->
       <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:gap-4 md:items-center w-full md:justify-between relative">
-        <div :class="['space-y-2', { 'w-1/2': editModeStates[idx] }]">
+        <div :class="['space-y-2', { 'sm:w-1/2': editModeStates[idx] }]">
           <div>
             <h3 v-if="!editModeStates[idx]" class="font-extrabold text-xl mb-2">{{ event.title }}</h3>
             <BaseFormInput v-else v-model="getEvent(idx).title" label="Title" name="title" type="text"/>
@@ -43,7 +43,7 @@
             <button>Delete</button>
           </div>
         </div>
-        <div :class="[{ 'w-1/2': editModeStates[idx] }]">
+        <div :class="[{ 'sm:w-1/2': editModeStates[idx] }]">
           <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferral" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
             <BaseFormInput v-model="getEvent(idx).link" label="Link" name="link" type="text"/>
