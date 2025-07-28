@@ -33,6 +33,7 @@ const props = defineProps<{
   autocomplete?: string;
   startDate?: string;
   minDate?: boolean;
+  dateFormat?: string
 }>()
 
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -41,7 +42,7 @@ onMounted(() => {
   if (inputRef.value) {
     flatpickr(inputRef.value, {
       defaultDate: props.startDate || modelValue.value,
-      dateFormat: 'F j, Y',
+      dateFormat: props.dateFormat || 'F j, Y',
       minDate: props.minDate ? new Date(Date.now() + 1 * 24 * 60 * 60 * 1000) : undefined,
       onChange: ([selectedDate], dateStr) => {
         if (selectedDate) {

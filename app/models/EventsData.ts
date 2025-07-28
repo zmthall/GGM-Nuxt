@@ -10,6 +10,16 @@ export type EventsData = {
         link: string;
 }[]
 
+export type AddEventData = {
+    date: string;
+    dateTo?: string;
+    title: string;
+    location: string;
+    address: string;
+    description: string;
+    link: string;
+}
+
 export interface EventUpdateResponse {
   success: boolean;
   data?: {

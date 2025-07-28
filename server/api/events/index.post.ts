@@ -2,13 +2,14 @@ import type { EventUpdateResponse } from "~/models/EventsData"
 
 export default defineEventHandler(async (event): Promise<EventUpdateResponse> => {
   const config = useRuntimeConfig()
-  const eventId = getRouterParam(event, 'id')
   const body = await readBody(event)
 
+  console.log(body)
+
   try {
-    const response = await $fetch(`/api/events/${eventId}`, {
+    const response = await $fetch(`/api/events`, {
       baseURL: 'https://api.goldengatemanor.com',
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'x-api-key': config.apiKey,
         'Content-Type': 'application/json'

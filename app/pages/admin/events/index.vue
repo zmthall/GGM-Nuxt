@@ -3,8 +3,9 @@
   <div v-if="authStore.authorized">
     <BaseLayoutPageSection margin="top" bg="transparent">
       <BaseLayoutPageContainer>
+        <BaseUiAction type="button" class="py-4 px-12 mb-12 mt-8 group" styling="flex items-center justify-center gap-2" @click="showAddEvent">Add New Event<BaseIcon name="material-symbols:add-diamond" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" /></BaseUiAction>
         <div>
-          <h2 class="text-2xl text-brand-primary font-bold">Current Events:</h2>
+          <h2 class="text-2xl text-brand-primary font-bold">Recent Events:</h2>
           <div v-if="eventLoading" class="my-4 font-extrabold animate-pulse text-2xl">
             <p>
               Loading Events...
@@ -14,23 +15,24 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection v-if="archivedEvents.length > 0" margin="default">
+    <BaseLayoutPageSection margin="default">
       <BaseLayoutPageContainer>
-        <div>
+        <div class="space-y-4">
           <h2 class="text-2xl text-brand-primary font-bold">Archived Events:</h2>
-          <div v-if="eventLoading" class="my-4 font-extrabold animate-pulse text-2xl">
+          <div v-if="archiveEventLoading" class="my-4 font-extrabold animate-pulse text-2xl">
             <p>
               Loading Archived Events...
             </p>
           </div>
-          <AdminEvents v-else :events="archivedEvents" :loading="eventLoading" />
+          <AdminEvents v-else :events="archivedEvents" :loading="eventLoading" archived />
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
+    <AdminAddEventModal v-model="addEventModal"/>
   </div>
   <div v-else>
-        <AdminLogin />
-    </div>
+    <AdminLogin />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -46,6 +48,7 @@ const eventLoading = ref<boolean>(true)
 const archiveEventLoading = ref<boolean>(true)
 const events = ref<EventsData>([])
 const archivedEvents = ref<EventsData>([])
+const addEventModal = ref<boolean>(false)
 
 const fetchEvents = async (): Promise<void> => {
   try {
@@ -77,6 +80,10 @@ const fetchArchivedEvents = async (): Promise<void> => {
   }  finally {
     archiveEventLoading.value = false
   }
+}
+
+const showAddEvent = () => {
+  addEventModal.value = true
 }
 
 onMounted(() => {

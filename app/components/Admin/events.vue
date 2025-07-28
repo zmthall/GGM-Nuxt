@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="events.length !== 0" class="my-4 space-y-8">
+  <ul v-if="events.length !== 0 && !archived" class="my-4 space-y-8">
     <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
@@ -40,7 +40,7 @@
             <button v-if="!editModeStates[idx]" @click="toggleEventEditState(idx)">Edit</button>
             <button v-if="editModeStates[idx]" @click="cancelEditEventState(idx)">Cancel</button>
             <button v-if="editModeStates[idx]" @click="saveEdit(idx)">Save</button>
-            <button>Delete</button>
+            <button @click="showDeleteConfirmation((idx))">Delete</button>
           </div>
         </div>
         <div :class="[{ 'sm:w-1/2': editModeStates[idx] }]">
@@ -55,9 +55,39 @@
       </div>
     </li>
   </ul>
-  <div v-if="events.length === 0 && !loading" class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
-    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">New events are being planned! Check back soon or <nuxt-link to="/company/contact-us" class="link">contact us</nuxt-link> to stay updated.</p>
+  <ul v-if="events.length !== 0 && archived">
+    <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
+        <div class="flex flex-col">
+          <span>{{ getDateMonth(event.date) }}</span>
+          <span>{{ getDateDay(event.date) }}</span>
+        </div>
+      </div>
+      <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg flex justify-between items-center w-full relative">
+        <div>
+          <h3 class="font-extrabold text-xl">{{ event.title }}</h3>
+          <p class="leading-none font-semibold">{{  event.location }}</p>
+          <p class="leading-none font-semibold">{{  event.address }}</p>
+        </div>
+        <div class="">
+          <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" name="archived" @change="saveEdit(idx)" />
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div v-if="currentEvents.length === 0 && !loading && !archived" class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
+    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">There are currently no events to edit.</p>
   </div>
+  <div v-if="currentEvents.length === 0 && !loading && archived" class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
+    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">There are currently no archived events to edit.</p>
+  </div>
+  <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal>
+    <p>Are you sure you want to delete this event?</p>
+    <div class="flex justify-end mt-2 gap-2">
+      <BaseUiAction type="button" class="py-1 px-2" @click="confirmDelete">Yes</BaseUiAction>
+      <BaseUiAction type="button" class="py-1 px-2" @click="cancelDelete">No</BaseUiAction>
+    </div>
+  </BaseInteractiveModal>
 </template>
 
 <script lang="ts" setup>
@@ -67,13 +97,18 @@ const props = withDefaults(defineProps<{
   events: EventsData;
   style?: 'default' | 'small';
   loading: boolean;
+  archived?: boolean;
 }>(), {
-  style: 'default'
+  style: 'default',
+  archived: false,
 })
 
 const editModeStates = ref<boolean[]>([]);
 const currentEvents = ref<EventsData>([])
 const lastSavedEvents = ref<EventsData>([])
+
+const deleteConfirmationModal = ref<boolean>(false)
+const deleteIdx = ref<number | null>(null)
 
 const createEmptyEvent = (): EventsData[0] => ({
   id: '',
@@ -149,9 +184,6 @@ const toggleEventEditState = (idx: number) => {
 }
 
 const cancelEditEventState = (idx: number) => {
-  console.log('Before cancel - currentEvents:', currentEvents.value[idx])
-  console.log('Saved event to revert to:', lastSavedEvents.value[idx])
-  
   editModeStates.value[idx] = false
   
   const savedEvent = lastSavedEvents.value[idx]
@@ -159,17 +191,16 @@ const cancelEditEventState = (idx: number) => {
   
   if (savedEvent && savedEvent.id && savedEvent.date && savedEvent.title) {
     currentEvents.value[idx] = { ...savedEvent }
-    console.log('Reverted to saved event:', currentEvents.value[idx])
   } else if (originalEvent) {
     currentEvents.value[idx] = { ...originalEvent }
-    console.log('Reverted to original event:', currentEvents.value[idx])
   }
 }
 
 const saveEdit = async (idx: number) => {
   try {
     const eventToSave = getEvent(idx)
-    
+    const previousArchivedState = lastSavedEvents.value[idx]?.archived
+
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToSave.id}`, {
       method: 'PUT',
       body: eventToSave
@@ -178,9 +209,53 @@ const saveEdit = async (idx: number) => {
     editModeStates.value[idx] = false
     
     // Update lastSavedEvents with what we actually sent (or API response if preferred)
-    lastSavedEvents.value[idx] = { ...eventToSave }
-    
-    console.log('Event updated successfully:', response.message)
+
+    if(response) {
+      lastSavedEvents.value[idx] = { ...eventToSave }
+      console.log('Event updated successfully:', response.message)
+  
+      if (previousArchivedState !== eventToSave.archived) {
+        window.location.reload()
+        return
+      }
+    }
+  } catch (err: unknown) {
+    console.error('Failed to save event:', err)
+  }
+}
+
+const showDeleteConfirmation = (idx: number) => {
+  deleteIdx.value = idx
+  deleteConfirmationModal.value = true
+}
+
+const cancelDelete = () => {
+  deleteConfirmationModal.value = false
+  deleteIdx.value = null
+}
+
+const confirmDelete = async () => {
+  if (deleteIdx.value !== null) {
+    await deleteEvent(deleteIdx.value)
+  }
+  deleteConfirmationModal.value = false
+  deleteIdx.value = null
+}
+
+const deleteEvent = async (idx: number) => {
+  try {
+    const eventToDelete = getEvent(idx)
+  
+    const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToDelete.id}`, {
+      method: 'DELETE'
+    })
+  
+    if(response) {
+      currentEvents.value.splice(idx, 1)
+      lastSavedEvents.value.splice(idx, 1)
+      editModeStates.value.splice(idx, 1)
+      console.log('Event deleted successfully:', response.message)
+    }
   } catch (err: unknown) {
     console.error('Failed to save event:', err)
   }
