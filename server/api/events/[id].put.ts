@@ -7,7 +7,7 @@ export default defineEventHandler(async (event): Promise<EventUpdateResponse> =>
 
   try {
     const response = await $fetch(`/api/events/${eventId}`, {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: 'https://api.goldengatemanor.com/',
       method: 'PUT',
       headers: {
         'x-api-key': config.apiKey,

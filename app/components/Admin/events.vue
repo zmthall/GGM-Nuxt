@@ -2,7 +2,7 @@
   <ul v-if="events.length !== 0 && !archived" class="my-4 space-y-8">
     <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
-      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center min-w-28">
         <div v-if="!editModeStates[idx]">
           <div class="flex flex-col">
             <span>{{ getDateMonth(event.date) }}</span>
@@ -20,21 +20,28 @@
         <div :class="['space-y-2', { 'sm:w-1/2': editModeStates[idx] }]">
           <div>
             <h3 v-if="!editModeStates[idx]" class="font-extrabold text-xl mb-2">{{ event.title }}</h3>
-            <BaseFormInput v-else v-model="getEvent(idx).title" label="Title" name="title" type="text"/>
+            <BaseFormInput v-else v-model="getEvent(idx).title" label="Title" :name="`title-${getEvent(idx).id}`" type="text"/>
           </div>
           <div>
             <p v-if="!editModeStates[idx]" class="leading-none font-semibold">{{  event.location }}</p>
-            <BaseFormInput v-else v-model="getEvent(idx).location" label="Location" name="location"  type="text"/>
+            <BaseFormInput v-else v-model="getEvent(idx).location" label="Location" :name="`location-${getEvent(idx).id}`"  type="text"/>
           </div>
           <div>
             <p v-if="!editModeStates[idx]" class="leading-none font-semibold">{{  event.address }}</p>
-            <BaseFormInput v-else v-model="getEvent(idx).address" label="Address" name="address"  type="text"/>
+            <BaseFormInput v-else v-model="getEvent(idx).address" label="Address" :name="`address-${getEvent(idx).id}`"  type="text"/>
           </div>
           <div class="break-words">
-            <p v-if="!editModeStates[idx]" :class="['leading-[1.2] mt-4 mb-2 text-[20px] text-zinc-600 font-semibold']">
-              {{ event.description }}
-            </p>
-            <BaseFormTextArea v-else v-model="getEvent(idx).description" label="Description" name="description"  type="text"/>
+            <div v-if="!editModeStates[idx]">
+              <p :class="[{ 'expand': expandedStates[idx] }, 'event-description leading-[1.2] mt-4 mb-2 text-[20px] text-zinc-600 font-semibold']">
+                {{ event.description }}
+              </p>
+              <button 
+                class="font-extrabold text-lg" @click="toggleDescription(idx)">
+                <span v-if="expandedStates[idx]">less</span>
+                <span v-else>more</span>
+              </button>
+            </div>
+            <BaseFormTextArea v-else v-model="getEvent(idx).description" label="Description" :name="`description-${getEvent(idx).id}`"  type="text"/>
           </div>
           <div class="absolute bottom-4 right-4 flex gap-2">
             <button v-if="!editModeStates[idx]" @click="toggleEventEditState(idx)">Edit</button>
@@ -46,18 +53,18 @@
         <div :class="[{ 'sm:w-1/2': editModeStates[idx] }]">
           <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferral" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
-            <BaseFormInput v-model="getEvent(idx).link" label="Link" name="link" type="text"/>
-            <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" name="date"  />
-            <BaseFormDatePicker v-model="getEvent(idx).dateTo" label="Date To" name="date-to"  />
-            <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" name="archived" />
+            <BaseFormInput v-model="getEvent(idx).link" label="Link" :name="`link-${getEvent(idx).id}`" type="text"/>
+            <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" :name="`date-${getEvent(idx).id}`"  />
+            <BaseFormDatePicker v-model="getEvent(idx).dateTo" label="Date To" :name="`date-to-${getEvent(idx).id}`"  />
+            <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" />
           </div>
         </div>
       </div>
     </li>
   </ul>
-  <ul v-if="events.length !== 0 && archived">
+  <ul v-if="events.length !== 0 && archived" class="flex flex-col gap-4">
     <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
-      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center">
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center min-w-28">
         <div class="flex flex-col">
           <span>{{ getDateMonth(event.date) }}</span>
           <span>{{ getDateDay(event.date) }}</span>
@@ -70,7 +77,7 @@
           <p class="leading-none font-semibold">{{  event.address }}</p>
         </div>
         <div class="">
-          <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" name="archived" @change="saveEdit(idx)" />
+          <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" @change="saveEdit(idx)" />
         </div>
       </div>
     </li>
@@ -104,6 +111,7 @@ const props = withDefaults(defineProps<{
 })
 
 const editModeStates = ref<boolean[]>([]);
+const expandedStates = ref<boolean[]>([]);
 const currentEvents = ref<EventsData>([])
 const lastSavedEvents = ref<EventsData>([])
 
@@ -169,19 +177,57 @@ const getDateDay = (date: string) => {
 };
 
 const initializeModeStates = () => {
-  editModeStates.value = new Array(props.events.length).fill(false);
+  editModeStates.value = new Array(currentEvents.value.length).fill(false);
+};
+
+const initializeExpandedStates = () => {
+  expandedStates.value = new Array(currentEvents.value.length).fill(false);
+};
+
+const syncCurrentEventsWithProps = () => {
+  console.log('Syncing currentEvents with props.events', {
+    propsLength: props.events.length,
+    currentLength: currentEvents.value.length
+  });
+  
+  // Deep copy the props.events to currentEvents
+  currentEvents.value = props.events.map(event => ({ ...event }));
+  lastSavedEvents.value = props.events.map(event => ({ ...event }));
+  
+  // Reinitialize all state arrays to match the new length
+  initializeModeStates();
+  initializeExpandedStates();
+  
+  console.log('Sync completed', {
+    currentEventsLength: currentEvents.value.length,
+    editStatesLength: editModeStates.value.length,
+    expandStatesLength: expandedStates.value.length
+  });
 };
 
 const initializeEvents = () => {
-  // Deep copy each event object
-  lastSavedEvents.value = props.events.map(event => ({ ...event }))
-  currentEvents.value = props.events.map(event => ({ ...event }))
-  initializeModeStates()
+  syncCurrentEventsWithProps();
 }
+
+// CRITICAL: Watch for props.events changes (pagination loading more events)
+watch(() => props.events, (newEvents, oldEvents) => {
+  console.log('Props.events changed', {
+    newLength: newEvents.length,
+    oldLength: oldEvents ? oldEvents.length : 0
+  });
+  
+  if (newEvents && newEvents.length !== currentEvents.value.length) {
+    syncCurrentEventsWithProps();
+  }
+}, { deep: true, immediate: false });
 
 const toggleEventEditState = (idx: number) => {
   editModeStates.value[idx] = !editModeStates.value[idx]
 }
+
+const toggleDescription = (idx: number) => {
+  expandedStates.value[idx] = !expandedStates.value[idx];
+} 
 
 const cancelEditEventState = (idx: number) => {
   editModeStates.value[idx] = false
@@ -266,5 +312,33 @@ onMounted(() => {
 })
 </script>
 
-<style>
+<style scoped>
+  .event-description {
+    --max-lines: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--max-lines);
+    position: relative;
+  }
+
+  .event-description::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, transparent, #d2d2ff);
+    width: 100%;
+    height: 1.5rem;
+    pointer-events: none;
+  }
+
+  .event-description.expand::before {
+    display: none;
+  }
+
+  .event-description.expand {
+    display: block;
+  }
 </style>

@@ -31,12 +31,32 @@
     <BaseLayoutPageSection margin="default">
       <BaseLayoutPageContainer>
         <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
-        <div v-if="eventLoading" class="my-4 font-extrabold animate-pulse text-2xl">
+        <div v-if="eventLoading && events.length === 0" class="my-4 font-extrabold animate-pulse text-2xl">
           <p>
             Loading Events...
           </p>
         </div>
-        <CommunityEvents v-else :events :loading="eventLoading" />
+        <div v-else>
+          <CommunityEvents :events :loading="eventLoading" />
+          
+          <!-- Load More Button -->
+          <div v-if="hasMorePages" class="flex justify-center mt-8 lg:w-[75%]">
+            <BaseUiAction
+              type="button"
+              class="py-4 px-8 disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="loadingMore"
+              @click="loadMoreEvents"
+            >
+              <span v-if="loadingMore">Loading More...</span>
+              <span v-else>Load More Events</span>
+            </BaseUiAction>
+          </div>
+          
+          <!-- No More Events Message -->
+          <div v-else-if="events.length > 0" class="text-center mt-8 text-gray-600 lg:w-[75%]">
+            <p>No more events to load</p>
+          </div>
+        </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
@@ -68,11 +88,17 @@ defineOptions({
   name: 'CommunityPage'
 })
 
-
+// initial states
 const images = ref<FetchImages>([])
 const events = ref<EventsData>([])
 const imageLoading = ref<boolean>(true)
 const eventLoading = ref<boolean>(true)
+
+// pagination state
+const currentPage = ref<number>(1)
+const pageSize = 5
+const hasMorePages = ref<boolean>(true)
+const loadingMore = ref<boolean>(false)
 
 const fetchImages = async (): Promise<void> => {
   try {
@@ -94,19 +120,63 @@ const fetchImages = async (): Promise<void> => {
   }
 }
 
+// Updated fetchEvents for initial load
 const fetchEvents = async (): Promise<void> => {
   try {
     eventLoading.value = true;
+        
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com'
+      baseURL: 'https://api.goldengatemanor.com/',
+      query: {
+        page: 1,
+        limit: pageSize
+      }
     })
 
     events.value = response.data;
+    hasMorePages.value = response.pagination.hasNextPage;
+    currentPage.value = 1;
   } catch (error) {
     console.error('Failed to fetch events:', error)
     events.value = []
-  }  finally {
+    hasMorePages.value = false;
+  } finally {
     eventLoading.value = false
+  }
+}
+
+// New function for loading more events
+const loadMoreEvents = async (): Promise<void> => {
+  if (loadingMore.value || !hasMorePages.value) return;
+  
+  try {
+    loadingMore.value = true;
+    currentPage.value++;
+    
+    const response = await $fetch<CommunityEventsResponse>('/api/events', {
+      baseURL: 'https://api.goldengatemanor.com/',
+      query: {
+        page: currentPage.value,
+        limit: pageSize
+      }
+    })
+    
+    if (response.data?.length) {
+      events.value.push(...response.data);
+    }
+    
+    // Update hasMorePages based on response or data length
+    hasMorePages.value = response.pagination.hasNextPage;
+    
+    // If we got less than pageSize, we've reached the end
+    if (response.data.length < pageSize) {
+      hasMorePages.value = false;
+    }
+  } catch (error) {
+    console.error('Failed to load more events:', error);
+    currentPage.value--; // Revert page increment on error
+  } finally {
+    loadingMore.value = false;
   }
 }
 

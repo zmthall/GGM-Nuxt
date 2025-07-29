@@ -45,3 +45,17 @@ export interface CommunityEventsResponse {
     count: number;
   };
 }
+
+export interface PaginationMeta {
+  currentPage: number;
+  pageSize: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  totalPages?: number;
+  totalCount?: number;
+}
+
+export interface PaginatedResult<T> {
+  data: T[];
+  pagination: PaginationMeta;
+}

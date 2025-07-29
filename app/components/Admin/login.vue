@@ -1,6 +1,7 @@
 <template>
     <div class="relative min-h-screen bg-[#121b75] overflow-hidden">
         <div class="w-full h-screen bg-brand-primary fixed flex justify-center">
+            <NuxtLink to="/" class="flex items-center text-white hover:text-brand-secondary group absolute top-3 left-3 no-active z-5"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-secondary"/> Main Website</NuxtLink>
             <div
                 class="absolute inset-0 pointer-events-none z-0 bg-[linear-gradient(to_top_right,_#eae39e10,_#121b7580_50%,_#121b7580_100%)]" />
             <div
