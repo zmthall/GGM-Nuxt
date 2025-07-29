@@ -30,7 +30,7 @@
             <p v-if="!editModeStates[idx]" class="leading-none font-semibold">{{  event.address }}</p>
             <BaseFormInput v-else v-model="getEvent(idx).address" label="Address" name="address"  type="text"/>
           </div>
-          <div>
+          <div class="break-words">
             <p v-if="!editModeStates[idx]" :class="['leading-[1.2] mt-4 mb-2 text-[20px] text-zinc-600 font-semibold']">
               {{ event.description }}
             </p>
