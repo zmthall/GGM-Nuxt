@@ -3,6 +3,7 @@
     <!-- Main header and page navigation -->
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
+    <AdminAllPageDashboard />
     <!-- Page headers and breadcrumb with ability to disable on specific pages  -->
     <BaseLayoutPageHeader v-if="showHeader" :title="pageHeader"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>

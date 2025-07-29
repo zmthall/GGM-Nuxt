@@ -3,7 +3,7 @@
     <!-- Main header and page navigation -->
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
-    
+    <AdminAllPageDashboard />
     <!-- Blog-specific header with post data from store -->
     <BlogPostHeader title="Golden Gate Manor Blog Post" class="max-sm:hidden"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>

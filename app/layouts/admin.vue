@@ -1,6 +1,7 @@
 <template>
   <div>
     <BaseLayoutAdminHeader />
+    <AdminAllPageDashboard />
     <slot />
   </div>
 </template>
