@@ -1,6 +1,5 @@
 
 <template>
-  <ClientOnly>
     <div v-if="authStore.authorized && $route.path !== '/admin/login'" class="h-16 bg-brand-primary sticky top-0 px-4 shadow-primary z-15">
       <nav class="w-full h-full flex items-center justify-between" aria-label="Main dashboard navigation toggling">
         <button>
@@ -52,7 +51,6 @@
         </Transition>
       </Teleport>
     </div>
-  </ClientOnly>
 </template>
 
 <script lang="ts" setup>

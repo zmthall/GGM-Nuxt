@@ -1,39 +1,49 @@
+// authStore.ts - Hybrid approach
 import type { User } from 'firebase/auth'
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', () => {
-  // Create a cookie for the authorized state
+  // Cookie for immediate UI state (prevents flash)
   const authCookie = useCookie('user-authorized', {
     default: () => false,
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 30, // 30 days (longer than Firebase refresh)
     sameSite: 'strict'
   })
 
   const user = ref<User | undefined>(undefined)
   const error = ref<string | undefined>(undefined)
+  const isFirebaseReady = ref(false) // Track if Firebase has initialized
   
-  // Use computed to sync with cookie, but allow override
-  const authorized = computed({
-    get: () => authCookie.value,
-    set: (value: boolean) => {
-      authCookie.value = value
+  // Use cookie for initial state, then switch to Firebase auth
+  const authorized = computed(() => {
+    if (!isFirebaseReady.value) {
+      // Before Firebase is ready, use cookie to prevent flash
+      return authCookie.value
     }
+    // After Firebase is ready, use actual auth state
+    return !!user.value
   })
-
-  // Helper methods for managing auth state
-  const setAuthorized = (value: boolean) => {
-    authorized.value = value
-  }
 
   const setUser = (userData: User | undefined) => {
     user.value = userData
-    // Automatically update authorized state based on user
-    authorized.value = !!userData
+    // Update cookie to match Firebase state
+    authCookie.value = !!userData
+    if (userData) {
+      error.value = undefined
+    }
+  }
+
+  const setFirebaseReady = () => {
+    isFirebaseReady.value = true
+  }
+
+  const setError = (errorMessage: string | undefined) => {
+    error.value = errorMessage
   }
 
   const clearAuth = () => {
     user.value = undefined
-    authorized.value = false
+    authCookie.value = false
     error.value = undefined
   }
 
@@ -41,8 +51,10 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     error,
     authorized,
-    setAuthorized,
+    isFirebaseReady,
     setUser,
+    setFirebaseReady,
+    setError,
     clearAuth
   }
 })

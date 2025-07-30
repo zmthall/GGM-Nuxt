@@ -17,7 +17,7 @@
       </div>
       <!-- Right/Bottom Event (description) -->
       <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg md:flex md:gap-4 md:items-center w-full md:justify-between relative">
-        <div :class="['space-y-2', { 'sm:w-1/2': editModeStates[idx] }]">
+        <div :class="['space-y-2', { 'md:w-1/2': editModeStates[idx] }]">
           <div>
             <h3 v-if="!editModeStates[idx]" class="font-extrabold text-xl mb-2">{{ event.title }}</h3>
             <BaseFormInput v-else v-model="getEvent(idx).title" label="Title" :name="`title-${getEvent(idx).id}`" type="text"/>
@@ -50,7 +50,7 @@
             <button @click="showDeleteConfirmation((idx))">Delete</button>
           </div>
         </div>
-        <div :class="[{ 'sm:w-1/2': editModeStates[idx] }]">
+        <div :class="[{ 'md:w-1/2 mb-8 sm:mb-0': editModeStates[idx] }]">
           <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferral" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
             <BaseFormInput v-model="getEvent(idx).link" label="Link" :name="`link-${getEvent(idx).id}`" type="text"/>
@@ -109,6 +109,10 @@ const props = withDefaults(defineProps<{
   style: 'default',
   archived: false,
 })
+
+const emit = defineEmits<{
+  (e: 'eventsUpdated', events: EventsData): void
+}>()
 
 const editModeStates = ref<boolean[]>([]);
 const expandedStates = ref<boolean[]>([]);
@@ -185,11 +189,6 @@ const initializeExpandedStates = () => {
 };
 
 const syncCurrentEventsWithProps = () => {
-  console.log('Syncing currentEvents with props.events', {
-    propsLength: props.events.length,
-    currentLength: currentEvents.value.length
-  });
-  
   // Deep copy the props.events to currentEvents
   currentEvents.value = props.events.map(event => ({ ...event }));
   lastSavedEvents.value = props.events.map(event => ({ ...event }));
@@ -197,12 +196,6 @@ const syncCurrentEventsWithProps = () => {
   // Reinitialize all state arrays to match the new length
   initializeModeStates();
   initializeExpandedStates();
-  
-  console.log('Sync completed', {
-    currentEventsLength: currentEvents.value.length,
-    editStatesLength: editModeStates.value.length,
-    expandStatesLength: expandedStates.value.length
-  });
 };
 
 const initializeEvents = () => {
@@ -259,7 +252,7 @@ const saveEdit = async (idx: number) => {
     if(response) {
       lastSavedEvents.value[idx] = { ...eventToSave }
       console.log('Event updated successfully:', response.message)
-  
+      emit('eventsUpdated', currentEvents.value)
       if (previousArchivedState !== eventToSave.archived) {
         window.location.reload()
         return
@@ -300,6 +293,9 @@ const deleteEvent = async (idx: number) => {
       currentEvents.value.splice(idx, 1)
       lastSavedEvents.value.splice(idx, 1)
       editModeStates.value.splice(idx, 1)
+
+      emit('eventsUpdated', currentEvents.value)
+
       console.log('Event deleted successfully:', response.message)
     }
   } catch (err: unknown) {

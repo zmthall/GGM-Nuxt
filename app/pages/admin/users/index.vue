@@ -11,8 +11,7 @@
 const authStore = useAuthStore()
 
 definePageMeta({
-    layout: 'admin',
-    middleware: ['restricted']
+    layout: 'admin'
 })
 
 </script>

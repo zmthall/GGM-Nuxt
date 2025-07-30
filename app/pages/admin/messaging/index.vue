@@ -15,7 +15,6 @@ defineOptions({
 
 definePageMeta({
     layout: 'admin',
-    middleware: ['restricted']
 })
 </script>
 

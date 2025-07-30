@@ -1,6 +1,6 @@
 <template>
   <div v-if="authStore.authorized">
-    <BaseLayoutPageSection margin="top" bg="transparent">
+    <BaseLayoutPageSection margin="top" bg="transparent" class="min-h-[calc(50vh-2rem)]">
       <BaseLayoutPageContainer>
         <BaseUiAction type="button" class="py-4 px-12 mb-12 mt-8 group" styling="flex items-center justify-center gap-2" @click="showAddEvent">Add New Event<BaseIcon name="material-symbols:add-diamond" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" /></BaseUiAction>
         <div>
@@ -34,7 +34,7 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="default">
+    <BaseLayoutPageSection margin="default" class="min-h-[calc(50vh-2rem)]">
       <BaseLayoutPageContainer>
         <div class="space-y-4">
           <h2 class="text-2xl text-brand-primary font-bold">Archived Events:</h2>
@@ -80,7 +80,6 @@ import type { CommunityEventsResponse, EventsData } from '../../../models/Events
 const authStore = useAuthStore();
 definePageMeta({
     layout: 'admin',
-    middleware: ['restricted']
 })
 
 // Existing states

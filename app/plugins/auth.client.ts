@@ -7,46 +7,50 @@ import {
 } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
-export default defineNuxtPlugin(async () => {
-  try {
-    const config = useRuntimeConfig();
-    const authStore = useAuthStore();
-  
-    const firebaseConfig = {
-      apiKey: config.public.firebase.apiKey,
-      authDomain: config.public.firebase.authDomain,
-      projectId: config.public.firebase.projectId,
-      storageBucket: config.public.firebase.storageBucket,
-      messagingSenderId: config.public.firebase.messagingSenderId,
-      appId: config.public.firebase.appId,
-    };
-  
+export default defineNuxtPlugin(async (nuxtApp) => {
+  const config = useRuntimeConfig();
+  const authStore = useAuthStore();
+
+  const firebaseConfig = {
+    apiKey: config.public.firebase.apiKey,
+    authDomain: config.public.firebase.authDomain,
+    projectId: config.public.firebase.projectId,
+    storageBucket: config.public.firebase.storageBucket,
+    messagingSenderId: config.public.firebase.messagingSenderId,
+    appId: config.public.firebase.appId,
+  };
+
+   try {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getDatabase(app);
   
     await setPersistence(auth, browserLocalPersistence);
-  
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        authStore.user = user;
-      } else {
-        authStore.user = undefined;
-      }
+
+    await new Promise<void>((resolve) => {
+      let isInitialCall = true;
+      
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          authStore.setUser(user);
+        } else {
+          authStore.clearAuth();
+        }
+        
+        if (isInitialCall) {
+          // Mark Firebase as ready after first auth check
+          authStore.setFirebaseReady();
+          isInitialCall = false;
+          resolve();
+        }
+      });
     });
-    return {
-      provide: {
-        firebase: {
-          app,
-          auth,
-          db,
-        },
-      },
-    };
+
+    nuxtApp.provide('firebase', { app, auth, db });
   
   } catch (err) {
-    console.error('Plugin error:', err)
+    console.error('Firebase initialization error:', err);
+    authStore.setFirebaseReady(); // Mark as ready even on error
+    nuxtApp.provide('firebase', null);
   }
-
-  return {};
 });
