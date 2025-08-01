@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang='ts'>
-const authStore = useAuthStore()
-
 definePageMeta({
     layout: 'admin',
 })
@@ -17,6 +15,10 @@ definePageMeta({
 defineOptions({
     name: 'AdminDashboard'
 })
+
+// Updated test function using auth store
+const authStore = useAuthStore();
+
 
 </script>
 

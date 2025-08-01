@@ -60,7 +60,8 @@ export default defineNuxtConfig({
         }
       ],
       // script: [
-      //   { async: true,
+      //   { 
+      //     async: true,
       //     src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`
       //   },
       //   {
@@ -81,6 +82,10 @@ export default defineNuxtConfig({
       //               i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
       //               })(window,document,"script","//bat.bing.com/bat.js","uetq");`,
       //               type: 'text/javascript'
+      //   },
+      //   { 
+      //     async: true,
+      //     src: //cdn.callrail.com/companies/691517791/60c02cd08e344bb7ef3a/12/swap.js
       //   }
       // ]
     },

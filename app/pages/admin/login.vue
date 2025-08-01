@@ -7,6 +7,7 @@
 
 <script setup lang='ts'>
 const authStore = useAuthStore()
+const router = useRouter()
 
 definePageMeta({
     layout: 'admin'
@@ -20,8 +21,8 @@ defineOptions({
 watch(() => authStore.authorized, (newValue) => {
   if (newValue === true) {
     setTimeout(() => {
-        navigateTo('/admin')
-    }, 1000);
+        router.push('/admin') // Use router.push instead
+}, 1000)
   }
 }, { immediate: true });
 

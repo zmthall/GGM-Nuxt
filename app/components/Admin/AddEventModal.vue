@@ -1,7 +1,7 @@
 <template>
-  <BaseInteractiveModal v-model="modalOpen" hide-close styling="p-4">
+  <BaseInteractiveModal v-model="modalOpen" hide-close :padding="6">
     <h2 class="text-2xl text-brand-primary font-bold">Add a new event:</h2>
-    <form @submit.prevent="addEvent">
+    <form class="h-full flex flex-col justify-between overflow-auto p-4" @submit.prevent="addEvent">
       <div class="bg-[#d2d2ff] p-6 rounded-lg w-full relative my-2">
         <div>
           <div>

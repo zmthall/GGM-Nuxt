@@ -1,8 +1,8 @@
 <template>
   <div>
-    <BaseInteractiveModal v-model="noticeModalOpen" hide-close small-modal>
-      <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary mb-4">Important Notice</h2>
+    <BaseInteractiveModal v-model="noticeModalOpen" hide-close small-modal styling="justify-between overflow-auto" :padding="4">
       <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary mb-4">Important Notice</h2>
         <p class="text-xl text-brand-main-text">
           Please be aware that submitting an application does not guarantee it will be reviewed. Due to the volume of applications we receive and the fact that not all positions are actively hiring at all times, only applications that align with our current needs and qualifications will be considered. As such, not all applicants will be contacted for an interview or further steps in the hiring process.
         </p>
@@ -15,8 +15,9 @@
         <BaseUiAction type="button" class="p-1" @click="continueModal">Continue</BaseUiAction>
       </div>
     </BaseInteractiveModal>
-    <BaseInteractiveModal v-model="attestationModalOpen" hide-close>
+    <BaseInteractiveModal v-model="attestationModalOpen" hide-close styling="justify-between overflow-auto" :padding="6">
       <template #default>
+        <button class="absolute top-1 left-1 group" @click="cancelModal"><BaseIcon name="mdi:close-circle-outline" size="size-6" hover-color="group-hover:text-brand-link-hover" /></button>
         <div class="p-4">
           <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary mb-4">Application Agreement/Attestation</h2>
           <div class="space-y-4">

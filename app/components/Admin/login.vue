@@ -10,6 +10,10 @@
                 <NuxtImg
                     class="w-[250px] mx-auto my-6 rounded-full shadow-sm shadow-gray-900 pointer-events-none select-none"
                     format="webp" quality="60"
+                    height="300"
+                    width="300"
+                    title="Golden Gate Manor Inc logo"
+                    loading="eager"
                     src="/images/GGM-Logo-Mobile_600.png" alt="Golden Gate Manor Main Logo" 
                     
                   />

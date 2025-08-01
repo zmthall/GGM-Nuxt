@@ -24,6 +24,23 @@ export const useAuthStore = defineStore('auth', () => {
     return !!user.value
   })
 
+  const getIdToken = async (): Promise<string | null> => {
+    try {
+      if (!user.value) {
+        throw new Error('No user logged in')
+      }
+
+      const token = await user.value.getIdToken()
+      return token
+    } catch (err) {
+      console.error('Error getting ID token:', err)
+      if (err instanceof Error) {
+        setError(err.message)
+      }
+      return null
+    }
+  }
+
   const setUser = (userData: User | undefined) => {
     user.value = userData
     // Update cookie to match Firebase state
@@ -51,6 +68,7 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     error,
     authorized,
+    getIdToken,
     isFirebaseReady,
     setUser,
     setFirebaseReady,
