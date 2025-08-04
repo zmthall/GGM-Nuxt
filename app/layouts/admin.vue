@@ -1,11 +1,11 @@
 <template>
   <div>
+    <ClientOnly>
       <BaseLayoutAdminHeader />
       <AdminAllPageDashboard />
-      <ClientOnly>
         <BaseLayoutPageHeader v-if="!route.path.includes('login') && authStore.authorized" :title="pageTitle" class="capitalize" />
-      </ClientOnly>
-      <slot />
+        <slot />
+    </ClientOnly>
   </div>
 </template>
 
@@ -14,10 +14,32 @@ const authStore = useAuthStore()
 const route = useRoute();
 
 const pageTitle = computed(() => {
-  const path = route.path.split('/') // Move this inside the computed
+  const path = route.path.split('/')
   return path[path.length - 1] === 'admin' ? 'Admin Dashboard - Home' : `Admin Dashboard - ${path[path.length - 1]}`
 })
 
+const staticData = useStaticData()
+
+if(staticData) {
+  useHead({
+    link: [
+    {
+      rel: 'preload',
+      href: '/fonts/Cabin-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    },
+    {
+      rel: 'preload',
+      href: '/fonts/NotoSerif-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    }
+  ]
+  })
+}
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({

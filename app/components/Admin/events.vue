@@ -88,7 +88,7 @@
   <div v-if="currentEvents.length === 0 && !loading && archived" class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
     <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">There are currently no archived events to edit.</p>
   </div>
-  <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal>
+  <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
     <p>Are you sure you want to delete this event?</p>
     <div class="flex justify-end mt-2 gap-2">
       <BaseUiAction type="button" class="py-1 px-2" @click="confirmDelete">Yes</BaseUiAction>

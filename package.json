@@ -24,7 +24,7 @@
     "@types/google.maps": "^3.58.1",
     "@unhead/vue": "^2.0.8",
     "eslint": "^9.25.1",
-    "firebase": "^11.6.1",
+    "firebase": "^12.0.0",
     "flatpickr": "^4.6.13",
     "nanoid": "^5.1.5",
     "nuxt": "^3.17.1",
