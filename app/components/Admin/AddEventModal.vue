@@ -72,7 +72,7 @@ const addEvent = async () => {
 
   try {
     const response = await $fetch(`/api/events`, {
-      baseURL: 'http://127.0.0.1:4000',
+      baseURL: 'https://api.goldengatemanor.com/',
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${idToken}`,
