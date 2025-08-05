@@ -77,7 +77,7 @@
           <p class="leading-none font-semibold">{{  event.address }}</p>
         </div>
         <div class="">
-          <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" @change="saveEdit(idx)" />
+          <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" @change="updateArchive(idx)" />
         </div>
       </div>
     </li>
@@ -118,6 +118,8 @@ const editModeStates = ref<boolean[]>([]);
 const expandedStates = ref<boolean[]>([]);
 const currentEvents = ref<EventsData>([])
 const lastSavedEvents = ref<EventsData>([])
+const authStore = useAuthStore();
+const result = ref<string | null>(null);
 
 const deleteConfirmationModal = ref<boolean>(false)
 const deleteIdx = ref<number | null>(null)
@@ -240,15 +242,64 @@ const saveEdit = async (idx: number) => {
     const eventToSave = getEvent(idx)
     const previousArchivedState = lastSavedEvents.value[idx]?.archived
 
+    const idToken = await authStore.getIdToken();
+    
+    if (!idToken) {
+      result.value = 'Error: No token available';
+      return;
+    }
+
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToSave.id}`, {
+      baseURL: 'http://127.0.0.1:4000',
       method: 'PUT',
-      body: eventToSave
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(eventToSave)
     })
     
     editModeStates.value[idx] = false
     
     // Update lastSavedEvents with what we actually sent (or API response if preferred)
+    if(response) {
+      lastSavedEvents.value[idx] = { ...eventToSave }
+      console.log('Event updated successfully:', response.message)
+      emit('eventsUpdated', currentEvents.value)
+      if (previousArchivedState !== eventToSave.archived) {
+        window.location.reload()
+        return
+      }
+    }
+  } catch (err: unknown) {
+    console.error('Failed to save event:', err)
+  }
+}
+console.log(await authStore.getIdToken())
 
+const updateArchive = async (idx: number) => {
+  try {
+    const eventToSave = getEvent(idx)
+    const previousArchivedState = lastSavedEvents.value[idx]?.archived
+
+    const idToken = await authStore.getIdToken();
+    
+    if (!idToken) {
+      result.value = 'Error: No token available';
+      return;
+    }
+
+    const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToSave.id}/archive`, {
+      baseURL: 'http://127.0.0.1:4000',
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      }
+    })
+    
+    editModeStates.value[idx] = false
+    
+    // Update lastSavedEvents with what we actually sent (or API response if preferred)
     if(response) {
       lastSavedEvents.value[idx] = { ...eventToSave }
       console.log('Event updated successfully:', response.message)
@@ -284,9 +335,15 @@ const confirmDelete = async () => {
 const deleteEvent = async (idx: number) => {
   try {
     const eventToDelete = getEvent(idx)
+
+    const idToken = await authStore.getIdToken();
   
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToDelete.id}`, {
-      method: 'DELETE'
+      baseURL: 'http://127.0.0.1:4000',
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      }
     })
   
     if(response) {

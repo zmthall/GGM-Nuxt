@@ -37,9 +37,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { AddEventData, EventUpdateResponse} from '../../models/EventsData.js';
+import type { AddEventData } from '../../models/EventsData.js';
 
 const modalOpen = defineModel<boolean>();
+const authStore = useAuthStore();
 
 const newEvent = reactive<AddEventData>({
   date: '',
@@ -67,14 +68,18 @@ const addEvent = async () => {
   if(addEventData.link && !(addEventData.link.startsWith('http://') || addEventData.link.startsWith('https://')))
     addEventData.link = `https://${addEventData.link}`
 
+  const idToken = await authStore.getIdToken();
+
   try {
-    const response = await $fetch<EventUpdateResponse>(`/api/events`, {
+    const response = await $fetch(`/api/events`, {
+      baseURL: 'http://127.0.0.1:4000',
       method: 'POST',
-      body: addEventData
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addEventData)
     })
-    
-    
-    // Update lastSavedEvents with what we actually sent (or API response if preferred)
 
     if(response) {
       window.location.reload()
