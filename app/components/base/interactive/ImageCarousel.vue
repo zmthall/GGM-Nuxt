@@ -34,7 +34,7 @@
                         @error="onImageError(idx)"
                     />
                     
-                    <div v-if="imageSelection && images.length > 0" class="absolute max-sm:hidden w-3/4 bottom-8 left-1/2 -translate-x-1/2 flex justify-around z-5">
+                    <div v-if="imageSelection && images.length >= 4" class="absolute max-sm:hidden w-3/4 bottom-8 left-1/2 -translate-x-1/2 flex justify-around z-5">
                         <button v-for="(count, imageIdx) in images.length" :key="count" :class="['w-4 h-4 rounded-full border-2 cursor-pointer hover:bg-brand-primary', { 'bg-brand-primary border-black': imageIdx === currentIdx, 'border-zinc-300': imageIdx !== currentIdx}]" @click="setCurrentIdx(imageIdx)"/>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ const props = defineProps<{
     slideContainerClass?: string;
     slideClass?: string;
     images: FetchImages;
-    imageSelection: boolean;
+    imageSelection?: boolean;
 }>();
 
 const currentIdx = ref<number>(0)

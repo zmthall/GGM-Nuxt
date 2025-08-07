@@ -104,14 +104,17 @@ const fetchImages = async (): Promise<void> => {
   try {
     imageLoading.value = true
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'https://api.goldengatemanor.com'
+      baseURL: 'http://127.0.0.1:4000'
     })
     
-    images.value = Object.entries(response.slots).map(([key, slot]) => ({
-      id: key,
-      src: slot.src,
-      alt: slot.alt
-    }))
+    // Filter out null slots and create array of only filled slots
+    images.value = Object.entries(response.slots)
+      .filter(([_key, slot]) => slot !== null) // Remove null slots
+      .map(([key, slot]) => ({
+        id: key,
+        src: slot.src,
+        alt: slot.alt
+      }))
   } catch (error) {
     console.error('Failed to fetch images:', error)
     images.value = []

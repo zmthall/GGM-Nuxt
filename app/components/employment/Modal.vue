@@ -1,6 +1,6 @@
 <template>
-  <BaseInteractiveModal v-if="modalContent" v-model="modalOpen" @close="emit('close')">
-    <div class="flex flex-col p-4">
+  <BaseInteractiveModal v-if="modalContent" v-model="modalOpen" styling="justify-between overflow-auto" :padding="4" @close="emit('close')">
+    <div class="flex flex-col h-full p-4">
       <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary mb-4">{{ modalContent.title }}</h2>
       <div class="space-y-4">
         <div>

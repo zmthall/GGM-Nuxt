@@ -2,7 +2,7 @@
     <Teleport to="body">
         <div v-if="modalOpen">
             <div class="fixed w-full h-full top-0 left-0 bg-black/50 backdrop-blur-xl z-20" @click="closeModal"/>
-            <div :class="['fixed flex flex-col z-30 bg-white md:w-[650px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:shadow-primary md:rounded-lg', { 'md:h-1/2 w-full h-full top-0 left-0': smallModal, 'md:h-4/5 w-full h-full top-0 left-0': !smallModal && !tinyModal, 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2': tinyModal }, modalPadding]">
+            <div :class="['fixed flex flex-col z-30 bg-white md:shadow-primary', { 'md:h-1/2 w-full h-full top-0 left-0': smallModal, 'md:h-4/5 w-full h-full top-0 left-0': !smallModal && !tinyModal && !customModal, 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2': tinyModal, 'md:w-[650px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-lg': normalModal }, modalPadding, customModal]">
                 <div v-if="!hideClose" class="flex justify-end">
                     <button class="flex justify-center items-center" @click="closeModal"><BaseIcon name="material-symbols:cancel-outline" color="text-gray-300" hover-color="hover:text-gray-800"/></button>
                 </div>
@@ -22,12 +22,16 @@ const props = withDefaults(defineProps<{
     hideClose?: boolean;
     smallModal?: boolean;
     tinyModal?: boolean;
+    normalModal?: boolean;
+    customModal?: string;
     styling?: string;
     padding?: number;
 }>(),{
     hideClose: false,
     smallModal: false,
     tinyModal: false,
+    normalModal: true,
+    customModal: undefined,
     styling: undefined,
     padding: 0
 })
