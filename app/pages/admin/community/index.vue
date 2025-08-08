@@ -27,7 +27,7 @@
     <BaseInteractiveModal v-model="previewModalOpen" :normal-modal="false" custom-modal="w-full h-full top-0 left-0 rounded-none" styling="justify-center max-w-[1200px] mx-auto" :padding="2">
       <BaseInteractiveImageCarousel :images="previewImages" image-selection/>
     </BaseInteractiveModal>
-    <BaseInteractiveModal v-model="addImageModalOpen" :padding="4">
+    <BaseInteractiveModal v-model="addImageModalOpen" :padding="4" styling="justify-between overflow-auto p-2">
       <BaseFormImageUpload
         v-model="imageData"
         name="slot-image"
@@ -35,7 +35,9 @@
         :slot-index="currentImage"
         :aspect-ratio="32/17"
       />
-      <BaseUiAction v-if="imageData.file !== null" type="button" class="p-2" @click="uploadImageToSlot">Save</BaseUiAction>
+      <div class="flex justify-end mt-8">
+        <BaseUiAction v-if="imageData.file !== null" type="button" class="p-2" @click="uploadImageToSlot">Save</BaseUiAction>
+      </div>
     </BaseInteractiveModal>
   </div>
   <div v-else>
@@ -207,33 +209,51 @@ const imageSlot = computed(() => {
 
 const toggleAddImageModal = async (idx: number, isEdit = false) => {
   if(!images.value[idx]) return false
+
   currentImage.value = idx;
   
   if (isEdit && images.value[idx].src !== '') {
-    // Populate modal with existing data for editing
     try {
-      // Fetch the current image file from the URL
-      const response = await fetch(images.value[idx].src);
-      const blob = await response.blob();
+      // Fetch image data from your API
+      const response = await $fetch<ImageUpdateResponse>(`/api/media/community-shown/image/${idx}`, {
+        baseURL: 'https://api.goldengatemanor.com'
+      });
       
-      // Create a File object from the blob
-      const fileName = `${idx}.jpg`; // or extract from URL
-      const file = new File([blob], fileName, { type: blob.type });
-      
-      imageData.value = {
-        file: file,
-        alt: images.value[idx].alt || ''
-      };
+      if (response.success) {
+        // Convert base64 to blob
+        const base64Data = response.data.fileBase64;
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        
+        const byteArray = new Uint8Array(byteNumbers);
+
+        console.log(response.data)
+        const blob = new Blob([byteArray], { type: response.data.type });
+        
+        // Create File object
+        const file = new File([blob], response.data.filename, { 
+          type: response.data.type,
+          lastModified: Date.now()
+        });
+        
+        imageData.value = {
+          file: file,
+          alt: response.data.alt || ''
+        };
+      }
     } catch (error) {
       console.error('Failed to load current image:', error);
-      // Fallback to empty state
       imageData.value = {
         file: null,
-        alt: images.value[idx].alt || ''
+        alt: ''
       };
     }
   } else {
-    // Adding new image - start fresh
+    // Adding new image
     imageData.value = {
       file: null,
       alt: ''

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full max-w-2xl">
-    <h2 v-if="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</h2>
+    <h2 v-if="label" class="font-extrabold text-lg inline-block mb-1 text-brand-primary capitalize">{{ label }}</h2>
     
     <!-- File Upload Area (shown when no image) -->
     <label
@@ -214,13 +214,34 @@ const deleteImage = () => {
   altText.value = ''
   currentFile.value = null
   cropResult.value = null
-  imageData.value = undefined
+  
+  // Set to proper empty state instead of undefined
+  imageData.value = {
+    file: null,
+    alt: ''
+  }
   
   // Revoke object URL to prevent memory leaks
   if (uploadedImage.value.startsWith('blob:')) {
     URL.revokeObjectURL(uploadedImage.value)
   }
 }
+
+// Watch for external imageData changes (when editing existing images)
+watch(() => imageData.value, (newData) => {
+  if (newData?.file && !currentFile.value) {
+    // External file was set, display it in the cropper
+    currentFile.value = newData.file
+    altText.value = newData.alt || ''
+    
+    // Create display URL for the cropper
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      uploadedImage.value = e.target?.result as string
+    }
+    reader.readAsDataURL(newData.file)
+  }
+}, { deep: true, immediate: true })
 
 // Watch alt text changes
 watch(altText, () => {

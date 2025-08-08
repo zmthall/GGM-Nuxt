@@ -23,11 +23,16 @@ export interface CommunityImagesResponse {
 }
 
 export interface ImageUpdateResponse {
-  success: boolean;
   message: string;
-  error?: string;
-  fileName?: string;
-  alt?: string;
+  success: boolean;
+  slot: number;
+  data: {
+    filename: string;
+    size: number;
+    type: string;
+    alt: string;
+    fileBase64: string;
+  }
 }
 
 
