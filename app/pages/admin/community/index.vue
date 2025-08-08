@@ -10,7 +10,7 @@
               <div v-if="slot.src !== ''" class="relative rounded-lg border-2 border-black overflow-hidden">
                 <p class="font-bold absolute bg-black/40 top-2 left-2 p-2 rounded-lg text-white text-xs">Slot {{ idx + 1 }}</p>
                 <NuxtImg :src="slot.src" class="object-contain w-full bg-black aspect-video" :alt="slot.alt" />
-                <button class="absolute bottom-2 left-2 flex group"><BaseIcon name="material-symbols:edit-square-outline-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
+                <button class="absolute bottom-2 left-2 flex group" @click="toggleAddImageModal(idx, true)"><BaseIcon name="material-symbols:edit-square-outline-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
                 <button class="absolute bottom-2 right-2 flex group" @click="deleteSlot(idx)"><BaseIcon name="material-symbols:delete-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
               </div>
               <button v-else class="group w-full h-full aspect-video" @click="toggleAddImageModal(idx)">
@@ -205,10 +205,43 @@ const imageSlot = computed(() => {
   return null;
 })
 
-const toggleAddImageModal = (idx: number) => {
-  currentImage.value = idx; 
-  addImageModalOpen.value = !addImageModalOpen.value
-}
+const toggleAddImageModal = async (idx: number, isEdit = false) => {
+  if(!images.value[idx]) return false
+  currentImage.value = idx;
+  
+  if (isEdit && images.value[idx].src !== '') {
+    // Populate modal with existing data for editing
+    try {
+      // Fetch the current image file from the URL
+      const response = await fetch(images.value[idx].src);
+      const blob = await response.blob();
+      
+      // Create a File object from the blob
+      const fileName = `${idx}.jpg`; // or extract from URL
+      const file = new File([blob], fileName, { type: blob.type });
+      
+      imageData.value = {
+        file: file,
+        alt: images.value[idx].alt || ''
+      };
+    } catch (error) {
+      console.error('Failed to load current image:', error);
+      // Fallback to empty state
+      imageData.value = {
+        file: null,
+        alt: images.value[idx].alt || ''
+      };
+    }
+  } else {
+    // Adding new image - start fresh
+    imageData.value = {
+      file: null,
+      alt: ''
+    };
+  }
+  
+  addImageModalOpen.value = true;
+};
 
 useHead({
   bodyAttrs: {
