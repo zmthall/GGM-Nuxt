@@ -113,7 +113,8 @@ const fetchImages = async (): Promise<void> => {
       .map(([key, slot]) => ({
         id: key,
         src: slot.src,
-        alt: slot.alt
+        alt: slot.alt,
+        lastUpdated: slot.lastUpdated
       }))
   } catch (error) {
     console.error('Failed to fetch images:', error)

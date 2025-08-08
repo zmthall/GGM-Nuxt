@@ -13,7 +13,7 @@
             <!-- <button v-if="imageLoaded[0]" class="absolute hidden sm:flex bg-gray-200/10 px-2 text-gray-800/40 rounded-lg top-4 right-4 z-5 hover:bg-gray-200/80 hover:text-gray-800/80">
                 View More
             </button> -->
-            <li v-for="(image, idx) in images" :key="image.id" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
+            <li v-for="(image, idx) in images" :key="`${image.id}-${image.lastUpdated}`" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
                 <div class="relative w-full h-full bg-gray-800">
                     <!-- Skeleton loader background -->
                     <div 

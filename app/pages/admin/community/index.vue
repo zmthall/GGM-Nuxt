@@ -6,10 +6,10 @@
         <BaseUiAction type="button" class="p-2" @click="togglePreviewModal">Preview Carousel</BaseUiAction>
         <div>
           <ul class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <li v-for="(image, idx) in images" :key="image.id">
-              <div v-if="image.src !== ''" class="relative rounded-lg border-2 border-black overflow-hidden">
+            <li v-for="(slot, idx) in images" :key="`${slot.id}-${slot.lastUpdated || ''}`">
+              <div v-if="slot.src !== ''" class="relative rounded-lg border-2 border-black overflow-hidden">
                 <p class="font-bold absolute bg-black/40 top-2 left-2 p-2 rounded-lg text-white text-xs">Slot {{ idx + 1 }}</p>
-                <NuxtImg :src="image.src" class="object-contain w-full bg-black aspect-video"/>
+                <NuxtImg :src="slot.src" class="object-contain w-full bg-black aspect-video" :alt="slot.alt" />
                 <button class="absolute bottom-2 left-2 flex group"><BaseIcon name="material-symbols:edit-square-outline-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
                 <button class="absolute bottom-2 right-2 flex group" @click="deleteSlot(idx)"><BaseIcon name="material-symbols:delete-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
               </div>
@@ -71,14 +71,6 @@ const imageData = ref<ImageData>({
   alt: ''
 })
 
-// Watch for changes to imageData
-watch(imageData, (newValue, oldValue) => {
-  console.log('imageData changed:', {
-    new: newValue,
-    old: oldValue
-  })
-}, { deep: true })
-
 const fetchImages = async () => {
   try {
     imageLoading.value = true
@@ -97,14 +89,16 @@ const fetchImages = async () => {
         return {
           id: index.toString(),
           src: '',
-          alt: ''
+          alt: '',
+          lastUpdated: ''
         }
       }
       
       return {
         id: index.toString(),
         src: slot.src || '',
-        alt: slot.alt || ''
+        alt: slot.alt || '',
+        lastUpdated: slot.lastUpdated || ''
       }
     })
     
@@ -115,7 +109,8 @@ const fetchImages = async () => {
         return {
           id: index.toString(),
           src: slot.src || '',
-          alt: slot.alt || ''
+          alt: slot.alt || '',
+          lastUpdated: slot.lastUpdated || ''
         }
       })
       .filter(slot => slot !== null) // Remove null entries
@@ -127,7 +122,8 @@ const fetchImages = async () => {
     images.value = Array.from({ length: 8 }, (_, index) => ({
       id: index.toString(),
       src: '',
-      alt: ''
+      alt: '',
+      lastUpdated: ''
     }))
     
     // Empty preview array on error
@@ -156,7 +152,7 @@ const deleteSlot = async (slot: number) => {
       return;
     }
   } catch (err) {
-    console.log((err as Error).message)
+    console.error((err as Error).message)
   }
 }
 
@@ -184,7 +180,6 @@ const uploadImageToSlot = async () => {
     })
 
     if (response.message) {
-      console.log('Upload successful:', response)
       // Close modal and refresh images
       addImageModalOpen.value = false
       currentImage.value = null;

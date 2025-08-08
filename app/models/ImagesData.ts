@@ -2,6 +2,7 @@ export type FetchImages = {
         id: string;
         src: string;
         alt?: string;
+        lastUpdated: string;
 }[]
 
 export interface ImageData {
@@ -17,6 +18,7 @@ export interface CommunityImagesResponse {
     id: string;
     src: string;
     alt: string;
+    lastUpdated: string;
   }>
 }
 
