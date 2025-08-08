@@ -204,7 +204,6 @@ const initializeEvents = () => {
   syncCurrentEventsWithProps();
 }
 
-// CRITICAL: Watch for props.events changes (pagination loading more events)
 watch(() => props.events, (newEvents, oldEvents) => {
   console.log('Props.events changed', {
     newLength: newEvents.length,

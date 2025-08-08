@@ -5,15 +5,15 @@
         <h2 class="text-2xl text-brand-primary font-bold">Community Page Images:</h2>
         <BaseUiAction type="button" class="p-2" @click="togglePreviewModal">Preview Carousel</BaseUiAction>
         <div>
-          <ul class="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <ul class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <li v-for="(image, idx) in images" :key="image.id">
               <div v-if="image.src !== ''" class="relative rounded-lg border-2 border-black overflow-hidden">
                 <p class="font-bold absolute bg-black/40 top-2 left-2 p-2 rounded-lg text-white text-xs">Slot {{ idx + 1 }}</p>
                 <NuxtImg :src="image.src" class="object-contain w-full bg-black aspect-video"/>
                 <button class="absolute bottom-2 left-2 flex group"><BaseIcon name="material-symbols:edit-square-outline-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
-                <button class="absolute bottom-2 right-2 flex group"><BaseIcon name="material-symbols:delete-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
+                <button class="absolute bottom-2 right-2 flex group" @click="deleteSlot(idx)"><BaseIcon name="material-symbols:delete-rounded" color="text-white/50" hover-color="group-hover:text-white"/></button>
               </div>
-              <button v-else class="group w-full h-full aspect-video">
+              <button v-else class="group w-full h-full aspect-video" @click="toggleAddImageModal(idx)">
                 <div class="relative rounded-lg border-2 border-black overflow-hidden bg-black/80 h-full w-full flex justify-center items-center">
                   <p class="font-bold absolute bg-black/40 top-2 left-2 p-2 rounded-lg text-white text-xs">Slot {{ idx + 1 }}</p>
                   <BaseIcon name="material-symbols:add-photo-alternate-sharp" color="text-white/50" hover-color="group-hover:text-white" size="size-12"/>
@@ -27,6 +27,16 @@
     <BaseInteractiveModal v-model="previewModalOpen" :normal-modal="false" custom-modal="w-full h-full top-0 left-0 rounded-none" styling="justify-center max-w-[1200px] mx-auto" :padding="2">
       <BaseInteractiveImageCarousel :images="previewImages" image-selection/>
     </BaseInteractiveModal>
+    <BaseInteractiveModal v-model="addImageModalOpen" :padding="4">
+      <BaseFormImageUpload
+        v-model="imageData"
+        name="slot-image"
+        :label="`Upload Image for Slot ${imageSlot}`"
+        :slot-index="currentImage"
+        :aspect-ratio="32/17"
+      />
+      <BaseUiAction v-if="imageData.file !== null" type="button" class="p-2" @click="uploadImageToSlot">Save</BaseUiAction>
+    </BaseInteractiveModal>
   </div>
   <div v-else>
         <AdminLogin />
@@ -34,19 +44,40 @@
 </template>
 
 <script lang="ts" setup>
-import type { CommunityImagesResponse, FetchImages } from '../../../models/ImagesData.js';
+import type { ImageUpdateResponse, CommunityImagesResponse, FetchImages } from '../../../models/ImagesData.js';
+
+interface ImageData {
+  file: File | null
+  alt: string
+}
 
 const authStore = useAuthStore();
 definePageMeta({
     layout: 'admin',
 })
 
-const images = ref<FetchImages>([])
-const imageLoading = ref<boolean>(true)
-const previewModalOpen = ref<boolean>(false);
+const images = ref<FetchImages>([]);
+const imageLoading = ref<boolean>(true);
 
-const previewImages = ref<FetchImages>([])
-const previewImageLoading = ref<boolean>(true)
+const previewModalOpen = ref<boolean>(false);
+const previewImages = ref<FetchImages>([]);
+const previewImageLoading = ref<boolean>(true);
+
+const addImageModalOpen = ref<boolean>(false);
+const currentImage = ref<number | null>(null)
+
+const imageData = ref<ImageData>({
+  file: null,
+  alt: ''
+})
+
+// Watch for changes to imageData
+watch(imageData, (newValue, oldValue) => {
+  console.log('imageData changed:', {
+    new: newValue,
+    old: oldValue
+  })
+}, { deep: true })
 
 const fetchImages = async () => {
   try {
@@ -54,7 +85,7 @@ const fetchImages = async () => {
     previewImageLoading.value = true
     
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'http://127.0.0.1:4000'
+      baseURL: 'https://api.goldengatemanor.com/'
     })
     
     // Handle both object format and array format
@@ -108,8 +139,80 @@ const fetchImages = async () => {
   }
 }
 
+const deleteSlot = async (slot: number) => {
+  const idToken = await authStore.getIdToken();
+
+  try {
+    const response = await $fetch<ImageUpdateResponse>(`/api/media/delete-shown/${slot}`, {
+      baseURL: 'https://api.goldengatemanor.com/',
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      },
+    })
+
+    if(response.success) {
+      await fetchImages()
+      return;
+    }
+  } catch (err) {
+    console.log((err as Error).message)
+  }
+}
+
+const uploadImageToSlot = async () => {
+  if (!imageData.value?.file || currentImage.value === null) {
+    console.error('No file or slot selected')
+    return
+  }
+
+  const idToken = await authStore.getIdToken()
+  const formData = new FormData()
+  
+  // Add the file and alt text to FormData
+  formData.append('file', imageData.value.file)
+  formData.append('alt', imageData.value.alt || '')
+
+  try {
+    const response = await $fetch<ImageUpdateResponse>(`/api/media/community-shown/${currentImage.value}`, {
+      baseURL: 'https://api.goldengatemanor.com/',
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      },
+      body: formData
+    })
+
+    if (response.message) {
+      console.log('Upload successful:', response)
+      // Close modal and refresh images
+      addImageModalOpen.value = false
+      currentImage.value = null;
+      imageData.value = {
+        file: null,
+        alt: ''
+      }
+      await fetchImages()
+    }
+  } catch (error) {
+    console.error('Upload failed:', error)
+  }
+}
+
 const togglePreviewModal = () => {
   previewModalOpen.value = !previewModalOpen.value
+}
+
+const imageSlot = computed(() => {
+  if(currentImage.value !== null)
+    return currentImage.value + 1
+
+  return null;
+})
+
+const toggleAddImageModal = (idx: number) => {
+  currentImage.value = idx; 
+  addImageModalOpen.value = !addImageModalOpen.value
 }
 
 useHead({

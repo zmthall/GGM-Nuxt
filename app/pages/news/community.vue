@@ -104,7 +104,7 @@ const fetchImages = async (): Promise<void> => {
   try {
     imageLoading.value = true
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'http://127.0.0.1:4000'
+      baseURL: 'https://api.goldengatemanor.com/'
     })
     
     // Filter out null slots and create array of only filled slots

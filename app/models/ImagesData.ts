@@ -19,3 +19,14 @@ export interface CommunityImagesResponse {
     alt: string;
   }>
 }
+
+export interface ImageUpdateResponse {
+  success: boolean;
+  message: string;
+  error?: string;
+  fileName?: string;
+  alt?: string;
+}
+
+
+
