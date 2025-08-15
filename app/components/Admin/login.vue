@@ -41,9 +41,26 @@
 const firebaseAuth = useFirebaseAuth()
 const email = ref('');
 const password = ref('');
+const authStore = useAuthStore();
 
 const loginUser = async () => {
-    await firebaseAuth?.loginUser(email.value, password.value)
+    try {
+        await firebaseAuth?.loginUser(email.value, password.value)
+        
+        const idToken = await authStore.getIdToken();
+    
+        const response = await $fetch(`/api/users/update-login`, {
+            baseURL: 'http://127.0.0.1:4000',
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${idToken}`
+            }
+        })
+
+        console.log(response)
+    } catch (error) {
+        console.error((error as Error).message)
+    }
 }
 </script>
 

@@ -231,7 +231,6 @@ const toggleAddImageModal = async (idx: number, isEdit = false) => {
         
         const byteArray = new Uint8Array(byteNumbers);
 
-        console.log(response.data)
         const blob = new Blob([byteArray], { type: response.data.type });
         
         // Create File object

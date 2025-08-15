@@ -204,12 +204,7 @@ const initializeEvents = () => {
   syncCurrentEventsWithProps();
 }
 
-watch(() => props.events, (newEvents, oldEvents) => {
-  console.log('Props.events changed', {
-    newLength: newEvents.length,
-    oldLength: oldEvents ? oldEvents.length : 0
-  });
-  
+watch(() => props.events, (newEvents) => {
   if (newEvents && newEvents.length !== currentEvents.value.length) {
     syncCurrentEventsWithProps();
   }
@@ -263,7 +258,6 @@ const saveEdit = async (idx: number) => {
     // Update lastSavedEvents with what we actually sent (or API response if preferred)
     if(response) {
       lastSavedEvents.value[idx] = { ...eventToSave }
-      console.log('Event updated successfully:', response.message)
       emit('eventsUpdated', currentEvents.value)
       if (previousArchivedState !== eventToSave.archived) {
         window.location.reload()
@@ -274,8 +268,6 @@ const saveEdit = async (idx: number) => {
     console.error('Failed to save event:', err)
   }
 }
-console.log(await authStore.getIdToken())
-
 const updateArchive = async (idx: number) => {
   try {
     const eventToSave = getEvent(idx)
@@ -301,7 +293,6 @@ const updateArchive = async (idx: number) => {
     // Update lastSavedEvents with what we actually sent (or API response if preferred)
     if(response) {
       lastSavedEvents.value[idx] = { ...eventToSave }
-      console.log('Event updated successfully:', response.message)
       emit('eventsUpdated', currentEvents.value)
       if (previousArchivedState !== eventToSave.archived) {
         window.location.reload()
@@ -351,8 +342,6 @@ const deleteEvent = async (idx: number) => {
       editModeStates.value.splice(idx, 1)
 
       emit('eventsUpdated', currentEvents.value)
-
-      console.log('Event deleted successfully:', response.message)
     }
   } catch (err: unknown) {
     console.error('Failed to save event:', err)

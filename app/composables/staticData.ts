@@ -208,8 +208,8 @@ export const useStaticData = () => {
     },
     {
       id: 'messaging-link',
-      name: 'Messaging',
-      slug: '/admin/messaging',
+      name: 'Correspondence',
+      slug: '/admin/correspondence',
       icon: 'material-symbols:chat'
     },
     {
