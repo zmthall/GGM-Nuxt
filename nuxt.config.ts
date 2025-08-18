@@ -85,18 +85,18 @@ export default defineNuxtConfig({
         },
         { 
           async: true,
-          src: //cdn.callrail.com/companies/691517791/60c02cd08e344bb7ef3a/12/swap.js
+          src: '//cdn.callrail.com/companies/691517791/60c02cd08e344bb7ef3a/12/swap.js'
         }
       ]
     },
   },
   sitemap: {
     sitemaps: {
-      ['sitemap-main']: {
+      'sitemap-main': {
         exclude: ['/admin/**', '/news/blog/**'],
         includeAppSources: true,
       },
-      ['sitemap-blog']: {
+      'sitemap-blog': {
         includeAppSources: true,
         sources: ['/api/sitemap-blog'],
         include: ['/news/blog/**'],
