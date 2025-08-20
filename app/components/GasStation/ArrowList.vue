@@ -47,7 +47,7 @@ if (company) {
     {
       id: "ggmc-2",
       arrowColor: "green",
-      title: `South Prairie Avenue: ${company.gasStation.ggmc2.address}`,
+      title: `Elizabeth Street: ${company.gasStation.ggmc2.address}`,
       phone: company.gasStation.ggmc2.phone,
       details: [
         "Completely renovated with modern amenities",
