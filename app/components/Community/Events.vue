@@ -2,15 +2,17 @@
   <ul v-if="events.length !== 0" class="my-4 space-y-8">
     <li v-for="(event, idx) in events" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
-      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center min-w-28">
-        <div class="flex flex-col">
-          <span>{{ getDateMonth(event.date) }}</span>
-          <span>{{ getDateDay(event.date) }}</span>
-        </div>
-        <span v-if="event.dateTo">To</span>
-        <div v-if="event.dateTo" class="flex flex-col">
-          <span>{{ getDateMonth(event.dateTo) }}</span>
-          <span>{{ getDateDay(event.dateTo) }}</span>
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 flex sm:flex-col justify-center min-w-28 min-h-20">
+        <div class="flex flex-row justify-center items-center gap-4 sm:flex-col">
+          <div class="flex flex-row gap-2 sm:gap-1">
+            <span>{{ getDateMonth(event.date) }}</span>
+            <span>{{ getDateDay(event.date) }}</span>
+          </div>
+          <span v-if="event.dateTo">To</span>
+          <div v-if="event.dateTo" class="flex flex-row gap-2 sm:gap-1">
+            <span>{{ getDateMonth(event.dateTo) }}</span>
+            <span>{{ getDateDay(event.dateTo) }}</span>
+          </div>
         </div>
       </div>
       <!-- Right/Bottom Event (description) -->

@@ -2,14 +2,14 @@
   <ul v-if="events.length !== 0 && !archived" class="my-4 space-y-8">
     <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <!-- Left/Top Event (date) -->
-      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center min-w-28">
-        <div v-if="!editModeStates[idx]">
-          <div class="flex flex-col">
+      <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 flex sm:flex-col justify-center min-w-28 min-h-20">
+        <div v-if="!editModeStates[idx]" class="flex flex-row justify-center items-center gap-4 sm:flex-col">
+          <div class="flex flex-row gap-2 sm:gap-1">
             <span>{{ getDateMonth(event.date) }}</span>
             <span>{{ getDateDay(event.date) }}</span>
           </div>
           <span v-if="event.dateTo">To</span>
-          <div v-if="event.dateTo" class="flex flex-col">
+          <div v-if="event.dateTo" class="flex flex-row gap-2 sm:gap-1">
             <span>{{ getDateMonth(event.dateTo) }}</span>
             <span>{{ getDateDay(event.dateTo) }}</span>
           </div>
@@ -54,8 +54,8 @@
           <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferral" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
             <BaseFormInput v-model="getEvent(idx).link" label="Link" :name="`link-${getEvent(idx).id}`" type="text"/>
-            <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" :name="`date-${getEvent(idx).id}`"  />
-            <BaseFormDatePicker v-model="getEvent(idx).dateTo" label="Date To" :name="`date-to-${getEvent(idx).id}`"  />
+            <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" :name="`date-${getEvent(idx).id}`" date-format="m/d/Y" />
+            <BaseFormDatePicker v-model="getEvent(idx).dateTo" label="Date To" :name="`date-to-${getEvent(idx).id}`" date-format="m/d/Y" />
             <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" />
           </div>
         </div>
