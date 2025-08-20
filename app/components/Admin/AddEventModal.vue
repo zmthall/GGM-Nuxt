@@ -24,7 +24,7 @@
           <div class="space-y-2">
             <BaseFormInput v-model="newEvent.link" label="Link" name="link" type="text"/>
             <BaseFormDatePicker v-model="newEvent.date" label="Date" name="date" date-format="m/d/Y"  />
-            <BaseFormDatePicker v-model="newEvent.dateTo" label="Date To" name="date-to"  />
+            <BaseFormDatePicker v-model="newEvent.dateTo" label="Date To" name="date-to" date-format="m/d/Y"  />
           </div>
         </div>
       </div>
