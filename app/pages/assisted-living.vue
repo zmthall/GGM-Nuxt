@@ -12,7 +12,7 @@
                 </span>
             </h2>
             <div class="flex flex-col space-y-4">
-                <div class="flex flex-col-reverse justify-center lg:flex-row lg:items-end sm:gap-8">
+                <div class="flex flex-col-reverse justify-center lg:flex-row lg:items-end sm:gap-8 mt-4">
                     <!-- Left Side -->
                     <div class="lg:w-1/2 space-y-4">
                         <p class="text-xl text-brand-main-text">
@@ -23,8 +23,8 @@
                         </p>
                     </div>
                     <!-- Right Side -->
-                    <div class="sm:h-[375px] lg:w-1/2">
-                      <NuxtImg src="/images/pages/assisted-living/assisted-living-sign.webp" format="webp" quality="75" width="179" height="199" class="w-full sm:w-max sm:h-[375px] mx-auto sm:rounded-lg md:shadow-primary" alt="Golden Gate Manor I sign" title="Golden Gate Manor I Sign" loading="eager" placeholder/>
+                    <div class="lg:w-1/2 flex">
+                      <AssistedLivingImage />
                     </div>
                 </div>
                 <p class="text-xl text-brand-main-text">
