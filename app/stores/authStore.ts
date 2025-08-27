@@ -1,6 +1,9 @@
 // authStore.ts - Hybrid approach
 import type { User } from 'firebase/auth'
 import { defineStore } from 'pinia'
+import type { FetchUser } from '~/models/admin/user';
+
+type UserRole = 'admin' | 'user';
 
 export const useAuthStore = defineStore('auth', () => {
   // Cookie for immediate UI state (prevents flash)
@@ -12,6 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const user = ref<User | undefined>(undefined)
   const error = ref<string | undefined>(undefined)
+  const role = ref<UserRole | null>(null)
   const isFirebaseReady = ref(false) // Track if Firebase has initialized
   
   // Use cookie for initial state, then switch to Firebase auth
@@ -59,13 +63,45 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const clearAuth = () => {
-    user.value = undefined
-    authCookie.value = false
-    error.value = undefined
+    user.value = undefined;
+    authCookie.value = false;
+    role.value = null;
+    error.value = undefined;
   }
+
+  const getUserRole = async () => {
+    if (!user.value) return;
+
+    const idToken = await getIdToken();
+    if (!idToken) return;
+
+    try {
+      const response = await $fetch<FetchUser>('/api/users/profile', {
+        baseURL: 'https://api.goldengatemanor.com',
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${idToken}`
+        }
+      });
+
+      if (response.success) {
+        role.value = response.data?.role as UserRole;
+      } else {
+        role.value = null;
+        console.warn('Role fetch failed:', response);
+      }
+    } catch (err) {
+      console.error('Error fetching role:', err);
+      role.value = null;
+    }
+  };
+
+  const refreshRole = async () => getUserRole()
 
   return {
     user,
+    role,
+    refreshRole,
     error,
     authorized,
     getIdToken,

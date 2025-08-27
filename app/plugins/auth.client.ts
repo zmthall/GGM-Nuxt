@@ -46,6 +46,14 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       });
     });
 
+    nuxtApp.provide('refreshUser', async () => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        await currentUser.reload();
+        authStore.setUser(currentUser);
+      }
+    });
+
     nuxtApp.provide('firebase', { app, auth, db });
   
   } catch (err) {

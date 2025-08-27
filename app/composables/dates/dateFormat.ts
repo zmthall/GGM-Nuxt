@@ -96,9 +96,25 @@ export const useDateFormat = () => {
     return `${month}/${day}/${year}`;
   };
 
+  const formatLongDateTime = (date: string | Date | undefined): string => {
+    const parsedDate = parseFlexibleDate(date);
+    if (!parsedDate) return '';
+    
+    return parsedDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }) + ` at ${parsedDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    })}`;
+  };
+
   return {
     parseFlexibleDate,
     formatDatetime,
+    formatLongDateTime,
     formatDisplayDate,
     formatShortDate
   };

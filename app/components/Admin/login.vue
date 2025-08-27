@@ -49,7 +49,7 @@ const loginUser = async () => {
         
         const idToken = await authStore.getIdToken();
     
-        const response = await $fetch(`/api/users/update-login`, {
+        const response = await $fetch<{ success: boolean }>(`/api/users/update-login`, {
             baseURL: 'https://api.goldengatemanor.com',
             method: 'PUT',
             headers: {
@@ -57,7 +57,9 @@ const loginUser = async () => {
             }
         })
 
-        console.log(response)
+        if(response.success){
+            authStore.refreshRole();
+        }
     } catch (error) {
         console.error((error as Error).message)
     }
