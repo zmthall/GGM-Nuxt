@@ -3,22 +3,25 @@
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
-          <AdminUsersTable :users="usersList" :loading :pagination="pagination"
-            @prev-page="fetchUsers(false, --page)"
-            @next-page="fetchUsers(false, ++page)"
-            @page-change="(p) => { page = p; fetchUsers(false, page)}"
-            @change-role="({ user, role }) => updateUserRole(user.id, role)"
-            @add-user="fetchUsers(false)"
-          >
+            <AdminUsersTable
+              :users="usersList"                 
+              :loading="loading"            
+              :pagination="pagination"       
+              @prev-page="fetchUsers(false, --page)"
+              @next-page="fetchUsers(false, ++page)"
+              @page-change="(p) => { page = p; fetchUsers(false, page)}"
+              @change-role="({ user, role }) => updateUserRole(user.id, role)"
+              @add-user="fetchUsers(false)"
+            >
             <template #actions="{ user }">
-              <div class="inline-flex items-center gap-2">
-                <button class="rounded-md border px-2.5 py-1 text-xs hover:bg-gray-100 w-max" @click="sendPasswordResetEmail(user.id)">Reset PW</button>
-                <button v-if="authStore.user?.uid !== user.id" class="rounded-md border px-2.5 py-1 text-xs hover:bg-gray-100 w-max" @click="disableAccount(user.id)">
-                  {{ user.status === 'active' ? 'Disable' : 'Enable' }}
-                </button>
-                <button v-if="authStore.user?.uid !== user.id" class="rounded-md border px-2.5 py-1 text-white text-xs bg-red-600 hover:bg-red-800 w-max" @click="deleteAccount(user.id)">Delete</button>
-              </div>
-            </template>
+                <div class="inline-flex items-center gap-2">
+                  <button class="rounded-md border px-2.5 py-1 text-xs hover:bg-gray-100 w-max" @click="sendPasswordResetEmail(user.id)">Reset PW</button>
+                  <button v-if="authStore.user?.uid !== user.id" class="rounded-md border px-2.5 py-1 text-xs hover:bg-gray-100 w-max" @click="disableAccount(user.id)">
+                    {{ user.status === 'active' ? 'Disable' : 'Enable' }}
+                  </button>
+                  <button v-if="authStore.user?.uid !== user.id" class="rounded-md border px-2.5 py-1 text-white text-xs bg-red-600 hover:bg-red-800 w-max" @click="deleteAccount(user.id)">Delete</button>
+                </div>
+              </template>
           </AdminUsersTable>
         </BaseLayoutCard>
       </BaseLayoutPageContainer>
@@ -72,7 +75,7 @@ const fetchUsers = async (isLoading: boolean = true, page: number = 1) => {
       pagination.value = response.pagination
     }
   } catch (error) {
-
+    console.log((error as Error).message)
   } finally {
     loading.value = false;
   }
@@ -92,11 +95,9 @@ const sendPasswordResetEmail = async (uid: string) => {
       }
     })
 
-    if(response.success) {
-
-    }
+    return response
   } catch (error) {
-
+    console.log((error as Error).message)
   }
 }
 
@@ -119,7 +120,7 @@ const updateUserRole = async (uid: string, role: string) => {
       fetchUsers(false);
     }
   } catch (error) {
-    
+    console.log((error as Error).message)
   }
 }
 
@@ -141,7 +142,7 @@ const disableAccount = async (uid: string) => {
       fetchUsers(false);
     }
   } catch (error) {
-
+    console.log((error as Error).message)
   }
 }
 
@@ -162,7 +163,7 @@ const deleteAccount = async (uid: string) => {
       fetchUsers(false);
     }
   } catch (error) {
-
+    console.log((error as Error).message)
   }
 }
 
