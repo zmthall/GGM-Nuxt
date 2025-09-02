@@ -41,6 +41,10 @@ if(staticData) {
   })
 }
 
+onBeforeMount(() => {
+  authStore.refreshRole();
+})
+
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
     title: 'Admin Dashboard | Golden Gate Manor Inc',
