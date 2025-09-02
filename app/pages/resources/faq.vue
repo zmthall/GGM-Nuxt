@@ -407,9 +407,9 @@
                   id="24-hour-staff"
                   :active-id="activeAccordionIdAssistedLiving"
                   label="Is there 24-hour staff available?"
-                  :main-class="`bg-[#2E86AB] text-white rounded-lg overflow-hidden group ${activeAccordionIdAssistedLiving !== 'out-of-pocket' ? 'hover:font-extrabold hover:bg-[#2E86AB]/50' : ''}`"
-                  :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'out-of-pocket' ? 'border-b border-b-white' : ''}`"
-                  :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'out-of-pocket' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
+                  :main-class="`bg-[#2E86AB] text-white rounded-lg overflow-hidden group ${activeAccordionIdAssistedLiving !== '24-hour-staff' ? 'hover:font-extrabold hover:bg-[#2E86AB]/50' : ''}`"
+                  :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === '24-hour-staff' ? 'border-b border-b-white' : ''}`"
+                  :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== '24-hour-staff' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
                   @update:active-id="updateIdAssistedLiving">
                     <p class="text-xl text-white">
                       Yes, Golden Gate Manor has staff available 24 hours a day to ensure the safety and well-being of our residents. Our trained staff members are on-site around the clock to assist with emergencies, provide support when needed, and give you and your family peace of mind knowing help is always available.
@@ -421,9 +421,9 @@
                   id="schedule-a-tour"
                   :active-id="activeAccordionIdAssistedLiving"
                   label="Can I schedule a tour of the facility?"
-                  :main-class="`bg-[#2E86AB] text-white rounded-lg overflow-hidden group ${activeAccordionIdAssistedLiving !== 'out-of-pocket' ? 'hover:font-extrabold hover:bg-[#2E86AB]/50' : ''}`"
-                  :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'out-of-pocket' ? 'border-b border-b-white' : ''}`"
-                  :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'out-of-pocket' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
+                  :main-class="`bg-[#2E86AB] text-white rounded-lg overflow-hidden group ${activeAccordionIdAssistedLiving !== 'schedule-a-tour' ? 'hover:font-extrabold hover:bg-[#2E86AB]/50' : ''}`"
+                  :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'schedule-a-tour' ? 'border-b border-b-white' : ''}`"
+                  :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'schedule-a-tour' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
                   @update:active-id="updateIdAssistedLiving">
                     <div class="space-y-4">
                       <p class="text-xl text-white">
