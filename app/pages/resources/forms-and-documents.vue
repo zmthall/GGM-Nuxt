@@ -55,7 +55,7 @@
               <div class="mt-4">
                 <h3 class="text-xl font-bold text-brand-primary">Non-Emergency Transportation Application</h3>
                 <ul class="ml-8 list-disc text-xl">
-                  <li><a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" class="link" target="_blank" rel="noopener">NEMT Application Form</a></li>
+                  <li><a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" class="link" target="_blank" rel="noopener nofollow">NEMT Application Form</a></li>
                 </ul>
               </div>
             </div>
@@ -128,17 +128,17 @@
               <div class="mt-4">
                 <h3 class="text-2xl font-bold text-brand-primary">Physician Forms</h3>
                 <ul class="ml-8 list-disc text-xl">
-                  <li><a href="/pdfs/dme/Physicians_Mobility_Order_Form.pdf" class="link" target="_blank" rel="noopener">Physicians Mobility Order Form</a></li>
-                  <li><a href="/pdfs/dme/Group_1_Support_Surfaces.pdf" class="link" target="_blank" rel="noopener">Group 1 Support Surfaces</a></li>
-                  <li><a href="/pdfs/dme/Group_2_Support_Surfaces.pdf" class="link" target="_blank" rel="noopener">Group 2 Support Surfaces</a></li>
-                  <li><a href="/pdfs/dme/Certificate_of_Medical_Necessity_Manual_Wheelchairs.pdf" class="link" target="_blank" rel="noopener">Certificate of Medical Necessity (Manual Wheelchairs)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Hospital_Bed.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Hospital Bed)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Pressure_Release_Mattress.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Pressure Release Mattress)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Lift.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Lift)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_TENS_or_NMES.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (TENS or NMES)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Orthotics_and_Prosthetics.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Orthotics and Prosthetics - Adults 21+)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Wheelchair_Tilt_or_Recline_Device.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Wheelchair Tilt or Recline Device)</a></li>
-                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Blood_Pressure_Unit_or_Monitor.pdf" class="link" target="_blank" rel="noopener">Prior Authorization Request (Blood Pressure Unit or Monitor)</a></li>
+                  <li><a href="/pdfs/dme/Physicians_Mobility_Order_Form.pdf" class="link" target="_blank" rel="noopener nofollow">Physicians Mobility Order Form</a></li>
+                  <li><a href="/pdfs/dme/Group_1_Support_Surfaces.pdf" class="link" target="_blank" rel="noopener nofollow">Group 1 Support Surfaces</a></li>
+                  <li><a href="/pdfs/dme/Group_2_Support_Surfaces.pdf" class="link" target="_blank" rel="noopener nofollow">Group 2 Support Surfaces</a></li>
+                  <li><a href="/pdfs/dme/Certificate_of_Medical_Necessity_Manual_Wheelchairs.pdf" class="link" target="_blank" rel="noopener nofollow">Certificate of Medical Necessity (Manual Wheelchairs)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Hospital_Bed.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Hospital Bed)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Pressure_Release_Mattress.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Pressure Release Mattress)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Lift.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Lift)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_TENS_or_NMES.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (TENS or NMES)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Orthotics_and_Prosthetics.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Orthotics and Prosthetics - Adults 21+)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Wheelchair_Tilt_or_Recline_Device.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Wheelchair Tilt or Recline Device)</a></li>
+                  <li><a href="/pdfs/dme/Prior_Authorization_Request_Blood_Pressure_Unit_or_Monitor.pdf" class="link" target="_blank" rel="noopener nofollow">Prior Authorization Request (Blood Pressure Unit or Monitor)</a></li>
               </ul>
 
               </div>

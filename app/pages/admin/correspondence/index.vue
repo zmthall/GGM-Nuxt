@@ -1,6 +1,6 @@
 <template>
     <div v-if="authStore.authorized">
-        Messages
+        Correspondence
     </div>
     <div v-else>
         <AdminLogin />

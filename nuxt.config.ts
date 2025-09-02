@@ -18,6 +18,42 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/robots'
   ],
+  routeRules: {
+    // Contact / resources
+    '/contact-us/schedule-a-ride': { redirect: { to: '/resources/schedule-a-ride', statusCode: 308 } },
+    '/schedule-a-ride': { redirect: { to: '/resources/schedule-a-ride', statusCode: 308 }},
+    '/contact-us': { redirect: { to: '/company/contact-us', statusCode: 308 } },
+    '/contactus': { redirect: { to: '/company/contact-us', statusCode: 308 }},
+    '/contacts': { redirect: { to: '/company/contact-us', statusCode: 308 }},
+
+    // Transportation
+    '/non-medical-transportation':  { redirect: { to: '/non-medical', statusCode: 308 } },
+    '/non-medical-transportation/': { redirect: { to: '/non-medical', statusCode: 308 } },
+
+    '/nemt-transportation':  { redirect: { to: '/nemt', statusCode: 308 } },
+    '/nemt-transportation/': { redirect: { to: '/nemt', statusCode: 308 } },
+
+    // Company / About
+    '/about-us': { redirect: { to: '/company/about-us', statusCode: 308 } },
+    '/about': { redirect: { to: '/company/about-us', statusCode: 308 } },
+    '/about-us/employment': { redirect: { to: '/company/employment', statusCode: 308 } },
+
+    // Preserve any query like ?select=general automatically by NOT hardcoding a query here
+    '/about-us/employment/apply': { redirect: { to: '/company/employment/apply', statusCode: 308 } },
+
+    // News / Community / Location
+    '/about-us/community': { redirect: { to: '/news/community', statusCode: 308 } },
+    '/about-us/location':  { redirect: { to: '/company/location', statusCode: 308 } },
+
+    // Old "home"
+    '/home': { redirect: { to: '/', statusCode: 308 } },
+
+    // Policy Pages
+    '/accessibility': { redirect: { to: '/company/policies/accessibility', statusCode: 308 }},
+    '/termsandconditions': { redirect: { to: '/company/policies/terms-and-conditions', statusCode: 308 }},
+    '/privacy-policy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
+    '/privacypolicy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
+  },
   runtimeConfig: {
     apiKey: process.env.API_KEY,
     public: {

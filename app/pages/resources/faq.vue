@@ -430,7 +430,7 @@
                         Absolutely! We encourage prospective residents and their families to schedule a tour of Golden Gate Manor. During your visit, you'll be able to see our facilities, meet our staff, learn about our services, and get a feel for our community atmosphere.
                       </p>
                       <p class="text-xl text-white">
-                        To schedule a tour, please call us at <a href="719-696-8032" class="link">719-696-8032</a> or <NuxtLink to="/company/contact-us" class="link">Contact Us</NuxtLink> through our website. We're happy to accommodate your schedule and answer any questions you may have during your visit.
+                        To schedule a tour, please call us at <a href="tel:719-696-8032" class="link">719-696-8032</a> or <NuxtLink to="/company/contact-us" class="link">Contact Us</NuxtLink> through our website. We're happy to accommodate your schedule and answer any questions you may have during your visit.
                       </p>
                     </div>
                 </BaseInteractiveAccordionButton>
