@@ -97,6 +97,7 @@
               {{ text.truncateText(u.message, 100)}}
             </div>
             <button
+                v-if="u.message.length > 100"
                 type="button"
                 class="mt-2 text-xs text-brand-primary underline-offset-2 hover:underline"
                 @click="openMessageModal(u)"

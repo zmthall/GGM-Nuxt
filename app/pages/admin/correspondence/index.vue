@@ -12,6 +12,9 @@
                         @change-status="updateStatus"
                         @change-tags="updateTags"
                         @export-pdf="exportPDF"
+                        @prev-page="fetchContactMessages(false, --page)"
+                        @next-page="fetchContactMessages(false, ++page)"
+                        @page-change="(p) => { page = p; fetchContactMessages(false, page)}"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
@@ -45,6 +48,7 @@ definePageMeta({
 const contactMessages = ref<ContactFormData[]>([]);
 const contactMessagesPagination = ref<Pagination | null>(null)
 const loadingContactMessages = ref<boolean>(true);
+const page = ref<number>(1)
 
 const fetchContactMessages = async (isLoading: boolean = true, page: number = 1) => {
   if(isLoading)
@@ -63,6 +67,8 @@ const fetchContactMessages = async (isLoading: boolean = true, page: number = 1)
     if(response.success) {
       contactMessages.value = response.data
       contactMessagesPagination.value = response.pagination
+
+      console.log(contactMessagesPagination)
     }
   } catch (error) {
     console.error((error as Error).message)

@@ -100,7 +100,7 @@ const submitContact = async () => {
     
     if (verification.success && verification.data?.valid) {
       await $fetch('/api/email/contact-form', {
-        baseURL: 'https://api.goldengatemanor.com',
+        baseURL: 'http://127.0.0.1:4000',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
