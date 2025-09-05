@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
                                             <h3 class="text-2xl font-bold text-brand-secondary post-title">{{ latestPost.title }}</h3>
-                                            <p class="post-body">{{ truncateText(latestPost.summary, 250) }}</p>
+                                            <p class="post-body">{{ text.truncateText(latestPost.summary, 250) }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
                                             <h3 class="text-xl font-bold text-brand-primary post-title">{{ post.title }}</h3>
-                                            <p class="post-body">{{ post.summary ? truncateText(post.summary, 100) : '' }}</p>
+                                            <p class="post-body">{{ post.summary ? text.truncateText(post.summary, 100) : '' }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,9 +126,9 @@
 
 <script setup lang='ts'>
 import type { MarkdownRoot } from '@nuxt/content'
-import { useDateFormat } from '../../../composables/dates/dateFormat.js'
-import { useReading } from '../../../composables/blog/reading.js'
-import type { AllPosts } from '../../../models/blog.js'
+import { useDateFormat } from '../../../composables/dates/dateFormat'
+import { useReading } from '../../../composables/blog/reading'
+import type { AllPosts } from '../../../models/blog'
 
 defineOptions({
     name: 'BlogPostsPage'
@@ -158,6 +158,7 @@ useSeoMeta({
 
 const formatDates = useDateFormat()
 const reading = useReading()
+const text = useText();
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
@@ -222,18 +223,6 @@ const loadMore = async () => {
   }
   
   isLoading.value = false
-}
-
-const truncateText = (text: string | undefined, maxLength: number = 200): string => {
-  if (text === undefined) return ''
-  
-  const cleanText = text.replace(/\s+/g, ' ').trim()
-  
-  if (cleanText.length <= maxLength) {
-    return cleanText
-  }
-  
-  return cleanText.substring(0, maxLength) + '...'
 }
 
 onMounted(() => {

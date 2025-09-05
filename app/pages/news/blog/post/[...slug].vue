@@ -147,7 +147,7 @@
 import type { MarkdownRoot } from '@nuxt/content';
 import { useReading } from '../../../../composables/blog/reading';
 import { useBlogSchema } from '../../../../composables/blog/schema';
-import { useText } from '../../../../composables/blog/text';
+import { useText } from '../../../../composables/text';
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
 import type { BlogPost } from '../../../../models/blog';
 import { onClickOutside } from '../../../../composables/onClickOutside';

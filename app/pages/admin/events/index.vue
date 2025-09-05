@@ -2,7 +2,7 @@
   <div v-if="authStore.authorized">
     <BaseLayoutPageSection margin="top" bg="transparent" class="min-h-[calc(50vh-2rem)]">
       <BaseLayoutPageContainer>
-        <BaseUiAction type="button" class="py-4 px-12 mb-4 group" styling="flex items-center justify-center gap-2" @click="showAddEvent">Add New Event<BaseIcon name="material-symbols:add-diamond" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" /></BaseUiAction>
+        <BaseUiAction type="button" class="py-4 px-12 mb-4 group" styling="flex items-center justify-center gap-2" @click="showAddEvent">Add New Event<BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" /></BaseUiAction>
         <div>
           <h2 class="text-2xl text-brand-primary font-bold">Recent Events:</h2>
           <div v-if="eventLoading && events.length === 0" class="my-4 font-extrabold animate-pulse text-2xl">

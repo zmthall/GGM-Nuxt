@@ -9,7 +9,6 @@
     @prev-page="$emit('prev-page')"
     @next-page="$emit('next-page')"
     @page-change="(p: number) => $emit('page-change', p)"
-    @sort-change="onSortChange"
   >
     <!-- Toolbar -->
     <template #toolbar>
@@ -118,19 +117,19 @@
 
         <!-- Created -->
         <td class="px-4 py-3">
-          <div class="text-gray-900">{{ formatDate(u.created_at) }}</div>
+          <div class="text-gray-900">{{ dateFormat.tableFormatDate(u.created_at) }}</div>
           <div v-if="u.created_by" class="text-xs text-gray-500">by {{ u.created_by }}</div>
         </td>
 
         <!-- Updated -->
         <td class="px-4 py-3">
-          <div class="text-gray-900 w-max">{{ formatDate(u.updated?.at) }}</div>
+          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDate(u.updated?.at) }}</div>
           <div v-if="u.updated?.by" class="text-xs text-gray-500">by {{ u.updated.by }}</div>
         </td>
 
         <!-- Last Login -->
         <td class="px-4 py-3">
-          <div class="text-gray-900 w-max">{{ formatDate(u.lastLogin) }}</div>
+          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDate(u.lastLogin) }}</div>
         </td>
 
         <!-- ID -->
@@ -153,11 +152,13 @@
 <script setup lang="ts">
 import type { UserData } from '~/models/admin/user'
 import type { Pagination } from '~/models/Pagination'
+import { useDateFormat } from '../../composables/dates/dateFormat.js'
 
 type UserRole = 'admin' | 'user'
 
 /** Props & Emits */
 const authStore = useAuthStore()
+const dateFormat = useDateFormat()
 
 defineProps<{
   users: UserData[]
@@ -181,12 +182,8 @@ const userCols = [
   { key: 'updated',     label: 'Updated', accessor: (u: UserData) => u.updated?.at },
   { key: 'lastLogin',   label: 'Last Login' },
   { key: 'id',          label: 'ID' },
+  { key: 'actions', label: 'Actions' }
 ]
-
-/** Optional: react to sort changes if you ever switch to server-side sorting */
-function onSortChange(_p: { key: string; dir: 'asc' | 'desc' }) {
-  // Fetch server-sorted results here if needed.
-}
 
 /** Role dropdown (same as before) */
 const openRoleFor = ref<UserData | null>(null)
@@ -248,17 +245,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('scroll', closeRoleMenu, true)
 })
-
-/** Date formatting */
-function formatDate(iso?: string) {
-  if (!iso) return '—'
-  const d = new Date(iso)
-  if (isNaN(d.getTime())) return '—'
-  return new Intl.DateTimeFormat(undefined, {
-    year: 'numeric', month: 'short', day: '2-digit',
-    hour: '2-digit', minute: '2-digit'
-  }).format(d)
-}
 
 /** Modal */
 const modalOpen = ref(false)

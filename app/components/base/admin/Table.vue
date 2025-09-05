@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- Toolbar -->
-    <div class="mb-3 flex items-center justify-end p-2 bg-brand-primary">
+    <div v-if="hasToolbar" class="mb-3 flex items-center justify-end p-2 bg-brand-primary">
       <slot name="toolbar" />
     </div>
 
@@ -21,20 +21,19 @@
               @click="col.sortable === false ? null : onSort(String(col.key))"
             >
               <div class="flex items-center gap-1">
-                <span>{{ col.label }}</span>
+                <span class="w-max">{{ col.label }}</span>
                 <span v-if="String(sort.key) === String(col.key)" aria-hidden="true">
                   <svg v-if="sort.dir === 'asc'" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M10 6l-5 6h10L10 6z"/></svg>
                   <svg v-else class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M10 14l5-6H5l5 6z"/></svg>
                 </span>
               </div>
             </th>
-            <th v-if="$slots.actions" class="px-4 py-3 border-b border-gray-200 text-left">Actions</th>
           </tr>
         </thead>
 
         <tbody class="divide-y divide-gray-100">
           <tr v-if="loading" class="animate-pulse">
-            <td :colspan="columns.length + ($slots.actions ? 1 : 0)" class="px-4 py-6 text-center text-gray-500">
+            <td :colspan="columns.length" class="px-4 py-6 text-center text-gray-500">
               Loading {{ title }}...
             </td>
           </tr>
@@ -44,7 +43,7 @@
 
           <!-- Optional: empty state if consumer didn’t render anything -->
           <tr v-if="!loading && sortedRows.length === 0">
-            <td :colspan="columns.length + ($slots.actions ? 1 : 0)" class="px-4 py-6 text-center text-gray-500">
+            <td :colspan="columns.length" class="px-4 py-6 text-center text-gray-500">
               No {{ title.toLowerCase() }} found.
             </td>
           </tr>
@@ -98,52 +97,70 @@
 
 <script setup lang="ts" generic="T extends Record<string, any>">
 import type { Pagination } from '~/models/Pagination'
+import type { Column, SortDir } from '../../../models/admin/tables.js';
 
-/** Column config: dynamic keys OR custom accessor */
-type Column<R> = {
-  key: keyof R | string
-  label: string
-  sortable?: boolean
-  accessor?: (row: R) => unknown
-  format?: (value: unknown, row: R) => unknown
-}
-
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   rows: T[]
   loading?: boolean
   pagination?: Pagination | null
   columns: Array<Column<T>>
-  title: string
-}>()
+  title: string;
+  hasToolbar?: boolean;
+  initialSort?: { key: string | undefined; dir: SortDir }
+}>(), {
+  pagination: null,
+  hasToolbar: true,
+  initialSort: () => ({ key: undefined, dir: 'asc' as SortDir })
+})
 
 const emit = defineEmits<{
   (e: 'prev-page' | 'next-page'): void
   (e: 'page-change', page: number): void
-  (e: 'sort-change', payload: { key: string, dir: 'asc' | 'desc' }): void
+  (e: 'sort-change', payload: { key: string, dir: SortDir }): void
 }>()
 
 /** Loading */
 const loading = computed(() => props.loading === true)
 
-/** Sorting */
-type SortDir = 'asc' | 'desc'
+const sort = reactive<{ key: string; dir: SortDir }>({ key: '', dir: 'asc' })
 
-const sort = reactive<{ key: string; dir: SortDir }>({
-  key: props.columns?.length ? String(props.columns[0]?.key) : '',
-  dir: 'asc',
-})
+function normalizeDir(dir?: SortDir): SortDir {
+  return dir === 'desc' ? 'desc' : 'asc'
+}
 
-// if columns can change at runtime, keep sort.key in sync:
+function firstSortableKey(cols: Array<Column<T>>): string {
+  const c = cols.find(c => c.sortable !== false)
+  return c ? String(c.key) : ''
+}
+
+function resolveInitialSort() {
+  const cols = props.columns ?? []
+  if (!cols.length) { sort.key = ''; sort.dir = 'asc'; return }
+
+  const wantedKey = props.initialSort?.key
+  const wantedDir = normalizeDir(props.initialSort?.dir)
+
+  const wantedIsValid = !!wantedKey && cols.some(c =>
+    String(c.key) === String(wantedKey) && c.sortable !== false
+  )
+
+  if (wantedIsValid) {
+    sort.key = String(wantedKey)
+    sort.dir = wantedDir
+    return
+  }
+
+  // Generic fallback: first sortable column asc
+  sort.key = firstSortableKey(cols)
+  sort.dir = 'asc'
+}
+
 watch(
-  () => props.columns,
-  (cols) => {
-    if ((!sort.key || !cols.some(c => String(c.key) === sort.key)) && cols?.length) {
-      sort.key = String(cols[0]?.key)
-      sort.dir = 'asc'
-    }
-  },
+  () => [props.columns, props.initialSort?.key, props.initialSort?.dir] as const,
+  resolveInitialSort,
   { immediate: true }
 )
+
 
 function onSort(key: string) {
   if (!key) return
@@ -151,6 +168,19 @@ function onSort(key: string) {
   else { sort.key = key; sort.dir = 'asc' }
   emit('sort-change', { key: sort.key, dir: sort.dir })
 }
+
+// const resolveInitialSort = () => {
+//   const cols = props.columns ?? []
+//   // prefer explicit prop
+//   const propKey = props.initialSort?.key
+//   const propDir = props.initialSort?.dir ?? 'desc'
+//   if (propKey && cols.some(c => String(c.key) === String(propKey))) {
+//     return { key: String(propKey), dir: propDir as SortDir }
+//   }
+//   // fallback to first column if nothing provided
+//   if (cols.length) return { key: String(cols[0]?.key), dir: 'asc' as SortDir }
+//   return { key: '', dir: 'asc' as SortDir }
+// }
 
 function getPath(obj: unknown, path: string): unknown {
   if (!path) return undefined;
@@ -179,8 +209,6 @@ function getPath(obj: unknown, path: string): unknown {
   return cur;
 }
 
-
-
 function valueFor(row: T, col: Column<T>) {
   let raw: unknown;
 
@@ -194,7 +222,6 @@ function valueFor(row: T, col: Column<T>) {
 
   return col.format ? col.format(raw, row) : raw;
 }
-
 
 function norm(v: unknown): string | number {
   if (v == null) return ''
@@ -247,6 +274,7 @@ const pageStart = computed(() => {
   if (!p || p.totalCount === 0) return 0
   return (p.currentPage - 1) * p.pageSize + 1
 })
+
 const pageEnd = computed(() => {
   const p = pagination.value
   if (!p) return 0

@@ -6,7 +6,7 @@
                 <div v-if="!hideClose" class="flex justify-end">
                     <button class="flex justify-center items-center" @click="closeModal"><BaseIcon name="material-symbols:cancel-outline" color="text-gray-300" hover-color="hover:text-gray-800"/></button>
                 </div>
-                <div :class="['h-full w-full flex flex-col', styling]">
+                <div :class="['h-full w-full flex flex-col min-h-0', styling]">
                     <slot name="default" />
                 </div>
                 <div v-if="$slots.attestation" :class="['mt-2 min-h-[40px]', styling]">
@@ -53,7 +53,8 @@ const closeModal = () => {
 const modalPadding = computed(() => {
     const pMap: Record<number, string> = {
         0: 'p-0',
-        2: 'p-2', 
+        2: 'p-2',
+        3: 'p-3', 
         4: 'p-4',
         6: 'p-6',
         8: 'p-8',
