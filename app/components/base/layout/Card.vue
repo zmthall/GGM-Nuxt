@@ -1,5 +1,5 @@
 <template>
-    <div :class="['rounded-lg overflow-hidden h-full', { 'group': hoverGroup, 'shadow-primary': shadow, 'p-6': hasPadding, 'flex flex-col justify-between items-center': centered}]">
+    <div :class="['rounded-lg overflow-hidden h-full bg-white', { 'group': hoverGroup, 'shadow-primary': shadow, 'p-6': hasPadding, 'flex flex-col justify-between items-center': centered}]">
         <div :class="{'flex flex-col items-center': centered}">
             <!-- <NuxtImg v-if="src" :src :class="[imgSize]" format="avif"/> -->
             <BaseIcon v-if="iconName" :name="iconName" :size="iconSize" :color="accentColor" :hover-color="hoveringColor" custom-class="transition-colors duration-500 ease-in-out" class="block" />

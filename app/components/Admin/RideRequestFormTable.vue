@@ -1,8 +1,8 @@
 <template>
   <BaseAdminTable
     title="Contact Submissions"
-    :rows="contactMessages"
-    :columns="contactMessagesCols"
+    :rows="rideRequests"
+    :columns="rideRequestsCols"
     :loading="loading"
     :pagination="pagination"
     :initial-sort="{ key: 'created_at', dir: 'desc'}"
@@ -62,10 +62,10 @@
               </button>
               <button
                 class="block w-full px-3 py-1.5 text-left text-sm"
-                :class="u.status === 'contacted' ? 'font-medium text-white bg-brand-primary' : 'text-brand-main-text hover:bg-gray-100'"
-                @click="selectStatus(u, 'contacted')"
+                :class="u.status === 'completed' ? 'font-medium text-white bg-brand-primary' : 'text-brand-main-text hover:bg-gray-100'"
+                @click="selectStatus(u, 'completed')"
               >
-                Contacted
+                Completed
               </button>
               <button
                 class="block w-full px-3 py-1.5 text-left text-sm"
@@ -76,10 +76,10 @@
               </button>
               <button
                 class="block w-full px-3 py-1.5 text-left text-sm"
-                :class="u.status === 'closed' ? 'font-medium text-white bg-brand-primary' : 'text-brand-main-text hover:bg-gray-100'"
-                @click="selectStatus(u, 'closed')"
+                :class="u.status === 'declined' ? 'font-medium text-white bg-brand-primary' : 'text-brand-main-text hover:bg-gray-100'"
+                @click="selectStatus(u, 'declined')"
               >
-                Closed
+                Declined
               </button>
             </div>
           </Teleport>
@@ -87,23 +87,47 @@
 
         <!-- Name -->
         <td class="px-4 py-3">
-          <div class="w-max">{{ u.first_name }} {{ u.last_name }}</div>
+          <div class="w-max">{{ u.name }}</div>
         </td>
 
-        <!-- Message -->
+        <!-- Email -->
         <td class="px-4 py-3">
-          <div class="w-72">
+          <div><a :href="`mailto:${u.email}`" class="link">{{ u.email }}</a></div>
+        </td>
+
+        <!-- Phone Number -->
+        <td class="px-4 py-3">
+          <div v-if="u.phone !== ''" class="w-max"><a :href="`tel:${u.phone}`" class="link">{{ u.phone }}</a></div>
+          <div v-else><p>Not Provided</p></div>
+        </td>
+
+        <!-- DOB -->
+        <td class="px-4 py-3">
+          <div class="w-max">{{ dateFormat.formatShortDate(u.dob) }}</div>
+        </td>
+
+        <!-- Medicaid ID -->
+        <td class="px-4 py-3">
+          <div class="w-max">{{ u.med_id }}</div>
+        </td>
+
+        <!-- Notes -->
+        <td class="px-4 py-3">
+          <div v-if="u.notes.length > 0" class="w-72">
             <div>
-              {{ text.truncateText(u.message, 100)}}
+              {{ text.truncateText(u.notes, 100)}}
             </div>
             <button
-                v-if="u.message.length > 100"
+                v-if="u.notes.length > 100"
                 type="button"
                 class="mt-2 text-xs text-brand-primary underline-offset-2 hover:underline"
                 @click="openMessageModal(u)"
               >
-                View Full message
+                View Full Request
               </button>
+          </div>
+          <div v-else>
+            No notes
           </div>
         </td>
 
@@ -113,8 +137,8 @@
             <!-- Header -->
             <div class="flex flex-col items-center border-b-2 pb-6 space-y-2">
               <h2 class="border-zinc-100 flex flex-col items-center underline mb-2">
-                <BaseIcon name="ic:baseline-chat" />
-                <span class="font-bold text-brand-primary">{{ messageModalData.first_name }} {{ messageModalData.last_name }}</span>
+                <BaseIcon name="material-symbols:directions-car-rounded" />
+                <span class="font-bold text-brand-primary">{{ messageModalData.name }}</span>
               </h2>
               <span 
                 class="flex min-w-[80px] items-center justify-center rounded-full px-2 py-0.5 text-xs font-bold ring-1 ring-inset"
@@ -124,7 +148,6 @@
             </div>
             
             <div class="flex flex-col items-center py-2">
-              <span class="font-bold text-sm">{{ getReason(messageModalData.reason) }}</span>
               <div>
                 <time class="text-zinc-400 text-xs" :datetime="messageModalData.created_at">Sent: {{ dateFormat.formatLongDateTime(messageModalData.created_at) }}</time>
               </div>
@@ -136,8 +159,12 @@
               <div>
                 <h3 class="font-bold">Name</h3>
                 <p>
-                  {{ messageModalData.first_name }} {{ messageModalData.last_name }}
+                  {{ messageModalData.name}}
                 </p>
+              </div>
+              <div>
+                <h3 class="font-bold">Date of Birth</h3>
+                <p>{{ dateFormat.formatShortDate(messageModalData.dob) }}</p>
               </div>
               <div>
                 <h3 class="font-bold">Email</h3>
@@ -152,12 +179,32 @@
                 </p>
               </div>
               <div>
-                <h3 class="font-bold">Submitted From</h3>
-                <p>{{ messageModalData.contact_type }}</p>
+                <h3 class="font-bold">Medicaid ID</h3>
+                <p>
+                  {{ messageModalData.med_id }}
+                </p>
               </div>
               <div>
-                <h3 class="font-bold">Message</h3>
-                <p>{{ messageModalData.message }}</p>
+                <h3 class="font-bold">Appointment Date and Time</h3>
+                <p>
+                  {{ dateFormat.formatDisplayDate(messageModalData.apt_date) }} at {{ dateFormat.formatDisplayTime(messageModalData.apt_time) }}
+                </p>
+              </div>
+              <div>
+                <h3 class="font-bold">Pickup Location</h3>
+                <p>
+                  {{ messageModalData.pickup_address }}
+                </p>
+              </div>
+              <div>
+                <h3 class="font-bold">Dropoff Location</h3>
+                <p>
+                  {{ messageModalData.dropoff_address }}
+                </p>
+              </div>
+              <div>
+                <h3 class="font-bold">Notes/Messages/Special Requirements</h3>
+                <p>{{ messageModalData.notes }}</p>
               </div>
             </div>
           </div>
@@ -165,22 +212,6 @@
             Content not loaded properly...
           </div>
         </BaseInteractiveModal>
-
-        <!-- Email -->
-        <td class="px-4 py-3">
-          <div><a :href="`mailto:${u.email}`" class="link">{{ u.email }}</a></div>
-        </td>
-
-        <!-- Phone Number -->
-        <td class="px-4 py-3">
-          <div v-if="u.phone !== ''" class="w-max"><a :href="`tel:${u.phone}`" class="link">{{ u.phone }}</a></div>
-          <div v-else><p>Not Provided</p></div>
-        </td>
-
-        <!-- Contact Reason -->
-        <td class="px-4 py-3">
-          <div class="w-max">{{ getReason(u.reason) }}</div>
-        </td>
 
         <!-- Tags -->
         <td class="px-4 py-3">
@@ -289,7 +320,7 @@
 
                 <!-- Hints -->
                 <p class="mt-2 text-xs text-slate-500">
-                  Tip: Press Enter to add. Paste a list separated by commas or semicolons.
+                  Tip: Press Enter to add. Paste a list separated by commas or semi-colons.
                 </p>
 
                 <!-- Actions -->
@@ -319,7 +350,7 @@
 
         <!-- Actions (propagate to parent just like before) -->
         <td class="px-4 py-3 text-right">
-          <slot name="actions" :contact-message="u" />
+          <slot name="actions" :ride-request="u" />
         </td>
       </tr>
     </template>
@@ -328,73 +359,61 @@
 
 <script lang="ts" setup>
 import { useDateFormat } from '../../composables/dates/dateFormat.js';
-import type { ContactFormData, ContactFormStatus } from '../../models/admin/ContactForm.js';
+import type { RideRequestFormData, RideRequestStatus } from '../../models/admin/RideRequestForm.js';
 import type { Pagination } from '../../models/Pagination.js';
 
 const dateFormat = useDateFormat();
 const text = useText();
 
 defineProps<{
-  contactMessages: ContactFormData[]
+  rideRequests: RideRequestFormData[]
   loading?: boolean
   pagination?: Pagination | null
+  rideRequestModalData?: RideRequestFormData | null
 }>()
 
 const emit = defineEmits<{
   (e: 'prev-page' | 'next-page' | 'add-user'): void;
   (e: 'page-change', page: number): void;
-  (e: 'change-status', payload: { id: string, status:  ContactFormStatus }): void;
+  (e: 'change-status', payload: { id: string, status:  RideRequestStatus }): void;
   (e: 'change-tags', payload: { id: string, tags: string[] }): void;
   (e: 'export-pdf', payload: { id: string }): void;
 }>()
 
-const contactMessagesCols = [
+const rideRequestsCols = [
   { key: 'status', label: 'Status' },
-  { key: 'first_name', label: 'Name' },
-  { key: 'message', label: 'Message' },
+  { key: 'name', label: 'Name' },
   { key: 'email', label: 'Email' },
   { key: 'phone', label: 'Phone Number' },
-  { key: 'reason', label: 'Reason' },
+  { key: 'dob', label: 'Date of Birth' },
+  { key: 'med_id', label: 'Medicaid ID' },
+  { key: 'notes', label: 'Notes' },
   { key: 'tags', label: 'Tags' },
-  { key: 'created_at', label: 'Email Sent', sortable: true },
+  { key: 'created_at', label: 'Request Sent', sortable: true },
   { key: 'id', label: 'ID' },
   { key: 'actions', label: 'Actions'}
 ]
 
 /** Status dropdown */
-const openStatusFor = ref<ContactFormData | null>(null)
+const openStatusFor = ref<RideRequestFormData | null>(null)
 const statusMenuRef = ref<HTMLElement | null>(null)
 const statusMenuStyle = ref<Record<string, string>>({})
 
-const getStatusColor = (status: ContactFormStatus) => {
-  const sMap: Record<ContactFormStatus, string> = {
+const getStatusColor = (status: RideRequestStatus) => {
+  const sMap: Record<RideRequestStatus, string> = {
     new: 'bg-green-100 text-green-800 ring-green-600/20',
     reviewing: 'bg-yellow-100 text-yellow-800 ring-yellow-600/20',
-    contacted: 'bg-blue-100 text-blue-800 ring-blue-600/20',
+    completed: 'bg-blue-100 text-blue-800 ring-blue-600/20',
     spam: 'bg-red-100 text-red-800 ring-red-600/20',
-    closed: 'bg-gray-100 text-gray-800 ring-gray-600/20'
+    declined: 'bg-gray-100 text-gray-800 ring-gray-600/20'
   }
   return sMap[status] ?? ''
 }
 
-const getReason = (reason: string) => {
-  const reasonMap: Record<string, string> = {
-    general: 'General Contact',
-    complaint: 'File a Complaint', 
-    question: 'Question or Inquiry', 
-    transportation: 'Transportation Services', 
-    assisted_living: 'Assisted Living', 
-    medical_supply: 'Medical Supplies',
-    accessibility: 'Accessibility'         
-  }
-
-  return reasonMap[reason];
-}
-
 let statusTriggerEl: HTMLElement | null = null
 
-const openStatusMenu = (e: MouseEvent, contactMessage: ContactFormData) => {
-  openStatusFor.value = contactMessage
+const openStatusMenu = (e: MouseEvent, rideRequest: RideRequestFormData) => {
+  openStatusFor.value = rideRequest
   statusTriggerEl = e.currentTarget as HTMLElement
   nextTick(positionMenu)
 }
@@ -426,9 +445,9 @@ const positionMenu = () => {
   statusMenuStyle.value = { top: `${Math.max(pad, top)}px`, left: `${left}px` }
 }
 
-const selectStatus = (contactMessage: ContactFormData, status: ContactFormStatus) => {
+const selectStatus = (rideRequest: RideRequestFormData, status: RideRequestStatus) => {
   openStatusFor.value = null
-  if (contactMessage.status !== status) emit('change-status', { id: contactMessage.id, status })
+  if (rideRequest.status !== status) emit('change-status', { id: rideRequest.id, status })
 }
 
 const closeStatusMenu = () => { openStatusFor.value = null }
@@ -449,10 +468,10 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', closeStatusMenu, true)
 })
 
-const messageModalOpen = defineModel<boolean>({ default: true });
-const messageModalData = defineModel<ContactFormData | null>('data', { default: null })
+const messageModalOpen = defineModel<boolean>({ default: false });
+const messageModalData = defineModel<RideRequestFormData | null>('data', { default: null })
 
-const openMessageModal = (row: ContactFormData) => {
+const openMessageModal = (row: RideRequestFormData) => {
   messageModalData.value = row;
   messageModalOpen.value = true;
 }
@@ -463,12 +482,12 @@ const closeMessageModal = () => {
 
 const showAllTags = ref(false)
 
-const tagModalFor = ref<ContactFormData | null>(null)
+const tagModalFor = ref<RideRequestFormData | null>(null)
 const tagsDraft = ref<string[]>([])
 const newTag = ref('')
 const newTagInputRef = ref<HTMLInputElement | null>(null)
 
-const openTagModal = (row: ContactFormData, opts?: { focusInput?: boolean }) => {
+const openTagModal = (row: RideRequestFormData, opts?: { focusInput?: boolean }) => {
   tagModalFor.value = row
   tagsDraft.value = [...(row.tags || [])]
   newTag.value = ''

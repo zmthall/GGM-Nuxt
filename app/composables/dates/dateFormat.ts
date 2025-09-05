@@ -85,6 +85,17 @@ export const useDateFormat = () => {
     });
   };
 
+  const formatDisplayTime = (date: string | Date | undefined): string => {
+    const parsedDate = parseFlexibleDate(date);
+    if (!parsedDate) return '';
+    
+    return parsedDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
   const formatShortDate= (date: string | Date | undefined): string => {
     const parsedDate = parseFlexibleDate(date);
     if (!parsedDate) return '';
@@ -127,6 +138,7 @@ export const useDateFormat = () => {
     formatDatetime,
     formatLongDateTime,
     formatDisplayDate,
+    formatDisplayTime,
     formatShortDate,
     tableFormatDate
   };

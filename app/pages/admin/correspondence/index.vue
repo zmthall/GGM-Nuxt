@@ -5,24 +5,55 @@
                 <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
                     <h2 class="bg-brand-primary pl-2 py-2 text-white">Received Contact Messages</h2>
                     <AdminContactFormTable 
+                        v-model="contactModalOpen"
+                        v-model:data="contactMessageModalData"
                         :loading="loadingContactMessages" 
                         :contact-messages="contactMessages" 
                         :pagination="contactMessagesPagination" 
                         :has-toolbar="false" 
-                        @change-status="updateStatus"
-                        @change-tags="updateTags"
-                        @export-pdf="exportPDF"
-                        @prev-page="fetchContactMessages(false, --page)"
-                        @next-page="fetchContactMessages(false, ++page)"
-                        @page-change="(p) => { page = p; fetchContactMessages(false, page)}"
+                        @change-status="updateContactStatus"
+                        @change-tags="updateContactTags"
+                        @export-pdf="exportContactPDF"
+                        @prev-page="fetchContactMessages(false, --contactPage)"
+                        @next-page="fetchContactMessages(false, ++contactPage)"
+                        @page-change="(p) => { contactPage = p; fetchContactMessages(false, contactPage)}"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
-                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteMessage(contactMessage.id)">Delete</button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteContactMessage(contactMessage.id)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openContactModal(contactMessage)">Open Message</button>
                             </div>
                         </template>            
                     </AdminContactFormTable>
+                </BaseLayoutCard>
+            </BaseLayoutPageContainer>
+            <BaseLayoutPageContainer class="mt-8">
+                <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
+                    <h2 class="bg-brand-primary pl-2 py-2 text-white">Received Ride Requests</h2>
+                    <AdminRideRequestFormTable
+                        v-model="rideModalOpen"
+                        v-model:data="rideRequestModalData"
+                        :loading="loadingRideRequests" 
+                        :ride-requests="rideRequests" 
+                        :pagination="rideRequestsPagination" 
+                        :has-toolbar="false" 
+                        :ride-request-modal-data="rideRequestModalData"
+                        @change-status="updateRideStatus"
+                        @change-tags="updateRideTags"
+                        @export-pdf="exportRidePDF"
+                        @prev-page="fetchRideRequests(false, --requestPage)"
+                        @next-page="fetchRideRequests(false, ++requestPage)"
+                        @page-change="(p) => { requestPage = p; fetchRideRequests(false, requestPage)}"
+                    >
+                        <template #actions="{ rideRequest }">
+                            <div class="inline-flex items-center gap-2">
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openRideRequestModal(rideRequest)">Open Request</button>
+                            </div>
+                        </template>            
+                    </AdminRideRequestFormTable>
                 </BaseLayoutCard>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
@@ -33,146 +64,64 @@
 </template>
 
 <script setup lang='ts'>
-import type { ContactFormData, ContactFormStatus } from '../../../models/admin/ContactForm.js'
-import type { Pagination } from '../../../models/Pagination.js';
+import type { ContactFormData } from '../../../models/admin/ContactForm.js';
+import type { RideRequestFormData } from '../../../models/admin/RideRequestForm';
 
-const authStore = useAuthStore()
+const rideModalOpen = ref<boolean>(false);
+const rideRequestModalData = ref<RideRequestFormData | null>(null)
+const contactModalOpen = ref<boolean>(false);
+const contactMessageModalData = ref<ContactFormData | null>(null)
+
+
+
+const openRideRequestModal = (rideRequest: RideRequestFormData) => {
+    rideModalOpen.value = true;
+    rideRequestModalData.value = rideRequest;
+}
+
+const openContactModal = (contactMessage: ContactFormData) => {
+    contactModalOpen.value = true;
+    contactMessageModalData.value = contactMessage;
+}
+
+const authStore = useAuthStore();
+const { 
+    fetchContactMessages, 
+    updateContactStatus, 
+    updateContactTags, 
+    exportContactPDF,
+    deleteContactMessage,
+    contactPage,
+    contactMessages,
+    contactMessagesPagination,
+    loadingContactMessages
+} = useContactMessages();
+
+const {
+    fetchRideRequests,
+    updateRideStatus,
+    updateRideTags,
+    exportRidePDF,
+    deleteRideRequest,
+    rideRequests,
+    loadingRideRequests,
+    rideRequestsPagination,
+    requestPage
+  } = useRideRequests();
+
 defineOptions({
     name: 'AdminMessagesPage'
-})
+});
 
 definePageMeta({
     layout: 'admin',
-})
-
-const contactMessages = ref<ContactFormData[]>([]);
-const contactMessagesPagination = ref<Pagination | null>(null)
-const loadingContactMessages = ref<boolean>(true);
-const page = ref<number>(1)
-
-const fetchContactMessages = async (isLoading: boolean = true, page: number = 1) => {
-  if(isLoading)
-    loadingContactMessages.value = true;
-  try {
-    const idToken = await authStore.getIdToken();
-
-    const response = await $fetch<{ success: boolean, data: ContactFormData[], pagination: Pagination }>(`/api/contact-form?page=${page}`, {
-      baseURL: 'https://api.goldengatemanor.com',
-      method: 'GET',
-      headers: {
-              'Authorization': `Bearer ${idToken}`,
-          }
-    })
-
-    if(response.success) {
-      contactMessages.value = response.data
-      contactMessagesPagination.value = response.pagination
-
-      console.log(contactMessagesPagination)
-    }
-  } catch (error) {
-    console.error((error as Error).message)
-  } finally {
-    loadingContactMessages.value = false;
-  }
-}
-
-
-const updateStatus = async (messageData: {id: string, status: ContactFormStatus}) => {
-    try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/contact-form/${messageData.id}/status`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ status: messageData.status })
-        })
-
-        if(response.success) {
-            fetchContactMessages(false);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
-    }
-}
-
-const updateTags = async (messageData: { id: string, tags: string[]}) => {
-    try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/contact-form/${messageData.id}/tags`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ tags: messageData.tags })
-        })
-
-        if(response.success) {
-            fetchContactMessages(false);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
-    }
-}
-
-const exportPDF = async ({ id }: ContactFormData | { id: string }) => {
-    try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch.raw(`/api/contact-form/export/pdf/${id}`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-                'Accept': 'application/pdf'
-            },
-            responseType: 'blob'
-        })
-
-        if (!response.ok) throw new Error(`Download failed: ${response.status}`);
-        
-        const filename = response.headers.get('X-Filename') || `contact-form-${id.split('-')[0]}`
-        const blob = response._data as Blob
-
-        const url = URL.createObjectURL(blob);
-        const a = Object.assign(document.createElement('a'), { href: url, download: filename });
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch (error) {
-        console.error((error as Error).message)
-    }
-}
-
-const deleteMessage = async (id: string) => {
-        try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/contact-form/${id}`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            }
-        })
-
-        if(response.success) {
-            fetchContactMessages(false);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
-    }
-}
+});
 
 onMounted(() => {
     fetchContactMessages();
-})
+    fetchRideRequests()
+});
+
 
 </script>
 
