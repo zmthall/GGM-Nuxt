@@ -20,7 +20,8 @@ export default defineContentConfig({
         thumbnailHeight: z.string().optional(),
         thumbnailWidth: z.string().optional(),
         staffPick: z.boolean().optional(),
-        summary: z.string()
+        summary: z.string(),
+        published: z.string().optional()
       }),
     }),
   },

@@ -66,6 +66,7 @@ const company = staticData?.company
 
 definePageMeta({
   title: 'Contact Golden Gate Manor Team',
+  alias: ['/company/contact-us/thank-you'],
   breadcrumbLabel: 'Contact Us'
 })
 

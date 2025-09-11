@@ -68,6 +68,7 @@ const form = reactive({
 
 const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
 
+
 onMounted(() => {
   loadRecaptcha()
 })
@@ -79,6 +80,19 @@ onUnmounted(() => {
 
 const isSubmitting = ref(false)
 const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
+
+const { trigger: triggerVirtualThankYou } = useVirtualThankYou({
+  slug: 'thank-you',
+  pageTitle: 'Contact – Thank You',
+  revertAfterMs: 5000,
+  fireGTM: false,      // start false to avoid duplicates
+  fireGtag: true,      // GA4 direct
+  fireFbq: false,
+  fireUet: true,
+  successRef: submitResult,
+  autoSetSuccessOnThankYou: true,
+  extraData: { debug_mode: true } // helps show up in GA4 DebugView
+})
 
 const submitContact = async () => {
   try {
@@ -100,7 +114,7 @@ const submitContact = async () => {
     
     if (verification.success && verification.data?.valid) {
       await $fetch('/api/email/contact-form', {
-        baseURL: 'http://127.0.0.1:4000',
+        baseURL: 'https://api.goldengatemanor.com',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -113,6 +127,8 @@ const submitContact = async () => {
         message: 'Message sent successfully!',
         score: verification.data.score
       }
+
+      triggerVirtualThankYou();
       
       // Reset form
       Object.assign(form, {

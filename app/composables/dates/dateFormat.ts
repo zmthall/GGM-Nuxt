@@ -96,7 +96,8 @@ export const useDateFormat = () => {
     });
   };
 
-  const formatShortDate= (date: string | Date | undefined): string => {
+  // mm/dd/yyyy
+  const formatShortDate = (date: string | Date | undefined): string => {
     const parsedDate = parseFlexibleDate(date);
     if (!parsedDate) return '';
     
@@ -106,6 +107,18 @@ export const useDateFormat = () => {
     
     return `${month}/${day}/${year}`;
   };
+
+  // m/dd/yyyy
+  const formatShortDateNoLeadingZero = (date: string | Date | undefined): string => {
+    const parsedDate = parseFlexibleDate(date)
+    if (!parsedDate) return ''
+
+    const month = (parsedDate.getMonth() + 1).toString() // no padStart
+    const day = parsedDate.getDate().toString().padStart(2, '0')
+    const year = parsedDate.getFullYear()
+
+    return `${month}/${day}/${year}`
+  }
 
   const formatLongDateTime = (date: string | Date | undefined): string => {
     const parsedDate = parseFlexibleDate(date);
@@ -140,6 +153,7 @@ export const useDateFormat = () => {
     formatDisplayDate,
     formatDisplayTime,
     formatShortDate,
+    formatShortDateNoLeadingZero,
     tableFormatDate
   };
 };

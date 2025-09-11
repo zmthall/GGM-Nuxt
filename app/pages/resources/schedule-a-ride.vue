@@ -7,6 +7,7 @@
 <script setup lang='ts'> 
 definePageMeta({
   title: 'Schedule Your Transportation',
+  alias: '/resources/schedule-a-ride/thank-you',
   breadcrumbLabel: 'Schedule a Ride'
 })
 

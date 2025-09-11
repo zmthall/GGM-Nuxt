@@ -1,10 +1,10 @@
 <template>
     <div>
-        <BaseLayoutPageSection margin="top">
+        <BaseLayoutPageSection v-if="latestPost" margin="top">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
                 <div>
-                    <div v-if="latestPost" class="flex flex-col gap-8 sm:flex-row">
+                    <div class="flex flex-col gap-8 sm:flex-row">
                         <NuxtLink :to="`/news${latestPost.path}`" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
                             <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-1/2">
                                 <div class="h-1/2 relative">
@@ -31,8 +31,8 @@
                                                 {{ tag }}
                                             </li>
                                         </ul>
-                                        <time :datetime="formatDates.formatDatetime(latestPost.date)">
-                                            Posted on: {{ formatDates.formatShortDate(latestPost.date) }}
+                                        <time :datetime="formatDates.formatDatetime(latestPost.published)">
+                                            Posted on: {{ formatDates.formatShortDate(latestPost.published) }}
                                         </time>
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
@@ -54,27 +54,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
-                        <p>New posts are being planned! Check back soon or <NuxtLink to="/company/contact-us" class="link">contact us</NuxtLink> to stay updated.</p>
-                    </div>
                 </div>
-                <!-- <div>
-                    Total Pages: {{ totalPages }}
-        
-                    Page: {{ page }}
-                </div>
-                <ul>
-                    <li v-for="post in posts" :key="post.date">
-                        {{  post }}
-                    </li>
-                </ul> -->
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
-        <BaseLayoutPageSection v-if="posts.length > 0" margin="default" bg="alt">
+        <BaseLayoutPageSection :margin="posts.length > 0 ? 'default' : 'top'" :bg="posts.length > 0 ? 'alt' : 'transparent'">
             <BaseLayoutPageContainer>
-                <div>
-                    <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
+                <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
+                <div v-if="posts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <li v-for="post in posts" :key="post.id">
                             <NuxtLink :to="`/news${post.path}`" class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -102,8 +89,8 @@
                                                     {{ tag }}
                                                 </li>
                                             </ul>
-                                            <time :datetime="formatDates.formatDatetime(post.date)">
-                                                Posted on: {{ formatDates.formatShortDate(post.date) }}
+                                            <time :datetime="formatDates.formatDatetime(post.published)">
+                                                Posted on: {{ formatDates.formatShortDate(post.published) }}
                                             </time>
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
@@ -118,6 +105,9 @@
                     <div v-if="hasMorePages" class="flex justify-center mt-8">
                         <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
                     </div>
+                </div>
+                <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+                    <p>New posts are being planned! Check back soon or <NuxtLink to="/company/contact-us" class="link">contact us</NuxtLink> to stay updated.</p>
                 </div>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
@@ -160,10 +150,18 @@ const formatDates = useDateFormat()
 const reading = useReading()
 const text = useText();
 
+const cutoff = new Date()
+cutoff.setDate(cutoff.getDate() + 1)
+
+const cutoffISO = cutoff.toISOString()
+
+console.log(cutoffISO)
+
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary')
+    .where('published', '<', cutoffISO)
+    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'published')
     .order('date', 'DESC')
     .limit(1)
     .first() // Gets the first result as an object instead of array
@@ -173,6 +171,7 @@ const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
 const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {
   return queryCollection('blog')
     .where('staffPick', '=', true)
+    .where('published', '<', cutoffISO)
     .select('path', 'id', 'title', 'description')
     .all()
 })
@@ -194,7 +193,8 @@ const hasMorePages = ref<boolean>(true)
 const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body')
+    .where('published', '<', cutoffISO)
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published')
     .order('date', 'DESC')
     .limit(limit)
     .all()

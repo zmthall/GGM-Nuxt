@@ -8,7 +8,7 @@
             </h2>
             <p>Reading time: {{ reading.getReadingTime(post.body) }}</p>
             <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
-              Posted On: {{ formatDates.formatDisplayDate(post.date) }}
+              Posted On: {{ formatDates.formatDisplayDate(post.published) }}
             </time>
             <p v-if="post.author">By: {{ post.author }}</p>
             <div v-if="post.tags" class="md:hidden">
@@ -187,6 +187,17 @@ if(post.value.draft) {
   })
 }
 
+// Handle 404 if post publish date is not current day
+if(post.value.published) {
+  const publishedDate = new Date(post.value.published)
+  const currentDate = Date.now()
+  if(!(publishedDate.getTime() <= currentDate))
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Blog post not found'
+    })
+}
+
 // Use the blog-post layout
 definePageMeta({
   layout: 'blog-post',
@@ -279,6 +290,7 @@ const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${route.pa
   // Get all posts except current one
   const allPosts = await queryCollection('blog')
     .where('path', '<>', post.value.path)
+    .where('draft', '<>', true)
     .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body')
     .all()
   

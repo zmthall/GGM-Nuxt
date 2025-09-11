@@ -16,7 +16,20 @@
             <p>All trips are on a first come first serve basis, with this in mind, please make sure to schedule trips 24-48 hours prior to the trip date to make sure that we can accommodate the trip. We cannot promise availability for trips that were not scheduled 24-48 hours prior to the trip.</p>
             <p>If your trip falls on a Monday, please schedule the ride on the Friday prior so that we can certify that we have received it in ample time to accommodate the trip. We cannot promise availability for trips on Monday that were not scheduled on the prior Friday.</p>
             <p>Golden Gate Manor staff thanks you for your understanding and we appreciate your efforts to ease the scheduling process.</p>
-            <p>If you have any questions or concerns regarding our ability to accommodate a trip please call us at <a href="tel:719-543-2525" class="text-brand-primary underline">(719) 543-2525</a>.</p>
+            <p>
+              If you have any questions or concerns regarding our ability to accommodate a trip
+              please call us at
+              <ClientOnly>
+                <a href="tel:719-543-2525" class="text-brand-primary underline">
+                  (719) 543-2525
+                </a>
+              </ClientOnly>
+              <noscript>
+                <a href="tel:719-543-2525" class="text-brand-primary underline">
+                  (719) 543-2525
+                </a>
+              </noscript>.
+            </p>
           </div>
         </PleaseNote>
         <BaseFormDatePicker id="apt_date" v-model="form.apt_date" autocomplete="off" label="Appointment Date" placeholder="Select a Date" min-date/>
@@ -84,6 +97,19 @@ onUnmounted(() => {
 const isSubmitting = ref(false)
 const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
 
+const { trigger: triggerVirtualThankYou } = useVirtualThankYou({
+  slug: 'thank-you',
+  pageTitle: 'Ride Request - Thank You',
+  revertAfterMs: 5000,
+  fireGTM: false,      // start false to avoid duplicates
+  fireGtag: true,      // GA4 direct
+  fireFbq: false,
+  fireUet: true,
+  successRef: submitResult,
+  autoSetSuccessOnThankYou: true,
+  extraData: { debug_mode: true } // helps show up in GA4 DebugView
+})
+
 const submitRequest = async () => {
   try {
     isSubmitting.value = true
@@ -137,6 +163,8 @@ const submitRequest = async () => {
         notes: '',
         acknowledge: false
       })
+
+      triggerVirtualThankYou();
 
       setTimeout(() => {
         submitResult.value = null;

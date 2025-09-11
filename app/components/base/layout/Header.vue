@@ -31,10 +31,26 @@
                     <ul class="flex flex-col">
                         <li 
                             v-for="contactService in staticData.contactServices" :key="contactService.id"
-                            class="flex gap-10 w-full justify-between p-2 border-b-2 border-b-brand-light-gray/35 last:border-b-0">
-                            <span class="font-semibold whitespace-nowrap">{{ contactService.name }}</span><a
-                                :href="`tel:${contactService.number}`" class="link whitespace-nowrap">{{
-                                contactService.number }}</a></li>
+                            class="flex gap-10 w-full justify-between p-2 border-b-2 border-b-brand-light-gray/35 last:border-b-0"
+                        >
+                            <span class="font-semibold whitespace-nowrap">{{ contactService.name }}</span>
+                            <CallRailLink
+                                    v-if="contactService.id === 'Non-Medical' || contactService.id === 'NEMT'"
+                                    :tel="contactService.number"
+                                    :display="contactService.number"
+                                    cls="link"
+                                    :aria-label="`Call us at ${contactService.number}`"
+                            >
+                                    {{ contactService.number }}
+                            </CallRailLink>
+                            <a
+                                v-else
+                                :href="`tel:${contactService.number}`"
+                                class="link whitespace-nowrap"
+                                >
+                                {{ contactService.number }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

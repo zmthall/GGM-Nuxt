@@ -257,7 +257,7 @@ export const useStaticData = () => {
         "Golden Gate Transportation",
         "Golden Gate Gas & Goods",
       ],
-      telephone: "(719) 696-8032",
+      telephone: "+1-719-696-8032",
       email: "info@goldengatemanor.com",
       address: {
         "@type": "PostalAddress",
@@ -294,7 +294,7 @@ export const useStaticData = () => {
           "@id": `${runtimeConfig.public.siteUrl}/nemt#service`,
           name: "Non-Emergency Medical Transportation (NEMT)",
           url: `${runtimeConfig.public.siteUrl}/nemt`,
-          telephone: "(719) 544-3231",
+          telephone: "+1-719-544-3231",
           priceRange: "Free with medicaid",
           openingHours: "Mo-Su 00:00-23:59",
           provider: {
@@ -315,7 +315,7 @@ export const useStaticData = () => {
           serviceOutput: "Door-to-door medical appointment transportation",
           availableChannel: {
             "@type": "ServiceChannel",
-            servicePhone: "(719) 544-3231",
+            servicePhone: "+1-719-544-3231",
             availableLanguage: ["English"],
           },
           additionalProperty: [
@@ -773,7 +773,7 @@ export const useStaticData = () => {
           name: "Pueblo City Cab - Non-medical Transportation",
           serviceType: "Non-Medical Transportation",
           url: `${runtimeConfig.public.siteUrl}/non-medical`,
-          telephone: "(719) 543-2525",
+          telephone: "+1-719-543-2525",
           priceRange: "Varies by distance",
           openingHours: "Mo-Su 00:00-23:59",
           provider: {
@@ -797,7 +797,7 @@ export const useStaticData = () => {
             "Disabled and elderly community members receiving Medicaid assistance",
           availableChannel: {
             "@type": "ServiceChannel",
-            servicePhone: "(719) 543-2525",
+            servicePhone: "+1-719-543-2525",
           },
           additionalProperty: [
             {
@@ -967,20 +967,20 @@ export const useStaticData = () => {
 
     const company = {
       name: "Golden Gate Manor, Inc.",
-      phone: "719-544-3231",
+      phone: "+1-719-544-3231",
       hours: "8:00AM-4:00PM Monday to Friday",
       address: "648 S. Union Ave., Pueblo CO, 81004",
       admin: {
         address: "612 S. Union Ave., Pueblo CO, 81004",
-        phone: "719-696-8032",
+        phone: "+1-719-696-8032",
         fax: "719-696-8548",
         hours: "8:00AM-4:00PM Monday to Friday",
       },
       trans: {
         address: "648 S. Union Ave., Pueblo CO, 81004",
         phone: {
-          dispatch: "719-543-2525",
-          office: "719-544-3231",
+          dispatch: "+1-719-543-2525",
+          office: "+1-719-544-3231",
           tollFree: "844-543-2525",
         },
         fax: "719-544-4187",
@@ -996,7 +996,7 @@ export const useStaticData = () => {
       assitedLiving: {
         name: "Golden Gate Manor Assisted Living",
         address: "612 S. Union Ave., Puebo CO, 81004",
-        phone: "719-696-8032",
+        phone: "+1-719-696-8032",
         fax: "719-696-8548",
         houses: {
           ggm1: {

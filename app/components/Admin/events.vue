@@ -51,7 +51,7 @@
           </div>
         </div>
         <div :class="[{ 'md:w-1/2 mb-8 sm:mb-0': editModeStates[idx] }]">
-          <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferral" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
+          <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="nofollow noopener noreferrer" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
             <BaseFormInput v-model="getEvent(idx).link" label="Link" :name="`link-${getEvent(idx).id}`" type="text"/>
             <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" :name="`date-${getEvent(idx).id}`" date-format="m/d/Y" />

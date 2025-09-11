@@ -1,20 +1,19 @@
-import type { MarkdownRoot } from "@nuxt/content";
-
 export interface BlogPost {
-  id: string;
-  title: string;
+  id?: string;
+  title?: string;
   description?: string;
   date?: string;
   author?: string;
   draft?: boolean;
-  tags: string[];
+  tags?: string[];
   thumbnail?: string;
   thumbnailAlt?: string;
   thumbnailHeight?: string;
   thumbnailWidth?: string;
   staffPick?: boolean;
+  published?: string;
   // These are added by Nuxt Content automatically
-  body: MarkdownRoot;
+  body?: unknown;
   slug?: string;
   path?: string;
   createdAt?: string;
@@ -34,4 +33,5 @@ export interface AllPosts {
   tags?: string[]
   summary: string;
   body?: unknown;
+  published?: string;
 }

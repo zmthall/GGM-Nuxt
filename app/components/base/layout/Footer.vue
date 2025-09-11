@@ -32,7 +32,7 @@
                 <ul class="flex flex-col gap-4">
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Administration Office</h3>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
@@ -48,47 +48,74 @@
                         <ul>
                             <li class="flex flex-col">
                                 <h3 class="font-bold">Front Office</h3>
-                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 648 S. Union Ave., Pueblo CO,
                                     81004
                                 </a>
-                                <a href="tel:719-544-3231" class="group hover:text-brand-secondary">
-                                    <BaseIcon 
-                                        name="ic:round-call" color="text-brand-white" size="4"
-                                        hover-color="group-hover:text-brand-secondary" /> (719) 544-3231
-                                </a>
+                                <CallRailLink
+                                    tel="719-544-3231"
+                                    display="(719) 544-3231"
+                                    cls="group hover:text-brand-secondary"
+                                    aria-label="Call front office (719) 544-3231"
+                                >
+                                    <BaseIcon
+                                        name="ic:round-call"
+                                        color="text-brand-white"
+                                        size="4"
+                                        hover-color="group-hover:text-brand-secondary"
+                                    />
+                                    (719) 544-3231
+                                </CallRailLink>
                             </li>
                             <li class="flex flex-col">
                                 <h3 class="font-bold">Dispatch Office</h3>
-                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 648 S. Union Ave., Pueblo CO,
                                     81004
                                 </a>
-                                <a href="tel:719-543-2525" class="group hover:text-brand-secondary">
-                                    <BaseIcon 
-                                        name="ic:round-call" color="text-brand-white" size="4"
-                                        hover-color="group-hover:text-brand-secondary" /> (719) 543-2525
-                                </a>
+                                <CallRailLink
+                                    tel="719-543-2525"
+                                    display="(719) 543-2525"
+                                    cls="group hover:text-brand-secondary"
+                                    aria-label="Call front office (719) 543-2525"
+                                >
+                                    <BaseIcon
+                                        name="ic:round-call"
+                                        color="text-brand-white"
+                                        size="4"
+                                        hover-color="group-hover:text-brand-secondary"
+                                    />
+                                    (719) 543-2525
+                                </CallRailLink>
                             </li>
                         </ul>
                     </li>
                     <li class="flex flex-col">
                         <h3 class="font-bold underline flex items-center">Assisted Living</h3>
                         <h4 class="font-bold">Main office</h4>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
                         </a>
-                        <a href="tel:719-544-3231" class="group hover:text-brand-secondary">
-                            <BaseIcon 
-                                name="ic:round-call" color="text-brand-white" size="4"
-                                hover-color="group-hover:text-brand-secondary" /> (719) 544-3231
-                        </a>
+                        <CallRailLink
+                            tel="719-544-3231"
+                            display="(719) 544-3231"
+                            cls="group hover:text-brand-secondary"
+                            aria-label="Call front office (719) 544-3231"
+                        >
+                            <BaseIcon
+                                name="ic:round-call"
+                                color="text-brand-white"
+                                size="4"
+                                hover-color="group-hover:text-brand-secondary"
+                            />
+                            (719) 544-3231
+                        </CallRailLink>
                         <button
                             class="items-center border-2 border-brand-white flex w-max p-1 mt-1 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-300 ease-in-out rounded-md"
                             @click="toggleViewMore(0)">
@@ -100,7 +127,7 @@
                         <ul v-if="viewMore[0]" class="mt-3 pt-1 border-t border-t-brand-secondary/50">
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Manor I</h4>
-                                <a href="https://maps.app.goo.gl/V9tU3MKnF3q8x6WB7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/V9tU3MKnF3q8x6WB7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 606 W. Abriendo Ave., Pueblo CO,
@@ -114,7 +141,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Manor II</h4>
-                                <a href="https://maps.app.goo.gl/fbGuP2aHpBaouFJ89" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/fbGuP2aHpBaouFJ89" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1219 Lake Ave., Pueblo CO, 81004
@@ -127,7 +154,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Valley</h4>
-                                <a href="https://maps.app.goo.gl/C3f7ifZNFkcbNsJ5A" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/C3f7ifZNFkcbNsJ5A" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1033 E. Evans Ave., Pueblo CO,
@@ -141,7 +168,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Horizon</h4>
-                                <a href="https://maps.app.goo.gl/bzkGXrcXL7oQZwVt6" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/bzkGXrcXL7oQZwVt6" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 2109 Chautard Dr., Pueblo CO,
@@ -155,7 +182,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden View</h4>
-                                <a href="https://maps.app.goo.gl/f45Npyj9EbVKPSmbA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/f45Npyj9EbVKPSmbA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 525 W. 9th St., Pueblo CO, 81003
@@ -170,7 +197,7 @@
                     </li>
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Medical Supply</h3>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
@@ -184,7 +211,7 @@
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Gas Stations</h3>
                         <h4 class="font-bold">Main office</h4>
-                        <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                        <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 1242 S. Prairie Ave., Pueblo CO, 81005
@@ -205,7 +232,7 @@
                         <ul v-if="viewMore[1]" class="mt-3 pt-1 border-t border-t-brand-secondary/50">
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Gas & Goods I</h4>
-                                <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1242 S. Prairie Ave., Pueblo CO,
@@ -219,7 +246,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Gas & Goods II</h4>
-                                <a href="https://maps.app.goo.gl/Wr9RdANcH8T9r7sf8" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow noreferral">
+                                <a href="https://maps.app.goo.gl/Wr9RdANcH8T9r7sf8" class="group hover:text-brand-secondary" target="_blank" rel="noopener nofollow ">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1103 N. Elizabeth St., Pueblo CO,

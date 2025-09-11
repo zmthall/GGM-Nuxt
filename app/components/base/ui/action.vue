@@ -43,7 +43,7 @@
             { 'cta-style-group group/cta': (isCTA && hoverGroup) },
             { 'button-style': variant !== 'blank'}
             , size,
-            ]" :type="type ?? 'button'" @click="emit('click')"
+            ]" :type="type ?? 'button'" @click="onClick"
         >
             <div 
             :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
@@ -58,8 +58,8 @@ defineOptions({
     name: 'BaseUiAction'
 })
 
-const emit = defineEmits<{
-    (e: 'click'): void
+const emit = defineEmits<{ 
+    (e:'click', ev: MouseEvent): void 
 }>()
 
 const props = withDefaults(defineProps<{
@@ -79,6 +79,7 @@ const props = withDefaults(defineProps<{
     iconBefore?: string;
     iconAfter?: string;
     ariaLabel?: string;
+    stopPropagation?: boolean;
 }>(), {
     type: undefined,
     variant: 'primary',
@@ -96,6 +97,7 @@ const props = withDefaults(defineProps<{
     iconBefore: undefined,
     iconAfter: undefined,
     ariaLabel: "Button",
+    stopPropagation: false
 })
 
 const linkRel = computed(() => {
@@ -105,6 +107,16 @@ const linkRel = computed(() => {
         return "noopener"
     } else return ''
 })
+
+function onClick(ev: MouseEvent) {
+  if (props.disabled) {
+    ev.preventDefault()
+    ev.stopPropagation()
+    return
+  }
+  if (props.stopPropagation) ev.stopPropagation()
+  emit('click', ev)
+}
 
 const isPrimary = computed(() => {
     return props.variant === 'primary'
