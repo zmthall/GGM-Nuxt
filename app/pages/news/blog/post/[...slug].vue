@@ -8,7 +8,7 @@
             </h2>
             <p>Reading time: {{ reading.getReadingTime(post.body) }}</p>
             <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
-              Posted On: {{ formatDates.formatDisplayDate(post.published) }}
+              Pueblished On: {{ formatDates.formatDisplayDate(post.published) }}
             </time>
             <p v-if="post.author">By: {{ post.author }}</p>
             <div v-if="post.tags" class="md:hidden">

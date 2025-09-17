@@ -14,8 +14,8 @@
           <p v-if="post.body">
             Reading time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}
           </p>
-          <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
-            Posted On: {{ formatDates.formatDisplayDate(post.published) }}
+          <time v-if="post.date" :datetime="formatDates.formatDatetime(post.published)">
+            Published On: {{ formatDates.formatDisplayDate(post.published) || 'Not Published' }}
           </time>
           <p v-if="post.author">By: {{ post.author }}</p>
           <div v-if="post.tags" class="md:hidden">
@@ -138,7 +138,7 @@
                       {{ tag }}
                     </li>
                   </ul>
-                  <time :datetime="formatDates.formatDatetime(relatedPost.date)">
+                  <time :datetime="formatDates.formatShortDate(relatedPost.date)">
                     Posted on: {{ formatDates.formatShortDate(relatedPost.date) }}
                   </time>
                 </div>
@@ -202,6 +202,8 @@ const { data: post, execute: execPost } = await useAsyncData<BlogPost | null>(
   () => queryCollection('blog').path(contentPath).first(),
   { server: false, immediate: false, default: () => null }
 )
+
+console.log(contentPath)
 
 /* wait for auth, then fetch the post */
 watch(

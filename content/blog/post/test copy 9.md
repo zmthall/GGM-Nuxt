@@ -1,8 +1,8 @@
 ---
-id: "1"
+id: "8"
 title: "Hello World Testing Copy"
 description: "My first blog post"
-date: 7/16/2025
+date: '2025-07-13'
 author: Zachary Thallas
 draft: true
 tags: ['NEMT']

@@ -1,18 +1,28 @@
 ---
-id: "1"
-title: "Hello World Testing Copy"
-description: "My first blog post"
-date: 7/16/2025
+id: '1'
+title: Hello World Testing Copy testing things
+description: My first blog post
+date: '2025-09-17T19:24:07.689Z'
 author: Zachary Thallas
-draft: true
-tags: ['NEMT']
-thumbnail: "/images/pages/non-medical/suv-train.jpg"
-thumbnailAlt: "Logo for golden gate manor"
-thumbnailHeight: "297"
-thumbnailWidth: "600"
-summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel tortor vel nibh mollis ultrices quis egestas turpis. Etiam a venenatis diam. Aenean commodo tempor leo in faucibus. Etiam vitae egestas odio. In tristique iaculis felis pretium luctus. Etiam non urna vel enim venenatis tincidunt sit amet sit amet magna. Sed in eleifend massa, sed suscipit est. Duis dignissim, justo pellentesque pretium commodo, nisl lorem sollicitudin enim, ut hendrerit dolor lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis, mauris augue venenatis arcu, eu ultrices mi mauris non nisl."
+draft: false
+tags:
+  - NEMT
+thumbnail: /images/pages/non-medical/suv-train.jpg
+thumbnailAlt: Logo for golden gate manor
+thumbnailHeight: '297'
+thumbnailWidth: '600'
+summary: >-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel tortor
+  vel nibh mollis ultrices quis egestas turpis. Etiam a venenatis diam. Aenean
+  commodo tempor leo in faucibus. Etiam vitae egestas odio. In tristique iaculis
+  felis pretium luctus. Etiam non urna vel enim venenatis tincidunt sit amet sit
+  amet magna. Sed in eleifend massa, sed suscipit est. Duis dignissim, justo
+  pellentesque pretium commodo, nisl lorem sollicitudin enim, ut hendrerit dolor
+  lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin
+  pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis,
+  mauris augue venenatis arcu, eu ultrices mi mauris non nisl.
+published: '2025-09-08'
 ---
-
 ## Introduction
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel tortor vel nibh mollis ultrices quis egestas turpis. Etiam a venenatis diam. Aenean commodo tempor leo in faucibus. Etiam vitae egestas odio. In tristique iaculis felis pretium luctus. Etiam non urna vel enim venenatis tincidunt sit amet sit amet magna. Sed in eleifend massa, sed suscipit est. Duis dignissim, justo pellentesque pretium commodo, nisl lorem sollicitudin enim, ut hendrerit dolor lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis, mauris augue venenatis arcu, eu ultrices mi mauris non nisl.
 

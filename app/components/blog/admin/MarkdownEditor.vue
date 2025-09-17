@@ -8,7 +8,6 @@ import type { ToolbarItem, EditorOptions } from '@toast-ui/editor'
 
 // Props
 const props = withDefaults(defineProps<{
-  modelValue?: string
   height?: string
   previewStyle?: 'vertical' | 'tab'
   initialEditType?: 'markdown' | 'wysiwyg'
@@ -17,7 +16,6 @@ const props = withDefaults(defineProps<{
   hideModeSwitch?: boolean
   toolbarItems?: (ToolbarItem | ToolbarItem[])[]
 }>(), {
-  modelValue: '',
   height: '400px',
   previewStyle: 'vertical',
   initialEditType: 'markdown',
@@ -42,6 +40,8 @@ const el = ref<HTMLElement | null>(null)
 let editor: Editor | null = null
 const isDark = computed(() => props.theme === 'dark')
 
+const modelValue = defineModel<string>()
+
 onMounted(async () => {
   // Type the constructor without using `any`
   type EditorCtor = new (opts: EditorOptions) => Editor
@@ -56,14 +56,14 @@ onMounted(async () => {
     hideModeSwitch: props.hideModeSwitch,
     theme: isDark.value ? 'dark' : undefined,
     toolbarItems: props.toolbarItems,
-    initialValue: props.modelValue ?? '',
+    initialValue: modelValue.value ?? '',
   })
 
   editor.on('change', () => emit('update:modelValue', editor!.getMarkdown()))
   emit('ready', editor)
 })
 
-watch(() => props.modelValue, (val) => {
+watch(() => modelValue.value, (val) => {
   if (!editor) return
   const current = editor.getMarkdown()
   if (val !== current) editor.setMarkdown(val || '')

@@ -13,6 +13,11 @@ export interface ImageData {
   loading?: "lazy" | "eager";
 }
 
+export interface ImageDataFile {
+  file: File | null
+  alt: string
+}
+
 export interface CommunityImagesResponse {
   slots: Record<string, {
     id: string;
