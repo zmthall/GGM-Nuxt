@@ -29,7 +29,7 @@ if(staticData) {
         innerHTML: JSON.stringify(staticData.orgSchema),
         'data-schema': 'organization' // 
       },
-      ],
+    ],
     link: [
     {
       rel: 'preload',
