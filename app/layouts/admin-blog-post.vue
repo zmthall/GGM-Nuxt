@@ -34,7 +34,10 @@ if(staticData) {
       type: 'font/woff2',
       crossorigin: 'anonymous'
     }
-  ]
+  ],
+  bodyAttrs: {
+    class: 'is-admin'
+  }
   })
 }
 
@@ -55,9 +58,3 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 </script>
-
-<style scoped>
-div#chat_app {
-  display: hidden;
-}
-</style>

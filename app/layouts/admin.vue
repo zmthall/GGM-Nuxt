@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+
 const authStore = useAuthStore()
 const route = useRoute();
 
@@ -37,7 +38,10 @@ if(staticData) {
       type: 'font/woff2',
       crossorigin: 'anonymous'
     }
-  ]
+  ],
+  bodyAttrs: {
+    class: 'is-admin'
+  }
   })
 }
 
@@ -59,9 +63,3 @@ useSeoMeta({
 })
 
 </script>
-
-<style scoped>
-div#chat_app {
-  display: none;
-}
-</style>
