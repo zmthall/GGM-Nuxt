@@ -41,7 +41,10 @@
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
         <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Agree to Terms</h2>
         <BaseFormCheckbox v-model="form.acknowledge" name="attestation"><p>I certify the information provided is accurate to the best of my knowledge and that I have read Golden Gate Manor's <NuxtLink to="/company/policies/ride-cancellation" rel="noopener" target="_blank" class="link" @click.stop>Ride Cancellation Policy</NuxtLink>.</p></BaseFormCheckbox>
-        <BaseUiAction type="submit" class="py-4 px-8 block !mt-8">Submit Request</BaseUiAction>
+        <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="py-4 px-8 block !mt-8">
+          <span v-if="!isSubmitting">Submit Request</span>
+          <span v-else class="animate-pulse">Submitting Request</span>
+        </BaseUiAction>
         <!-- Recaptcha Privacy Notice -->
         <div class="text-xs text-gray-500">
           This site is protected by reCAPTCHA and the Google 
@@ -54,14 +57,14 @@
         v-if="submitResult" class="mt-4 p-3 rounded-md" 
         :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
         <div v-if="submitResult.success && submitResult.score" class="text-sm">
-          Message sent successfully!
+          Ride request sent successfully!
         </div>
         <div v-else>
-          Message failed to send. Please try again.
+          Ride request failed to send. Please try again.
         </div>
       </div>
       <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
-        Submitting message, please wait...
+        Submitting ride request, please wait...
       </div>
     </div>
   </form>

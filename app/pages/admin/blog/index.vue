@@ -50,7 +50,7 @@
                   <p>There are no blog posts. <button class="link" @click="openAddPostModal">Add a blog post</button> to get started.</p>
               </div>
             </div>
-            <div v-else class="pulse">
+            <div v-else class="animate-pulse">
               Loading Blog Posts...
             </div>
           </BaseLayoutCard>
