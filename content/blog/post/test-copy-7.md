@@ -2,7 +2,7 @@
 id: '6'
 title: Hello World Testing Copy
 description: My first blog post
-date: '2025-09-17T20:30:39.590Z'
+date: '2025-09-18T19:06:28.295Z'
 author: Zachary Thallas
 draft: false
 tags:
@@ -21,9 +21,8 @@ summary: >-
   lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin
   pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis,
   mauris augue venenatis arcu, eu ultrices mi mauris non nisl.
-published: '2025-09-17T20:30:39.590Z'
+published: '2025-09-18'
 ---
-
 ## Introduction
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel tortor vel nibh mollis ultrices quis egestas turpis. Etiam a venenatis diam. Aenean commodo tempor leo in faucibus. Etiam vitae egestas odio. In tristique iaculis felis pretium luctus. Etiam non urna vel enim venenatis tincidunt sit amet sit amet magna. Sed in eleifend massa, sed suscipit est. Duis dignissim, justo pellentesque pretium commodo, nisl lorem sollicitudin enim, ut hendrerit dolor lectus sit amet sapien. Proin consectetur vestibulum tellus et auctor. Proin pharetra a elit et imperdiet. Donec lacinia, purus sed pellentesque mollis, mauris augue venenatis arcu, eu ultrices mi mauris non nisl.
 

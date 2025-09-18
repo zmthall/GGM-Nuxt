@@ -16,8 +16,14 @@
                       <div class="flex flex-col items-start justify-center">
                         <p class="text-xs">Last Updated: {{ dateFormat.formatShortDateNoLeadingZero(post.date) }}</p>
                         <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
-                        <NuxtLink v-if="post.path && post.draft" :to="`/admin${post.path}`" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>{{ getSlug(post.path) }}</NuxtLink>
-                        <NuxtLink v-if="post.path && post.published" :to="`/news${post.path}`" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>{{ getSlug(post.path) }}</NuxtLink>
+                        <NuxtLink
+                          v-if="post.path"
+                          :to="isPublished(post) ? `/news${post.path}` : `/admin${post.path}`"
+                          class="text-brand-primary/75 underline hover:text-brand-link-hover"
+                          @click.stop
+                        >
+                          {{ getSlug(post.path) }}
+                        </NuxtLink>
                       </div>
                     </div>
                     <div class="flex self-end gap-2 h-full">
@@ -124,7 +130,24 @@ const { data: initialPosts, execute, refresh, pending: isLoadingInitial } = awai
   { server: false, immediate: false, default: () => [] }
 )
 
-console.log(isLoadingInitial)
+const isPublished = (post: BlogPost): boolean => {
+  // drafts are never public
+  if (post.draft) return false;
+
+  const s = String(post.published ?? '').trim();
+  if (!s) return false;
+
+  // If it's date-only, treat it as end-of-day UTC so the whole day counts
+  const publishedAt = /^\d{4}-\d{2}-\d{2}$/.test(s)
+    ? new Date(`${s}T23:59:59.999Z`)
+    : new Date(s);
+
+  const ts = publishedAt.getTime();
+  if (Number.isNaN(ts)) return false;
+
+  return ts <= Date.now(); // live if published time is in the past
+};
+
 
 // seed from the first page and decide if there’s more
 watch(initialPosts, (list) => {

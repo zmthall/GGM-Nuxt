@@ -229,9 +229,6 @@ const createBlogPost = async () => {
     body: body.value,
   }
 
-  if(payload.meta.published)
-    payload.meta.published = (new Date(payload.meta.published)).toISOString()
-
   // ----- create -----
   try {
     const res = await $fetch<CreateResp>(`/api/admin/blog/${safeSlug}`, {
@@ -319,9 +316,6 @@ const saveBlogPostEdit = async () => {
     },
     body: body.value,
   }
-
-  if(payload.meta.published)
-    payload.meta.published = (new Date(payload.meta.published)).toISOString()
 
   if (renameTo) payload.renameTo = renameTo
 

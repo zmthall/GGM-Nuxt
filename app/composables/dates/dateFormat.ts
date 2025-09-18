@@ -135,6 +135,18 @@ export const useDateFormat = () => {
     })}`;
   };
 
+  // YYYY-MM-DD
+  const formatIsoDate = (date: string | Date | undefined): string => {
+    const d = parseFlexibleDate(date);
+    if (!d) return '';
+
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+
+    return `${y}-${m}-${day}`; // local date
+  };
+
   /** Date formatting */
   const tableFormatDate = (iso?: string) => {
     if (!iso) return '—'
@@ -153,6 +165,7 @@ export const useDateFormat = () => {
     formatDisplayDate,
     formatDisplayTime,
     formatShortDate,
+    formatIsoDate,
     formatShortDateNoLeadingZero,
     tableFormatDate
   };
