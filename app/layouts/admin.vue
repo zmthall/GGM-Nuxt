@@ -62,6 +62,6 @@ useSeoMeta({
 
 <style>
 div#chat_app {
-  display: hidden;
+  display: none;
 }
 </style>
