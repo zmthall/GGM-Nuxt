@@ -59,3 +59,9 @@ useSeoMeta({
 })
 
 </script>
+
+<style>
+div#chat_app {
+  display: hidden;
+}
+</style>

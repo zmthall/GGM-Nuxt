@@ -54,7 +54,10 @@ useSeoMeta({
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })
-
-
-
 </script>
+
+<style>
+div#chat_app {
+  display: hidden;
+}
+</style>
