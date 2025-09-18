@@ -56,7 +56,7 @@ useSeoMeta({
 })
 </script>
 
-<style>
+<style scoped>
 div#chat_app {
   display: hidden;
 }
