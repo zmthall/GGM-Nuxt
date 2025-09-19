@@ -51,13 +51,13 @@ export default defineNuxtPlugin(() => {
           // If window.uetq is still an array, flush into live queue
           const q = (window as unknown as { uetq?: unknown }).uetq
           // @ts-expect-error UET is a constructor
-          const u = new window.UET({ ti: "${uetId}", enableAutoSpaTracking: true })
+          const u = new window.UET({ ti: uetId, enableAutoSpaTracking: true })
           if (Array.isArray(q)) {
             q.forEach((args: unknown) => {
               if (Array.isArray(args)) (u.push as (...a: unknown[]) => number)(...(args as unknown[]))
             })
-          }
-          ;(window as unknown as { uetq: unknown }).uetq = u
+          };
+          (window as unknown as { uetq: unknown }).uetq = u
           // initial page load event (auto SPA handles future navs)
           // @ts-expect-error queue object
           window.uetq.push('pageLoad')
