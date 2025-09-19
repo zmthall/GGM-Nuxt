@@ -90,7 +90,7 @@ div#chat_app .sc-launcher {
   height: 70px;
   overflow: hidden;
   bottom: 60px;
-  z-index: 1;
+  z-index: 5;
 }
 
 div#chat_app img.sc-open-icon {
