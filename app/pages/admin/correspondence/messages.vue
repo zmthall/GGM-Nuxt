@@ -4,22 +4,25 @@
             <BaseLayoutPageContainer>
                 <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
                     <h2 class="bg-brand-primary pl-2 py-2 text-white">Received Contact Messages</h2>
-                    <AdminContactFormTable 
+                    <AdminContactFormTable
+                        v-model="contactModalOpen"
+                        v-model:data="contactMessageModalData" 
                         :loading="loadingContactMessages" 
                         :contact-messages="contactMessages" 
                         :pagination="contactMessagesPagination" 
                         :has-toolbar="false" 
-                        @change-status="updateStatus"
-                        @change-tags="updateTags"
-                        @export-pdf="exportPDF"
-                        @prev-page="fetchContactMessages(false, --page)"
-                        @next-page="fetchContactMessages(false, ++page)"
-                        @page-change="(p) => { page = p; fetchContactMessages(false, page)}"
+                        @change-status="updateContactStatus"
+                        @change-tags="updateContactTags"
+                        @export-pdf="exportContactPDF"
+                        @prev-page="fetchContactMessages(false, --contactPage)"
+                        @next-page="fetchContactMessages(false, ++contactPage)"
+                        @page-change="(p) => { contactPage = p; fetchContactMessages(false, contactPage)}"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
-                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteMessage(contactMessage.id)">Delete</button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteContactMessage(contactMessage.id)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openContactModal(contactMessage)">Open Message</button>
                             </div>
                         </template>            
                     </AdminContactFormTable>
@@ -33,6 +36,8 @@
 </template>
 
 <script setup lang='ts'>
+import type { ContactFormData } from '../../../models/admin/ContactForm.js';
+
 
 const authStore = useAuthStore()
 defineOptions({
@@ -43,22 +48,27 @@ definePageMeta({
     layout: 'admin',
 })
 
+const contactModalOpen = ref<boolean>(false);
+const contactMessageModalData = ref<ContactFormData | null>(null)
+
+const openContactModal = (contactMessage: ContactFormData) => {
+    contactModalOpen.value = true;
+    contactMessageModalData.value = contactMessage;
+}
+
 const { 
     fetchContactMessages, 
-    updateStatus, 
-    updateTags, 
-    exportPDF,
-    deleteMessage,
-    page,
+    updateContactStatus, 
+    updateContactTags, 
+    exportContactPDF,
+    deleteContactMessage,
+    contactPage,
     contactMessages,
     contactMessagesPagination,
     loadingContactMessages
-} = useContactMessages()
+} = useContactMessages();
 
 onMounted(() => {
     fetchContactMessages();
 })
-
 </script>
-
-<style></style>

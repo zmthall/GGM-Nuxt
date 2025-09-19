@@ -1,15 +1,17 @@
 <template>
     <template v-if="to">
         <NuxtLink 
-        :class="[
-            { 'primary-style': (isPrimary && !hoverGroup) },
-            { 'primary-style-group': (isPrimary && hoverGroup) },
-            { 'secondary-style': (isSecondary && !hoverGroup) },
-            { 'secondary-style-group': (isSecondary && hoverGroup) },
-            { 'cta-style group/cta': (isCTA && !hoverGroup) },
-            { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            { 'inline-block button-style': variant !== 'blank'}
-            , size]" :to="to ?? '#'">
+            :disabled
+            :class="[
+                { 'primary-style': (isPrimary && !hoverGroup) },
+                { 'primary-style-group': (isPrimary && hoverGroup) },
+                { 'secondary-style': (isSecondary && !hoverGroup) },
+                { 'secondary-style-group': (isSecondary && hoverGroup) },
+                { 'cta-style group/cta': (isCTA && !hoverGroup) },
+                { 'cta-style-group group/cta': (isCTA && hoverGroup) },
+                { 'inline-block button-style': variant !== 'blank'}
+                , size]" :to="to ?? '#'"
+        >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
             </div>
@@ -17,15 +19,16 @@
     </template>
     <template v-else-if="href">
         <a 
-        :class="[
-            { 'primary-style': (isPrimary && !hoverGroup) },
-            { 'primary-style-group': (isPrimary && hoverGroup) },
-            { 'secondary-style': (isSecondary && !hoverGroup) },
-            { 'secondary-style-group': (isSecondary && hoverGroup) },
-            { 'cta-style group/cta': (isCTA && !hoverGroup) },
-            { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            { 'inline-block button-style': variant !== 'blank'}
-            , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
+            :disabled
+            :class="[
+                { 'primary-style': (isPrimary && !hoverGroup) },
+                { 'primary-style-group': (isPrimary && hoverGroup) },
+                { 'secondary-style': (isSecondary && !hoverGroup) },
+                { 'secondary-style-group': (isSecondary && hoverGroup) },
+                { 'cta-style group/cta': (isCTA && !hoverGroup) },
+                { 'cta-style-group group/cta': (isCTA && hoverGroup) },
+                { 'inline-block button-style': variant !== 'blank'}
+                , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
@@ -34,16 +37,17 @@
     </template>
     <template v-else>
         <button 
-        :class="[
-            { 'primary-style': (isPrimary && !hoverGroup) },
-            { 'primary-style-group': (isPrimary && hoverGroup) },
-            { 'secondary-style': (isSecondary && !hoverGroup) },
-            { 'secondary-style-group': (isSecondary && hoverGroup) },
-            { 'cta-style group/cta': (isCTA && !hoverGroup) },
-            { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-            { 'button-style': variant !== 'blank'}
-            , size,
-            ]" :type="type ?? 'button'" @click="onClick"
+            :disabled
+            :class="[
+                { 'primary-style': (isPrimary && !hoverGroup) },
+                { 'primary-style-group': (isPrimary && hoverGroup) },
+                { 'secondary-style': (isSecondary && !hoverGroup) },
+                { 'secondary-style-group': (isSecondary && hoverGroup) },
+                { 'cta-style group/cta': (isCTA && !hoverGroup) },
+                { 'cta-style-group group/cta': (isCTA && hoverGroup) },
+                { 'button-style': variant !== 'blank'}
+                , size,
+                ]" :type="type ?? 'button'" @click="onClick"
         >
             <div 
             :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
@@ -137,7 +141,7 @@ const isCTA = computed(() => {
 }
 
 .primary-style {
-    @apply bg-brand-primary transition-colors ease-in-out text-white border-2 duration-main border-brand-secondary hover:bg-brand-secondary hover:text-brand-primary;
+    @apply bg-brand-primary transition-colors disabled:bg-zinc-500 disabled:text-white ease-in-out text-white border-2 duration-main border-brand-secondary hover:bg-brand-secondary hover:text-brand-primary;
 }
 
 .primary-style-group {

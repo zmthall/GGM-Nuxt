@@ -356,7 +356,7 @@ const contactMessagesCols = [
   { key: 'phone', label: 'Phone Number' },
   { key: 'reason', label: 'Reason' },
   { key: 'tags', label: 'Tags' },
-  { key: 'created_at', label: 'Email Sent', sortable: true },
+  { key: 'created_at', label: 'Received', sortable: true },
   { key: 'id', label: 'ID' },
   { key: 'actions', label: 'Actions'}
 ]

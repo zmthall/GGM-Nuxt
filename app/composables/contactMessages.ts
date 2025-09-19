@@ -8,13 +8,13 @@ export const useContactMessages = () => {
   const authStore = useAuthStore();
   const contactPage = ref<number>(1)
 
-  const fetchContactMessages = async (isLoading: boolean = true, page: number = 1) => {
+  const fetchContactMessages = async (isLoading: boolean = true, pageSize: number = 5, page: number = 1) => {
     if(isLoading)
       loadingContactMessages.value = true;
     try {
       const idToken = await authStore.getIdToken();
 
-      const response = await $fetch<{ success: boolean, data: ContactFormData[], pagination: Pagination }>(`/api/contact-form?page=${page}`, {
+      const response = await $fetch<{ success: boolean, data: ContactFormData[], pagination: Pagination }>(`/api/contact-form?page=${page}&pageSize=${pageSize}`, {
           baseURL: 'https://api.goldengatemanor.com',
           method: 'GET',
           headers: {
@@ -34,7 +34,7 @@ export const useContactMessages = () => {
   }
 
 
-  const updateContactStatus = async (messageData: {id: string, status: ContactFormStatus}) => {
+  const updateContactStatus = async (messageData: {id: string, status: ContactFormStatus}, pageSize: number = 5) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -48,14 +48,14 @@ export const useContactMessages = () => {
         })
 
         if(response.success) {
-            fetchContactMessages(false);
+            fetchContactMessages(false, pageSize);
         }
     } catch (error) {
         console.error((error as Error).message)
     }
   }
 
-  const updateContactTags = async (messageData: { id: string, tags: string[]}) => {
+  const updateContactTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -69,7 +69,7 @@ export const useContactMessages = () => {
         })
 
         if(response.success) {
-            fetchContactMessages(false);
+            fetchContactMessages(false, pageSize);
         }
     } catch (error) {
         console.error((error as Error).message)
@@ -106,7 +106,7 @@ export const useContactMessages = () => {
     }
   }
 
-  const deleteContactMessage = async (id: string) => {
+  const deleteContactMessage = async (id: string, pageSize: number = 5) => {
     try {
       const idToken = await authStore.getIdToken();
 
@@ -119,7 +119,7 @@ export const useContactMessages = () => {
       })
 
       if(response.success) {
-          fetchContactMessages(false);
+          fetchContactMessages(false, pageSize);
       }
     } catch (error) {
         console.error((error as Error).message)

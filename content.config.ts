@@ -21,7 +21,10 @@ export default defineContentConfig({
         thumbnailWidth: z.string().optional(),
         staffPick: z.boolean().optional(),
         summary: z.string(),
-        published: z.string().optional()
+        published: z.string().optional(),
+        _file: z.string(),
+        _id: z.string(),
+        _path: z.string(),
       }),
     }),
   },

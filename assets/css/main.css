@@ -11,6 +11,8 @@ h1, h2, h3, h4, h5, h6 {
   scroll-margin-top: 45px;
 }
 
+body.no-scroll { overflow: hidden; }
+
 html {
   @apply font-main antialiased;
 }
@@ -48,6 +50,8 @@ html {
 }
 
 /* AI Chatbot styling */
+
+body.is-admin #chat_app { display: none !important; } 
 
 .sc-message-list .sc-message--content.received .sc-message--text {
   margin-right: 0;

@@ -26,7 +26,10 @@
 
         <BaseFormTextArea v-model="form.message" name="message" label="Comment/Inquiry/Message*"/>
 
-        <BaseUiAction type="submit" class="w-full p-2">Send Message</BaseUiAction>
+        <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="w-full p-2" >
+          <span v-if="!isSubmitting">Send Message</span>
+          <span v-else class="animate-pulse">Sending Message...</span>
+        </BaseUiAction>
         <!-- Recaptcha Privacy Notice -->
         <div class="text-xs text-gray-500">
           This site is protected by reCAPTCHA and the Google 
@@ -67,7 +70,6 @@ const form = reactive({
 })
 
 const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
-
 
 onMounted(() => {
   loadRecaptcha()

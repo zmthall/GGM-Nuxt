@@ -32,7 +32,7 @@
                                             </li>
                                         </ul>
                                         <time :datetime="formatDates.formatDatetime(latestPost.published)">
-                                            Posted on: {{ formatDates.formatShortDate(latestPost.published) }}
+                                            Published on: {{ formatDates.formatShortDate(latestPost.published) }}
                                         </time>
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
@@ -90,7 +90,7 @@
                                                 </li>
                                             </ul>
                                             <time :datetime="formatDates.formatDatetime(post.published)">
-                                                Posted on: {{ formatDates.formatShortDate(post.published) }}
+                                                Published on: {{ formatDates.formatShortDate(post.published) }}
                                             </time>
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
@@ -150,23 +150,16 @@ const formatDates = useDateFormat()
 const reading = useReading()
 const text = useText();
 
-const cutoff = new Date()
-cutoff.setDate(cutoff.getDate() + 1)
-
-const cutoffISO = cutoff.toISOString()
-
-console.log(cutoffISO)
+const cutoffISO = new Date(Date.now() + 1).toISOString()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
     .where('published', '<', cutoffISO)
     .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'published')
-    .order('date', 'DESC')
     .limit(1)
     .first() // Gets the first result as an object instead of array
 })
-
 
 const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {
   return queryCollection('blog')
@@ -195,7 +188,7 @@ const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
     .where('draft', '<>', true)
     .where('published', '<', cutoffISO)
     .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published')
-    .order('date', 'DESC')
+    .order('published', 'DESC')
     .limit(limit)
     .all()
 })
@@ -203,25 +196,16 @@ const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
 posts.value = initialPosts.value || []
 
 const loadMore = async () => {
+  if (!hasMorePages.value || isLoading.value) return
   isLoading.value = true
   page.value++
-  
-  const newPosts = await $fetch('/api/blog/posts', {
-    query: {
-      page: page.value,
-      limit: limit
-    }
-  }) as AllPosts[]
-  
-  if (newPosts?.length) {
-    posts.value.push(...newPosts)
-  } 
 
-  if (newPosts.length < limit) {
-    // This was the last page
-    hasMorePages.value = false
-  }
-  
+  const newPosts = await $fetch('/api/blog/posts', {
+    query: { page: page.value, limit }
+  })
+
+  if (newPosts?.length) posts.value.push(...newPosts)
+  if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
   isLoading.value = false
 }
 

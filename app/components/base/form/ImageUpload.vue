@@ -52,14 +52,7 @@
 
     <!-- Alt Text Input (shown when image exists) -->
     <div v-if="uploadedImage" class="mt-4">
-      <label for="alt-text-input" class="font-extrabold text-xs inline-block mb-1 text-brand-primary">Alt Text</label>
-      <input
-        id="alt-text-input"
-        v-model="altText"
-        type="text"
-        placeholder="Describe this image..."
-        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary"
-      >
+      <BaseFormInput v-model="altText" type="text" name="alt-text-input" label="Alt Text" placeholder="Describe this image..."/>
     </div>
   </div>
 </template>
@@ -67,6 +60,7 @@
 <script setup lang='ts'>
 import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
+import type { ImageDataFile } from '../../../models/ImagesData.js'
 
 defineOptions({
   name: 'BaseImageUploadCropper'
@@ -80,11 +74,6 @@ interface CropResult {
     top: number
   }
   canvas: HTMLCanvasElement
-}
-
-interface ImageData {
-  file: File | null
-  alt: string
 }
 
 interface StencilProps {
@@ -107,7 +96,7 @@ const props = withDefaults(defineProps<{
   slotIndex: 0
 })
 
-const imageData = defineModel<ImageData>()
+const imageData = defineModel<ImageDataFile>()
 
 const fileUploadInput = ref<HTMLInputElement | null>(null)
 const cropperRef = ref<InstanceType<typeof Cropper> | null>(null)

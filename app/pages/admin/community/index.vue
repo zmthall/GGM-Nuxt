@@ -46,12 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ImageUpdateResponse, CommunityImagesResponse, FetchImages } from '../../../models/ImagesData.js';
-
-interface ImageData {
-  file: File | null
-  alt: string
-}
+import type { ImageUpdateResponse, CommunityImagesResponse, FetchImages, ImageDataFile } from '../../../models/ImagesData.js';
 
 const authStore = useAuthStore();
 definePageMeta({
@@ -68,7 +63,7 @@ const previewImageLoading = ref<boolean>(true);
 const addImageModalOpen = ref<boolean>(false);
 const currentImage = ref<number | null>(null)
 
-const imageData = ref<ImageData>({
+const imageData = ref<ImageDataFile>({
   file: null,
   alt: ''
 })

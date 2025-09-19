@@ -226,7 +226,7 @@ export const useStaticData = () => {
       {
         id: "Assisted Living",
         name: "Assisted Living",
-        number: "(719) 696-8032",
+        number: "(719) 924-9932",
       },
       {
         id: "Medical Supplies",
@@ -996,8 +996,8 @@ export const useStaticData = () => {
       assitedLiving: {
         name: "Golden Gate Manor Assisted Living",
         address: "612 S. Union Ave., Puebo CO, 81004",
-        phone: "+1-719-696-8032",
-        fax: "719-696-8548",
+        phone: "+1-719-924-9932",
+        fax: "+1-719-696-8548",
         houses: {
           ggm1: {
             address: "606 W. Abriendo Ave., Pueblo CO, 81004",

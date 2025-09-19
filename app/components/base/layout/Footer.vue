@@ -103,10 +103,10 @@
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
                         </a>
                         <CallRailLink
-                            tel="719-544-3231"
-                            display="(719) 544-3231"
+                            tel="719-924-9932"
+                            display="(719) 924-9932"
                             cls="group hover:text-brand-secondary"
-                            aria-label="Call front office (719) 544-3231"
+                            aria-label="Call front office (719) 924-9932"
                         >
                             <BaseIcon
                                 name="ic:round-call"
@@ -114,7 +114,7 @@
                                 size="4"
                                 hover-color="group-hover:text-brand-secondary"
                             />
-                            (719) 544-3231
+                            (719) 924-9932
                         </CallRailLink>
                         <button
                             class="items-center border-2 border-brand-white flex w-max p-1 mt-1 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-300 ease-in-out rounded-md"

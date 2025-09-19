@@ -34,7 +34,10 @@ if(staticData) {
       type: 'font/woff2',
       crossorigin: 'anonymous'
     }
-  ]
+  ],
+  bodyAttrs: {
+    class: 'is-admin'
+  }
   })
 }
 
@@ -54,7 +57,4 @@ useSeoMeta({
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })
-
-
-
 </script>

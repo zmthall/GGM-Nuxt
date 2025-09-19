@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+
 const authStore = useAuthStore()
 const route = useRoute();
 
@@ -37,7 +38,10 @@ if(staticData) {
       type: 'font/woff2',
       crossorigin: 'anonymous'
     }
-  ]
+  ],
+  bodyAttrs: {
+    class: 'is-admin'
+  }
   })
 }
 

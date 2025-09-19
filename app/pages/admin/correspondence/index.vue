@@ -72,8 +72,6 @@ const rideRequestModalData = ref<RideRequestFormData | null>(null)
 const contactModalOpen = ref<boolean>(false);
 const contactMessageModalData = ref<ContactFormData | null>(null)
 
-
-
 const openRideRequestModal = (rideRequest: RideRequestFormData) => {
     rideModalOpen.value = true;
     rideRequestModalData.value = rideRequest;
@@ -121,8 +119,4 @@ onMounted(() => {
     fetchContactMessages();
     fetchRideRequests()
 });
-
-
 </script>
-
-<style></style>

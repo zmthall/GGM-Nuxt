@@ -8,13 +8,13 @@ export const useRideRequests = () => {
   const authStore = useAuthStore();
   const requestPage = ref<number>(1)
 
-  const fetchRideRequests = async (isLoading: boolean = true, page: number = 1) => {
+  const fetchRideRequests = async (isLoading: boolean = true, pageSize: number = 5, page: number = 1) => {
     if(isLoading)
           loadingRideRequests.value = true;
         try {
           const idToken = await authStore.getIdToken();
     
-          const response = await $fetch<{ success: boolean, data: RideRequestFormData[], pagination: Pagination }>(`/api/ride-request?page=${page}`, {
+          const response = await $fetch<{ success: boolean, data: RideRequestFormData[], pagination: Pagination }>(`/api/ride-request?page=${page}&pageSize=${pageSize}`, {
               baseURL: 'https://api.goldengatemanor.com',
               method: 'GET',
               headers: {
@@ -33,7 +33,7 @@ export const useRideRequests = () => {
         }
   }
 
-  const updateRideStatus = async (messageData: {id: string, status: RideRequestStatus}) => {
+  const updateRideStatus = async (messageData: {id: string, status: RideRequestStatus}, pageSize: number = 5) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -47,14 +47,14 @@ export const useRideRequests = () => {
         })
 
         if(response.success) {
-            fetchRideRequests(false);
+            fetchRideRequests(false, pageSize);
         }
     } catch (error) {
         console.error((error as Error).message)
     }
   }
 
-  const updateRideTags = async (messageData: { id: string, tags: string[]}) => {
+  const updateRideTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -68,7 +68,7 @@ export const useRideRequests = () => {
         })
 
         if(response.success) {
-            fetchRideRequests(false);
+            fetchRideRequests(false, pageSize);
         }
     } catch (error) {
         console.error((error as Error).message)
@@ -105,7 +105,7 @@ export const useRideRequests = () => {
     }
   }
 
-  const deleteRideRequest = async (id: string) => {
+  const deleteRideRequest = async (id: string, pageSize: number = 5) => {
     try {
       const idToken = await authStore.getIdToken();
 
@@ -118,7 +118,7 @@ export const useRideRequests = () => {
       })
 
       if(response.success) {
-          fetchRideRequests(false);
+          fetchRideRequests(false, pageSize);
       }
     } catch (error) {
         console.error((error as Error).message)

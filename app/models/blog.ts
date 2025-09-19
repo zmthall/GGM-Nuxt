@@ -18,6 +18,7 @@ export interface BlogPost {
   path?: string;
   createdAt?: string;
   updatedAt?: string;
+  summary?: string;
 }
 
 export interface AllPosts {
@@ -35,3 +36,7 @@ export interface AllPosts {
   body?: unknown;
   published?: string;
 }
+
+export type BlogGetResponse = { meta: BlogPost; body: string }
+
+export type BlogEditable = BlogPost & { body: string }
