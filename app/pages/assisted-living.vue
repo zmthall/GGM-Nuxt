@@ -2,7 +2,7 @@
   <div>
     <BaseLayoutPageSection margin="top">
       <!-- Top Page -->
-      <BaseLayoutPageContainer class="">
+      <BaseLayoutPageContainer>
             <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4 max-sm:hidden">
                 <span class="text-gray-500">
                     Golden Gate Manor
@@ -37,6 +37,9 @@
         </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
     <BaseLayoutPageSection margin="default" bg="alt">
+        <AssistedLivingCarousel />
+    </BaseLayoutPageSection>
+    <BaseLayoutPageSection margin="default">
         <BaseLayoutPageContainer class="">
             <div class="bg-[#365dba] text-white px-2 lg:px-12 py-16 rounded-lg">
                 <h2 class="text-2xl font-extrabold px-2 text-center mb-8 lg:text-left lg:px-0">ASSISTED LIVING AMENITIES</h2>
@@ -63,9 +66,6 @@
             </div>
         </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-        
-      <!-- Assisted Living Carousel -->
-    <!-- <AssitedLivingCarousel /> -->
 
       <!-- Bottom Page -->
 

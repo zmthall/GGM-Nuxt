@@ -84,7 +84,7 @@
         </div>
       </BaseLayoutPageSection>
       <div>
-        <BaseUiAction type="submit" class="p-2">Submit Application</BaseUiAction>
+        <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="p-2">Submit Application</BaseUiAction>
         <div class="text-xs text-gray-500 mt-2">
           This site is protected by reCAPTCHA and the Google 
           <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 
@@ -172,7 +172,7 @@ const showDrivingSection = computed(() => {
   return drivingPositions.includes(application.personal.select as string)
 })
 
-const isSubmitting = ref(false)
+const isSubmitting = ref<boolean>(false)
 const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
 
 const validateApplicationForm = () => {
