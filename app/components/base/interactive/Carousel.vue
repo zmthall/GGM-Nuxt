@@ -85,7 +85,7 @@ onMounted(() => {
   const calc = () => {
     const w = container.value?.clientWidth ?? 0
     containerWidth.value = w
-    visible.value = w >= 1024 ? 3 : w >= 768 ? 2 : 1
+    visible.value = w >= 1024 ? 3 : w >= 500 ? 2 : 1
   }
   ro = new ResizeObserver(calc)
   if (container.value) ro.observe(container.value)

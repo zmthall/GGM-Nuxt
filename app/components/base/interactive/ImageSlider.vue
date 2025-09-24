@@ -57,12 +57,12 @@
 
     <!-- Thumbnails stay small; do not consume height -->
     <div v-if="showThumbnails !== false && hasSlides" class="mt-3 shrink-0 hidden lg:block">
-      <ul class="flex gap-2 overflow-x-auto pb-1 justify-center">
+      <ul class="flex gap-2 overflow-x-auto p-1 justify-center">
         <li v-for="(s, i) in slides" :key="s.url + 'thumb' + i">
           <button 
             type="button"
             class="relative block rounded-lg overflow-hidden border"
-            :class="i === idx ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-200 hover:border-gray-300'"
+            :class="i === idx ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-200 hover:border-brand-primary hover:scale-105'"
             :aria-label="`Go to slide ${i+1}`"
             @click="goTo(i)">
             <NuxtImg 
@@ -95,7 +95,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{ 
-  (e: 'change', index: number): void
+  (e: 'change' | 'initialLoad', payload: number): void
   (e: 'imagesLoaded'): void 
 }>()
 
@@ -250,5 +250,9 @@ watch([() => slides.value, idx], async ([s]) => {
     }
   })
 }, { immediate: true })
+
+onMounted(() => {
+  emit('initialLoad', total.value);
+})
 
 </script>
