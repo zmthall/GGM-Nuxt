@@ -126,7 +126,7 @@
                 View Full Request
               </button>
           </div>
-          <div v-else>
+          <div v-else class="w-max">
             No notes
           </div>
         </td>

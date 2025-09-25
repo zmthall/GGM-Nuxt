@@ -115,7 +115,7 @@ const submitContact = async () => {
     const verification = await verifyWithServer(token)
     
     if (verification.success && verification.data?.valid) {
-      await $fetch('/api/email/contact-form', {
+      await $fetch('/api/contact-form/submit', {
         baseURL: 'https://api.goldengatemanor.com',
         method: 'POST',
         headers: {
