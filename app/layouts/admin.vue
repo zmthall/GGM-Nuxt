@@ -3,8 +3,9 @@
     <ClientOnly>
       <BaseLayoutAdminHeader />
       <AdminAllPageDashboard />
-        <BaseLayoutPageHeader v-if="!route.path.includes('login') && authStore.authorized" :title="pageTitle" class="capitalize" />
-        <slot />
+      <BaseLayoutPageHeader v-if="!route.path.includes('login') && authStore.authorized" :title="pageTitle" class="capitalize" />
+      <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
+      <slot />
     </ClientOnly>
   </div>
 </template>
@@ -16,7 +17,8 @@ const route = useRoute();
 
 const pageTitle = computed(() => {
   const path = route.path.split('/')
-  return path[path.length - 1] === 'admin' ? 'Admin Dashboard - Home' : `Admin Dashboard - ${path[path.length - 1]}`
+  console.log(path[path.length - 1]?.replace('-', ' '))
+  return path[path.length - 1] === 'admin' ? 'Admin Dashboard - Home' : `Admin Dashboard - ${path[path.length - 1]?.replace('-', ' ')}`
 })
 
 const staticData = useStaticData()
@@ -62,4 +64,5 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 
+const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 </script>

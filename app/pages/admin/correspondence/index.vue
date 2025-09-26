@@ -27,6 +27,9 @@
                         </template>            
                     </AdminContactFormTable>
                 </BaseLayoutCard>
+                <div class="mt-4 flex justify-center">
+                    <BaseUiAction to="/admin/correspondence/messages" class="py-2 px-3">View Messages</BaseUiAction>
+                </div>
             </BaseLayoutPageContainer>
             <BaseLayoutPageContainer class="mt-8">
                 <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
@@ -55,6 +58,9 @@
                         </template>            
                     </AdminRideRequestFormTable>
                 </BaseLayoutCard>
+                <div class="mt-4 flex justify-center">
+                    <BaseUiAction to="/admin/correspondence/ride-requests" class="py-2 px-3">View Ride Requests</BaseUiAction>
+                </div>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
     </div>

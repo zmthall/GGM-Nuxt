@@ -25,6 +25,8 @@ export const useContactMessages = () => {
       if(response.success) {
         contactMessages.value = response.data
         contactMessagesPagination.value = response.pagination
+        if(page)
+          contactPage.value = page
       }
     } catch (error) {
       console.error((error as Error).message)

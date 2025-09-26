@@ -25,6 +25,8 @@ export const useRideRequests = () => {
           if(response.success) {
             rideRequests.value = response.data
             rideRequestsPagination.value = response.pagination
+            if(page)
+              requestPage.value = page
           }
         } catch (error) {
           console.error((error as Error).message)

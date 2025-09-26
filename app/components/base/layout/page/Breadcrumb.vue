@@ -1,12 +1,12 @@
 <template>
-  <nav v-if="!isHomePage && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
+  <nav v-if="!isHomePage && !isAdminHome && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
     <ol class="flex">
-      <li>
+      <li v-if="!isAdmin">
         <NuxtLink to="/" class="link">Home</NuxtLink>
       </li>
-      <li v-for="crumb in breadcrumbs" :key="crumb.path">
+      <li v-for="(crumb, idx) in breadcrumbs" :key="crumb.path">
         <template v-if="!crumb.isLast">
-          &nbsp;/&nbsp;<NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
+         <span v-if="idx === 1 && isAdmin">&nbsp;/&nbsp;</span><NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
         </template>
         <template v-else>
           <span>&nbsp;/&nbsp;{{ crumb.label }}</span>
@@ -28,6 +28,8 @@ watchEffect(() => {
 })
 
 const isHomePage = computed(() => route.path === '/')
+const isAdminHome = computed(() => route.path === '/admin')
+const isAdmin = computed(() => route.path.includes('/admin'))
 
 // Format slug fallback
 const toLabel = (slug: string): string =>
@@ -57,12 +59,15 @@ const breadcrumbs = computed(() => {
 
     if (customLabel) {
       label = customLabel
+    } else if (segment === 'admin') {
+      label = 'Dashboard Home'
     } else if (rawTitle) {
       if (import.meta.dev && rawTitle.length >= MAX_LABEL_LENGTH) {
         console.warn(`[Breadcrumb] Long title "${rawTitle}" has no breadcrumbLabel defined.`)
       }
       label = rawTitle
     } else {
+      
       label = toLabel(segment)
     }
 
