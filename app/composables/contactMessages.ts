@@ -34,7 +34,7 @@ export const useContactMessages = () => {
   }
 
 
-  const updateContactStatus = async (messageData: {id: string, status: ContactFormStatus}, pageSize: number = 5) => {
+  const updateContactStatus = async (messageData: {id: string, status: ContactFormStatus}, pageSize: number = 5, page: number = 1) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -48,14 +48,14 @@ export const useContactMessages = () => {
         })
 
         if(response.success) {
-            fetchContactMessages(false, pageSize);
+            fetchContactMessages(false, pageSize, page);
         }
     } catch (error) {
         console.error((error as Error).message)
     }
   }
 
-  const updateContactTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5) => {
+  const updateContactTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5, page: number = 1) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -69,7 +69,7 @@ export const useContactMessages = () => {
         })
 
         if(response.success) {
-            fetchContactMessages(false, pageSize);
+            fetchContactMessages(false, pageSize, page);
         }
     } catch (error) {
         console.error((error as Error).message)
@@ -120,6 +120,7 @@ export const useContactMessages = () => {
 
       if(response.success) {
           fetchContactMessages(false, pageSize);
+          contactPage.value = 1;
       }
     } catch (error) {
         console.error((error as Error).message)

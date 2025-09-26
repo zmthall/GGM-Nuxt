@@ -11,12 +11,12 @@
                         :contact-messages="contactMessages" 
                         :pagination="contactMessagesPagination" 
                         :has-toolbar="false" 
-                        @change-status="updateContactStatus"
-                        @change-tags="updateContactTags"
+                        @change-status="(payload) => updateContactStatus(payload, 10, contactPage)"
+                        @change-tags="(payload) => updateContactTags(payload, 10, contactPage)"
                         @export-pdf="exportContactPDF"
-                        @prev-page="fetchContactMessages(false, --contactPage)"
-                        @next-page="fetchContactMessages(false, ++contactPage)"
-                        @page-change="(p) => { contactPage = p; fetchContactMessages(false, contactPage)}"
+                        @prev-page="fetchContactMessages(false, 10, --contactPage)"
+                        @next-page="fetchContactMessages(false, 10, ++contactPage)"
+                        @page-change="(contactPage) => { fetchContactMessages(false, 10, contactPage)}"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
@@ -69,6 +69,6 @@ const {
 } = useContactMessages();
 
 onMounted(() => {
-    fetchContactMessages();
+    fetchContactMessages(true, 10);
 })
 </script>

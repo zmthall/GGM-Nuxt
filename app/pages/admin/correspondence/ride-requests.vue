@@ -12,12 +12,12 @@
                         :pagination="rideRequestsPagination" 
                         :has-toolbar="false" 
                         :ride-request-modal-data="rideRequestModalData"
-                        @change-status="updateRideStatus"
-                        @change-tags="updateRideTags"
+                        @change-status="(payload) => updateRideStatus(payload, 10, requestPage)"
+                        @change-tags="(payload) => updateRideTags(payload, 10, requestPage)"
                         @export-pdf="exportRidePDF"
-                        @prev-page="fetchRideRequests(false, --requestPage)"
-                        @next-page="fetchRideRequests(false, ++requestPage)"
-                        @page-change="(p) => { requestPage = p; fetchRideRequests(false, requestPage)}"
+                        @prev-page="fetchRideRequests(false, 10, --requestPage)"
+                        @next-page="fetchRideRequests(false, 10, ++requestPage)"
+                        @page-change="(p) => { requestPage = p; fetchRideRequests(false, 10, requestPage)}"
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
@@ -69,7 +69,7 @@ definePageMeta({
 });
 
 onMounted(() => {
-    fetchRideRequests();
+    fetchRideRequests(true, 10);
 });
 </script>
 

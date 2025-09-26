@@ -6,7 +6,7 @@ export const useRideRequests = () => {
   const rideRequestsPagination = ref<Pagination | null>(null)
   const loadingRideRequests = ref<boolean>(true);
   const authStore = useAuthStore();
-  const requestPage = ref<number>(1)
+  const requestPage = ref<number>(1);
 
   const fetchRideRequests = async (isLoading: boolean = true, pageSize: number = 5, page: number = 1) => {
     if(isLoading)
@@ -33,7 +33,7 @@ export const useRideRequests = () => {
         }
   }
 
-  const updateRideStatus = async (messageData: {id: string, status: RideRequestStatus}, pageSize: number = 5) => {
+  const updateRideStatus = async (messageData: {id: string, status: RideRequestStatus}, pageSize: number = 5, page: number = 1) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -47,14 +47,14 @@ export const useRideRequests = () => {
         })
 
         if(response.success) {
-            fetchRideRequests(false, pageSize);
+            fetchRideRequests(false, pageSize, page);
         }
     } catch (error) {
         console.error((error as Error).message)
     }
   }
 
-  const updateRideTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5) => {
+  const updateRideTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5, page: number = 1) => {
     try {
         const idToken = await authStore.getIdToken();
 
@@ -68,7 +68,7 @@ export const useRideRequests = () => {
         })
 
         if(response.success) {
-            fetchRideRequests(false, pageSize);
+            fetchRideRequests(false, pageSize, page);
         }
     } catch (error) {
         console.error((error as Error).message)
@@ -119,6 +119,7 @@ export const useRideRequests = () => {
 
       if(response.success) {
           fetchRideRequests(false, pageSize);
+          requestPage.value = 1;
       }
     } catch (error) {
         console.error((error as Error).message)

@@ -14,9 +14,9 @@
                         @change-status="updateContactStatus"
                         @change-tags="updateContactTags"
                         @export-pdf="exportContactPDF"
-                        @prev-page="fetchContactMessages(false, --contactPage)"
-                        @next-page="fetchContactMessages(false, ++contactPage)"
-                        @page-change="(p) => { contactPage = p; fetchContactMessages(false, contactPage)}"
+                        @prev-page="fetchContactMessages(false, 5, --contactPage)"
+                        @next-page="fetchContactMessages(false, 5, ++contactPage)"
+                        @page-change="(contactPage) => { fetchContactMessages(false, 5, contactPage)}"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
@@ -42,9 +42,9 @@
                         @change-status="updateRideStatus"
                         @change-tags="updateRideTags"
                         @export-pdf="exportRidePDF"
-                        @prev-page="fetchRideRequests(false, --requestPage)"
-                        @next-page="fetchRideRequests(false, ++requestPage)"
-                        @page-change="(p) => { requestPage = p; fetchRideRequests(false, requestPage)}"
+                        @prev-page="fetchRideRequests(false, 5, --requestPage)"
+                        @next-page="fetchRideRequests(false, 5, ++requestPage)"
+                        @page-change="(requestPage) => fetchRideRequests(false, 5, requestPage)"
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
