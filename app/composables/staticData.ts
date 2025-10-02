@@ -967,20 +967,20 @@ export const useStaticData = () => {
 
     const company = {
       name: "Golden Gate Manor, Inc.",
-      phone: "+1-719-544-3231",
+      phone: "719-544-3231",
       hours: "8:00AM-4:00PM Monday to Friday",
       address: "648 S. Union Ave., Pueblo CO, 81004",
       admin: {
         address: "612 S. Union Ave., Pueblo CO, 81004",
-        phone: "+1-719-696-8032",
+        phone: "719-696-8032",
         fax: "719-696-8548",
         hours: "8:00AM-4:00PM Monday to Friday",
       },
       trans: {
         address: "648 S. Union Ave., Pueblo CO, 81004",
         phone: {
-          dispatch: "+1-719-543-2525",
-          office: "+1-719-544-3231",
+          dispatch: "719-543-2525",
+          office: "719-544-3231",
           tollFree: "844-543-2525",
         },
         fax: "719-544-4187",
@@ -996,8 +996,8 @@ export const useStaticData = () => {
       assitedLiving: {
         name: "Golden Gate Manor Assisted Living",
         address: "612 S. Union Ave., Puebo CO, 81004",
-        phone: "+1-719-924-9932",
-        fax: "+1-719-696-8548",
+        phone: "719-924-9932",
+        fax: "719-696-8548",
         houses: {
           ggm1: {
             address: "606 W. Abriendo Ave., Pueblo CO, 81004",

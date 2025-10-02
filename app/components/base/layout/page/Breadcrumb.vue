@@ -4,9 +4,12 @@
       <li v-if="!isAdmin">
         <NuxtLink to="/" class="link">Home</NuxtLink>
       </li>
-      <li v-for="(crumb, idx) in breadcrumbs" :key="crumb.path">
+      <li v-else>
+        <NuxtLink to="/admin" class="link">Dashboard Home</NuxtLink>
+      </li>
+      <li v-for="crumb in breadcrumbs" :key="crumb.path">
         <template v-if="!crumb.isLast">
-         <span v-if="idx === 1 && isAdmin">&nbsp;/&nbsp;</span><NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
+         &nbsp;/&nbsp;<NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
         </template>
         <template v-else>
           <span>&nbsp;/&nbsp;{{ crumb.label }}</span>
@@ -60,7 +63,7 @@ const breadcrumbs = computed(() => {
     if (customLabel) {
       label = customLabel
     } else if (segment === 'admin') {
-      label = 'Dashboard Home'
+      return
     } else if (rawTitle) {
       if (import.meta.dev && rawTitle.length >= MAX_LABEL_LENGTH) {
         console.warn(`[Breadcrumb] Long title "${rawTitle}" has no breadcrumbLabel defined.`)

@@ -21,7 +21,7 @@
             <BaseFormInput v-model="application.personal.address" name="address" type="text" label="Address" placeholder="123 Street, Pueblo CO, 81001"/>
           </div>
           <div class="md:w-1/2">
-            <BaseFormInput v-model="application.personal.phoneNumber" name="phone" type="tel" label="Phone Number" placeholder="(555) 555-5555" />
+            <BaseFormInput v-model="application.personal.phoneNumber" name="phone" type="tel" label="Phone Number" placeholder="(555) 555-5555" autocomplete="phone"/>
           </div>
           <div class="space-y-4">
             <BaseFormRadios v-model="application.personal.over18" name="over-18" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Are you over the age of 18?" styling="flex gap-2"/>
@@ -112,10 +112,10 @@
 
 <script lang="ts" setup>
 import { useRecaptcha } from '../../composables/messages/recaptcha';
-import type { FileObject } from '../../models/Application.js';
 
 const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
 const route = useRoute()
+const router = useRouter();
 
 const notAllowedToAskFelony = ['gs_general', 'ggmc-manager', 'ggmc-assistant_manager', 'ggmc-attendant', 'general']
 const drivingPositions = ['transportation_general', 'city_cab-driver', 'ggmt-driver', 'medical_supply-inventory_tech', 'medical_supply-deliver_tech']
@@ -163,6 +163,20 @@ onMounted(() => {
 onUnmounted(() => {
   unloadRecaptcha()
 })
+
+watch(
+  () => application.personal.select,
+  (val) => {
+    const current = typeof route.query.select === 'string' ? route.query.select : ''
+    if (val === current) return // no-op
+
+    const next = { ...route.query }
+    if (val) next.select = val
+    else delete next.select // remove param if empty
+
+    router.replace({ query: next })
+  }
+)
 
 const showFelonyQuestion = computed(() => {
   return !notAllowedToAskFelony.includes(application.personal.select as string)
@@ -310,6 +324,24 @@ const validateApplicationForm = () => {
   }
 }
 
+// Narrower, reusable checks
+const isFile = (v: unknown): v is File =>
+  typeof File !== 'undefined' && v instanceof File;
+
+// Generic extractor for arrays of objects with a known file key
+function filesFrom<T extends Record<string, unknown>, K extends keyof T>(
+  items: ReadonlyArray<T> | undefined,
+  key: K
+): File[] {
+  if (!items) return [];
+  const out: File[] = [];
+  for (const item of items) {
+    const v = item[key];
+    if (isFile(v)) out.push(v);
+  }
+  return out;
+}
+
 const submitApplication = async () => {
   try {
     isSubmitting.value = true
@@ -324,6 +356,12 @@ const submitApplication = async () => {
       }
       return
     }
+
+    type FileWrap = { id: string; file: File };
+    const mvrFiles = filesFrom<FileWrap, 'file'>(application.driving.MVR, 'file');
+    const dlFiles = filesFrom<FileWrap, 'file'>(application.driving.driversLicense, 'file');
+    const resumeFiles = filesFrom<FileWrap, 'file'>(application.work.resume, 'file');
+
   
     const token = await executeRecaptcha('application_form')
     
@@ -348,34 +386,11 @@ const submitApplication = async () => {
       }))
       
       // Add files individually
-      // MVR files
-      if (application.driving.MVR && application.driving.MVR.length > 0) {
-        application.driving.MVR.forEach((fileObj: FileObject) => {
-          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
-            formData.append('MVR', fileObj.file as File)
-          }
-        })
-      }
+      for (const f of mvrFiles) formData.append('MVR', f, f.name);
+      for (const f of dlFiles) formData.append('dl', f, f.name);
+      for (const f of resumeFiles) formData.append('resume', f, f.name);
       
-      // Driver's License files
-      if (application.driving.driversLicense && application.driving.driversLicense.length > 0) {
-        application.driving.driversLicense.forEach((fileObj: {id: string, file: File}) => {
-          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
-            formData.append('dl', fileObj.file as File)
-          }
-        })
-      }
-      
-      // Resume files
-      if (application.work.resume && application.work.resume.length > 0) {
-        application.work.resume.forEach((fileObj: {id: string, file: File}) => {
-          if (fileObj && typeof fileObj === 'object' && 'file' in fileObj) {
-            formData.append('resume', fileObj.file as File)
-          }
-        })
-      }
-      
-      // Submit with FormData (don't set Content-Type header - browser will set it automatically)
+      // Submit with FormDat
       await $fetch('/api/application/submit', {
         baseURL: 'https://api.goldengatemanor.com/',
         method: 'POST',

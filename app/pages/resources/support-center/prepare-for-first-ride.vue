@@ -46,12 +46,12 @@
                     We proudly serve most of Colorado, excluding the Denver metro counties of Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe due to contractual agreements. We also are not available most of Northern Colorado due to distance restrictions.
                   </p>
                   <p class="text-xl text-brand-main-text">
-                    Need help determining eligibility? Call us at <a :href="`tel:${company?.trans.phone.office}`">{{ company?.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
+                    Need help determining eligibility? Call us at <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
                   </p>
                 </div>
               </div>
               <div class="w-full md:w-3/4 mx-auto lg:w-1/2 rounded-lg overflow-hidden shadow-primary p-4 bg-brand-background">
-                <BaseInteractiveServiceAreaMap />
+                <BaseInteractiveServiceAreaMap loading="lazy"/>
               </div>
             </div>
           </BaseLayoutPageContainer>

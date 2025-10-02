@@ -2,11 +2,12 @@
   <div class="h-full w-full">
     <ul class="w-full h-full relative bg-black">
       <li 
-        v-for="(image, idx) in images" 
-        :key="image.id" 
-        class="absolute h-full w-full transition-opacity duration-500"
-        :class="{ 'opacity-0': currentIdx !== idx }"
+      v-for="(image, idx) in images" 
+      :key="image.id" 
+      class="absolute h-full w-full transition-opacity duration-500 "
+      :class="{ 'opacity-0': currentIdx !== idx }"
       >
+      <div class="absolute top-0 left-0 shadow-image w-full h-full"/>
       <button class="absolute opacity-50 bottom-0 left-0 hover:opacity-100 z-10" @click="toggleSlideShow" >
         <BaseIcon v-if="!isPlaying" name="material-symbols:play-arrow-rounded" />
         <BaseIcon v-else name="ic:outline-pause" />
@@ -80,3 +81,9 @@ onUnmounted(() => {
 //   startSlideshow()
 // }
 </script>
+
+<style scoped>
+  .shadow-image {
+    box-shadow: inset 0 0 4px 3px rgba(0, 0, 0, 0.3)
+  }
+</style>
