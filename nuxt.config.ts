@@ -97,17 +97,6 @@ export default defineNuxtConfig({
           content: '#121f75'
         }
       ],
-       script: [
-        ...(process.env.GOOGLE_ANALYTICS_ID ? [{
-          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`,
-          async: true
-        } as const] : []),
-        ...(process.env.MICROSOFT_UET_ID ? [{
-          src: 'https://bat.bing.com/bat.js',
-          async: true,
-          defer: true
-        } as const] : [])
-      ]
     },
   },
   sitemap: {

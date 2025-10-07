@@ -1,81 +1,100 @@
 // plugins/marketing.client.ts
-import { defineNuxtPlugin, useRuntimeConfig } from '#app'
+import { defineNuxtPlugin, useRuntimeConfig, useRouter, useRoute } from '#app'
 
 export default defineNuxtPlugin(() => {
+  if (import.meta.server) return
+
   const { public: pub } = useRuntimeConfig()
-  const gaId = pub.googleAnalyticsId as string | undefined
-  const uetId = pub.microsoftUetId as string | undefined
-  const nonce = pub.cspNonce as string | undefined
+  const gaId  = pub.googleAnalyticsId as string | undefined
+  const uetId = pub.microsoftUetId     as string | undefined
 
   if (!gaId && !uetId) return
 
-  // one-time guard (avoid HMR double-runs)
-  type MarkedWindow = Window & { __MARKETING_LOADED__?: boolean }
-  const wf = window as MarkedWindow
-  if (wf.__MARKETING_LOADED__) return
-  wf.__MARKETING_LOADED__ = true
+  const router = useRouter()
+  const route  = useRoute()
 
-  // helper: add inline script with nonce
-  const addInline = (code: string, key?: string) => {
-    // (optional) avoid duplicate by data-key
-    if (key && Array.from(document.scripts).some(s => (s as HTMLScriptElement).dataset.key === key)) return
-    const s = document.createElement('script')
-    s.type = 'text/javascript'
-    if (nonce) s.setAttribute('nonce', nonce)
-    if (key) s.dataset.key = key
-    s.textContent = code
-    document.head.appendChild(s)
+  const whenIdle = (fn: () => void, timeout = 4000): void => {
+    const ric = window.requestIdleCallback
+    if (typeof ric === 'function') ric(() => fn(), { timeout })
+    else window.setTimeout(fn, timeout)
   }
 
-  // ---------- GA4 inline init (no external load here; that's in nuxt.config) ----------
-  if (gaId) {
-    addInline(`
-      (function(){
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', '${gaId}');
-      })();
-    `, 'ga-init-inline')
-  }
+  const loadScript = (src: string): Promise<void> =>
+    new Promise<void>((resolve, reject) => {
+      const s = document.createElement('script')
+      s.src = src
+      s.async = true
+      s.onload = () => resolve()
+      s.onerror = () => reject(new Error(`Failed to load ${src}`))
+      document.head.appendChild(s)
+    })
 
-  // ---------- UET post-load swap (no external load here; that's in nuxt.config) ----------
-  if (uetId) {
-    // If bat.js is already present, run the swap once it’s loaded; otherwise do nothing here
-    // (the SSR-injected <script src="https://bat.bing.com/bat.js"> will handle loading).
-    const tryInitUet = () => {
-      try {
-        // @ts-expect-error UET is global from bat.js
-        if (typeof window.UET === 'function') {
-          // If window.uetq is still an array, flush into live queue
-          const q = (window as unknown as { uetq?: unknown }).uetq
-          // @ts-expect-error UET is a constructor
-          const u = new window.UET({ ti: uetId, enableAutoSpaTracking: true })
-          if (Array.isArray(q)) {
-            q.forEach((args: unknown) => {
-              if (Array.isArray(args)) (u.push as (...a: unknown[]) => number)(...(args as unknown[]))
-            })
-          };
-          (window as unknown as { uetq: unknown }).uetq = u
-          // initial page load event (auto SPA handles future navs)
-          // @ts-expect-error queue object
-          window.uetq.push('pageLoad')
-          return true
-        }
-      } catch {/* swallow */}
-      return false
-    }
+  const markLoaded = () => { (window as typeof window & { __MKT_LOADED__?: boolean }).__MKT_LOADED__ = true }
+  const isLoaded   = () =>  (window as typeof window & { __MKT_LOADED__?: boolean }).__MKT_LOADED__ === true
+  const isAdmin    = (p: string) => p.startsWith('/admin')
 
-    // If already loaded, init immediately; else wait for load
-    if (!tryInitUet()) {
-      // Wait for the SSR <script src="bat.js"> to finish loading
-      // (a simple poll is enough; avoids adding another onload listener to the tag)
+  // --- NEW: instantiate UET once bat.js is present ---
+  const initUet = async (): Promise<void> => {
+    if (!uetId) return
+    // ensure there is a queue to migrate
+    window.uetq = window.uetq || []
+
+    // wait up to ~6s for the constructor
+    let tries = 0
+    await new Promise<void>((resolve, reject) => {
       const t = setInterval(() => {
-        if (tryInitUet()) clearInterval(t)
+        try {
+          // @ts-expect-error provided by bat.js
+          if (typeof window.UET === 'function') {
+            const queued = window.uetq
+            // @ts-expect-error constructor exists at runtime
+            const live = new window.UET({ ti: uetId, enableAutoSpaTracking: true })
+            if (Array.isArray(queued)) {
+              queued.forEach(args => {
+                if (Array.isArray(args)) (live.push as (...a: unknown[]) => number)(...args)
+              })
+            }
+            window.uetq = live
+            ;(window.uetq as { push: (...a: unknown[]) => number }).push('pageLoad')
+            clearInterval(t); resolve(); return
+          }
+        } catch (e) { clearInterval(t); reject(e as Error); return }
+        if (++tries > 40) { clearInterval(t); reject(new Error('UET not available')); }
       }, 150)
-      // Optional: stop polling after ~5s
-      setTimeout(() => clearInterval(t), 5000)
-    }
+    })
   }
+
+  // Load heavy libs *once* after load+idle (unless we’re on /admin)
+  window.addEventListener('load', () => {
+    if (isLoaded() || isAdmin(route.path)) return
+    whenIdle(async () => {
+      const tasks: Promise<void>[] = []
+      if (gaId)  tasks.push(loadScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`))
+      if (uetId) tasks.push(loadScript('https://bat.bing.com/bat.js'))
+      try {
+        await Promise.all(tasks)
+        // 🔑 make the UET tag real so Tag Helper sees it
+        await initUet()
+      } finally {
+        markLoaded()
+      }
+    }, 1500)
+  }, { once: true })
+
+  // If user navigates from /admin → public before libs loaded, load them then
+  router.afterEach((to) => {
+    if (!isLoaded() && !isAdmin(to.path)) {
+      whenIdle(async () => {
+        const tasks: Promise<void>[] = []
+        if (gaId)  tasks.push(loadScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`))
+        if (uetId) tasks.push(loadScript('https://bat.bing.com/bat.js'))
+        try {
+          await Promise.all(tasks)
+          await initUet()
+        } finally {
+          markLoaded()
+        }
+      }, 1000)
+    }
+  })
 })
