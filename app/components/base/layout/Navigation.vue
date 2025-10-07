@@ -54,7 +54,7 @@
                         <NuxtLink 
                             to="/" class="font-bold text-brand-primary text-xl w-full"
                             @click="toggleDrawer">
-                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="50" width="250" format="webp" preload priority class="w-full h-full object-contain" />
+                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="50" width="250" format="webp,avif" densities="1" :preload="{ fetchPriority: 'high' }" class="w-full h-full object-contain" />
                         </NuxtLink>
                         <button class="absolute top-3 right-3" @click="toggleDrawer">
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
