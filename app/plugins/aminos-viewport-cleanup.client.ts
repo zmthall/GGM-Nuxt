@@ -57,23 +57,10 @@ export default defineNuxtPlugin(() => {
     viewportObserver.observe(document.head, { childList: true });
   };
 
-  // ---- ensure container exists before their loader runs ---------------------
-  const ensureContainer = () => {
-    let host = document.getElementById('chat_app');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'chat_app';
-      host.setAttribute('data-bot-id', BOT_ID);
-      document.body.appendChild(host);
-    }
-  };
-
   // ---- inject their script at DOMContentLoaded/interactive -----------------
   const mountScriptOnce = (): void => {
     if (mounted) return;
     mounted = true;
-
-    ensureContainer();
 
     if (!document.getElementById('aminos-chat-loader')) {
       const s = document.createElement('script');
