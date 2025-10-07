@@ -34,7 +34,7 @@
                         format="webp" class="max-xs:w-[225px] xs:w-[300px]" loading="eager" title="Golden Gate Manor Inc. Logo" />
                 </NuxtLink>
             </div>
-            <button class="flex" @click="toggleDrawer">
+            <button class="flex" aria-label="Navigation Menu" @click="toggleDrawer">
                 <BaseIcon name="charm:menu-hamburger" color="text-gray-500" hover-color="hover:text-brand-primary" />
             </button>
         </header>

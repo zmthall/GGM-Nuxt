@@ -554,6 +554,8 @@ definePageMeta({
   title: 'FAQs for Golden Gate Manor Inc.',
 })
 
+useSchemaOrg([ defineWebPage({ '@type': 'WebPage' }) ])
+
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
   title: 'FAQs',
@@ -616,6 +618,134 @@ const updateIdAssistedLiving = (val: string) => activeAccordionIdAssistedLiving.
 
 const activeAccordionIdGasStation = ref<string>('')
 const updateIdGasStation = (val: string) => activeAccordionIdGasStation.value = val
+
+// Helper for phones in answers
+const officePhone = company?.trans?.phone?.office
+const dispatchPhone = company?.trans?.phone?.dispatch
+const tel = (num?: string) => (num ? `<a href="tel:${num}">${num}</a>` : 'our office')
+
+const FAQMainEntity = [
+    { "@type": "Question", "name": "WHO IS ELIGIBLE?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Your client may be eligible if they have a current Medicaid Insurance ID and are going to a Medicaid-approved appointment.</p>" } },
+
+    { "@type": "Question", "name": "HOW DO THEY SCHEDULE A RIDE?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": `<p>Please schedule at least 24 hours in advance by calling ${tel(officePhone)} between 8:00 AM and 4:00 PM, Monday–Friday. After hours, call dispatch at ${tel(dispatchPhone)}.</p>` } },
+
+    { "@type": "Question", "name": "HOW DO THEY CANCEL A RIDE?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": `<p>Call at least two hours before your pick-up time at ${tel(officePhone)}. After hours, call dispatch at ${tel(dispatchPhone)}.</p>` } },
+
+    { "@type": "Question", "name": "WHICH SERVICES ARE COVERED?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Transportation is provided for Medicaid-covered services. We cannot transport to services not covered by Medicaid.</p>" } },
+
+    { "@type": "Question", "name": "HOW DOES THE CLIENT GET APPROVED?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": `<p>An attending Physician/PA/NP/Therapist or other licensed professional must complete and sign the Medical Certificate of Transportation Services.</p><p>If the client lives beyond 25 miles from the provider, the additional 25-mile form is also required. See our <a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener nofollow">Medical Certificate of Transportation Services form</a>.</p>` } },
+
+    { "@type": "Question", "name": "WHEN SHOULD THEY BE READY FOR THEIR RIDE?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>We’ll give you a readiness timeframe when you schedule. Shared rides may require being ready earlier. Traffic/weather may cause delays.</p>" } },
+
+    // --- Medical Supply ---
+    { "@type": "Question", "name": "What insurance do you take?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>We currently accept:</p><ul><li>Aetna</li><li>Blue Cross Blue Shield (Anthem)</li><li>Cigna</li><li>Health First Colorado (Medicaid)</li><li>Humana</li><li>Medicare</li><li>United Healthcare</li></ul>" } },
+
+    { "@type": "Question", "name": "What does my insurance cover?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Please contact your insurer to confirm whether your requested item is covered.</p>" } },
+
+    { "@type": "Question", "name": "What do I have to fill out to request DME or supplies?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>First verify coverage with your insurer. Then your prescriber gathers medical-necessity documentation for our DME Specialists. Orders can’t be completed without everything listed under “What We Need for Orders.”</p>" } },
+
+    { "@type": "Question", "name": "What is Medicare's definition of DME?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<ul><li>Durable (withstands repeated use)</li><li>Appropriate for use in the home</li><li>Primarily for a medical purpose</li><li>Necessary and reasonable for treatment</li></ul>" } },
+
+    { "@type": "Question", "name": "Does Golden Gate Medical Supplies do repairs?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>We don’t specialize in repairs, but may do simple fixes (e.g., brakes, wheels, accessories). Repairs are at the patient’s discretion through a certified service.</p>" } },
+
+    { "@type": "Question", "name": "Am I able to get DME and/or supplies out of pocket?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes. You can purchase out of pocket without a prescriber, though we recommend consulting your doctor. Ask about rent-to-own options.</p>" } },
+
+    // --- Assisted Living ---
+    { "@type": "Question", "name": "What services are included in assisted living?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Services include:</p><ul><li>Daily care assistance (hygiene, dressing, mobility)</li><li>Three meals and snacks</li><li>Transportation to medical appointments</li><li>Medication management</li><li>Light housekeeping and laundry</li><li>Scheduling/coordination of appointments</li><li>Recreational activities and amenities</li></ul><p>See our Assisted Living page or contact us for the full list.</p>" } },
+
+    { "@type": "Question", "name": "How do I know if assisted living is for me or my loved one?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>It may be right if you need help with daily activities, want independence with support, would benefit from community, need help with meals/housekeeping/transportation, prefer 24-hour staff availability, and don’t require full nursing care. Schedule a consultation and tour.</p>" } },
+
+    { "@type": "Question", "name": "What is the cost of assisted living at Golden Gate Manor?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Without insurance, costs depend on income plus fees—contact us for a personalized quote.</p><p>With Medicaid, the out-of-pocket expense is $797, with remaining covered amounts varying. Spending allowances can change; contact us to discuss details.</p>" } },
+
+    { "@type": "Question", "name": "How is assisted living different from nursing homes?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Assisted living supports independence with help for daily activities (often private/semi-private rooms). Nursing homes provide 24-hour skilled nursing and more intensive medical care.</p>" } },
+
+    { "@type": "Question", "name": "Is there 24-hour staff available?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes. Staff are on-site 24/7 for emergencies and support.</p>" } },
+
+    { "@type": "Question", "name": "Can I schedule a tour of the facility?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes—call 719-696-8032 or contact us via the website to schedule a tour.</p>" } },
+
+    // --- Gas & Goods ---
+    { "@type": "Question", "name": "What types of fuel do you offer?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Regular (87), mid-grade (89), premium (93) unleaded fuels, plus diesel. Conoco TOP TIER™ additives; pumps inspected and maintained.</p>" } },
+
+    { "@type": "Question", "name": "Do you accept credit cards and EBT/SNAP?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>We accept Visa, Mastercard, American Express, Discover, cash, fleet cards, and commercial accounts. EBT/SNAP is planned for the future.</p>" } },
+
+    { "@type": "Question", "name": "What convenience store items do you carry?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Snacks, candy, slushies, F’Real shakes/smoothies, cold beer, sodas, energy drinks, chips, jerky, refrigerated grab-and-go items, basic household goods, phone chargers, and travel essentials.</p>" } },
+
+    { "@type": "Question", "name": "Do you have an ATM on-site?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes—available during store hours with a $2.50 fee. Dispenses $20s and supports balance inquiries/mini-statements.</p>" } },
+
+    { "@type": "Question", "name": "Do you carry automotive supplies (oil, windshield fluid, etc.)?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes—motor oil, washer fluid, antifreeze, brake fluid, gas cans, basic tools, jumper cables, tire gauges, air fresheners, and emergency road kits.</p>" } },
+
+    { "@type": "Question", "name": "Do you sell lottery tickets?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "<p>Yes—scratch tickets ($1–$30) and draw games (Powerball, Mega Millions, Colorado Lotto+, Cash 5, Pick 3). We cash winnings up to $500.</p>" } }
+  ]
+
+/** 1) Build the FAQ node */
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQMainEntity
+}
+
+
+/** 3) Emit ONE script tag (replace your existing ld-json-org entry) */
+useHead({
+  script: [
+    {
+      key: 'ld-json-faq',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(faqSchema),
+      'data-schema': 'faq'
+    }
+  ]
+})
+
+
 
 onMounted(() => {
   window.addEventListener('resize', debouncedResize)

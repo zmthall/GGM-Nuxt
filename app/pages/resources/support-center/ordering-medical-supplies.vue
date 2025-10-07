@@ -1,6 +1,6 @@
 <template>
     <div>
-        Prepare
+        Page is currently under contstruction
     </div>
 </template>
 
