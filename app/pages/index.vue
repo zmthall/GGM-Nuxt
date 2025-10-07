@@ -26,9 +26,11 @@
                 <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
                     <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                         <!-- Image -->
-                        <div class="w-full h-[450px] max-sm:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
-                            <BaseInteractiveAutoImageCarousel :images />
-                        </div>
+                        <DeferRender when="visible">
+                            <div class="w-full h-[450px] max-sm:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
+                                <LazyBaseInteractiveAutoImageCarousel :images />
+                            </div>
+                        </DeferRender>
     
                         <!-- Text Content -->
                         <div>
@@ -53,7 +55,7 @@
                 </h2>
                 <div class="flex justify-center flex-wrap gap-8">
                     <NuxtLink to="/assisted-living">
-                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Assisted</span>
@@ -63,10 +65,10 @@
                                     Golden Gate Manor Assisted Living houses are highly respected, Medicaid-certified facilities located in Pueblo, Colorado. At each of our 5 locations, trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals, transportation, and treatment management.
                                 </p>
                             </div>
-                        </BaseLayoutCard>
+                        </LazyBaseLayoutCard>
                     </NuxtLink>
                     <NuxtLink to="/nemt">
-                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">NEMT</span>
@@ -76,10 +78,10 @@
                                     Our fleet of 40+ vehicles, including wheelchair accessible vans, delivers our non-emergency medical transportation (NEMT) service across Southern Colorado and to main appointment areas, such as Denver. Reliably, we will get you to and from covered medical appointments and approved services when you need a helping hand.
                                 </p>
                             </div>
-                        </BaseLayoutCard>
+                        </LazyBaseLayoutCard>
                     </NuxtLink>
                     <NuxtLink to="/non-medical">
-                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Non-Medical</span>
@@ -89,10 +91,10 @@
                                     We are proud to be one of the only companies in Pueblo County, including Pueblo West, to provide non-medical transportation services to eligible community members who are disabled or elderly receiving Medicaid assistance. We can take you to run personal errands, attend family events, or even just a trip to a place to relax; we're here to help.
                                 </p>
                             </div>
-                        </BaseLayoutCard>
+                        </LazyBaseLayoutCard>
                     </NuxtLink>
                    <NuxtLink to="/medical-supplies">
-                        <BaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                        <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
                             <div>
                                 <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
                                     <span class="text-gray-500">Durable Medical</span>
@@ -102,7 +104,7 @@
                                     Golden Gate Medical Supplies offers high-quality durable medical equipment and supplies with accessible pricing throughout Colorado. We work closely to ensure our commitment to quality care is delivered when and where it's needed. In addition, we provide home delivery and shipping services to make accessibility easier.
                                 </p>
                             </div>
-                        </BaseLayoutCard>
+                        </LazyBaseLayoutCard>
                     </NuxtLink>
                 </div>
             </BaseLayoutPageSection>
