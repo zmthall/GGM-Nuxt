@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import flatpickr from 'flatpickr'
+import 'flatpickr/dist/flatpickr.min.css'
 import { onMounted, ref, watch } from 'vue'
 
 // Component options

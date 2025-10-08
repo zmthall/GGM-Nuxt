@@ -6,6 +6,8 @@
   @apply font-semibold underline text-white hover:text-brand-link-hover
 }
 
+.cv-auto{ content-visibility: auto; contain-intrinsic-size: 1px 800px; }
+
 h1, h2, h3, h4, h5, h6 {
   @apply font-headings;
   scroll-margin-top: 45px;
