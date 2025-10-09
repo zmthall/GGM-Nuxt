@@ -19,7 +19,12 @@ export default defineNuxtConfig({
     '@nuxtjs/robots'
   ],
   nitro: {
-    compressPublicAssets: true
+    compressPublicAssets: true,
+  },
+  vite: {
+    build: {
+      cssCodeSplit: false,   // roll all CSS into a single entry.css
+    }
   },
   routeRules: {
     // Contact / resources
