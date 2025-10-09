@@ -41,7 +41,7 @@
                                     <NuxtImg
                                     src="/images/home-images/transportation-services.jpeg"
                                     alt="Golden Gate Manor Transportation"
-                                    format="webp"
+                                    format="webp,avif"
                                     width="600" height="400" quality="50"
                                     sizes="(max-width: 640px) 100vw, 600px"
                                     loading="lazy"

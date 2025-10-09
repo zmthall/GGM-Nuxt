@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="lg:w-1/2">
-                <NuxtImg src="/images/pages/prepare-for-first-ride/car-shot.jpg" quality="60" format="webp" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
+                <NuxtImg src="/images/pages/prepare-for-first-ride/car-shot.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
               </div>
             </div>
           </BaseLayoutPageContainer>
@@ -147,7 +147,7 @@
                     </p>
                   </div>
                   <div class="w-full md:w-1/2 lg:1/3">
-                    <NuxtImg src="/images/pages/prepare-for-first-ride/confirm-call.jpg" quality="60" format="webp" class="w-full aspect-[4/3] rounded-lg shadow-primary" />
+                    <NuxtImg src="/images/pages/prepare-for-first-ride/confirm-call.jpg" quality="60" format="webp,avif" class="w-full aspect-[4/3] rounded-lg shadow-primary" />
                   </div>
                 </div>
               </div>

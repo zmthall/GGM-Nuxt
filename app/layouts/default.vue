@@ -3,12 +3,17 @@
     <!-- Main header and page navigation -->
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
-    <AdminAllPageDashboard />
+    <DeferRender when="idle">
+      <LazyAdminAllPageDashboard
+        v-if="authStore.authorized" />
+    </DeferRender>
     <!-- Page headers and breadcrumb with ability to disable on specific pages  -->
     <BaseLayoutPageHeader v-if="showHeader" :title="pageHeader"/>
     <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
     <slot />
-    <BaseLayoutFooter />
+    <DeferRender when="visible">
+      <LazyBaseLayoutFooter />
+    </DeferRender>
   </main>
 </template>
 
@@ -17,7 +22,8 @@ defineOptions({
   name: "DefaultPages"
 })
 
-const staticData = useStaticData()
+const staticData = useStaticData();
+const authStore = useAuthStore();
 
 if(staticData) {
   useHead({

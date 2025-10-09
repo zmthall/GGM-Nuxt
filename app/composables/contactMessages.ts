@@ -1,131 +1,190 @@
-import type { ContactFormData, ContactFormStatus } from "~/models/admin/ContactForm";
-import type { Pagination } from "~/models/Pagination";
+// composables/admin/useContactMessages.ts
+import type { ContactFormData, ContactFormStatus } from '~/models/admin/ContactForm'
+import type { Pagination } from '~/models/Pagination'
+
+type ListResponse = { success: boolean; data: ContactFormData[]; pagination: Pagination }
+type OkResponse = { success: boolean }
 
 export const useContactMessages = () => {
-  const contactMessages = ref<ContactFormData[]>([]);
+  if (import.meta.server) {
+    // Never run on SSR – only client
+    return {
+      // no-ops to keep the caller happy if ever imported server-side
+      fetchContactMessages: async () => null,
+      updateContactStatus: async () => void 0,
+      updateContactTags: async () => void 0,
+      exportContactPDF: async () => void 0,
+      deleteContactMessage: async () => void 0,
+      contactPage: ref(1),
+      contactMessages: ref<ContactFormData[]>([]),
+      contactMessagesPagination: ref<Pagination | null>(null),
+      loadingContactMessages: ref(false),
+    }
+  }
+
+  // State
+  const contactMessages = ref<ContactFormData[]>([])
   const contactMessagesPagination = ref<Pagination | null>(null)
-  const loadingContactMessages = ref<boolean>(true);
-  const authStore = useAuthStore();
+  const loadingContactMessages = ref<boolean>(false)
   const contactPage = ref<number>(1)
 
-  const fetchContactMessages = async (isLoading: boolean = true, pageSize: number = 5, page: number = 1) => {
-    if(isLoading)
-      loadingContactMessages.value = true;
+  // Auth
+  const auth = useAuthStore()
+  const canFetch = computed(() => auth.isFirebaseReady && auth.authorized)
+
+  // Abort previous in-flight list request on param changes / unmount
+  const listAbort = shallowRef<AbortController | null>(null)
+  onBeforeUnmount(() => listAbort.value?.abort())
+
+  const API = 'https://api.goldengatemanor.com'
+
+  // Helpers
+  const getTokenOrNull = async (): Promise<string | null> => {
+    const token = await auth.getIdToken()
+    return token ?? null
+  }
+
+  const fetchContactMessages = async (
+    isLoading = true,
+    pageSize = 5,
+    page = 1,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return null
+
+    const token = await getTokenOrNull()
+    if (!token) return null
+
+    // cancel in-flight
+    listAbort.value?.abort()
+    listAbort.value = new AbortController()
+
+    if (isLoading) loadingContactMessages.value = true
     try {
-      const idToken = await authStore.getIdToken();
+      const res = await $fetch<ListResponse>(`/api/contact-form?omit=${omit}`, {
+        baseURL: API,
+        method: 'GET',
+        query: { page, pageSize },
+        headers: { Authorization: `Bearer ${token}` },
+        signal: listAbort.value.signal
+      })
 
-      const response = await $fetch<{ success: boolean, data: ContactFormData[], pagination: Pagination }>(`/api/contact-form?page=${page}&pageSize=${pageSize}`, {
-          baseURL: 'https://api.goldengatemanor.com',
-          method: 'GET',
-          headers: {
-                  'Authorization': `Bearer ${idToken}`,
-              }
-        })
-
-      if(response.success) {
-        contactMessages.value = response.data
-        contactMessagesPagination.value = response.pagination
-        if(page)
-          contactPage.value = page
+      if (res.success) {
+        contactMessages.value = res.data
+        contactMessagesPagination.value = res.pagination
+        contactPage.value = page
       }
-    } catch (error) {
-      console.error((error as Error).message)
+      return res
+    } catch (e) {
+      // Ignore abort errors; log others
+      if (!(e instanceof DOMException && e.name === 'AbortError')) {
+        console.error('fetchContactMessages:', (e as Error).message)
+      }
+      return null
     } finally {
-      loadingContactMessages.value = false;
+      loadingContactMessages.value = false
     }
   }
 
+  const updateContactStatus = async (
+    message: { id: string; status: ContactFormStatus },
+    pageSize = 5,
+    page = contactPage.value,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
 
-  const updateContactStatus = async (messageData: {id: string, status: ContactFormStatus}, pageSize: number = 5, page: number = 1) => {
     try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/contact-form/${messageData.id}/status`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ status: messageData.status })
-        })
-
-        if(response.success) {
-            fetchContactMessages(false, pageSize, page);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
+      const res = await $fetch<OkResponse>(`/api/contact-form/${message.id}/status`, {
+        baseURL: API,
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: { status: message.status }
+      })
+      if (res.success) {
+        await fetchContactMessages(false, pageSize, page, omit)
+      }
+    } catch (e) {
+      console.error('updateContactStatus:', (e as Error).message)
     }
   }
 
-  const updateContactTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5, page: number = 1) => {
+  const updateContactTags = async (
+    message: { id: string; tags: string[] },
+    pageSize = 5,
+    page = contactPage.value,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
     try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/contact-form/${messageData.id}/tags`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ tags: messageData.tags })
-        })
-
-        if(response.success) {
-            fetchContactMessages(false, pageSize, page);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
+      const res = await $fetch<OkResponse>(`/api/contact-form/${message.id}/tags`, {
+        baseURL: API,
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: { tags: message.tags }
+      })
+      if (res.success) {
+        await fetchContactMessages(false, pageSize, page, omit)
+      }
+    } catch (e) {
+      console.error('updateContactTags:', (e as Error).message)
     }
   }
 
   const exportContactPDF = async ({ id }: ContactFormData | { id: string }) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
     try {
-        const idToken = await authStore.getIdToken();
+      const res = await $fetch.raw(`/api/contact-form/export/pdf/${id}`, {
+        baseURL: API,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/pdf'
+        },
+        responseType: 'blob'
+      })
+      if (!res.ok) throw new Error(`Download failed: ${res.status}`)
 
-        const response = await $fetch.raw(`/api/contact-form/export/pdf/${id}`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-                'Accept': 'application/pdf'
-            },
-            responseType: 'blob'
-        })
+      const filename =
+        res.headers.get('X-Filename') ?? `contact-form-${id.toString().split('-')[0]}`
+      const blob = res._data as Blob
 
-        if (!response.ok) throw new Error(`Download failed: ${response.status}`);
-        
-        const filename = response.headers.get('X-Filename') || `contact-form-${id.split('-')[0]}`
-        const blob = response._data as Blob
-
-        const url = URL.createObjectURL(blob);
-        const a = Object.assign(document.createElement('a'), { href: url, download: filename });
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch (error) {
-        console.error((error as Error).message)
+      const url = URL.createObjectURL(blob)
+      const a = Object.assign(document.createElement('a'), { href: url, download: filename })
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+    } catch (e) {
+      console.error('exportContactPDF:', (e as Error).message)
     }
   }
 
-  const deleteContactMessage = async (id: string, pageSize: number = 5) => {
+  const deleteContactMessage = async (id: string, pageSize = 5, omit: boolean = true) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
     try {
-      const idToken = await authStore.getIdToken();
-
-      const response = await $fetch<{ success: boolean }>(`/api/contact-form/${id}`, {
-          baseURL: 'https://api.goldengatemanor.com',
-          method: 'DELETE',
-          headers: {
-              'Authorization': `Bearer ${idToken}`,
-          }
+      const res = await $fetch<OkResponse>(`/api/contact-form/${id}`, {
+        baseURL: API,
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` }
       })
-
-      if(response.success) {
-          fetchContactMessages(false, pageSize);
-          contactPage.value = 1;
+      if (res.success) {
+        await fetchContactMessages(false, pageSize, 1, omit)
+        contactPage.value = 1
       }
-    } catch (error) {
-        console.error((error as Error).message)
+    } catch (e) {
+      console.error('deleteContactMessage:', (e as Error).message)
     }
   }
 

@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="lg:w-1/2">
-            <NuxtImg src="/images/pages/requesting-accessible-van/red-van-door-open-cropped.jpeg" quality="60" format="webp" width="1988" height="1394" alt="Golden Gate Manor Inc accessible van with the sliding door open" title="Golden Gate Manor Inc accessible van with the sliding door open" loading="eager" class="object-contain object-left rounded-lg shadow-primary" />
+            <NuxtImg src="/images/pages/requesting-accessible-van/red-van-door-open-cropped.jpeg" quality="60" format="webp,avif" width="1988" height="1394" alt="Golden Gate Manor Inc accessible van with the sliding door open" title="Golden Gate Manor Inc accessible van with the sliding door open" loading="eager" class="object-contain object-left rounded-lg shadow-primary" />
           </div>
         </div>
         <div>
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="lg:w-1/2">
-              <NuxtImg src="/images/pages/requesting-accessible-van/red-van.jpeg" quality="60" format="webp" width="2856" height="1394" alt="Golden Gate Manor Inc accessible van" title="Golden Gate Manor Inc accessible van" loading="lazy" class="object-contain rounded-lg shadow-primary" />
+              <NuxtImg src="/images/pages/requesting-accessible-van/red-van.jpeg" quality="60" format="webp,avif" width="2856" height="1394" alt="Golden Gate Manor Inc accessible van" title="Golden Gate Manor Inc accessible van" loading="lazy" class="object-contain rounded-lg shadow-primary" />
           </div>
         </div>
         <div>
@@ -248,7 +248,7 @@
             <h2 class="text-2xl font-bold text-brand-primary">How does Medicaid Cover Wheelchair-Accessible Transportation?</h2>
             <p class="text-xl text-brand-main-text">Wheelchair accessible transportation does not require additional authorization beyond standard Medicaid trip coverage. Golden Gate Manor Inc. provides the availability of these accessible options as an additional service underneath our company model. Here at Golden Gate Manor Inc. we understand that certain accommodations are important to our clients and because that is the case we make sure to provide these extra accommodations for those that need them. Medicaid services for non-emergency medical transportation covers the services exactly the same as if you were taking a non-accommodation based vehicle in our fleet.</p>
           </div>
-          <NuxtImg src="/images/pages/requesting-accessible-van/information.png" alt="Question mark symbol" title="Question mark symbol" loading="lazy" height="263" width="252" class="hidden lg:block" />
+          <NuxtImg format="webp,avif" src="/images/pages/requesting-accessible-van/information.png" alt="Question mark symbol" title="Question mark symbol" loading="lazy" height="263" width="252" class="hidden lg:block" />
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
     <BaseLayoutPageSection margin="default" bg="alt">
@@ -261,16 +261,16 @@
             </div>
             <div class="lg:w-1/2 flex flex-wrap rounded-lg shadow-primary overflow-hidden">
               <div class="w-1/2 overflow-hidden">
-                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-door-open.jpeg" quality="60" format="webp" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured" loading="lazy" class="w-full h-auto aspect-[4/3]"/>
+                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-door-open.jpeg" quality="60" format="webp,avif" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured" loading="lazy" class="w-full h-auto aspect-[4/3]"/>
               </div>
               <div class="w-1/2 overflow-hidden">
-                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-inside.jpeg" quality="60" format="webp" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured and a person sitting in the wheelchair" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured and a person sitting in the wheelchair" loading="lazy"  class="w-full h-auto aspect-[4/3]" />
+                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-inside.jpeg" quality="60" format="webp,avif" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured and a person sitting in the wheelchair" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured and a person sitting in the wheelchair" loading="lazy"  class="w-full h-auto aspect-[4/3]" />
               </div>
               <div class="w-1/2 overflow-hidden">
-                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-door-open-close-up.jpeg" quality="60" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured (close up)" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured (close up)" loading="lazy" format="webp" class="w-full h-auto aspect-[4/3]" />
+                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-door-open-close-up.jpeg" quality="60" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured (close up)" title="Golden Gate Manor Inc accessible van with the sliding door open with wheelchair secured (close up)" loading="lazy" format="webp,avif" class="w-full h-auto aspect-[4/3]" />
               </div>
               <div class="w-1/2 overflow-hidden">
-                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-inside.jpeg" quality="60" format="webp" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van interior with wheelchair secured" title="Golden Gate Manor Inc accessible van interior" loading="lazy" class="w-full h-auto aspect-[4/3]" />
+                <NuxtImg src="/images/pages/requesting-accessible-van/wheelchair-van-inside.jpeg" quality="60" format="webp,avif" placeholder width="1512" height="1134" alt="Golden Gate Manor Inc accessible van interior with wheelchair secured" title="Golden Gate Manor Inc accessible van interior" loading="lazy" class="w-full h-auto aspect-[4/3]" />
               </div>
             </div>
           </div>

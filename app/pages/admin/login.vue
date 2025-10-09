@@ -1,34 +1,41 @@
 <template>
-    <AdminLogin v-if="!authStore.authorized"/>
+  <div>
+    <!-- Show login UI until we're authorized -->
+    <AdminLogin v-if="!authStore.authorized" />
     <div v-else class="relative min-h-screen bg-[#121b75] overflow-hidden flex items-center justify-center">
-        <h2 class="text-4xl text-brand-secondary uppercase">Redirecting to Dashboard...</h2>
+      <h2 class="text-4xl text-brand-secondary uppercase">Redirecting to Dashboard...</h2>
     </div>
+  </div>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
+import type { WatchStopHandle } from 'vue'
+
 const authStore = useAuthStore()
-const router = useRouter()
 
-definePageMeta({
-    layout: 'admin'
-})
+definePageMeta({ layout: 'admin' })
+defineOptions({ name: 'AdminLoginPage' })
 
-defineOptions({
-    name: 'AdminLoginPage'
-})
+onMounted(async () => {
+  // Ensure Firebase is initialized (lazy plugin)
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase()
 
-// Watch for auth state changes and redirect when user becomes authorized
-watch(() => authStore.authorized, (newValue) => {
-  if (newValue === true) {
-    setTimeout(() => {
-        router.push('/admin') // Use router.push instead
-}, 1000)
+  // If we're already good, go now (refresh case)
+  if (authStore.isFirebaseReady && authStore.authorized) {
+    await navigateTo('/admin', { replace: true })
+    return
   }
-}, { immediate: true });
 
-onMounted(() => {
-    if(authStore.authorized)
-        navigateTo({path: '/admin'})
+  // Otherwise, watch ONCE for ready+authorized then redirect
+  const stop: WatchStopHandle = watch(
+    () => authStore.isFirebaseReady && authStore.authorized,
+    async ok => {
+      if (!ok) return
+      stop()
+      await navigateTo('/admin', { replace: true })
+    },
+    { immediate: false }
+  )
 })
-
 </script>

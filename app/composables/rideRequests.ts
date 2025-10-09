@@ -1,130 +1,182 @@
-import type { RideRequestFormData, RideRequestStatus } from "~/models/admin/RideRequestForm";
-import type { Pagination } from "~/models/Pagination";
+// composables/admin/useRideRequests.ts
+import type { RideRequestFormData, RideRequestStatus } from '~/models/admin/RideRequestForm'
+import type { Pagination } from '~/models/Pagination'
+
+type ListResponse = { success: boolean; data: RideRequestFormData[]; pagination: Pagination }
+type OkResponse = { success: boolean }
 
 export const useRideRequests = () => {
-  const rideRequests = ref<RideRequestFormData[]>([]);
-  const rideRequestsPagination = ref<Pagination | null>(null)
-  const loadingRideRequests = ref<boolean>(true);
-  const authStore = useAuthStore();
-  const requestPage = ref<number>(1);
-
-  const fetchRideRequests = async (isLoading: boolean = true, pageSize: number = 5, page: number = 1) => {
-    if(isLoading)
-          loadingRideRequests.value = true;
-        try {
-          const idToken = await authStore.getIdToken();
-    
-          const response = await $fetch<{ success: boolean, data: RideRequestFormData[], pagination: Pagination }>(`/api/ride-request?page=${page}&pageSize=${pageSize}`, {
-              baseURL: 'https://api.goldengatemanor.com',
-              method: 'GET',
-              headers: {
-                      'Authorization': `Bearer ${idToken}`,
-                  }
-            })
-    
-          if(response.success) {
-            rideRequests.value = response.data
-            rideRequestsPagination.value = response.pagination
-            if(page)
-              requestPage.value = page
-          }
-        } catch (error) {
-          console.error((error as Error).message)
-        } finally {
-          loadingRideRequests.value = false;
-        }
-  }
-
-  const updateRideStatus = async (messageData: {id: string, status: RideRequestStatus}, pageSize: number = 5, page: number = 1) => {
-    try {
-        const idToken = await authStore.getIdToken();
-
-        const response = await $fetch<{ success: boolean }>(`/api/ride-request/${messageData.id}/status`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ status: messageData.status })
-        })
-
-        if(response.success) {
-            fetchRideRequests(false, pageSize, page);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
+  if (import.meta.server) {
+    // SSR no-ops to avoid runtime imports server-side
+    return {
+      fetchRideRequests: async () => null,
+      updateRideStatus: async () => void 0,
+      updateRideTags: async () => void 0,
+      exportRidePDF: async () => void 0,
+      deleteRideRequest: async () => void 0,
+      rideRequests: ref<RideRequestFormData[]>([]),
+      rideRequestsPagination: ref<Pagination | null>(null),
+      loadingRideRequests: ref(false),
+      requestPage: ref(1),
     }
   }
 
-  const updateRideTags = async (messageData: { id: string, tags: string[]}, pageSize: number = 5, page: number = 1) => {
+  // ----- state
+  const rideRequests = ref<RideRequestFormData[]>([])
+  const rideRequestsPagination = ref<Pagination | null>(null)
+  const loadingRideRequests = ref<boolean>(false)
+  const requestPage = ref<number>(1)
+
+  // ----- auth gate
+  const auth = useAuthStore()
+  const canFetch = computed(() => auth.isFirebaseReady && auth.authorized)
+
+  // ----- infra
+  const API = 'https://api.goldengatemanor.com'
+  const listAbort = shallowRef<AbortController | null>(null)
+  onBeforeUnmount(() => listAbort.value?.abort())
+
+  const getTokenOrNull = async (): Promise<string | null> => {
+    const token = await auth.getIdToken()
+    return token ?? null
+  }
+
+  // ----- actions
+  const fetchRideRequests = async (
+    isLoading = true,
+    pageSize = 5,
+    page = 1,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return null
+
+    const token = await getTokenOrNull()
+    if (!token) return null
+
+    // cancel previous in-flight
+    listAbort.value?.abort()
+    listAbort.value = new AbortController()
+
+    if (isLoading) loadingRideRequests.value = true
     try {
-        const idToken = await authStore.getIdToken();
+      const res = await $fetch<ListResponse>(`/api/ride-request?omit=${omit}`, {
+        baseURL: API,
+        method: 'GET',
+        query: { page, pageSize },
+        headers: { Authorization: `Bearer ${token}` },
+        signal: listAbort.value.signal,
+      })
 
-        const response = await $fetch<{ success: boolean }>(`/api/ride-request/${messageData.id}/tags`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-            },
-            body: JSON.stringify({ tags: messageData.tags })
-        })
+      if (res.success) {
+        rideRequests.value = res.data
+        rideRequestsPagination.value = res.pagination
+        requestPage.value = page
+      }
+      return res
+    } catch (e) {
+      if (!(e instanceof DOMException && e.name === 'AbortError')) {
+        console.error('fetchRideRequests:', (e as Error).message)
+      }
+      return null
+    } finally {
+      loadingRideRequests.value = false
+    }
+  }
 
-        if(response.success) {
-            fetchRideRequests(false, pageSize, page);
-        }
-    } catch (error) {
-        console.error((error as Error).message)
+  const updateRideStatus = async (
+    msg: { id: string; status: RideRequestStatus },
+    pageSize = 5,
+    page = requestPage.value,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
+    try {
+      const res = await $fetch<OkResponse>(`/api/ride-request/${msg.id}/status`, {
+        baseURL: API,
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: { status: msg.status }, // $fetch stringifies for you
+      })
+      if (res.success) await fetchRideRequests(false, pageSize, page, omit)
+    } catch (e) {
+      console.error('updateRideStatus:', (e as Error).message)
+    }
+  }
+
+  const updateRideTags = async (
+    msg: { id: string; tags: string[] },
+    pageSize = 5,
+    page = requestPage.value,
+    omit: boolean = true
+  ) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
+    try {
+      const res = await $fetch<OkResponse>(`/api/ride-request/${msg.id}/tags`, {
+        baseURL: API,
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: { tags: msg.tags },
+      })
+      if (res.success) await fetchRideRequests(false, pageSize, page, omit)
+    } catch (e) {
+      console.error('updateRideTags:', (e as Error).message)
     }
   }
 
   const exportRidePDF = async ({ id }: RideRequestFormData | { id: string }) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
     try {
-        const idToken = await authStore.getIdToken();
+      const res = await $fetch.raw(`/api/ride-request/export/pdf/${id}`, {
+        baseURL: API,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/pdf',
+        },
+        responseType: 'blob',
+      })
+      if (!res.ok) throw new Error(`Download failed: ${res.status}`)
 
-        const response = await $fetch.raw(`/api/ride-request/export/pdf/${id}`, {
-            baseURL: 'https://api.goldengatemanor.com',
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${idToken}`,
-                'Accept': 'application/pdf'
-            },
-            responseType: 'blob'
-        })
+      const filename = res.headers.get('X-Filename') ?? `ride-request-${id.toString().split('-')[0]}`
+      const blob = res._data as Blob
 
-        if (!response.ok) throw new Error(`Download failed: ${response.status}`);
-        
-        const filename = response.headers.get('X-Filename') || `contact-form-${id.split('-')[0]}`
-        const blob = response._data as Blob
-
-        const url = URL.createObjectURL(blob);
-        const a = Object.assign(document.createElement('a'), { href: url, download: filename });
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch (error) {
-        console.error((error as Error).message)
+      const url = URL.createObjectURL(blob)
+      const a = Object.assign(document.createElement('a'), { href: url, download: filename })
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+    } catch (e) {
+      console.error('exportRidePDF:', (e as Error).message)
     }
   }
 
-  const deleteRideRequest = async (id: string, pageSize: number = 5) => {
+  const deleteRideRequest = async (id: string, pageSize = 5, omit: boolean = true) => {
+    if (!canFetch.value) return
+    const token = await getTokenOrNull()
+    if (!token) return
+
     try {
-      const idToken = await authStore.getIdToken();
-
-      const response = await $fetch<{ success: boolean }>(`/api/ride-request/${id}`, {
-          baseURL: 'https://api.goldengatemanor.com',
-          method: 'DELETE',
-          headers: {
-              'Authorization': `Bearer ${idToken}`,
-          }
+      const res = await $fetch<OkResponse>(`/api/ride-request/${id}`, {
+        baseURL: API,
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
       })
-
-      if(response.success) {
-          fetchRideRequests(false, pageSize);
-          requestPage.value = 1;
+      if (res.success) {
+        await fetchRideRequests(false, pageSize, 1, omit)
+        requestPage.value = 1
       }
-    } catch (error) {
-        console.error((error as Error).message)
+    } catch (e) {
+      console.error('deleteRideRequest:', (e as Error).message)
     }
   }
 
@@ -137,6 +189,6 @@ export const useRideRequests = () => {
     rideRequests,
     loadingRideRequests,
     rideRequestsPagination,
-    requestPage
+    requestPage,
   }
 }

@@ -15,6 +15,7 @@
                                         </p>
                                     </div>
                                     <NuxtImg 
+                                        format="webp,avif"
                                         :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
                                         :alt="latestPost.thumbnailAlt || latestPost.title" 
                                         :title="latestPost.thumbnailAlt || latestPost.title"
@@ -73,6 +74,7 @@
                                             </p>
                                         </div>
                                         <NuxtImg 
+                                            format="webp,avif"
                                             :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
                                             :alt="post.thumbnailAlt || post.title" 
                                             :title="post.thumbnailAlt || post.title" 

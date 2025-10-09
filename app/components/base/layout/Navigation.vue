@@ -31,7 +31,7 @@
                 <NuxtLink to="/">
                     <NuxtImg 
                         src="/images/layout/logo.png" width="300" height="29" sizes="xs:300px" quality="60" alt="Golden Gate Manor Inc. Logo"
-                        format="webp" class="max-xs:w-[225px] xs:w-[300px]" loading="eager" title="Golden Gate Manor Inc. Logo" />
+                        format="webp, avif" class="max-xs:w-[225px] xs:w-[300px]" loading="eager" title="Golden Gate Manor Inc. Logo" />
                 </NuxtLink>
             </div>
             <button class="flex" aria-label="Navigation Menu" @click="toggleDrawer">

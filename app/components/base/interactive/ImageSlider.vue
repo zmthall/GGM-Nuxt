@@ -21,6 +21,7 @@
             v-for="(s, i) in slides" :key="s.url + i"
             class="min-w-full h-full flex items-center justify-center">
             <NuxtImg
+              format="webp, avif"
               class="h-full w-auto max-w-full object-contain transition-opacity duration-300"
               :class="loaded.has(i) ? 'opacity-100' : 'opacity-0'"
               :src="s.url" 
@@ -66,6 +67,7 @@
             :aria-label="`Go to slide ${i+1}`"
             @click="goTo(i)">
             <NuxtImg 
+              format="webp, avif"
               :src="s.url" :alt="s.alt || ''"
               class="h-14 w-20 md:h-16 md:w-24 object-cover"
               loading="lazy" decoding="async" draggable="false" />

@@ -56,11 +56,11 @@
         </div>
       </BaseLayoutPageContainer>
       <div class="hidden xl:flex xl:justify-center xl:gap-12 xl:mt-8">
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" title="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110"  loading="lazy" width="400" height="266"/>
-        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" title="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
-        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" title="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
-        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" title="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
-        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" title="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" title="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110"  loading="lazy" width="400" height="266"/>
+        <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" title="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" title="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" title="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+        <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" title="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
       </div>
     </BaseLayoutPageSection>
 
@@ -73,7 +73,7 @@
         <div class="flex flex-col space-y-4 lg:flex-row lg:gap-12 items-center">
           <NuxtImg 
             src="/images/pages/about-us/transportation-services.jpeg"
-            format="webp"
+            format="webp,avif"
             quality="60"
             sizes="600px sm:650px md:600px"
             class="rounded-lg shadow-primary w-full" 
@@ -123,7 +123,7 @@
           </div>
           <NuxtImg 
             src="/images/pages/about-us/medical-supply-store.jpeg"
-            format="webp"
+            format="webp,avif"
             quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary h-max" 
@@ -146,7 +146,7 @@
         <div class="flex flex-col gap-4 space-y-4 lg:flex-row lg:gap-12">
           <NuxtImg 
             src="/images/pages/about-us/gas-station-about-us3.jpg"
-            format="webp"
+            format="webp,avif"
             quality="60"
             sizes="400px sm:650px md:600px"
             class="rounded-lg shadow-primary"

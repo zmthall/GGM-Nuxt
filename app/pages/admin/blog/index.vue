@@ -12,7 +12,7 @@
                 <li v-for="post in posts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
                   <button class="p-4 flex justify-between gap-10 w-full min-w-[650px]" @click="openEditPostModal(getSlug(post.path))">
                     <div class="flex gap-2 min-w-[650px]">
-                      <NuxtImg :src="post.thumbnail" :alt="post.thumbnailAlt" :title="post.thumbnailAlt" :width="post.thumbnailWidth" :height="post.thumbnailHeight" class="w-32 h-20 object-cover" />
+                      <NuxtImg format="webp,avif" :src="post.thumbnail" :alt="post.thumbnailAlt" :title="post.thumbnailAlt" :width="post.thumbnailWidth" :height="post.thumbnailHeight" class="w-32 h-20 object-cover" />
                       <div class="flex flex-col items-start justify-center">
                         <p class="text-xs">Last Updated: {{ dateFormat.formatShortDateNoLeadingZero(post.date) }}</p>
                         <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
@@ -92,139 +92,132 @@
 </template>
 
 <script lang="ts" setup>
-import { useDateFormat } from '../../../composables/dates/dateFormat.js';
-import type { BlogPost } from '../../../models/blog.js';
+import { useDateFormat } from '../../../composables/dates/dateFormat'
+import type { BlogPost } from '../../../models/blog'
 
-definePageMeta({
-    layout: 'admin',
-})
+definePageMeta({ layout: 'admin' })
 
-const authStore = useAuthStore();
-const text = useText();
-const dateFormat = useDateFormat();
+const authStore = useAuthStore()
+const text = useText()
+const dateFormat = useDateFormat()
 
+// ---------- state
 const posts = ref<BlogPost[]>([])
-const isLoading = ref<boolean>(false)
-const hasMorePages = ref<boolean>(true)
+const isLoading = ref(false)
+const hasMorePages = ref(true)
 const page = ref(1)
 const limit = 10
 
-const deleteConfirmationModal = ref<boolean>(false);
+const deleteConfirmationModal = ref(false)
 const deleteSlug = ref<string | null>(null)
 
-const blogPostPublishModalOpen = ref<boolean>(false);
-const publishSlug = ref<string | null>(null);
-const publishToggle = ref<boolean>(true);
-const publishDate = ref<string>('');
+const blogPostPublishModalOpen = ref(false)
+const publishSlug = ref<string | null>(null)
+const publishToggle = ref(true)
+const publishDate = ref('')
 
-const blogPostModalOpen = ref<boolean>(false)
+const blogPostModalOpen = ref(false)
 const blogPostModalSlug = ref<string | null>(null)
 
-const { data: initialPosts, execute, refresh, pending: isLoadingInitial } = await useAsyncData<BlogPost[]>(
-  'blog-posts-initial',
-  () => queryCollection('blog')
-        .select('path','id','date','title','thumbnail','thumbnailAlt','thumbnailWidth','thumbnailHeight','draft','published')
-        .order('date','DESC')
-        .limit(limit)
-        .all(),
+// ---------- helpers
+const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
+
+const getSlug = (path?: string): string => {
+  if (!path) return ''
+  const arr = path.split('/')
+  return arr[arr.length - 1] || ''
+}
+
+const isPublished = (post: BlogPost): boolean => {
+  if (post.draft) return false
+  const s = String(post.published ?? '').trim()
+  if (!s) return false
+  const publishedAt = /^\d{4}-\d{2}-\d{2}$/.test(s)
+    ? new Date(`${s}T23:59:59.999Z`)
+    : new Date(s)
+  const ts = publishedAt.getTime()
+  if (Number.isNaN(ts)) return false
+  return ts <= Date.now()
+}
+
+// ---------- initial list via internal Nuxt API (no token headers)
+const {
+  data: initialPosts,
+  execute,
+  refresh,
+  pending: isLoadingInitial
+} = await useAsyncData<BlogPost[]>(
+  'admin-blog-page-1',
+  () => $fetch<BlogPost[]>('/api/admin/blog/posts', {
+    method: 'GET',
+    query: { page: 1, limit }
+  }),
   { server: false, immediate: false, default: () => [] }
 )
 
-const isPublished = (post: BlogPost): boolean => {
-  // drafts are never public
-  if (post.draft) return false;
-
-  const s = String(post.published ?? '').trim();
-  if (!s) return false;
-
-  // If it's date-only, treat it as end-of-day UTC so the whole day counts
-  const publishedAt = /^\d{4}-\d{2}-\d{2}$/.test(s)
-    ? new Date(`${s}T23:59:59.999Z`)
-    : new Date(s);
-
-  const ts = publishedAt.getTime();
-  if (Number.isNaN(ts)) return false;
-
-  return ts <= Date.now(); // live if published time is in the past
-};
-
-
-// seed from the first page and decide if there’s more
+// seed list & hasMore
 watch(initialPosts, (list) => {
-    posts.value = list ?? []
-    hasMorePages.value = (posts.value.length === limit)
+  posts.value = list ?? []
+  hasMorePages.value = (posts.value.length === limit)
 }, { immediate: true })
 
-const getSlug = (path: string | undefined): string => {
-  if(!path) return ''
+// fetch only when Firebase is ready + user authorized
+onMounted(async () => {
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase()
 
-  const pathArr = path.split('/')
-  
-  return pathArr[pathArr.length - 1] || ''
-}
-
-watch(
-  () => authStore.authorized,
-  async (ok) => {
-    if (!ok) {
-      // optional: clear UI on logout
-      posts.value = []
-      hasMorePages.value = true
-      page.value = 1
-      return
-    }
+  if (canFetch.value) {
     await execute()
-  },
-  { immediate: true }
-)
+    return
+  }
 
+  const stop = watch(
+    canFetch,
+    async ok => {
+      if (!ok) return
+      stop()
+      await execute()
+    },
+    { immediate: false }
+  )
+})
+
+// ---------- actions (all internal $fetch calls)
 const loadMore = async () => {
-  if (!hasMorePages.value || isLoading.value) return
+  if (!hasMorePages.value || isLoading.value || !canFetch.value) return
   isLoading.value = true
   page.value++
 
-  const newPosts = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
-    query: { page: page.value, limit }
-  })
-
-  if (newPosts?.length) posts.value.push(...newPosts)
-  if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
-  isLoading.value = false
+  try {
+    const newPosts = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
+      method: 'GET',
+      query: { page: page.value, limit }
+    })
+    if (newPosts?.length) posts.value.push(...newPosts)
+    if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
+  } catch (e) {
+    console.error('loadMore:', (e as Error).message)
+  } finally {
+    isLoading.value = false
+  }
 }
 
 const refreshPosts = async () => {
   blogPostModalOpen.value = false
-  await refresh()                 // re-runs the fetcher for this key
   page.value = 1
-  blogPostModalSlug.value = null
+  await refresh()
 }
 
 const showDeleteConfirmation = (slug: string) => {
   deleteSlug.value = slug
   deleteConfirmationModal.value = true
 }
-
-const showPublishModal = (slug: string) => {
-  publishSlug.value = slug;
-  blogPostPublishModalOpen.value = true;
-}
-
 const cancelDelete = () => {
   deleteConfirmationModal.value = false
   deleteSlug.value = null
 }
-
-const cancelPublish = () => {
-  publishSlug.value = null;
-  blogPostPublishModalOpen.value = false;
-  publishToggle.value = true;
-  publishDate.value = '';
-}
-
 const confirmDelete = async () => {
-  if (deleteSlug.value !== null) {
-    await deletePost(deleteSlug.value)
-  }
+  if (deleteSlug.value) await deletePost(deleteSlug.value)
   deleteConfirmationModal.value = false
   deleteSlug.value = null
 }
@@ -235,62 +228,59 @@ const deletePost = async (slug: string) => {
       method: 'DELETE',
       query: { removeImage: true } // omit to keep image
     })
-
-    await refresh();
-  } catch (error) {
-    console.error((error as Error).message)
+    await refresh()
+  } catch (e) {
+    console.error('deletePost:', (e as Error).message)
   }
 }
 
-const openAddPostModal = () => {
-  blogPostModalOpen.value = true;
+const showPublishModal = (slug: string) => {
+  publishSlug.value = slug
+  blogPostPublishModalOpen.value = true
 }
-
-const openEditPostModal = (slug: string) => {
-  blogPostModalSlug.value = slug;
-  blogPostModalOpen.value = true;
-}
-
-const closePostModal = () => {
-  blogPostModalSlug.value = null;
+const cancelPublish = () => {
+  publishSlug.value = null
+  blogPostPublishModalOpen.value = false
+  publishToggle.value = true
+  publishDate.value = ''
 }
 
 const publishPost = async () => {
-  let pDate: string; 
+  if (!publishSlug.value) return
 
-  if(publishToggle.value) {
-    pDate = (new Date()).toISOString();
+  let pDate: string
+  if (publishToggle.value) {
+    pDate = new Date().toISOString()
   } else {
-    if(!publishDate.value) 
-      throw new Error('Publish Date is missing');
-
-    pDate = (new Date(publishDate.value)).toISOString();
+    if (!publishDate.value) {
+      console.error('Publish Date is missing')
+      return
+    }
+    pDate = new Date(publishDate.value).toISOString()
   }
 
   try {
     await $fetch(`/api/admin/blog/${publishSlug.value}`, {
       method: 'PUT',
-      body: { meta: { published: pDate, draft: false, date: (new Date()).toISOString() } }  // YYYY-MM-DD
+      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } }
     })
-
-    publishSlug.value = null;
-    blogPostPublishModalOpen.value = false;
-    publishToggle.value = true;
-    publishDate.value = '';
-  } catch (error) {
-    console.log((error as Error).message)
+    cancelPublish()
+    await refresh()
+  } catch (e) {
+    console.error('publishPost:', (e as Error).message)
   }
 }
 
-onMounted(() => {
-    if (initialPosts.value) {
-      if(initialPosts.value.length < limit)
-        // This was the last page
-        hasMorePages.value = false
-    }
-})
+const openAddPostModal = () => { blogPostModalOpen.value = true }
+const openEditPostModal = (slug: string) => { blogPostModalSlug.value = slug; blogPostModalOpen.value = true }
+const closePostModal = () => { blogPostModalSlug.value = null }
 
+// optional: clamp hasMore on first mount if initial returned < limit
+onMounted(() => {
+  if ((initialPosts.value?.length ?? 0) < limit) hasMorePages.value = false
+})
 </script>
+
 
 <style scoped>
 

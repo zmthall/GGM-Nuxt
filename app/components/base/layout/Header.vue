@@ -5,7 +5,7 @@
             <NuxtLink to="/">
                 <NuxtImg 
                     src="/images/layout/logo.png" width="450" height="43" sizes="md:300px lg:450px 2xl:500px"
-                    alt="Golden Gate Manor Inc. Logo" format="webp" quality="60" loading="eager" title="Golden Gate Manor Inc. Logo" />
+                    alt="Golden Gate Manor Inc. Logo" format="webp, avif" quality="60" loading="eager" title="Golden Gate Manor Inc. Logo" />
             </NuxtLink>
         </div>
         <!-- /Left Header -->

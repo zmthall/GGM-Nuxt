@@ -35,8 +35,6 @@ const CONTENT_DIR = ['content', 'blog', 'post'] as const
 const canonicalizeSlug = (slug: string): string =>
   slug.replace(/[/\\]/g, '').trim().replace(/\s+/g, '-')
 
-console.log(canonicalizeSlug)
-
 const filePathForSlug = (slug: string): string =>
   resolve(process.cwd(), ...CONTENT_DIR, `${canonicalizeSlug(slug)}.md`)
 

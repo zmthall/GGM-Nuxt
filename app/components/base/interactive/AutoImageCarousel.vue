@@ -16,7 +16,7 @@
         <NuxtImg 
           :src="image.src" 
           :alt="image.alt" 
-          format="webp"
+          format="webp,avif"
           :width="400"
           :height="300"
           quality="50"

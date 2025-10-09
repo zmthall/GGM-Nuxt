@@ -10,7 +10,7 @@
                 <div class="w-full relative">
                     <NuxtImg
                         class="w-[250px] mx-auto my-6 rounded-full shadow-sm shadow-gray-900 pointer-events-none select-none"
-                        format="webp" quality="60"
+                        format="webp, avif" quality="60"
                         height="300"
                         width="300"
                         title="Golden Gate Manor Inc logo"

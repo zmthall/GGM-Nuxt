@@ -16,9 +16,9 @@
                         @change-status="(payload) => updateRideStatus(payload, 3, requestPage)"
                         @change-tags="(payload) => updateRideTags(payload, 3, requestPage)"
                         @export-pdf="exportRidePDF"
-                        @prev-page="fetchRideRequests(false, 3, --requestPage)"
-                        @next-page="fetchRideRequests(false, 3, ++requestPage)"
-                        @page-change="(requestPage) => fetchRideRequests(false, 3, requestPage)"
+                        @prev-page="prevRidePage"
+                        @next-page="nextRidePage"
+                        @page-change="setRidePage"
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
@@ -43,9 +43,9 @@
                         @change-status="(payload) => updateContactStatus(payload, 3, contactPage)"
                         @change-tags="(payload) => updateContactTags(payload, 3, contactPage)"
                         @export-pdf="exportContactPDF"
-                        @prev-page="fetchContactMessages(false, 3, --contactPage)"
-                        @next-page="fetchContactMessages(false, 3, ++contactPage)"
-                        @page-change="(contactPage) => fetchContactMessages(false, 3, contactPage)"
+                        @prev-page="prevContactPage"
+                        @next-page="nextContactPage"
+                        @page-change="setContactPage"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
@@ -109,11 +109,20 @@ import type { ContactFormData } from '../../models/admin/ContactForm.js';
 import type { RideRequestFormData } from '../../models/admin/RideRequestForm.js';
 import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
 import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData.js';
+import type { WatchStopHandle } from 'vue'
 
 const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)
 const contactModalOpen = ref<boolean>(false);
 const contactMessageModalData = ref<ContactFormData | null>(null)
+
+const nextRidePage = () => fetchRideRequests(false, 3, requestPage.value + 1)
+const prevRidePage = () => fetchRideRequests(false, 3, Math.max(1, requestPage.value - 1))
+const setRidePage  = (p: number) => fetchRideRequests(false, 3, p)
+
+const nextContactPage = () => fetchContactMessages(false, 3, contactPage.value + 1)
+const prevContactPage = () => fetchContactMessages(false, 3, Math.max(1, contactPage.value - 1))
+const setContactPage  = (p: number) => fetchContactMessages(false, 3, p)
 
 const openRideRequestModal = (rideRequest: RideRequestFormData) => {
     rideModalOpen.value = true;
@@ -242,6 +251,7 @@ const loadMoreEvents = async (): Promise<void> => {
   }
 }
 
+
 definePageMeta({
     layout: 'admin',
 })
@@ -253,13 +263,36 @@ defineOptions({
 // Updated test function using auth store
 const authStore = useAuthStore();
 
-onMounted(() => {
-    fetchRideRequests(true, 3);
-    fetchContactMessages(true, 3);
-    fetchImages();
-    fetchEvents();
-})
+onMounted(async () => {
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase()
 
+  if (authStore.isFirebaseReady && authStore.authorized) {
+    await Promise.allSettled([
+      fetchRideRequests(true, 3, requestPage.value),
+      fetchContactMessages(true, 3, contactPage.value),
+      // these are public; safe to run now too
+      fetchImages(),
+      fetchEvents(),
+    ])
+    return
+  }
+
+  const stop: WatchStopHandle = watch(
+    () => authStore.isFirebaseReady && authStore.authorized,
+    async ok => {
+      if (!ok) return
+      stop()
+      await Promise.allSettled([
+        fetchRideRequests(true, 3, requestPage.value),
+        fetchContactMessages(true, 3, contactPage.value),
+        fetchImages(),
+        fetchEvents(),
+      ])
+    },
+    { immediate: false }
+  )
+})
 </script>
 
 <style></style>

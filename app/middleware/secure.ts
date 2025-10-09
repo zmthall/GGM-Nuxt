@@ -1,55 +1,60 @@
 // ~/middleware/secure.ts
+type Role = 'user' | 'admin' | 'superadmin'
+type SecureMeta = {
+  requireAuth?: boolean
+  allowedRoles?: Role[]
+  requireAllPerms?: string[]
+  requireAnyPerms?: string[]
+  redirectTo?: string
+  forbiddenTo?: string
+}
+
 export default defineNuxtRouteMiddleware(async (to) => {
-  // If your auth plugin runs client-side only, skip on server
   if (import.meta.server) return
 
-  const auth = useAuthStore()
-
-  // Read config from page meta (all fields optional)
-  // Example meta below in section 3.
-  const meta = to.meta.secure as undefined | {
-    requireAuth?: boolean          // default true
-    allowedRoles?: Array<'user' | 'admin' | 'superadmin'>
-    requireAllPerms?: string[]     // all must be present
-    requireAnyPerms?: string[]     // at least one present
-    redirectTo?: string            // override login redirect
-    forbiddenTo?: string           // override forbidden redirect
-  }
+  const meta = to.meta.secure as SecureMeta | undefined
   if (!meta) return
+
+  const auth = useAuthStore()
+  const { $getFirebase } = useNuxtApp()
 
   const {
     requireAuth = true,
     allowedRoles,
-    requireAllPerms,
-    requireAnyPerms,
-    redirectTo = '/login',
-    forbiddenTo = '/forbidden',
+    redirectTo = '/admin/login',
+    forbiddenTo = '/admin',
   } = meta
 
   // Avoid loops
   if ([redirectTo, forbiddenTo].includes(to.path)) return
 
-  // 1) Wait for Firebase auth to resolve
+  // 1) Make sure Firebase client is initialized
+  await $getFirebase()
+
+  // 2) Wait for the store to mark Firebase as ready
   try {
     await waitForTrue(() => auth.isFirebaseReady, 8000)
   } catch {
-    return navigateTo(redirectTo)
+    // If we can’t even get ready, go to login
+    return navigateTo(redirectTo, { replace: true })
   }
 
-  // 2) Require login?
-  if (requireAuth && !auth.user) {
-    return navigateTo(redirectTo)
+  // 3) Require login?
+  // Prefer your store's "authorized" (token+user) over just user presence
+  if (requireAuth && !auth.authorized) {
+    return navigateTo(redirectTo, { replace: true })
   }
 
-  // 3) Ensure we have role/permissions loaded once per session
-  if (auth.user && auth.role === null) {
-    await auth.refreshRole() // your API call populates role (+ permissions if available)
+  // 4) Ensure role is populated once per session
+  if (auth.authorized && auth.role == null) {
+    await auth.refreshRole()
   }
 
-  // 4) Role check (if specified)
+  // 5) Role check (if provided)
   if (allowedRoles?.length) {
-    const ok = allowedRoles.includes(auth.role as any)
-    if (!ok) return navigateTo(forbiddenTo)
+    if (!allowedRoles.includes(auth.role as Role)) {
+      return navigateTo(forbiddenTo, { replace: true })
+    }
   }
 })
 

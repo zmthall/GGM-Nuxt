@@ -49,7 +49,7 @@
                         Thank you for choosing Golden Gate Manor Transportation/Pueblo City Cab for all of your non-medical transportation needs! We look forward to serving you. If you have any questions or concerns related to your trips from verifying if they have been inputted to dispatch or if you just have questions about our services, please feel free to contact us at any time so that we can help you. Our goal is to make the process as smooth and simple as possible so that you can get where you want to be reliably and quickly.
                     </p>
                 </div>
-                <NuxtImg src="/images/pages/non-medical/information.png" alt="Question mark symbol" title="Question mark symbol" loading="lazy" height="263" width="252" class="hidden lg:block" />
+                <NuxtImg format="webp,avif" src="/images/pages/non-medical/information.png" alt="Question mark symbol" title="Question mark symbol" loading="lazy" height="263" width="252" class="hidden lg:block" />
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
     </div>

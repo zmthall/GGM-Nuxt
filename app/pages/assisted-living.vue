@@ -81,7 +81,7 @@
                 <div class="flex flex-col w-full gap-8 lg:flex-row">
                     <!-- Left Side -->
                     <div class="lg:w-1/2">
-                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
+                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp,avif" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
                     </div>
                     <!-- Right Side -->
                     <div class="p-4 flex flex-col lg:w-1/2 space-y-2">

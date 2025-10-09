@@ -1,113 +1,73 @@
-import type { FirebaseApp } from "firebase/app";
-import { 
-  createUserWithEmailAndPassword, 
-  sendPasswordResetEmail, 
-  signInWithEmailAndPassword, 
-  signOut, 
-  type Auth 
-} from "firebase/auth";
-import type { Database } from "firebase/database";
+import type { FirebaseApp } from 'firebase/app'
+import type { Auth, UserCredential } from 'firebase/auth'
+import type { Database } from 'firebase/database'
+
+type FB = { app: FirebaseApp; auth: Auth; db: Database }
 
 export const useFirebaseAuth = () => {
-  if (import.meta.server) {
-    return null;
+  if (import.meta.server) return null
+
+  const nuxt = useNuxtApp()
+  const authStore = useAuthStore()
+
+  let cached: Promise<{ fb: FB } & typeof import('firebase/auth')> | null = null
+  const ensure = async () => {
+    if (cached) return cached
+    cached = (async () => {
+      // ✅ Always call $getFirebase (well-typed), then add auth API
+      const fb = await nuxt.$getFirebase()
+      const authApi = await import('firebase/auth')
+      return { fb, ...authApi }
+    })()
+    return cached
   }
 
-  try {
-    const { $firebase } = useNuxtApp();
-    const authStore = useAuthStore();
-  
-    if (!$firebase) {
-      throw new Error('Firebase not initialized');
+  const sendPasswordReset = async (email: string) => {
+    const { fb, sendPasswordResetEmail } = await ensure()
+    try {
+      if (!email?.includes('@')) throw new Error('Please provide a valid email address.')
+      await sendPasswordResetEmail(fb.auth, email)
+    } catch (err) { if (err instanceof Error) authStore.setError(err.message); throw err }
+  }
+
+  const createUser = async (email: string, password: string): Promise<UserCredential> => {
+    const { fb, createUserWithEmailAndPassword } = await ensure()
+    try {
+      if (!email?.includes('@') || !password) throw new Error('Please provide valid email and password.')
+      const cred = await createUserWithEmailAndPassword(fb.auth, email, password)
+      void authStore.setUser(cred.user)   // ✅ explicit call; void silences “unused result”
+      return cred
+    } catch (err) {
+      authStore.clearAuth()
+      if (err instanceof Error) authStore.setError(err.message)
+      throw err
     }
-
-    const firebase = $firebase as {
-      app: FirebaseApp;
-      auth: Auth;
-      db: Database;
-    };
-  
-    const sendPasswordReset = async (email: string) => {
-      try {
-        if (email && email.length > 0 && email.includes("@")) {
-          await sendPasswordResetEmail(firebase.auth, email);
-        } else {
-          throw new Error("Please provide a valid email address.");
-        }
-      } catch (err) {
-        if (err instanceof Error) {
-          authStore.setError(err.message);
-        }
-        throw err; // Re-throw so caller can handle it
-      }
-    };
-  
-    const createUser = async (email: string, password: string) => {
-      try {
-        if ((email && email.length > 0 && email.includes("@")) && password && password.length > 0) {
-          const userCredential = await createUserWithEmailAndPassword(firebase.auth, email, password);
-          authStore.setUser(userCredential.user);
-          return userCredential;
-        } else {
-          throw new Error("Please provide valid email and password.");
-        }
-      } catch (err) {
-        authStore.clearAuth();
-        if (err instanceof Error) {
-          authStore.setError(err.message);
-        }
-        throw err; // Re-throw so caller can handle it
-      }
-    };
-  
-    const loginUser = async (email: string, password: string) => {
-      try {
-        if (email && email.length > 0 && email.includes("@") && password && password.length > 0) {
-          // Remove validatePassword - it doesn't exist in Firebase Auth
-          // Firebase will handle password validation during signIn
-          const userCredential = await signInWithEmailAndPassword(firebase.auth, email, password);
-          authStore.setUser(userCredential.user);
-          return userCredential;
-        } else {
-          throw new Error("Please provide valid email and password.");
-        }
-      } catch (err) {
-        authStore.clearAuth();
-        if (err instanceof Error) {
-          authStore.setError(err.message);
-        }
-        throw err; // Re-throw so caller can handle it
-      }
-    };
-  
-    const logoutUser = async () => {
-      try {
-        await signOut(firebase.auth);
-        authStore.clearAuth();
-        return true;
-      } catch (err) {
-        if (err instanceof Error) {
-          authStore.setError(err.message);
-        }
-        throw err; // Re-throw so caller can handle it
-      }
-    };
-  
-    const getCurrentUser = () => {
-      if (!firebase.auth) return null;
-      return firebase.auth.currentUser;
-    };
-  
-    return {
-      sendPasswordReset,
-      createUser,
-      loginUser,
-      logoutUser,
-      getCurrentUser,
-    };
-  } catch (err) {
-    console.error('Composable error (FirebaseAuth):', err);
-    // Return null or throw error instead of undefined
-    return null;
   }
-};
+
+  const loginUser = async (email: string, password: string): Promise<UserCredential> => {
+    const { fb, signInWithEmailAndPassword } = await ensure()
+    try {
+      if (!email?.includes('@') || !password) throw new Error('Please provide valid email and password.')
+      const cred = await signInWithEmailAndPassword(fb.auth, email, password)
+      void authStore.setUser(cred.user)
+      return cred
+    } catch (err) {
+      authStore.clearAuth()
+      if (err instanceof Error) authStore.setError(err.message)
+      throw err
+    }
+  }
+
+  const logoutUser = async () => {
+    const { fb, signOut } = await ensure()
+    try { await signOut(fb.auth); authStore.clearAuth(); return true }
+    catch (err) { if (err instanceof Error) authStore.setError(err.message); throw err }
+  }
+
+  const getCurrentUser = async () => {
+    const { fb } = await ensure()
+    return fb.auth.currentUser
+  }
+
+  return { sendPasswordReset, createUser, loginUser, logoutUser, getCurrentUser }
+}

@@ -54,8 +54,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useFirebaseAuth } from '../../../../composables/firebaseAuth'
-
 const dashboardDrawerOpen = ref<boolean>(false);
 
 const firebaseAuth = useFirebaseAuth()

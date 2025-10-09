@@ -21,6 +21,7 @@
           </div>
           <div class="w-full overflow-hidden rounded-lg md:hidden">
             <NuxtImg 
+              format="webp,avif"
               :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
               :alt="post.thumbnailAlt || post.title" 
               :title="post.thumbnailAlt || post.title" 
@@ -41,6 +42,7 @@
         <aside class="space-y-4">
           <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
             <NuxtImg 
+              format="webp,avif"
               :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
               :alt="post.thumbnailAlt || post.title" 
               :title="post.thumbnailAlt || post.title" 
@@ -81,14 +83,15 @@
                                 <span class="text-sm text-white">Read Time: {{ reading.getReadingTime(relatedPost.body as MarkdownRoot) }}</span>
                             </p>
                         </div>
-                        <NuxtImg 
-                            :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                            :alt="relatedPost.thumbnailAlt || relatedPost.title" 
-                            :title="relatedPost.thumbnailAlt || relatedPost.title" 
-                            :width="relatedPost.thumbnailWidth || ''"
-                            :height="relatedPost.thumbnailHeight || ''"
-                            loading="eager"
-                            class="object-cover h-full w-full"
+                        <NuxtImg
+                          format="webp,avif" 
+                          :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                          :alt="relatedPost.thumbnailAlt || relatedPost.title" 
+                          :title="relatedPost.thumbnailAlt || relatedPost.title" 
+                          :width="relatedPost.thumbnailWidth || ''"
+                          :height="relatedPost.thumbnailHeight || ''"
+                          loading="eager"
+                          class="object-cover h-full w-full"
                         />        
                     </div>
                     <div>

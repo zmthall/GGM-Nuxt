@@ -12,16 +12,16 @@
                         :pagination="rideRequestsPagination" 
                         :has-toolbar="false" 
                         :ride-request-modal-data="rideRequestModalData"
-                        @change-status="(payload) => updateRideStatus(payload, 10, requestPage)"
-                        @change-tags="(payload) => updateRideTags(payload, 10, requestPage)"
+                        @change-status="(payload) => updateRideStatus(payload, 10, requestPage, false)"
+                        @change-tags="(payload) => updateRideTags(payload, 10, requestPage, false)"
                         @export-pdf="exportRidePDF"
-                        @prev-page="fetchRideRequests(false, 10, --requestPage)"
-                        @next-page="fetchRideRequests(false, 10, ++requestPage)"
-                        @page-change="(p) => { requestPage = p; fetchRideRequests(false, 10, requestPage)}"
+                        @prev-page="prevRidePage"
+                        @next-page="nextRidePage"
+                        @page-change="setRidePage"
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
-                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id)">Delete</button>
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id, 10, false)">Delete</button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openRideRequestModal(rideRequest)">Open Request</button>
                             </div>
@@ -41,6 +41,10 @@ import type { RideRequestFormData } from '../../../models/admin/RideRequestForm.
 
 const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)
+
+const nextRidePage = () => fetchRideRequests(false, 5, requestPage.value + 1, false)
+const prevRidePage = () => fetchRideRequests(false, 5, Math.max(1, requestPage.value - 1), false)
+const setRidePage  = (p: number) => fetchRideRequests(false, 5, p, false)
 
 const openRideRequestModal = (rideRequest: RideRequestFormData) => {
     rideModalOpen.value = true;
@@ -68,9 +72,26 @@ definePageMeta({
     layout: 'admin',
 });
 
-onMounted(() => {
-    fetchRideRequests(true, 10);
-});
+onMounted(async () => {
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase() // ensure Firebase init
+
+  // wait until auth is actually ready and logged in
+  if (!(useAuthStore().isFirebaseReady && useAuthStore().authorized)) {
+    await new Promise<void>((resolve) => {
+      const stop = watch(
+        () => useAuthStore().isFirebaseReady && useAuthStore().authorized,
+        (ok) => { if (ok) { stop(); resolve() } }
+      )
+    })
+  }
+
+  // call exactly what this page needs (one time)
+  // e.g. Dashboard:
+  await Promise.allSettled([
+    fetchRideRequests(true, 10, requestPage.value, false),
+  ])
+})
 </script>
 
 <style></style>

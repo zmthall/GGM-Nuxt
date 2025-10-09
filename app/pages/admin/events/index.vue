@@ -128,7 +128,7 @@ const fetchArchivedEvents = async (): Promise<void> => {
   try {
     archiveEventLoading.value = true;
     const response = await $fetch<CommunityEventsResponse>('/api/events/archived', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: archivedPageSize

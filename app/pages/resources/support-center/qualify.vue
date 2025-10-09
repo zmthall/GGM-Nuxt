@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="lg:w-1/2">
-                <NuxtImg src="/images/pages/qualify/qualify-top.jpg" quality="60" format="webp" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
+                <NuxtImg src="/images/pages/qualify/qualify-top.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
               </div>
             </div>
           </BaseLayoutPageContainer>
@@ -178,7 +178,7 @@
                 </p>
               </div>
               <div class="w-1/3 lg:w-1/4">
-                <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp" class="w-full" />
+                <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp,avif" class="w-full" />
               </div>
             </div>
           </BaseLayoutPageContainer>

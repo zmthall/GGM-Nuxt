@@ -14,9 +14,9 @@
                         @change-status="updateContactStatus"
                         @change-tags="updateContactTags"
                         @export-pdf="exportContactPDF"
-                        @prev-page="fetchContactMessages(false, 5, --contactPage)"
-                        @next-page="fetchContactMessages(false, 5, ++contactPage)"
-                        @page-change="(contactPage) => { fetchContactMessages(false, 5, contactPage)}"
+                        @prev-page="prevContactPage"
+                        @next-page="nextContactPage"
+                        @page-change="setContactPage"
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
@@ -45,9 +45,9 @@
                         @change-status="updateRideStatus"
                         @change-tags="updateRideTags"
                         @export-pdf="exportRidePDF"
-                        @prev-page="fetchRideRequests(false, 5, --requestPage)"
-                        @next-page="fetchRideRequests(false, 5, ++requestPage)"
-                        @page-change="(requestPage) => fetchRideRequests(false, 5, requestPage)"
+                        @prev-page="prevRidePage"
+                        @next-page="nextRidePage"
+                        @page-change="setRidePage"
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
@@ -77,6 +77,14 @@ const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)
 const contactModalOpen = ref<boolean>(false);
 const contactMessageModalData = ref<ContactFormData | null>(null)
+
+const nextRidePage = () => fetchRideRequests(false, 5, requestPage.value + 1)
+const prevRidePage = () => fetchRideRequests(false, 5, Math.max(1, requestPage.value - 1))
+const setRidePage  = (p: number) => fetchRideRequests(false, 5, p)
+
+const nextContactPage = () => fetchContactMessages(false, 5, contactPage.value + 1)
+const prevContactPage = () => fetchContactMessages(false, 5, Math.max(1, contactPage.value - 1))
+const setContactPage  = (p: number) => fetchContactMessages(false, 5, p)
 
 const openRideRequestModal = (rideRequest: RideRequestFormData) => {
     rideModalOpen.value = true;
@@ -121,8 +129,25 @@ definePageMeta({
     layout: 'admin',
 });
 
-onMounted(() => {
-    fetchContactMessages();
-    fetchRideRequests()
-});
+onMounted(async () => {
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase() // ensure Firebase init
+
+  // wait until auth is actually ready and logged in
+  if (!(useAuthStore().isFirebaseReady && useAuthStore().authorized)) {
+    await new Promise<void>((resolve) => {
+      const stop = watch(
+        () => useAuthStore().isFirebaseReady && useAuthStore().authorized,
+        (ok) => { if (ok) { stop(); resolve() } }
+      )
+    })
+  }
+
+  // call exactly what this page needs (one time)
+  // e.g. Dashboard:
+  await Promise.allSettled([
+    fetchContactMessages(true, 5, contactPage.value),
+    fetchRideRequests(true, 5, requestPage.value),
+  ])
+})
 </script>

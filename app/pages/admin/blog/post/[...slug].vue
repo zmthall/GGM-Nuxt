@@ -14,7 +14,7 @@
           <p v-if="post.body">
             Reading time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}
           </p>
-          <time v-if="post.date" :datetime="formatDates.formatDatetime(post.published)">
+          <time v-if="post.published" :datetime="formatDates.formatDatetime(post.published)">
             Published On: {{ formatDates.formatDisplayDate(post.published) || 'Not Published' }}
           </time>
           <p v-if="post.author">By: {{ post.author }}</p>
@@ -32,6 +32,7 @@
         </div>
         <div class="w-full overflow-hidden rounded-lg md:hidden">
           <NuxtImg
+            format="webp,avif"
             :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"
             :alt="post.thumbnailAlt || post.title"
             :title="post.thumbnailAlt || post.title"
@@ -61,6 +62,7 @@
         <aside class="space-y-4">
           <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
             <NuxtImg
+              format="webp,avif"
               :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"
               :alt="post.thumbnailAlt || post.title"
               :title="post.thumbnailAlt || post.title"
@@ -118,6 +120,7 @@
                   </p>
                 </div>
                 <NuxtImg
+                  format="webp,avif"
                   :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'"
                   :alt="relatedPost.thumbnailAlt || relatedPost.title"
                   :title="relatedPost.thumbnailAlt || relatedPost.title"
@@ -196,31 +199,16 @@ const slug = Array.isArray(route.params.slug)
   : (route.params.slug as string)
 const contentPath = `/blog/post/${slug}`
 
-/* --- main post: fetched only after auth is true --- */
+/* --- main post: fetched only after auth is ready + authorized --- */
 const { data: post, execute: execPost } = await useAsyncData<BlogPost | null>(
-  `blog-${slug}`,
+  `admin-blog-${slug}`,
   () => queryCollection('blog').path(contentPath).first(),
   { server: false, immediate: false, default: () => null }
 )
 
-console.log(contentPath)
-
-/* wait for auth, then fetch the post */
-watch(
-  () => authStore.authorized,
-  async (ok) => {
-    if (!ok) return
-    await execPost()
-    if (!post.value) {
-      throw createError({ statusCode: 404, statusMessage: 'Blog post not found' })
-    }
-  },
-  { immediate: true }
-)
-
-/* --- related posts (execute after main post present) --- */
-const { data: relatedPosts, execute: execRelated } = await useAsyncData(
-  `blog-related-posts-${route.path}`,
+/* --- related posts: fetched after post is available --- */
+const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost[]>(
+  `admin-blog-related-${route.path}`,
   async () => {
     if (!post.value?.tags?.length) return []
     const all = await queryCollection('blog')
@@ -241,20 +229,42 @@ const { data: relatedPosts, execute: execRelated } = await useAsyncData(
       .all()
 
     return all
-      .filter(
-        (p) =>
-          Array.isArray(p.tags) &&
-          p.tags.some((t) => post.value!.tags!.includes(t))
-      )
+      .filter(p => Array.isArray(p.tags) && p.tags.some(t => post.value!.tags!.includes(t)))
       .slice(0, 4)
   },
   { server: false, immediate: false, default: () => [] }
 )
 
-/* run related-posts only after post is loaded */
+/* --- gate fetching on Firebase ready + authorized --- */
+const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
+
+onMounted(async () => {
+  // ensure lazy Firebase init finished (matches your other pages)
+  const { $getFirebase } = useNuxtApp()
+  await $getFirebase()
+
+  if (canFetch.value) {
+    await execPost()
+    if (post.value) await execRelated()
+    return
+  }
+
+  const stop = watch(
+    canFetch,
+    async ok => {
+      if (!ok) return
+      stop()
+      await execPost()
+      if (post.value) await execRelated()
+    },
+    { immediate: false }
+  )
+})
+
+/* --- once post is loaded (or changes), fetch related once --- */
 watch(
   () => post.value?.id,
-  async (id) => {
+  async id => {
     if (id) await execRelated()
   }
 )
@@ -290,6 +300,7 @@ watchEffect(() => {
   })
 })
 </script>
+
 
 <style scoped>
 :deep(h1),

@@ -16,7 +16,7 @@
           <div class="relative border-2 border-zinc-100 rounded-lg p-4 sm:w-1/2">
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Image</h3>
             <div v-if="meta.thumbnail && !changeImage" class="relative">
-              <NuxtImg :src="meta.thumbnail" :width="meta.thumbnailWidth" :height="meta.thumbnailHeight" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager"/>
+              <NuxtImg format="webp,avif" :src="meta.thumbnail" :width="meta.thumbnailWidth" :height="meta.thumbnailHeight" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager"/>
               <button
                 title="Delete Image"
                 class="absolute bottom-2 left-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors duration-200 z-10 flex"

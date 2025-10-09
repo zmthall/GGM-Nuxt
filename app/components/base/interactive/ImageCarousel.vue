@@ -24,7 +24,7 @@
                     <NuxtImg 
                         :src="image.src" 
                         :alt="image.alt" 
-                        format="avif"
+                        format="webp, avif"
                         quality="80"
                         placeholder 
                         loading="lazy" 

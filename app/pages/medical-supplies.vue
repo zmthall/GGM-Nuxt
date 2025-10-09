@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/orthotic-shoes.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Doctor Comfort shoe display" alt="Doctor Comfort shoe display" loading="lazy" height="375" width="375" placeholder />
+              <NuxtImg src="/images/pages/medical-supplies/orthotic-shoes.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Doctor Comfort shoe display" alt="Doctor Comfort shoe display" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
           <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/mobility.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" alt="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" loading="lazy" height="375" width="375" placeholder/>
+              <NuxtImg src="/images/pages/medical-supplies/mobility.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" alt="Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies" loading="lazy" height="375" width="375" placeholder/>
             </div>
           </li>
           <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
@@ -79,7 +79,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/wound-care.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Gauze bandages" alt="Gauze bandages" loading="lazy" height="375" width="375" placeholder/>
+              <NuxtImg src="/images/pages/medical-supplies/wound-care.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Gauze bandages" alt="Gauze bandages" loading="lazy" height="375" width="375" placeholder/>
             </div>
           </li>
           <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
@@ -100,7 +100,7 @@
                </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/ostomy.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Example of Ostomy supplies" alt="Example of Ostomy supplies" loading="lazy" height="375" width="375" placeholder />
+              <NuxtImg src="/images/pages/medical-supplies/ostomy.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Example of Ostomy supplies" alt="Example of Ostomy supplies" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
           <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
@@ -121,7 +121,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/incontinence.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Example of incontinence (brief)" alt="Example of incontinence (brief)" loading="lazy" height="375" width="375" placeholder />
+              <NuxtImg src="/images/pages/medical-supplies/incontinence.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Example of incontinence (brief)" alt="Example of incontinence (brief)" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
           <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
@@ -142,7 +142,7 @@
               </div>
             </div>
             <div class="sm:p-4">
-              <NuxtImg src="/images/pages/medical-supplies/urology.jpg" quality="60" format="webp" class="rounded-xl shadow-primary" title="Example of urology (catheter)" alt="Example of urology (catheter)" loading="lazy" height="375" width="375" placeholder />
+              <NuxtImg src="/images/pages/medical-supplies/urology.jpg" quality="60" format="webp,avif" class="rounded-xl shadow-primary" title="Example of urology (catheter)" alt="Example of urology (catheter)" loading="lazy" height="375" width="375" placeholder />
             </div>
           </li>
         </ul>
