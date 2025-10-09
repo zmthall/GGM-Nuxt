@@ -18,6 +18,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/robots'
   ],
+  nitro: {
+    compressPublicAssets: true
+  },
   routeRules: {
     // Contact / resources
     '/contact-us/schedule-a-ride': { redirect: { to: '/resources/schedule-a-ride', statusCode: 308 } },
@@ -53,6 +56,23 @@ export default defineNuxtConfig({
     '/termsandconditions': { redirect: { to: '/company/policies/terms-and-conditions', statusCode: 308 }},
     '/privacy-policy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
     '/privacypolicy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
+
+    // Caching
+    '/_nuxt/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    },
+    // dev domain shows /assets/* — cover that too
+    '/assets/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    },
+    // your fonts
+    '/fonts/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    },
+    // static images (if versioned or rarely change)
+    '/images/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    }
   },
   runtimeConfig: {
     apiKey: process.env.API_KEY,
