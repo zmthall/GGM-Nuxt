@@ -51,7 +51,7 @@ if(staticData) {
       type: 'font/woff2',
       crossorigin: 'anonymous'
     }
-  ]
+  ],
   })
 }
 
