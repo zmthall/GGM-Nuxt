@@ -39,13 +39,14 @@
                                 <!-- Mobile: lightweight static image -->
                                 <div v-else class="w-full h-[300px] rounded-lg overflow-hidden">
                                     <NuxtImg
-                                    src="/images/home-images/transportation-services.jpeg"
-                                    alt="Golden Gate Manor Transportation"
-                                    format="webp,avif"
-                                    width="600" height="400" quality="50"
-                                    sizes="(max-width: 640px) 100vw, 600px"
-                                    loading="lazy"
-                                    class="w-full h-full object-cover"
+                                        src="/images/home-images/transportation-services.jpeg"
+                                        alt="Golden Gate Manor Transportation"
+                                        format="webp,avif"
+                                        :width="563" :height="375" quality="70"
+                                        sizes="(max-width: 640px) 100vw, 563px"
+                                        loading="lazy"
+                                        class="w-full h-full object-cover"
+                                        decoding="async"
                                     />
                                 </div>
                             </section>
