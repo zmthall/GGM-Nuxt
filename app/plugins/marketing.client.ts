@@ -124,7 +124,7 @@ export default defineNuxtPlugin(() => {
 
   window.addEventListener('load', () => {
     if (isLoaded() || isAdmin(route.path)) return
-    whenIdle(() => { void boot() }, 1500) // ~1.5s after load preserves bounce fidelity
+    whenIdle(() => { void boot() }, 2500) // ~1.5s after load preserves bounce fidelity
   }, { once: true })
 
   // If user leaves /admin before libs loaded, load them then
