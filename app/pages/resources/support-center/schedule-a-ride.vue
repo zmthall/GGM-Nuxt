@@ -2,7 +2,7 @@
     <div>
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
-            <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex flex-col-reverse lg:flex-row gap-8">
               <div class="space-y-2 lg:w-1/2">
                 <h2 class="text-2xl font-bold text-brand-primary">Quick Guide to Booking Your Non-Emergency Medical Transportation (NEMT)</h2>
                 <p class="text-xl text-brand-main-text">
@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="lg:w-1/2">
-                <NuxtImg src="/images/pages/how-to-schedule-a-ride/calendar.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
+                <NuxtImg src="/images/pages/how-to-schedule-a-ride/calendar.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" alt="Calendar with glasses on it"/>
               </div>
             </div>
           </BaseLayoutPageContainer>
@@ -74,7 +74,7 @@
                 <p class="text-xl text-brand-main-text"><span class="font-bold">Best practice:</span> Call 24-48 hours ahead, and allow extra time for first rides to complete any required paperwork.</p>
                 <div class="text-xl flex gap-4 md:gap-8 flex-col md:flex-row">
                   <div class="md:w-1/2">
-                    <h4 class="text-2xl font-bold flex flex-col"><span>During Business Hours</span><span>(Monday-Friday, 8:00 AM - 4:00 PM)</span></h4>
+                    <h3 class="text-2xl font-bold flex flex-col"><span>During Business Hours</span><span>(Monday-Friday, 8:00 AM - 4:00 PM)</span></h3>
                     <ul class="ml-8 list-disc">
                       <li>Call <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
                       <li>Or call <a :href="`tel:${company?.trans.phone.tollFree}`" class="link">{{ company?.trans.phone.tollFree }}</a></li>
@@ -82,13 +82,13 @@
                   </div>
                   <div class="space-y-2 md:w-1/2 md:space-y-4">
                     <div>
-                      <h4 class="text-2xl font-bold">After Hours:</h4>
+                      <h3 class="text-2xl font-bold">After Hours:</h3>
                       <ul class="ml-8 list-disc">
                         <li>Call our 24/7 dispatch at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
                       </ul>
                     </div>
                     <div>
-                      <h4 class="text-2xl font-bold">Online Scheduling:</h4>
+                      <h3 class="text-2xl font-bold">Online Scheduling:</h3>
                       <ul class="ml-8 list-disc">
                         <li><NuxtLink to="/resources/schedule-a-ride" class="link">Schedule a ride online</NuxtLink></li>
                       </ul>
@@ -222,7 +222,7 @@
                   <BaseUiAction to="/company/contact-us" class="py-4 px-8">Contact Us</BaseUiAction>
                 </div>
                 <div class="w-1/3 lg:w-1/4">
-                  <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp,avif" class="w-full" />
+                  <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp,avif" class="w-full" alt="Question mark" />
                 </div>
               </div>
             </div>

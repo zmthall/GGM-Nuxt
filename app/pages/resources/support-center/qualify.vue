@@ -2,7 +2,7 @@
     <div>
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
-            <div class="flex flex-col lg:flex-row gap-8 items-center">
+            <div class="flex flex-col-reverse lg:flex-row gap-8 items-center">
               <div class="space-y-4 lg:w-1/2">
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">A Complete Guide to Non-Emergent Medical Transportation Eligibility</h2>
@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="lg:w-1/2">
-                <NuxtImg src="/images/pages/qualify/qualify-top.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
+                <NuxtImg src="/images/pages/qualify/qualify-top.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" alt="Woman stressed form paperwork"/>
               </div>
             </div>
           </BaseLayoutPageContainer>
@@ -178,7 +178,7 @@
                 </p>
               </div>
               <div class="w-1/3 lg:w-1/4">
-                <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp,avif" class="w-full" />
+                <NuxtImg src="/images/pages/how-to-schedule-a-ride/information.png" quality="80" format="webp,avif" class="w-full" alt="Question mark" title="Question mark" />
               </div>
             </div>
           </BaseLayoutPageContainer>

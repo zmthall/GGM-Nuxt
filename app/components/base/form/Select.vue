@@ -1,11 +1,14 @@
 <template>
     <div class="relative w-full group">
-        <label v-if="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
+        <label v-if="label" :for="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <select
+            :id="label"
             v-model="selectValue"
+            :name="label"
+            :aria-label="`${label} Selection`"
             :class="['appearance-none w-full px-4 py-2 pr-10 border-2 text-gray-900 bg-gray-50 hover:border-brand-primary/50 focus:border-brand-primary rounded-md focus:shadow-input text-xs font-semibold focus:outline-none]', { 'mt-0': label, 'mt-4': !label}]">
-            <option value="">Select an option</option>
-            <option v-for="(value, idx) in values" :key="value" :value="value">{{ labels[idx]}}</option>
+            <option value="" aria-label="Select an Option">Select an option</option>
+            <option v-for="(value, idx) in values" :key="value" :value="value" :aria-label="`${labels[idx]} option`">{{ labels[idx]}}</option>
         </select>
 
         <!-- Custom chevron icon -->

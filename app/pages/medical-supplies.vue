@@ -279,13 +279,13 @@
               <li class="pl-8 relative">
                 <BaseIcon name="material-symbols:bookmark-check-rounded" class="text-white absolute left-0" />
                 <p class="text-xl text-white">
-                  The process is simple regardless of your insurance provider. First, discuss your medical supply/equipment needs with your doctor to get a prescription. From there, you can either call your insurance company to verify coverage for durable medical equipment/supplies, or let us do the work for you—just have your doctor fax the prescription to <span class="link">719-696-8548</span> and we'll check your eligibility and get back to you.
+                  The process is simple regardless of your insurance provider. First, discuss your medical supply/equipment needs with your doctor to get a prescription. From there, you can either call your insurance company to verify coverage for durable medical equipment/supplies, or let us do the work for you—just have your doctor fax the prescription to <span class="link-light">719-696-8548</span> and we'll check your eligibility and get back to you.
                 </p>
               </li>
               <li class="pl-8 relative">
                 <BaseIcon name="material-symbols:bookmark-check-rounded" class="text-white absolute left-0" />
                 <p class="text-xl text-white">
-                  When your coverage is confirmed, we take care of the rest. We'll work with your doctor to collect any additional information needed, then get your supplies to you in whatever way works best—delivered right to your door or available for pickup at our store located at <a href="https://maps.app.goo.gl/L4tgtVzH67ZwhLie6" target="_blank" rel="noopener" class="link">612 S. Union Ave., Pueblo CO 81004</a>.
+                  When your coverage is confirmed, we take care of the rest. We'll work with your doctor to collect any additional information needed, then get your supplies to you in whatever way works best—delivered right to your door or available for pickup at our store located at <a href="https://maps.app.goo.gl/L4tgtVzH67ZwhLie6" target="_blank" rel="noopener" class="link-light">612 S. Union Ave., Pueblo CO 81004</a>.
                 </p>
               </li>
             </ul>

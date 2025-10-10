@@ -2,7 +2,7 @@
     <div>
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
-            <div class="flex flex-col lg:flex-row gap-8 items-center">
+            <div class="flex flex-col-reverse lg:flex-row gap-8 items-center">
               <div class="space-y-4 lg:w-1/2">
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">Non-Emergent Medical Transportation (NEMT) with Golden Gate Manor Transportation</h2>
@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="lg:w-1/2">
-                <NuxtImg src="/images/pages/prepare-for-first-ride/car-shot.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" />
+                <NuxtImg src="/images/pages/prepare-for-first-ride/car-shot.jpg" quality="60" format="webp,avif" class="w-full aspect-[3/2] rounded-lg shadow-primary" alt="Golden Gate Manor car 17" />
               </div>
             </div>
           </BaseLayoutPageContainer>
@@ -147,7 +147,7 @@
                     </p>
                   </div>
                   <div class="w-full md:w-1/2 lg:1/3">
-                    <NuxtImg src="/images/pages/prepare-for-first-ride/confirm-call.jpg" quality="60" format="webp,avif" class="w-full aspect-[4/3] rounded-lg shadow-primary" />
+                    <NuxtImg src="/images/pages/prepare-for-first-ride/confirm-call.jpg" quality="60" format="webp,avif" class="w-full aspect-[4/3] rounded-lg shadow-primary" alt="Woman on the phone taking notes" />
                   </div>
                 </div>
               </div>

@@ -8,7 +8,7 @@
       :class="{ 'opacity-0': currentIdx !== idx }"
       >
       <div class="absolute top-0 left-0 shadow-image w-full h-full"/>
-      <button class="absolute opacity-50 bottom-0 left-0 hover:opacity-100 z-10" @click="toggleSlideShow" >
+      <button class="absolute opacity-50 bottom-0 left-0 hover:opacity-100 z-10" :aria-label="isPlaying ? 'Pause image display' : 'Play image display'" @click="toggleSlideShow" >
         <BaseIcon v-if="!isPlaying" name="material-symbols:play-arrow-rounded" />
         <BaseIcon v-else name="ic:outline-pause" />
       </button>

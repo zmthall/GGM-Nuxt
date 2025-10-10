@@ -31,10 +31,12 @@
           <span v-else class="animate-pulse">Sending Message...</span>
         </BaseUiAction>
         <!-- Recaptcha Privacy Notice -->
-        <div class="text-xs text-gray-500">
-          This site is protected by reCAPTCHA and the Google 
-          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 
-          <a href="https://policies.google.com/terms" class="link">Terms of Service</a> apply.
+        <div class="text-xs text-gray-700">
+          <span>
+            This site is protected by reCAPTCHA and the Google 
+          </span>
+          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a><span> and </span> 
+          <a href="https://policies.google.com/terms" class="link">Terms of Service</a><span> apply.</span>
         </div>
 
           <!-- Add feedback -->
