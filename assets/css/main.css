@@ -170,81 +170,81 @@ div#chat_app .sc-new-messsages-count {
 
 /* Loader */
 
-    .image-loader {
-        @apply w-[48px] h-[48px] inline-block relative rotate-45 
-        after:left-0 after:top-0 after:w-[24px] after:h-[24px] after:bg-brand-primary after:absolute
-        before:w-[24px] before:h-[24px] before:absolute before:left-0 before:top-[-24px];
+.image-loader {
+    @apply w-[48px] h-[48px] inline-block relative rotate-45 
+    after:left-0 after:top-0 after:w-[24px] after:h-[24px] after:bg-brand-primary after:absolute
+    before:w-[24px] before:h-[24px] before:absolute before:left-0 before:top-[-24px];
+}
+
+.image-loader::before {
+    content: '';
+    animation: animloader 4s ease infinite;
+}
+
+.image-loader::after {
+    content: '';
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    animation: animloader2 2s ease infinite;
+
+}
+
+@keyframes animloader {
+    0% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
     }
 
-    .image-loader::before {
-        content: '';
-        animation: animloader 4s ease infinite;
+    12% {
+        box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
     }
 
-    .image-loader::after {
-        content: '';
-        box-sizing: border-box;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-        animation: animloader2 2s ease infinite;
-
+    25% {
+        box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
     }
 
-    @keyframes animloader {
-        0% {
-            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
-        }
-
-        12% {
-            box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
-        }
-
-        25% {
-            box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
-        }
-
-        37% {
-            box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(255, 255, 255, 0);
-        }
-
-        50% {
-            box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
-        }
-
-        62% {
-            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
-        }
-
-        75% {
-            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
-        }
-
-        87% {
-            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(var(theme('colors.brand.primary')));
-        }
-
-        100% {
-            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
-        }
+    37% {
+        box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(255, 255, 255, 0);
     }
 
-    @keyframes animloader2 {
-        0% {
-            transform: translate(0, 0) rotateX(0) rotateY(0);
-        }
-
-        25% {
-            transform: translate(100%, 0) rotateX(0) rotateY(180deg);
-        }
-
-        50% {
-            transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
-        }
-
-        75% {
-            transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
-        }
-
-        100% {
-            transform: translate(0, 0) rotateX(0) rotateY(360deg);
-        }
+    50% {
+        box-shadow: 0 24px rgba(var(theme('colors.brand.primary'))), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
     }
+
+    62% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(var(theme('colors.brand.primary'))), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
+    }
+
+    75% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(var(theme('colors.brand.primary'))), 0px 48px rgba(var(theme('colors.brand.primary')));
+    }
+
+    87% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(var(theme('colors.brand.primary')));
+    }
+
+    100% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes animloader2 {
+    0% {
+        transform: translate(0, 0) rotateX(0) rotateY(0);
+    }
+
+    25% {
+        transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+    }
+
+    75% {
+        transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotateX(0) rotateY(360deg);
+    }
+}

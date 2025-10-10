@@ -9,10 +9,14 @@
             <BaseInteractiveCarousel ref="carousel" v-model:loading="isCarouselLoading" :items="houses" :gap="32" :height="350" item-key="id">
                 <template #item="{ item }">
                     <div class="h-full bg-zinc-200/80 relative overflow-hidden rounded-lg group">
-                        <div v-if="Array.isArray((item as House).mainImage)" class="flex flex-wrap w-full h-full absolute">
-                          <NuxtImg format="webp, avif" v-for="image in (item as House).mainImage" :key="image" :src="image" class="object-cover w-1/2 h-1/2" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
+                      <button v-if="Array.isArray((item as House).mainImage)" class="w-full h-full absolute" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">
+                        <div class="flex flex-wrap w-full h-full">
+                            <NuxtImg v-for="image in (item as House).mainImage" :key="image" format="webp, avif" :src="image" class="object-cover w-1/2 h-1/2" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
                         </div>
-                        <NuxtImg v-else format="webp, avif" :src="(item as House).mainImage as string" class="w-full h-full absolute object-cover" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
+                      </button>
+                      <button v-else class="w-full h-full absolute" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">
+                        <NuxtImg format="webp, avif" :src="(item as House).mainImage as string" class="w-full h-full object-cover" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
+                      </button>
                         <div class="absolute left-0 top-0 flex flex-col items-center w-full bg-black/50 py-4 overflow-hidden">
                             <h2 class="text-white font-bold">{{ (item as House).name }}</h2>
                             <p class="text-white font-bold sm:max-h-0 sm:opacity-0 sm:group-hover:max-h-16 sm:group-hover:opacity-100 transition-all ease-in-out duration-500">{{ (item as House).address }}</p>
