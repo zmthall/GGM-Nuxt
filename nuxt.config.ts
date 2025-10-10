@@ -16,8 +16,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    '@nuxtjs/robots',
-    '~/modules/css-manifest'
+    '@nuxtjs/robots'
   ],
   nitro: {
     compressPublicAssets: true,
