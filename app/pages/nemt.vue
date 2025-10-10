@@ -347,6 +347,53 @@ defineOptions({
 const activeAccordionId = ref<string>('');
 const updateId = (val: string) => activeAccordionId.value = val
 const company = useStaticData()?.company;
+
+const nemtServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://goldengatemanor.com/nemt#service",
+  name: "Non-Emergency Medical Transportation (NEMT)",
+  serviceType: "Non-Emergency Medical Transportation",
+  url: "https://goldengatemanor.com/nemt",
+  provider: { "@type": "MedicalOrganization", "@id": "https://goldengatemanor.com/#organization" },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Pueblo County" },
+    { "@type": "AdministrativeArea", name: "Fremont County" },
+    { "@type": "AdministrativeArea", name: "Southern Colorado" },
+    { "@type": "State", name: "Colorado" }
+  ],
+  availableChannel: [
+    {
+      "@type": "ServiceChannel",
+      serviceUrl: "https://goldengatemanor.com/nemt",
+      servicePhone: {
+        "@type": "ContactPoint",
+        telephone: "+1-719-544-3231",
+        contactType: "Customer Service",
+        availableLanguage: ["English"]
+      }
+    }
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "NEMT Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wheelchair-accessible transportation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Door-to-door medical appointment rides" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Medicaid-covered rides (eligible riders)" } }
+    ]
+  }
+}
+
+useHead({
+  script: [
+    {
+      key: 'schema-nemt-service',
+      type: 'application/ld+json',
+      textContent: JSON.stringify(nemtServiceSchema),
+    }
+  ]
+})
 </script>
 
 <style>

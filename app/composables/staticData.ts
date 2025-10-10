@@ -259,6 +259,15 @@ export const useStaticData = () => {
       ],
       telephone: "+1-719-696-8032",
       email: "info@goldengatemanor.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-719-544-3231",
+          "contactType": "Reservations",
+          "areaServed": "Colorado",
+          "availableLanguage": ["English"]
+        }
+      ],
       address: {
         "@type": "PostalAddress",
         streetAddress: "612 S. Union Ave.",
@@ -266,15 +275,22 @@ export const useStaticData = () => {
         addressRegion: "CO",
         postalCode: "81004",
         addressCountry: "US",
-        hasMap:
-          "https://www.google.com/maps/place/612+S+Union+Ave,+Pueblo,+CO+81004",
       },
+      hasMap:
+        "https://www.google.com/maps/place/612+S+Union+Ave,+Pueblo,+CO+81004",
       geo: {
         "@type": "GeoCoordinates",
         latitude: 38.2701,
         longitude: -104.6106,
       },
-      openingHours: "Mo-Fr 08:00-16:00",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ],
       sameAs: [
         "https://www.facebook.com/GoldenGateTransportation",
         "https://www.facebook.com/GoldenGateMedicalSupply/",
@@ -291,12 +307,19 @@ export const useStaticData = () => {
       department: [
         {
           "@type": "MedicalBusiness",
-          "@id": `${runtimeConfig.public.siteUrl}/nemt#service`,
+          "@id": `${runtimeConfig.public.siteUrl}/nemt#department`,
           name: "Non-Emergency Medical Transportation (NEMT)",
           url: `${runtimeConfig.public.siteUrl}/nemt`,
           telephone: "+1-719-544-3231",
           priceRange: "Free with medicaid",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -348,9 +371,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2595792,
@@ -367,7 +390,14 @@ export const useStaticData = () => {
           serviceType: "Assisted Living Facility",
           paymentAccepted: "Medicaid",
           currenciesAccepted: "USD",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -419,9 +449,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/606+W+Abriendo+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/606+W+Abriendo+Ave,+Pueblo,+CO+81004",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2645315,
@@ -438,7 +468,14 @@ export const useStaticData = () => {
           serviceType: "Assisted Living Facility",
           paymentAccepted: "Medicaid",
           currenciesAccepted: "USD",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -490,9 +527,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/1219+Lake+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/1219+Lake+Ave,+Pueblo,+CO+81004",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2451131,
@@ -509,7 +546,14 @@ export const useStaticData = () => {
           serviceType: "Assisted Living Facility",
           paymentAccepted: "Medicaid",
           currenciesAccepted: "USD",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -561,9 +605,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/1033+E+Evans+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/1033+E+Evans+Ave,+Pueblo,+CO+81004",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.248322,
@@ -580,7 +624,14 @@ export const useStaticData = () => {
           serviceType: "Assisted Living Facility",
           paymentAccepted: "Medicaid",
           currenciesAccepted: "USD",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -632,9 +683,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81005",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/2109+Chautard+Dr,+Pueblo,+CO+81005",
           },
+          hasMap:
+            "https://www.google.com/maps/place/2109+Chautard+Dr,+Pueblo,+CO+81005",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2282454,
@@ -651,7 +702,14 @@ export const useStaticData = () => {
           serviceType: "Assisted Living Facility",
           paymentAccepted: "Medicaid",
           currenciesAccepted: "USD",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -703,9 +761,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81003",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/525+W+9th+St,+Pueblo,+CO+81003",
           },
+          hasMap:
+            "https://www.google.com/maps/place/525+W+9th+St,+Pueblo,+CO+81003",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2754501,
@@ -746,7 +804,14 @@ export const useStaticData = () => {
             },
           ],
           image: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
-          openingHours: "Mo-Fr 08:00-16:00",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+              "opens": "08:00",
+              "closes": "16:00"
+            }
+          ],
           address: {
             "@type": "PostalAddress",
             streetAddress: "612 S. Union Ave.",
@@ -754,9 +819,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/612+S+Union+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/612+S+Union+Ave,+Pueblo,+CO+81004",
           geo: {
             "@type": "GeoCoordinates",
             latitude: 38.2701,
@@ -775,7 +840,14 @@ export const useStaticData = () => {
           url: `${runtimeConfig.public.siteUrl}/non-medical`,
           telephone: "+1-719-543-2525",
           priceRange: "Varies by distance",
-          openingHours: "Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -825,9 +897,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81004",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
           },
+          hasMap:
+            "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2595792,
@@ -842,7 +914,14 @@ export const useStaticData = () => {
           url: `${runtimeConfig.public.siteUrl}/gas-and-goods#g&gi`,
           telephone: "(719) 561-0062",
           priceRange: "Competitive fuel and convenience pricing",
-          openingHours: "Mo-Su 04:00-02:00 gas: Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "06:00",
+              "closes": "23:00"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -879,9 +958,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81005",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/1242+S+Prairie+Ave,+Pueblo,+CO+81005/",
           },
+          hasMap:
+            "https://www.google.com/maps/place/1242+S+Prairie+Ave,+Pueblo,+CO+81005/",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.2442758,
@@ -895,7 +974,14 @@ export const useStaticData = () => {
           url: `${runtimeConfig.public.siteUrl}/gas-and-goods#g&gii`,
           telephone: "(719) 253-9840",
           priceRange: "Varies by item",
-          openingHours: "Mo-Su 04:00-02:00 gas: Mo-Su 00:00-23:59",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "06:00",
+              "closes": "23:00"
+            }
+          ],
           provider: {
             "@type": "MedicalOrganization",
             "@id": `${runtimeConfig.public.siteUrl}#organization`,
@@ -932,9 +1018,9 @@ export const useStaticData = () => {
             addressRegion: "CO",
             postalCode: "81003",
             addressCountry: "US",
-            hasMap:
-              "https://www.google.com/maps/place/1103+N+Elizabeth+St,+Pueblo,+CO+81003",
           },
+          hasMap:
+            "https://www.google.com/maps/place/1103+N+Elizabeth+St,+Pueblo,+CO+81003",
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 38.277396,

@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
+  site: {
+    name: 'Golden Gate Manor',
+    url: 'https://goldengatemanor.com',
+    description: 'Medicaid-approved NEMT, assisted living & medical supplies in Southern Colorado.'
+  },
   css: ["./assets/css/main.css"],
   modules: [
     '@nuxt/content',
@@ -145,8 +150,17 @@ export default defineNuxtConfig({
     xslTips: false,
   },
   robots: {
-    blockNonSeoBots: true,
+    blockNonSeoBots: false,          // turn off built-in to prevent dupes
     disallow: ['/admin'],
+    groups: [
+      { userAgent: ['GPTBot','PerplexityBot','CCBot','ClaudeBot'], allow: '/' },
+      { userAgent: ['Googlebot','bingbot','Applebot','DuckDuckBot'], allow: '/' },
+
+      // your custom denylist (only once)
+      { userAgent: ['python-requests','curl','Wget','libwww','Scrapy','Go-http-client','Java','okhttp','PHP'], disallow: ['/'] },
+      { userAgent: ['CazoodleBot','PetalBot','Bytespider','DataForSeoBot','ZoominfoBot','BLEXBot','magpie-crawler','Riddler'], disallow: ['/'] },
+      { userAgent: ['ia_archiver','GrapeshotCrawler','adscanner','CensysInspect'], disallow: ['/'] },
+    ],
   },
   seo: {
     meta: {
