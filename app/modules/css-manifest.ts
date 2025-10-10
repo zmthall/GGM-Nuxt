@@ -13,17 +13,22 @@ export default defineNuxtModule({
     nuxt.hooks.hook('nitro:init', (nitro: Nitro) => {
       nitro.hooks.hook('compiled', async () => {
         const publicDir = nitro.options.output.publicDir // .output/public
-        const cssFiles = await fg(['_nuxt/**/*.css'], {
+
+        // search both locations Nuxt/Vite can place CSS
+        const cssFiles = await fg(['assets/**/*.css', '_nuxt/**/*.css'], {
           cwd: publicDir,
           onlyFiles: true,
         })
 
-        const appCss =
-          cssFiles.find((f) => /\/app\.[\w-]+\.css$/.test(f)) ??
+        // prefer Vite’s style.<hash>.css, then app.<hash>.css, then first
+        const pick = (re: RegExp) => cssFiles.find(f => re.test(f))
+        const chosen =
+          pick(/\/style\.[\w-]+\.css$/) ??
+          pick(/\/app\.[\w-]+\.css$/) ??
           cssFiles[0] ??
           null
 
-        const manifest: CssManifest = { appCss: appCss ? `/${appCss}` : null }
+        const manifest: CssManifest = { appCss: chosen ? `/${chosen}` : null }
         const manifestPath = join(publicDir, 'css-manifest.json')
         await fs.writeFile(manifestPath, JSON.stringify(manifest), 'utf8')
       })
