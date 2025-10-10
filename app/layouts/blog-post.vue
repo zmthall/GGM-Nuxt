@@ -28,13 +28,8 @@ if(staticData) {
         type: 'application/ld+json',
         innerHTML: JSON.stringify(staticData.orgSchema),
         'data-schema': 'organization' // 
-      },
-      {
-        src: 'https://app.aminos.ai/js/chat_plugin.js',
-        'data-bot-id': '27311',
-        tagPriority: "high"
-      },
-      ],
+      }
+    ],
     link: [
     {
       rel: 'preload',
