@@ -19,7 +19,7 @@
           format="webp,avif"
           :width="400"
           :height="300"
-          quality="50"
+          quality="70"
           sizes="sm:300px md:400px lg:500px xl:600px"
           preload
           class="w-full h-full object-cover"

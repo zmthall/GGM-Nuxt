@@ -37,15 +37,16 @@
                                 </div>
 
                                 <!-- Mobile: lightweight static image -->
-                                <div v-else class="w-full h-[300px] rounded-lg overflow-hidden">
+                                <div v-else class="w-full rounded-lg overflow-hidden">
                                     <NuxtImg
                                         src="/images/home-images/transportation-services.jpeg"
                                         alt="Golden Gate Manor Transportation"
                                         format="webp,avif"
-                                        width="790" height="750" quality="70"
-                                        sizes="(min-width: 1024px) 750px, 563px"
+                                        quality="70"
+                                        width="576"
+                                        height="323"
                                         loading="lazy"
-                                        class="w-full h-full object-cover"
+                                        class="w-full h-full object-contain"
                                         decoding="async"
                                     />
                                 </div>
