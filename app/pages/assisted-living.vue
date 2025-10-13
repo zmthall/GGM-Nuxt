@@ -36,73 +36,81 @@
             </div>
         </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="default" bg="alt">
-        <AssistedLivingCarousel />
-    </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="default">
-        <BaseLayoutPageContainer class="">
-            <div class="bg-[#365dba] text-white px-2 lg:px-12 py-16 rounded-lg">
-                <h2 class="text-2xl font-extrabold px-2 text-center mb-8 lg:text-left lg:px-0">ASSISTED LIVING AMENITIES</h2>
-                <p class="text-xl font-semibold px-2 lg:px-0">Our comprehensive monthly fee covers all assisted living services in Pueblo, including an appointed semi-private or private room, and a wide range of services and amenities for residents 18 and older, including but not limited to:</p>
-                <div class="flex flex-col lg:flex-row justify-center gap-8 my-16 mx-8"> 
-                    <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                        <li class="">24-hour staffing</li>
-                        <li class="">Assistance with bathing, dressing, and personal hygiene</li>
-                        <li class="">On-call Nurse</li>
-                        <li class="">Medication management</li>
-                    </ul>
-                    <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                        <li class="">Three nutritious daily meals, including snacks</li>
-                        <li class="">Food available 24 Hours</li>
-                        <li class="">Multiple TV & lounge rooms</li>
-                        <li class="">Free Wi-Fi & cable</li>
-                    </ul>
-                    <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                        <li class="">Appointment scheduling & reminders</li>
-                        <li class="">Transportation to medical appointments, groups, activities, etc.</li>
-                        <li class="">Accompany to appointments (if necessary)</li>
-                    </ul>
+    <DeferRender when="visible">
+        <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+            <AssistedLivingCarousel />
+        </BaseLayoutPageSection>
+    </DeferRender>
+    <DeferRender when="visible">
+        <BaseLayoutPageSection margin="default" class="cv-auto">
+            <BaseLayoutPageContainer class="">
+                <div class="bg-[#365dba] text-white px-2 lg:px-12 py-16 rounded-lg">
+                    <h2 class="text-2xl font-extrabold px-2 text-center mb-8 lg:text-left lg:px-0">ASSISTED LIVING AMENITIES</h2>
+                    <p class="text-xl font-semibold px-2 lg:px-0">Our comprehensive monthly fee covers all assisted living services in Pueblo, including an appointed semi-private or private room, and a wide range of services and amenities for residents 18 and older, including but not limited to:</p>
+                    <div class="flex flex-col lg:flex-row justify-center gap-8 my-16 mx-8"> 
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">24-hour staffing</li>
+                            <li class="">Assistance with bathing, dressing, and personal hygiene</li>
+                            <li class="">On-call Nurse</li>
+                            <li class="">Medication management</li>
+                        </ul>
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">Three nutritious daily meals, including snacks</li>
+                            <li class="">Food available 24 Hours</li>
+                            <li class="">Multiple TV & lounge rooms</li>
+                            <li class="">Free Wi-Fi & cable</li>
+                        </ul>
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">Appointment scheduling & reminders</li>
+                            <li class="">Transportation to medical appointments, groups, activities, etc.</li>
+                            <li class="">Accompany to appointments (if necessary)</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+            </BaseLayoutPageContainer>
+        </BaseLayoutPageSection>
+    </DeferRender>
 
       <!-- Bottom Page -->
 
-    <BaseLayoutPageCTA 
-        title="Call Us Today and Get More Details"
-        description="Set up an appointment to visit one of our assisted living houses. Meet our dedicated staff, some of the residents, and see for yourself all that Golden Gate Manor Assisted Living houses have to offer. Our staff happily provides brochures, cards, tours, respite care, and lunches for interested families and residents."
-        button-label="Reach Out Now"
-        to="/company/contact-us"
-        />
-    <BaseLayoutPageSection margin="default">
-        <BaseLayoutPageContainer class="">
-            <BaseLayoutCard :has-padding="false">
-                <div class="flex flex-col w-full gap-8 lg:flex-row">
-                    <!-- Left Side -->
-                    <div class="lg:w-1/2">
-                        <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp,avif" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
+    <DeferRender when="visible">
+        <BaseLayoutPageCTA 
+            title="Call Us Today and Get More Details"
+            description="Set up an appointment to visit one of our assisted living houses. Meet our dedicated staff, some of the residents, and see for yourself all that Golden Gate Manor Assisted Living houses have to offer. Our staff happily provides brochures, cards, tours, respite care, and lunches for interested families and residents."
+            button-label="Reach Out Now"
+            to="/company/contact-us"
+            />
+    </DeferRender>
+    <DeferRender when="visible">
+        <BaseLayoutPageSection margin="default" class="cv-auto">
+            <BaseLayoutPageContainer class="">
+                <BaseLayoutCard :has-padding="false">
+                    <div class="flex flex-col w-full gap-8 lg:flex-row">
+                        <!-- Left Side -->
+                        <div class="lg:w-1/2">
+                            <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp,avif" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
+                        </div>
+                        <!-- Right Side -->
+                        <div class="p-4 flex flex-col lg:w-1/2 space-y-2">
+                            <h2 class="text-2xl font-bold text-brand-primary mb-4 text-center md:text-left">
+                                Personalized Assisted Living Consultations in Pueblo
+                            </h2>
+                            <p class="text-xl text-brand-main-text">
+                               Every consultation at one of our Assisted Living houses is curated to fit individual needs. We understand the process of choosing a new place to live for a family member and for the family is significant, so our process is made to be friendly, personable, informative, and pressure-free.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                Our experienced house care coordinator conducts all of our consultations, bringing years of hands-on experience from working with other clients in Pueblo, Colorado. We'll tour the houses that have availability, show the actual living conditions, and invite you to join us for lunch to experience our home-like atmospheres.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                We'll sit down and explain daily life, discuss our resident expectations, and make sure that our community feels right for you or your loved one's needs. You're welcome to visit any houses that have openings and ask any questions that come to mind. Our goal is simple: we want you to leave knowing more than when you arrived, with reduced anxiety and clear expectations - just transparent and honest guidance from people who care.
+                            </p>
+                            <BaseUiAction to="/company/contact-us" class="self-center !mt-8 py-4 px-8">GET FREE CONSULTATION</BaseUiAction>
+                        </div>
                     </div>
-                    <!-- Right Side -->
-                    <div class="p-4 flex flex-col lg:w-1/2 space-y-2">
-                        <h2 class="text-2xl font-bold text-brand-primary mb-4 text-center md:text-left">
-                            Personalized Assisted Living Consultations in Pueblo
-                        </h2>
-                        <p class="text-xl text-brand-main-text">
-                           Every consultation at one of our Assisted Living houses is curated to fit individual needs. We understand the process of choosing a new place to live for a family member and for the family is significant, so our process is made to be friendly, personable, informative, and pressure-free.
-                        </p>
-                        <p class="text-xl text-brand-main-text">
-                            Our experienced house care coordinator conducts all of our consultations, bringing years of hands-on experience from working with other clients in Pueblo, Colorado. We'll tour the houses that have availability, show the actual living conditions, and invite you to join us for lunch to experience our home-like atmospheres.
-                        </p>
-                        <p class="text-xl text-brand-main-text">
-                            We'll sit down and explain daily life, discuss our resident expectations, and make sure that our community feels right for you or your loved one's needs. You're welcome to visit any houses that have openings and ask any questions that come to mind. Our goal is simple: we want you to leave knowing more than when you arrived, with reduced anxiety and clear expectations - just transparent and honest guidance from people who care.
-                        </p>
-                        <BaseUiAction to="/company/contact-us" class="self-center !mt-8 py-4 px-8">GET FREE CONSULTATION</BaseUiAction>
-                    </div>
-                </div>
-            </BaseLayoutCard>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+                </BaseLayoutCard>
+          </BaseLayoutPageContainer>
+        </BaseLayoutPageSection>
+    </DeferRender>
   </div>
 </template>
 
