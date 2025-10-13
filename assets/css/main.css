@@ -51,6 +51,23 @@ html {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canva Sans Variable';
+  src: url('/fonts/CanvaSans.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* AI Chatbot styling */
 
 body.is-admin #chat_app { display: none !important; } 

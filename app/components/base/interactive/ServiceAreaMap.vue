@@ -43,6 +43,25 @@ defineOptions({
     name: 'BaseInteractiveServiceAreaMap'
 })
 
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      href: '/fonts/Roboto.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    },
+    {
+      rel: 'preload',
+      href: '/fonts/CanvaSans.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    }
+  ],
+})
+
 const props = defineProps<{
   margin?: number;
   loading: "lazy" | "eager"
