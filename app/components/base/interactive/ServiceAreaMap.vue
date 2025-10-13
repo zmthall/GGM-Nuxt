@@ -7,16 +7,31 @@
              class="flourish-embed flourish-map"
              data-src="visualisation/23590816"
            >
-             <noscript>
-               <img
-                 src="https://public.flourish.studio/visualisation/23590816/thumbnail"
-                 width="100%"
-                 height="100%"
-                 alt="service area map visualization"
-                 title="Service area map visualization"
-                 :loading
-               />
-             </noscript>
+            <div class="mb-4">
+              <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
+              <div class="flex gap-2 items-center">
+                <span class="w-8 h-4 border border-black rounded-full bg-[#DE2C35]" /> 
+                <p class="text-md sm:text-2xl">
+                  Not Included in Service Area
+                </p>
+              </div>
+              <div class="flex gap-2 items-center">
+                <span class="w-8 h-4 border border-black rounded-full bg-[#09AA64]" /> 
+                <p class="text-md sm:text-2xl">
+                  Included in Service Area
+                </p>
+              </div>
+            </div>
+            <noscript>
+              <img
+                src="https://public.flourish.studio/visualisation/23590816/thumbnail"
+                width="100%"
+                height="100%"
+                alt="service area map visualization"
+                title="Service area map visualization"
+                :loading
+              />
+            </noscript>
            </div>
          </ClientOnly>
     </BaseLayoutPageContainer>
@@ -119,4 +134,11 @@ watch(() => useRouter().currentRoute.value.path, () => {
 .flourish-embed :deep(iframe) {
   background-color: #f5f5f5 !important;
 }
+
+.flourish-embed :deep(iframe) #fl-legend-discrete-color-1 > p.fl-legend-title {
+  font-family: '"Noto Serif"', 'serif' !important;
+}
+
+
+
 </style>
