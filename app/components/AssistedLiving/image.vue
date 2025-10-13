@@ -7,7 +7,6 @@
         densities="1" width="400" height="300" sizes="(max-width: 768px) 100vw, 400px" quality="60"
         alt="Golden Gate Manor Assisted Living Sign" title="Golden Gate Manor Assisted Living Sign" 
         loading="eager" :preload="{ fetchPriority: 'high' }" decoding="async"
-        placeholder
         class="h-auto aspect-[4/3] object-cover bg-zinc-400" 
         @load="loadedImage"
       />

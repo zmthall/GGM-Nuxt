@@ -52,9 +52,9 @@
                     class="fixed top-0 right-0 h-full w-[80%] max-w-sm flex flex-col items-center bg-white z-20 shadow-md px-4 py-8 md:hidden">
                     <div class="mb-4 border-b-2 border-b-slate-50 pb-4 max-w-[250px] aspect-[5/4]">
                         <NuxtLink 
-                            to="/" class="font-bold text-brand-primary text-xl w-full"
+                            to="/" class="font-bold text-brand-primary text-xl w-full h-[183px] block"
                             @click="toggleDrawer">
-                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="50" width="250" format="webp,avif" densities="1" :preload="{ fetchPriority: 'high' }" class="w-full h-full object-contain" />
+                            <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="50" width="250" height="199" sizes="250px" format="avif,webp" densities="1" :preload="{ fetchPriority: 'high' }" :placeholder="fullLogoPH" class="w-full h-full object-contain" />
                         </NuxtLink>
                         <button class="absolute top-3 right-3" @click="toggleDrawer">
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
@@ -100,6 +100,7 @@ defineOptions({
     name: "BaseLayoutNavigation"
 })
 
+const fullLogoPH = '/images/layout/Full company GGM Logo (placeholder).webp'
 
 const staticData = useStaticData();
 const mobileNavDrawerOpen = ref<boolean>(false)
