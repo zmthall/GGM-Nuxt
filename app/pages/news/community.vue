@@ -28,37 +28,39 @@
     </BaseLayoutPageSection>
 
     <!-- Bottom Page -->
-    <BaseLayoutPageSection margin="default">
-      <BaseLayoutPageContainer>
-        <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
-        <div v-if="eventLoading && events.length === 0" class="my-4 font-extrabold animate-pulse text-2xl">
-          <p>
-            Loading Events...
-          </p>
-        </div>
-        <div v-else>
-          <CommunityEvents :events :loading="eventLoading" />
-          
-          <!-- Load More Button -->
-          <div v-if="hasMorePages" class="flex justify-center mt-8 lg:w-[75%]">
-            <BaseUiAction
-              type="button"
-              class="py-4 px-8 disabled:opacity-50 disabled:cursor-not-allowed"
-              :disabled="loadingMore"
-              @click="loadMoreEvents"
-            >
-              <span v-if="loadingMore">Loading More...</span>
-              <span v-else>Load More Events</span>
-            </BaseUiAction>
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
+        <BaseLayoutPageContainer>
+          <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
+          <div v-if="eventLoading && events.length === 0" class="my-4 font-extrabold animate-pulse text-2xl">
+            <p>
+              Loading Events...
+            </p>
           </div>
-          
-          <!-- No More Events Message -->
-          <div v-else-if="events.length > 0" class="text-center mt-8 text-gray-600 lg:w-[75%]">
-            <p>No more events to load</p>
+          <div v-else>
+            <LazyCommunityEvents :events :loading="eventLoading" />
+            
+            <!-- Load More Button -->
+            <div v-if="hasMorePages" class="flex justify-center mt-8 lg:w-[75%]">
+              <BaseUiAction
+                type="button"
+                class="py-4 px-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                :disabled="loadingMore"
+                @click="loadMoreEvents"
+              >
+                <span v-if="loadingMore">Loading More...</span>
+                <span v-else>Load More Events</span>
+              </BaseUiAction>
+            </div>
+            
+            <!-- No More Events Message -->
+            <div v-else-if="events.length > 0" class="text-center mt-8 text-gray-600 lg:w-[75%]">
+              <p>No more events to load</p>
+            </div>
           </div>
-        </div>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
   </div>
 </template>
 
