@@ -39,13 +39,17 @@
               </tbody>
             </table>
           </div>
-          <DeferRender when="visible" class="md:w-1/2">
-              <iframe 
-                width="100%" height="350" src="https://www.youtube.com/embed/fJ8_uvrsYXo?si=qhdETT5Lqh8IiQSm"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
-          </DeferRender>
+          <div class="md:w-1/2 md:my-0 my-4">
+            <BaseYoutubeLite
+              video-id="fJ8_uvrsYXo"
+              title="Golden Gate Manor Superbowl 2025 Commercial"
+              sizes="(min-width:1280px) 600px, 100vw"
+              image-width="720"
+              image-height="405"
+              poster="max"            
+              :eager-on-view="false" 
+            />
+          </div>
         </div>
         <div class="mt-4 w-full">
           <BaseUiAction
