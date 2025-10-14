@@ -4,7 +4,7 @@
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer>
         <div class="md:flex md:items-center gap-8">
-          <div class="flex md:flex-col flex-col-reverse md:w-1/2 md:space-y-4">
+          <div class="flex md:flex-col flex-col md:w-1/2 md:space-y-4">
             <div>
               <h2 class="md:text-2xl font-bold text-brand-primary">What is Non-Emergency Transportation (NEMT)?</h2>
               <p class="text-xl text-brand-main-text">
@@ -76,7 +76,7 @@
                  <h3 class="text-2xl font-bold text-white mb-6">FAQs</h3>
                  <ul class="space-y-4">
                    <li>
-                     <BaseInteractiveAccordionButton
+                     <LazyBaseInteractiveAccordionButton
                        id="eligibility"
                        :active-id="activeAccordionId"
                        label="WHO IS ELIGIBLE?"
@@ -87,10 +87,10 @@
                          <p class="text-xl text-brand-main-text">
                            If you have Colorado Medicaid benefits you may be eligible to utilize our services. All you need is a current Medicaid insurance ID and you need to be going to and from an Medicaid approved appointment. We pickup within our service area, which is mostly in Southern Colorado, and we can take you to appointments throughout Colorado including Denver. Our service area is specific to where we are able to pick you up from not for where we are able to take you.
                          </p>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                    <li>
-                     <BaseInteractiveAccordionButton 
+                     <LazyBaseInteractiveAccordionButton 
                        id="how-to-schedule" 
                        :active-id="activeAccordionId"
                        label="HOW DO THEY SCHEDULE A RIDE?"
@@ -109,10 +109,10 @@
                        <BaseUiAction to="/resources/schedule-a-ride" class="p-2 mb-4 mt-8">
                          Schedule A Ride Online
                        </BaseUiAction>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                    <li>
-                     <BaseInteractiveAccordionButton 
+                     <LazyBaseInteractiveAccordionButton 
                        id="how-to-cancel" 
                        :active-id="activeAccordionId"
                        label="HOW DO THEY CANCEL A RIDE?"
@@ -131,10 +131,10 @@
                            Please make sure to read our <NuxtLink to="/company/policies/ride-cancellation" class="link">Ride Cancellation Policy</NuxtLink> to understand proper cancellation procedures.
                          </p>
                        </div>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                    <li>
-                     <BaseInteractiveAccordionButton 
+                     <LazyBaseInteractiveAccordionButton 
                        id="services-covered" 
                        :active-id="activeAccordionId"
                        label="WHICH SERVICES ARE COVERED?"
@@ -150,10 +150,10 @@
                            rel="noopener nofollow" class="p-2 mb-4 mt-8">
                            Medical Certificate of Transportation Service Form
                          </BaseUiAction>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                    <li>
-                     <BaseInteractiveAccordionButton 
+                     <LazyBaseInteractiveAccordionButton 
                        id="client-approval" 
                        :active-id="activeAccordionId"
                        label="HOW DOES THE CLIENT GET APPROVED?"
@@ -174,10 +174,10 @@
                          rel="noopener nofollow" class="p-2 mb-4 mt-8">
                          Medical Certificate of Transportation Service Form
                        </BaseUiAction>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                    <li>
-                     <BaseInteractiveAccordionButton 
+                     <LazyBaseInteractiveAccordionButton 
                        id="when-to-be-ready" 
                        :active-id="activeAccordionId"
                        label="WHEN SHOULD THEY BE READY FOR THEIR RIDE?"
@@ -188,7 +188,7 @@
                        <p class="text-xl text-brand-main-text">
                          When you call us for a ride, we will give you the timeframe you should be ready to be picked up by. For shared rides, you may be asked to be ready earlier than expected. Unexpected delays may occur due to traffic or weather conditions, so please keep that in mind when utilizing our services for non-emergency medical transportation (NEMT) needs.
                        </p>
-                     </BaseInteractiveAccordionButton>
+                     </LazyBaseInteractiveAccordionButton>
                    </li>
                  </ul>
                </div>
@@ -294,7 +294,7 @@
               </ul>
             </div>
             <div class="lg:w-1/2">
-              <BaseInteractiveServiceAreaMap loading="lazy"/>
+              <LazyBaseInteractiveServiceAreaMap loading="lazy"/>
             </div>
           </div>
         </BaseLayoutPageContainer>
@@ -305,7 +305,7 @@
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer>
-          <BaseLayoutCard class="bg-zinc-600">
+          <LazyBaseLayoutCard class="bg-zinc-600">
             <div class="flex flex-col lg:flex-row lg:items-center lg:p-8 text-white gap-8">
               <div class="lg:w-1/2">
                   <h2 class="text-3xl flex flex-col text-center font-extrabold mb-4 ">
@@ -330,7 +330,7 @@
                   </div>
               </div>    
             </div>
-          </BaseLayoutCard>
+          </LazyBaseLayoutCard>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
     </DeferRender>
