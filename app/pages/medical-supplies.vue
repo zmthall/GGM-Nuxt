@@ -159,7 +159,7 @@
               <h3 class="text-2xl font-bold text-white mb-6">FAQs</h3>
               <ul class="space-y-4">
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="insurance"
                     :active-id="activeAccordionId"
                     label="What insurance do you take?"
@@ -191,10 +191,10 @@
                           United Healthcare
                         </li>
                       </ul>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="coverage"
                     :active-id="activeAccordionId"
                     label="What does my insurance cover?"
@@ -205,10 +205,10 @@
                       <p class="text-xl text-brand-main-text">
                         Reach out to your insurance provider to see if the item you are requesting is covered by your insurance.
                       </p>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="paperwork"
                     :active-id="activeAccordionId"
                     label="What do I have to fill out to request DME or supplies?"
@@ -219,10 +219,10 @@
                       <p class="text-xl text-brand-main-text">
                         Before beginning the process of requesting DME and/or supplies, verify with your insurance provider to determine if the item being requested is covered through your insurance plan. Once insurance coverage is verified, contact a prescribing physician or practitioner to address the need or necessity of DME and/or supplies. The prescribing physician/practitioner will begin the process of collecting the materials necessary to show medical necessity to send to our DME Specialists. We cannot complete any orders without completing everything shown in the drop down titled "What We Need for Orders".
                       </p>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="dme"
                     :active-id="activeAccordionId"
                     label="What is Medicare's defintion of DME?"
@@ -244,10 +244,10 @@
                           Necessary and reasonable for treatment of a condition or injury.
                         </li>
                       </ul>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="repairs"
                     :active-id="activeAccordionId"
                     label="Does Golden Gate Medical Supplies do repairs?"
@@ -258,10 +258,10 @@
                       <p class="text-xl text-brand-main-text">
                         We do not specialize in repairs but have been known to do simple repairs to items such as replacing brakes, wheels, accessories, etc. Repairs are to be done at the discretion of the patient through a certified service.
                       </p>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
                 <li>
-                  <BaseInteractiveAccordionButton
+                  <LazyBaseInteractiveAccordionButton
                     id="out-of-pocket"
                     :active-id="activeAccordionId"
                     label="Am I able to get DME and/or supplies out of pocket?"
@@ -272,7 +272,7 @@
                       <p class="text-xl text-brand-main-text">
                         If you are looking to get medical equipment or supplies, you do not have to go through a prescriber to get the items you need. Before purchasing any items out of pocket, speak to a doctor or physician or practitioner to make sure you are getting the right items for the needs that you have. Ask about our unique rent-to-own programs so that we can help make the process more affordable.
                       </p>
-                  </BaseInteractiveAccordionButton>
+                  </LazyBaseInteractiveAccordionButton>
                 </li>
               </ul>
             </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="333" image-width="935"/>
+    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner-ratio.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Golden Gate Gas & Goods Journey</h2>
@@ -19,70 +19,82 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="default" bg="alt">
-      <BaseLayoutPageContainer class="space-y-4">
-        <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
-        <p class="text-xl text-brand-main-text">
-          At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.
-        </p>
-        <p class="text-xl text-brand-main-text">
-          We've invested in completely transforming our locations to serve you better. From brand new fuel tanks and pumps to dramatically expanded store spaces, we're committed to providing a superior experience every time you visit.
-        </p>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="default">
-      <BaseLayoutPageContainer class="space-y-4">
-        <h2 class="text-2xl font-bold text-brand-primary">Our Locations:</h2>
-        <GasStationArrowList />
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
-    <BaseLayoutPageCTA title="What We Offer" :has-button="false">
-      <div class="flex gap-8 justify-center flex-wrap my-8">
-        <BaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-          <h3 class="text-brand-primary text-xl font-bold">Fuel Options Available</h3>
-          <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-            <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Regular Unleaded</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Premium Unleaded</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-diesel-fill"/>Diesel</li>
-          </ul>
-        </BaseInteractiveHoverTile>
-        <BaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-          <h3 class="text-brand-primary text-xl font-bold">Refreshments & Quick Bites</h3>
-          <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-            <li class="flex gap-2 items-center"><BaseIcon name="tabler:milkshake"/>Slushies and Shakes</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="game-icons:hot-dog"/>Hot dogs</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="simple-icons:buymeacoffee"/>Coffee and Drinks</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="game-icons:chips-bag"/>Grab-and-go snacks</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="bi:patch-exclamation-fill"/>More to come!!!</li>
-          </ul>
-        </BaseInteractiveHoverTile>
-        <BaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-          <h3 class="text-brand-primary text-xl font-bold">Convenience Store Essentials</h3>
-          <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-            <li class="flex gap-2 items-center"><BaseIcon name="fluent:people-community-12-filled"/>Community Products</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="streamline:beer-pitch-solid"/>Beer and Drinks</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:local-mall-sharp"/>Everyday necessities</li>
-            <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:family-home-rounded"/>Local favorites</li>
-          </ul>
-        </BaseInteractiveHoverTile>
-      </div>
-    </BaseLayoutPageCTA>
-    <BaseLayoutPageSection margin="default" bg="alt">
-      <BaseLayoutPageContainer>
-        <BaseLayoutCard class="bg-white md:w-3/4 mx-auto">
-          <div class="flex flex-col gap-4">
-            <h2 class="text-2xl font-bold text-brand-primary">Our Commitment to the Community</h2>
-            <p class="text-xl text-brand-main-text">
-              Golden Gate Gas & Goods is more than just a place to fill your tank. We're committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service.
-            </p>
-            <p class="text-xl text-brand-main-text">
-              We look forward to serving you at our newly renovated locations. Stop by for quality fuel, fresh refreshments, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know! We take all suggestions into consideration because we want our locations to provide what the community wants.
-            </p>
-            <BaseUiAction to="/company/about-us" class="px-8 py-4 self-center">Read More</BaseUiAction>
-          </div>
-        </BaseLayoutCard>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+        <BaseLayoutPageContainer class="space-y-4">
+          <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
+          <p class="text-xl text-brand-main-text">
+            At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.
+          </p>
+          <p class="text-xl text-brand-main-text">
+            We've invested in completely transforming our locations to serve you better. From brand new fuel tanks and pumps to dramatically expanded store spaces, we're committed to providing a superior experience every time you visit.
+          </p>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
+        <BaseLayoutPageContainer class="space-y-4">
+          <h2 class="text-2xl font-bold text-brand-primary">Our Locations:</h2>
+          <LazyGasStationArrowList />
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageCTA title="What We Offer" :has-button="false">
+        <div class="flex gap-8 justify-center flex-wrap my-8">
+          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
+            <h3 class="text-brand-primary text-xl font-bold">Fuel Options Available</h3>
+            <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
+              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Regular Unleaded</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Premium Unleaded</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-diesel-fill"/>Diesel</li>
+            </ul>
+          </LazyBaseInteractiveHoverTile>
+          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
+            <h3 class="text-brand-primary text-xl font-bold">Refreshments & Quick Bites</h3>
+            <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
+              <li class="flex gap-2 items-center"><BaseIcon name="tabler:milkshake"/>Slushies and Shakes</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="game-icons:hot-dog"/>Hot dogs</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="simple-icons:buymeacoffee"/>Coffee and Drinks</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="game-icons:chips-bag"/>Grab-and-go snacks</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="bi:patch-exclamation-fill"/>More to come!!!</li>
+            </ul>
+          </LazyBaseInteractiveHoverTile>
+          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
+            <h3 class="text-brand-primary text-xl font-bold">Convenience Store Essentials</h3>
+            <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
+              <li class="flex gap-2 items-center"><BaseIcon name="fluent:people-community-12-filled"/>Community Products</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="streamline:beer-pitch-solid"/>Beer and Drinks</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:local-mall-sharp"/>Everyday necessities</li>
+              <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:family-home-rounded"/>Local favorites</li>
+            </ul>
+          </LazyBaseInteractiveHoverTile>
+        </div>
+      </BaseLayoutPageCTA>
+    </DeferRender>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+        <BaseLayoutPageContainer>
+          <LazyBaseLayoutCard class="bg-white md:w-3/4 mx-auto">
+            <div class="flex flex-col gap-4">
+              <h2 class="text-2xl font-bold text-brand-primary">Our Commitment to the Community</h2>
+              <p class="text-xl text-brand-main-text">
+                Golden Gate Gas & Goods is more than just a place to fill your tank. We're committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service.
+              </p>
+              <p class="text-xl text-brand-main-text">
+                We look forward to serving you at our newly renovated locations. Stop by for quality fuel, fresh refreshments, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know! We take all suggestions into consideration because we want our locations to provide what the community wants.
+              </p>
+              <BaseUiAction to="/company/about-us" class="px-8 py-4 self-center">Read More</BaseUiAction>
+            </div>
+          </LazyBaseLayoutCard>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
   </div>
 </template>
 
