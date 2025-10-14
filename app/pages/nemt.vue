@@ -43,7 +43,7 @@
             <BaseYoutubeLite
               video-id="fJ8_uvrsYXo"
               title="Golden Gate Manor Superbowl 2025 Commercial"
-              sizes="(min-width:1280px) 600px, 100vw"
+              sizes="xl:700px"
               image-width="720"
               image-height="405"
               poster="max"            

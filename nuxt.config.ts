@@ -173,15 +173,13 @@ export default defineNuxtConfig({
   },
   image: {
     provider: 'ipx',
-    format: ['webp'], // Fallback chain
+    format: ['webp','avif','jpeg'],
+    quality: 68,
+    screens: { sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 },
     ipx: {
       maxAge: 60 * 60 * 24 * 30, // 30 days
     },
-    image: {
-      format: ['webp','avif','jpeg'],
-      quality: 68,
-      screens: { sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
-    }
+    domains: ['i.ytimg.com']
   },
   content: {
     build: {
