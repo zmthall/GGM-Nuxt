@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageBanner src="/images/pages/medical-supplies/medical-supply-banner.jpg" alt="A peak into our medical supply store" loading="eager" title="A peak into our medical supply store" image-width="935" image-height="464" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px"/>
+    <BaseLayoutPageBanner src="/images/pages/medical-supplies/medical-supply-banner.jpg" alt="A peak into our medical supply store" loading="eager" title="A peak into our medical supply store" image-width="935" image-height="464" aspect-ratio="aspect-[2/1]" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4 flex flex-col">
         <h2 class="text-2xl font-bold text-brand-medical-primary">Golden Gate Medical Supply Overview:</h2>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Page Banner -->
-        <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 468px" image-height="464" image-width="935" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" aspect-ratio="aspect-[288/143]"/>
+        <BaseLayoutPageBanner src="/images/pages/non-medical/suv-train.jpg" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" image-height="464" image-width="935" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" aspect-ratio="aspect-[288/143]"/>
         <!-- Main Content -->
         <BaseLayoutPageSection margin="top">
             <BaseLayoutPageContainer class="space-y-4">
