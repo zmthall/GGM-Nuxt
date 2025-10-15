@@ -22,7 +22,7 @@
 
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
-        <BaseLayoutPageContainer class="space-y-4">
+        <BaseLayoutPageContainer class="space-y-4 flex flex-col">
           <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
           <p class="text-xl text-brand-main-text">
             At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.

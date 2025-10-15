@@ -1,21 +1,28 @@
 <template>
   <div>
     <!-- Page Banner -->
-    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup-ratio.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px" format="webp,avif" />
+    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup-ratio.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="sm:800px 500px" format="webp,avif" />
     <!-- Top Page -->
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
         <!-- <img src="/images/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor Transportation cars lined up in front of dispatch office building."> -->
         <h2 class="text-2xl font-bold text-brand-primary">About Us</h2>
         <p class="text-xl text-brand-main-text">
-          Welcome to Golden Gate Manor! We are a family-owned and operated facility that offers highly personalized,
-          compassionate, and direct care to members of our community in Pueblo, CO. Our services include assisted living,
-          medical and non-medical transportation services, and medical supply sales. Keep reading to learn more about
-          Golden
-          Gate Manor, and feel free to contact us with any questions! You can reach us at <a 
-            rel="nofollow"
-            :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.
+                  Welcome to Golden Gate Manor Inc., a family-owned and operated organization built on compassion, trust, and community. Based in Pueblo, Colorado, we proudly provide personalized care and dependable services that improve quality of life for those we serve.
         </p>
+        <p class="text-xl text-brand-main-text ">
+          Our operations include:
+        </p>
+        <ul class="text-xl text-brand-main-text ml-8 list-disc !mt-0">
+          <li>Assisted Living Homes offering safe, comfortable, and family-style environments where residents receive attentive 24-hour care.</li>
+          <li>Transportation Services, both medical and non-medical, ensuring reliable access to appointments, errands, and social activities across Southern Colorado.</li>
+          <li>Golden Gate Medical Supply, providing affordable, high-quality medical equipment and supplies designed to help individuals live independently.</li>
+          <li>Golden Gate Gas & Goods, our newest addition, offering convenience and community support through our locally operated fuel and goods stations.</li>
+        </ul>
+        <p class="text-xl text-brand-main-text">
+          At Golden Gate Manor, our mission is simple — to serve people with dignity and care across every stage of life. Whether you're exploring assisted living options, scheduling transportation, or looking for trusted healthcare products, our team is here to help.
+        </p>
+        <p class="text-xl text-brand-main-text">You can reach us at <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>, or continue reading below to learn more about each division of our company and how we proudly serve Southern Colorado.</p>
         <BaseUiAction to="/company/contact-us" class="py-4 px-16 self-center">Contact Us</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
