@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page Banner -->
-    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px" />
+    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup-ratio.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px" format="webp,avif" />
     <!-- Top Page -->
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
@@ -75,16 +75,18 @@
           </h2>
           <div class="flex flex-col space-y-4 lg:flex-row lg:gap-12 items-center">
             <NuxtImg 
-              src="/images/pages/about-us/transportation-services.jpeg"
-              format="webp,avif"
+              src="/images/pages/about-us/transportation-services-ratio.jpeg"
+              format="avif,webp"
               quality="60"
-              sizes="600px sm:650px md:600px"
-              class="rounded-lg shadow-primary w-full" 
+              sizes="100vw sm:650px"
+              densities="1"
+              class="rounded-lg shadow-primary w-full aspect-[2/1] object-contain" 
               alt="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office." 
               title="Pueblo City Cab and Golden Gate Manor Transportation vehicles in front of dispatch office."
+              placeholder
               loading="lazy"
-              height="416"
-              width="600"
+              height="400"
+              width="800"
             />
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
