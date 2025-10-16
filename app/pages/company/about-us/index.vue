@@ -3,7 +3,7 @@
     <!-- Page Banner -->
     <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup-ratio.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" aspect-ratio="aspect-[2/1]" format="webp,avif" />
     <!-- Top Page -->
-    <BaseLayoutPageSection margin="top">
+    <BaseLayoutPageSection v-once margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
         <!-- <img src="/images/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor Transportation cars lined up in front of dispatch office building."> -->
         <h2 class="text-2xl font-bold text-brand-primary">About Us</h2>
@@ -22,7 +22,7 @@
         <p class="text-xl text-brand-main-text">
           At Golden Gate Manor, our mission is simple — to serve people with dignity and care across every stage of life. Whether you're exploring assisted living options, scheduling transportation, or looking for trusted healthcare products, our team is here to help.
         </p>
-        <p class="text-xl text-brand-main-text">You can reach us at <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>, or continue reading below to learn more about each division of our company and how we proudly serve Southern Colorado.</p>
+        <p class="text-xl text-brand-main-text">You can reach us at <a rel="nofollow" :href="officeHref" class="link">{{ officeTel }}</a>, or continue reading below to learn more about each division of our company and how we proudly serve Southern Colorado.</p>
         <BaseUiAction to="/company/contact-us" class="py-4 px-16 self-center">Contact Us</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
@@ -64,11 +64,11 @@
           </div>
         </BaseLayoutPageContainer>
         <div class="hidden xl:flex xl:justify-center xl:gap-12 xl:mt-8">
-          <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" title="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110"  loading="lazy" width="400" height="266"/>
-          <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" title="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
-          <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" title="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+          <NuxtImg src="/images/pages/about-us/golden-gate-manor-1.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" title="Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110"  loading="lazy" width="400" height="266" decoding="async"/>
+          <NuxtImg src="/images/pages/about-us/golden-gate-manor-2.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" title="Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" decoding="async" />
+          <NuxtImg src="/images/pages/about-us/golden-horizon.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" title="Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" decoding="async" />
           <NuxtImg src="/images/pages/about-us/golden-valley.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden View 525 West 9th St. Pueblo, CO 81003" title="Golden View 525 West 9th St. Pueblo, CO 81003" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
-          <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" title="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" />
+          <NuxtImg src="/images/pages/about-us/golden-view.jpeg" format="webp,avif" quality="60" sizes="xl:400px" alt="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" title="Golden Valley 1033 East Evans Ave. Pueblo, CO 81004" class="xl:block xl:w-[17%] xl:h-max rounded-lg shadow-primary hover:scale-110" loading="lazy" width="400" height="266" decoding="async" />
         </div>
       </BaseLayoutPageSection>
     </DeferRender>
@@ -94,6 +94,7 @@
               loading="lazy"
               height="400"
               width="800"
+              decoding="async"
             />
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
@@ -145,7 +146,8 @@
               title="Inside Golden Gate Medical Supply Store at 612 South Union Avenue."
               loading="lazy"
               height="416"
-              width="600" 
+              width="600"
+              decoding="async"
             />
           </div>
         </BaseLayoutPageContainer>
@@ -171,7 +173,8 @@
               loading="lazy"
               height="416"
               width="600"
-              />
+              decoding="async"
+            />
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
                 At Golden Gate Manor, we are thrilled to embark on an exciting new journey with the opening of our gas
@@ -239,18 +242,15 @@
 </template>
 
 <script setup lang='ts'>
+import company from '../../../data/company.json'
 const runtimeConfig = useRuntimeConfig()
-const publishDate = new Date().toISOString()
 
-const company = useStaticData()?.company;
+const officeTel = company.trans.phone.office;
+const officeHref = `tel:${officeTel}`
 
 definePageMeta({
   title: 'About Golden Gate Manor Inc.',
   breadcrumbLabel: 'About Us'
-})
-
-useHead({
-  titleTemplate: null
 })
 
 useSeoMeta({
@@ -266,9 +266,6 @@ useSeoMeta({
   twitterDescription: 'Learn about Golden Gate Manor Inc., a family-owned company dedicated to enhancing quality of life through dependable healthcare transportation and services.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
-
-  articleAuthor: ['https://www.linkedin.com/in/zachary-thallas/'], // Can be a real profile or company
-  articlePublishedTime: publishDate,
 })
 
 
