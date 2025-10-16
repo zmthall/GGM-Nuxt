@@ -20,7 +20,7 @@ withDefaults(defineProps<{
     src: undefined,
     alt: undefined,
     aspectRatio: 'aspect-[4/3]',
-    sizes: '100vw md:800px',
+    sizes: 'sm:100vw md:800px',
     format: 'webp,avif',
     densities: undefined,
     imageHeight: undefined,

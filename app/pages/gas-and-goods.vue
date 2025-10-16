@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner-ratio.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" sizes="(max-width: 800px) 100vw, 800px" />
+    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner-ratio.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Golden Gate Gas & Goods Journey</h2>
@@ -8,7 +8,7 @@
           What began as a vision to better serve the Pueblo community has transformed into reality at Golden Gate Gas & Goods. The journey to revitalize our locations has been both challenging and rewarding - a labor of love spanning many months of careful planning, demolition, and reconstruction. From gutting our tiny 152 sq ft convenience store to creating a 1100+ sq ft expanded experience, we've poured our hearts into every detail. New fuel tanks, modern pumps, expanded product offerings/availability, and freshly designed interiors now welcome you at our locations.
         </p>
         <p class="text-xl text-brand-main-text">
-          While the process took time, watching these spaces evolve day by day has been truly remarkable. Each hole dug, every sq ft of cement poured, each shelf installed, and each new feature added represents our commitment to providing more than just fuel – we're building community spots where neighbors can find quality products in clean, welcoming environments. This is just the start of this journey and we are open to all feedback that will help us create a space that is enjoyable and fulfills its purpose with comfort.
+          While the process took time, watching these spaces evolve day by day has been truly remarkable. Each hole dug, every sq ft of cement poured, each shelf installed, and each new feature added represents our commitment to providing more than just fuel - we're building community spots where neighbors can find quality products in clean, welcoming environments. This is just the start of this journey and we are open to all feedback that will help us create a space that is enjoyable and fulfills its purpose with comfort.
         </p>
         <p class="text-xl text-brand-main-text">
           We invite you to experience the difference at Golden Gate Gas & Goods, where our renovation journey continues with you, our valued customers, at the heart of every decision we make. This transformation marks just the first chapter in our ongoing story. Discover the vision behind our family of businesses, learn how we're dedicated to elevating the Pueblo community, or share your thoughts with us—your feedback shapes our future.
