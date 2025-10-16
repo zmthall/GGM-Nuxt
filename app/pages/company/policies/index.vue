@@ -19,7 +19,7 @@
         <BaseUiAction to="/company/contact-us" class="p-4">Transportation Contact</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <DeferRender when="visible" root-margin="0px 0px">
+    <DeferRender when="visible" root-margin="1px 0px">
       <BaseLayoutPageSection margin="pDefault" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-8">
           <h2 class="text-2xl font-bold text-brand-primary">Medical Ecommerce Policies</h2>
