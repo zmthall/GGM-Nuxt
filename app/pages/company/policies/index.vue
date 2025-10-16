@@ -10,17 +10,15 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <DeferRender when="idle" :min-delay-ms="200">
-      <BaseLayoutPageSection margin="default">
-        <BaseLayoutPageContainer class="space-y-8">
-          <h2 class="text-2xl font-bold text-brand-primary">Transportation Policies</h2>
-          <div>
-            <NuxtLink to="/company/policies/ride-cancellation" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="material-symbols:event-busy-sharp" color="text-black" hover-color="group-hover:text-white" /><span>Ride Cancellation Policy</span></NuxtLink>
-          </div>
-          <BaseUiAction to="/company/contact-us" class="p-4">Transportation Contact</BaseUiAction>
-        </BaseLayoutPageContainer>
-      </BaseLayoutPageSection>
-    </DeferRender>
+    <BaseLayoutPageSection margin="default">
+      <BaseLayoutPageContainer class="space-y-8">
+        <h2 class="text-2xl font-bold text-brand-primary">Transportation Policies</h2>
+        <div>
+          <NuxtLink to="/company/policies/ride-cancellation" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="material-symbols:event-busy-sharp" color="text-black" hover-color="group-hover:text-white" /><span>Ride Cancellation Policy</span></NuxtLink>
+        </div>
+        <BaseUiAction to="/company/contact-us" class="p-4">Transportation Contact</BaseUiAction>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
     <DeferRender when="visible" root-margin="0px 0px">
       <BaseLayoutPageSection margin="pDefault">
         <BaseLayoutPageContainer class="space-y-8">
