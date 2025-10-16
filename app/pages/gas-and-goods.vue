@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner-ratio.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-height="400" image-width="800" aspect-ratio="aspect-[2/1]" />
+    <BaseLayoutPageBanner src="/images/pages/gas-and-goods/gas-station-banner-ratio.jpg" alt="Golden Gate Manor Gas and Goods 1 with signage on building" title="Street view of 1242 S. Prairie Gas Station" loading="eager" image-width="800" image-height="400" aspect-ratio="aspect-[2/1]" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Golden Gate Gas & Goods Journey</h2>

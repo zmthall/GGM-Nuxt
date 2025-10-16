@@ -1,6 +1,6 @@
 <template>
     <div class="my-4 sm:my-8 mx-4 sm:mx-8 sm:rounded-lg sm:shadow-primary lg:max-w-[800px] lg:mx-auto">
-        <NuxtImg :src :sizes :alt :format="format" :densities quality="70" :preload="{ fetchPriority: 'high' }" placeholder class="w-full h-auto sm:rounded-lg xl:object-cover xl:object-[10%]" :class="aspectRatio" :height="imageHeight" :width="imageWidth" :title loading="eager" />
+        <NuxtImg :src :sizes :alt :format="format" :densities quality="60" :preload="{ fetchPriority: 'high' }" placeholder class="w-full h-auto sm:rounded-lg xl:object-cover xl:object-[10%]" :class="aspectRatio" :height="imageHeight" :width="imageWidth" :title loading="eager" />
     </div>
 </template>
 
@@ -21,8 +21,8 @@ withDefaults(defineProps<{
     alt: undefined,
     aspectRatio: 'aspect-[4/3]',
     sizes: 'sm:100vw md:800px',
-    format: 'webp,avif',
-    densities: undefined,
+    format: 'avif,webp',
+    densities: 'x1 x2',
     imageHeight: undefined,
     imageWidth: undefined
 })

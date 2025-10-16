@@ -30,7 +30,7 @@
             <div class="flex justify-between items-center">
                 <NuxtLink to="/">
                     <NuxtImg 
-                        src="/images/layout/logo.png" width="300" height="29" sizes="(max-width: 450px) 300px, 225px" quality="25" alt="Golden Gate Manor Inc. Logo"
+                        src="/images/layout/logo.png" width="300" height="29" sizes="xs:350px 225px" quality="70" alt="Golden Gate Manor Inc. Logo"
                         format="avif,webp" class="max-xs:w-[225px] xs:w-[300px]" loading="eager" :preload="{ fetchPriority: 'high' }" decoding="async" title="Golden Gate Manor Inc. Logo"  />
                 </NuxtLink>
             </div>
