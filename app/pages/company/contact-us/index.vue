@@ -49,14 +49,14 @@
                 </div>
             </div>
             <!-- Right Page -->
-             <DeferRender when="visible">
+             <DeferRender when="visible" root-margin="0px 0px">
                  <div class="space-y-2 cv-auto">
                      <h2 class="font-extrabold text-2xl">CONTACT US:</h2>
                      <ContactUsForm />
                  </div>
              </DeferRender>
         </BaseLayoutPageSection>
-        <DeferRender when="visible">
+        <DeferRender when="visible" root-margin="0px 0px">
             <BaseLayoutPageSection class="max-w-[1200px] mx-auto mb-16 cv-auto">
                 <LazyBaseInteractiveLocationMap styling="w-full h-[400px] mt-8 md:mt-4"/>
             </BaseLayoutPageSection>

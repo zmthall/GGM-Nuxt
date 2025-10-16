@@ -20,7 +20,7 @@
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
     <DeferRender when="visible" root-margin="0px 0px">
-      <BaseLayoutPageSection margin="pDefault">
+      <BaseLayoutPageSection margin="pDefault" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-8">
           <h2 class="text-2xl font-bold text-brand-primary">Medical Ecommerce Policies</h2>
           <div class="flex flex-col lg:grid lg:grid-cols-4 gap-8">
