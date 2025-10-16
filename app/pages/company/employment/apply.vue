@@ -1,11 +1,14 @@
 <template>
   <div>
-    <EmploymentApplyModal />
-    <EmploymentApplication />
+    <EmploymentApplyModal v-model="noticesCompleted" />
+    <EmploymentApplication v-if="noticesCompleted" />
+    <div v-else class="h-[100vh]" />
   </div>
 </template>
 
 <script lang="ts" setup>
+const noticesCompleted = ref<boolean>(false)
+
 definePageMeta({
   title: 'Golden Gate Manor - Application',
   breadcrumbLabel: 'Application'

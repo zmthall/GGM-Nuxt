@@ -140,6 +140,7 @@
 </template>
 
 <script lang="ts" setup>
+const noticesCompleted = defineModel<boolean>();
 const noticeModalOpen = ref<boolean>(true);
 const attestationModalOpen = ref<boolean>(false);
 const attestationCheckbox = ref<boolean>(false)
@@ -158,6 +159,7 @@ const continueModal = () => {
 const continueAttestation = () => {
   if(attestationCheckbox.value) {
     attestationModalOpen.value = false;
+    noticesCompleted.value = true;
     document.body.classList.remove('no-scroll')
   } else
     attestationError.value = true;

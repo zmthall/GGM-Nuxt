@@ -22,9 +22,9 @@
         </BaseLayoutPageHeroSection>
         <BaseLayoutPageWrapper>
             <!-- Overview (our company) -->
-            <DeferRender when="visible">
+            <DeferRender when="visible" >
                 <BaseLayoutPageSection margin="default" class="cv-auto">
-                    <BaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
+                    <LazyBaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
                         <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                              <!-- Image -->
                             <section>
@@ -63,7 +63,7 @@
                                 </BaseUiAction>
                             </div>
                         </div>
-                    </BaseLayoutCard>
+                    </LazyBaseLayoutCard>
                 </BaseLayoutPageSection>
                 <template #placeholder>
                     <div class="w-full h-[450px] bg-gray-200/40 rounded-lg" />
