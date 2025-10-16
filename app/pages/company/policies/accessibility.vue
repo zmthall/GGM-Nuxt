@@ -1,7 +1,7 @@
 <template>
-  <BaseLayoutPageSection margin="top" bg="transparent">
-    <BaseLayoutPageContainer class="space-y-4">
-      <div class="space-y-4">
+  <div>
+    <BaseLayoutPageSection margin="pTop" bg="transparent">
+      <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Our Commitment</h2>
         <p class="text-xl text-brand-main-text">
             As a business serving the public good, we are committed to 
@@ -16,6 +16,10 @@
             HTML/CSS code and should continue to display correctly on 
             future browsers. 
         </p>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+    <BaseLayoutPageSection margin="default" bg="transparent">
+      <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary">Measures to Support Accessibility</h2>
         <p class="text-xl text-brand-main-text">
             Our company takes the following measures to ensure the 
@@ -47,20 +51,26 @@
             journey to accommodate all visitors to our site in terms of 
             accessibility.
         </p>
-      </div>
-      <div class="space-y-4">
-        <h2 class="text-2xl font-bold text-brand-primary">Contact Us</h2>
-        <p class="text-xl text-brand-main-text">
-            If you wish to report an accessibility issue, have any 
-            questions, or need assistance, please contact us via the 
-            Contact Form below or via email at 
-            <a rel="nofollow" href="mailto:accessibility@goldengatemanor.com" class="link break-all">
-                accessibility@goldengatemanor.com</a>.
-        </p>
-        <ContactUsForm class="bg-white p-4 md:p-8 rounded-lg md:w-3/4 mx-auto"/>
-      </div>
-    </BaseLayoutPageContainer>
-  </BaseLayoutPageSection>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="pDefault" bg="transparent">
+        <BaseLayoutPageContainer class="space-y-4">
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-brand-primary">Contact Us</h2>
+            <p class="text-xl text-brand-main-text">
+                If you wish to report an accessibility issue, have any 
+                questions, or need assistance, please contact us via the 
+                Contact Form below or via email at 
+                <a rel="nofollow" href="mailto:accessibility@goldengatemanor.com" class="link break-all">
+                    accessibility@goldengatemanor.com</a>.
+            </p>
+            <LazyContactUsForm class="bg-white p-4 md:p-8 rounded-lg md:w-3/4 mx-auto"/>
+          </div>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+  </div>
 </template>
 
 <script lang="ts" setup>

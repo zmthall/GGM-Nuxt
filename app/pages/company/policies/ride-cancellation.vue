@@ -1,6 +1,6 @@
 <template>
     <BaseLayoutPageSection margin="top">
-      <BaseLayoutPageContainer class="space-y-4">
+      <BaseLayoutPageContainer class="space-y-8">
         <div>
           <h2 class="text-2xl font-bold text-brand-primary max-sm:hidden">Ride Cancellation & No-Show Policy</h2>
           <div class="mt-2">
@@ -21,7 +21,7 @@
             <li>Pueblo City Cab non-emergency medical transportation (NEMT) on-demand and pre-scheduled service</li>
           </ul>
         </div>
-        <div>
+        <div class="cv-auto">
           <h2 class="text-2xl font-bold text-brand-primary mb-2">Definitions</h2>
           <table class="border-collapse w-full text-center text-xl text-brand-main-text">
             <thead>
@@ -201,13 +201,15 @@
             </li>
           </ul>
         </div>
-        <div>
-          <h2 class="text-2xl font-bold text-brand-primary">Contact</h2>
-          <p class="text-xl text-brand-main-text">
-            Questions about this policy or appeals of recorded strikes may be directed to <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below. Golden Gate Manor Inc. requires all correspondence to be respectful and appropriate. We reserve the right to ignore communications that are harassing or unprofessional in nature.
-          </p>
-          <ContactUsForm class="bg-white mt-8 p-4 md:p-8 rounded-lg md:w-3/4 mx-auto" />
-        </div>
+        <DeferRender when="visible">
+          <div>
+            <h2 class="text-2xl font-bold text-brand-primary">Contact</h2>
+            <p class="text-xl text-brand-main-text">
+              Questions about this policy or appeals of recorded strikes may be directed to <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>, or you can use the contact form below. Golden Gate Manor Inc. requires all correspondence to be respectful and appropriate. We reserve the right to ignore communications that are harassing or unprofessional in nature.
+            </p>
+            <LazyContactUsForm class="bg-white mt-8 p-4 md:p-8 rounded-lg md:w-3/4 mx-auto" />
+          </div>
+        </DeferRender>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 </template>

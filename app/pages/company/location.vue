@@ -6,35 +6,37 @@
     </BaseLayoutPageSection>
 
     <!-- Business Information -->
-    <BaseLayoutPageSection margin="default">
-      <div>
-        <BaseLayoutPageListItem has-left-border class="my-4 font-bold">
-          <h2 class="text-2xl text-brand-primary mb-4">Contact Information</h2>
-          <p><span>{{ company?.name }}</span></p>
-          <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="nofollow noopener" target="_blank" class="link">{{ company?.address }}</a></p>
-          <p><span>Phone: </span><a 
-              rel="nofollow noopener"
-              :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a></p>
-        </BaseLayoutPageListItem>
-        <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
-          <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>
-          <p class="border-b border-b-black w-max">{{ company?.hours }}</p>
-        </BaseLayoutPageListItem>
-        <BaseLayoutPageListItem class="mt-12 font-bold" has-left-border>
-          <h2 class="text-2xl font-bold text-brand-primary mb-4">Get Connected</h2>
-          <div>
-            <ul v-if="staticData" class="flex gap-4">
-              <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
-                <NuxtLink :to="socialHandle.url">
-                  <BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" />
-                  <span class="sr-only">{{ socialHandle.alt }}</span>
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
-        </BaseLayoutPageListItem>
-      </div>
-    </BaseLayoutPageSection>
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
+        <div>
+          <BaseLayoutPageListItem has-left-border class="my-4 font-bold">
+            <h2 class="text-2xl text-brand-primary mb-4">Contact Information</h2>
+            <p><span>{{ company?.name }}</span></p>
+            <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="nofollow noopener" target="_blank" class="link">{{ company?.address }}</a></p>
+            <p><span>Phone: </span><a 
+                rel="nofollow noopener"
+                :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a></p>
+          </BaseLayoutPageListItem>
+          <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
+            <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>
+            <p class="border-b border-b-black w-max">{{ company?.hours }}</p>
+          </BaseLayoutPageListItem>
+          <BaseLayoutPageListItem class="mt-12 font-bold" has-left-border>
+            <h2 class="text-2xl font-bold text-brand-primary mb-4">Get Connected</h2>
+            <div>
+              <ul v-if="staticData" class="flex gap-4">
+                <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
+                  <NuxtLink :to="socialHandle.url">
+                    <BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" />
+                    <span class="sr-only">{{ socialHandle.alt }}</span>
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </BaseLayoutPageListItem>
+        </div>
+      </BaseLayoutPageSection>
+    </DeferRender>
   </BaseLayoutPageContainer>
 </template>
 

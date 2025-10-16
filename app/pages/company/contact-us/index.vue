@@ -49,14 +49,18 @@
                 </div>
             </div>
             <!-- Right Page -->
-            <div class="space-y-2">
-                <h2 class="font-extrabold text-2xl">CONTACT US:</h2>
-                <ContactUsForm />
-            </div>
+             <DeferRender when="visible">
+                 <div class="space-y-2 cv-auto">
+                     <h2 class="font-extrabold text-2xl">CONTACT US:</h2>
+                     <ContactUsForm />
+                 </div>
+             </DeferRender>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection class="max-w-[1200px] mx-auto mb-16">
-            <BaseInteractiveLocationMap styling="w-full h-[400px] mt-8 md:mt-4"/>
-        </BaseLayoutPageSection>
+        <DeferRender when="visible">
+            <BaseLayoutPageSection class="max-w-[1200px] mx-auto mb-16 cv-auto">
+                <LazyBaseInteractiveLocationMap styling="w-full h-[400px] mt-8 md:mt-4"/>
+            </BaseLayoutPageSection>
+        </DeferRender>
     </BaseLayoutPageContainer>
 </template>
 

@@ -10,27 +10,31 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="pTop">
-      <BaseLayoutPageContainer class="space-y-8">
-        <h2 class="text-2xl font-bold text-brand-primary">Transportation Policies</h2>
-        <div>
-          <NuxtLink to="/company/policies/ride-cancellation" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="material-symbols:event-busy-sharp" color="text-black" hover-color="group-hover:text-white" /><span>Ride Cancellation Policy</span></NuxtLink>
-        </div>
-        <BaseUiAction to="/company/contact-us" class="p-4">Transportation Contact</BaseUiAction>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
-    <BaseLayoutPageSection margin="top">
-      <BaseLayoutPageContainer class="space-y-8">
-        <h2 class="text-2xl font-bold text-brand-primary">Medical Ecommerce Policies</h2>
-        <div class="flex flex-col lg:grid lg:grid-cols-4 gap-8">
-          <a href="https://goldengatemedicalsupply.com/pages/terms-conditions" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="game-icons:scales" color="text-black" hover-color="group-hover:text-white" /><span>Terms and Conditions</span></a>
-          <a href="https://goldengatemedicalsupply.com/pages/privacy-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="solar:shield-bold" color="text-black" hover-color="group-hover:text-white" /><span>Privacy Policy</span></a>
-          <a href="https://goldengatemedicalsupply.com/pages/shipping-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="hugeicons:shipping-truck-02" color="text-black" hover-color="group-hover:text-white" /><span>Shipping Policy</span></a>
-          <a href="https://goldengatemedicalsupply.com/pages/return-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="tabler:truck-return" color="text-black" hover-color="group-hover:text-white" /><span>Return Policy</span></a>
-        </div>
-        <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-4">Medical Supply Contact</BaseUiAction>
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+    <DeferRender when="idle" :min-delay-ms="200">
+      <BaseLayoutPageSection margin="default">
+        <BaseLayoutPageContainer class="space-y-8">
+          <h2 class="text-2xl font-bold text-brand-primary">Transportation Policies</h2>
+          <div>
+            <NuxtLink to="/company/policies/ride-cancellation" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="material-symbols:event-busy-sharp" color="text-black" hover-color="group-hover:text-white" /><span>Ride Cancellation Policy</span></NuxtLink>
+          </div>
+          <BaseUiAction to="/company/contact-us" class="p-4">Transportation Contact</BaseUiAction>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+    <DeferRender when="visible" root-margin="0px 0px">
+      <BaseLayoutPageSection margin="pDefault">
+        <BaseLayoutPageContainer class="space-y-8">
+          <h2 class="text-2xl font-bold text-brand-primary">Medical Ecommerce Policies</h2>
+          <div class="flex flex-col lg:grid lg:grid-cols-4 gap-8">
+            <a href="https://goldengatemedicalsupply.com/pages/terms-conditions" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="game-icons:scales" color="text-black" hover-color="group-hover:text-white" /><span>Terms and Conditions</span></a>
+            <a href="https://goldengatemedicalsupply.com/pages/privacy-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="solar:shield-bold" color="text-black" hover-color="group-hover:text-white" /><span>Privacy Policy</span></a>
+            <a href="https://goldengatemedicalsupply.com/pages/shipping-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="hugeicons:shipping-truck-02" color="text-black" hover-color="group-hover:text-white" /><span>Shipping Policy</span></a>
+            <a href="https://goldengatemedicalsupply.com/pages/return-policy" target="_blank" rel="noopener" class="h-24 flex items-center gap-4 justify-center bg-zinc-300 rounded-lg hover:bg-zinc-500 hover:text-white hover:font-bold lg:hover:scale-105 transition-transform duration-500 ease-in-out group"><BaseIcon name="tabler:truck-return" color="text-black" hover-color="group-hover:text-white" /><span>Return Policy</span></a>
+          </div>
+          <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-4">Medical Supply Contact</BaseUiAction>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
   </div>
 </template>
 
