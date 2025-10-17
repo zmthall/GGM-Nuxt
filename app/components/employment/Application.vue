@@ -47,7 +47,7 @@
           </div>
           <div class="space-y-2">
             <BaseFormRadios v-model="application.driving.hasMVR" name="has-mvr" :labels="['Yes', 'No']" :values="['yes', 'no']" label="Do you have a recent Motor Vehicle Record (MVR) from within the last 30 days?" styling="flex gap-2"/>
-            <PleaseNote v-if="application.driving.hasMVR == 'no'">A Motor Vehicle Record (MVR) from the last 30 days is required for this position. A non-certified MVR showing a 7-year driving history can be obtained from the DMV at 827 W 4th St, Pueblo, CO 81003, or online using the <a href="https://mydmv.colorado.gov/_/" target="_blank" rel="noopener nofollow noreferrer" class="link">DMV - MVR Online Form</a> and request a driving record. Submit the MVR with your application or bring it to our office at 612 S. Union Ave., Pueblo, CO 81004 to proceed with the application process.</PleaseNote>
+            <PleaseNote v-if="application.driving.hasMVR == 'no'">A Motor Vehicle Record (MVR) from the last 30 days is required for this position. A non-certified MVR showing a 7-year driving history can be obtained from the DMV at 827 W 4th St, Pueblo, CO 81003, or online using the <a href="https://mydmv.colorado.gov/_/" target="_blank" rel="noopener noreferrer" class="link">DMV - MVR Online Form</a> and request a driving record. Submit the MVR with your application or bring it to our office at 612 S. Union Ave., Pueblo, CO 81004 to proceed with the application process.</PleaseNote>
             <BaseFormFileUpload v-if="application.driving.hasMVR === 'yes'" v-model="application.driving.MVR" name="MVR" label="Attach your MVR:"/>
           </div>
           <div>

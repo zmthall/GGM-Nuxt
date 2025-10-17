@@ -55,7 +55,7 @@
           <BaseUiAction
             variant="secondary" 
             title="Opens in new tab"
-            href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener nofollow"
+            href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener noreferrer"
             class="group text-xs w-full md:w-[calc(50%-1rem)]"
             styling="p-2 sm:p-4 flex flex-col md:flex-row gap-2 items-center justify-center">
               <BaseIcon name="uiw:file-pdf" class="group-hover:text-brand-secondary transition-colors duration-500 ease-in-out" size="size-5"/> 
@@ -100,10 +100,10 @@
                        @update:active-id="updateId">
                        <div class="space-y-4">
                          <p class="text-xl text-brand-main-text">
-                           To help us serve you better, please schedule your ride at least 24 hours in advance by calling <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> between 8:00 AM and 4:00 PM, Monday through Friday. This allows us the necessary time to arrange your transportation efficiently.
+                           To help us serve you better, please schedule your ride at least 24 hours in advance by calling <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> between 8:00 AM and 4:00 PM, Monday through Friday. This allows us the necessary time to arrange your transportation efficiently.
                          </p>
                          <p class="text-xl text-brand-main-text">
-                           If it is after normal business hours, call our dispatch at <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>. Our scheduling/dispatch office is open 24/7. Please don't hesitate to reach out if you have any questions.
+                           If it is after normal business hours, call our dispatch at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>. Our scheduling/dispatch office is open 24/7. Please don't hesitate to reach out if you have any questions.
                          </p>
                        </div>
                        <BaseUiAction to="/resources/schedule-a-ride" class="p-2 mb-4 mt-8">
@@ -122,10 +122,10 @@
                        @update:active-id="updateId">
                        <div class="space-y-4">
                          <p class="text-xl text-brand-main-text">
-                           If you need to cancel a ride, please call at least two hours before your scheduled pick-up time at <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.
+                           If you need to cancel a ride, please call at least two hours before your scheduled pick-up time at <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.
                          </p>
                          <p class="text-xl text-brand-main-text">
-                           If it is after normal business hours, call our dispatch at <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>.
+                           If it is after normal business hours, call our dispatch at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>.
                          </p>
                          <p class="text-xl text-brand-main-text">
                            Please make sure to read our <NuxtLink to="/company/policies/ride-cancellation" class="link">Ride Cancellation Policy</NuxtLink> to understand proper cancellation procedures.
@@ -147,7 +147,7 @@
                          </p>
                          <BaseUiAction 
                            href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
-                           rel="noopener nofollow" class="p-2 mb-4 mt-8">
+                           rel="noopener noreferrer" class="p-2 mb-4 mt-8">
                            Medical Certificate of Transportation Service Form
                          </BaseUiAction>
                      </LazyBaseInteractiveAccordionButton>
@@ -171,7 +171,7 @@
                        </div>
                        <BaseUiAction 
                          href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
-                         rel="noopener nofollow" class="p-2 mb-4 mt-8">
+                         rel="noopener noreferrer" class="p-2 mb-4 mt-8">
                          Medical Certificate of Transportation Service Form
                        </BaseUiAction>
                      </LazyBaseInteractiveAccordionButton>
@@ -224,13 +224,13 @@
              </h2>
              <BaseLayoutPageListItem title="Business Hours Numbers" title-class="text-white mb-4 font-extrabold text-2xl" has-left-border class="before:bg-white font-bold text-white lg:ml-8 my-8">
                <div class="flex flex-col space-y-2">
-                 <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="hover:text-brand-secondary group flex items-center w-max">
+                 <a :href="`tel:${company?.trans.phone.office}`" class="hover:text-brand-secondary group flex items-center w-max">
                    <BaseIcon name="ic:round-call" class="text-white group-hover:text-brand-secondary"/>
                    <span class="nemt-span-text">
                      {{ company?.trans.phone.office }}
                    </span>
                  </a>
-                 <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="hover:text-brand-secondary group flex items-center w-max">
+                 <a :href="`tel:${company?.trans.phone.dispatch}`" class="hover:text-brand-secondary group flex items-center w-max">
                    <span class="nemt-span-logo">
                      <BaseIcon name="ic:round-call" class="text-white group-hover:text-brand-secondary" />
                    </span>
@@ -245,7 +245,7 @@
              </BaseLayoutPageListItem>
              <BaseLayoutPageListItem title="After Business Hours Number" title-class="text-white mb-4 font-extrabold text-2xl" has-left-border class="before:bg-white font-bold text-white lg:ml-8 my-16">
                <div class="after-business-hours-wrapper appointment-schedule-information-container">
-                 <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="hover:text-brand-secondary group flex items-center w-max">
+                 <a :href="`tel:${company?.trans.phone.dispatch}`" class="hover:text-brand-secondary group flex items-center w-max">
                    <BaseIcon name="ic:round-call" class="text-white group-hover:text-brand-secondary"/>
                    <span class="nemt-span-text">
                      {{ company?.trans.phone.dispatch  }}
@@ -286,8 +286,8 @@
                 <li class="pl-8 relative">
                   <BaseIcon name="material-symbols:bookmark-check-rounded" class="text-brand-primary absolute left-0" />
                   <p class="text-xl text-brand-main-text">
-                    Give us a call at <a rel="nofollow" :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> for eligibility in your
-                    county. If after hours, call <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link">
+                    Give us a call at <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> for eligibility in your
+                    county. If after hours, call <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">
                       {{ company?.trans.phone.dispatch }}</a>.
                   </p>
                 </li>

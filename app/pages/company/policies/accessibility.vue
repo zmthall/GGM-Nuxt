@@ -43,7 +43,7 @@
             content or features of the site that are not accessible to 
             those with disabilities, you may contact us using the form 
             below or by emailing us directly at
-            <a rel="nofollow" href="mailto:accessibility@goldengatemanor.com" class="link break-all">accessibility@goldengatemanor.com</a>. 
+            <a href="mailto:accessibility@goldengatemanor.com" class="link break-all">accessibility@goldengatemanor.com</a>. 
             Please provide the page and a brief 
             description of the content or functionality where the issue was 
             encountered, along with a suggestion for improvement. We 
@@ -62,7 +62,7 @@
                 If you wish to report an accessibility issue, have any 
                 questions, or need assistance, please contact us via the 
                 Contact Form below or via email at 
-                <a rel="nofollow" href="mailto:accessibility@goldengatemanor.com" class="link break-all">
+                <a href="mailto:accessibility@goldengatemanor.com" class="link break-all">
                     accessibility@goldengatemanor.com</a>.
             </p>
             <LazyContactUsForm class="bg-white p-4 md:p-8 rounded-lg md:w-3/4 mx-auto"/>

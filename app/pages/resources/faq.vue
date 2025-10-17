@@ -34,15 +34,13 @@
                     <div class="space-y-4">
                       <p class="text-xl text-white">
                         To help us serve you better, please schedule your ride
-                        at least 24 hours in advance by calling <a 
-                        rel="nofollow"
-                        :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a> between 8:00 AM
+                        at least 24 hours in advance by calling <a :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a> between 8:00 AM
                         and 4:00 PM, Monday through Friday. This allows us the
                         necessary time to arrange your transportation efficiently.
                       </p>
                       <p class="text-xl text-white">
                         If it is after normal business hours, call our dispatch at
-                        <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link-light">
+                        <a :href="`tel:${company?.trans.phone.dispatch}`" class="link-light">
                           {{ company?.trans.phone.dispatch }}
                         </a>.
                       </p>
@@ -65,13 +63,13 @@
                       <p class="text-xl text-white">
                         If you need to cancel a ride, please call at least two hours
                         before your scheduled pick-up time at <a 
-                        rel="nofollow"
+                      
                         :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a>.
                       </p>
                       <p class="text-xl text-white">
                         If it is after
                         normal business hours, call our dispatch at
-                        <a rel="nofollow" :href="`tel:${company?.trans.phone.dispatch}`" class="link-light">
+                        <a :href="`tel:${company?.trans.phone.dispatch}`" class="link-light">
                           {{ company?.trans.phone.dispatch }}
                         </a>.
                       </p>
@@ -121,7 +119,7 @@
                     </div>
                     <BaseUiAction 
                       href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
-                      rel="noopener nofollow" class="p-2 mb-4 mt-8" variant="secondary">
+                      rel="noopener noreferrer" class="p-2 mb-4 mt-8" variant="secondary">
                       Medical Certificate of Transportation Service Form
                     </BaseUiAction>
                   </LazyBaseInteractiveAccordionButton>
@@ -649,7 +647,7 @@ const FAQMainEntity = [
 
     { "@type": "Question", "name": "HOW DOES THE CLIENT GET APPROVED?",
       "acceptedAnswer": { "@type": "Answer",
-        "text": `<p>An attending Physician/PA/NP/Therapist or other licensed professional must complete and sign the Medical Certificate of Transportation Services.</p><p>If the client lives beyond 25 miles from the provider, the additional 25-mile form is also required. See our <a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener nofollow">Medical Certificate of Transportation Services form</a>.</p>` } },
+        "text": `<p>An attending Physician/PA/NP/Therapist or other licensed professional must complete and sign the Medical Certificate of Transportation Services.</p><p>If the client lives beyond 25 miles from the provider, the additional 25-mile form is also required. See our <a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank" rel="noopener noreferrer">Medical Certificate of Transportation Services form</a>.</p>` } },
 
     { "@type": "Question", "name": "WHEN SHOULD THEY BE READY FOR THEIR RIDE?",
       "acceptedAnswer": { "@type": "Answer",

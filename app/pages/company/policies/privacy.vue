@@ -610,7 +610,7 @@
                     the Personal Information that has been collected. You may also request 
                     correction or your Personal Information or request to have us delete any 
                     Personal Information that has been collected. Such requests may be 
-                    submitted by emailing <a rel="nofollow" href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>. It's important to note 
+                    submitted by emailing <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>. It's important to note 
                     that under the CCPA, you may only make a data access or data portability 
                     disclosure request twice within a twelve (12) month period.
                 </p>
@@ -639,7 +639,7 @@
                     We respect your privacy and give you an opportunity to opt out of 
                     receiving announcements of certain information at any time. Users may 
                     opt out of receiving marketing communications from us by contacting us 
-                    via email at <a rel="nofollow" href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>. Users may also unsubscribe from 
+                    via email at <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>. Users may also unsubscribe from 
                     newsletters by using the unsubscribe link at the bottom of the 
                     newsletter.
                 </p>
@@ -688,7 +688,7 @@
                     from our records. If you have any questions or comments about this 
                     Privacy Policy, the ways in which we collect and use your information 
                     described above, your choices and rights regarding such use, please do 
-                    not hesitate to contact us at <a rel="nofollow" href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>.
+                    not hesitate to contact us at <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>.
                 </p>
                 <p class="text-xl text-brand-main-text policy-list-title">
                     If you contact us directly via email, we may require that you 
@@ -707,7 +707,7 @@
                 </ul>
                 <p class="text-xl text-brand-main-text">
                     If you wish to exercise your rights under CCPA, please email 
-                    <a rel="nofollow" href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>.
+                    <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>.
                 </p>
                 <p class="text-xl text-brand-main-text">
                     If we're not able to verify your identity or verify that the person 

@@ -12,10 +12,8 @@
           <BaseLayoutPageListItem has-left-border class="my-4 font-bold">
             <h2 class="text-2xl text-brand-primary mb-4">Contact Information</h2>
             <p><span>{{ company?.name }}</span></p>
-            <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="nofollow noopener" target="_blank" class="link">{{ company?.address }}</a></p>
-            <p><span>Phone: </span><a 
-                rel="nofollow noopener"
-                :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a></p>
+            <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="nofollow noopener noreferrer" target="_blank" class="link">{{ company?.address }}</a></p>
+            <p><span>Phone: </span><a :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a></p>
           </BaseLayoutPageListItem>
           <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
             <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>

@@ -22,7 +22,7 @@
         <p class="text-xl text-brand-main-text">
           At Golden Gate Manor, our mission is simple — to serve people with dignity and care across every stage of life. Whether you're exploring assisted living options, scheduling transportation, or looking for trusted healthcare products, our team is here to help.
         </p>
-        <p class="text-xl text-brand-main-text">You can reach us at <a rel="nofollow" :href="officeHref" class="link">{{ officeTel }}</a>, or continue reading below to learn more about each division of our company and how we proudly serve Southern Colorado.</p>
+        <p class="text-xl text-brand-main-text">You can reach us at <a :href="officeHref" class="link">{{ officeTel }}</a>, or continue reading below to learn more about each division of our company and how we proudly serve Southern Colorado.</p>
         <BaseUiAction to="/company/contact-us" class="py-4 px-16 self-center">Contact Us</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
@@ -43,7 +43,7 @@
               nurse available at each of our facilities to respond to urgent medical needs.
             </p>
             <p class="text-xl text-brand-main-text">
-              Please call us at <a rel="nofollow" :href="`tel:${company?.assitedLiving.phone}`" class="link">{{ company?.assitedLiving.phone }}</a> if you are interested in taking a tour of our
+              Please call us at <a :href="`tel:${company?.assitedLiving.phone}`" class="link">{{ company?.assitedLiving.phone }}</a> if you are interested in taking a tour of our
               facilities. We warmly welcome all potential residents and their family members
               to join us for lunch. This gathering will provide an excellent opportunity to
               meet our dedicated staff, mingle with current residents, and personally

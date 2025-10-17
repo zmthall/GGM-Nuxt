@@ -82,7 +82,13 @@ export default defineNuxtConfig({
     // static images (if versioned or rarely change)
     '/images/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
-    }
+    },
+    // noindexing on /admin pages
+    '/admin/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    // noindexing on deemed dev production
+    ...(process.env.BUILD_TYPE === 'DEV'
+      ? { '/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } } }
+      : { })
   },
   runtimeConfig: {
     apiKey: process.env.API_KEY,
@@ -102,7 +108,8 @@ export default defineNuxtConfig({
       siteUrl: process.env.SITE_URL,
       recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
-      microsoftUetId: process.env.MICROSOFT_UET_ID
+      microsoftUetId: process.env.MICROSOFT_UET_ID,
+      buildType: process.env.BUILD_TYPE
     }
   },
   typescript: {
