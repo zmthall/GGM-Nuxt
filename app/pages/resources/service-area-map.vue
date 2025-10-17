@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <BaseInteractiveServiceAreaMap loading="eager" :margin="8"/>
-    </div>
+    <BaseLayoutPageSection margin="nDefault">
+      <BaseLayoutPageContainer max-width="1000px">
+        <BaseInteractiveServiceAreaMapFacade loading="eager" mode="click"/>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
 </template>
 
 <script setup lang='ts'> 

@@ -6,7 +6,6 @@
           ref="flourishContainer"
           class="flourish-embed flourish-map"
           data-src="visualisation/23590816"
-          style="aspect-ratio:16/9; width:100%"  
         >
           <div class="mb-4">
             <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
@@ -25,6 +24,7 @@
               width="100%" height="100%"
               alt="service area map visualization"
               title="Service area map visualization"
+              class="aspect-[16/9]"
             />
           </noscript>
         </div>

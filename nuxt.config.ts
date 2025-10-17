@@ -186,7 +186,7 @@ export default defineNuxtConfig({
     ipx: {
       maxAge: 60 * 60 * 24 * 30, // 30 days
     },
-    domains: ['i.ytimg.com']
+    domains: ['i.ytimg.com', 'public.flourish.studio']
   },
   content: {
     build: {
