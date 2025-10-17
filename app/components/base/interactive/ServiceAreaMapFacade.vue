@@ -14,8 +14,8 @@
           <p class="text-md sm:text-2xl">Included in Service Area</p>
         </div>
       </div>
-      <div class="relative w-full aspect-[998/732]">
-        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" class="object-contain w-full h-auto" placeholder quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
+      <div class="relative w-full aspect-[5/3]">
+        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="avif,webp" class="w-full h-full" placeholder="/images/service-area-map-placeholder.jpg" quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1" sizes="md:1000px 100vw" height="748" width="1020" />
       </div>
 
       <!-- CTA -->
