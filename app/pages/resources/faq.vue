@@ -2,7 +2,7 @@
   <div class="md:flex py-8 sm:px-4 gap-4 max-w-[1000px] mx-auto">
     <BaseLayoutAsideNav class="xs:w-1/2 md:w-1/4" :navigation-items="navItems" @update-nav="updateNav"/>
       <BaseLayoutPageSection class="w-3/4 min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
-        <FAQAccordion v-model="activeNavId" />
+        <FaqNavigation v-model="activeNavId" />
       </BaseLayoutPageSection>
   </div>
 </template>
