@@ -6,7 +6,7 @@
         <h2 class="text-md sm:text-2xl font-bold group-hover:text-brand-primary transition-colors duration-500 ease-in-out">
           {{ title }}
         </h2>
-        <p class="text-sm">{{ message }}</p>
+        <p class="text-sm xs:text-md">{{ message }}</p>
       </div>
     </div>
   </BaseUiAction>
