@@ -52,6 +52,7 @@
       <h3 class="text-xl font-bold text-brand-primary">Non-Emergency Transportation Application</h3>
       <ul class="ml-8 list-disc text-xl">
         <li><a href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" class="link" target="_blank" rel="noopener noreferrer">NEMT Application Form</a></li>
+        <li><a href="/pdfs/nemt/Consent&Liability-Release-for-Minors.pdf" class="link" target="_blank" rel="noopener noreferrer">NEMT Consent & Liability Release for Minors Form</a></li>
       </ul>
     </div>
   </div>
