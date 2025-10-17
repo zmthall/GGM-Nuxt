@@ -1,5 +1,5 @@
 <template>
-  <div class="max-sm:mt-4">
+  <div class="max-sm:mt-4 accordion-panel">
     <h2 class="text-2xl font-bold text-brand-primary">Medical Supply FAQ's</h2>
     <ul class="space-y-4 mt-4">
         <li>
@@ -11,7 +11,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdMedical === 'insurance' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-brand-medical-primary px-4 py-2 ${activeAccordionIdMedical !== 'insurance' ? 'group-hover:bg-brand-medical-primary/50' : ''}`"
             @update:active-id="updateIdMedical">
-            <div class="space-y-4">
+            <div v-once class="space-y-4">
               <p class="text-xl text-white">
                 Currently at this time the following insurances are accepted for Durable Medical Equipment. We are currently working to expand our availability when it comes to insurance. If there are any other questions or concerns involving insurance please reach us via <a href="tel:719-569-7361" class="link">phone</a> or through <a href="mailto:customersupport@goldengatemedicalsupply.com" class="link">email</a>.
               </p>
@@ -48,9 +48,11 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdMedical === 'coverage' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-brand-medical-primary px-4 py-2 ${activeAccordionIdMedical !== 'coverage' ? 'group-hover:bg-brand-medical-primary/50' : ''}`"
             @update:active-id="updateIdMedical">
-              <p class="text-xl text-white">
-                Reach out to your insurance provider to see if the item you are requesting is covered by your insurance.
-              </p>
+              <div v-once>
+                <p class="text-xl text-white">
+                  Reach out to your insurance provider to see if the item you are requesting is covered by your insurance.
+                </p>
+              </div>
           </BaseInteractiveAccordionButton>
         </li>
         <li>
@@ -76,20 +78,22 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdMedical === 'dme' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-brand-medical-primary px-4 py-2 ${activeAccordionIdMedical !== 'dme' ? 'group-hover:bg-brand-medical-primary/50' : ''}`"
             @update:active-id="updateIdMedical">
-              <ul class="list-disc list-inside ml-4 text-xl text-white">
-                <li>
-                  Durable (can withstand repeated use).
-                </li>
-                <li>
-                  Appropriate for use in the "home" ("primarily used at home," but not exclusively).
-                </li>
-                <li>
-                  Primarily and customarily needed for a medical purpose (the equipment/supplies would not be useful for someone who doesn't need it).
-                </li>
-                <li>
-                  Necessary and reasonable for treatment of a condition or injury.
-                </li>
-              </ul>
+              <div v-once>
+                <ul class="list-disc list-inside ml-4 text-xl text-white">
+                  <li>
+                    Durable (can withstand repeated use).
+                  </li>
+                  <li>
+                    Appropriate for use in the "home" ("primarily used at home," but not exclusively).
+                  </li>
+                  <li>
+                    Primarily and customarily needed for a medical purpose (the equipment/supplies would not be useful for someone who doesn't need it).
+                  </li>
+                  <li>
+                    Necessary and reasonable for treatment of a condition or injury.
+                  </li>
+                </ul>
+              </div>
           </BaseInteractiveAccordionButton>
         </li>
         <li>
@@ -115,9 +119,11 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdMedical === 'out-of-pocket' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-brand-medical-primary px-4 py-2 ${activeAccordionIdMedical !== 'out-of-pocket' ? 'group-hover:bg-brand-medical-primary/50' : ''}`"
             @update:active-id="updateIdMedical">
-              <p class="text-xl text-white">
-                If you are looking to get medical equipment or supplies, you do not have to go through a prescriber to get the items you need. Before purchasing any items out of pocket, speak to a doctor or physician or practitioner to make sure you are getting the right items for the needs that you have. Ask about our unique rent-to-own programs so that we can help make the process more affordable.
-              </p>
+              <div v-once>
+                <p class="text-xl text-white">
+                  If you are looking to get medical equipment or supplies, you do not have to go through a prescriber to get the items you need. Before purchasing any items out of pocket, speak to a doctor or physician or practitioner to make sure you are getting the right items for the needs that you have. Ask about our unique rent-to-own programs so that we can help make the process more affordable.
+                </p>
+              </div>
           </BaseInteractiveAccordionButton>
         </li>
       </ul>

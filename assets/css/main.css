@@ -8,6 +8,11 @@
 
 .cv-auto{ content-visibility: auto; contain-intrinsic-size: 1px 800px; }
 
+.accordion-panel {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px; /* reserve space to avoid jumps */
+}
+
 h1, h2, h3, h4, h5, h6 {
   @apply font-headings;
   scroll-margin-top: 45px;

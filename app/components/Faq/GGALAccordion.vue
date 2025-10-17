@@ -1,5 +1,5 @@
 <template>
-  <div class="max-sm:mt-4">
+  <div class="max-sm:mt-4 accordion-panel">
     <h2 class="text-2xl font-bold text-brand-primary">Assisted Living FAQ's</h2>
     <ul class="space-y-4 mt-4">
       <li>
@@ -11,7 +11,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'services-assisted-living' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'services-assisted-living' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-            <div class="space-y-4">
+            <div v-once class="space-y-4">
               <div>
                 <p class="text-xl text-white">
                   Our assisted living services include:
@@ -55,7 +55,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'assisted-living-right' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'assisted-living-right' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <div>
                   <p class="text-xl text-white">
                     If you or your loved one requires one or more of the following, assisted living may be for you:
@@ -96,7 +96,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'cost-of-assisted-living' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'cost-of-assisted-living' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   Without insurance, out-of-pocket expenses depend on your monthly income, plus there would be monthly fees. The best answer regarding cost would be to contact us directly for a personalized quote.
                 </p>
@@ -118,7 +118,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'whats-the-difference' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'whats-the-difference' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   Assisted living focuses on helping residents maintain their independence while providing support with daily activities like bathing, dressing, medication management, and meals. Residents typically have their own private or semi-private rooms and can come and go as they please.
                 </p>
@@ -140,9 +140,11 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === '24-hour-staff' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== '24-hour-staff' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-              <p class="text-xl text-white">
-                Yes, Golden Gate Manor has staff available 24 hours a day to ensure the safety and well-being of our residents. Our trained staff members are on-site around the clock to assist with emergencies, provide support when needed, and give you and your family peace of mind knowing help is always available.
-              </p>
+              <div>
+                <p class="text-xl text-white">
+                  Yes, Golden Gate Manor has staff available 24 hours a day to ensure the safety and well-being of our residents. Our trained staff members are on-site around the clock to assist with emergencies, provide support when needed, and give you and your family peace of mind knowing help is always available.
+                </p>
+              </div>
           </BaseInteractiveAccordionButton>
       </li>
       <li>
@@ -154,7 +156,7 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdAssistedLiving === 'schedule-a-tour' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-[#2E86AB] px-4 py-2 ${activeAccordionIdAssistedLiving !== 'schedule-a-tour' ? 'group-hover:bg-[#2E86AB]/50' : ''}`"
             @update:active-id="updateIdAssistedLiving">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   Absolutely! We encourage prospective residents and their families to schedule a tour of Golden Gate Manor. During your visit, you'll be able to see our facilities, meet our staff, learn about our services, and get a feel for our community atmosphere.
                 </p>

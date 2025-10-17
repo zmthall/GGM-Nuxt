@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="accordion-panel">
     <h2 class="text-2xl font-bold text-brand-primary">Transportation FAQ's</h2>
     <ul class="space-y-4 mt-4">
           <li>
@@ -11,11 +11,13 @@
               :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'eligibility' ? 'border-b border-b-white' : ''}`"
               :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'eligibility' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-                <p class="text-xl text-white">
-                  Your client may be eligible if they have a
-                  current Medicaid Insurance ID and are going
-                  to a Medicaid approved appointment.
-                </p>
+                <div v-once>
+                  <p class="text-xl text-white">
+                    Your client may be eligible if they have a
+                    current Medicaid Insurance ID and are going
+                    to a Medicaid approved appointment.
+                  </p>
+                </div>
             </BaseInteractiveAccordionButton>
           </li>
           <li>
@@ -27,7 +29,7 @@
               :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'how-to-schedule' ? 'border-b border-b-white' : ''}`"
               :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'how-to-schedule' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   To help us serve you better, please schedule your ride
                   at least 24 hours in advance by calling <a :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a> between 8:00 AM
@@ -55,7 +57,7 @@
               :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'how-to-cancel' ? 'border-b border-b-white' : ''}`"
               :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'how-to-cancel' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   If you need to cancel a ride, please call at least two hours
                   before your scheduled pick-up time at <a 
@@ -81,12 +83,14 @@
               :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'services-covered' ? 'border-b border-b-white' : ''}`"
               :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'services-covered' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-              <p class="text-xl text-white">
-                We provide transportation assistance for
-                those services covered by Medicaid. We cannot
-                transport to services not covered under the
-                Medicaid program.
-              </p>
+                <div v-once>
+                  <p class="text-xl text-white">
+                    We provide transportation assistance for
+                    those services covered by Medicaid. We cannot
+                    transport to services not covered under the
+                    Medicaid program.
+                  </p>
+                </div>
             </BaseInteractiveAccordionButton>
           </li>
           <li>
@@ -98,7 +102,7 @@
               :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'client-approval' ? 'border-b border-b-white' : ''}`"
               :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'client-approval' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <p class="text-xl text-white">
                   The attending Physician, Physician’s
                   Assistant, Nurse Practitioner, Therapist, or
@@ -129,14 +133,16 @@
             :button-class="`px-4 py-2 w-full text-left ${activeAccordionIdTrans === 'when-to-be-ready' ? 'border-b border-b-white' : ''}`"
             :content-class="`bg-brand-primary px-4 py-2 ${activeAccordionIdTrans !== 'when-to-be-ready' ? 'group-hover:bg-brand-primary/80' : ''}`"
               @update:active-id="updateIdTrans">
-              <p class="text-xl text-white">
-                When you call us for a ride, we will give you
-                the timeframe you should be ready to be
-                picked up by. For shared rides, you may be asked
-                to be ready earlier than expected. Unexpected
-                delays may occur due to traffic or weather
-                conditions.
-              </p>
+              <div v-once>
+                <p class="text-xl text-white">
+                  When you call us for a ride, we will give you
+                  the timeframe you should be ready to be
+                  picked up by. For shared rides, you may be asked
+                  to be ready earlier than expected. Unexpected
+                  delays may occur due to traffic or weather
+                  conditions.
+                </p>
+              </div>
             </BaseInteractiveAccordionButton>
           </li>
         </ul>
