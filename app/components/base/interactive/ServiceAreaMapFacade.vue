@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="relative w-full aspect-[998/732]">
-        <NuxtImg :src="posterSrc" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" class="object-contain w-full h-auto" placeholder quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
+        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" class="object-contain w-full h-auto" placeholder quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
       </div>
 
       <!-- CTA -->
