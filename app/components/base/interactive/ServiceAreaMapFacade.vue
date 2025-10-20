@@ -1,7 +1,7 @@
 <template>
   <div ref="wrapper" class="relative" :class="marginStyling">
     <!-- Facade (shown until activated) -->
-    <div v-if="!activated" v-once class="w-full overflow-hidden flex-col mx-auto">
+    <div v-if="!activated" class="w-full overflow-hidden flex-col mx-auto">
       <!-- Poster -->
       <div class="mb-4">
         <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
@@ -14,8 +14,8 @@
           <p class="text-md sm:text-2xl">Included in Service Area</p>
         </div>
       </div>
-      <div class="relative w-full aspect-[5/3]">
-        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="avif,webp" class="w-full h-full bg-zinc-300 object-cover" quality="58" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1" sizes="md:1000px 100vw" height="733" width="1000" />
+      <div class="relative w-full aspect-[998/732]">
+        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="avif,webp" class="object-contain w-full h-full" placeholder quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1" sizes="md:1000px 100vw" height="732" width="998" />
       </div>
 
       <!-- CTA -->
@@ -35,18 +35,21 @@
 
     <!-- Real embed (mounted only after activation) -->
     <ClientOnly>
-      <component :is="AsyncMap" v-if="activated" :margin="margin" :loading="loading" />
-      <template #fallback>
-        <div class="h-full w-full animate-pulse bg-zinc-100 rounded-lg" />
-      </template>
+      <Suspense>
+        <component :is="AsyncMap" v-if="activated" :margin="margin" :loading="loading" />
+        <template #fallback>
+          <div class="h-full w-full animate-pulse bg-zinc-100 rounded-lg" />
+        </template>
+      </Suspense>
     </ClientOnly>
 
     <noscript>
       <img
-        src="https://public.flourish.studio/visualisation/23590816/thumbnail"
+        :src="posterSrc"
         width="100%" height="100%"
         :alt="posterAlt"
         title="Service area map visualization"
+        class="aspect-[16/9]"
       />
     </noscript>
   </div>
@@ -88,6 +91,9 @@ const activated = ref(false)
 const margin = toRef(props, 'margin')
 const loading = toRef(props, 'loading')
 
+const posterSrc = computed(() =>
+  props.poster ?? 'https://public.flourish.studio/visualisation/23590816/thumbnail'
+)
 const posterAlt = 'Golden Gate Manor Inc. service area map preview'
 
 /** Single source of truth for the async import (RELATIVE PATH). */
@@ -95,7 +101,10 @@ const mapLoader = () =>
   import('./ServiceAreaMap.vue')
 /* If this file lives in a different folder, adjust to '../BaseInteractiveServiceAreaMap.vue' */
 
-const AsyncMap = defineAsyncComponent({ loader: mapLoader, suspensible: false, delay: 0, timeout: 20000 })
+const AsyncMap = defineAsyncComponent({
+  loader: mapLoader,
+  suspensible: true,
+})
 
 // Warm the chunk without mounting it
 let warmed = false
