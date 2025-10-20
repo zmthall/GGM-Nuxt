@@ -13,7 +13,7 @@
                   placeholder
                   sizes="md:600px 100vw"
                   densities="x1 x2"
-                  class="w-full h-full max-w-[600px]" 
+                  class="w-full" 
                   alt="Woman stressed from paperwork"
                 />
               </div>
