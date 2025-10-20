@@ -3,16 +3,18 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <div class="w-full lg:w-1/2 aspect-[3/2] sm:rounded-lg sm:shadow-primary overflow-hidden">
+              <div class="relative w-full lg:w-1/2 aspect-[3/2] sm:rounded-lg sm:shadow-primary overflow-hidden">
                 <NuxtImg 
                   src="/images/pages/qualify/qualify-top.jpg" 
-                  quality="50" format="avif,webp"
+                  quality="50" format="webp"
                   width="600" height="400"
                   :preload="{ fetchPriority: 'high' }"
+                  fetchpriority="high"
                   loading="eager"
+                  placeholder
                   sizes="md:600px 100vw"
                   densities="x1 x2"
-                  class="w-full" 
+                  class="absolute inset-0 w-full h-full object-cover" 
                   alt="Woman stressed from paperwork"
                 />
               </div>
