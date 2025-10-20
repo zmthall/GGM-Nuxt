@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="relative w-full aspect-[998/732]">
-        <NuxtImg :src="posterSrc" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" class="object-contain w-full h-auto" placeholder quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
+        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" class="object-contain w-full h-auto" placeholder="/images/service-area-map-placeholder.jpg" quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
       </div>
 
       <!-- CTA -->
@@ -35,21 +35,11 @@
 
     <!-- Real embed (mounted only after activation) -->
     <ClientOnly>
-      <component :is="AsyncMap" v-if="activated" :margin="margin" :loading="loading" />
-      <template #fallback>
-        <div class="h-full w-full animate-pulse bg-zinc-100 rounded-lg" />
-      </template>
+        <component :is="AsyncMap" v-if="activated" :margin="margin" :loading="loading" />
+        <template #fallback>
+          <div class="h-full w-full animate-pulse bg-zinc-100 rounded-lg" />
+        </template>
     </ClientOnly>
-
-    <noscript>
-      <img
-        :src="posterSrc"
-        width="100%" height="100%"
-        :alt="posterAlt"
-        title="Service area map visualization"
-        class="aspect-[16/9]"
-      />
-    </noscript>
   </div>
 </template>
 
@@ -89,9 +79,6 @@ const activated = ref(false)
 const margin = toRef(props, 'margin')
 const loading = toRef(props, 'loading')
 
-const posterSrc = computed(() =>
-  props.poster ?? 'https://public.flourish.studio/visualisation/23590816/thumbnail'
-)
 const posterAlt = 'Golden Gate Manor Inc. service area map preview'
 
 /** Single source of truth for the async import (RELATIVE PATH). */
