@@ -1,7 +1,7 @@
 <template>
   <div ref="wrapper" class="relative" :class="marginStyling">
     <!-- Legend (outside the media box so it never shifts) -->
-    <div class="mb-4">
+    <div v-once class="mb-4">
       <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
       <div class="flex gap-2 items-center">
         <span class="w-8 h-4 border border-black rounded-full bg-[#DE2C35]" />
@@ -17,28 +17,24 @@
     <div class="media-16x9">
       <!-- Poster (object-contain, centered) -->
       <div v-if="!activated" class="abs-fill flex items-center justify-center group">
-        <NuxtImg
-          src="/images/service-area-map.jpg"
+        <img
+          src="/images/service-area-map@1020.webp"
           :alt="posterAlt"
-          format="webp,avif"
-          placeholder="/images/service-area-map-placeholder.jpg"
-          width="998" height="732"
+          width="1020" height="748"
           decoding="async"
           loading="eager"
-          :preload="{ fetchPriority: 'high' }"
-          densities="x1 x2"
-          sizes="(max-width: 768px) 100vw, 1000px"
+          fetchPriority="high"
           class="w-full h-full object-contain"
-          quality="50"
-        />
+        >
         <!-- Click-anywhere overlay CTA -->
         <button
+          v-if="!activated"
           type="button"
           class="absolute top-0 left-0 w-full h-full hidden group-hover:flex items-center justify-center bg-black/20"
           title="Click to activate the interactive map"
           aria-label="Activate interactive map"
           @click="activate"
-          @pointerenter="prefetch"
+          @pointerenter.passive="prefetch"
         >
           <span class="m-3 sm:m-4 bg-zinc-200/80 px-4 py-2 rounded-lg font-bold border border-black/70 text-brand-primary">
             Activate interactive map
