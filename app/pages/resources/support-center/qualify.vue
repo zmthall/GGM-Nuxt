@@ -3,18 +3,20 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <NuxtImg 
-                src="/images/pages/qualify/qualify-top.jpg" 
-                quality="60" format="avif,webp"
-                width="600" height="400"
-                :preload="{ fetchPriority: 'high' }"
-                loading="eager"
-                placeholder
-                sizes="md:600px 100vw"
-                densities="x1 x2"
-                class="lg:w-1/2 w-full h-auto max-w-[600px] aspect-[3/2] object-cover sm:rounded-lg sm:shadow-primary" 
-                alt="Woman stressed from paperwork"
-              />
+              <div class="max-w-[600px] lg:w-1/2 aspect-[3/2] object-cover sm:rounded-lg sm:shadow-primary overflow-hidden">
+                <NuxtImg 
+                  src="/images/pages/qualify/qualify-top.jpg" 
+                  quality="60" format="webp,avif"
+                  width="600" height="400"
+                  :preload="{ fetchPriority: 'high' }"
+                  loading="eager"
+                  placeholder
+                  sizes="md:600px 100vw"
+                  densities="x1 x2"
+                  class="w-full h-full" 
+                  alt="Woman stressed from paperwork"
+                />
+              </div>
               <div class="space-y-4 lg:w-1/2">
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">A Complete Guide to Non-Emergent Medical Transportation Eligibility</h2>
