@@ -13,7 +13,7 @@
                   loading="eager"
                   placeholder
                   sizes="md:600px 100vw"
-                  densities="x1 x2"
+                  densities="x1"
                   class="absolute inset-0 w-full h-full object-cover" 
                   alt="Woman stressed from paperwork"
                 />
