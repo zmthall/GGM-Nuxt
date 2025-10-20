@@ -39,7 +39,7 @@ function computeMenuPosition () {
       left: `${Math.round(r.left)}px`,
       width: `${Math.round(r.width)}px`,
       maxHeight: `${usable}px`,
-      zIndex: '1000'
+      zIndex: '14'
     }
   }
 }
