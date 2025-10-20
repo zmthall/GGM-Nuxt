@@ -7,7 +7,7 @@
           class="flourish-embed flourish-map"
           data-src="visualisation/23590816"
         >
-          <div class="mb-4">
+          <div v-if="showLegend" class="mb-4">
             <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
             <div class="flex gap-2 items-center">
               <span class="w-8 h-4 border border-black rounded-full bg-[#DE2C35]" />
@@ -36,11 +36,16 @@
 <script setup lang="ts">
 defineOptions({ name: 'BaseInteractiveServiceAreaMap' })
 
-const props = defineProps<{ 
+const props = withDefaults(defineProps<{ 
   margin?: number; 
   loading: 'lazy' | 'eager' 
   maxWidth?: string;
-}>()
+  showLegend?: boolean;
+}>(), {
+  margin: 4,
+  maxWidth: "1200px",
+  showLegend: true,
+})
 const marginStyling = computed(() => {
   const map: Record<number, string> = {
     2:'mx-2 my-2 md:m-2',4:'mx-4 my-4 md:m-4',6:'mx-4 my-6 md:m-6',
@@ -99,7 +104,7 @@ function loadFlourish() {
 
 // Defer helper to keep work out of LCP/TBT
 const idle = (cb: () => void) =>
-  (window as any).requestIdleCallback ? (window as any).requestIdleCallback(cb, { timeout: 1200 }) : setTimeout(cb, 0)
+  window.requestIdleCallback ? window.requestIdleCallback(cb, { timeout: 1200 }) : setTimeout(cb, 0)
 
 // ----- initial mount: EXACTLY your flow, just ensure script first -----
 onMounted(async () => {

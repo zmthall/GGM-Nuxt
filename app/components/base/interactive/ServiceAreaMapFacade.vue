@@ -1,57 +1,70 @@
 <template>
   <div ref="wrapper" class="relative" :class="marginStyling">
-    <!-- Facade (shown until activated) -->
-    <div v-if="!activated" class="w-full overflow-hidden flex-col mx-auto">
-      <!-- Poster -->
-      <div class="mb-4">
-        <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
-        <div class="flex gap-2 items-center">
-          <span class="w-8 h-4 border border-black rounded-full bg-[#DE2C35]" />
-          <p class="text-md sm:text-2xl">Not Included in Service Area</p>
-        </div>
-        <div class="flex gap-2 items-center">
-          <span class="w-8 h-4 border border-black rounded-full bg-[#09AA64]" />
-          <p class="text-md sm:text-2xl">Included in Service Area</p>
-        </div>
+    <!-- Legend (outside the media box so it never shifts) -->
+    <div class="mb-4">
+      <h2 class="text-md sm:text-2xl font-bold text-zinc-800">Golden Gate Manor Inc. Service Area</h2>
+      <div class="flex gap-2 items-center">
+        <span class="w-8 h-4 border border-black rounded-full bg-[#DE2C35]" />
+        <p class="text-md sm:text-2xl">Not Included in Service Area</p>
       </div>
-      <div class="relative w-full aspect-[998/732]">
-        <NuxtImg src="/images/service-area-map.jpg" :alt="posterAlt" :title="posterAlt + ' (Click button below for interactive map)'" format="webp,avif" placeholder class="object-contain w-full h-auto" quality="50" decoding="async" loading="eager" :preload="{ fetchPriority: 'high' }" densities="x1 x2" sizes="md:1000px 100vw" height="732" width="998" />
+      <div class="flex gap-2 items-center">
+        <span class="w-8 h-4 border border-black rounded-full bg-[#09AA64]" />
+        <p class="text-md sm:text-2xl">Included in Service Area</p>
       </div>
+    </div>
 
-      <!-- CTA -->
-      <div class="p-3 sm:p-4 border-t border-zinc-200 flex items-center justify-end gap-3">
-        <p class="text-sm sm:text-base text-zinc-700">Click to load the interactive map (third-party content).</p>
-        <BaseUiAction
+    <!-- ONE shared media box (fixed 16:9 height; no jump) -->
+    <div class="media-16x9">
+      <!-- Poster (object-contain, centered) -->
+      <div v-if="!activated" class="abs-fill flex items-center justify-center group">
+        <NuxtImg
+          src="/images/service-area-map.jpg"
+          :alt="posterAlt"
+          format="webp,avif"
+          placeholder="/images/service-area-map-placeholder.jpg"
+          width="998" height="732"
+          decoding="async"
+          loading="eager"
+          :preload="{ fetchPriority: 'high' }"
+          densities="x1 x2"
+          sizes="(max-width: 768px) 100vw, 1000px"
+          class="w-full h-full object-contain"
+          quality="50"
+        />
+        <!-- Click-anywhere overlay CTA -->
+        <button
           type="button"
-          class="px-3 sm:px-4 py-2 text-xs sm:text-lg"
+          class="absolute top-0 left-0 w-full h-full hidden group-hover:flex items-center justify-center bg-black/20"
+          title="Click to activate the interactive map"
           aria-label="Activate interactive map"
           @click="activate"
           @pointerenter="prefetch"
         >
-          Activate interactive map
-        </BaseUiAction>
+          <span class="m-3 sm:m-4 bg-zinc-200/80 px-4 py-2 rounded-lg font-bold border border-black/70 text-brand-primary">
+            Activate interactive map
+          </span>
+        </button>
       </div>
-    </div>
 
-    <!-- Real embed (mounted only after activation) -->
-    <ClientOnly>
-      <component :is="AsyncMap" v-if="activated" :margin="margin" :loading="loading" />
-      <template #fallback>
-        <div class="h-full w-full animate-pulse bg-zinc-100 rounded-lg" />
-      </template>
-    </ClientOnly>
+      <!-- Interactive map fills the same box -->
+      <ClientOnly>
+        <div v-if="activated" class="abs-fill">
+          <component
+            :is="AsyncMap"
+            :loading="loading"
+            :margin="0"
+            :show-legend="false"
+            class="abs-fill"
+          />
+        </div>
+      </ClientOnly>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 defineOptions({ name: 'BaseInteractiveServiceAreaMapFacade' })
 
-/**
- * modes:
- * - click   : user must click to activate
- * - visible : auto-activate when near viewport (still shows facade until then)
- * - eager   : activate after mount (via idle callback)
- */
 const props = withDefaults(defineProps<{
   mode?: 'click' | 'visible' | 'eager'
   poster?: string
@@ -61,7 +74,7 @@ const props = withDefaults(defineProps<{
   mode: 'click',
   loading: 'lazy',
   poster: undefined,
-  margin: 8 
+  margin: 8
 })
 
 const marginStyling = computed(() => {
@@ -74,27 +87,28 @@ const marginStyling = computed(() => {
 
 const wrapper = ref<HTMLElement | null>(null)
 const activated = ref(false)
-const margin = toRef(props, 'margin')
 const loading = toRef(props, 'loading')
-
 const posterAlt = 'Golden Gate Manor Inc. service area map preview'
 
-/** Single source of truth for the async import (RELATIVE PATH). */
-const mapLoader = () =>
-  import('./ServiceAreaMap.vue')
-/* If this file lives in a different folder, adjust to '../BaseInteractiveServiceAreaMap.vue' */
-
+/** Async import for the real map */
+const mapLoader = () => import('./ServiceAreaMap.vue')
 const AsyncMap = defineAsyncComponent({
   loader: mapLoader,
-  suspensible: true,
+  suspensible: false,
+  delay: 0,
+  timeout: 20000,
 })
 
-// Warm the chunk without mounting it
+/** Prefetch the chunk politely */
 let warmed = false
 function prefetch() {
   if (warmed) return
   warmed = true
-  void mapLoader()
+  const idle = (cb: () => void) =>
+    'requestIdleCallback' in window
+      ? window.requestIdleCallback(cb, { timeout: 1200 })
+      : setTimeout(cb, 0)
+  idle(() => { void mapLoader() })
 }
 
 function activate() {
@@ -103,6 +117,7 @@ function activate() {
   prefetch()
 }
 
+/** Optional: auto-activate when near viewport */
 function setupVisibilityObserver() {
   if (props.mode !== 'visible' || !wrapper.value) return
   const ro = new IntersectionObserver((entries, obs) => {
@@ -118,14 +133,40 @@ function setupVisibilityObserver() {
   ro.observe(wrapper.value)
 }
 
-const idle = (cb: () => void) =>
-  (window as any).requestIdleCallback
-    ? (window as any).requestIdleCallback(cb, { timeout: 1500 })
-    : setTimeout(cb, 0)
-
 onMounted(() => {
   if (!import.meta.client) return
   if (props.mode === 'visible') setupVisibilityObserver()
-  if (props.mode === 'eager') idle(() => { prefetch(); activate() })
+  if (props.mode === 'eager') {
+    const idle = (cb: () => void) =>
+      'requestIdleCallback' in window
+        ? window.requestIdleCallback(cb, { timeout: 1500 })
+        : setTimeout(cb, 0)
+    idle(() => { prefetch(); activate() })
+  };
+  window.requestIdleCallback?.(() => {
+    useHead({ link: [{ rel: 'preconnect', href: 'https://public.flourish.studio' }] })
+  })
 })
 </script>
+
+<style scoped>
+/* Fixed 16:9 box shared by poster + map (prevents height jump) */
+.media-16x9{
+  position: relative;
+  aspect-ratio: 5 / 4;
+  height: 100%;
+  max-height: 80vh;   /* prevent towering on tall screens; adjust if you like */
+  overflow: hidden;
+}
+
+/* helper: absolutely fill the media box */
+.abs-fill{ position:absolute; inset:0; }
+
+/* ensure Flourish fills the box */
+.flourish-embed :deep(iframe){
+  width:100% !important;
+  height:100% !important;
+  border:0;
+  background:#f5f5f5;
+}
+</style>
