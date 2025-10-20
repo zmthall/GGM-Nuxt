@@ -3,7 +3,7 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <div class="max-w-[600px] lg:w-1/2 aspect-[3/2] object-cover sm:rounded-lg sm:shadow-primary overflow-hidden">
+              <div class="w-full lg:w-1/2 aspect-[3/2] object-cover sm:rounded-lg sm:shadow-primary overflow-hidden">
                 <NuxtImg 
                   src="/images/pages/qualify/qualify-top.jpg" 
                   quality="60" format="webp,avif"
@@ -13,7 +13,7 @@
                   placeholder
                   sizes="md:600px 100vw"
                   densities="x1 x2"
-                  class="w-full h-full" 
+                  class="w-full h-full max-w-[600px]" 
                   alt="Woman stressed from paperwork"
                 />
               </div>
