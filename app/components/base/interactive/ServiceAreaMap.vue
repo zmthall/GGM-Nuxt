@@ -1,6 +1,6 @@
 <template>
   <BaseLayoutPageSection :padding="false" :styling="marginStyling">
-    <BaseLayoutPageContainer>
+    <BaseLayoutPageContainer :max-width="maxWidth">
       <ClientOnly>
         <div
           ref="flourishContainer"
@@ -36,7 +36,11 @@
 <script setup lang="ts">
 defineOptions({ name: 'BaseInteractiveServiceAreaMap' })
 
-const props = defineProps<{ margin?: number; loading: 'lazy' | 'eager' }>()
+const props = defineProps<{ 
+  margin?: number; 
+  loading: 'lazy' | 'eager' 
+  maxWidth?: string;
+}>()
 const marginStyling = computed(() => {
   const map: Record<number, string> = {
     2:'mx-2 my-2 md:m-2',4:'mx-4 my-4 md:m-4',6:'mx-4 my-6 md:m-6',
