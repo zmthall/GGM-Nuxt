@@ -3,7 +3,7 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <div class="relative w-full lg:w-1/2 aspect-[3/2] sm:rounded-lg sm:shadow-primary overflow-hidden">
+              <div class="relative w-full lg:w-1/2 aspect-[3/2] max-w-[600px] sm:rounded-lg sm:shadow-primary overflow-hidden">
                 <NuxtImg 
                   src="/images/pages/qualify/qualify-top.jpg" 
                   quality="50" format="webp"

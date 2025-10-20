@@ -3,17 +3,17 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <div class="relative w-full lg:w-1/2 aspect-[3/2] sm:rounded-lg sm:shadow-primary overflow-hidden">
+              <div class="relative w-full lg:w-1/2 aspect-[3/2] max-w-[600px] sm:rounded-lg sm:shadow-primary overflow-hidden">
                 <NuxtImg 
                   src="/images/pages/prepare-for-first-ride/car-shot.jpg" 
                   quality="50" format="webp"
-                  width="600" height="400"
+                  width="600" height="394"
                   :preload="{ fetchPriority: 'high' }"
                   fetchpriority="high"
                   loading="eager"
                   placeholder
                   sizes="md:600px 100vw"
-                  densities="x1 x2"
+                  densities="x1"
                   class="absolute inset-0 w-full h-full object-cover" 
                   alt="Golden Gate Manor car 17" />
               </div>
