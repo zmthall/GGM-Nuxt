@@ -42,9 +42,9 @@ import type { RideRequestFormData } from '../../../models/admin/RideRequestForm.
 const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)
 
-const nextRidePage = () => fetchRideRequests(false, 5, requestPage.value + 1, false)
-const prevRidePage = () => fetchRideRequests(false, 5, Math.max(1, requestPage.value - 1), false)
-const setRidePage  = (p: number) => fetchRideRequests(false, 5, p, false)
+const nextRidePage = () => fetchRideRequests(false, 10, requestPage.value + 1, false)
+const prevRidePage = () => fetchRideRequests(false, 10, Math.max(1, requestPage.value - 1), false)
+const setRidePage  = (p: number) => fetchRideRequests(false, 10, p, false)
 
 const openRideRequestModal = (rideRequest: RideRequestFormData) => {
     rideModalOpen.value = true;

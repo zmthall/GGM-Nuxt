@@ -82,14 +82,14 @@
         </div>
 
         <label class="sr-only" for="pageSelect">Jump to page</label>
-        <select
-          id="pageSelect"
-          class="rounded-md border px-2 py-1 text-sm"
-          :value="pagination.currentPage"
+        <BaseFormPageSelect
+          :model-value="pagination?.currentPage ?? 1"
+          :total-pages="pagination?.totalPages ?? 1"
+          label="Jump to page"
+          class="w-40"
+          :max-visible-rows="4"
           @change="onPageSelect"
-        >
-          <option v-for="p in pagination.totalPages" :key="p" :value="p">Page {{ p }}</option>
-        </select>
+        />
       </div>
     </div>
   </div>
@@ -283,8 +283,15 @@ const pageEnd = computed(() => {
 
 function gotoPrev() { if (pagination.value?.hasPreviousPage) emit('prev-page') }
 function gotoNext() { if (pagination.value?.hasNextPage) emit('next-page') }
-function onPageSelect(e: Event) {
-  const val = Number((e.target as HTMLSelectElement).value)
+function onPageSelect(v: number | Event) {
+  const val =
+    typeof v === 'number'
+      ? v
+      : Number((v.target as HTMLSelectElement).value)
+
+  // optional bounds guard
+  // const page = Math.min(Math.max(1, val), pagination.totalPages)
+
   if (!Number.isNaN(val)) emit('page-change', val)
 }
 const showPagination = computed(() => (props.pagination?.totalPages ?? 0) > 1)
