@@ -23,12 +23,13 @@
           width="1020" height="748"
           decoding="async"
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
           class="w-full h-full object-contain"
         >
         <!-- Click-anywhere overlay CTA -->
         <button
           v-if="!activated"
+          v-once
           type="button"
           class="absolute top-0 left-0 w-full h-full hidden group-hover:flex items-center justify-center bg-black/20"
           title="Click to activate the interactive map"
