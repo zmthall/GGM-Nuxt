@@ -3,17 +3,18 @@
         <BaseLayoutPageSection margin="top">
           <BaseLayoutPageContainer>
             <div class="flex flex-col lg:flex-row gap-8 items-center">
-              <div class="w-full lg:w-1/2 aspect-[3/2] object-cover sm:rounded-lg sm:shadow-primary overflow-hidden">
+              <div class="w-full lg:w-1/2 aspect-[3/2] sm:rounded-lg sm:shadow-primary overflow-hidden">
                 <NuxtImg 
                   src="/images/pages/qualify/qualify-top.jpg" 
-                  quality="60" format="webp,avif"
+                  quality="50" format="avif,webp"
                   width="600" height="400"
                   :preload="{ fetchPriority: 'high' }"
                   loading="eager"
+                  fetchpriority="high"
                   placeholder
                   sizes="md:600px 100vw"
                   densities="x1 x2"
-                  class="w-full" 
+                  class="w-full object-cover" 
                   alt="Woman stressed from paperwork"
                 />
               </div>
@@ -34,7 +35,7 @@
         <DeferRender when="visible">
           <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
             <BaseLayoutPageContainer>
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">What is NEMT Eligibility?</h2>
                   <p class="text-xl text-brand-main-text">
@@ -97,7 +98,7 @@
         <DeferRender when="visible">
           <BaseLayoutPageSection margin="default" class="cv-auto">
             <BaseLayoutPageContainer>
-              <div class="space-y-4">
+              <div v-once class="space-y-4">
                 <h2 class="text-2xl font-bold text-brand-primary">Required Documentation</h2>
                 <div class="space-y-2">
                   <h3 class="text-2xl text-brand-main-text font-bold">Medical Certificate of Transportation Services</h3>
@@ -138,7 +139,7 @@
         <DeferRender when="visible">
           <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
             <BaseLayoutPageContainer>
-              <div class=space-y-4>
+              <div v-once class=space-y-4>
                 <div class="space-y-2">
                   <h2 class="text-2xl font-bold text-brand-primary">Covered Medical Services</h2>
                   <p class="text-xl text-brand-main-text">
@@ -181,7 +182,7 @@
         <DeferRender when="visible">
           <BaseLayoutPageSection margin="default" class="cv-auto">
             <BaseLayoutPageContainer>
-              <div class="flex justify-center">
+              <div v-once class="flex justify-center">
                 <div class="space-y-2 md:w-1/2">
                   <h2 class="text-2xl font-bold text-brand-primary">Getting Help with Qualification Questions</h2>
                   <p class="text-xl text-brand-main-text">
@@ -211,7 +212,7 @@
         <DeferRender when="visible">
           <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
             <BaseLayoutPageContainer>
-              <div class="space-y-2">
+              <div v-once class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">Next Steps After Qualifying</h2>
                 <p class="text-xl text-brand-main-text">
                   Once you've determined that you qualify for NEMT services, you'll need to complete your Medical Certificate with your healthcare provider and gather your appointment information and personal details. Next, review our scheduling guide to understand the booking process, then contact us to schedule your first ride at least 24-48 hours in advance.
