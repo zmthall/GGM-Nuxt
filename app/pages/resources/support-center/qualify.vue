@@ -21,7 +21,7 @@
                 :preload="{ fetchPriority: 'high' }"
                 loading="eager"
                 placeholder
-                sizes="(max-width: 768px) 100vw, 600px"
+                sizes="md:600px 100vw"
                 densities="x1 x2"
                 class="lg:w-1/2 w-full h-auto max-w-[600px] aspect-[3/2] rounded-lg shadow-primary" 
                 alt="Woman stressed form paperwork"
