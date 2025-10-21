@@ -23,19 +23,49 @@
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4 flex flex-col">
-          <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
-          <p class="text-xl text-brand-main-text">
-            At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.
-          </p>
-          <p class="text-xl text-brand-main-text">
-            We've invested in completely transforming our locations to serve you better. From brand new fuel tanks and pumps to dramatically expanded store spaces, we're committed to providing a superior experience every time you visit.
-          </p>
+          <div class="space-y-5">
+            <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
+            <p class="text-xl text-brand-main-text">
+              At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.
+            </p>
+            <p class="text-xl text-brand-main-text">
+              We've invested in completely transforming our locations to serve you better. From brand new fuel tanks and pumps to dramatically expanded store spaces, we're committed to providing a superior experience every time you visit.
+            </p>
+          </div>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
     </DeferRender>
 
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" class="cv-auto">
+        <BaseLayoutPageContainer>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">
+            Step Into Our Beer Cave (Prairie & Northern)
+          </h2>
+          <div class="flex flex-col md:flex-row md:justify-between items-center gap-8">
+            <div class="md:w-1/2 flex justify-center">
+              <NuxtImg src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" format="webp,avif" class="rounded-lg shadow-primary w-full h-auto object-contain max-w-[500px]"/>
+            </div>
+            <div class="space-y-8 md:w-1/2">
+              <p class="text-lg sm:text-xl text-brand-main-text">
+                Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">[insert ° range]</span>
+                for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a
+                modern, community-first experience to Pueblo's south side.
+              </p>
+              <div class="flex items-center gap-4">
+                <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">
+                  Explore the Beer Cave
+                </BaseUiAction>
+                <span class="text-sm text-brand-main-text/80">Located inside Golden Gate Gas & Goods on Prairie and Northern</span>
+              </div>
+            </div>
+          </div>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4">
           <h2 class="text-2xl font-bold text-brand-primary">Our Locations:</h2>
           <LazyGasStationArrowList />
@@ -78,7 +108,7 @@
     </DeferRender>
 
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer>
           <LazyBaseLayoutCard class="bg-white md:w-3/4 mx-auto">
             <div class="flex flex-col gap-4">
