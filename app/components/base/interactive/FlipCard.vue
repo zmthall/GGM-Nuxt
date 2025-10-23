@@ -1,14 +1,14 @@
 <template>
   <div :class="['employment-page-opportunity-card relative', { 'w-full xs:w-[330px] h-[350px]': fixedDimensions}, styling]">
     <!-- Front -->
-    <div :class="['opportunity-card-front', { 'no-title': noTitle }]" :style="backgroundStyleFront">
+    <div :class="['opportunity-card-front', { 'no-text': noText }]" :style="backgroundStyleFront">
       <div class="opportunity-card-content">
         <slot name="front" />
       </div>
     </div>
 
     <!-- Back -->
-    <div class="opportunity-card-back" :style="backgroundStyleBack">
+    <div :class="['opportunity-card-back', { 'no-text': noText }]" :style="backgroundStyleBack">
       <slot name="back" />
     </div>
   </div>
@@ -21,14 +21,14 @@ const props = withDefaults(defineProps<{
   backSrc?: string;
   fixedDimensions?: boolean;
   styling?: string;
-  noTitle?: boolean;
+  noText?: boolean;
 }>(), {
   styling: undefined,
   src: undefined,
   frontSrc: undefined,
   backSrc: undefined,
   fixedDimensions: true,
-  noTitle: false,
+  noText: false,
 })
 
 const backgroundStyleBack = computed(() =>
@@ -156,8 +156,12 @@ const backgroundStyleFront = computed(() =>
   z-index: 0;
 }
 
-.opportunity-card-front.no-title::after,
-.opportunity-card-front.no-title::before {
+.opportunity-card-back.no-text::before {
+  background: transparent;
+}
+
+.opportunity-card-front.no-text::after,
+.opportunity-card-front.no-text::before {
   background: transparent;
 }
 </style>

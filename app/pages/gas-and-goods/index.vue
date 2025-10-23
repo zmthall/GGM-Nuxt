@@ -43,14 +43,16 @@
             Step Into Our Beer Cave (Prairie & Northern)
           </h2>
           <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-            <div class="md:w-1/2 flex justify-center aspect-[4/3] max-w-[500px]">
-              <NuxtImg src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" format="webp,avif" width="500" height="375" placeholder class="rounded-lg shadow-primary object-contain h-full" sizes="sm:500px 100vw"/>
+            <div class="w-full md:w-1/2 flex justify-center aspect-[4/3] max-w-[500px]">
+              <LazyBaseInteractiveFlipCard front-src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" back-src="/images/pages/gas-and-goods/beer-cave-interior.jpeg" no-text class="w-full h-full" :fixed-dimensions="false" />
+              <!-- <NuxtImg src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" format="webp,avif" width="500" height="375" placeholder class="rounded-lg shadow-primary object-contain h-full" sizes="sm:500px 100vw"/> -->
             </div>
             <div class="space-y-8 md:w-1/2">
               <p class="text-lg sm:text-xl text-brand-main-text">
                 Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">34°F to 38°F</span>
                 for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a
-                modern, community-first experience to Pueblo's south side right off of Prairie and Northern.
+                modern, community-first experience to Pueblo's south side right off of Prairie and Northern. Come on by and check-out our beer cave 
+                or explore more about our beer cave.
               </p>
               <div class="flex items-center gap-4">
                 <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">

@@ -37,13 +37,14 @@
           </figure>
           <p>
             When we first opened Golden Gate Gas & Goods, we wanted to create something new for the area—clean,
-            modern, and welcoming. The Beer Cave became a piece to bring vision to fruition. Spacious and easy to navigate,
+            modern, and welcoming. The Beer Cave became an addition to bring our vision to fruition. Spacious and easy to navigate,
             it offers a wide selection of cold beer ready for locals, commuters, and weekend shoppers alike.
           </p>
           <p>
             Customers love stepping inside and feeling that instant wave of cool air on warm Pueblo afternoons. Many are
             surprised by how large the Beer Cave is—nearly as big as the original store once was—and by the convenience
-            of choosing their drinks right here instead of making an extra stop.
+            of choosing their drinks right here instead of making an extra stop. It's especially popular during the Colorado 
+            State Fair, since we're just a 5-7 minute walk from the main entrance—and offer ice-cold drinks at everyday prices.
           </p>
         </article>
         <div class="clear-both" />
@@ -91,12 +92,11 @@
   
             <article class="space-y-5 text-xl text-brand-main-text">
               <p>
-                The Beer Cave was built with a simple goal: to give Pueblo's south side a space that feels cool, clean, 
+                The Beer Cave was built to add to our simple goal of our service location: to give Pueblo's south side a space that feels cool, clean, 
                 and cared for. Every detail—from the lighting to the airflow—was chosen to make it comfortable and dependable 
                 for everyone who stops in. The walk-in cooler runs on a commercial-grade system that holds a steady 35°F, 
                 with multiple fans circulating air evenly to keep everything cold and fresh. It's dependable, energy-efficient, 
                 and maintained year-round so it's ready whenever you are.
-
               </p>
               <p>
                 Whether you're grabbing something quick on your way home or cooling off after a long day, the Beer Cave at Prairie 
@@ -118,7 +118,7 @@
               <p>
                 Behind the scenes, our team checks temperatures, rotates inventory, and keeps everything organized by singles,
                 cases, and popular categories. Two side doors make quick grab-and-go stops easy, while the main double-door
-                entrance invites shoppers to browse comfortably.
+                entrance invites shoppers to browse comfortably with space to walk around and browse our selection of beverages.
               </p>
               <p>
                 The Beer Cave has become a small reflection of what we want for Pueblo's south side—renewal, comfort, and pride 
@@ -126,7 +126,7 @@
                 enjoy every day: clean, organized, and kept just right.
               </p>
               <p>
-                Whether you're heading home after work or starting your weekend, stop by our Beer Cave at Prairie Avenue and
+                Whether you're heading home after work, just starting your weekend for some R&R, or attending an event nearby, stop by our Beer Cave at Prairie Avenue and
                 Northern in Pueblo, CO. Step inside, feel the chill, and enjoy an ice-cold beer—fresh from our community to yours.
               </p>
             </article>

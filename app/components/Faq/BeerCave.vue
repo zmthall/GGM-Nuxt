@@ -13,8 +13,8 @@
           @update:active-id="setId"
         >
           <p class="text-xl text-white">
-            Inside Golden Gate Gas & Goods at Prairie & Northern on Pueblo's south side. Come through the main store
-            entrance—our double doors to the walk-in beer cooler are straight ahead near close to the slushies and soft drinks.
+            Inside Golden Gate Gas & Goods at Prairie & Northern on Pueblo's south side. Full address: 1242 S. Prarie Ave., Pueblo CO, 81005. Come through the main store
+            entrance—our double doors to the walk-in beer cooler are through the store close to the slushies and soft drinks.
           </p>
         </BaseInteractiveAccordionButton>
       </li>
@@ -30,8 +30,8 @@
           @update:active-id="setId"
         >
           <p class="text-xl text-white">
-            We target <span class="whitespace-nowrap">34°F–38°F</span> so your beer is ice-cold without freezing. Insulation,
-            sealed doors, and stock rotation help us keep it consistent.
+            We target <span class="whitespace-nowrap">34°F-38°F</span> so your beer is ice-cold without freezing. Insulation,
+            sealed doors, and stock rotation help us keep it consistent and our cooler usually sits at a constant 35°F.
           </p>
         </BaseInteractiveAccordionButton>
       </li>
@@ -81,7 +81,8 @@
           @update:active-id="setId"
         >
           <p class="text-xl text-white">
-            We're expanding ice and soft drink options for more one-stop convenience. You'll also find a growing NA selection.
+            We're expanding ice and soft drink options for more one-stop convenience that's cold and ready. 
+            If Non-Alcohol beverages are your thing, let us know what you would want to see in the cave.
           </p>
         </BaseInteractiveAccordionButton>
       </li>
@@ -97,7 +98,7 @@
           @update:active-id="setId"
         >
           <p class="text-xl text-white">
-            We check valid government-issued photo ID for all alcohol purchases—quick, consistent, and compliant.
+            We check valid government-issued photo ID for all alcohol purchases regardless of age—quick, consistent, and compliant.
           </p>
         </BaseInteractiveAccordionButton>
       </li>
