@@ -137,7 +137,11 @@
     </DeferRender>
     <!-- FAQ Section (fresh content below) -->
 
-    <FaqBeerCave />
+    <BaseLayoutPageSection margin="default" bg="alt">
+      <BaseLayoutPageContainer>
+        <FaqBeerCave />
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
   </div>
 </template>
 
