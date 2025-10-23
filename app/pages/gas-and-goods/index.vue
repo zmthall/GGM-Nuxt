@@ -42,15 +42,15 @@
           <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">
             Step Into Our Beer Cave (Prairie & Northern)
           </h2>
-          <div class="flex flex-col md:flex-row md:justify-between items-center gap-8">
-            <div class="md:w-1/2 flex justify-center">
-              <NuxtImg src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" format="webp,avif" class="rounded-lg shadow-primary w-full h-auto object-contain max-w-[500px]"/>
+          <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+            <div class="md:w-1/2 flex justify-center aspect-[4/3] max-w-[500px]">
+              <NuxtImg src="/images/pages/gas-and-goods/beer-cave-entrance.jpeg" format="webp,avif" width="500" height="375" placeholder class="rounded-lg shadow-primary object-contain h-full" sizes="sm:500px 100vw"/>
             </div>
             <div class="space-y-8 md:w-1/2">
               <p class="text-lg sm:text-xl text-brand-main-text">
-                Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">[insert ° range]</span>
+                Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">34°F to 38°F</span>
                 for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a
-                modern, community-first experience to Pueblo's south side.
+                modern, community-first experience to Pueblo's south side right off of Prairie and Northern.
               </p>
               <div class="flex items-center gap-4">
                 <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">
@@ -62,7 +62,7 @@
           </div>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
-    </DeferRender>
+    </DeferRender> 
 
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
@@ -130,7 +130,7 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  title: 'Golden Gate Gas & Goods in Pueblo Colorado',
+  title: 'Golden Gate Gas Stations & Goods in Pueblo Colorado',
   breadcrumbLabel: 'Gas Stations'
 })
 

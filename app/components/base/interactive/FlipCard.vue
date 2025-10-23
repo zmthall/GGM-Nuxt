@@ -1,32 +1,66 @@
 <template>
-  <div class="employment-page-opportunity-card w-full xs:w-[330px] h-[350px] relative">
+  <div :class="['employment-page-opportunity-card relative', { 'w-full xs:w-[330px] h-[350px]': fixedDimensions}, styling]">
     <!-- Front -->
-    <div class="opportunity-card-front" :style="backgroundStyle">
+    <div :class="['opportunity-card-front', { 'no-title': noTitle }]" :style="backgroundStyleFront">
       <div class="opportunity-card-content">
         <slot name="front" />
       </div>
     </div>
 
     <!-- Back -->
-    <div class="opportunity-card-back" :style="backgroundStyle">
+    <div class="opportunity-card-back" :style="backgroundStyleBack">
       <slot name="back" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ 
-  src?: string
-}>()
+const props = withDefaults(defineProps<{ 
+  src?: string;
+  frontSrc?: string;
+  backSrc?: string;
+  fixedDimensions?: boolean;
+  styling?: string;
+  noTitle?: boolean;
+}>(), {
+  styling: undefined,
+  src: undefined,
+  frontSrc: undefined,
+  backSrc: undefined,
+  fixedDimensions: true,
+  noTitle: false,
+})
 
-const backgroundStyle = computed(() =>
-  props.src
-    ? {
-        backgroundImage: `url(${props.src})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }
-    : {}
+const backgroundStyleBack = computed(() =>
+  props.src 
+  ? {
+    backgroundImage: `url(${props.src})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
+  : props.frontSrc 
+  ? {
+    backgroundImage: `url(${props.backSrc})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
+  : {}
+)
+
+const backgroundStyleFront = computed(() => 
+  props.src 
+  ? {
+    backgroundImage: `url(${props.src})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
+  : props.frontSrc 
+  ? {
+    backgroundImage: `url(${props.frontSrc})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
+  : {}
 )
 </script>
 
@@ -120,5 +154,10 @@ const backgroundStyle = computed(() =>
   left: 0;
   background: rgba(255, 255, 255, 0.75);
   z-index: 0;
+}
+
+.opportunity-card-front.no-title::after,
+.opportunity-card-front.no-title::before {
+  background: transparent;
 }
 </style>
