@@ -146,14 +146,14 @@ export const useStaticData = () => {
       {
         id: "google-social",
         name: "Google",
-        icon: "uim:google",
+        icon: "akar-icons:google-contained-fill",
         url: "https://www.google.com/search?q=golden+gate+manor+inc",
         alt: "Look us up on Google",
       },
       {
         id: "facebook-social",
         name: "Facebook",
-        icon: "bi:facebook",
+        icon: "mdi:facebook",
         url: "https://www.facebook.com/GoldenGateTransportation",
         alt: "Follow us on Facebook",
       },
@@ -181,7 +181,7 @@ export const useStaticData = () => {
       {
         id: "youtube-social",
         name: "",
-        icon: "entypo-social:youtube",
+        icon: "mdi:youtube",
         url: "https://www.youtube.com/@GoldenGateManor",
         alt: "Follow our content on YouTube",
       },
