@@ -52,7 +52,7 @@
                 Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">34°F to 38°F</span>
                 for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a
                 modern, community-first experience to Pueblo's south side right off of Prairie and Northern. Come on by and check-out our beer cave 
-                or explore more about our beer cave.
+                or continue exploring more about it.
               </p>
               <div class="flex items-center gap-4">
                 <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">
