@@ -92,8 +92,8 @@
   
             <article class="space-y-5 text-xl text-brand-main-text">
               <p>
-                The Beer Cave was built to add to our simple goal of our service location: to give Pueblo's south side a space that feels cool, clean, 
-                and cared for. Every detail—from the lighting to the airflow—was chosen to make it comfortable and dependable 
+                The Beer Cave was built to support a simple goal at our service location—giving Pueblo's south side a space that feels cool, clean, and cared for. 
+                Every detail—from the lighting to the airflow—was chosen to make it comfortable and dependable 
                 for everyone who stops in. The walk-in cooler runs on a commercial-grade system that holds a steady 35°F, 
                 with multiple fans circulating air evenly to keep everything cold and fresh. It's dependable, energy-efficient, 
                 and maintained year-round so it's ready whenever you are.
