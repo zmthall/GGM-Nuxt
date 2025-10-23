@@ -8,7 +8,7 @@
             Beer Cave Overview
           </h2>
           <p class="text-xl text-brand-main-text">
-            Discover the Beer Cave at Golden Gate Gas & Goods—a cool, refreshing highlight of our
+            Discover our Beer Cave at Golden Gate Gas & Goods—a cool, refreshing highlight of our
             Prairie Avenue and Northern location on Pueblo's south side. More than a walk-in cooler, it's a
             community favorite built around freshness, comfort, and pride.
           </p>
@@ -22,6 +22,8 @@
             <NuxtImg
               src="/images/pages/gas-and-goods/beer-cave-interior.jpeg"
               format="webp,avif"
+              quality="60"
+              densities="x1"
               width="400"
               height="300"
               placeholder
@@ -31,8 +33,8 @@
             />
           </figure>
           <p>
-            When we first opened Golden Gate Gas &amp; Goods, we wanted to create something new for the area—clean,
-            modern, and welcoming. The Beer Cave became a cornerstone of that vision. Spacious and easy to navigate,
+            When we first opened Golden Gate Gas & Goods, we wanted to create something new for the area—clean,
+            modern, and welcoming. The Beer Cave became a piece to bring vision to fruition. Spacious and easy to navigate,
             it offers a wide selection of cold beer ready for locals, commuters, and weekend shoppers alike.
           </p>
           <p>
@@ -46,19 +48,24 @@
     </BaseLayoutPageSection>
 
     <!-- CTA — actions for intent -->
-    <!-- <BaseLayoutPageCTA title="Plan Your Stop" :has-button="false">
-      <div class="flex flex-wrap items-center justify-center gap-4 my-4">
-        <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">Explore the Beer Cave</BaseUiAction>
-        <BaseUiAction href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" external class="py-2 px-4">Get Directions</BaseUiAction>
-        <span class="text-sm text-brand-main-text/80">
-          Inside Golden Gate Gas &amp; Goods — Prairie &amp; Northern, Pueblo (south side)
-        </span>
-      </div>
-    </BaseLayoutPageCTA> -->
+    <DeferRender when="visible">
+      <LazyBaseLayoutPageCTA 
+        title="Plan Your Stop"
+        description="Your next cold one is waiting. Swing by Golden Gate Gas & Goods and grab a beer chilled to perfection. If there is a specific beer that you enjoy and you 
+            don't see it in our cave, reach out to us and we will see what we can do!"
+        :has-button="false"
+        href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7"
+      >
+        <div class="flex gap-8 justify-center">
+          <BaseUiAction href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" new-page title="Opens in a new tab" variant="secondary" class="py-4 px-8">Get Directions</BaseUiAction>
+          <BaseUiAction to="/company/contact-us" variant="secondary" class="py-4 px-8">Reach Out</BaseUiAction>
+        </div>
+      </LazyBaseLayoutPageCTA>
+    </DeferRender>
 
     <!-- SECTION 2 — Temperature control & quality process -->
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" bg="alt">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer>
           <h2 class="text-2xl font-bold text-brand-primary mb-2">Industrial Grade Cooling</h2>
           <div class="grid md:grid-cols-2 gap-4 sm:gap-8 items-center">
@@ -67,6 +74,8 @@
               <NuxtImg
                 src="/images/pages/gas-and-goods/cooling-system.jpg"
                 format="webp,avif"
+                quality="60"
+                densities="x1"
                 width="400"
                 height="300"
                 placeholder
@@ -97,7 +106,7 @@
 
     <!-- SECTION 3 — Layout, access, and what's next -->
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer>
           <h2 class="text-2xl font-bold text-brand-primary mb-2">Keeping It Cold, Clean, and Community-Focused</h2>
           <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -123,6 +132,8 @@
               <NuxtImg
                 src="/images/pages/gas-and-goods/inside-beer-cave.jpeg"
                 format="webp,avif"
+                quality="60"
+                densities="x1"
                 width="400"
                 height="300"
                 placeholder
@@ -137,11 +148,13 @@
     </DeferRender>
     <!-- FAQ Section (fresh content below) -->
 
-    <BaseLayoutPageSection margin="default" bg="alt">
-      <BaseLayoutPageContainer>
-        <FaqBeerCave />
-      </BaseLayoutPageContainer>
-    </BaseLayoutPageSection>
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+        <BaseLayoutPageContainer>
+          <LazyFaqBeerCave />
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
   </div>
 </template>
 

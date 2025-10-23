@@ -9,7 +9,7 @@
         </p>
         <div class="mt-6">
             <slot />
-            <BaseUiAction v-if="hasButton" variant="secondary" :to styling="py-4 px-8" class="mt-4">
+            <BaseUiAction v-if="hasButton" variant="secondary" :to :href styling="py-4 px-8" class="mt-4">
               {{ buttonLabel }}
             </BaseUiAction>
         </div>
@@ -23,11 +23,13 @@
     description?: string
     buttonLabel?: string
     to?: string;
+    href?: string;
     hasButton?: boolean
   }>(), {
     description: undefined,
     hasButton: true,
     to: undefined,
-    buttonLabel: undefined
+    buttonLabel: undefined,
+    href: undefined
   })
   </script>  
