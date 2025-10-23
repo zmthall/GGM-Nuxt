@@ -26,6 +26,9 @@
               densities="x1"
               width="400"
               height="300"
+              loading="eager"
+              :preload="{ fetchPriority: 'high' }"
+              fetchpriority="high"
               placeholder
               class="w-full h-auto object-cover"
               sizes="sm:400px 100vw"
@@ -78,6 +81,7 @@
                 densities="x1"
                 width="400"
                 height="300"
+                loading="lazy"
                 placeholder
                 class="h-full w-full object-cover"
                 sizes="sm:400px 100vw"
@@ -136,7 +140,7 @@
                 densities="x1"
                 width="400"
                 height="300"
-                placeholder
+                loading="lazy"
                 class="h-full w-full object-cover"
                 sizes="sm:400px 100vw"
                 alt="Golden Gate Gas & Goods Beer Cave entrance"
