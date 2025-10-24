@@ -18,7 +18,7 @@
         placeholder="/images/pages/location/location-map-placeholder.png"
         height="500" width="1136"
         sizes="lg:1136px 100vw"
-        fetchpriority="high"
+        :preload="{ fetchPriority: 'high' }"
         decoding="async"
         loading="eager"
         class="w-full h-full object-cover"
