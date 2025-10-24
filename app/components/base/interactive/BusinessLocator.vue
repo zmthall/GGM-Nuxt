@@ -7,7 +7,7 @@
       type="button"
       class="group absolute inset-0 w-full h-full"
       :aria-label="cta || 'Click to Load interactive map'"
-      @click="triggerInit()"
+      @click="triggerInit"
     >
       <NuxtImg
         v-if="facadeSrc"
@@ -15,16 +15,14 @@
         :alt="facadeAlt || 'Map preview with Golden Gate locations'"
         format="avif,webp"
         quality="50"
-        :preload="{ fetchPriority: 'high' }"
         placeholder="/images/pages/location/location-map-placeholder.png"
-        densities="x1"
         height="500" width="1136"
-        sizes="lg:1200px 100vw"
+        sizes="lg:1136px 100vw"
         fetchpriority="high"
         decoding="async"
         loading="eager"
         class="w-full h-full object-cover"
-        @load="toggleImageLoaded"
+        @load="onImgLoad"
       />
       <!-- overlay -->
       <div v-if="imageLoaded" :class="['absolute inset-0 transition bg-black/30 group-hover:bg-black/40']" />
@@ -58,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { Loader } from '@googlemaps/js-api-loader'
+// ❌ remove: import { Loader } from '@googlemaps/js-api-loader'
 
 const props = withDefaults(defineProps<{
   mode?: 'auto' | 'click'
@@ -73,16 +71,15 @@ const props = withDefaults(defineProps<{
 })
 
 const { public: { googleMapsKey } } = useRuntimeConfig()
-const EXT_LIB_URL =
-  'https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js'
+const EXT_LIB_URL = 'https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js'
 
 const mount = ref<HTMLElement|null>(null)
 const isReady = ref(false)
+const imageLoaded = ref(false)
 let canceled = false
 let started = false
-const imageLoaded = ref<boolean>(false);
 
-const toggleImageLoaded = () => imageLoaded.value = !imageLoaded.value;
+const onImgLoad = () => { imageLoaded.value = true }
 
 function loadScript(src: string, type: 'text/javascript' | 'module' = 'module') {
   return new Promise<void>((resolve, reject) => {
@@ -100,7 +97,10 @@ async function initOnce() {
   if (started || canceled) return
   started = true
   try {
+    // ⬇️ import the loader ONLY now (kept out of initial bundle)
+    const { Loader } = await import('@googlemaps/js-api-loader')
     const loader = new Loader({ apiKey: googleMapsKey as string, version: 'weekly' })
+
     await Promise.all([
       loader.importLibrary('maps'),
       loader.importLibrary('places').catch(() => {}),
@@ -109,7 +109,7 @@ async function initOnce() {
     if (canceled) return
 
     const locator = document.createElement('gmpx-store-locator') as any
-    // If you don't have a styled Map ID, omit the next line
+    // Remove unless you have a valid styled Map ID
     locator.setAttribute('map-id', 'YOUR_MAP_ID')
 
     const CONFIGURATION = {
@@ -137,14 +137,18 @@ async function initOnce() {
     }
 
     locator.configureFromQuickBuilder(CONFIGURATION)
+
     mount.value?.appendChild(locator)
     requestAnimationFrame(() => { if (!canceled) isReady.value = true })
-  } catch (err) {
-    console.error('[StoreLocator] init failed', err)
+  } catch (e) {
+    console.error('[StoreLocator] init failed', e)
   }
 }
 
-// Lazy init (auto mode) when near viewport; click mode waits for user action
+function triggerInit() {
+  requestAnimationFrame(() => void initOnce())
+}
+
 function observeAndInit() {
   if (props.mode !== 'auto') return
   const el = mount.value
@@ -156,22 +160,10 @@ function observeAndInit() {
     }
   }, { rootMargin: '600px 0px' })
   io.observe(el)
-
-  // Fallback timer so it still loads if IO never fires (edge cases)
-  setTimeout(() => {
-    if (!started) requestAnimationFrame(() => void initOnce())
-  }, 800)
+  setTimeout(() => { if (!started) requestAnimationFrame(() => void initOnce()) }, 800)
 }
 
-function triggerInit() {
-  // Used by click facade; safe to call multiple times
-  requestAnimationFrame(() => void initOnce())
-}
-
-onMounted(() => {
-  observeAndInit()
-})
-
+onMounted(() => { observeAndInit() })
 onBeforeUnmount(() => {
   canceled = true
   isReady.value = false
