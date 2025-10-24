@@ -6,25 +6,32 @@
       v-if="mode === 'click' && !isReady"
       type="button"
       class="group absolute inset-0 w-full h-full"
-      :aria-label="cta || 'Load interactive map'"
+      :aria-label="cta || 'Click to Load interactive map'"
       @click="triggerInit()"
     >
-      <img
+      <NuxtImg
         v-if="facadeSrc"
         :src="facadeSrc"
         :alt="facadeAlt || 'Map preview with Golden Gate locations'"
+        format="avif,webp"
+        quality="50"
+        :preload="{ fetchPriority: 'high' }"
+        densities="x1"
+        height="500" width="1136"
+        sizes="md:1200px 100vw"
+        fetchpriority="high"
         decoding="async"
-        loading="lazy"
+        loading="eager"
         class="w-full h-full object-cover"
-      >
+      />
       <!-- overlay -->
       <div class="absolute inset-0 bg-black/30 transition group-hover:bg-black/40" />
       <div class="absolute inset-0 grid place-items-center pointer-events-none">
         <div class="flex items-center gap-3 rounded-full bg-white/95 px-4 py-2 shadow">
           <!-- simple play icon -->
-          <span class="inline-block w-0 h-0 border-y-8 border-y-transparent border-l-[14px] border-l-zinc-800" />
+          <BaseIcon name="tdesign:gesture-click-filled" />
           <span class="text-zinc-800 font-semibold">
-            {{ cta || 'Load interactive map' }}
+            {{ cta || 'Click to Load interactive map' }}
           </span>
         </div>
       </div>
@@ -60,7 +67,7 @@ const props = withDefaults(defineProps<{
   mode: 'auto',
   facadeSrc: '',
   facadeAlt: '',
-  cta: 'Load interactive map',
+  cta: 'Click to Load interactive map',
 })
 
 const { public: { googleMapsKey } } = useRuntimeConfig()
