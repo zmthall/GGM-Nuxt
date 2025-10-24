@@ -1,6 +1,6 @@
 <template>
   <!-- Always-visible shell -->
-  <div class="relative w-full h-[500px] rounded-xl overflow-hidden bg-[#e8e8e8]">
+  <div class="relative w-full h-[500px] rounded-xl overflow-hidden">
     <!-- CLICK FACADE -->
     <button
       v-if="mode === 'click' && !isReady"
@@ -16,21 +16,23 @@
         format="avif,webp"
         quality="50"
         :preload="{ fetchPriority: 'high' }"
+        placeholder="/images/pages/location/location-map-placeholder.png"
         densities="x1"
         height="500" width="1136"
-        sizes="md:1200px 100vw"
+        sizes="lg:1200px 100vw"
         fetchpriority="high"
         decoding="async"
         loading="eager"
         class="w-full h-full object-cover"
+        @load="toggleImageLoaded"
       />
       <!-- overlay -->
-      <div class="absolute inset-0 bg-black/30 transition group-hover:bg-black/40" />
-      <div class="absolute inset-0 grid place-items-center pointer-events-none">
+      <div v-if="imageLoaded" :class="['absolute inset-0 transition bg-black/30 group-hover:bg-black/40']" />
+      <div v-if="imageLoaded" class="absolute inset-0 grid place-items-center pointer-events-none">
         <div class="flex items-center gap-3 rounded-full bg-white/95 px-4 py-2 shadow">
           <!-- simple play icon -->
-          <BaseIcon name="tdesign:gesture-click-filled" />
-          <span class="text-zinc-800 font-semibold">
+          <BaseIcon name="tdesign:gesture-click-filled" color="text-brand-main-text" hover-color="group-hover:text-brand-primary"/>
+          <span class="text-brand-main-text font-semibold">
             {{ cta || 'Click to Load interactive map' }}
           </span>
         </div>
@@ -40,7 +42,7 @@
     <!-- GRAY LOADING STATE (auto mode or during init) -->
     <div
       v-else-if="!isReady"
-      class="absolute inset-0 bg-zinc-300 flex justify-center items-center"
+      class="absolute inset-0 flex justify-center items-center"
       aria-hidden="true"
     >
       <span class="animate-pulse">Loading map…</span>
@@ -78,6 +80,9 @@ const mount = ref<HTMLElement|null>(null)
 const isReady = ref(false)
 let canceled = false
 let started = false
+const imageLoaded = ref<boolean>(false);
+
+const toggleImageLoaded = () => imageLoaded.value = !imageLoaded.value;
 
 function loadScript(src: string, type: 'text/javascript' | 'module' = 'module') {
   return new Promise<void>((resolve, reject) => {
