@@ -1,19 +1,67 @@
 <template>
-  <!-- Always-visible shell so page can paint immediately -->
+  <!-- Always-visible shell -->
   <div class="relative w-full h-[500px] rounded-xl overflow-hidden bg-[#e8e8e8]">
-    <!-- Map layer (fades in when ready) -->
-    <div v-if="!isReady" class="w-full h-full transition-opacity duration-200 bg-zinc-300 flex justify-center items-center">
-      <span class="animate-pulse">Loading Map...</span>
+    <!-- CLICK FACADE -->
+    <button
+      v-if="mode === 'click' && !isReady"
+      type="button"
+      class="group absolute inset-0 w-full h-full"
+      :aria-label="cta || 'Load interactive map'"
+      @click="triggerInit()"
+    >
+      <img
+        v-if="facadeSrc"
+        :src="facadeSrc"
+        :alt="facadeAlt || 'Map preview with Golden Gate locations'"
+        decoding="async"
+        loading="lazy"
+        class="w-full h-full object-cover"
+      >
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-black/30 transition group-hover:bg-black/40" />
+      <div class="absolute inset-0 grid place-items-center pointer-events-none">
+        <div class="flex items-center gap-3 rounded-full bg-white/95 px-4 py-2 shadow">
+          <!-- simple play icon -->
+          <span class="inline-block w-0 h-0 border-y-8 border-y-transparent border-l-[14px] border-l-zinc-800" />
+          <span class="text-zinc-800 font-semibold">
+            {{ cta || 'Load interactive map' }}
+          </span>
+        </div>
+      </div>
+    </button>
+
+    <!-- GRAY LOADING STATE (auto mode or during init) -->
+    <div
+      v-else-if="!isReady"
+      class="absolute inset-0 bg-zinc-300 flex justify-center items-center"
+      aria-hidden="true"
+    >
+      <span class="animate-pulse">Loading map…</span>
     </div>
-    <div 
+
+    <!-- MAP LAYER (fades in when ready) -->
+    <div
       ref="mount"
       class="w-full h-full transition-opacity duration-200"
-      :class="isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'"/>
+      :class="isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
+
+const props = withDefaults(defineProps<{
+  mode?: 'auto' | 'click'
+  facadeSrc?: string
+  facadeAlt?: string
+  cta?: string
+}>(), {
+  mode: 'auto',
+  facadeSrc: '',
+  facadeAlt: '',
+  cta: 'Load interactive map',
+})
 
 const { public: { googleMapsKey } } = useRuntimeConfig()
 const EXT_LIB_URL =
@@ -22,55 +70,35 @@ const EXT_LIB_URL =
 const mount = ref<HTMLElement|null>(null)
 const isReady = ref(false)
 let canceled = false
+let started = false
 
 function loadScript(src: string, type: 'text/javascript' | 'module' = 'module') {
   return new Promise<void>((resolve, reject) => {
     const s = document.createElement('script')
     s.type = type
-    s.src = src
     s.async = true
-    s.defer = true
+    s.src = src
     s.onload = () => resolve()
     s.onerror = reject
     document.head.appendChild(s)
   })
 }
 
-// ---- Lazy init when near viewport (avoids doing work off-screen) ----
-function observeAndInit() {
-  // If you want "init always", just call scheduleInit() and skip IO.
-  const el = mount.value
-  if (!el) return
-  const io = new IntersectionObserver((entries) => {
-    if (entries[0]?.isIntersecting) {
-      io.disconnect()
-      scheduleInit() // defer heavy work until after first paint
-    }
-  }, { rootMargin: '600px 0px' }) // start early as it scrolls into view
-  io.observe(el)
-}
-
-// Do not block initial paint: schedule after first frame
-function scheduleInit() {
-  requestAnimationFrame(() => { void init() })
-}
-
-async function init() {
+async function initOnce() {
+  if (started || canceled) return
+  started = true
   try {
-    if (canceled) return
-
-    // Import libraries without using deprecated .load()
     const loader = new Loader({ apiKey: googleMapsKey as string, version: 'weekly' })
     await Promise.all([
       loader.importLibrary('maps'),
-      loader.importLibrary('places'),
+      loader.importLibrary('places').catch(() => {}),
       loadScript(EXT_LIB_URL, 'module').then(() => customElements.whenDefined('gmpx-store-locator')),
     ])
     if (canceled) return
 
     const locator = document.createElement('gmpx-store-locator') as any
-    // If you don't have a styled Map ID, remove this:
-    locator.setAttribute('map-id', 'DEMO_MAP_ID')
+    // If you don't have a styled Map ID, omit the next line
+    locator.setAttribute('map-id', 'YOUR_MAP_ID')
 
     const CONFIGURATION = {
       locations: [
@@ -98,23 +126,43 @@ async function init() {
 
     locator.configureFromQuickBuilder(CONFIGURATION)
     mount.value?.appendChild(locator)
-
-    // Reveal the map layer on the next frame (after it attaches)
     requestAnimationFrame(() => { if (!canceled) isReady.value = true })
   } catch (err) {
     console.error('[StoreLocator] init failed', err)
-    // Gray shell stays visible
   }
 }
 
+// Lazy init (auto mode) when near viewport; click mode waits for user action
+function observeAndInit() {
+  if (props.mode !== 'auto') return
+  const el = mount.value
+  if (!el) return
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0]?.isIntersecting) {
+      io.disconnect()
+      requestAnimationFrame(() => void initOnce())
+    }
+  }, { rootMargin: '600px 0px' })
+  io.observe(el)
+
+  // Fallback timer so it still loads if IO never fires (edge cases)
+  setTimeout(() => {
+    if (!started) requestAnimationFrame(() => void initOnce())
+  }, 800)
+}
+
+function triggerInit() {
+  // Used by click facade; safe to call multiple times
+  requestAnimationFrame(() => void initOnce())
+}
+
 onMounted(() => {
-  // Don’t await here – just schedule init. This prevents blocking paint.
   observeAndInit()
 })
 
 onBeforeUnmount(() => {
   canceled = true
-  if (mount.value) mount.value.innerHTML = ''
   isReady.value = false
+  if (mount.value) mount.value.innerHTML = ''
 })
 </script>

@@ -3,10 +3,7 @@
     <!-- Business Location Map -->
     <BaseLayoutPageSection margin="pTop">
       <!-- <BaseInteractiveLocationMap styling="w-full h-[500px]" /> -->
-       <BaseInteractiveBusinessLocator />
-       <!-- <div v-if="!mapLoaded" class="w-full h-[500px] rounded-xl overflow-hidden animate-pulse bg-zinc-300 flex justify-center items-center">
-        <span class="image-loader" />
-       </div> -->
+       <BaseInteractiveBusinessLocator mode="click" facade-src="/images/pages/location/location-placeholder-map.png" facade-alt="Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"/>
     </BaseLayoutPageSection>
 
     <!-- Business Information -->
@@ -45,10 +42,6 @@
 <script setup lang='ts'>
 const staticData = useStaticData()
 const company = staticData?.company
-
-const mapLoaded = ref<boolean>(false)
-
-const toggleMapLoaded = () => mapLoaded.value = !mapLoaded.value
 
 definePageMeta({
   title: 'Golden Gate Manor Service Locations',
