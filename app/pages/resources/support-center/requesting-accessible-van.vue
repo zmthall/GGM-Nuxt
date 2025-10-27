@@ -457,12 +457,12 @@ const activeAccordionId = ref<string>('')
 const updateId = (val: string) => activeAccordionId.value = val
 
 useSeoMeta({
-  title: 'How to Request Wheelchair Accessible Vans - Golden Gate Manor NEMT',
-  ogTitle: 'How to Request Wheelchair Accessible Vans - Golden Gate Manor NEMT',
+  title: 'Requesting Wheelchair Accessible Vans - NEMT ',
+  ogTitle: 'Requesting Wheelchair Accessible Vans - NEMT ',
   description: 'Learn how to request wheelchair accessible transportation with Golden Gate Manor. Step-by-step guide for booking accessible NEMT services in Pueblo, Colorado.',
   ogDescription: 'Learn how to request wheelchair accessible transportation with Golden Gate Manor. Step-by-step guide for booking accessible NEMT services in Pueblo, Colorado.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'How to Request Wheelchair Accessible Vans - Golden Gate Manor NEMT',
+  twitterTitle: 'Requesting Wheelchair Accessible Vans - NEMT ',
   twitterDescription: 'Learn how to request wheelchair accessible transportation with Golden Gate Manor. Step-by-step guide for booking accessible NEMT services in Pueblo, Colorado.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',

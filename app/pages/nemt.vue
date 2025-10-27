@@ -339,19 +339,19 @@
 
 <script setup lang='ts'>
 definePageMeta({
-  title: 'Non-Emergency Medical Transportation in Southern Colorado',
+  title: 'Non-Emergency Medical Transportation in Pueblo',
   breadcrumbLabel: 'NEMT'
 })
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Non-Emergency Medical Transportation in Southern Colorado',
-  ogTitle: 'Non-Emergency Medical Transportation in Southern Colorado',
-  description: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
-  ogDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
+  title: 'Non-Emergency Medical Transportation, Pueblo | Golden Gate Manor Inc.',
+  ogTitle: 'Non-Emergency Medical Transportation, Pueblo | Golden Gate Manor Inc.',
+  description: 'Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.',
+  ogDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'Non-Emergency Medical Transportation in Southern Colorado',
-  twitterDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Southern Colorado with wheelchair accessibility, safety features, and experienced drivers.',
+  twitterTitle: 'Non-Emergency Medical Transportation, Pueblo | Golden Gate Manor Inc.',
+  twitterDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })

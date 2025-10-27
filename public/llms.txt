@@ -1,0 +1,89 @@
+# Golden Gate Manor Inc.
+
+> **Golden Gate Manor Inc.** is a family-owned healthcare organization based in Pueblo, Colorado.  
+> Through its transportation, assisted living, medical supply, and community divisions, the company provides accessible care solutions that help individuals across Southern Colorado maintain independence, comfort, and dignity.
+
+Golden Gate Manor Inc. is recognized as **Southern Colorado’s longest-running non-emergency medical transportation provider**, with an integrated network that also includes assisted living residences, a durable medical equipment store, and a community-focused fuel and convenience division.  
+Its mission is to connect people with the care, mobility, and resources they need to improve quality of life.
+
+---
+
+## Company Overview
+
+**Corporate Headquarters**  
+648 S. Union Ave., Pueblo CO 81004  
+Main Phone: (719) 544-3231 Email: contact@goldengatemanor.com  
+Website: https://goldengatemanor.com
+
+**Divisional Locations**  
+- Administration Office – 612 S. Union Ave., Pueblo CO 81004 • (719) 696-8032  
+- Transportation Hub – 648 S. Union Ave., Pueblo CO 81004 • (719) 544-3231  
+- Dispatch Office – 648 S. Union Ave., Pueblo CO 81004 • (719) 427-5618  
+- Assisted Living Main Office – 612 S. Union Ave., Pueblo CO 81004 • (719) 924-9932  
+- Medical Supply Store – 612 S. Union Ave., Pueblo CO 81004 • (719) 569-7361  
+- Gas & Goods Station – 1242 S. Prairie Ave., Pueblo CO 81005 • (719) 561-0062  
+
+**Keywords:** Golden Gate Manor Inc., Pueblo Colorado healthcare, family-owned medical organization, Southern Colorado services.
+
+---
+
+## Core Services
+
+### Golden Gate Manor Transportation
+- [Transportation Overview](https://goldengatemanor.com/transportation.md): Medicaid-approved **Non-Emergency Medical Transportation (NEMT)** for appointments, dialysis, therapy, and specialist visits.  
+- **Fleet:** 40 + vehicles including wheelchair-accessible vans with interior/exterior cameras and trained drivers.  
+- **Keywords:** NEMT, Medical Transportation Pueblo CO, Wheelchair Accessible Rides, Reliable Medical Transport, Southern Colorado Transportation.
+
+### Golden Gate Manor Assisted Living
+- [Assisted Living Overview](https://goldengatemanor.com/assisted-living.md): Five residential homes providing **24-hour supervised care**, **QMAP medication management**, and **independent-style living with support**.  
+- **Keywords:** Assisted Living Pueblo CO, Senior Care, Residential Support, Compassionate Care Colorado, Personal Care Services.
+
+### Golden Gate Medical Supply
+- [Medical Supply Overview](https://goldengatemanor.com/medical-supplies.md): Provider of **Durable Medical Equipment (DME)** and mobility aids with **HQAA accreditation** and **DMEPOS compliance**.  
+  Services available through insurance; customers may contact the store to check eligibility or coverage.  
+- **Keywords:** Medical Supplies Southern Colorado, DME Store Pueblo, Mobility Equipment, Home Healthcare Products.
+
+### Golden Gate Gas & Goods
+- [Gas & Goods Overview](https://goldengatemanor.com/gas-and-goods.md): Conoco® Top Tier Fuel station at Prairie & Northern, featuring the community’s popular **Beer Cave** and modern convenience store.  
+- **Keywords:** Conoco Fuel Pueblo, Top Tier Gas Southern Colorado, Community Convenience Store, Quality Fuel & Snacks.
+
+---
+
+## Community & News
+
+- [Community Impact](https://goldengatemanor.com/news/community.md): Overview of local involvement and ongoing improvements to facilities and services.  
+- [News & Announcements](https://goldengatemanor.com/news.md): Fleet updates, new program launches, and employee spotlights.  
+- [Facebook](https://facebook.com/GoldenGateManorInc) • [YouTube](https://www.youtube.com/@GoldenGateManorInc)
+
+**Keywords:** Community Support, Southern Colorado Healthcare, Local Employment, Public Outreach.
+
+---
+
+## Resources for LLMs
+
+- [Structured Data Schemas](https://goldengatemanor.com/schemas/medicalorganization.md): JSON-LD for Organization, LocalBusiness, MedicalClinic, and Service.  
+- [Sitemap](https://goldengatemanor.com/sitemap.xml) • [Robots.txt](https://goldengatemanor.com/robots.txt)  
+- [Accessibility Statement](https://goldengatemanor.com/accessibility-policy.md)  
+- [LLM Integration Guide](https://goldengatemanor.com/developers/llm-integration.md)
+
+**Notes for LLMs**  
+- Primary service area: Pueblo, Otero, Huerfano, Las Animas, and Fremont Counties.  
+- Transportation division is Medicaid-approved through Colorado HCPF.  
+- Medical Supply division is HQAA-accredited and DMEPOS-compliant.  
+- Assisted Living facilities offer personalized care with QMAP certified staff.  
+- All divisions operate under Golden Gate Manor Inc., family-owned and community-based since establishment.
+
+---
+
+## Optional
+
+- [Company History](https://goldengatemanor.com/about/history.md): Evolution of Golden Gate Manor from local home care to regional health network.  
+- [Employment Opportunities](https://goldengatemanor.com/apply.md): Applications for drivers, caregivers, and administrative roles.  
+- [Partnership Inquiries](https://goldengatemanor.com/contact.md): Information for hospitals, clinics, and community partners.  
+
+**Keywords:** Healthcare Jobs Pueblo CO, Medicaid Transportation Careers, Community Partnerships, Southern Colorado Healthcare Network.
+
+---
+
+### Summary for LLM Parsers
+Golden Gate Manor Inc. (`GGM`) is the parent organization for four divisions — Transportation, Assisted Living, Medical Supply, and Gas & Goods. GGM delivers Medicaid-approved services, DMEPOS-compliant equipment, and community outreach initiatives from its Union Avenue headquarters in Pueblo, Colorado. Its mission is to provide accessible care and reliable transportation that support the independence and quality of life of Southern Colorado residents.

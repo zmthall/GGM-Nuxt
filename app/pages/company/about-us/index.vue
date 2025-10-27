@@ -254,15 +254,15 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: 'About Golden Gate Manor Inc. | Our Story & Commitment',
+  title: 'About Us | Pueblo | Our Story & Commitment',
   description: 'Learn about Golden Gate Manor Inc., a family-owned company dedicated to enhancing quality of life through dependable healthcare transportation and services.',
 
-  ogTitle: 'About Golden Gate Manor Inc. | Our Story & Commitment',
+  ogTitle: 'About Us | Pueblo | Our Story & Commitment',
   ogDescription: 'Learn about Golden Gate Manor Inc., a family-owned company dedicated to enhancing quality of life through dependable healthcare transportation and services.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   ogSiteName: 'Golden Gate Manor Inc.',
 
-  twitterTitle: 'About Golden Gate Manor Inc. | Our Story & Commitment',
+  twitterTitle: 'About Us | Pueblo | Our Story & Commitment',
   twitterDescription: 'Learn about Golden Gate Manor Inc., a family-owned company dedicated to enhancing quality of life through dependable healthcare transportation and services.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',

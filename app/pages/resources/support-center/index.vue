@@ -8,6 +8,10 @@ definePageMeta({
   breadcrumb: false
 });
 
+useSeoMeta({
+  robots: 'noindex, nofollow'
+})
+
 </script>
 
 <style>

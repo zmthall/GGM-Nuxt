@@ -7,6 +7,10 @@ definePageMeta({
   redirect: '/company/about-us',
   breadcrumb: false
 });
+
+useSeoMeta({
+  robots: 'noindex, nofollow'
+})
 </script>
 <style>
 

@@ -139,7 +139,7 @@ export default defineNuxtConfig({
   sitemap: {
     sitemaps: {
       'sitemap-main': {
-        exclude: ['/admin/**', '/news/blog/**'],
+        exclude: ['/admin/**', '/news/blog/**', '/news', '/resources/support-center', '/company'],
         includeAppSources: true,
       },
       'sitemap-blog': {

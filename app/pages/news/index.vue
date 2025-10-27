@@ -15,6 +15,7 @@ useSeoMeta({
   twitterDescription: 'Stay informed on the latest news, updates, and announcements from Golden Gate Manor Inc. about healthcare transportation and community involvement.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
+  robots: 'noindex, nofollow'
 })
 
 defineOptions({

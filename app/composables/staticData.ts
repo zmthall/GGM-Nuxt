@@ -34,7 +34,7 @@ export const useStaticData = () => {
       {
         id: "news",
         name: "News",
-        slug: "/news",
+        slug: "/news/community",
         sublinks: [
           { id: "community", name: "Community", slug: "/news/community" },
           { id: "blog", name: "Blog", slug: "/news/blog" },
