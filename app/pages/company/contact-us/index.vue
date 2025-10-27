@@ -58,7 +58,7 @@
         </BaseLayoutPageSection>
         <DeferRender when="visible">
             <BaseLayoutPageSection class="max-w-[1200px] mx-auto mb-16 cv-auto">
-                <LazyBaseInteractiveLocationMap styling="w-full h-[400px] mt-8 md:mt-4"/>
+                <LazyBaseInteractiveBusinessLocator mode="click" facade-src="/images/pages/location/location-placeholder-map.png" facade-alt="Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"/>
             </BaseLayoutPageSection>
         </DeferRender>
     </BaseLayoutPageContainer>
