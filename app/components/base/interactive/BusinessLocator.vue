@@ -13,7 +13,7 @@
         v-if="facadeSrc"
         :src="facadeSrc"
         :alt="facadeAlt || 'Map preview with Golden Gate locations'"
-        format="avif,webp"
+        format="webp"
         quality="50"
         placeholder="/images/pages/location/location-map-placeholder.png"
         height="500" width="1136"

@@ -4,10 +4,10 @@
       <div class="space-y-4">
         <h2 class="text-2xl font-bold text-brand-primary pb-2 border-b border-b-brand-primary mb-4">Important Notice</h2>
         <p class="text-xl text-brand-main-text">
-          Please be aware that submitting an application does not guarantee it will be reviewed. Due to the volume of applications we receive and the fact that not all positions are actively hiring at all times, only applications that align with our current needs and qualifications will be considered. As such, not all applicants will be contacted for an interview or further steps in the hiring process.
+          Please be aware that submitting an application does not guarantee it will be reviewed. Due to the volume of applications we receive and the fact that not all positions are actively hiring at all times, only applications that align with our current needs and qualifications will be considered. As such, not all applicants will be contacted for an interview or further steps in the hiring process. <PleaseNote>We also ask for a paper application to be filled out for each position as well for state, city, and federal regulations.</PleaseNote>
         </p>
         <p class="text-xl text-brand-main-text">
-          We appreciate your interest in joining Golden Gate Manor Inc., and encourage you to apply for future opportunities as positions become available.
+          We appreciate your interest in joining Golden Gate Manor Inc., and encourage you to apply for future opportunities, as positions become available, if you do not receive correspondence for your current application.
         </p>
       </div>
       <div class="flex gap-2 mt-8">

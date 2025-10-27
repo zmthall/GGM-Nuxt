@@ -28,7 +28,6 @@
               height="300"
               loading="eager"
               :preload="{ fetchPriority: 'high' }"
-              fetchpriority="high"
               placeholder
               class="w-full h-auto object-cover"
               sizes="sm:400px 100vw"

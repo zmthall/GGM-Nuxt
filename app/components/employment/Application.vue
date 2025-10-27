@@ -84,7 +84,7 @@
         </div>
       </BaseLayoutPageSection>
       <div>
-        <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="p-2">Submit Application</BaseUiAction>
+        <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="p-2">Submit</BaseUiAction>
         <div class="text-xs text-gray-500 mt-2">
           This site is protected by reCAPTCHA and the Google 
           <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 

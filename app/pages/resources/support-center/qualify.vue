@@ -9,7 +9,6 @@
                   quality="50" format="webp"
                   width="600" height="400"
                   :preload="{ fetchPriority: 'high' }"
-                  fetchpriority="high"
                   loading="eager"
                   placeholder
                   sizes="md:600px 100vw"
