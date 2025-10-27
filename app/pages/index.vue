@@ -22,55 +22,55 @@
         </BaseLayoutPageHeroSection>
 
             <!-- Overview (our company) -->
-            <DeferRender when="visible">
-                <BaseLayoutPageSection margin="default" class="cv-auto">
-                    <BaseLayoutPageContainer>
-                        <LazyBaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
-                            <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                                 <!-- Image -->
-                                <section>
-                                    <!-- Desktop/Tablet: interactive carousel -->
-                                    <div v-if="isMdUp" class="w-full h-[450px] max-md:shadow-primary max-md:rounded-lg overflow-hidden">
-                                        <!-- Lazy component still good for code-splitting -->
-                                        <LazyBaseInteractiveAutoImageCarousel
-                                        :images="images"
-                                        />
-                                    </div>
-    
-                                    <!-- Mobile: lightweight static image -->
-                                    <div v-else class="w-full rounded-lg overflow-hidden">
-                                        <NuxtImg
-                                            src="/images/home-images/transportation-services.jpeg"
-                                            alt="Golden Gate Manor Transportation"
-                                            format="webp,avif"
-                                            quality="65"
-                                            width="1152" height="646"
-                                            sizes="(min-width: 1024px) 646px, 395px"
-                                            loading="lazy"
-                                            class="w-full h-full object-contain"
-                                            decoding="async"
-                                        />
-                                    </div>
-                                </section>
-             
-                                <!-- Text Content -->
-                                <div>
-                                    <h2 class="text-3xl font-extrabold text-brand-primary mb-4">Locally Rooted. Broadly Committed.</h2>
-                                    <p class="text-base text-brand-dark-gray leading-relaxed mb-6">
-                                         Golden Gate Manor is a family-owned umbrella company providing Medicaid-approved services including non-emergency medical transportation (NEMT) and non-medical Medicaid transportation with wheelchair accessible vans, assisted living, durable medical equipment and supplies, and gas stations in Pueblo, Colorado. With dedicated teams across all departments and 20 years of business experience under our belt, 40+ vehicles in our fleet, and five different assisted living house locations; we work hard to meet the daily needs of our clients throughout Southern Colorado. 
-                                    </p>
-                                     <BaseUiAction to="/company/about-us" styling="py-4 px-8">
-                                     Learn More About Us
-                                    </BaseUiAction>
-                                </div>
+            <BaseLayoutPageSection margin="default" class="cv-auto">
+                <BaseLayoutPageContainer>
+                    <LazyBaseLayoutCard class="md:shadow-primary sm:w-11/12 sm:mx-auto xl:w-3/4" :shadow="false">
+                        <div class="px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                                <!-- Image -->
+                            <section>
+                                <!-- Desktop/Tablet: interactive carousel -->
+                                 <DeferRender when="visible">
+                                     <div class="w-full h-[450px] max-md:hidden max-md:shadow-primary max-md:rounded-lg overflow-hidden">
+                                         <!-- Lazy component still good for code-splitting -->
+                                         <LazyBaseInteractiveAutoImageCarousel
+                                         :images="images"
+                                         />
+                                     </div>
+                                     <div class="w-full rounded-lg md:hidden overflow-hidden">
+                                         <NuxtImg
+                                             src="/images/home-images/transportation-services.jpeg"
+                                             alt="Golden Gate Manor Transportation"
+                                             format="webp,avif"
+                                             quality="65"
+                                             width="1152" height="646"
+                                             sizes="(min-width: 1024px) 646px, 395px"
+                                             loading="lazy"
+                                             class="w-full h-full object-contain"
+                                             decoding="async"
+                                         />
+                                     </div>
+                                 </DeferRender>
+
+                                <!-- Mobile: lightweight static image -->
+                            </section>
+            
+                            <!-- Text Content -->
+                            <div>
+                                <h2 class="text-3xl font-extrabold text-brand-primary mb-4">Locally Rooted. Broadly Committed.</h2>
+                                <p class="text-base text-brand-dark-gray leading-relaxed mb-6">
+                                        Golden Gate Manor is a family-owned umbrella company providing Medicaid-approved services including non-emergency medical transportation (NEMT) and non-medical Medicaid transportation with wheelchair accessible vans, assisted living, durable medical equipment and supplies, and gas stations in Pueblo, Colorado. With dedicated teams across all departments and 20 years of business experience under our belt, 40+ vehicles in our fleet, and five different assisted living house locations; we work hard to meet the daily needs of our clients throughout Southern Colorado. 
+                                </p>
+                                    <BaseUiAction to="/company/about-us" styling="py-4 px-8">
+                                    Learn More About Us
+                                </BaseUiAction>
                             </div>
-                        </LazyBaseLayoutCard>
-                    </BaseLayoutPageContainer>
-                </BaseLayoutPageSection>
-            </DeferRender>
+                        </div>
+                    </LazyBaseLayoutCard>
+                </BaseLayoutPageContainer>
+            </BaseLayoutPageSection>
             
             <!-- Services Card Grid -->
-            <DeferRender when="visible">
+            <DeferRender when="visible" ssr>
                 <BaseLayoutPageSection margin="default" bg="alt" styling="flex flex-col" class="cv-auto">
                         <h2 class="text-center font-extrabold flex flex-col mb-8 text-4xl">
                             <span class="text-gray-500">
@@ -136,7 +136,7 @@
             </DeferRender>
 
             <!-- Schedule a Ride CTA -->
-            <DeferRender when="visible">
+            <DeferRender when="visible" ssr>
                 <LazyBaseLayoutPageCTA title="Need a Ride? We're Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride" class="cv-auto">
                     <p class="text-xl">
                         Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
@@ -145,7 +145,7 @@
             </DeferRender>             
     
             <!-- Why People Choose Us -->
-            <DeferRender when="visible">
+            <DeferRender when="visible" ssr>
                 <BaseLayoutPageSection margin="default" class="cv-auto">
                     <BaseLayoutPageContainer>
                         <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
@@ -269,9 +269,6 @@ useSeoMeta({
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })
-
-
-const isMdUp = useMediaQuery('(min-width: 768px)')
 
 defineOptions({
     name: 'HomePage'
