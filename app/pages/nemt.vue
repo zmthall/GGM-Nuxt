@@ -345,7 +345,7 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Non-Emergency Medical Transportation, Pueblo | Golden Gate Manor Inc.',
+  title: 'Non-Emergency Medical Transportation, Pueblo',
   ogTitle: 'Non-Emergency Medical Transportation, Pueblo | Golden Gate Manor Inc.',
   description: 'Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.',
   ogDescription: 'Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.',

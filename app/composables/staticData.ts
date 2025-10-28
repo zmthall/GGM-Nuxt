@@ -138,7 +138,7 @@ export const useStaticData = () => {
         name: "Accessibility",
         slug: "/company/policies/accessibility",
       },
-      { id: "site-map", name: "Site Map", slug: "/sitemap.xml" },
+      { id: "site-map", name: "Site Map", slug: "/sitemap_index.xml" },
       // { id: "", name: "", slug: ""}
     ];
 

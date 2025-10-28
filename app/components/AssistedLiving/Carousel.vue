@@ -24,7 +24,7 @@
                         </div>
                         <div class="absolute left-0 bottom-4 flex justify-center w-full gap-4 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity ease-in-out duration-500">
                           <button class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">View More</button>
-                          <a class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" :href="(item as House).mapsURL" target="_blank" rel="noreferrer nofollow noopener" title="Opens in new tab">Directions</a>
+                          <a class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" :href="(item as House).mapsURL" target="_blank" rel="noreferrer noopener" title="Opens in new tab">Directions</a>
                         </div>
                     </div>
                     <!-- <div v-else class="image-loader" /> -->
