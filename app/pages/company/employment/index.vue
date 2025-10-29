@@ -159,7 +159,7 @@
               </li>
             </ul>
             <p class="text-xl text-brand-main-text">
-              If you are applying for a driver position, please be sure to use the driver-specific application and please make sure to read the note below the application pdf links.
+              If you are applying for a driver position, please be sure to use the driver-specific application and please make sure to read the note below the application pdf links. Thanks for your interesting in joining the Golden Gate Manor Inc. Team!
             </p>
             <div>
               <div class="flex gap-4 flex-wrap justify-center !my-8">
