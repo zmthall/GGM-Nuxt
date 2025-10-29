@@ -147,7 +147,7 @@
           <section class="space-y-2">
             <h2 class="text-2xl font-bold text-brand-primary">Prefer to fill out a physical application?</h2>
             <p class="text-xl text-brand-main-text">
-              Sometimes it's easier to complete an application by hand or type it out and drop it off in person. 
+              Sometimes it's easier to complete an application by hand, or type it out, and drop it off in person or send it via email. 
               If that's your preferred method of applying, please use the links below to download and fill out the application. Once complete, you can:
             </p>
             <ul class="text-xl text-brand-main-text ml-8 list-disc">
