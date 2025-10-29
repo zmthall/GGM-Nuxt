@@ -141,6 +141,39 @@
        </BaseLayoutPageSection>
      </DeferRender>
 
+     <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt">
+        <BaseLayoutPageContainer class="space-y-8">
+          <section class="space-y-2">
+            <h2 class="text-2xl font-bold text-brand-primary">Prefer to fill out a physical application?</h2>
+            <p class="text-xl text-brand-main-text">
+              Sometimes it's easier to complete an application by hand or type it out and drop it off in person. 
+              If that's your preferred method of applying, please use the links below to download and fill out the application. Once complete, you can:
+            </p>
+            <ul class="text-xl text-brand-main-text ml-8 list-disc">
+              <li>
+                Bring it to our Administration Office at <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="link">612 S. Union Ave., Pueblo, CO 81004</a>, or
+              </li>
+              <li>
+                Email it to <a href="mailto:apply@goldengatemanor.com" class="link">apply@goldengatemanor.com</a> (just put the subject line as your first and last name along with application)
+              </li>
+            </ul>
+            <p class="text-xl text-brand-main-text">
+              If you are applying for a driver position, please be sure to use the driver-specific application and please make sure to read the note below the application pdf links.
+            </p>
+            <div>
+              <div class="flex gap-4 flex-wrap justify-center !my-8">
+                <LazySupportCenterTile href="/pdfs/applications/driver-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:directions-car" title="Driver Application"/>
+                <LazySupportCenterTile href="/pdfs/applications/general-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:work" title="General Application"/>
+                <LazySupportCenterTile href="/pdfs/applications/house-application.pdf" target="_blank" rel="noopener noreferrer" name="medical-icon:i-care-staff-area" title="Assisted Living Application"/>
+              </div>
+              <PleaseNote>If the application being applied for is a driving position, a Motor Vehicle Record (MVR) from the last 30 days is required. A non-certified MVR showing a 7-year driving history can be obtained from the DMV at <a href="https://maps.app.goo.gl/1CbsxZVTiVfcmWTAA" target="_blank" rel="noopener noreferrer" class="link">827 W 4th St, Pueblo, CO 81003</a>, or online using the <a href="https://mydmv.colorado.gov/_/" target="_blank" rel="noopener noreferrer" class="link">DMV - MVR Online Form</a> and request a driving record. The MVR must be brought before an interview will be considered.</PleaseNote>
+            </div>
+          </section>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
     <!-- CTA Section -->
      <DeferRender when="visible">
        <BaseLayoutPageCTA 
