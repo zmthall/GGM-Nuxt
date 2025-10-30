@@ -22,17 +22,17 @@ definePageMeta({
   title: 'FAQs for Golden Gate Manor Inc.',
 })
 
-useSchemaOrg([ defineWebPage({ '@type': 'WebPage' }) ])
+useSchemaOrg([ defineWebPage({ type: 'FAQPage', name: 'FAQs' }) ])
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
   title: 'FAQs',
   ogTitle: 'FAQs',
-  description: 'Find answers to common questions about Golden Gate Manor Inc.’s transportation, assisted living, and medical supply services in Southern Colorado.',
-  ogDescription: 'Find answers to common questions about Golden Gate Manor Inc.’s transportation, assisted living, and medical supply services in Southern Colorado.',
+  description: 'Find answers to common questions about Golden Gate Manor Inc.\'s transportation, assisted living, and medical supply services in Southern Colorado.',
+  ogDescription: 'Find answers to common questions about Golden Gate Manor Inc.\'s transportation, assisted living, and medical supply services in Southern Colorado.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterTitle: 'FAQs',
-  twitterDescription: 'Find answers to common questions about Golden Gate Manor Inc.’s transportation, assisted living, and medical supply services in Southern Colorado.',
+  twitterDescription: 'Find answers to common questions about Golden Gate Manor Inc.\'s transportation, assisted living, and medical supply services in Southern Colorado.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })
@@ -41,16 +41,18 @@ defineOptions({
     name: 'FAQPage'
 })
 
-const activeNavId = computed(() => {
-  return navItems.find(item => item.active)?.id || 'ggmt'
-})
-
 const navItems = reactive([
   { id: 'ggmt', name: 'Transportation', active: true},
   { id: 'ggms', name: 'Medical Supply', active: false},
   { id: 'ggal', name: 'Assisted Living', active: false},
   { id: 'ggmc', name: 'Gas & Goods', active: false}
 ]);
+
+const activeNavId = computed({
+  get: () => navItems.find(i => i.active)?.id || 'ggmt',
+  set: (id: string) => updateNav(id),
+})
+
 
 const updateNav = (id: string) => {
   navItems.forEach(item => {
