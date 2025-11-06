@@ -9,8 +9,8 @@
           Golden Gate Medical Supply, a division of Golden Gate Manor, proudly serves Colorado with affordable, accessible medical equipment and supplies through our convenient ecommerce platform, brick-and-mortar location in Pueblo, Colorado, and delivery services throughout Southern Colorado. We understand that navigating durable medical equipment and supplies can be overwhelming and sometimes it feels inaccessible. This is why we built our business around making the process easier, family-friendly, discreet, and accessible. Whether you're shopping online, visiting our store, or need items delivered directly to your residence, we're here to provide the medical solutions you need to allow you to live your life independently and with the quality you deserve. Our durable medical equipment and supplies come from well-known vendors.  We accept HSA, FSA, and most major insurance plans. Visit our <NuxtLink to="/resources/faq" class="link">FAQ page</NuxtLink> or contact us to learn about available payment options.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" :new-page="true" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Read More</BaseUiAction>
-          <BaseUiAction href="https://goldengatemedicalsupply.com/collections/all-products" :new-page="true" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Explore Our Products</BaseUiAction>
+          <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" new-page title="Opens in new tab" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Read More</BaseUiAction>
+          <BaseUiAction href="https://goldengatemedicalsupply.com/collections/all-products" new-page title="Opens in new tab" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Explore Our Products</BaseUiAction>
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
