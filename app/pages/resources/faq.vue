@@ -8,21 +8,17 @@
 </template>
 
 <script setup lang='ts'>
-import company from '@/data/company.json'
-import faqTemplate from '@/data/faqSchema.json?raw'
-
-const office = company?.trans?.phone?.office ?? ''
-const dispatch = company?.trans?.phone?.dispatch ?? ''
-
-const FAQ_JSON = faqTemplate
-  .replaceAll('{{OFFICE_PHONE}}', office)
-  .replaceAll('{{DISPATCH_PHONE}}', dispatch)
+import FAQ_SCHEMA from '@/data/faqSchema.json'
 
 definePageMeta({
   title: 'FAQs for Golden Gate Manor Inc.',
+  breadcrumbLabel: 'FAQs'
 })
 
-useSchemaOrg([ defineWebPage({ type: 'FAQPage', name: 'FAQs' }) ])
+
+useSchemaOrg([
+  FAQ_SCHEMA
+])
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
@@ -60,16 +56,16 @@ const updateNav = (id: string) => {
   })
 }
 
-useHead({
-  script: [
-    {
-      key: 'ld-json-faq',
-      type: 'application/ld+json',
-      innerHTML: FAQ_JSON,
-      'data-schema': 'faq'
-    }
-  ]
-})
+// useHead({
+//   script: [
+//     {
+//       key: 'ld-json-faq',
+//       type: 'application/ld+json',
+//       innerHTML: FAQ_JSON,
+//       'data-schema': 'faq'
+//     }
+//   ]
+// })
 </script>
 
 <style>

@@ -1,0 +1,410 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "@id": "https://goldengatemanor.com#organization",
+  "name": "Golden Gate Manor Inc.",
+  "url": "https://goldengatemanor.com",
+  "logo": "https://goldengatemanor.com/images/layout/Full%20company%20GGM%20Logo.png",
+  "image": "https://goldengatemanor.com/images/seo/ogImage-golden-gate-manor.png",
+  "description": "Golden Gate Manor Inc. is a family-owned umbrella company providing Medicaid-approved Non-Emergency Medical Transportation (NEMT), assisted living facilities, durable medical equipment, and convenience services across Southern Colorado. Serving the community for over 20 years with 40+ vehicles and 5 assisted living locations.",
+  "foundingDate": "2008",
+  "legalName": "Golden Gate Manor Inc.",
+  "alternateName": [
+    "Golden Gate Manor",
+    "GGM",
+    "Golden Gate Medical Supply",
+    "Golden Gate Transportation",
+    "Golden Gate Gas & Goods"
+  ],
+  "telephone": "+1-719-696-8032",
+  "email": "info@goldengatemanor.com",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-719-544-3231",
+      "contactType": "Reservations",
+      "areaServed": "Colorado",
+      "availableLanguage": ["English"]
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "612 S. Union Ave.",
+    "addressLocality": "Pueblo",
+    "addressRegion": "CO",
+    "postalCode": "81004",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.facebook.com/GoldenGateTransportation",
+    "https://www.facebook.com/GoldenGateMedicalSupply/",
+    "https://www.linkedin.com/in/golden-gate-manor-inc/",
+    "https://x.com/GoldenGateManor",
+    "https://www.youtube.com/@GoldenGateMedicalSupplies",
+    "https://www.youtube.com/@GoldenGateManor",
+    "https://nextdoor.com/pages/golden-gate-manor-pueblo-co-1/",
+    "https://www.alignable.com/pueblo-co/golden-gate-medical-supply?user=11514877",
+    "https://www.goldengatemedicalsupply.com",
+    "https://www.goldengatemedicalsupplies.com",
+    "https://www.pueblocitycab.com"
+  ],
+  "department": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/nemt#department",
+      "name": "Non-Emergency Medical Transportation (NEMT)",
+      "url": "https://goldengatemanor.com/nemt",
+      "telephone": "+1-719-544-3231",
+      "priceRange": "Free with medicaid",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Colorado"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-golden-gate-manor.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "648 S. Union Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2595792,
+        "longitude": -104.6186705
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/assisted-living#golden-gate-manor-1",
+      "name": "Golden Gate Manor I",
+      "url": "https://goldengatemanor.com/assisted-living#ggmi",
+      "telephone": "+1-719-583-9132",
+      "priceRange": "Free with medicaid",
+      "paymentAccepted": "Medicaid",
+      "currenciesAccepted": "USD",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-assisted-living.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "606 W. Abriendo Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/606+W+Abriendo+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2645315,
+        "longitude": -104.6281247
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/assisted-living#golden-gate-manor-2",
+      "name": "Golden Gate Manor II",
+      "url": "https://goldengatemanor.com/assisted-living#ggmii",
+      "telephone": "+1-719-542-0201",
+      "priceRange": "Free with medicaid",
+      "paymentAccepted": "Medicaid",
+      "currenciesAccepted": "USD",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-assisted-living.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1219 Lake Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/1219+Lake+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2451131,
+        "longitude": -104.625675
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/assisted-living#golden-valley",
+      "name": "Golden Valley",
+      "url": "https://goldengatemanor.com/assisted-living#valley",
+      "telephone": "+1-719-545-0152",
+      "priceRange": "Free with medicaid",
+      "paymentAccepted": "Medicaid",
+      "currenciesAccepted": "USD",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-assisted-living.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1033 E. Evans Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/1033+E+Evans+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.248322,
+        "longitude": -104.6152667
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/assisted-living#golden-horizon",
+      "name": "Golden Horizon",
+      "url": "https://goldengatemanor.com/assisted-living#horizon",
+      "telephone": "+1-719-564-8110",
+      "priceRange": "Free with medicaid",
+      "paymentAccepted": "Medicaid",
+      "currenciesAccepted": "USD",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-assisted-living.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2109 Chautard Dr.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81005",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/2109+Chautard+Dr,+Pueblo,+CO+81005",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2282454,
+        "longitude": -104.6685071
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/assisted-living#golden-view",
+      "name": "Golden View",
+      "url": "https://goldengatemanor.com/assisted-living#view",
+      "telephone": "+1-719-543-7320",
+      "priceRange": "Free with medicaid",
+      "paymentAccepted": "Medicaid",
+      "currenciesAccepted": "USD",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-assisted-living.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "525 W. 9th St.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81003",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/525+W+9th+St,+Pueblo,+CO+81003",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2754501,
+        "longitude": -104.6143892
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://goldengatemanor.com/medical-supplies#store",
+      "name": "Golden Gate Medical Supply - Medical Supply Store",
+      "url": "https://www.goldengatemedicalsupplies.com",
+      "telephone": "+1-719-569-7361",
+      "priceRange": "Insurance accepted: HSA, FSA, specific insurances",
+      "image": "https://goldengatemanor.com/images/seo/ogImage-medical-supply.png",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "612 S. Union Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/612+S+Union+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2701,
+        "longitude": -104.6106
+      },
+      "sameAs": [
+        "https://www.goldengatemanor.com/medical-supplies",
+        "https://www.goldengatemedicalsupply.com"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://goldengatemanor.com/non-medical#service",
+      "name": "Pueblo City Cab - Non-medical Transportation",
+      "url": "https://goldengatemanor.com/non-medical",
+      "telephone": "+1-719-543-2525",
+      "priceRange": "Varies by distance",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Pueblo"
+        }
+      ],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-golden-gate-manor.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "648 S. Union Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/648+S+Union+Ave,+Pueblo,+CO+81004",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2595792,
+        "longitude": -104.6186705
+      },
+      "sameAs": ["https://www.pueblocitycab.com"]
+    },
+    {
+      "@type": "GasStation",
+      "@id": "https://goldengatemanor.com/gas-and-goods#location1",
+      "name": "Golden Gate Gas & Goods I",
+      "url": "https://goldengatemanor.com/gas-and-goods#g&gi",
+      "telephone": "+1-719-561-0062",
+      "priceRange": "Competitive fuel and convenience pricing",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "06:00",
+          "closes": "23:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Pueblo"
+      },
+      "paymentAccepted": ["Cash", "Credit Card", "EBT", "SNAP"],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-golden-gate-manor.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1242 S. Prairie Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81005",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/1242+S+Prairie+Ave,+Pueblo,+CO+81005/",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.2442758,
+        "longitude": -104.6435239
+      }
+    },
+    {
+      "@type": "GasStation",
+      "@id": "https://goldengatemanor.com/gas-and-goods#location2",
+      "name": "Golden Gate Gas & Goods II",
+      "url": "https://goldengatemanor.com/gas-and-goods#g&gii",
+      "telephone": "+1-719-253-9840",
+      "priceRange": "Varies by item",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "06:00",
+          "closes": "23:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Pueblo"
+      },
+      "paymentAccepted": ["Cash", "Credit Card", "EBT", "SNAP"],
+      "image": "https://goldengatemanor.com/images/seo/ogImage-golden-gate-manor.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1103 N. Elizabeth St.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81003",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/place/1103+N+Elizabeth+St,+Pueblo,+CO+81003",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.277396,
+        "longitude": -104.6152351
+      }
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Pueblo"
+    },
+    {
+      "@type": "State",
+      "name": "Colorado"
+    }
+  ]
+}

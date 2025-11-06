@@ -156,6 +156,9 @@ export default defineNuxtConfig({
     ],
     xslTips: false,
   },
+  schemaOrg: {
+    defaults: false
+  },
   robots: process.env.BUILD_TYPE === 'DEV' ? { groups: [ { userAgent: '*', disallow: ['/'] } ] } : {
     blockNonSeoBots: false,          // turn off built-in to prevent dupes
     disallow: ['/admin'],

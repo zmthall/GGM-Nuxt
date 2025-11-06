@@ -18,42 +18,37 @@
 </template>
 
 <script setup lang="ts">
+import ORG_SCHEMA from '@/data/orgSchema.json'
+
 defineOptions({
   name: "DefaultPages"
 })
 
-const staticData = useStaticData();
+useSchemaOrg([
+  ORG_SCHEMA
+])
+
 const authStore = useAuthStore();
 
-if(staticData) {
-  useHead({
-    titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
-    script: [
-      {
-        key: 'ld-json-org',
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(staticData.orgSchema),
-        'data-schema': 'organization' // 
-      },
-    ],
-    link: [
-    {
-      rel: 'preload',
-      href: '/fonts/Cabin-Regular.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: 'anonymous'
-    },
-    {
-      rel: 'preload',
-      href: '/fonts/NotoSerif-Regular.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: 'anonymous'
-    }
-  ],
-  })
-}
+useHead({
+  titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
+  link: [
+  {
+    rel: 'preload',
+    href: '/fonts/Cabin-Regular.woff2',
+    as: 'font',
+    type: 'font/woff2',
+    crossorigin: 'anonymous'
+  },
+  {
+    rel: 'preload',
+    href: '/fonts/NotoSerif-Regular.woff2',
+    as: 'font',
+    type: 'font/woff2',
+    crossorigin: 'anonymous'
+  }
+],
+})
 
 useSeoMeta({
   author: 'Zachary Thallas',

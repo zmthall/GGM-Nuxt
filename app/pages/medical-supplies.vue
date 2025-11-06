@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BaseUiBreadCrumbCTA href="https://goldengatemedicalsupply.com/">Visit Our Medical Supply Website</BaseUiBreadCrumbCTA>
     <BaseLayoutPageBanner src="/images/pages/medical-supplies/medical-supply-banner.jpg" alt="A peak into our medical supply store" loading="eager" title="A peak into our medical supply store" image-width="935" image-height="464" aspect-ratio="aspect-[2/1]" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4 flex flex-col">
@@ -7,7 +8,10 @@
         <p class="text-xl text-brand-main-text">
           Golden Gate Medical Supply, a division of Golden Gate Manor, proudly serves Colorado with affordable, accessible medical equipment and supplies through our convenient ecommerce platform, brick-and-mortar location in Pueblo, Colorado, and delivery services throughout Southern Colorado. We understand that navigating durable medical equipment and supplies can be overwhelming and sometimes it feels inaccessible. This is why we built our business around making the process easier, family-friendly, discreet, and accessible. Whether you're shopping online, visiting our store, or need items delivered directly to your residence, we're here to provide the medical solutions you need to allow you to live your life independently and with the quality you deserve. Our durable medical equipment and supplies come from well-known vendors.  We accept HSA, FSA, and most major insurance plans. Visit our <NuxtLink to="/resources/faq" class="link">FAQ page</NuxtLink> or contact us to learn about available payment options.
         </p>
-        <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" :new-page="true" class="px-8 py-4 sm:self-center">Read More</BaseUiAction>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" :new-page="true" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Read More</BaseUiAction>
+          <BaseUiAction href="https://goldengatemedicalsupply.com/collections/all-products" :new-page="true" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Explore Our Products</BaseUiAction>
+        </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
     <DeferRender when="visible">

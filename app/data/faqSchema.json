@@ -1,6 +1,9 @@
 {
-  "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://goldengatemanor.com/resources/faq#faqpage",
+  "url": "https://goldengatemanor.com/resources/faq",
+  "name": "FAQs for Golden Gate Manor Inc.",
+  "description": "Find answers to common questions about Golden Gate Manor Inc.'s transportation, assisted living, and medical supply services in Southern Colorado.",
   "mainEntity": [
     {
       "@type": "Question",
@@ -15,7 +18,7 @@
       "name": "HOW DO THEY SCHEDULE A RIDE?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "<p>Please schedule at least 24 hours in advance by calling <a href=\"tel:{{OFFICE_PHONE}}\">{{OFFICE_PHONE}}</a> between 8:00 AM and 4:00 PM, Monday-Friday. After hours, call dispatch at <a href=\"tel:{{DISPATCH_PHONE}}\">{{DISPATCH_PHONE}}</a>.</p>"
+        "text": "<p>Please schedule at least 24 hours in advance by calling <a href=\"tel:719-544-3231\">719-544-3231</a> between 8:00 AM and 4:00 PM, Monday-Friday. After hours, call dispatch at <a href=\"tel:719-543-2525\">719-543-2525</a>.</p>"
       }
     },
     {
@@ -23,7 +26,7 @@
       "name": "HOW DO THEY CANCEL A RIDE?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "<p>Call at least two hours before your pick-up time at <a href=\"tel:{{OFFICE_PHONE}}\">{{OFFICE_PHONE}}</a>. After hours, call dispatch at <a href=\"tel:{{DISPATCH_PHONE}}\">{{DISPATCH_PHONE}}</a>.</p>"
+        "text": "<p>Call at least two hours before your pick-up time at <a href=\"tel:719-544-3231\">719-544-3231</a>. After hours, call dispatch at <a href=\"tel:719-543-2525\">719-543-2525</a>.</p>"
       }
     },
     {

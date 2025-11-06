@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="!isHomePage && !isAdminHome && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-brand-primary/10 font-bold max-sm:hidden">
+  <nav v-if="!isHomePage && !isAdminHome && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-zinc-300 font-bold max-sm:hidden">
     <ol class="flex">
       <li v-if="!isAdmin">
         <NuxtLink to="/" class="link">Home</NuxtLink>
