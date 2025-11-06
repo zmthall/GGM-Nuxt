@@ -9,7 +9,8 @@
                 { 'secondary-style-group': (isSecondary && hoverGroup) },
                 { 'cta-style group/cta': (isCTA && !hoverGroup) },
                 { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-                { 'inline-block button-style': variant !== 'blank'}
+                { 'inline-block button-style': variant !== 'blank' && variant !== 'link'},
+                { 'link inline-block': variant === 'link'}
                 , size]" :to="to ?? '#'"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
@@ -27,7 +28,8 @@
                 { 'secondary-style-group': (isSecondary && hoverGroup) },
                 { 'cta-style group/cta': (isCTA && !hoverGroup) },
                 { 'cta-style-group group/cta': (isCTA && hoverGroup) },
-                { 'inline-block button-style': variant !== 'blank'}
+                { 'inline-block button-style': variant !== 'blank' && variant !== 'link'},
+                { 'link inline-block': variant === 'link'}
                 , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
@@ -68,7 +70,7 @@ const emit = defineEmits<{
 
 const props = withDefaults(defineProps<{
     type?: "button" | "submit" | "reset"; // Used for buttons to distinguish type of button for accessibility
-    variant?: 'primary' | 'cta' | 'secondary' | 'blank'; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
+    variant?: 'primary' | 'cta' | 'secondary' | 'blank' | 'link'; // this is different special looks for the button type VariantType = 'primary' | 'cta' | 'secondary'
     size?: string;
     styling?: string;
     href?: string;

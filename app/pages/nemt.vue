@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- Top Page -->
+    <BaseLayoutPageBanner src="/images/pages/nemt/car-lineup.jpg" alt="Line-up of Golden Gate Manor Inc cars in Pueblo Colorado" image-height="464" image-width="935" title="Line-up of Golden Gate Manor Inc cars in Pueblo Colorado" aspect-ratio="aspect-[2/1]"/>
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer>
         <div class="md:flex md:items-center gap-8">
