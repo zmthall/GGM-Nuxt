@@ -32,7 +32,7 @@
                 <ul class="flex flex-col gap-4">
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Administration Office</h3>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
@@ -48,7 +48,7 @@
                         <ul>
                             <li class="flex flex-col">
                                 <h3 class="font-bold">Front Office</h3>
-                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=648+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 648 S. Union Ave., Pueblo CO,
@@ -71,7 +71,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h3 class="font-bold">Dispatch Office</h3>
-                                <a href="https://maps.app.goo.gl/y5FKqHZx7JWvCy3J9" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=648+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 648 S. Union Ave., Pueblo CO,
@@ -97,7 +97,7 @@
                     <li class="flex flex-col">
                         <h3 class="font-bold underline flex items-center">Assisted Living</h3>
                         <h4 class="font-bold">Main office</h4>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
@@ -127,7 +127,7 @@
                         <ul v-if="viewMore[0]" class="mt-3 pt-1 border-t border-t-brand-secondary/50">
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Manor I</h4>
-                                <a href="https://maps.app.goo.gl/V9tU3MKnF3q8x6WB7" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=606+W.+Abriendo+Ave.%2C+Pueblo%2C+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 606 W. Abriendo Ave., Pueblo CO,
@@ -141,7 +141,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Manor II</h4>
-                                <a href="https://maps.app.goo.gl/fbGuP2aHpBaouFJ89" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=1219+Lake+Ave.%2C+Pueblo%2C+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1219 Lake Ave., Pueblo CO, 81004
@@ -154,7 +154,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Valley</h4>
-                                <a href="https://maps.app.goo.gl/C3f7ifZNFkcbNsJ5A" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=1033+E.+Evans+Ave.%2C+Pueblo%2C+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1033 E. Evans Ave., Pueblo CO,
@@ -168,7 +168,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Horizon</h4>
-                                <a href="https://maps.app.goo.gl/bzkGXrcXL7oQZwVt6" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=2109+Chautard+Dr.%2C+Pueblo%2C+CO+81005" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 2109 Chautard Dr., Pueblo CO,
@@ -182,7 +182,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden View</h4>
-                                <a href="https://maps.app.goo.gl/f45Npyj9EbVKPSmbA" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=525+W.+9th+St.%2C+Pueblo%2C+CO+81003" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 525 W. 9th St., Pueblo CO, 81003
@@ -197,7 +197,7 @@
                     </li>
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Medical Supply</h3>
-                        <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
@@ -211,7 +211,7 @@
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">Gas Stations</h3>
                         <h4 class="font-bold">Main office</h4>
-                        <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.google.com/maps/search/?api=1&query=1242+S+Prairie+Ave,+Pueblo,+CO+81005" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 1242 S. Prairie Ave., Pueblo CO, 81005
@@ -232,7 +232,7 @@
                         <ul v-if="viewMore[1]" class="mt-3 pt-1 border-t border-t-brand-secondary/50">
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Gas & Goods I</h4>
-                                <a href="https://maps.app.goo.gl/Y3XnrruoCk1zpUQn7" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=1242+S+Prairie+Ave,+Pueblo,+CO+81005" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1242 S. Prairie Ave., Pueblo CO,
@@ -246,7 +246,7 @@
                             </li>
                             <li class="flex flex-col">
                                 <h4 class="font-bold">Golden Gate Gas & Goods II</h4>
-                                <a href="https://maps.app.goo.gl/Wr9RdANcH8T9r7sf8" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/search/?api=1&query=1103+N.+Elizabeth+St.%2C+Pueblo%2C+CO+81003" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                         hover-color="group-hover:text-brand-secondary" /> 1103 N. Elizabeth St., Pueblo CO,
@@ -282,34 +282,68 @@
             </div>
             <!-- Office Hours -->
             <div>
-                <h2
-                    class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
-                    Office Hours</h2>
-                <ul class="text-2xl mb-2">
-                    <li class="flex justify-between">
-                        <span>Monday</span><span class="font-bold">8AM-4PM</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Tuesday</span><span class="font-bold">8AM-4PM</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Wednesday</span><span class="font-bold">8AM-4PM</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Thursday</span><span class="font-bold">8AM-4PM</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Friday</span><span class="font-bold">8AM-4PM</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Saturday</span><span class="font-bold">Office Closed</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Sunday</span><span class="font-bold">Office Closed</span>
-                    </li>
-                </ul>
-                <h3 class="font-bold text-brand-secondary">24/7 Transportation You Can Depend On</h3>
-                <p>Even though our office hours are set, our commitment never stops. Golden Gate Manor’s transportation services and assisted living homes are available 24/7, ensuring reliable care and rides throughout Colorado. We work hard to make our services accessible whenever you need it most.</p>
+                <div>
+                    <h2
+                        class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
+                        Office Hours</h2>
+                    <ul class="text-2xl mb-2">
+                        <li class="flex justify-between">
+                            <span>Monday</span><span class="font-bold">8AM-4PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Tuesday</span><span class="font-bold">8AM-4PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Wednesday</span><span class="font-bold">8AM-4PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Thursday</span><span class="font-bold">8AM-4PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Friday</span><span class="font-bold">8AM-4PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span><span class="font-bold">Office Closed</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span><span class="font-bold">Office Closed</span>
+                        </li>
+                    </ul>
+                    <h3 class="font-bold text-brand-secondary">24/7 Transportation You Can Depend On</h3>
+                    <p>Even though our office hours are set, our commitment never stops. Golden Gate Manor's transportation services and assisted living homes are available 24/7, ensuring reliable care and rides throughout Colorado. We work hard to make our services accessible whenever you need it most.</p>
+                </div>
+                <div class="text-center mt-6 border-t border-white/30 pt-4">
+                    <h3 class="text-brand-secondary font-bold text-lg mb-2">Join Our Team</h3>
+                    <p class="text-sm mb-3">
+                        We're always looking for compassionate, dependable people to join our care and transportation teams.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <NuxtLink
+                        to="/company/employment/apply?select=al_general"
+                        class="hover:text-brand-secondary underline"
+                        >
+                        Assisted Living
+                        </NuxtLink>
+                        <NuxtLink
+                        to="/company/employment/apply?select=transportation_general"
+                        class="hover:text-brand-secondary underline"
+                        >
+                        Transportation
+                        </NuxtLink>
+                        <NuxtLink
+                        to="/company/employment/apply?select=ms_general"
+                        class="hover:text-brand-secondary underline"
+                        >
+                        Medical Supply
+                        </NuxtLink>
+                        <NuxtLink
+                        to="/company/employment/apply?select=gs_general"
+                        class="hover:text-brand-secondary underline"
+                        >
+                        Gas & Goods
+                        </NuxtLink>
+                    </div>
+                </div>
             </div>
         </div>
 

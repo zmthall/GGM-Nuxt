@@ -2,6 +2,8 @@
     <template v-if="to">
         <NuxtLink 
             :disabled
+            :aria-label="ariaLabel"
+            :title
             :class="[
                 { 'primary-style': (isPrimary && !hoverGroup) },
                 { 'primary-style-group': (isPrimary && hoverGroup) },
@@ -21,6 +23,8 @@
     <template v-else-if="href">
         <a 
             :disabled
+            :aria-label="ariaLabel"
+            :title
             :class="[
                 { 'primary-style': (isPrimary && !hoverGroup) },
                 { 'primary-style-group': (isPrimary && hoverGroup) },
@@ -40,6 +44,8 @@
     <template v-else>
         <button 
             :disabled
+            :aria-label="ariaLabel"
+            :title
             :class="[
                 { 'primary-style': (isPrimary && !hoverGroup) },
                 { 'primary-style-group': (isPrimary && hoverGroup) },
@@ -86,12 +92,14 @@ const props = withDefaults(defineProps<{
     iconAfter?: string;
     ariaLabel?: string;
     stopPropagation?: boolean;
+    title?: string;
 }>(), {
     type: undefined,
     variant: 'primary',
     size: undefined,
     href: undefined,
     styling: undefined,
+    title: undefined,
     to: undefined,
     nuxt: false,
     disabled: false,

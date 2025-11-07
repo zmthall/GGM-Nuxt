@@ -231,7 +231,18 @@
                         </div>
                     </BaseLayoutPageContainer>
                 </BaseLayoutPageSection>
-            </DeferRender>             
+            </DeferRender>
+                         
+            <DeferRender when="visible" ssr>
+                <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+                    <BaseLayoutPageContainer>
+                        <div>
+                            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">Need help getting started?</h2>
+                            <SupportCenterSection />
+                        </div>
+                    </BaseLayoutPageContainer>
+                </BaseLayoutPageSection>
+            </DeferRender>
     
             <!-- 👉 Events & Community Highlights -->
             <!-- <BaseLayoutPageSection v-if="events" bg="alt">

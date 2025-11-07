@@ -114,7 +114,7 @@ export const useStaticData = () => {
         name: "Shop Medical Supplies",
         url: "https://www.goldengatemedicalsupply.com",
         icon: "material-symbols:medical-information",
-      },
+      }
     ];
 
     const footerPolicyLinks = [
