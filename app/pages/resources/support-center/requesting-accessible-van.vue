@@ -13,7 +13,9 @@
               placeholder
               sizes="md:600px 100vw"
               densities="x1"
-              class="absolute inset-0 w-full h-full object-cover" 
+              class="absolute inset-0 w-full h-full object-cover"
+              title="Golden Gate Manor Inc Red Accessible Van in Pueblo Colorado"
+              alt="Golden Gate Manor Inc red accessible van in Pueblo Colorado"
             />
           </div>
           <div class="lg:w-1/2 space-y-4">

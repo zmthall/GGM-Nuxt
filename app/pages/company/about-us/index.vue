@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page Banner -->
-    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup-ratio.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" aspect-ratio="aspect-[2/1]" format="webp,avif" />
+    <BaseLayoutPageBanner src="/images/pages/about-us/about-us-car-lineup.jpeg" alt="Golden Gate Manor cars lined up infront of our transportation hub building" loading="eager" title="Golden Gate Manor cars lined up infront of our transportation hub building" aspect-ratio="aspect-[2/1]" format="webp,avif" image-height="640" image-width="1240" />
     <!-- Top Page -->
     <BaseLayoutPageSection v-once margin="top">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
