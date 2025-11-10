@@ -11,10 +11,10 @@
                 <p>Our Mission:</p>
                 <p>To improve the quality of life, each and every day.</p>
                 <p>Follow Us:</p>
-                <div v-if="staticData" class="flex gap-2">
+                <div v-if="socialHandles" class="flex gap-2">
                     <nav aria-label="social media handle navigation">
                         <ul class="flex gap-2">
-                            <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
+                            <li v-for="socialHandle in activeSocialHandels" :key="socialHandle.id">
                                 <a :href="socialHandle.url" rel="noopener noreferrer" target="_blank">
                                     <BaseIcon :name="socialHandle.icon" color="text-brand-white" hover-color="hover:text-brand-secondary" />
                                     <span class="sr-only">{{ socialHandle.alt }}</span>
@@ -267,15 +267,15 @@
                 <h2
                     class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
                     Quick Links</h2>
-                <nav v-if="staticData" aria-label="Footer Navigation/Business description">
+                <nav v-if="footer" aria-label="Footer Navigation/Business description">
                     <ul class="flex flex-col gap-4 font-semibold">
-                        <li v-for="navLink in staticData.footerNavLinks" :key="navLink.id">
+                        <li v-for="navLink in footer.navLinks" :key="navLink.id">
                             <NuxtLink 
-                                v-if="navLink.slug" :to="navLink.slug"
-                                class="hover:text-brand-secondary hover:underline group flex items-center gap-2 w-max"><BaseIcon :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</NuxtLink>
+                                v-if="!navLink.external && navLink.href" :to="navLink.href"
+                                class="hover:text-brand-secondary hover:underline group flex items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</NuxtLink>
                             <a 
-                                v-if="navLink.url" :href="navLink.url" rel="noopener noreferrer"
-                                class="hover:text-brand-secondary hover:underline flex group items-center gap-2 w-max"><BaseIcon :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</a>
+                                v-if="navLink.external" :href="navLink.href" target="_blank" rel="noopener noreferrer" title="Opens in a new tab"
+                                class="hover:text-brand-secondary hover:underline flex group items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</a>
                         </li>
                     </ul>
                 </nav>
@@ -355,21 +355,21 @@
 
                 max-md:grid max-md:grid-cols-2 max-md:justify-center 
                 <ul class="sm:flex sm:items-center sm:flex-wrap h-full">
-                    <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="px-4 md:border-l md:first-of-type:border-l-0 hover:text-brand-secondary hover:underline h-max">
-                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.slug" class="flex w-max">{{ policyLink.name }}</NuxtLink>
-                        <a v-else :href="policyLink.slug" class="flex w-max">{{ policyLink.name }}</a>
+                    <li v-for="policyLink in footer.policyLinks" :key="policyLink.id" class="px-4 md:border-l md:first-of-type:border-l-0 hover:text-brand-secondary hover:underline h-max">
+                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.href" class="flex w-max">{{ policyLink.name }}</NuxtLink>
+                        <a v-else :href="policyLink.href" class="flex w-max">{{ policyLink.name }}</a>
                     </li>
                 </ul>
             </nav>
         </div> -->
         <!-- Bottom Copyright Footer -->
-        <div v-if="staticData" class="flex flex-col min-[875px]:flex-row md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
+        <div v-if="footer" class="flex flex-col min-[875px]:flex-row md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
             <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-2 min-[875px]:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
             <nav class="flex justify-center" aria-label="Footer Navigation">
                 <ul class="flex flex-wrap justify-center sm:flex text-left gap-2 w-max">
-                    <li v-for="policyLink in staticData.footerPolicyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">
-                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</NuxtLink>
-                        <a v-else :href="policyLink.slug" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</a>
+                    <li v-for="policyLink in footer.policyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">
+                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.href" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</NuxtLink>
+                        <a v-else :href="policyLink.href" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</a>
                     </li>
                 </ul>
             </nav>
@@ -378,7 +378,14 @@
 </template>
 
 <script setup lang='ts'>
-const staticData = useStaticData()
+import raw from '@/data/footer.json'
+import socialHandles from '@/data/socialHandles.json'
+import type { FooterJson } from '../../../../types/footer.js';
+
+const activeSocialHandels = socialHandles.filter(s => s.enabled !== false);
+
+const { footer } = raw as FooterJson;
+
 const viewMore = ref<boolean[]>([false, false])
 
 const toggleViewMore = (idx: number) => {

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "google-social",
+    "name": "Google",
+    "icon": "akar-icons:google-contained-fill",
+    "url": "https://www.google.com/search?q=golden+gate+manor+inc",
+    "alt": "Look us up on Google",
+    "enabled": true
+  },
+  {
+    "id": "facebook-social",
+    "name": "Facebook",
+    "icon": "mdi:facebook",
+    "url": "https://www.facebook.com/GoldenGateTransportation",
+    "alt": "Follow us on Facebook",
+    "enabled": true
+  },
+  {
+    "id": "twitter-social",
+    "name": "Twitter/X",
+    "icon": "line-md:twitter-x-alt",
+    "url": "https://x.com/GoldenGateManor",
+    "alt": "Follow us on Twitter",
+    "enabled": false,
+    "note": "Temporarily disabled"
+  },
+  {
+    "id": "linkedin-social",
+    "name": "LinkedIn",
+    "icon": "brandico:linkedin-rect",
+    "url": "https://www.linkedin.com/company/golden-gate-manor/",
+    "alt": "Follow us on LinkedIn",
+    "enabled": false,
+    "note": "Account not active yet"
+  },
+  {
+    "id": "instagram-social",
+    "name": "Instagram",
+    "icon": "simple-icons:instagram",
+    "url": "https://www.instagram.com/goldengatemanor/",
+    "alt": "Follow us on Instagram",
+    "enabled": false
+  },
+  {
+    "id": "youtube-social",
+    "name": "YouTube",
+    "icon": "mdi:youtube",
+    "url": "https://www.youtube.com/@GoldenGateManor",
+    "alt": "Follow our content on YouTube",
+    "enabled": true
+  }
+]

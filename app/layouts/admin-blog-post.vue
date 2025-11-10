@@ -22,16 +22,13 @@ const auth  = useAuthStore()
 
 const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 
-const staticData = useStaticData()
-if (staticData) {
-  useHead({
-    link: [
-      { rel: 'preload', href: '/fonts/Cabin-Regular.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-      { rel: 'preload', href: '/fonts/NotoSerif-Regular.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
-    ],
-    bodyAttrs: { class: 'is-admin' }
-  })
-}
+useHead({
+  link: [
+    { rel: 'preload', href: '/fonts/Cabin-Regular.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+    { rel: 'preload', href: '/fonts/NotoSerif-Regular.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
+  ],
+  bodyAttrs: { class: 'is-admin' }
+})
 
 onMounted(async () => {
   const { $getFirebase } = useNuxtApp()

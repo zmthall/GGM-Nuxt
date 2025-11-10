@@ -250,7 +250,7 @@
                       We proudly serve most of Colorado, excluding the Denver metro counties of Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe due to contractual agreements. We also are not available most of Northern Colorado due to distance restrictions.
                     </p>
                     <p class="text-xl text-brand-main-text">
-                      Need help determining eligibility? Call us at <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
+                      Need help determining eligibility? Call us at <a :href="`tel:${company.trans.phone.office}`" class="link">{{ company.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
                     </p>
                   </div>
                 </div>
@@ -414,17 +414,17 @@
                 <tbody>
                   <tr class="bg-white">
                     <td class="border border-blue-200 px-2 sm:px-4 py-2">Schedule / Modify Rides</td>
-                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a></td>
+                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company.trans.phone.office}`" class="link">{{ company.trans.phone.office }}</a></td>
                     <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">Mon-Fri, 8AM-4PM</td>
                   </tr>
                     <tr class="bg-blue-50">
                     <td class="border border-blue-200 px-2 sm:px-4 py-2">Administrative Assistance</td>
-                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company?.admin.phone}`" class="link">{{ company?.admin.phone }}</a></td>
+                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company.admin.phone}`" class="link">{{ company.admin.phone }}</a></td>
                     <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">Mon-Fri, 8AM-4PM</td>
                   </tr>
                   <tr class="bg-white">
                     <td class="border border-blue-200 px-2 sm:px-4 py-2">After-Hours Urgent Needs</td>
-                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium"><a :href="`tel:${company?.trans.phone.dispatch}`" class="link whitespace-nowrap">{{ company?.trans.phone.dispatch }}</a> or <a :href="`tel:${company?.trans.phone.tollFree}`" class="link whitespace-nowrap">{{ company?.trans.phone.tollFree }}</a></td>
+                    <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium"><a :href="`tel:${company.trans.phone.dispatch}`" class="link whitespace-nowrap">{{ company.trans.phone.dispatch }}</a> or <a :href="`tel:${company.trans.phone.tollFree}`" class="link whitespace-nowrap">{{ company.trans.phone.tollFree }}</a></td>
                     <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">24/7</td>
                   </tr>
                 </tbody>
@@ -449,6 +449,8 @@
 </template>
 
 <script lang="ts" setup>
+import company from '@/data/company.json'
+
 definePageMeta({
   title: 'Requesting Wheelchair Accessible Transportation in Pueblo, Colorado',
   breadcrumbLabel: 'Requesting Accessible Vans'
@@ -473,9 +475,6 @@ useSeoMeta({
 defineOptions({
     name: 'HowToRequestAccessibleVansPage'
 })
-
-const company = useStaticData()?.company
-
 </script>
 
 <style>

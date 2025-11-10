@@ -87,15 +87,15 @@
                     <div class="md:w-1/2">
                       <h3 class="text-2xl font-bold flex flex-col"><span>During Business Hours</span><span>(Monday-Friday, 8:00 AM - 4:00 PM)</span></h3>
                       <ul class="ml-8 list-disc">
-                        <li>Call <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
-                        <li>Or call <a :href="`tel:${company?.trans.phone.tollFree}`" class="link">{{ company?.trans.phone.tollFree }}</a></li>
+                        <li>Call <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a></li>
+                        <li>Or call <a :href="`tel:${company.trans.phone.tollFree}`" class="link">{{ company.trans.phone.tollFree }}</a></li>
                       </ul>
                     </div>
                     <div class="space-y-2 md:w-1/2 md:space-y-4">
                       <div>
                         <h3 class="text-2xl font-bold">After Hours:</h3>
                         <ul class="ml-8 list-disc">
-                          <li>Call our 24/7 dispatch at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
+                          <li>Call our 24/7 dispatch at <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a></li>
                         </ul>
                       </div>
                       <div>
@@ -162,8 +162,8 @@
                 <div>
                   <p class="text-xl text-brand-main-text font-bold">To modify or cancel your scheduled ride:</p>
                   <ul class="text-xl text-brand-main-text ml-8 list-disc">
-                    <li><span class="font-bold">Business Hours:</span> <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a> or <a :href="`tel:${company?.trans.phone.tollFree}`" class="link">{{ company?.trans.phone.tollFree }}</a></li>
-                    <li><span class="font-bold">After Hours:</span> call our 24/7 dispatch service: <a :href="`tel:${company?.trans.phone.dispatch}`">{{ company?.trans.phone.dispatch }}</a></li>
+                    <li><span class="font-bold">Business Hours:</span> <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a> or <a :href="`tel:${company.trans.phone.tollFree}`" class="link">{{ company.trans.phone.tollFree }}</a></li>
+                    <li><span class="font-bold">After Hours:</span> call our 24/7 dispatch service: <a :href="`tel:${company.trans.phone.dispatch}`">{{ company.trans.phone.dispatch }}</a></li>
                   </ul>
                 </div>
                 <p class="text-xl text-brand-main-text">
@@ -216,17 +216,17 @@
                     <tbody>
                       <tr class="bg-white">
                         <td class="border border-blue-200 px-2 sm:px-4 py-2">Schedule / Modify Rides</td>
-                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a></td>
+                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company.trans.phone.office}`" class="link">{{ company.trans.phone.office }}</a></td>
                         <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">Mon-Fri, 8AM-4PM</td>
                       </tr>
                        <tr class="bg-blue-50">
                         <td class="border border-blue-200 px-2 sm:px-4 py-2">Administrative Assistance</td>
-                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company?.admin.phone}`" class="link">{{ company?.admin.phone }}</a></td>
+                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium whitespace-nowrap"><a :href="`tel:${company.admin.phone}`" class="link">{{ company.admin.phone }}</a></td>
                         <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">Mon-Fri, 8AM-4PM</td>
                       </tr>
                       <tr class="bg-white">
                         <td class="border border-blue-200 px-2 sm:px-4 py-2">After-Hours Urgent Needs</td>
-                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium"><a :href="`tel:${company?.trans.phone.dispatch}`" class="link whitespace-nowrap">{{ company?.trans.phone.dispatch }}</a> or <a :href="`tel:${company?.trans.phone.tollFree}`" class="link whitespace-nowrap">{{ company?.trans.phone.tollFree }}</a></td>
+                        <td class="border border-blue-200 px-2 sm:px-4 py-2 font-medium"><a :href="`tel:${company.trans.phone.dispatch}`" class="link whitespace-nowrap">{{ company.trans.phone.dispatch }}</a> or <a :href="`tel:${company.trans.phone.tollFree}`" class="link whitespace-nowrap">{{ company.trans.phone.tollFree }}</a></td>
                         <td class="border border-blue-200 px-2 sm:px-4 py-2 max-sm:hidden">24/7</td>
                       </tr>
                     </tbody>
@@ -252,6 +252,8 @@
 </template>
 
 <script setup lang='ts'>
+import company from '@/data/company.json'
+
 definePageMeta({
   title: 'How to Schedule a Ride',
 })
@@ -272,8 +274,6 @@ useSeoMeta({
 defineOptions({
     name: 'HowToScheduleARidePage'
 })
-
-const company = useStaticData()?.company
 </script>
 
 <style></style>

@@ -1,9 +1,9 @@
 <template>
     <div class="sticky top-0 z-15">
-        <nav v-if="staticData" class="main-nav max-md:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
+        <nav v-if="navLinks" class="main-nav max-md:hidden text-white border-white/25 border-b shadow-primary" aria-label="Main Navigation">
             <ul :class="['grid h-[35px]', gridColumns]">
                 <li 
-                    v-for="navLink in staticData.navLinks" :key="navLink.id" class="relative"
+                    v-for="navLink in navLinks" :key="navLink.id" class="relative"
                     @mouseenter="toggleSublinks(navLink.name)" @mouseleave="toggleSublinks(null)"
                     @focusin="toggleSublinks(navLink.name)" @focusout="toggleSublinks(null)">
                     <NuxtLink 
@@ -60,9 +60,9 @@
                             <BaseIcon name="mdi:close" color="text-gray-400" hover-color="hover:text-brand-primary" />
                         </button>
                     </div>
-                    <nav v-if="staticData" class="overflow-y-auto w-full flex flex-col items-center" aria-label="Mobile Navigation">
+                    <nav v-if="navLinks" class="overflow-y-auto w-full flex flex-col items-center" aria-label="Mobile Navigation">
                         <ul class="flex flex-col items-center gap-3 w-full">
-                            <li v-for="navLink in staticData.navLinks" :key="navLink.id" class="w-3/4">
+                            <li v-for="navLink in navLinks" :key="navLink.id" class="w-3/4">
                                 <NuxtLink 
                                     v-if="!navLink.sublinks"
                                     :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
@@ -96,13 +96,14 @@
 </template>
 
 <script setup lang='ts'>
+import navLinks from '@/data/navLinks.json'
+
 defineOptions({
     name: "BaseLayoutNavigation"
 })
 
 const fullLogoPH = '/images/layout/Full company GGM Logo (placeholder).webp'
 
-const staticData = useStaticData();
 const mobileNavDrawerOpen = ref<boolean>(false)
 const activeSublink = ref<string | null>(null)
 
@@ -118,7 +119,7 @@ const gridColumns = computed(() => {
         8: 'grid-cols-8',
         9: 'grid-cols-9'
     }
-    return colMap[staticData?.navLinks.length || 1] || 'grid-cols-1'
+    return colMap[navLinks.length || 1] || 'grid-cols-1'
 })
 
 const toggleDrawer = () => {

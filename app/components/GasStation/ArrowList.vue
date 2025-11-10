@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-const company = useStaticData()?.company;
+import company from '@/data/company.json'
 
 type Locations = {
   id: string;

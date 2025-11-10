@@ -1,0 +1,8 @@
+[
+  { "id": "non-medical", "name": "Non-Medical", "number": "(719) 543-2525", "href": "tel:+17195432525" },
+  { "id": "nemt", "name": "NEMT", "number": "(719) 544-3231", "href": "tel:+17195443231" },
+  { "id": "assisted-living", "name": "Assisted Living", "number": "(719) 924-9932", "href": "tel:+17199249932" },
+  { "id": "medical-supplies", "name": "Medical Supplies", "number": "(719) 569-7361", "href": "tel:+17195697361" },
+  { "id": "gas-and-goods-1", "name": "Gas & Goods 1", "number": "(719) 561-0062", "href": "tel:+17195610062" },
+  { "id": "gas-and-goods-2", "name": "Gas & Goods 2", "number": "(719) 253-9840", "href": "tel:+17192539840" }
+]

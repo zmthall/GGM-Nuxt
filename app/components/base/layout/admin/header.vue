@@ -41,7 +41,7 @@
               <div>
                 <h3 class="text-white font-bold text-xl pl-4">Tools</h3>
                 <ul>
-                  <li v-for="link in staticData?.adminLinks" :key="link.id">
+                  <li v-for="link in adminLinks" :key="link.id">
                     <NuxtLink v-if="link.id !== 'users-link' || authStore.role === 'admin'" :to="link.slug" class="text-white flex items-center gap-4 hover:bg-brand-secondary/20 py-2 px-4" @click="toggleDashboardDrawer"><BaseIcon :name="link.icon" color="text-white" />{{ link.name }}</NuxtLink>
                   </li>
                 </ul>
@@ -54,10 +54,11 @@
 </template>
 
 <script lang="ts" setup>
+import adminLinks from '@/data/adminLinks.json'
+
 const dashboardDrawerOpen = ref<boolean>(false);
 
 const firebaseAuth = useFirebaseAuth()
-const staticData = useStaticData()
 
 const logoutUser = async () => {
   await firebaseAuth?.logoutUser()

@@ -89,8 +89,8 @@
             <li>
               <p>Call Our Customer Service Representatives/Dispatch:</p>
               <ul class="list-disc ml-8">
-                <li><p>Administrative phones are staffed 8:00AM to 4:00PM. Call <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a>.</p></li>
-                <li><p>If after hours call our dispatch line, which is 24/7,  at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a>.</p></li>
+                <li><p>Administrative phones are staffed 8:00AM to 4:00PM. Call <a :href="`tel:${company.trans.phone.office}`" class="link">{{ company.trans.phone.office }}</a>.</p></li>
+                <li><p>If after hours call our dispatch line, which is 24/7,  at <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a>.</p></li>
               </ul>
             </li>
             <li>
@@ -215,6 +215,8 @@
 </template>
 
 <script setup lang='ts'>
+import company from '@/data/company.json'
+
 definePageMeta({
   title: 'Ride Cancellation Policy',
   breadcrumbLabel: 'Ride Cancellation'
@@ -236,8 +238,6 @@ useSeoMeta({
 defineOptions({
     name: 'RideCancellationPolicyPage'
 })
-
-const company = useStaticData()?.company
 </script>
 
 <style></style>

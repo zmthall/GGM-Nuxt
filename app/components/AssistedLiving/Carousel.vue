@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import type { BaseInteractiveCarousel } from '../../../.nuxt/components.js';
+import rawHouses from '@/data/houses.json'
 
 type Slide = { url: string; w?: number; h?: number; alt?: string }
 
@@ -65,13 +66,7 @@ type House = {
   mapsURL: string
 }
 
-const originalHouses: House[] = [
-  { id: "ghorizon", mainImage: ['/images/carousel-images/front-horizon-edited_600.jpg', '/images/carousel-images/Backyard-horizon_600.jpg', '/images/carousel-images/side-horizon_600.jpg', '/images/carousel-images/backyard-seating-horizon_600.jpg', ''], mainAlt: 'House image of Golden Horizon', name: "Golden Horizon", address: "2109 Chautard Drive Pueblo, CO 81005", additional: "", mapsURL: "https://www.google.com/maps/place/2109+Chautard+Dr,+Pueblo,+CO+81005/", },
-  { id: "ggmi", mainImage: '/images/carousel-images/golden-gate-manor-i-house-outside_600.jpg', mainAlt: 'House image of Golden Manor I', name: "Golden Gate Manor I", address: "606 West Abriendo Ave. Pueblo, CO 81004", additional: "", mapsURL: "https://www.google.com/maps/place/606+W+Abriendo+Ave,+Pueblo,+CO+81004/", }, 
-  { id: "gview", mainImage: '/images/carousel-images/golden-view-house-outside_600.jpg', mainAlt: 'House image of Golden View', name: "Golden View", address: "525 West 9th Street Pueblo, CO 81003", additional: "*Handicap accessible facility", mapsURL: "https://www.google.com/maps/place/525+W+9th+St,+Pueblo,+CO+81003/", }, 
-  { id: "gvalley", mainImage: '/images/carousel-images/golden-valley-house-outside_600.jpg', mainAlt: 'House image of Golden Valley', name: "Golden Valley", address: "1033 East Evans Pueblo, CO 81004", additional: "*Offering private bedrooms & bathrooms", mapsURL: "https://www.google.com/maps/place/1033+E+Evans+Ave,+Pueblo,+CO+81004/", }, 
-  { id: "ggmii", mainImage: '/images/carousel-images/golden-gate-manor-ii-house-outside_600.jpg', mainAlt: 'House image of Golden Manor II', name: "Golden Gate Manor II", address: "1219 Lake Ave Pueblo, CO 81004", additional: "", mapsURL: "https://www.google.com/maps/place/1219+Lake+Ave,+Pueblo,+CO+81004/", }, 
-]
+const originalHouses: House[] = rawHouses
 
 const modalImages = ref<Slide[]>([]);
 const modalHouseName = ref<string>('');

@@ -24,20 +24,20 @@
                     </div>
                 </PleaseNote>
                 <div class="business-information">
-                    <BaseLayoutPageListItem :title="company?.name" has-icon :size="12" icon-name="material-symbols:location-on-rounded">
-                        <NuxtLink to="/company/location" class="link">{{ company?.address }}</NuxtLink>
+                    <BaseLayoutPageListItem :title="company.name" has-icon :size="12" icon-name="material-symbols:location-on-rounded">
+                        <NuxtLink to="/company/location" class="link">{{ company.address }}</NuxtLink>
                     </BaseLayoutPageListItem>
                     <BaseLayoutPageListItem  title="Phone" has-icon :size="12" icon-name="ic:round-call">
-                        <a :href="`tel:${company?.phone}`" class="link">{{ company?.phone }}</a>
+                        <a :href="`tel:${company.phone}`" class="link">{{ company.phone }}</a>
                     </BaseLayoutPageListItem>
                     <BaseLayoutPageListItem title="Hours" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
-                        <span>{{ company?.hours }}</span>
+                        <span>{{ company.hours }}</span>
                     </BaseLayoutPageListItem>
                     <BaseLayoutPageListItem class="mt-4 mb-8 ml-2 font-bold">
                         <h2 class="text-2xl font-bold uppercase mb-4">Get Connected:</h2>
                         <div>
-                            <ul v-if="staticData" class="flex gap-4">
-                            <li v-for="socialHandle in staticData.socialHandles" :key="socialHandle.id">
+                            <ul v-if="socialHandles" class="flex gap-4">
+                            <li v-for="socialHandle in activeSocialHandles" :key="socialHandle.id">
                                 <NuxtLink :to="socialHandle.url">
                                 <BaseIcon :name="socialHandle.icon" hover-color="hover:text-brand-link-hover" />
                                 <span class="sr-only">{{ socialHandle.alt }}</span>
@@ -65,8 +65,10 @@
 </template>
 
 <script setup lang='ts'>
-const staticData = useStaticData()
-const company = staticData?.company
+import company from '@/data/company.json'
+import socialHandles from '@/data/socialHandles.json'
+
+const activeSocialHandles = socialHandles.filter(s => s.enabled !== false);
 
 definePageMeta({
   title: 'Contact Golden Gate Manor Team',

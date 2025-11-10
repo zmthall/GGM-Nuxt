@@ -1,0 +1,37 @@
+[
+  {
+    "id": "blog-link",
+    "name": "Blogging",
+    "slug": "/admin/blog",
+    "icon": "streamline:hand-held-tablet-writing-solid",
+    "active": true
+  },
+  {
+    "id": "community-link",
+    "name": "Community",
+    "slug": "/admin/community",
+    "icon": "material-symbols:family-home-rounded",
+    "active": true
+  },
+  {
+    "id": "event-link",
+    "name": "Events",
+    "slug": "/admin/events",
+    "icon": "material-symbols:edit-calendar-rounded",
+    "active": true
+  },
+  {
+    "id": "messaging-link",
+    "name": "Correspondence",
+    "slug": "/admin/correspondence",
+    "icon": "material-symbols:chat",
+    "active": true
+  },
+  {
+    "id": "users-link",
+    "name": "User Management",
+    "slug": "/admin/users",
+    "icon": "fluent:people-community-12-filled",
+    "active": true
+  }
+]

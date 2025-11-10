@@ -1,0 +1,64 @@
+[
+  {
+    "id": "home",
+    "name": "Home",
+    "slug": "/"
+  },
+  {
+    "id": "assisted-living",
+    "name": "Assisted Living",
+    "slug": "/assisted-living"
+  },
+  {
+    "id": "non-medical",
+    "name": "Non-Medical",
+    "slug": "/non-medical"
+  },
+  {
+    "id": "nemt",
+    "name": "NEMT",
+    "slug": "/nemt"
+  },
+  {
+    "id": "medical-supplies",
+    "name": "Medical Supplies",
+    "slug": "/medical-supplies"
+  },
+  {
+    "id": "gas-and-goods",
+    "name": "Gas",
+    "slug": "/gas-and-goods"
+  },
+  {
+    "id": "news",
+    "name": "News",
+    "slug": "/news/community",
+    "sublinks": [
+      { "id": "community", "name": "Community", "slug": "/news/community" },
+      { "id": "blog", "name": "Blog", "slug": "/news/blog" }
+    ]
+  },
+  {
+    "id": "company",
+    "name": "Company",
+    "slug": "/company/about-us",
+    "sublinks": [
+      { "id": "about-us", "name": "About Us", "slug": "/company/about-us" },
+      { "id": "location", "name": "Find Us", "slug": "/company/location" },
+      { "id": "policies", "name": "Policies", "slug": "/company/policies" },
+      { "id": "contact", "name": "Contact Us", "slug": "/company/contact-us" },
+      { "id": "join", "name": "Join Our Team", "slug": "/company/employment" }
+    ]
+  },
+  {
+    "id": "resources",
+    "name": "Resources",
+    "slug": "/resources",
+    "sublinks": [
+      { "id": "faq", "name": "FAQ", "slug": "/resources/faq" },
+      { "id": "map", "name": "Service Area Map", "slug": "/resources/service-area-map" },
+      { "id": "forms", "name": "Forms & Documents", "slug": "/resources/forms-and-documents" },
+      { "id": "schedule", "name": "Schedule a Ride", "slug": "/resources/schedule-a-ride" }
+    ]
+  }
+]

@@ -57,7 +57,7 @@
                       We proudly serve most of Colorado, excluding the Denver metro counties of Boulder, Larimer, Weld, Broomfield, Denver, Adams, Jefferson, Douglas, and Arapahoe due to contractual agreements. We also are not available most of Northern Colorado due to distance restrictions.
                     </p>
                     <p class="text-xl text-brand-main-text">
-                      Need help determining eligibility? Call us at <a :href="`tel:${company?.trans.phone.office}`" class="link">{{ company?.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
+                      Need help determining eligibility? Call us at <a :href="`tel:${company.trans.phone.office}`" class="link">{{ company.trans.phone.office }}</a> during business hours (Monday-Friday, 8:00 AM - 4:00 PM).
                     </p>
                   </div>
                 </div>
@@ -128,15 +128,15 @@
                     <div class="md:w-1/2">
                       <h4 class="text-2xl font-bold flex flex-col"><span>During Business Hours</span><span>(Monday-Friday, 8:00 AM - 4:00 PM)</span></h4>
                       <ul class="ml-8 list-disc">
-                        <li>Call <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
-                        <li>Or call <a :href="`tel:${company?.trans.phone.tollFree}`" class="link">{{ company?.trans.phone.tollFree }}</a></li>
+                        <li>Call <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a></li>
+                        <li>Or call <a :href="`tel:${company.trans.phone.tollFree}`" class="link">{{ company.trans.phone.tollFree }}</a></li>
                       </ul>
                     </div>
                     <div class="space-y-2 md:w-1/2 md:space-y-4">
                       <div>
                         <h4 class="text-2xl font-bold">After Hours:</h4>
                         <ul class="ml-8 list-disc">
-                          <li>Call our 24/7 dispatch at <a :href="`tel:${company?.trans.phone.dispatch}`" class="link">{{ company?.trans.phone.dispatch }}</a></li>
+                          <li>Call our 24/7 dispatch at <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a></li>
                         </ul>
                       </div>
                       <div>
@@ -202,6 +202,8 @@
 </template>
 
 <script setup lang='ts'>
+import company from '@/data/company.json'
+
 definePageMeta({
   title: 'How to Prepare for Your First Ride',
   breadcrumbLabel: 'Prepare for Ride'
@@ -223,8 +225,6 @@ useSeoMeta({
 defineOptions({
     name: 'HowToPrepareForFirstRidePage'
 })
-
-const company = useStaticData()?.company
 </script>
 
 <style></style>

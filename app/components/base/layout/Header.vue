@@ -24,13 +24,13 @@
                     <BaseIcon name="ic:sharp-arrow-drop-down" hover-color="group-hover:text-brand-light-gray" />
                 </button>
                 <div 
-                    v-if="contactOpen && staticData"
+                    v-if="contactOpen && contactServices"
                     ref="contactPopup"
                     class="absolute right-0 translate-y-4 flex bg-brand-background-header drop-shadow-[0px_0px_4px_rgba(0,0,0,0.2)] rounded-lg p-2 arrow-top z-20"
                     >
                     <ul class="flex flex-col">
                         <li 
-                            v-for="contactService in staticData.contactServices" :key="contactService.id"
+                            v-for="contactService in contactServices" :key="contactService.id"
                             class="flex gap-10 w-full justify-between p-2 border-b-2 border-b-brand-light-gray/35 last:border-b-0"
                         >
                             <span class="font-semibold whitespace-nowrap">{{ contactService.name }}</span>
@@ -60,11 +60,11 @@
 </template>
 
 <script setup lang='ts'>
+import contactServices from '@/data/contactServices.json'
+
 defineOptions({
     name: "BaseLayoutHeader"
 })
-
-const staticData = useStaticData();
 
 const contactOpen = ref(false)
 const contactPopup = ref<HTMLElement | null>(null)
