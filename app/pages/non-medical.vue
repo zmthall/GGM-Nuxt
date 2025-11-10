@@ -54,9 +54,9 @@
                 <BaseLayoutPageContainer class="space-y-6 flex flex-col items-center">
                     <div class="space-y-4 md:space-y-8">
                         <h2 class="text-2xl font-bold text-brand-primary">What Information Do I Need?</h2>
-                        <div class="flex md:flex-row flex-col md:gap-8 gap-4">
-                            <div class="md:w-1/2 aspect-[288/143] overflow-hidden rounded-xl shadow-primary w-full sm:w-[80%] mx-auto">
-                                <NuxtImg src="/images/pages/non-medical/suv-train.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" loading="lazy" height="464" width="935" sizes="md:935px 80vw" placeholder />
+                        <div class="flex justify-center items-center md:flex-row flex-col md:gap-8 gap-4" id="testing">
+                            <div class="md:w-1/2 aspect-[113/56] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
+                                <NuxtImg src="/images/pages/non-medical/suv-train.jpg" class="w-full h-auto" quality="60" format="webp,avif" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" loading="lazy" height="448" width="904" sizes="md:904px 80vw" placeholder />
                             </div>
                             <p class="text-xl text-brand-main-text md:w-1/2">
                                 Before riding with Golden Gate Manor Transportation, eligibility must be approved by the Department of Human Services (DHS); be prepared before contacting us, by first contacting DHS at <a href="tel:719-583-6900" class="link">719-583-6900</a> for ride accommodation eligibility approval. Once eligibility is approved and you have your number of monthly allotted trips, contact us by calling <a :href="`tel:${company.trans.phone.dispatch}`" class="link">{{ company.trans.phone.dispatch }}</a> and be ready to provide your name and pickup address as well as the destination you are traveling to. Our trained customer service representatives will walk you through the steps of scheduling the ride and any other pertinent information relating to the trip will be requested while on the phone, including but not limited to:

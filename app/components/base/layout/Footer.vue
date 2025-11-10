@@ -342,6 +342,12 @@
                         >
                         Gas & Goods
                         </NuxtLink>
+                        <NuxtLink
+                        to="/company/employment/apply?select=general"
+                        class="hover:text-brand-secondary underline"
+                        >
+                        General
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
