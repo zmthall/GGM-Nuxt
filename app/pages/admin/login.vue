@@ -13,7 +13,10 @@ import type { WatchStopHandle } from 'vue'
 
 const authStore = useAuthStore()
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  breadcrumb: false
+})
 defineOptions({ name: 'AdminLoginPage' })
 
 onMounted(async () => {

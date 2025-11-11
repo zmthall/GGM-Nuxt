@@ -54,7 +54,7 @@
                 <BaseLayoutPageContainer class="space-y-6 flex flex-col items-center">
                     <div class="space-y-4 md:space-y-8">
                         <h2 class="text-2xl font-bold text-brand-primary">What Information Do I Need?</h2>
-                        <div class="flex justify-center items-center md:flex-row flex-col md:gap-8 gap-4" id="testing">
+                        <div class="flex justify-center items-center md:flex-row flex-col md:gap-8 gap-4">
                             <div class="md:w-1/2 aspect-[113/56] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
                                 <NuxtImg src="/images/pages/non-medical/suv-train.jpg" class="w-full h-auto" quality="60" format="webp,avif" title="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" alt="Transportation vehicle near the Sante Fe Train at the Pueblo train depo" loading="lazy" height="448" width="904" sizes="md:904px 80vw" placeholder />
                             </div>

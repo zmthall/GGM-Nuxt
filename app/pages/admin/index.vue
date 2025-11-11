@@ -254,6 +254,7 @@ const loadMoreEvents = async (): Promise<void> => {
 
 definePageMeta({
     layout: 'admin',
+    breadcrumb: false,
 })
 
 defineOptions({

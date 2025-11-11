@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="!isHomePage && !isAdminHome && !hideBreadcrumb" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-zinc-300 font-bold max-sm:hidden">
+  <nav v-if="shouldEmit" aria-label="breadcrumb" class="mx-4 mt-2 p-2 bg-zinc-300 font-bold max-sm:hidden">
     <ol class="flex">
       <li v-if="!isAdmin">
         <NuxtLink to="/" class="link">Home</NuxtLink>
@@ -7,7 +7,7 @@
       <li v-else>
         <NuxtLink to="/admin" class="link">Dashboard Home</NuxtLink>
       </li>
-      <li v-for="crumb in breadcrumbs" :key="crumb.path">
+      <li v-for="crumb in crumbs" :key="crumb.path">
         <template v-if="!crumb.isLast">
          &nbsp;/&nbsp;<NuxtLink :to="crumb.path" class="link">{{ crumb.label }}</NuxtLink>
         </template>
@@ -20,67 +20,9 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const router = useRouter()
+const { schema, crumbs, shouldEmit, isAdmin } = buildCrumbs()
 
-const hideBreadcrumb = ref<boolean>(false)
-
-watchEffect(() => {
-  const matchedRoute = router.getRoutes().find(r => r.path === route.path)
-  hideBreadcrumb.value = matchedRoute?.meta?.breadcrumb === false
-})
-
-const isHomePage = computed(() => route.path === '/')
-const isAdminHome = computed(() => route.path === '/admin')
-const isAdmin = computed(() => route.path.includes('/admin'))
-
-// Format slug fallback
-const toLabel = (slug: string): string =>
-  slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
-
-// // Generate breadcrumbs from actual matched routes
-const MAX_LABEL_LENGTH = 22
-
-const breadcrumbs = computed(() => {
-  const pathSegments = route.path.split('/').filter(Boolean)
-  let fullPath = ''
-  const crumbs: { path: string; label: string; isLast: boolean }[] = []
-
-  pathSegments.forEach((segment, index) => {
-    fullPath += `/${segment}`
-
-    const matchedRoute = router.getRoutes().find((r) => r.path === fullPath)
-
-    // Skip if meta.breadcrumb === false
-    if (matchedRoute?.meta?.breadcrumb === false) return
-
-    // Determine label
-    let label;
-
-    const rawTitle = typeof matchedRoute?.meta?.title === 'string' ? matchedRoute.meta.title : null
-    const customLabel = typeof matchedRoute?.meta?.breadcrumbLabel === 'string' ? matchedRoute.meta.breadcrumbLabel : null
-
-    if (customLabel) {
-      label = customLabel
-    } else if (segment === 'admin') {
-      return
-    } else if (rawTitle) {
-      if (import.meta.dev && rawTitle.length >= MAX_LABEL_LENGTH) {
-        console.warn(`[Breadcrumb] Long title "${rawTitle}" has no breadcrumbLabel defined.`)
-      }
-      label = rawTitle
-    } else {
-      
-      label = toLabel(segment)
-    }
-
-    crumbs.push({
-      path: fullPath,
-      label,
-      isLast: index === pathSegments.length - 1
-    })
-  })
-
-  return crumbs
-})
+if (shouldEmit.value) {
+  useSchemaOrg([ defineBreadcrumb(schema.value) ])
+}
 </script>
