@@ -1,4 +1,36 @@
 // composables/buildCrumbs.ts
+
+/**
+ * use: buildCrumbs() — quick README
+ * Purpose: Single source for visual breadcrumbs + Schema.org BreadcrumbList.
+ *
+ * Minimal setup:
+ * - nuxt.config.ts → runtimeConfig.public.siteUrl = 'https://yourdomain.com' (no trailing slash)
+ * - Per page, optional route meta:
+ *     title: string
+ *     breadcrumbLabel?: string     // shorter UI/SEO label
+ *     breadcrumb?: false           // hide this level (UI + Schema)
+ *     noindex?: true               // skip schema on this page
+ *
+ * In layout (Schema.org):
+ *   const { schema, shouldEmit } = buildCrumbs()
+ *   if (shouldEmit.value) useSchemaOrg([ defineBreadcrumb(schema.value) ])
+ *
+ * In component (UI):
+ *   const { crumbs, isAdmin } = buildCrumbs()
+ *   <!-- first link -->
+ *   <NuxtLink :to="isAdmin ? '/admin' : '/'">{{ isAdmin ? 'Dashboard Home' : 'Home' }}</NuxtLink>
+ *   <!-- trail -->
+ *   <NuxtLink v-for="c in crumbs" :key="c.path" :to="c.path" v-if="!c.isLast">{{ c.label }}</NuxtLink>
+ *   <span v-else>{{ c.label }}</span>
+ *
+ * Returns:
+ * - crumbs: { path, label, isLast }[]   // for rendering
+ * - schema: { itemListElement: ... }    // pass to defineBreadcrumb()
+ * - shouldEmit: Ref<boolean>            // true on public, indexable pages
+ * - isAdmin: Ref<boolean>               // convenience flag for first crumb
+ */
+
 import { useRoute, useRouter } from 'vue-router'
 import { useRuntimeConfig } from '#app'
 

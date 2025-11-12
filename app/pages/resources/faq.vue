@@ -15,7 +15,6 @@ definePageMeta({
   breadcrumbLabel: 'FAQs'
 })
 
-
 useSchemaOrg([
   FAQ_SCHEMA
 ])
@@ -56,16 +55,6 @@ const updateNav = (id: string) => {
   })
 }
 
-// useHead({
-//   script: [
-//     {
-//       key: 'ld-json-faq',
-//       type: 'application/ld+json',
-//       innerHTML: FAQ_JSON,
-//       'data-schema': 'faq'
-//     }
-//   ]
-// })
 </script>
 
 <style>

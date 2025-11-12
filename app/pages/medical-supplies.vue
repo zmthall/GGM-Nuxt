@@ -6,7 +6,11 @@
       <BaseLayoutPageContainer class="space-y-4 flex flex-col">
         <h2 class="text-2xl font-bold text-brand-medical-primary">Golden Gate Medical Supply Overview:</h2>
         <p class="text-xl text-brand-main-text">
-          Golden Gate Medical Supply, a division of Golden Gate Manor, proudly serves Colorado with affordable, accessible medical equipment and supplies through our convenient ecommerce platform, brick-and-mortar location in Pueblo, Colorado, and delivery services throughout Southern Colorado. We understand that navigating durable medical equipment and supplies can be overwhelming and sometimes it feels inaccessible. This is why we built our business around making the process easier, family-friendly, discreet, and accessible. Whether you're shopping online, visiting our store, or need items delivered directly to your residence, we're here to provide the medical solutions you need to allow you to live your life independently and with the quality you deserve. Our durable medical equipment and supplies come from well-known vendors.  We accept HSA, FSA, and most major insurance plans. Visit our <NuxtLink to="/resources/faq" class="link">FAQ page</NuxtLink> or contact us to learn about available payment options.
+          Golden Gate Medical Supply, a division of Golden Gate Manor, proudly serves Colorado with affordable, accessible medical equipment and supplies through our convenient ecommerce platform, brick-and-mortar location in Pueblo, Colorado, and delivery services throughout Southern Colorado. We understand that navigating durable medical equipment and supplies can be overwhelming and sometimes it feels inaccessible. This is why we built our business around making the process easier, family-friendly, discreet, and accessible.
+        </p>
+        <p class="text-xl text-brand-main-text">
+          Whether you're shopping online, visiting our store, or need items delivered directly to your residence, we're here to provide the medical solutions you need to allow you to live your life independently and with the quality you deserve. Our durable medical equipment and supplies come from well-known vendors. We accept HSA, FSA, and most major insurance plans. Visit our 
+          <NuxtLink to="/resources/faq" class="link">FAQ page</NuxtLink> or contact us to learn about available payment options.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" new-page title="Opens in new tab" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Read More</BaseUiAction>
@@ -32,9 +36,14 @@
                     Professional Foot Care Solutions
                   </span>
                 </h3>
-                <p class="text-xl text-brand-main-text">
-                  Professional-grade care and comfort is essential when it comes to footwear since your feet carry you through life. Our durable medical equipment includes Doctor Comfort orthotic shoes which combine the therapeutic benefits of orthotic shoes with everyday wearing. Our Dr. Comfort line is curated specifically for those who need specialized foot support, whether you're managing diabetes, arthritis, or other foot-related health concerns. Our experienced team works closely with you and your physician, or other health care provider, to ensure proper fitting and appropriate coverage. Whether you're paying out of pocket, or utilizing FSA or HSA payment methods, we are committed to keeping you comfortable, confident, and moving forward because we understand that proper footwear is essential to your overall health and mobility.
-                </p>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    Professional-grade care and comfort is essential when it comes to footwear since your feet carry you through life. Our durable medical equipment includes Doctor Comfort orthotic shoes which combine the therapeutic benefits of orthotic shoes with everyday wearing. Our Dr. Comfort line is curated specifically for those who need specialized foot support, whether you're managing diabetes, arthritis, or other foot-related health concerns.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    Our experienced team works closely with you and your physician, or other health care provider, to ensure proper fitting and appropriate coverage. Whether you're paying out of pocket, or utilizing FSA or HSA payment methods, we are committed to keeping you comfortable, confident, and moving forward because we understand that proper footwear is essential to your overall health and mobility.
+                  </p>
+                </div>
                 <div class="mt-4 w-max self-center space-x-8">
                   <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
                 </div>
@@ -53,9 +62,14 @@
                     Empowering Your Independence
                   </span>
                 </h3>
-                <p class="text-xl text-brand-main-text">
-                  We understand that maintaining your mobility and independence is essential to your quality of life. Our durable medical equipment includes a curated selection of mobility aids that are carefully chosen to meet your unique needs with dignity and respect. Our line includes walkers, rollators, wheelchairs, grab bars, and lift chairs. Whether you have insurance that covers them, you are utilizing FSA/HSA payment methods, or you are paying out of pocket, we are here to support you every step of the way. Our knowledgeable durable medical equipment specialists work discreetly with you and your healthcare provider to ensure you receive exactly the equipment you need, when you need it, to support your lifestyle. We strive to make sure that all of our patients live happy, independent lives because your comfort and confidence matters to us.
-                </p>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    We understand that maintaining your mobility and independence is essential to your quality of life. Our durable medical equipment includes a curated selection of mobility aids that are carefully chosen to meet your unique needs with dignity and respect. Our line includes walkers, rollators, wheelchairs, grab bars, and lift chairs. Whether you have insurance that covers them, you are utilizing FSA/HSA payment methods, or you are paying out of pocket, we are here to support you every step of the way.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    Our knowledgeable durable medical equipment specialists work discreetly with you and your healthcare provider to ensure you receive exactly the equipment you need, when you need it, to support your lifestyle. We strive to make sure that all of our patients live happy, independent lives because your comfort and confidence matters to us.
+                  </p>
+                </div>
                 <div class="mt-4 w-max self-center space-x-8">
                   <BaseUiAction href="https://goldengatemedicalsupply.com/collections/mobility-aids" :new-page="true" class="p-2">View Products</BaseUiAction>
                   <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
@@ -75,9 +89,14 @@
                     Healing with Compassionate Care
                   </span>
                 </h3>
-                <p class="text-xl text-brand-main-text">
-                  When it comes to recovering from an injury or surgery, proper wound care is crucial. From bandages and wraps to advanced wound care, we are committed to providing you with the highest quality medical supplies and support from well-known and trusted vendors. We strive to keep stress at the minimum so you can focus on healing, which is why we accept FSA/HSA and insurance providers to assist with different products such as gauze, dressings, xeroform dressings, and other specialized wound care products. We understand that each individual healing journey is personal, which is why we handle all wound care needs with the utmost discretion and professionalism. We strive to ensure you have access to the right products needed for a swift and easy recovery while maintaining your privacy and dignity throughout the process.
-                </p>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    When it comes to recovering from an injury or surgery, proper wound care is crucial. From bandages and wraps to advanced wound care, we are committed to providing you with the highest quality medical supplies and support from well-known and trusted vendors. We strive to keep stress at the minimum so you can focus on healing, which is why we accept FSA/HSA and insurance providers to assist with different products such as gauze, dressings, xeroform dressings, and other specialized wound care products.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    We understand that each individual healing journey is personal, which is why we handle all wound care needs with the utmost discretion and professionalism. We strive to ensure you have access to the right products needed for a swift and easy recovery while maintaining your privacy and dignity throughout the process.
+                  </p>
+                </div>
                 <div class="mt-4 w-max self-center space-x-8">
                   <BaseUiAction href="https://goldengatemedicalsupply.com/collections/first-aid-wound-care" :new-page="true" class="p-2">View Products</BaseUiAction>
                   <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
@@ -90,16 +109,21 @@
             <li class="flex flex-col-reverse gap-8 md:flex-row justify-center max-md:items-center">
               <div class="md:w-1/2 flex flex-col">
                 <h3 class="text-xl font-bold text-brand-medical-primary flex flex-col mb-4 text-center">
-                   <span class="text-gray-500">
-                     Ostomy Care
-                   </span>
-                   <span>
-                     Living Fully with Confidence
-                   </span>
-                 </h3>
-                 <p class="text-xl text-brand-main-text">
-                    Life and confidence shouldn't have to be limited due to managing ostomy care. This is why we provide a line of comprehensive ostomy supplies and support devices to ensure you are able to live comfortably and confidently. We ensure that throughout the process of ordering medical supplies from us that your privacy is always protected through our discreet services. We understand that these specific items deserve to be handled with sensitivity to meet your unique needs. On top of this, we strive to make the process as simple as possible whether you will be paying for your ostomy supplies out of pocket, with FSA/HSA, or look into seeing if it is covered by your insurance. We are committed to providing reliable, high-quality medical supplies from well-known and trusted vendors. Our team is here to help you along the way to select the items you need from pouches and barriers, to accessories and skin care products to ensure you are able to live your life to the fullest.
-                 </p>
+                  <span class="text-gray-500">
+                    Ostomy Care
+                  </span>
+                  <span>
+                    Living Fully with Confidence
+                  </span>
+                </h3>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    Life and confidence shouldn't have to be limited due to managing ostomy care. This is why we provide a line of comprehensive ostomy supplies and support devices to ensure you are able to live comfortably and confidently. We ensure that throughout the process of ordering medical supplies from us that your privacy is always protected through our discreet services. We understand that these specific items deserve to be handled with sensitivity to meet your unique needs.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    On top of this, we strive to make the process as simple as possible whether you will be paying for your ostomy supplies out of pocket, with FSA/HSA, or look into seeing if it is covered by your insurance. We are committed to providing reliable, high-quality medical supplies from well-known and trusted vendors. Our team is here to help you along the way to select the items you need from pouches and barriers, to accessories and skin care products to ensure you are able to live your life to the fullest.
+                  </p>
+                </div>
                  <div class="mt-4 w-max self-center">
                    <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
                  </div>
@@ -118,9 +142,14 @@
                     Dignity and Comfort First
                   </span>
                 </h3>
-                <p class="text-xl text-brand-main-text">
-                  We understand the fact that incontinence care not only requires reliable and exceptional products but also requires respect and sensitivity. Our staff members are trained to make sure the process of selecting incontinence supplies from our line of medical supplies is done so with your comfort, dignity, and lifestyle in mind. We handle each aspect of your care with complete discretion and respect, not only ensuring you receive the right products but also ensuring that you leave happy without compromise to your own personal privacy. From chux pads, bed pads/under pads, diapers, briefs, and pads, our team is dedicated to providing reliable and discreet service that helps you maintain your independence and confidence. Whether you're paying out of pocket, with FSA/HSA, checking eligibility through insurance, our team will support you every step of the way.
-                </p>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    We understand the fact that incontinence care not only requires reliable and exceptional products but also requires respect and sensitivity. Our staff members are trained to make sure the process of selecting incontinence supplies from our line of medical supplies is done so with your comfort, dignity, and lifestyle in mind. We handle each aspect of your care with complete discretion and respect, not only ensuring you receive the right products but also ensuring that you leave happy without compromise to your own personal privacy.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    From chux pads, bed pads/under pads, diapers, briefs, and pads, our team is dedicated to providing reliable and discreet service that helps you maintain your independence and confidence. Whether you're paying out of pocket, with FSA/HSA, checking eligibility through insurance, our team will support you every step of the way.
+                  </p>
+                </div>
                 <div class="mt-4 w-max self-center">
                   <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
                 </div>
@@ -139,9 +168,14 @@
                     Specialized Care You Can Trust
                   </span>
                 </h3>
-                <p class="text-xl text-brand-main-text">
-                  Urological health requires specialized attention and the right supplies for optimal care and comfort. We provide a complete range of urology products and equipment from well-known and trusted vendors. Whether you're purchasing out of pocket, utilizing FSA/HSA payment methods, or inquiring about insurance coverage our professional team works with you and your healthcare providers to ensure that the products you receive are appropriate. Our professional team is trained to ensure all medical supply matters are handled with complete confidentiality and discretion. We are committed to supporting you on your health journey with dignity, respect, and with the specialized care you need. Whether you are needing help selecting the correct catheter, or need specific accessories such as urinary bags/covers, we are here to help you in whatever capacity is necessary to leave you feeling comfortable and confident.
-                </p>
+                <div class="space-y-4">
+                  <p class="text-xl text-brand-main-text">
+                    Urological health requires specialized attention and the right supplies for optimal care and comfort. We provide a complete range of urology products and equipment from well-known and trusted vendors. Whether you're purchasing out of pocket, utilizing FSA/HSA payment methods, or inquiring about insurance coverage our professional team works with you and your healthcare providers to ensure that the products you receive are appropriate.
+                  </p>
+                  <p class="text-xl text-brand-main-text">
+                    Our professional team is trained to ensure all medical supply matters are handled with complete confidentiality and discretion. We are committed to supporting you on your health journey with dignity, respect, and with the specialized care you need. Whether you are needing help selecting the correct catheter, or need specific accessories such as urinary bags/covers, we are here to help you in whatever capacity is necessary to leave you feeling comfortable and confident.
+                  </p>
+                </div>
                 <div class="mt-4 w-max self-center">
                   <BaseUiAction href="https://goldengatemedicalsupply.com/pages/contact-us" :new-page="true" class="p-2">Contact Us</BaseUiAction>
                 </div>
