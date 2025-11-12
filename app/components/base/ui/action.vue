@@ -110,7 +110,7 @@ const props = withDefaults(defineProps<{
     hoverGroup:false,
     iconBefore: undefined,
     iconAfter: undefined,
-    ariaLabel: "Button",
+    ariaLabel: undefined,
     stopPropagation: false
 })
 

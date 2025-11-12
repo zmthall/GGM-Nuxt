@@ -106,7 +106,6 @@ export function buildCrumbs() {
   })
 
   const shouldEmit = computed(() => !isHome.value && !hideBreadcrumb.value && !noindex.value)
-  console.log(shouldEmit.value)
 
   return { schema, crumbs, shouldEmit, isAdmin }
 }

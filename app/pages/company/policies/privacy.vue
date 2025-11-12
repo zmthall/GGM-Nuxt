@@ -1,22 +1,20 @@
 <template>
-    <div>
+    <div class="space-y-4">
         <BaseLayoutPageSection margin="pTop">
             <BaseLayoutPageContainer class="space-y-2">
                 <p class="policy-updated">
                     Last Updated: June 11th, 2024
                 </p>
-                <p class="text-xl text-brand-main-text">Use of this website acknowledges your consent to 
-                    this Privacy Policy for Golden Gate Manor. Protecting your private 
-                    information is our priority and we are committed to safeguarding your 
-                    privacy online. This Privacy Policy explains what personal information 
-                    we may collect about you through our website, when we collect it, how 
-                    we may use it, who we may disclose it to, and is intended to help you 
-                    understand the terms and conditions surrounding the collection and use 
-                    of your data.
+                <p class="text-xl text-brand-main-text">
+                    Use of this website acknowledges your consent to this Privacy Policy for Golden Gate Manor. Protecting your private information is our priority and we are committed to safeguarding your privacy online.
                 </p>
+                <p class="text-xl text-brand-main-text">
+                    This Privacy Policy explains what personal information we may collect about you through our website, when we collect it, how we may use it, who we may disclose it to, and is intended to help you understand the terms and conditions surrounding the collection and use of your data.
+                </p>
+
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="default">
+        <BaseLayoutPageSection>
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">Personal Information We Collect</h2>
                 <p class="text-xl text-brand-main-text">Our primary goal in collecting your personal 
@@ -116,7 +114,7 @@
                 </DeferRender>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">How Your Personal Information Is Collected</h2>
                 <p class="text-xl text-brand-main-text">We collect Personal Information that you voluntarily 
@@ -129,54 +127,39 @@
                 <ol class="list-decimal space-y-4 ml-8">
                     <li>
                         <h3 class="text-2xl font-bold text-brand-primary">Requests for Unit Quotes</h3>
-                        <p class="text-xl text-brand-main-text">
-                            If you request a unit price quote, you may 
-                            be asked to provide Personal Information such as your name, 
-                            address, telephone number, zip code, email address and other 
-                            transactional information related to the desired unit purchase. 
-                            Your Personal Information may be used to contact you with the 
-                            requested quote or to request additional information. While not 
-                            required, you may voluntarily provide financial information so 
-                            that a determination can be made regarding units that meet the 
-                            parameters of your requested unit quote or your 
-                            pre-qualification for financing, if interested.
-                        </p>
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                If you request a unit price quote, you may be asked to provide Personal Information such as your name, address, telephone number, zip code, email address and other transactional information related to the desired unit purchase. Your Personal Information may be used to contact you with the requested quote or to request additional information.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                While not required, you may voluntarily provide financial information so that a determination can be made regarding units that meet the parameters of your requested unit quote or your pre-qualification for financing, if interested.
+                            </p>
+                        </div>
                     </li>
                     <li>
                         <h3 class="text-2xl font-bold text-brand-primary">Online Unit Orders</h3>
-                        <p class="text-xl text-brand-main-text">
-                            If you submit an online unit order, you will be required to 
-                            provide Personal Information to complete the purchase 
-                            transaction. This information includes your name, email address, 
-                            shipping address as well as financial information to facilitate 
-                            payment for the transaction and for billing purposes. If your 
-                            online unit order is not processed correctly, your Personal 
-                            Information may be used to contact you to finalize the 
-                            transaction. In order to process a purchase transaction, it may 
-                            be necessary for us to supplement the information you provide with 
-                            information we receive from third party sources to obtain 
-                            approval from a financial lending institution. Your Personal 
-                            Information may also be shared with third parties to assist with 
-                            finalizing the purchase transaction such as shipping companies 
-                            (i.e., USP, USPS, FedEx) and credit card processing companies. 
-                            These third-party companies do not, to our knowledge, retain, 
-                            share, store, or use Personal Information for any secondary     
-                            purposes outside of the purpose of providing the required 
-                            services.
-                        </p>
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                If you submit an online unit order, you will be required to provide Personal Information to complete the purchase transaction. This information includes your name, email address, shipping address as well as financial information to facilitate payment for the transaction and for billing purposes.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                If your online unit order is not processed correctly, your Personal Information may be used to contact you to finalize the transaction. In order to process a purchase transaction, it may be necessary for us to supplement the information you provide with information we receive from third party sources to obtain approval from a financial lending institution.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                Your Personal Information may also be shared with third parties to assist with finalizing the purchase transaction such as shipping companies (i.e., USP, USPS, FedEx) and credit card processing companies. These third-party companies do not, to our knowledge, retain, share, store, or use Personal Information for any secondary purposes outside of the purpose of providing the required services.
+                            </p>
+                        </div>
                     </li>
                     <li>
                         <h3 class="text-2xl font-bold text-brand-primary">Monthly Payment Calculations</h3>
-                        <p class="text-xl text-brand-main-text">
-                            If you use the digital retailing tool to calculate your 
-                            estimated monthly payment, you are not required to provide 
-                            Personal Information unless you decide to contact the dealer to 
-                            obtain additional information about the unit you are interested 
-                            in. If you decide to contact the dealer, you will be asked to 
-                            provide your name, email address, shipping address and phone 
-                            number. Your Personal Information will be used to contact you 
-                            regarding your inquiry.
-                        </p>
+                       <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                If you use the digital retailing tool to calculate your estimated monthly payment, you are not required to provide Personal Information unless you decide to contact the dealer to obtain additional information about the unit you are interested in.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                If you decide to contact the dealer, you will be asked to provide your name, email address, shipping address and phone number. Your Personal Information will be used to contact you regarding your inquiry.
+                            </p>
+                        </div>
                     </li>
                     <li>
                         <h3 class="text-2xl font-bold text-brand-primary">Log Files</h3>
@@ -190,53 +173,45 @@
                     </li>
                     <li>
                         <h3 class="text-2xl font-bold text-brand-primary">Surveys and Contests</h3>
-                        <p class="text-xl text-brand-main-text">From time to time, this website may offer 
-                            contests or request information from you via surveys to conduct 
-                            research about your opinion of current services or of potential 
-                            new services that may be offered. Participation in these surveys 
-                            or contests is completely voluntary and you are not obligated to 
-                            disclose the Personal Information requested such as your name, 
-                            email address, mailing address, or demographic information 
-                            (i.e., age, zip code). If you elect to participate in a contest, 
-                            the contact information provided will only be used to notify the 
-                            winners and award prizes. Survey information will only be used 
-                            for the purpose of monitoring or improving the use and satisfaction 
-                            of this website.
-                        </p>
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                From time to time, this website may offer contests or request information from you via surveys to conduct research about your opinion of current services or of potential new services that may be offered. Participation in these surveys or contests is completely voluntary and you are not obligated to disclose the Personal Information requested such as your name, email address, mailing address, or demographic information (i.e., age, zip code).
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                If you elect to participate in a contest, the contact information provided will only be used to notify the winners and award prizes. Survey information will only be used for the purpose of monitoring or improving the use and satisfaction of this website.
+                            </p>
+                        </div>
                     </li>
                 </ol>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">Use of Your Personal Information</h2>
                 <p class="text-xl text-brand-main-text">
                     We may use or disclose the Personal Information we collect for one or 
                     more of the following business purposes:
                 </p>
-                <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text">
-                    <li>
-                        to operate our website and deliver the products and/or services you 
+                <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text space-y-2 border">
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        <!-- <div class="shadow-image w-full h-full absolute left-0 top-0"/> -->
+                        To operate our website and deliver the products and/or services you 
                         have requested, and for marketing purposes. If you do not provide 
                         Personal Information we ask for, it may delay or prevent us from 
                         providing products and/or services to you.
                     </li>
-                    <li>
-                        for more than one legitimate interest depending on the specific 
-                        purpose for which we are using your Personal Information. For 
-                        example, if you complete an online purchase, we may collect your 
-                        information to perform our contract with you, but we may also 
-                        maintain your Personal Information after your transaction is 
-                        complete so that we can quickly and easily respond to any questions 
-                        about your order. As a result, our collection and processing of your 
-                        Personal Information is based upon your consent, our need to perform 
-                        a contract, our obligations under law, and/or our legitimate 
-                        interest in conducting our business. A legitimate interest is when 
-                        we have a business or commercial reason to use your information, so 
-                        long as this is not overridden by your own rights and interests.
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                For more than one legitimate interest depending on the specific purpose for which we are using your Personal Information. For example, if you complete an online purchase, we may collect your information to perform our contract with you, but we may also maintain your Personal Information after your transaction is complete so that we can quickly and easily respond to any questions about your order.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                As a result, our collection and processing of your Personal Information is based upon your consent, our need to perform a contract, our obligations under law, and/or our legitimate interest in conducting our business. A legitimate interest is when we have a business or commercial reason to use your information, so long as this is not overridden by your own rights and interests.
+                            </p>
+                        </div>
                     </li>
-                    <li>
-                        to share data with trusted partners or advertisers to help perform 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To share data with trusted partners or advertisers to help perform 
                         statistical analysis, send you email or postal mail, provide 
                         customer support, to arrange for deliveries, or for marketing 
                         purposes. All such third parties are prohibited from using your 
@@ -244,66 +219,65 @@
                         they are required to maintain the confidentiality of your 
                         information.
                     </li>
-                    <li>
-                        to share lead data or analytics with original equipment 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To share lead data or analytics with original equipment 
                         manufacturers with whom we partner. This data may be shared with 
                         original equipment manufacturers so they can perform statistical 
                         analysis and measure dealer performance.
                     </li>
-                    <li>
-                        to create, maintain, customize, and secure your account with us.
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To create, maintain, customize, and secure your account with us.
                     </li>
-                    <li>
-                        to inform you of other products or services available from us or 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To inform you of other products or services available from us or 
                         our affiliates.
                     </li>
-                    <li>
-                        to contact you via surveys to conduct research about your opinion of 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To contact you via surveys to conduct research about your opinion of 
                         current services or of potential new services that may be offered.
                     </li>
-                    <li>
-                        to assist you in locating a dealer near you.
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To assist you in locating a dealer near you.
                     </li>
-                    <li>
-                        to respond to you regarding the reason you contacted us, or future 
-                        marketing. Unless you ask us not to, we may contact you via phone or 
-                        email in the future to tell you about specials, new products or 
-                        services, changes to this Privacy Policy, or to send you website and 
-                        service announcement updates which contain important information 
-                        about the service. We may also communicate with you to provide 
-                        requested services and in regard to issues relating to their account 
-                        via e-mail or phone.
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                To respond to you regarding the reason you contacted us, or future marketing. Unless you ask us not to, we may contact you via phone or email in the future to tell you about specials, new products or services, changes to this Privacy Policy, or to send you website and service announcement updates which contain important information about the service.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                We may also communicate with you to provide requested services and in regard to issues relating to their account via e-mail or phone.
+                            </p>
+                        </div>
                     </li>
-                    <li>
-                        to help diagnose problems with our server, administer the website, 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To help diagnose problems with our server, administer the website, 
                         conduct attribution reporting, personalize user experiences 
                         (including advertising or certain targeted features, such as 
                         showcasing previously viewed units), and compile broad statistical 
                         data.
                     </li>
-                    <li>
-                        certain navigational information about where you go on our website, 
-                        in order to determine what services or products are the most popular. 
-                        This data is used to deliver customized content and advertising 
-                        within our website to customers whose behavior indicates that they 
-                        are interested in a particular subject area. Such information is 
-                        gathered by us in the aggregate and will not be associated with a 
-                        specific individual except in connection with specific services and 
-                        operations such as attribution reporting and maintenance of customer 
-                        accounts.
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        <div class="space-y-2">
+                            <p class="text-xl text-brand-main-text">
+                                Certain navigational information about where you go on our website, in order to determine what services or products are the most popular. This data is used to deliver customized content and advertising within our website to customers whose behavior indicates that they are interested in a particular subject area.
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                Such information is gathered by us in the aggregate and will not be associated with a specific individual except in connection with specific services and operations such as attribution reporting and maintenance of customer accounts.
+                            </p>
+                        </div>
                     </li>
-                    <li>
-                        to respond to law enforcement requests and as required by applicable 
+                    <li class="p-2 rounded-md relative shadow-list-item">
+                        To respond to law enforcement requests and as required by applicable 
                         law, court order, or governmental regulations.
                     </li>
-                    <li>
+                    <li class="p-2 rounded-md relative shadow-list-item">
                         As described to you when collecting your Personal Information or as 
                         otherwise set forth in the CCPA or CPRA.
                     </li>
                 </ul>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">Use of Cookies</h2>
                 <p class="text-xl text-brand-main-text">
@@ -322,7 +296,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Who We Share Your Personal Information With
@@ -388,7 +362,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Data Retention
@@ -402,7 +376,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Access to Third Party Websites
@@ -416,7 +390,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Security
@@ -433,7 +407,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Children Under Thirteen
@@ -449,7 +423,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Privacy Notice for California Residents
@@ -532,20 +506,14 @@
                         shared.
                     </li>
                 </ul>
-                <p class="text-xl text-brand-main-text">
-                    Under CCPA and certain other privacy and data protection laws, as 
-                    applicable, you have the right to opt-out of the sale or sharing of your 
-                    Personal Information and the right to opt-out of the use or disclosure 
-                    of your sensitive Personal Information. If you exercise your right to 
-                    opt-out, we will refrain from selling or sharing your Personal 
-                    Information or disclosing your sensitive Personal Information, unless 
-                    you subsequently provide express authorization for the sale, sharing, or 
-                    disclosure of your Personal Information. To opt-out of the disclosure of 
-                    your Personal Information, please contact Golden Gate Manor Inc. at 
-                    . You must contact Golden Gate Manor for 
-                    requests regarding personal data collected and processed by Golden Gate 
-                    Manor
-                </p>
+                <div class="space-y-2">
+                    <p class="text-xl text-brand-main-text">
+                        Under CCPA and certain other privacy and data protection laws, as applicable, you have the right to opt-out of the sale or sharing of your Personal Information and the right to opt-out of the use or disclosure of your sensitive Personal Information. If you exercise your right to opt-out, we will refrain from selling or sharing your Personal Information or disclosing your sensitive Personal Information, unless you subsequently provide express authorization for the sale, sharing, or disclosure of your Personal Information.
+                    </p>
+                    <p class="text-xl text-brand-main-text">
+                        To opt-out of the disclosure of your Personal Information, please contact Golden Gate Manor Inc. at [insert contact method]. You must contact Golden Gate Manor for requests regarding personal data collected and processed by Golden Gate Manor.
+                    </p>
+                </div>
                 <p class="text-xl text-brand-main-text">
                     Subject to certain exceptions set out below, on receipt of a verifiable request from you, we will:
                 </p>
@@ -614,25 +582,17 @@
                     that under the CCPA, you may only make a data access or data portability 
                     disclosure request twice within a twelve (12) month period.
                 </p>
-                <p class="text-xl text-brand-main-text">
-                    You have the right to not be discriminated against by us because you 
-                    exercised any of your rights under the CCPA. As a result, we will not 
-                    deny you goods or services for exercising these rights, charge a 
-                    different price for goods or services for exercising these rights, 
-                    provide a different level or quality of goods or services for exercising 
-                    these rights, or even suggest yo'll receive a different price or a 
-                    different level or quality of goods or services for exercising these 
-                    rights. However, we may offer you certain financial incentives permitted 
-                    by the CCPA that can result in different prices, rates, or quality 
-                    levels. Any CCPA-permitted financial incentive we offer will reasonably 
-                    relate to your Personal Informatio's value and contain written terms 
-                    that describe the progra's material aspects. Participation in a 
-                    financial incentive program requires your prior opt in consent, which 
-                    you may revoke at any time.
-                </p>
+                <div class="space-y-2">
+                    <p class="text-xl text-brand-main-text">
+                        You have the right to not be discriminated against by us because you exercised any of your rights under the CCPA. As a result, we will not deny you goods or services for exercising these rights, charge a different price for goods or services for exercising these rights, provide a different level or quality of goods or services for exercising these rights, or even suggest you'll receive a different price or a different level or quality of goods or services for exercising these rights.
+                    </p>
+                    <p class="text-xl text-brand-main-text">
+                        However, we may offer you certain financial incentives permitted by the CCPA that can result in different prices, rates, or quality levels. Any CCPA-permitted financial incentive we offer will reasonably relate to your Personal Information's value and contain written terms that describe the program's material aspects. Participation in a financial incentive program requires your prior opt-in consent, which you may revoke at any time.
+                    </p>
+                </div>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">Opt Out &amp; Unsubscribe</h2>
                 <p class="text-xl text-brand-main-text">
@@ -645,7 +605,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Accessing this Website
@@ -661,7 +621,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     Updates to this Privacy Policy
@@ -676,7 +636,7 @@
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
-        <BaseLayoutPageSection margin="pDefault" class="cv-auto">
+        <BaseLayoutPageSection class="cv-auto" margin="pDefault">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
                     How to Exercise Your Rights and Contact Information
@@ -750,5 +710,7 @@ defineOptions({
 </script>
 
 <style>
-
+.shadow-list-item {
+    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.2)
+}
 </style>

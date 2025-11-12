@@ -1,6 +1,6 @@
 <template>
     <BaseLayoutPageSection margin="top">
-      <BaseLayoutPageContainer class="space-y-8">
+      <BaseLayoutPageContainer class="space-y-4">
         <div>
           <h2 class="text-2xl font-bold text-brand-primary max-sm:hidden">Ride Cancellation & No-Show Policy</h2>
           <div class="mt-2">
