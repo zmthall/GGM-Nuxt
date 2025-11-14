@@ -14,6 +14,7 @@
                 { 'inline-block button-style': variant !== 'blank' && variant !== 'link'},
                 { 'link inline-block': variant === 'link'}
                 , size]" :to="to ?? '#'"
+            @click.passive="abButton ? emit('ab-test-click') : ''"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
@@ -35,6 +36,7 @@
                 { 'inline-block button-style': variant !== 'blank' && variant !== 'link'},
                 { 'link inline-block': variant === 'link'}
                 , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
+            @click.passive="abButton ? emit('ab-test-click') : ''"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
                 <slot />
@@ -71,7 +73,8 @@ defineOptions({
 })
 
 const emit = defineEmits<{ 
-    (e:'click', ev: MouseEvent): void 
+    (e:'click', ev: MouseEvent): void
+    (e: 'ab-test-click'): void;
 }>()
 
 const props = withDefaults(defineProps<{
@@ -93,6 +96,7 @@ const props = withDefaults(defineProps<{
     ariaLabel?: string;
     stopPropagation?: boolean;
     title?: string;
+    abButton?: boolean;
 }>(), {
     type: undefined,
     variant: 'primary',
@@ -111,7 +115,8 @@ const props = withDefaults(defineProps<{
     iconBefore: undefined,
     iconAfter: undefined,
     ariaLabel: undefined,
-    stopPropagation: false
+    stopPropagation: false,
+    abButton: false
 })
 
 const linkRel = computed(() => {
@@ -123,13 +128,13 @@ const linkRel = computed(() => {
 })
 
 function onClick(ev: MouseEvent) {
-  if (props.disabled) {
-    ev.preventDefault()
-    ev.stopPropagation()
-    return
-  }
-  if (props.stopPropagation) ev.stopPropagation()
-  emit('click', ev)
+    if (props.disabled) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        return
+    }
+    if (props.stopPropagation) ev.stopPropagation()
+        emit('click', ev)
 }
 
 const isPrimary = computed(() => {

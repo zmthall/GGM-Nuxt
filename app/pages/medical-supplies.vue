@@ -1,7 +1,8 @@
 <template>
   <div>
-    <BaseUiBreadCrumbCTA href="https://goldengatemedicalsupply.com/">Visit Our Medical Supply Website</BaseUiBreadCrumbCTA>
+    <MedSupplyLink ab-value="breadcrumb" />
     <BaseLayoutPageBanner src="/images/pages/medical-supplies/medical-supply-banner.jpg" alt="A peak into our medical supply store" loading="eager" title="A peak into our medical supply store" image-width="935" image-height="464" aspect-ratio="aspect-[2/1]" />
+    <MedSupplyLink ab-value="under-image" />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4 flex flex-col">
         <h2 class="text-2xl font-bold text-brand-medical-primary">Golden Gate Medical Supply Overview:</h2>
@@ -340,6 +341,8 @@
 </template>
 
 <script lang="ts" setup>
+import MedSupplyLink from '../components/MedSupplyLink.vue';
+
 definePageMeta({
   title: 'Medical Supplies & Equipment',
   breadcrumbLabel: 'Medical Supply'
