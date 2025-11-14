@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 type CtaVariant = 'breadcrumb' | 'under-image';
 
-const EVENT = 'testing_click'
+const EVENT = 'ggms_ab_button_click'
 
 const props = defineProps<{ abValue: CtaVariant }>();
 
