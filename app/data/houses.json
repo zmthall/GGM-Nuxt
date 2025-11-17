@@ -15,9 +15,7 @@
   },
   {
     "id": "ggmi",
-    "mainImage": [
-      "/images/carousel-images/golden-gate-manor-i-house-outside_600.jpg"
-    ],
+    "mainImage": "/images/carousel-images/golden-gate-manor-i-house-outside_600.jpg",
     "mainAlt": "House image of Golden Manor I",
     "name": "Golden Gate Manor I",
     "address": "606 West Abriendo Ave. Pueblo, CO 81004",
@@ -26,9 +24,7 @@
   },
   {
     "id": "gview",
-    "mainImage": [
-      "/images/carousel-images/golden-view-house-outside_600.jpg"
-    ],
+    "mainImage": "/images/carousel-images/golden-view-house-outside_600.jpg",
     "mainAlt": "House image of Golden View",
     "name": "Golden View",
     "address": "525 West 9th Street Pueblo, CO 81003",
@@ -37,9 +33,7 @@
   },
   {
     "id": "gvalley",
-    "mainImage": [
-      "/images/carousel-images/golden-valley-house-outside_600.jpg"
-    ],
+    "mainImage": "/images/carousel-images/golden-valley-house-outside_600.jpg",
     "mainAlt": "House image of Golden Valley",
     "name": "Golden Valley",
     "address": "1033 East Evans Pueblo, CO 81004",
@@ -48,9 +42,7 @@
   },
   {
     "id": "ggmii",
-    "mainImage": [
-      "/images/carousel-images/golden-gate-manor-ii-house-outside_600.jpg"
-    ],
+    "mainImage": "/images/carousel-images/golden-gate-manor-ii-house-outside_600.jpg",
     "mainAlt": "House image of Golden Manor II",
     "name": "Golden Gate Manor II",
     "address": "1219 Lake Ave Pueblo, CO 81004",
