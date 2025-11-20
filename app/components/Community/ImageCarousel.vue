@@ -3,7 +3,7 @@
   <BaseInteractiveModal v-model="imageModalOpen" :normal-modal="false" custom-modal="w-full h-full overflow-hidden top-0 left-0" :padding="4" @close="closeImageModal">
       <template #default>
         <div v-show="!modalImagesLoading" class="h-[90vh] mt-2">
-          <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute top-4 sm:left-1/2 sm:-translate-x-1/2 w-max">All Community Images</h2>
+          <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute top-4 sm:left-1/2 sm:-translate-x-1/2 w-max">Community Images 2025</h2>
           <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">Image {{ currentImage }} of {{ totalImages }}</span>
           <BaseInteractiveImageSlider v-model="allImages" :show-thumbnails="false" :show-dots="false" :max-height="'85vh'" @images-loaded="imagesLoaded" @change="setCurrentPage" @initial-load="setImageTotal"/>
         </div>
