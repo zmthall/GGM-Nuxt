@@ -142,10 +142,10 @@ useSeoMeta({
   ogTitle: 'Golden Gate Gas & Goods Pueblo',
   description: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
   ogDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
-  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
+  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterTitle: 'Golden Gate Gas & Goods Pueblo',
   twitterDescription: 'Overview of Golden Gate Manor Inc. Gas & Goods. Our gas stations are currently located in Pueblo Colorado Learn about our current venture into the gas station realm.',
-  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-medical-supply.png`,
+  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })
 

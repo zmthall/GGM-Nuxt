@@ -15,7 +15,7 @@
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <BaseUiAction href="https://goldengatemedicalsupply.com/pages/about-us" new-page title="Opens in new tab" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Read More</BaseUiAction>
-          <BaseUiAction href="https://goldengatemedicalsupply.com/collections/all-products" new-page title="Opens in new tab" class="px-8 py-4 xs:w-3/4 xs:self-center sm:w-max">Explore Our Products</BaseUiAction>
+          <BaseUiAction href="https://goldengatemedicalsupply.com/collections/all-products" variant="secondary" new-page title="Opens in new tab" class="px-8 py-5 xs:w-3/4 xs:self-center sm:w-max">Explore Our Products</BaseUiAction>
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>

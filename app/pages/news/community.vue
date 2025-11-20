@@ -3,7 +3,7 @@
     <!-- Top Page -->
     <BaseLayoutPageSection margin="pTop">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
-        <BaseInteractiveImageCarousel :images image-selection/>
+        <CommunityImageCarousel :images image-selection />
         <p class="text-xl text-brand-main-text">
           Here at Golden Gate Manor, we're on a mission to enhance
           lives daily. Our commitment to establishing an environment

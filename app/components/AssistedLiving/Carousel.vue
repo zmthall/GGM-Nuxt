@@ -45,7 +45,7 @@
                   <div class="image-loader" />
                 </div>
               </template>
-          </BaseInteractiveModal>
+            </BaseInteractiveModal>
         </div>
   </section>
 </template>
