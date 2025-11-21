@@ -14,7 +14,8 @@
       <tr
         v-for="u in rows"
         :key="u.id"
-        class="text-sm odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition-colors"
+        class="text-sm odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
+        @click="openMessageModal(u)"
       >
         <!-- Status -->
         <td class="px-4 py-3">
@@ -100,7 +101,7 @@
                 v-if="u.message.length > 100"
                 type="button"
                 class="mt-2 text-xs text-brand-primary underline-offset-2 hover:underline"
-                @click="openMessageModal(u)"
+                @click.stop="openMessageModal(u)"
               >
                 View Full message
               </button>
@@ -168,12 +169,12 @@
 
         <!-- Email -->
         <td class="px-4 py-3">
-          <div><a :href="`mailto:${u.email}`" class="link">{{ u.email }}</a></div>
+          <div><a :href="`mailto:${u.email}`" class="link" @click.stop>{{ u.email }}</a></div>
         </td>
 
         <!-- Phone Number -->
         <td class="px-4 py-3">
-          <div v-if="u.phone !== ''" class="w-max"><a :href="`tel:${u.phone}`" class="link">{{ u.phone }}</a></div>
+          <div v-if="u.phone !== ''" class="w-max"><a :href="`tel:${u.phone}`" class="link" @click.stop>{{ u.phone }}</a></div>
           <div v-else><p>Not Provided</p></div>
         </td>
 

@@ -23,7 +23,6 @@
                             <div class="inline-flex items-center gap-2">
                                 <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id, 10, false)">Delete</button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openRideRequestModal(rideRequest)">Open Request</button>
                             </div>
                         </template>            
                     </AdminRideRequestFormTable>
@@ -45,11 +44,6 @@ const rideRequestModalData = ref<RideRequestFormData | null>(null)
 const nextRidePage = () => fetchRideRequests(false, 10, requestPage.value + 1, false)
 const prevRidePage = () => fetchRideRequests(false, 10, Math.max(1, requestPage.value - 1), false)
 const setRidePage  = (p: number) => fetchRideRequests(false, 10, p, false)
-
-const openRideRequestModal = (rideRequest: RideRequestFormData) => {
-    rideModalOpen.value = true;
-    rideRequestModalData.value = rideRequest;
-}
 
 const authStore = useAuthStore();
 const {

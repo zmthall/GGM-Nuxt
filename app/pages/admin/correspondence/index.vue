@@ -22,7 +22,6 @@
                             <div class="inline-flex items-center gap-2">
                                 <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteContactMessage(contactMessage.id)">Delete</button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openContactModal(contactMessage)">Open Message</button>
                             </div>
                         </template>            
                     </AdminContactFormTable>
@@ -53,7 +52,6 @@
                             <div class="inline-flex items-center gap-2">
                                 <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id)">Delete</button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openRideRequestModal(rideRequest)">Open Request</button>
                             </div>
                         </template>            
                     </AdminRideRequestFormTable>
@@ -85,16 +83,6 @@ const setRidePage  = (p: number) => fetchRideRequests(false, 5, p)
 const nextContactPage = () => fetchContactMessages(false, 5, contactPage.value + 1)
 const prevContactPage = () => fetchContactMessages(false, 5, Math.max(1, contactPage.value - 1))
 const setContactPage  = (p: number) => fetchContactMessages(false, 5, p)
-
-const openRideRequestModal = (rideRequest: RideRequestFormData) => {
-    rideModalOpen.value = true;
-    rideRequestModalData.value = rideRequest;
-}
-
-const openContactModal = (contactMessage: ContactFormData) => {
-    contactModalOpen.value = true;
-    contactMessageModalData.value = contactMessage;
-}
 
 const authStore = useAuthStore();
 const { 

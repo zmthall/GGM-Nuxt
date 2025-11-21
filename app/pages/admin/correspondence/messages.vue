@@ -22,7 +22,6 @@
                             <div class="inline-flex items-center gap-2">
                                 <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteContactMessage(contactMessage.id, 10, false)">Delete</button>
                                 <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openContactModal(contactMessage)">Open Message</button>
                             </div>
                         </template>            
                     </AdminContactFormTable>
@@ -53,11 +52,6 @@ definePageMeta({
 
 const contactModalOpen = ref<boolean>(false);
 const contactMessageModalData = ref<ContactFormData | null>(null)
-
-const openContactModal = (contactMessage: ContactFormData) => {
-    contactModalOpen.value = true;
-    contactMessageModalData.value = contactMessage;
-}
 
 const { 
     fetchContactMessages, 
