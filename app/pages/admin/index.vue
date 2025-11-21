@@ -22,9 +22,8 @@
                     >
                         <template #actions="{ rideRequest }">
                             <div class="inline-flex items-center gap-2">
-                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteRideRequest(rideRequest.id, 3)">Delete</button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openRideRequestModal(rideRequest)">Open Request</button>
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click.stop="deleteRideRequest(rideRequest.id, 3)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click.stop="exportRidePDF(rideRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
                             </div>
                         </template>            
                     </AdminRideRequestFormTable>
@@ -49,9 +48,8 @@
                     >
                         <template #actions="{ contactMessage }">
                             <div class="inline-flex items-center gap-2">
-                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click="deleteContactMessage(contactMessage.id, 3)">Delete</button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
-                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 w-max" @click="openContactModal(contactMessage)">Open Message</button>
+                                <button class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click.stop="deleteContactMessage(contactMessage.id, 3)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click.stop="exportContactPDF(contactMessage)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
                             </div>
                         </template>            
                     </AdminContactFormTable>
@@ -123,16 +121,6 @@ const setRidePage  = (p: number) => fetchRideRequests(false, 3, p)
 const nextContactPage = () => fetchContactMessages(false, 3, contactPage.value + 1)
 const prevContactPage = () => fetchContactMessages(false, 3, Math.max(1, contactPage.value - 1))
 const setContactPage  = (p: number) => fetchContactMessages(false, 3, p)
-
-const openRideRequestModal = (rideRequest: RideRequestFormData) => {
-    rideModalOpen.value = true;
-    rideRequestModalData.value = rideRequest;
-}
-
-const openContactModal = (contactMessage: ContactFormData) => {
-    contactModalOpen.value = true;
-    contactMessageModalData.value = contactMessage;
-}
 
 const {
     fetchRideRequests,

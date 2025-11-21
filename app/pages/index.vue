@@ -262,9 +262,12 @@ import type { ImageData } from '../models/ImagesData.js';
 // const blogs = undefined;
 // const events = undefined;
 
-
 useHead({
     titleTemplate: null,
+})
+
+definePageMeta({
+    breadcrumb: false,
 })
 
 const runtimeConfig = useRuntimeConfig()
