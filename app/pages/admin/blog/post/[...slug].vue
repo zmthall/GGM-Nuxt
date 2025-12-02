@@ -311,4 +311,8 @@ watchEffect(() => {
 :deep(h6) {
   scroll-margin-top: 80px;
 }
+
+/* .blog-headings {
+  @apply prose-h1:
+} */
 </style>
