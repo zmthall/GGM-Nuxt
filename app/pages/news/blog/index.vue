@@ -23,6 +23,7 @@
                                         :height="latestPost.thumbnailHeight || ''" 
                                         loading="eager"
                                         class="object-cover h-full w-full"
+                                        placeholder="/images/blog/blog-default-placeholder.webp"
                                     />        
                                 </div>
                                 <div class="bg-brand-primary">

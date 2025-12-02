@@ -8,7 +8,7 @@
             </h2>
             <p>Reading time: {{ reading.getReadingTime(post.body) }}</p>
             <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
-              Pueblished On: {{ formatDates.formatDisplayDate(post.published) }}
+              Published On: {{ formatDates.formatDisplayDate(post.published) }}
             </time>
             <p v-if="post.author">By: {{ post.author }}</p>
             <div v-if="post.tags" class="md:hidden">
@@ -32,7 +32,7 @@
               class="object-cover w-full h-full" 
             />        
           </div>
-          <ContentRenderer v-if="post" :value="post" class="prose prose-lg space-y-2 text-xl text-brand-main-text" />
+          <ContentRenderer v-if="post" :value="post" class="space-y-2 text-xl text-brand-main-text" />
           <div class="md:hidden">
             <!-- Social icons to share page -->
             <BlogPostSocialShare />
@@ -355,4 +355,8 @@ useSeoMeta({
 })
 </script>
 
-<style></style>
+<style scoped>
+h2, h3, h4 {
+  @apply font-headings !font-extrabold;
+}
+</style>
