@@ -15,7 +15,7 @@ logs
 *.log
 
 # Content
-content
+/content
 
 # Misc
 .DS_Store
