@@ -1,5 +1,6 @@
 <template>
   <div v-if="authStore.authorized">
+    <AdminRebuildButton />
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
           <BaseLayoutCard :centered="false">
