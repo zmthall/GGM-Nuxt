@@ -25,33 +25,35 @@ export default defineEventHandler(async (event) => {
 
   try {
     const appRoot = process.cwd()
-    
-    console.log('Starting build...')
-    const { stdout, stderr } = await execAsync('npm run build', { 
+    const execOptions = {
       cwd: appRoot,
-      timeout: 600000, // 10 minutes (600,000 ms)
-      maxBuffer: 1024 * 1024 * 10, // 10MB buffer for large build output
+      timeout: 600000,
+      maxBuffer: 1024 * 1024 * 10,
       env: {
         ...process.env,
-        PATH: `/opt/plesk/node/20/bin:${process.env.PATH}`
+        PATH: `/opt/plesk/node/22/bin:${process.env.PATH}` // Changed from 20 to 22!
       }
-    })
+    }
+    
+    console.log('Rebuilding native modules for Node 22...')
+    const { stdout: rebuildOut } = await execAsync('npm rebuild better-sqlite3', execOptions)
+    console.log('Rebuild output:', rebuildOut)
+    
+    console.log('Starting build...')
+    const { stdout, stderr } = await execAsync('npm run build', execOptions)
     
     console.log('Build output:', stdout)
     if (stderr) console.warn('Build warnings:', stderr)
     
     console.log('Triggering app restart...')
     
-    // Cross-platform restart trigger
     const restartFile = join(appRoot, 'tmp', 'restart.txt')
     const tmpDir = dirname(restartFile)
     
-    // Ensure tmp directory exists
     if (!existsSync(tmpDir)) {
       mkdirSync(tmpDir, { recursive: true })
     }
     
-    // Create/touch the restart file (works on Windows and Linux)
     writeFileSync(restartFile, new Date().toISOString())
     
     return { 
