@@ -8,9 +8,9 @@
         bg="transparent"
       >
         <div>
-          <h2 class="text-2xl font-bold text-brand-primary">
+          <h1 class="text-3xl font-bold text-brand-primary">
             {{ post?.title }}
-          </h2>
+          </h1>
           <p v-if="post.body">
             Reading time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}
           </p>
@@ -18,6 +18,21 @@
             Published On: {{ formatDates.formatDisplayDate(post.published) || 'Not Published' }}
           </time>
           <p v-if="post.author">By: {{ post.author }}</p>
+        </div>
+        <div class="w-3/4 mx-auto space-y-4">
+          <div class="overflow-hidden rounded-lg md:hidden border border-black/20 p-8 shadow-interior">
+            <NuxtImg
+              format="webp,avif"
+              :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"
+              :alt="post.thumbnailAlt || post.title"
+              :title="post.thumbnailAlt || post.title"
+              :width="post.thumbnailWidth || ''"
+              :height="post.thumbnailHeight || ''"
+              loading="eager"
+              sizes="sm:100vw md:50vw lg:400px"
+              class="object-cover w-full h-full"
+            />
+          </div>
           <div v-if="post.tags" class="md:hidden">
             <span v-if="post.tags.length" class="flex gap-2 items-center">
               <span
@@ -29,19 +44,6 @@
               </span>
             </span>
           </div>
-        </div>
-        <div class="w-full overflow-hidden rounded-lg md:hidden">
-          <NuxtImg
-            format="webp,avif"
-            :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"
-            :alt="post.thumbnailAlt || post.title"
-            :title="post.thumbnailAlt || post.title"
-            :width="post.thumbnailWidth || ''"
-            :height="post.thumbnailHeight || ''"
-            loading="eager"
-            sizes="sm:100vw md:50vw lg:400px"
-            class="object-cover w-full h-full"
-          />
         </div>
         <ContentRenderer
           v-if="post"

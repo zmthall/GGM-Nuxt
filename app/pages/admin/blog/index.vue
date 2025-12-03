@@ -12,7 +12,7 @@
                 <li v-for="post in posts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
                   <button class="p-4 flex justify-between gap-10 w-full min-w-[650px]" @click="openEditPostModal(getSlug(post.path))">
                     <div class="flex gap-2 min-w-[650px]">
-                      <NuxtImg format="webp,avif" :src="post.thumbnail" :alt="post.thumbnailAlt" :title="post.thumbnailAlt" :width="post.thumbnailWidth" :height="post.thumbnailHeight" class="w-32 h-20 object-cover" />
+                      <NuxtImg format="webp,avif" :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"  :alt="post.thumbnailAlt || ''" :title="post.thumbnailAlt || ''" :width="post.thumbnailWidth || '128'" :height="post.thumbnailHeight || '80'" class="w-32 h-20 object-cover" />
                       <div class="flex flex-col items-start justify-center">
                         <p class="text-xs">Last Updated: {{ dateFormat.formatShortDateNoLeadingZero(post.date) }}</p>
                         <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>

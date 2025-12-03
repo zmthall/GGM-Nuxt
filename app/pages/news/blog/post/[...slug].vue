@@ -3,14 +3,30 @@
     <div class="md:grid md:grid-cols-15 md:max-w-[1500px] md:mx-auto">
       <BaseLayoutPageSection v-if="post" margin="top" class="col-span-11 space-y-4">
           <div>
-            <h2 class="text-2xl font-bold text-brand-primary">
+            <h1 class="text-3xl font-bold text-brand-primary">
               {{ post?.title }}
-            </h2>
+            </h1>
             <p>Reading time: {{ reading.getReadingTime(post.body) }}</p>
             <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
               Published On: {{ formatDates.formatDisplayDate(post.published) }}
             </time>
             <p v-if="post.author">By: {{ post.author }}</p>
+          </div>
+          <div class="w-3/4 mx-auto space-y-4">
+            <div class="overflow-hidden rounded-lg md:hidden border border-black/20 p-8 shadow-interior">
+              <NuxtImg 
+                format="webp,avif"
+                :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                :alt="post.thumbnailAlt || post.title" 
+                :title="post.thumbnailAlt || post.title" 
+                :width="post.thumbnailWidth || ''"    
+                :height="post.thumbnailHeight || ''"
+                loading="eager" 
+                sizes="sm:100vw md:50vw lg:400px"
+                class="object-cover w-full h-full"
+                placeholder="/images/blog/blog-default-placeholder.webp"
+              />        
+            </div>
             <div v-if="post.tags" class="md:hidden">
               <span v-if="post.tags.length" class="flex gap-2 items-center">
                 <span v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors ease-in-out duration-500">
@@ -19,19 +35,6 @@
               </span>
             </div>
           </div>
-          <div class="w-full overflow-hidden rounded-lg md:hidden">
-            <NuxtImg 
-              format="webp,avif"
-              :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-              :alt="post.thumbnailAlt || post.title" 
-              :title="post.thumbnailAlt || post.title" 
-              :width="post.thumbnailWidth || ''"    
-              :height="post.thumbnailHeight || ''"
-              loading="eager" 
-              sizes="sm:100vw md:50vw lg:400px"
-              class="object-cover w-full h-full" 
-            />        
-          </div>
           <ContentRenderer v-if="post" :value="post" class="space-y-2 text-xl text-brand-main-text" />
           <div class="md:hidden">
             <!-- Social icons to share page -->
@@ -39,7 +42,7 @@
           </div>
       </BaseLayoutPageSection>
       <BaseLayoutPageSection v-if="post" margin="top" class="col-span-4 max-md:hidden">
-        <aside class="space-y-4">
+        <aside class="space-y-4 sticky top-20">
           <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
             <NuxtImg 
               format="webp,avif"
@@ -117,30 +120,33 @@
     </BaseLayoutPageSection>
     <Teleport to="body">
         <ClientOnly>
-          <button v-if="showTOC" ref="tocButtonRef" :class="['fixed top-1/2 -translate-y-1/2 w-10 h-10 transition-transform duration-500 ease-in-out group z-16 flex justify-start items-center rounded-r-full bg-brand-primary border-r-2 border-t-2 border-b-2 border-brand-secondary hover:bg-brand-secondary hover:border-brand-primary', {'translate-x-[75vw] sm:translate-x-80': tocDrawerOpen, 'translate-x-0': !tocDrawerOpen}]" title="Table of Contents" @click="toggleTOCDrawer">
-            <BaseIcon v-show="!tocDrawerOpen" name="line-md:chevron-double-right" color="text-white" hover-color="group-hover:text-brand-primary" />
-            <BaseIcon v-show="tocDrawerOpen" name="line-md:chevron-double-left" color="text-white" hover-color="group-hover:text-brand-primary" />
-          </button>
-          <aside v-if="showTOC" ref="tocRef" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-3/4 sm:w-80 bg-brand-primary shadow-primary border-r border-t border-b border-white p-4 overflow-y-auto rounded-r-xl z-16 transition-transform ease-in-out duration-500', {'translate-x-0': tocDrawerOpen, '-translate-x-[100%]': !tocDrawerOpen}]" aria-label="Table of Contents">
-            <div class="overflow-y-auto max-h-[450px] ">
-              <h2 class="text-brand-secondary text-center text-xl font-bold underline mb-2">Table of Contents</h2>
-              <ul class="ml-5 text-white list-decimal">
-                <li v-for="link in TOC.links" :key="link.id" class="mb-2">
-                  <a :href="`#${link.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === link.id}]" @click.prevent="scrollToHeading(link.id)">{{ link.id }}</a>
-                  <ul v-if="link.children" class="ml-4 list-roman">
-                    <li v-for="child in link.children" :key="child.id" class="mt-2">
-                        <a :href="`#${child.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === child.id}]" @click.prevent="scrollToHeading(child.id)">{{ child.id }}</a>
-                        <ul v-if="link.children" class="ml-4 list-[lower-alpha]">
-                          <li v-for="subchild in child.children" :key="subchild.id" class="mt-2">
-                              <a :href="`#${subchild.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:right-2': selectedTOCItem === subchild.id}]" @click.prevent="scrollToHeading(subchild.id)">{{ subchild.id }}</a>
-                          </li>
-                        </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </aside>
+          <template v-if="showTOCComponent">
+
+            <button v-if="showTOC" ref="tocButtonRef" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-10 h-10 transition-transform duration-500 ease-in-out group z-16 flex justify-start items-center rounded-r-full bg-brand-primary border-r-2 border-t-2 border-b-2 border-brand-secondary hover:bg-brand-secondary hover:border-brand-primary', {'translate-x-[250px] sm:translate-x-80': tocDrawerOpen, 'translate-x-0': !tocDrawerOpen}]" title="Table of Contents" @click="toggleTOCDrawer">
+              <BaseIcon v-show="!tocDrawerOpen" name="line-md:chevron-double-right" color="text-white" hover-color="group-hover:text-brand-primary" />
+              <BaseIcon v-show="tocDrawerOpen" name="line-md:chevron-double-left" color="text-white" hover-color="group-hover:text-brand-primary" />
+            </button>
+            <aside v-if="showTOC" ref="tocRef" :class="['fixed top-1/2 -translate-y-1/2 w-[250px] sm:w-80 bg-brand-primary shadow-primary border-r border-t border-b border-white p-4 overflow-y-auto rounded-r-xl z-16 transition-transform ease-in-out duration-500', {'translate-x-0': tocDrawerOpen, '-translate-x-[100%]': !tocDrawerOpen}]" aria-label="Table of Contents">
+              <div class="overflow-y-auto max-h-[450px] ">
+                <h2 class="text-brand-secondary text-center text-xl font-bold underline mb-2">Table of Contents</h2>
+                <ul class="ml-5 text-white list-decimal">
+                  <li v-for="link in TOC.links" :key="link.id" class="mb-2 mr-4">
+                    <a :href="`#${link.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:-right-2': selectedTOCItem === link.id}]" @click.prevent="scrollToHeading(link.id)">{{ link.id }}</a>
+                    <ul v-if="link.children" class="ml-4 list-roman">
+                      <li v-for="child in link.children" :key="child.id" class="mt-2">
+                          <a :href="`#${child.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:-right-2': selectedTOCItem === child.id}]" @click.prevent="scrollToHeading(child.id)">{{ child.id }}</a>
+                          <ul v-if="link.children" class="ml-4 list-[lower-alpha]">
+                            <li v-for="subchild in child.children" :key="subchild.id" class="mt-2">
+                                <a :href="`#${subchild.id}`" :class="['capitalize hover:text-brand-secondary hover:underline text-md flex relative', {'text-brand-secondary after:w-1 after:h-full after:bg-brand-secondary after:absolute after:rounded-xl after:-right-2': selectedTOCItem === subchild.id}]" @click.prevent="scrollToHeading(subchild.id)">{{ subchild.id }}</a>
+                            </li>
+                          </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </template>
       </ClientOnly>
     </Teleport>
   </div>
@@ -154,6 +160,15 @@ import { useText } from '../../../../composables/text';
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
 import type { BlogPost } from '../../../../models/blog';
 import { onClickOutside } from '../../../../composables/onClickOutside';
+
+const showTOCComponent = ref(false)
+
+onMounted(() => {
+  // Small delay to ensure content headings are in DOM
+  setTimeout(() => {
+    showTOCComponent.value = true
+  }, 100)
+})
 
 const route = useRoute();
 const formatDates = useDateFormat();
@@ -204,7 +219,8 @@ if(post.value.published) {
 // Use the blog-post layout
 definePageMeta({
   layout: 'blog-post',
-  breadcrumbLabel: 'Blog Posts'
+  breadcrumbLabel: 'Blog Posts',
+  pageHeader: false
 });
 
 interface TocItem {

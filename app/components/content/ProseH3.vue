@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-lg font-bold text-brand-primary underline">
+  <h3 class="text-lg font-bold text-black underline">
     <slot />
   </h3>
 </template>
