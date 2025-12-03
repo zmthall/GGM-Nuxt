@@ -30,7 +30,11 @@ export default defineEventHandler(async (event) => {
     const { stdout, stderr } = await execAsync('npm run build', { 
       cwd: appRoot,
       timeout: 600000, // 10 minutes (600,000 ms)
-      maxBuffer: 1024 * 1024 * 10 // 10MB buffer for large build output
+      maxBuffer: 1024 * 1024 * 10, // 10MB buffer for large build output
+      env: {
+        ...process.env,
+        PATH: `/opt/plesk/node/20/bin:${process.env.PATH}`
+      }
     })
     
     console.log('Build output:', stdout)
