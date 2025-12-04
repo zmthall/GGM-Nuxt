@@ -56,6 +56,7 @@ export default defineEventHandler(async (event) => {
     await fsp.mkdir(OUTPUT_DIR, { recursive: true })
     const outputPath = resolve(OUTPUT_DIR, filename)
     await fsp.writeFile(outputPath, bytes)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_err) {
     // .output might not exist in dev, that's ok
     console.log('.output not available, image saved to public/ only')
