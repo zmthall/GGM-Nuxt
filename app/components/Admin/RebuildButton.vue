@@ -48,6 +48,9 @@ async function checkBuildStatus() {
         pollInterval.value = null
         isBuilding.value = false
         success('Build completed! App is restarting...')
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
       } else if (response.status.status === 'failed') {
         clearInterval(pollInterval.value)
         pollInterval.value = null
