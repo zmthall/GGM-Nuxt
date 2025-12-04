@@ -1,0 +1,10 @@
+{
+  "id": "build-1764802514039",
+  "status": "running",
+  "startedAt": "2025-12-03T22:55:14.040Z",
+  "logs": [
+    "Detected Node version: v20.9.0 (major: 20)",
+    "Platform: Windows",
+    "Skipping native module rebuild on Windows (not needed)"
+  ]
+}
