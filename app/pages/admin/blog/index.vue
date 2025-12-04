@@ -96,7 +96,7 @@
 import type { BlogPost } from '../../../models/blog'
 import { useDateFormat } from '../../../composables/dates/dateFormat'
 
-console.log('Testing (Worked)');
+console.log('Testing (Worked test 2)');
 
 definePageMeta({ layout: 'admin' })
 
