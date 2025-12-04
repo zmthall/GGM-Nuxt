@@ -93,8 +93,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useDateFormat } from '../../../composables/dates/dateFormat'
 import type { BlogPost } from '../../../models/blog'
+import { useDateFormat } from '../../../composables/dates/dateFormat'
+
+console.log('Testing (Worked)');
 
 definePageMeta({ layout: 'admin' })
 
