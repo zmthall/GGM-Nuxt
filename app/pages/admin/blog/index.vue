@@ -1,6 +1,6 @@
 <template>
   <div v-if="authStore.authorized">
-    <AdminBuildButtons />
+    <AdminRebuildButton />
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
           <BaseLayoutCard :centered="false">
@@ -96,8 +96,6 @@
 import type { BlogPost } from '../../../models/blog'
 import { useDateFormat } from '../../../composables/dates/dateFormat'
 
-console.log('Testing (Worked test 2)');
-
 definePageMeta({ layout: 'admin' })
 
 const authStore = useAuthStore()
@@ -144,19 +142,42 @@ const isPublished = (post: BlogPost): boolean => {
 }
 
 // ---------- initial list via internal Nuxt API (no token headers)
-const {
-  data: initialPosts,
-  execute,
-  refresh,
-  pending: isLoadingInitial
-} = await useAsyncData<BlogPost[]>(
-  'admin-blog-page-1',
-  () => $fetch<BlogPost[]>('/api/admin/blog/posts', {
-    method: 'GET',
-    query: { page: 1, limit }
-  }),
-  { server: false, immediate: false, default: () => [] }
-)
+// const {
+//   data: initialPosts,
+//   execute,
+//   refresh,
+//   pending: isLoadingInitial
+// } = await useAsyncData<BlogPost[]>(
+//   'admin-blog-page-1',
+//   () => $fetch<BlogPost[]>('/api/admin/blog/posts', {
+//     method: 'GET',
+//     query: { page: 1, limit }
+//   }),
+//   { server: false, immediate: false, default: () => [] }
+// )
+
+const isLoadingInitial = ref(true)
+const initialPosts = ref<BlogPost[]>([])
+
+const fetchInitialPosts = async () => {
+  isLoadingInitial.value = true
+
+  const idToken = await authStore.getIdToken()
+  try {
+    const result = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
+      method: 'GET',
+      query: { page: 1, limit },
+      headers: {
+        'authorization': `Bearer ${idToken}`
+      }
+    })
+    initialPosts.value = result
+  } catch (e) {
+    console.error('fetchInitialPosts:', e)
+  } finally {
+    isLoadingInitial.value = false
+  }
+}
 
 // seed list & hasMore
 watch(initialPosts, (list) => {
@@ -170,7 +191,7 @@ onMounted(async () => {
   await $getFirebase()
 
   if (canFetch.value) {
-    await execute()
+    await fetchInitialPosts()
     return
   }
 
@@ -179,7 +200,7 @@ onMounted(async () => {
     async ok => {
       if (!ok) return
       stop()
-      await execute()
+      await fetchInitialPosts()
     },
     { immediate: false }
   )
@@ -191,10 +212,15 @@ const loadMore = async () => {
   isLoading.value = true
   page.value++
 
+  const idToken = await authStore.getIdToken();
+
   try {
     const newPosts = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
       method: 'GET',
-      query: { page: page.value, limit }
+      query: { page: page.value, limit },
+      headers: {
+        "Authorization": `Bearer ${idToken}`
+      }
     })
     if (newPosts?.length) posts.value.push(...newPosts)
     if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
@@ -208,7 +234,7 @@ const loadMore = async () => {
 const refreshPosts = async () => {
   blogPostModalOpen.value = false
   page.value = 1
-  await refresh()
+  await fetchInitialPosts();
 }
 
 const showDeleteConfirmation = (slug: string) => {
@@ -226,12 +252,17 @@ const confirmDelete = async () => {
 }
 
 const deletePost = async (slug: string) => {
+  const idToken = await authStore.getIdToken();
+
   try {
     await $fetch(`/api/admin/blog/${slug}`, {
       method: 'DELETE',
-      query: { removeImage: true } // omit to keep image
+      query: { removeImage: true }, // omit to keep image
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
     })
-    await refresh()
+    await fetchInitialPosts()
   } catch (e) {
     console.error('deletePost:', (e as Error).message)
   }
@@ -262,13 +293,18 @@ const publishPost = async () => {
     pDate = new Date(publishDate.value).toISOString()
   }
 
+  const idToken = await authStore.getIdToken();
+
   try {
     await $fetch(`/api/admin/blog/${publishSlug.value}`, {
       method: 'PUT',
-      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } }
+      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } },
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
     })
     cancelPublish()
-    await refresh()
+    await fetchInitialPosts()
   } catch (e) {
     console.error('publishPost:', (e as Error).message)
   }
