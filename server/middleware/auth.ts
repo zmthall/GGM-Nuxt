@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     return
   }
 
-  const authHeader = getRequestHeader(event, 'authorization')
+  const authHeader = getRequestHeader(event, 'Authorization')
   
   if (!authHeader) {
     throw createError({
