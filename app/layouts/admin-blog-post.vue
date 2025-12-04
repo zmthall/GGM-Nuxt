@@ -7,6 +7,7 @@
         <LazyAdminAllPageDashboard v-if="auth.authorized" />
       </DeferRender>
       <BaseLayoutPageBreadcrumb v-if="showBreadcrumb && auth.authorized" class="mt-4" />
+      <BaseToastContainer />
       <slot />
     </ClientOnly>
   </div>

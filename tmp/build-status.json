@@ -1,0 +1,11 @@
+{
+  "id": "build-1764878309064",
+  "status": "failed",
+  "startedAt": "2025-12-04T19:58:29.066Z",
+  "completedAt": "2025-12-04T19:58:29.066Z",
+  "error": "spawn cmd.exe ENOENT",
+  "logs": [
+    "Rebuilding native modules for Node 22...",
+    "ERROR: spawn cmd.exe ENOENT"
+  ]
+}
