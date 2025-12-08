@@ -12,8 +12,8 @@
             </time>
             <p v-if="post.author">By: {{ post.author }}</p>
           </div>
-          <div class="w-3/4 mx-auto space-y-4">
-            <div class="overflow-hidden rounded-lg md:hidden border border-black/20 p-8 shadow-interior">
+          <div class="w-3/4 space-y-4">
+            <div class="overflow-hidden rounded-lg md:hidden aspect-[2/1] shadow-primary">
               <NuxtImg 
                 format="webp,avif"
                 :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
@@ -24,7 +24,7 @@
                 loading="eager" 
                 sizes="sm:100vw md:50vw lg:400px"
                 class="object-cover w-full h-full"
-                placeholder="/images/blog/blog-default-placeholder.webp"
+                :placeholder="post !== undefined ? '' : '/images/blog/blog-default-placeholder.webp'"
               />        
             </div>
             <div v-if="post.tags" class="md:hidden">
@@ -43,7 +43,7 @@
       </BaseLayoutPageSection>
       <BaseLayoutPageSection v-if="post" margin="top" class="col-span-4 max-md:hidden">
         <aside class="space-y-4 sticky top-20">
-          <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
+          <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg aspect-[2/1]">
             <NuxtImg 
               format="webp,avif"
               :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
