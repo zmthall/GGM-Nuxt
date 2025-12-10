@@ -9,12 +9,12 @@
         <div v-if="meta && body !== undefined" class="space-y-8">
           <div class="sm:w-1/2 relative border-2 border-zinc-100 rounded-lg p-4 space-y-2">
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Information</h3>
-            <div v-if="meta.title">
+            <div v-if="meta.title !== undefined">
               <BaseFormInput v-model="meta.title" type="text" label="Title" name="title"/>
               <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.title.length > 70 }]">{{ meta.title.length }} Characters</div>
             </div>
 
-            <div v-if="meta.description">
+            <div v-if="meta.description !== undefined">
               <BaseFormInput v-model="meta.description" type="text" label="Description" name="description"/>
               <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.description.length > 155 }]">{{ meta.description.length }} Characters</div>
             </div>
