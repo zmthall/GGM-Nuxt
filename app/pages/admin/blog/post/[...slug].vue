@@ -61,7 +61,7 @@
         class="col-span-4 max-md:hidden"
         bg="transparent"
       >
-        <aside class="space-y-4">
+        <aside class="space-y-4 sticky top-20">
           <div class="w-full max-h-[400px] h-max overflow-hidden rounded-lg">
             <NuxtImg
               format="webp,avif"
