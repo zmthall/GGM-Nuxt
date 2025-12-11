@@ -32,7 +32,7 @@
                       <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(getSlug(post.path))"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover"/></button>
                     </div>
                     <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2']">
-                      <div>
+                      <div class="space-y-2">
                         <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800">
                           Draft
                         </span>
