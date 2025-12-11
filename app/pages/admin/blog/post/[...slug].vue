@@ -180,7 +180,7 @@
                 </div>
 
                 <div class="flex flex-col justify-between px-2 pt-2 pb-4">
-                  <h3 class="text-xl font-bold text-brand-primary">
+                  <h3 class="text-xl font-bold text-brand-primary post-title">
                     {{ relatedPost.title }}
                   </h3>
                   <p class="post-body">
@@ -527,4 +527,23 @@ watchEffect(() => {
 #main-body:deep(hr) {
   @apply my-8 border-t border-zinc-300;
 }
+
+.post-title {
+    --max-lines: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--max-lines);
+  }
+
+  .post-body {
+    --max-lines: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--max-lines);
+    position: relative;
+  }
 </style>
