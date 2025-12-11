@@ -14,17 +14,19 @@
                                             <span class="text-2xl text-brand-primary font-bold">Latest</span>
                                         </p>
                                     </div>
-                                    <NuxtImg 
-                                        format="webp,avif"
-                                        :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                                        :alt="latestPost.thumbnailAlt || latestPost.title" 
-                                        :title="latestPost.thumbnailAlt || latestPost.title"
-                                        :width="latestPost.thumbnailWidth || ''"
-                                        :height="latestPost.thumbnailHeight || ''" 
-                                        loading="eager"
-                                        class="object-cover h-full w-full"
-                                        placeholder="/images/blog/blog-default-placeholder.webp"
-                                    />        
+                                    <div class="aspect-[2/1]">
+                                        <NuxtImg 
+                                            format="webp,avif"
+                                            :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                            :alt="latestPost.thumbnailAlt || latestPost.title" 
+                                            :title="latestPost.thumbnailAlt || latestPost.title"
+                                            :width="latestPost.thumbnailWidth || ''"
+                                            :height="latestPost.thumbnailHeight || ''" 
+                                            loading="eager"
+                                            class="object-cover h-full w-full"
+                                            :placeholder="latestPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                                        />        
+                                    </div>
                                 </div>
                                 <div class="bg-brand-primary">
                                     <div class="flex flex-col flex-wrap sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
@@ -74,16 +76,19 @@
                                                 <span class="text-sm text-white">Read Time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}</span>
                                             </p>
                                         </div>
-                                        <NuxtImg 
-                                            format="webp,avif"
-                                            :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                                            :alt="post.thumbnailAlt || post.title" 
-                                            :title="post.thumbnailAlt || post.title" 
-                                            :width="post.thumbnailWidth || ''"
-                                            :height="post.thumbnailHeight || ''"
-                                            loading="eager"
-                                            class="object-cover h-full w-full"
-                                        />        
+                                        <div class="aspect-[2/1]">
+                                            <NuxtImg 
+                                                format="webp,avif"
+                                                :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                                :alt="post.thumbnailAlt || post.title" 
+                                                :title="post.thumbnailAlt || post.title" 
+                                                :width="post.thumbnailWidth || ''"
+                                                :height="post.thumbnailHeight || ''"
+                                                loading="eager"
+                                                class="object-cover h-full w-full"
+                                                :placeholder="post.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                                            />        
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="flex flex-col justify-left gap-2 pt-4 px-2">
