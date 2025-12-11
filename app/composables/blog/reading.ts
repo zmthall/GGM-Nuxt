@@ -28,8 +28,34 @@ export const useReading = () => {
       return minutes === 1 ? '1 minute' : `${minutes} minutes`;
     } else return undefined
   }
+  
+  const getWordCountString = (markdown: string | null | undefined) => {
+    if (!markdown || typeof markdown !== "string") return 0;
+
+    // Remove markdown syntax to avoid inflated word counts
+    const cleaned = markdown
+      .replace(/[`*_>#-]/g, " ")
+      .replace(/!\[.*?\]\(.*?\)/g, " ")
+      .replace(/\[.*?\]\(.*?\)/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (!cleaned) return 0;
+    return cleaned.split(" ").length;
+  };
+
+  const getReadingTimeString = (markdown: string | null | undefined) => {
+    const count = getWordCountString(markdown);
+    if (!count) return undefined;
+
+    const minutes = Math.ceil(count / 250);
+    return minutes === 1 ? "1 minute" : `${minutes} minutes`;
+  };
+
   return {
+    getWordCount,
     getReadingTime,
-    getWordCount
-  }
+    getWordCountString,
+    getReadingTimeString
+  };
 }
