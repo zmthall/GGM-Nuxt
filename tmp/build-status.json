@@ -1,8 +1,8 @@
 {
-  "id": "build-1764878309064",
+  "id": "build-1765484337373",
   "status": "failed",
-  "startedAt": "2025-12-04T19:58:29.066Z",
-  "completedAt": "2025-12-04T19:58:29.066Z",
+  "startedAt": "2025-12-11T20:18:57.380Z",
+  "completedAt": "2025-12-11T20:18:57.380Z",
   "error": "spawn cmd.exe ENOENT",
   "logs": [
     "Rebuilding native modules for Node 22...",
