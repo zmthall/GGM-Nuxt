@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div v-if="authStore.authorized">
     <div class="md:grid md:grid-cols-15 md:max-w-[1500px] md:mx-auto">
@@ -16,7 +17,7 @@
           </h1>
 
           <p v-if="body" clas="mb-0!">
-            Reading time: {{ reading.getReadingTimeString(body) }}
+            Reading time: {{ readingTime }}
           </p>
 
           <time
@@ -135,7 +136,7 @@
     >
       <h2 class="text-2xl font-bold text-brand-primary mb-4">Related Posts</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <li v-for="relatedPost in relatedPosts" :key="relatedPost.id">
+        <li v-for="(relatedPost, idx) in relatedPosts" :key="relatedPost.id">
           <NuxtLink
             :to="`/admin${relatedPost.path}`"
             class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out"
@@ -145,7 +146,7 @@
                 <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
                   <span class="text-sm text-white">
                     Read Time:
-                    {{ reading.getReadingTime(relatedPost.body as MarkdownRoot) }}
+                    {{ postReadingTimes[idx] }}
                   </span>
                 </p>
 
@@ -202,7 +203,6 @@
 
 
 <script setup lang="ts">
-import type { MarkdownRoot } from '@nuxt/content'
 import { nanoid } from 'nanoid'
 import { useReading } from '../../../../composables/blog/reading'
 import { useBlogSchema } from '../../../../composables/blog/schema'
@@ -221,7 +221,6 @@ definePageMeta({
 const route = useRoute()
 const authStore = useAuthStore()
 const formatDates = useDateFormat()
-const reading = useReading()
 const blogSchema = useBlogSchema()
 const text = useText()
 
@@ -229,6 +228,18 @@ const text = useText()
 const slug = Array.isArray(route.params.slug)
   ? route.params.slug.join('/')
   : (route.params.slug as string)
+
+const reading = useReading();
+const { data: readingTime } = await useAsyncData<string | undefined>(
+  `reading-time-${slug}`,
+  () => reading.getReadingTime(slug as string),
+  {
+    // let it run on server so SSR has the value
+    server: true,
+    default: () => undefined,
+  }
+)
+
 
 const contentPath = `/blog/post/${slug}`
 
@@ -345,6 +356,8 @@ watch(
   { immediate: true }
 )
 
+const postReadingTimes = ref<string[]>([])
+
 /* ---------- RELATED POSTS ---------- */
 const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost[]>(
   `admin-blog-related-${route.path}`,
@@ -375,6 +388,19 @@ const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost
   { server: false, immediate: false, default: () => [] }
 )
 
+const getPostReadingTimes = () => {
+  relatedPosts.value?.forEach(async (post) => {
+    if(!post.path) return;
+    const postPathArr = post.path.split('/');
+
+    const postSlug = postPathArr[postPathArr.length - 1];
+
+    const postReadingTime = await reading.getReadingTime(postSlug as string)
+    
+    postReadingTimes.value.push(postReadingTime as string)
+  })
+}
+
 /* ---------- AUTH GATE ---------- */
 const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
 
@@ -385,6 +411,7 @@ onMounted(async () => {
   if (canFetch.value) {
     await execPost()
     if (post.value.id) await execRelated()
+    getPostReadingTimes();
     return
   }
 
