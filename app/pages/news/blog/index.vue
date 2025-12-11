@@ -1,5 +1,6 @@
 <template>
     <div>
+        <BaseUiBreadCrumbCTA v-if="authStore.authorized" to="/admin/blog">Admin Blog</BaseUiBreadCrumbCTA>
         <BaseLayoutPageSection v-if="latestPost" margin="top">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
@@ -126,6 +127,8 @@
 import { useDateFormat } from '../../../composables/dates/dateFormat'
 import { useReading } from '../../../composables/blog/reading'
 import type { AllPosts } from '../../../models/blog'
+
+const authStore = useAuthStore();
 
 defineOptions({
     name: 'BlogPostsPage'

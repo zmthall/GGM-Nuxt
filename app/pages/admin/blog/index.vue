@@ -4,8 +4,9 @@
       <BaseLayoutPageContainer>
           <BaseLayoutCard :centered="false">
             <div v-if="!isLoadingInitial">
-              <div v-if="posts.length > 0" class="mb-4">
+              <div v-if="posts.length > 0" class="mb-4 flex justify-between">
                 <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal"><span>Add New Post</span><BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5"/></BaseUiAction>
+                <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5"/><span>Website Blog</span></BaseUiAction>
               </div>
               <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Blog Posts</h2>
               <ul v-if="posts.length > 0" class="overflow-x-auto flex flex-col">
