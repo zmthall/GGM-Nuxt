@@ -14,8 +14,6 @@ node_modules
 logs
 *.log
 
-tmp
-
 # Content
 /content
 
@@ -23,6 +21,7 @@ tmp
 .DS_Store
 .fleet
 .idea
+/tmp
 
 # Local env files
 .env
