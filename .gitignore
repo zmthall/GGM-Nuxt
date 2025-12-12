@@ -14,10 +14,10 @@ node_modules
 logs
 *.log
 
+tmp
+
 # Content
 /content
-
-/tmp
 
 # Misc
 .DS_Store
