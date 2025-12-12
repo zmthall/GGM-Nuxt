@@ -17,6 +17,8 @@ logs
 # Content
 /content
 
+/tmp
+
 # Misc
 .DS_Store
 .fleet
