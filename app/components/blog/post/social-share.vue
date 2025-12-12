@@ -1,7 +1,7 @@
 <template>
   <div :class="['p-4 bg-zinc-300 rounded-lg md:max-w-none flex flex-col items-center shadow-primary', { 'max-w-40': isAside }]">
-    <h2 class="mb-2 font-bold text-xl text-center">Share This Post</h2>
-    <div :class="['flex items-center gap-2', , { 'flex-col min-[1300px]:flex-row': isAside }]">
+    <h2 class="mb-2 font-bold text-xl text-center whitespace-nowrap">Share This Post</h2>
+    <div :class="['flex items-center justify-center gap-2 flex-wrap']">
       <button 
         title="Copy Link"
         @click="socialShare.copyLink"

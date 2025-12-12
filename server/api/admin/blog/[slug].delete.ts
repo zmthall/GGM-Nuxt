@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 
 const CONTENT_DIR = resolve(process.cwd(), 'content', 'blog', 'post')
 const PUBLIC_DIR  = resolve(process.cwd(), 'public')
+const OUTPUT_PUBLIC_DIR = resolve(process.cwd(), '.output', 'public')
 
 const canonicalize = (s: string) =>
   s.replace(/[/\\]/g, '').trim().replace(/\s+/g, '-').toLowerCase()
@@ -40,12 +41,29 @@ export default defineEventHandler(async (event) => {
     const markdown = await fsp.readFile(postPath, 'utf8')
     const { data } = matter(markdown)
     const thumb = typeof data?.thumbnail === 'string' ? data.thumbnail : ''
+    
     if (thumb && thumb.startsWith('/images/blog/')) {
-      // '/images/blog/foo.webp' -> '<project>/public/images/blog/foo.webp'
-      const imgAbs = resolve(PUBLIC_DIR, '.' + thumb)
-      if (await exists(imgAbs)) {
-        await fsp.unlink(imgAbs)
-        removedImage = thumb
+      // Delete from public/ directory
+      const imgPublic = resolve(PUBLIC_DIR, '.' + thumb)
+      if (await exists(imgPublic)) {
+        try {
+          await fsp.unlink(imgPublic)
+          removedImage = thumb
+          console.log('Deleted image from public:', imgPublic)
+        } catch (e) {
+          console.error('Failed to delete from public:', e)
+        }
+      }
+      
+      // Also delete from .output/public/ if it exists
+      const imgOutput = resolve(OUTPUT_PUBLIC_DIR, '.' + thumb)
+      if (await exists(imgOutput)) {
+        try {
+          await fsp.unlink(imgOutput)
+          console.log('Deleted image from .output/public:', imgOutput)
+        } catch (e) {
+          console.error('Failed to delete from .output/public:', e)
+        }
       }
     }
   }

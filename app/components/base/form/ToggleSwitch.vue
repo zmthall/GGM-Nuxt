@@ -1,11 +1,14 @@
 <template>
-<div>
-    <label :for="name" class="flex items-center gap-2">
-        <input :id="name" v-model="toggleSwitchValue" class="appearance-none peer absolute" type="checkbox" :name="name">
-        <span class="">{{ label }}</span>
-        <div class="w-16 h-8 rounded-full border-2 border-gray-200 peer-checked:shadow-input relative cursor-pointer peer-checked:bg-brand-primary slider peer-checked:before:translate-x-[31px]" />
-    </label>
-</div>
+    <div>
+        <label v-if="headingLabel" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">
+            {{ headingLabel }}
+        </label>
+        <label :for="name" class="flex items-center gap-2 w-fit">
+            <input :id="name" v-model="toggleSwitchValue" class="appearance-none peer absolute" type="checkbox" :name="name">
+            <span>{{ label }}</span>
+            <div class="w-16 h-8 rounded-full border-2 border-gray-200 peer-checked:shadow-input relative cursor-pointer peer-checked:bg-brand-primary slider peer-checked:before:translate-x-[31px]" />
+        </label>
+    </div>
 </template>
 
 <script setup lang='ts'>
@@ -16,9 +19,10 @@ defineOptions({
 defineProps<{
     name: string;
     label: string;
+    headingLabel?: string;
 }>()
 
-const toggleSwitchValue = defineModel<boolean>()
+const toggleSwitchValue = defineModel<boolean | undefined>()
 
 </script>
 

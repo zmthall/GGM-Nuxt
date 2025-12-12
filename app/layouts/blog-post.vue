@@ -4,9 +4,7 @@
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <AdminAllPageDashboard />
-    <!-- Blog-specific header with post data from store -->
-    <BlogPostHeader title="Golden Gate Manor Blog Post" class="max-sm:hidden"/>
-    <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
+    <BaseLayoutPageBreadcrumb v-if="showBreadcrumb" class="mt-4"/>
     <slot />
     <BaseLayoutFooter />
   </main>
@@ -49,5 +47,6 @@ useSeoMeta({
 })
 
 const route = useRoute();
+
 const showBreadcrumb = computed(() => !route.meta.customBreadcrumb);
 </script>

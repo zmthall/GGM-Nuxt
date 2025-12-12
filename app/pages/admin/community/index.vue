@@ -57,7 +57,7 @@
       styling="justify-center max-w-[1200px] mx-auto"
       :padding="2"
     >
-      <BaseInteractiveImageCarousel :images="previewImages" image-selection />
+      <CommunityImageCarousel :images="previewImages" image-selection />
     </BaseInteractiveModal>
 
     <!-- Upload/edit modal -->

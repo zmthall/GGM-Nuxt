@@ -15,12 +15,13 @@ logs
 *.log
 
 # Content
-content
+/content
 
 # Misc
 .DS_Store
 .fleet
 .idea
+/tmp
 
 # Local env files
 .env

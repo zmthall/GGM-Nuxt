@@ -4,15 +4,16 @@
       <BaseLayoutPageContainer>
           <BaseLayoutCard :centered="false">
             <div v-if="!isLoadingInitial">
-              <div v-if="posts.length > 0" class="mb-4">
+              <div v-if="posts.length > 0" class="mb-4 flex justify-between">
                 <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal"><span>Add New Post</span><BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5"/></BaseUiAction>
+                <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal"><BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5"/><span>Website Blog</span></BaseUiAction>
               </div>
               <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Blog Posts</h2>
               <ul v-if="posts.length > 0" class="overflow-x-auto flex flex-col">
                 <li v-for="post in posts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
-                  <button class="p-4 flex justify-between gap-10 w-full min-w-[650px]" @click="openEditPostModal(getSlug(post.path))">
-                    <div class="flex gap-2 min-w-[650px]">
-                      <NuxtImg format="webp,avif" :src="post.thumbnail" :alt="post.thumbnailAlt" :title="post.thumbnailAlt" :width="post.thumbnailWidth" :height="post.thumbnailHeight" class="w-32 h-20 object-cover" />
+                  <button class="p-4 flex justify-between gap-10 w-full min-w-[675px]" @click="openEditPostModal(getSlug(post.path))">
+                    <div class="flex gap-2 min-w-[675px] max-w-[675px]">
+                      <NuxtImg format="webp,avif" :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'"  :alt="post.thumbnailAlt || ''" :title="post.thumbnailAlt || ''" :width="post.thumbnailWidth || '128'" :height="post.thumbnailHeight || '80'" class="w-32 h-20 object-cover" />
                       <div class="flex flex-col items-start justify-center">
                         <p class="text-xs">Last Updated: {{ dateFormat.formatShortDateNoLeadingZero(post.date) }}</p>
                         <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
@@ -32,7 +33,7 @@
                       <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(getSlug(post.path))"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover"/></button>
                     </div>
                     <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2']">
-                      <div>
+                      <div class="space-y-2">
                         <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800">
                           Draft
                         </span>
@@ -92,8 +93,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useDateFormat } from '../../../composables/dates/dateFormat'
 import type { BlogPost } from '../../../models/blog'
+import { useDateFormat } from '../../../composables/dates/dateFormat'
 
 definePageMeta({ layout: 'admin' })
 
@@ -141,19 +142,42 @@ const isPublished = (post: BlogPost): boolean => {
 }
 
 // ---------- initial list via internal Nuxt API (no token headers)
-const {
-  data: initialPosts,
-  execute,
-  refresh,
-  pending: isLoadingInitial
-} = await useAsyncData<BlogPost[]>(
-  'admin-blog-page-1',
-  () => $fetch<BlogPost[]>('/api/admin/blog/posts', {
-    method: 'GET',
-    query: { page: 1, limit }
-  }),
-  { server: false, immediate: false, default: () => [] }
-)
+// const {
+//   data: initialPosts,
+//   execute,
+//   refresh,
+//   pending: isLoadingInitial
+// } = await useAsyncData<BlogPost[]>(
+//   'admin-blog-page-1',
+//   () => $fetch<BlogPost[]>('/api/admin/blog/posts', {
+//     method: 'GET',
+//     query: { page: 1, limit }
+//   }),
+//   { server: false, immediate: false, default: () => [] }
+// )
+
+const isLoadingInitial = ref(true)
+const initialPosts = ref<BlogPost[]>([])
+
+const fetchInitialPosts = async () => {
+  isLoadingInitial.value = true
+
+  const idToken = await authStore.getIdToken()
+  try {
+    const result = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
+      method: 'GET',
+      query: { page: 1, limit },
+      headers: {
+        'authorization': `Bearer ${idToken}`
+      }
+    })
+    initialPosts.value = result
+  } catch (e) {
+    console.error('fetchInitialPosts:', e)
+  } finally {
+    isLoadingInitial.value = false
+  }
+}
 
 // seed list & hasMore
 watch(initialPosts, (list) => {
@@ -167,7 +191,7 @@ onMounted(async () => {
   await $getFirebase()
 
   if (canFetch.value) {
-    await execute()
+    await fetchInitialPosts()
     return
   }
 
@@ -176,7 +200,7 @@ onMounted(async () => {
     async ok => {
       if (!ok) return
       stop()
-      await execute()
+      await fetchInitialPosts()
     },
     { immediate: false }
   )
@@ -188,10 +212,15 @@ const loadMore = async () => {
   isLoading.value = true
   page.value++
 
+  const idToken = await authStore.getIdToken();
+
   try {
     const newPosts = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
       method: 'GET',
-      query: { page: page.value, limit }
+      query: { page: page.value, limit },
+      headers: {
+        "Authorization": `Bearer ${idToken}`
+      }
     })
     if (newPosts?.length) posts.value.push(...newPosts)
     if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
@@ -205,7 +234,7 @@ const loadMore = async () => {
 const refreshPosts = async () => {
   blogPostModalOpen.value = false
   page.value = 1
-  await refresh()
+  await fetchInitialPosts();
 }
 
 const showDeleteConfirmation = (slug: string) => {
@@ -223,12 +252,17 @@ const confirmDelete = async () => {
 }
 
 const deletePost = async (slug: string) => {
+  const idToken = await authStore.getIdToken();
+
   try {
     await $fetch(`/api/admin/blog/${slug}`, {
       method: 'DELETE',
-      query: { removeImage: true } // omit to keep image
+      query: { removeImage: true }, // omit to keep image
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
     })
-    await refresh()
+    await fetchInitialPosts()
   } catch (e) {
     console.error('deletePost:', (e as Error).message)
   }
@@ -259,13 +293,18 @@ const publishPost = async () => {
     pDate = new Date(publishDate.value).toISOString()
   }
 
+  const idToken = await authStore.getIdToken();
+
   try {
     await $fetch(`/api/admin/blog/${publishSlug.value}`, {
       method: 'PUT',
-      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } }
+      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } },
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
     })
     cancelPublish()
-    await refresh()
+    await fetchInitialPosts()
   } catch (e) {
     console.error('publishPost:', (e as Error).message)
   }

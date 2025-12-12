@@ -1,5 +1,6 @@
 <template>
     <div>
+        <BaseUiBreadCrumbCTA v-if="authStore.authorized" to="/admin/blog">Admin Blog</BaseUiBreadCrumbCTA>
         <BaseLayoutPageSection v-if="latestPost" margin="top">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
@@ -14,16 +15,19 @@
                                             <span class="text-2xl text-brand-primary font-bold">Latest</span>
                                         </p>
                                     </div>
-                                    <NuxtImg 
-                                        format="webp,avif"
-                                        :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                                        :alt="latestPost.thumbnailAlt || latestPost.title" 
-                                        :title="latestPost.thumbnailAlt || latestPost.title"
-                                        :width="latestPost.thumbnailWidth || ''"
-                                        :height="latestPost.thumbnailHeight || ''" 
-                                        loading="eager"
-                                        class="object-cover h-full w-full"
-                                    />        
+                                    <div class="aspect-[2/1]">
+                                        <NuxtImg 
+                                            format="webp,avif"
+                                            :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                            :alt="latestPost.thumbnailAlt || latestPost.title" 
+                                            :title="latestPost.thumbnailAlt || latestPost.title"
+                                            :width="latestPost.thumbnailWidth || ''"
+                                            :height="latestPost.thumbnailHeight || ''" 
+                                            loading="eager"
+                                            class="object-cover h-full w-full"
+                                            :placeholder="latestPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.'"
+                                        />        
+                                    </div>
                                 </div>
                                 <div class="bg-brand-primary">
                                     <div class="flex flex-col flex-wrap sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
@@ -64,25 +68,28 @@
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
                 <div v-if="posts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <li v-for="post in posts" :key="post.id">
+                        <li v-for="(post, idx) in posts" :key="post.id">
                             <NuxtLink :to="`/news${post.path}`" class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
                                         <div>
                                             <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                                                <span class="text-sm text-white">Read Time: {{ reading.getReadingTime(post.body as MarkdownRoot) }}</span>
+                                                <span class="text-sm text-white">Read Time: {{ postReadingTimes[idx] }}</span>
                                             </p>
                                         </div>
-                                        <NuxtImg 
-                                            format="webp,avif"
-                                            :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                                            :alt="post.thumbnailAlt || post.title" 
-                                            :title="post.thumbnailAlt || post.title" 
-                                            :width="post.thumbnailWidth || ''"
-                                            :height="post.thumbnailHeight || ''"
-                                            loading="eager"
-                                            class="object-cover h-full w-full"
-                                        />        
+                                        <div class="aspect-[2/1]">
+                                            <NuxtImg 
+                                                format="webp,avif"
+                                                :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                                :alt="post.thumbnailAlt || post.title" 
+                                                :title="post.thumbnailAlt || post.title" 
+                                                :width="post.thumbnailWidth || ''"
+                                                :height="post.thumbnailHeight || ''"
+                                                loading="eager"
+                                                class="object-cover h-full w-full"
+                                                :placeholder="post.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                                            />        
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="flex flex-col justify-left gap-2 pt-4 px-2">
@@ -117,10 +124,11 @@
 </template>
 
 <script setup lang='ts'>
-import type { MarkdownRoot } from '@nuxt/content'
 import { useDateFormat } from '../../../composables/dates/dateFormat'
 import { useReading } from '../../../composables/blog/reading'
 import type { AllPosts } from '../../../models/blog'
+
+const authStore = useAuthStore();
 
 defineOptions({
     name: 'BlogPostsPage'
@@ -178,6 +186,7 @@ const staffPicks = computed(() => {
 })
 
 const posts = ref<AllPosts[]>([])
+const postReadingTimes = ref<string[]>([])
 
 const page = ref(1)
 const limit = 8
@@ -197,6 +206,18 @@ const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
 
 posts.value = initialPosts.value || []
 
+const getPostReadingTimes = () => {
+  posts.value?.forEach(async (post) => {
+    const postPathArr = post.path.split('/');
+
+    const postSlug = postPathArr[postPathArr.length - 1];
+
+    const postReadingTime = await reading.getReadingTime(postSlug as string)
+    
+    postReadingTimes.value.push(postReadingTime as string)
+  })
+}
+
 const loadMore = async () => {
   if (!hasMorePages.value || isLoading.value) return
   isLoading.value = true
@@ -213,6 +234,7 @@ const loadMore = async () => {
 
 onMounted(() => {
     if (initialPosts.value) {
+        getPostReadingTimes()
         if(initialPosts.value.length < limit)
             // This was the last page
             hasMorePages.value = false

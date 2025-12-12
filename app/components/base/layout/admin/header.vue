@@ -5,9 +5,12 @@
         <button>
           <BaseIcon name="charm:menu-hamburger" color="text-white" hover-color="hover:text-zinc-500" @click="toggleDashboardDrawer"/>
         </button>
-        <button class="text-white border-2 border-brand-secondary rounded-xl p-2 hover:text-brand-primary hover:bg-brand-secondary" @click="logoutUser">
-          Logout
-        </button>
+        <div class="flex gap-2">
+          <AdminRebuildButton v-if="authStore.role === 'admin'" />
+          <BaseUiAction type="button" variant="secondary" class="text-white border-2 border-brand-secondary rounded-xl p-2 hover:text-brand-primary hover:bg-brand-secondary" @click="logoutUser">
+            Logout
+          </BaseUiAction>
+        </div>
       </nav>
       <Teleport to="body">
         <Transition name="dashboard-backdrop">

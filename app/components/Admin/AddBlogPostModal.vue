@@ -9,8 +9,15 @@
         <div v-if="meta && body !== undefined" class="space-y-8">
           <div class="sm:w-1/2 relative border-2 border-zinc-100 rounded-lg p-4 space-y-2">
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Information</h3>
-            <BaseFormInput v-model="meta.title" type="text" label="Title" name="title"/>
-            <BaseFormInput v-model="meta.description" type="text" label="Description" name="description"/>
+            <div v-if="meta.title !== undefined">
+              <BaseFormInput v-model="meta.title" type="text" label="Title" name="title"/>
+              <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.title.length > 70 }]">{{ meta.title.length }} Characters</div>
+            </div>
+
+            <div v-if="meta.description !== undefined">
+              <BaseFormInput v-model="meta.description" type="text" label="Description" name="description"/>
+              <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.description.length > 155 }]">{{ meta.description.length }} Characters</div>
+            </div>
             <BaseFormTextArea v-model="meta.summary" label="Summary" name="summary"/>
           </div>
           <div class="relative border-2 border-zinc-100 rounded-lg p-4 sm:w-1/2">
@@ -39,6 +46,7 @@
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Misc Post Details</h3>
             <BaseFormInput v-model="slug" name="slug" label="Post Link" />
             <BaseFormDatePicker v-model="meta.published" name="slug" label="Publish Date" date-format="Y-m-d" />
+            <BaseFormToggleSwitch v-model="meta.draft" name="draft" label="Draft" heading-label="Toggle Draft" />
             <BaseFormInlineTagsEditor v-model="meta.tags" name="tags" label="Post Tags" />
           </div>
         </div>
@@ -72,18 +80,27 @@ const imageData = ref<ImageDataFile>({
   alt: ''
 })
 
-const { data, execute } = await useFetch<BlogGetResponse>(
-  () => `/api/admin/blog/${modalSlug.value}`,
-  {
-    immediate: false, // don't fetch on setup
-    key: () => `admin-post-${modalSlug.value ?? 'none'}`,
+const data = ref<BlogGetResponse | null>(null)
+
+const fetchPost = async () => {
+  const idToken = await authStore.getIdToken();
+
+  try {
+    const result = await $fetch<BlogGetResponse>(`/api/admin/blog/${modalSlug.value}`, {
+      headers: {
+        'authorization': `Bearer ${idToken}`
+      }
+    })
+    data.value = result
+  } catch (e) {
+    console.error('fetchPost:', e)
   }
-)
+}
 
 // run only when slug becomes non-null
 watch(modalSlug, (newSlug) => {
   if (newSlug) {
-    execute()
+    fetchPost()
     slug.value = newSlug;
   } 
 }, { immediate: true })
@@ -138,6 +155,8 @@ function isConflict409(e: unknown): e is { data: { statusCode: number } } {
 }
 
 const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
+  const idToken = await authStore.getIdToken();
+
   if (!imageData.value?.file) {
     throw new Error('No image selected')
   }
@@ -149,7 +168,13 @@ const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
 
   const res = await $fetch<{ ok: true; url: string; alt: string }>(
     '/api/admin/blog/image',
-    { method: 'POST', body: form }
+    { 
+      method: 'POST', 
+      body: form,
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
+    }
   )
 
   return { url: res.url, alt: res.alt }
@@ -179,6 +204,8 @@ const getUserDisplayName = async () => {
 type CreateResp = { ok: boolean; slug: string; file: string; meta: BlogPost }
 
 const createBlogPost = async () => {
+  const idToken = await authStore.getIdToken();
+  
   // ----- basic validation -----
   const raw = slug.value?.trim()
   if (!raw) throw new Error('Please enter a post link (slug) first.')
@@ -200,7 +227,11 @@ const createBlogPost = async () => {
 
   // ----- optional: preflight existence check (cheap) -----
   try {
-    const exists = await $fetch<{ exists: boolean }>(`/api/admin/blog/exists/${safeSlug}`)
+    const exists = await $fetch<{ exists: boolean }>(`/api/admin/blog/exists/${safeSlug}`, {
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
+    })
     if (exists?.exists) {
       throw new Error('A post with this slug already exists.')
     }
@@ -234,6 +265,9 @@ const createBlogPost = async () => {
     const res = await $fetch<CreateResp>(`/api/admin/blog/${safeSlug}`, {
       method: 'POST',
       body: payload,
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
     })
 
     modalSlug.value = res.slug
@@ -262,32 +296,31 @@ const canonicalize = (s: string) =>
 const isValidSlug = (s: string) => /^[a-z0-9-]+$/.test(s)
 
 const saveBlogPostEdit = async () => {
+  const idToken = await authStore.getIdToken();
+
   const currentSlugRaw = modalSlug.value ?? slug.value
   if (!currentSlugRaw) throw new Error('Missing current slug.')
   if (!meta.value) throw new Error('Missing post meta.')
 
   const currentSlug = canonicalize(currentSlugRaw)
-
-  // remember OLD thumbnail to decide if we should delete it
   const oldThumb = meta.value.thumbnail ?? ''
 
-  // 1) determine thumbnail to use (upload only if user asked to)
   let nextThumb = oldThumb
   let nextAlt   = meta.value.thumbnailAlt ?? ''
 
-  if (changeImage.value) {
+  // Upload new image if user selected one (check imageData.file, not just changeImage)
+  if (imageData.value?.file) {  // <- CHANGED: check if there's actually a new file
     try {
       const { url, alt } = await uploadBlogImage()
       nextThumb = url
       nextAlt   = alt || nextAlt
     } catch (e) {
       console.error((e as Error).message)
-      // optional: bail out if upload failed
-      // throw new Error('Image upload failed; post not saved.')
+      throw new Error('Image upload failed; post not saved.')
     }
   }
 
-  // 2) detect slug edit and prepare rename
+  // Rest of your code stays the same...
   let renameTo: string | undefined
   let renamed = false
   if (slug.value) {
@@ -299,7 +332,6 @@ const saveBlogPostEdit = async () => {
     }
   }
 
-  // 3) build payload
   const payload: {
     meta: Partial<BlogPost>
     body?: string
@@ -311,7 +343,6 @@ const saveBlogPostEdit = async () => {
       tags: Array.isArray(meta.value.tags) ? meta.value.tags : [],
       thumbnail: nextThumb,
       thumbnailAlt: nextAlt,
-      // (optional) update edited date:
       date: (new Date()).toISOString(),
     },
     body: body.value,
@@ -319,9 +350,9 @@ const saveBlogPostEdit = async () => {
 
   if (renameTo) payload.renameTo = renameTo
 
-  // only request deletion when user changed the image AND it truly changed
+  // Delete old thumbnail if a new one was uploaded
   if (
-    changeImage.value &&
+    imageData.value?.file &&  // <- CHANGED: new image was uploaded
     oldThumb &&
     oldThumb !== nextThumb &&
     oldThumb.startsWith('/images/blog/')
@@ -329,18 +360,19 @@ const saveBlogPostEdit = async () => {
     payload.deleteOldThumbnail = true
   }
 
-  // 4) PUT update
   const res = await $fetch<PutResp>(`/api/admin/blog/${currentSlug}`, {
     method: 'PUT',
     body: payload,
+    headers: {
+      'Authorization': `Bearer ${idToken}`
+    }
   })
 
-  // 5) reflect canonical slug & reset flags
   modalSlug.value = res.slug
   if (renamed) slug.value = res.slug
   changeImage.value = false
+  imageData.value = { file: null, alt: '' } // <- ADDED: reset image data after save
 
-  // tell parent something changed (you can include details if you want)
   emit('edited-post')
 
   return { ...res, renamed }

@@ -1,35 +1,41 @@
-import type { MarkdownRoot } from "@nuxt/content";
-
 export const useReading = () => {
+  const getWordCount = (markdown: string | null | undefined) => {
+    if (!markdown || typeof markdown !== "string") return 0;
 
-  const getWordCount = (body: MarkdownRoot) => {
-    if(!body) return undefined
+    // Remove markdown syntax to avoid inflated word counts
+    const cleaned = markdown
+      // .replace
+      .replace(/[`*_>#-]/g, "")
+      .replace(/!\[.*?\]\(.*?\)/g, " ")
+      .replace(/\[.*?\]\(.*?\)/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
 
-    let count = 0;
-    body.value.forEach(arr => {
-      const content = arr[2] as string;
-      if (typeof content === 'string' && content.trim()) {
-        count += content.trim().split(/\s+/).length; // \s+ handles multiple spaces
-      }
-    })
-    
-    if(count === 0) return undefined;
+    if (!cleaned) return 0;
+    return cleaned.split(" ").length;
+  };
 
-    return count;
+  const getReadingTime = async (slug: string): Promise<string | undefined> => {
+    const postBodyStr = await getPostBody(slug)
+
+    const count = getWordCount(postBodyStr);
+    if (!count) return undefined;
+
+    const minutes = Math.ceil(count / 250);
+    return minutes === 1 ? "1 minute" : `${minutes} minutes`;
+  };
+
+  // Page Body (string)
+  const getPostBody = async (slug: string): Promise<string> => {
+    const response = await $fetch<{ body: string }>(`/api/blog/${slug}`, {
+        method: 'GET'
+      })
+
+      return response.body;
   }
 
-  const getReadingTime = (body: MarkdownRoot) => {
-    if(!body) return undefined;
-
-    const count = getWordCount(body);
-
-    if(count !== undefined && count !== 0) {
-      const minutes = Math.ceil(count/250);
-      return minutes === 1 ? '1 minute' : `${minutes} minutes`;
-    } else return undefined
-  }
   return {
+    getWordCount,
     getReadingTime,
-    getWordCount
-  }
+  };
 }

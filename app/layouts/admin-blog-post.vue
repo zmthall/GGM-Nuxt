@@ -6,9 +6,8 @@
       <DeferRender when="idle">
         <LazyAdminAllPageDashboard v-if="auth.authorized" />
       </DeferRender>
-
-      <BlogPostHeader v-if="auth.authorized" title="Golden Gate Manor Blog Post" class="max-sm:hidden" />
-      <BaseLayoutPageBreadcrumb v-if="showBreadcrumb && auth.authorized" />
+      <BaseLayoutPageBreadcrumb v-if="showBreadcrumb && auth.authorized" class="mt-4" />
+      <BaseToastContainer />
       <slot />
     </ClientOnly>
   </div>

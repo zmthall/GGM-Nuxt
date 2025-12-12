@@ -15,6 +15,7 @@
         class="capitalize"
       />
       <BaseLayoutPageBreadcrumb v-if="showBreadcrumb && auth.authorized" />
+      <BaseToastContainer />
       <slot />
     </ClientOnly>
   </div>

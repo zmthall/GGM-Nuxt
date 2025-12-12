@@ -62,7 +62,7 @@
         <BaseLayoutPageSection bg="default" margin="default">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl font-bold text-brand-primary mb-4">Community Events Images</h2>
-                <BaseInteractiveImageCarousel :images image-selection/>
+                <CommunityImageCarousel :images image-selection/>
                 <div class="flex justify-center mt-8">
                     <BaseUiAction to="/admin/community" class="py-2 px-4">Edit Community Images</BaseUiAction>
                 </div>
