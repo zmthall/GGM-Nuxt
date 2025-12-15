@@ -13,9 +13,7 @@
               @update:active-id="updateIdTrans">
                 <div v-once>
                   <p class="text-xl text-white">
-                    Your client may be eligible if they have a
-                    current Medicaid Insurance ID and are going
-                    to a Medicaid approved appointment.
+                    Your client may be eligible if they have a current Medicaid Insurance ID and are going to a Medicaid approved appointment.
                   </p>
                 </div>
             </BaseInteractiveAccordionButton>
@@ -31,8 +29,8 @@
               @update:active-id="updateIdTrans">
               <div v-once class="space-y-4">
                 <p class="text-xl text-white">
-                  To help us serve you better, please schedule your ride
-                  at least 24 hours in advance by calling <a :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a> between 8:00 AM
+                  To help us serve you better, please schedule your medical ride at least 24 hours in advance 
+                  by calling <a :href="`tel:${company?.trans.phone.office}`" class="link-light">{{ company?.trans.phone.office }}</a> between 8:00 AM
                   and 4:00 PM, Monday through Friday. This allows us the
                   necessary time to arrange your transportation efficiently.
                 </p>
@@ -85,10 +83,7 @@
               @update:active-id="updateIdTrans">
                 <div v-once>
                   <p class="text-xl text-white">
-                    We provide transportation assistance for
-                    those services covered by Medicaid. We cannot
-                    transport to services not covered under the
-                    Medicaid program.
+                    We provide non-emergency medical rides for services covered by Medicaid. We cannot transport to services not covered under the Medicaid program.
                   </p>
                 </div>
             </BaseInteractiveAccordionButton>
