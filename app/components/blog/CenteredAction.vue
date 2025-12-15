@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center !my-8">
+  <div class="flex justify-center !my-6">
     <BaseUiAction :to :href :variant :styling>
       <slot mdc-unwrap="p" />
     </BaseUiAction>
