@@ -17,7 +17,7 @@
             @click.passive="abButton ? emit('ab-test-click') : ''"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
-                <slot />
+                <slot mdc-unwrap="p" />
             </div>
         </NuxtLink>
     </template>
@@ -39,7 +39,7 @@
             @click.passive="abButton ? emit('ab-test-click') : ''"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
-                <slot />
+                <slot mdc-unwrap="p" />
             </div>
         </a>
     </template>
@@ -61,7 +61,7 @@
         >
             <div 
             :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">
-                <slot />
+                <slot mdc-unwrap="p" />
             </div>
         </button>
     </template>
