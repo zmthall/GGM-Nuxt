@@ -322,6 +322,27 @@ function extractAtAGlance(md: string) {
   }
 }
 
+function transformBlogCenteredAction(md: string): string {
+  // Match:
+  // ::BlogCenteredAction
+  // ::BlogCenteredAction{...}
+  // followed by inner text until ::
+  const regex = /::BlogCenteredAction(?:\{[^}]*\})?\s*([\s\S]*?)\s*::/gm
+
+  return md.replace(regex, (_, innerText) => {
+    const label = innerText.trim()
+
+    return `
+<div class="my-8 flex justify-center">
+  <button type="button" class="cta button-example" aria-disabled="true">
+    ${label}
+  </button>
+</div>`.trim()
+  })
+}
+
+
+
 /* ---------- HTML PREVIEW RENDERING ---------- */
 const renderedHtml = ref<string>('')
 
@@ -335,15 +356,18 @@ watch(
       return
     }
 
-    // Extract ::BlogAtAGlance block
+    // 1) Extract ::BlogAtAGlance block
     const { cleaned, items } = extractAtAGlance(trimmed)
     atAGlanceItems.value = items
+
+    // 2) Transform ::BlogCenteredAction blocks into HTML buttons
+    const withButtons = transformBlogCenteredAction(cleaned)
 
     try {
       const idToken = await authStore.getIdToken()
       const res = await $fetch<{ html: string }>('/api/admin/blog/render', {
         method: 'POST',
-        body: { markdown: cleaned },
+        body: { markdown: withButtons },
         headers: { Authorization: `Bearer ${idToken}` }
       })
 
@@ -355,6 +379,7 @@ watch(
   },
   { immediate: true }
 )
+
 
 const postReadingTimes = ref<string[]>([])
 
@@ -521,11 +546,15 @@ watchEffect(() => {
 }
 
 #main-body:deep(blockquote) {
-  @apply relative pl-2 before:h-full before:w-1 before:absolute before:top-0 before:left-0 before:bg-brand-primary before:rounded-full
+  @apply relative pl-2 before:h-full before:w-1 before:absolute before:top-0 before:left-0 before:bg-brand-primary before:rounded-full;
 }
 
 #main-body:deep(hr) {
   @apply my-8 border-t border-zinc-300;
+}
+
+#main-body:deep(button.cta.button-example) {
+  @apply bg-brand-primary transition-colors disabled:bg-zinc-500 disabled:text-white ease-in-out text-white border-2 duration-main border-brand-secondary hover:bg-brand-secondary hover:text-brand-primary py-2 px-4 font-semibold rounded-md text-center;;
 }
 
 .post-title {
