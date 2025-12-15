@@ -52,8 +52,8 @@
                             <ul class="space-y-4">
                                 <li v-for="staffPick in staffPicks" :key="staffPick.id" class="group">
                                     <nuxt-link :to="`/news${staffPick.path}`" class="flex flex-col">
-                                        <span class="text-lg font-bold font-headings sm:group-hover:scale-105">{{ staffPick.title }}</span>
-                                        <span class="text-xl group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105">{{ staffPick.description }}</span>
+                                        <span class="text-lg font-bold font-headings sm:group-hover:scale-105 post-title">{{ staffPick.title }}</span>
+                                        <span class="text-md group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105 staffpick-body ml-2">{{ staffPick.description }}</span>
                                     </nuxt-link>
                                 </li>
                             </ul>
@@ -243,7 +243,26 @@ onMounted(() => {
 </script>
 
 <style scoped>
+    .post-title {
+        --max-lines: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-clamp: var(--max-lines);
+        -webkit-line-clamp: var(--max-lines);
+    }
+
   .post-body {
+    --max-lines: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--max-lines);
+    position: relative;
+  }
+
+  .staffpick-body {
     --max-lines: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -259,12 +278,4 @@ onMounted(() => {
     }
   }
 
-  .post-title {
-    --max-lines: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-clamp: var(--max-lines);
-    -webkit-line-clamp: var(--max-lines);
-  }
 </style>
