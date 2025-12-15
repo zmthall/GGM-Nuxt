@@ -120,8 +120,6 @@
     </BaseLayoutPageSection>
     <Teleport to="body">
         <ClientOnly>
-          <template v-if="showTOCComponent">
-
             <button v-if="showTOC" ref="tocButtonRef" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-10 h-10 transition-transform duration-500 ease-in-out group z-16 flex justify-start items-center rounded-r-full bg-brand-primary border-r-2 border-t-2 border-b-2 border-brand-secondary hover:bg-brand-secondary hover:border-brand-primary', {'translate-x-[250px] sm:translate-x-80': tocDrawerOpen, 'translate-x-0': !tocDrawerOpen}]" title="Table of Contents" @click="toggleTOCDrawer">
               <BaseIcon v-show="!tocDrawerOpen" name="line-md:chevron-double-right" color="text-white" hover-color="group-hover:text-brand-primary" />
               <BaseIcon v-show="tocDrawerOpen" name="line-md:chevron-double-left" color="text-white" hover-color="group-hover:text-brand-primary" />
@@ -146,7 +144,6 @@
                 </ul>
               </div>
             </aside>
-          </template>
       </ClientOnly>
     </Teleport>
   </div>
@@ -159,8 +156,6 @@ import { useText } from '../../../../composables/text';
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
 import type { BlogPost } from '../../../../models/blog';
 import { onClickOutside } from '../../../../composables/onClickOutside';
-
-const showTOCComponent = ref(false)
 
 const route = useRoute();
 const formatDates = useDateFormat();

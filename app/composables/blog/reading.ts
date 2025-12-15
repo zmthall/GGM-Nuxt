@@ -2,12 +2,19 @@ export const useReading = () => {
   const getWordCount = (markdown: string | null | undefined) => {
     if (!markdown || typeof markdown !== "string") return 0;
 
+    let cleaned = markdown
+      .replace(
+        /::[A-Za-z0-9_]+(?:\{[^}]*\})?\s*([\s\S]*?)::/g,
+        "$1"
+      )
+      .replace(/(^|\n)#{1,6}\s*References[\s\S]*$/i, "");
+
     // Remove markdown syntax to avoid inflated word counts
-    const cleaned = markdown
+    cleaned = cleaned
       // .replace
       .replace(/[`*_>#-]/g, "")
       .replace(/!\[.*?\]\(.*?\)/g, " ")
-      .replace(/\[.*?\]\(.*?\)/g, " ")
+      .replace(/\[(.*?)\]\(.*?\)/g, "$1")
       .replace(/\s+/g, " ")
       .trim();
 
