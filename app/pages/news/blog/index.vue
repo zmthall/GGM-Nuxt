@@ -160,15 +160,19 @@ const formatDates = useDateFormat()
 const reading = useReading()
 const text = useText();
 
-const cutoffISO = new Date(Date.now() + 1).toISOString()
+const cutoffISO = new Date(Date.now() + 60_000).toISOString()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
-    .where('draft', '<>', true)
-    .where('published', '<', cutoffISO)
-    .select('path', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'published')
-    .limit(1)
-    .first() // Gets the first result as an object instead of array
+    .where('draft', '<>', true)          // safer than '<>' in Content
+    .where('published', '<', cutoffISO)  // equivalent to <= now (with buffer)
+    .order('published', 'DESC')          // IMPORTANT: actually get “latest”
+    .select(
+      'path','date','title',
+      'thumbnail','thumbnailAlt','thumbnailWidth','thumbnailHeight',
+      'tags','summary','published'
+    )
+    .first()
 })
 
 const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {

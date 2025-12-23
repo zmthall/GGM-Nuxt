@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "MedicalOrganization",
-  "@id": "https://goldengatemanor.com#organization",
+  "@id": "https://goldengatemanor.com/#organization",
   "name": "Golden Gate Manor Inc.",
   "url": "https://goldengatemanor.com",
   "logo": "https://goldengatemanor.com/images/layout/Full%20company%20GGM%20Logo.png",
