@@ -46,7 +46,8 @@
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Misc Post Details</h3>
             <BaseFormInput v-model="slug" name="slug" label="Post Link" />
             <BaseFormDatePicker v-model="meta.published" name="slug" label="Publish Date" date-format="Y-m-d" />
-            <BaseFormToggleSwitch v-model="meta.draft" name="draft" label="Draft" heading-label="Toggle Draft" />
+            <BaseFormToggleSwitch v-model="meta.draft" name="draft" label="Draft" heading-label="Toggle Settings" />
+            <BaseFormToggleSwitch v-model="meta.staffPick" name="staff-pick" label="Staff Pick" />
             <BaseFormInlineTagsEditor v-model="meta.tags" name="tags" label="Post Tags" />
           </div>
         </div>
@@ -116,6 +117,7 @@ const emptyMeta = (): BlogPost => ({
   date: '',
   author: '',
   draft: true,
+  staffPick: false,
   tags: [],
   thumbnail: '',
   thumbnailAlt: '',

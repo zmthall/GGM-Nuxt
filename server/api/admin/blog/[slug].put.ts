@@ -3,25 +3,26 @@ import { resolve, dirname } from 'node:path'
 import matter from 'gray-matter'
 
 type BlogMeta = {
-  id?: string
-  title?: string
-  description?: string
-  date?: string
-  author?: string
-  draft?: boolean
-  tags?: string[]
-  thumbnail?: string
-  thumbnailAlt?: string
-  thumbnailHeight?: string
-  thumbnailWidth?: string
-  summary?: string
-  published?: string
+  id?: string;
+  title?: string;
+  description?: string;
+  date?: string;
+  author?: string;
+  draft?: boolean;
+  staffPick?: boolean;
+  tags?: string[];
+  thumbnail?: string;
+  thumbnailAlt?: string;
+  thumbnailHeight?: string;
+  thumbnailWidth?: string;
+  summary?: string;
+  published?: string;
 }
 
 type IncomingMeta = Partial<BlogMeta>
 
 const updatable = [
-  'title', 'date', 'description','author','draft',
+  'title', 'date', 'description','author','draft', 'staffPick',
   'thumbnail','thumbnailAlt','thumbnailHeight','thumbnailWidth','summary', 'published',
 ] as const satisfies readonly (keyof BlogMeta)[]
 
@@ -75,6 +76,9 @@ function mergeMeta(
       case 'draft':
         out[k] = Boolean(v)
         break
+      case 'staffPick':
+        out[k] = Boolean(v)
+        break;
       default:
         out[k] = v === null ? '' : String(v)
         break

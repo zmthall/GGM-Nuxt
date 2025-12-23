@@ -10,6 +10,7 @@ type BlogMeta = {
   date?: string
   author?: string
   draft?: boolean
+  staffPick?: boolean;
   tags?: string[]
   thumbnail?: string
   thumbnailAlt?: string
@@ -53,6 +54,7 @@ const normalizeMeta = (m?: BlogMeta): ServerBlogMeta => {
     date: m?.date ? String(m.date) : '',               // optional free-form (you sort on published)
     author: m?.author ? String(m.author) : '',
     draft: Boolean(m?.draft ?? false),
+    staffPick: Boolean(m?.staffPick ?? false),
     tags,
     thumbnail: m?.thumbnail ?? '',
     thumbnailAlt: m?.thumbnailAlt ?? '',
