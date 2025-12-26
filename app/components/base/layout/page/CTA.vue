@@ -19,15 +19,18 @@
   
   <script setup lang="ts">
   withDefaults(defineProps<{
-    title: string
+    title?: string
     description?: string
     buttonLabel?: string
     to?: string;
     href?: string;
     hasButton?: boolean
+    hasTitle?: boolean
   }>(), {
+    title: undefined,
     description: undefined,
     hasButton: true,
+    hasTitle: true,
     to: undefined,
     buttonLabel: undefined,
     href: undefined

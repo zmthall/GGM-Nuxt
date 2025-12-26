@@ -20,6 +20,8 @@
             </div>
             <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
         </BaseLayoutPageHeroSection>
+            <BaseInteractiveLogosNav />
+
             <!-- Overview (our company) -->
             <BaseLayoutPageSection margin="default" class="cv-auto">
                 <BaseLayoutPageContainer>

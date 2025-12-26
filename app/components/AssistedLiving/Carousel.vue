@@ -19,8 +19,8 @@
                       </button>
                         <div class="absolute left-0 top-0 flex flex-col items-center w-full bg-black/50 py-4 overflow-hidden">
                             <h2 class="text-white font-bold">{{ (item as House).name }}</h2>
-                            <p class="text-white font-bold sm:max-h-0 sm:opacity-0 sm:group-hover:max-h-16 sm:group-hover:opacity-100 transition-all ease-in-out duration-500">{{ (item as House).address }}</p>
-                            <p v-if="(item as House).additional" class="text-white font-bold max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all ease-in-out duration-500">{{ (item as House).additional }}</p>
+                            <p class="text-white font-bold sm:max-h-0 sm:opacity-0 sm:group-hover:max-h-16 sm:group-hover:opacity-100 transition-all ease-in-out duration-500 text-center">{{ (item as House).address }}</p>
+                            <p v-if="(item as House).additional" class="text-white font-bold max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all ease-in-out duration-500 text-center">{{ (item as House).additional }}</p>
                         </div>
                         <div class="absolute left-0 bottom-4 flex justify-center w-full gap-4 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity ease-in-out duration-500">
                           <button class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">View More</button>

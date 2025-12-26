@@ -49,14 +49,18 @@ const props = withDefaults(defineProps<{
   /** Optional key selector (prop name or function) */
   itemKey?: string | KeyFn
   /** Show built-in loader overlay while measuring/parking */
+  minItemWidth?: number
   showLoader?: boolean
+  maxVisible?: number;
 }>(), {
   gap: 16,
   height: 400,
   transitionMs: 300,
   // Inline default function (no hoist issues)
   itemKey: ((_item: CarouselItem, index: number) => index) as KeyFn,
-  showLoader: true
+  showLoader: true,
+  maxVisible: 3,
+  minItemWidth: 180
 })
 
 /* ---------------- state ---------------- */
@@ -74,18 +78,40 @@ watch(
     // if items arrive async, mark loading until we re-park
     isLoading.value = true
   },
-  { immediate: true, deep: true }
+  { immediate: true }
 )
 
 /** responsive visible count: 3 ≥1024, 2 ≥768, else 1 */
 const visible = ref(1)
+
+const showControls = computed(() => {
+  const count = props.items?.length ?? 0
+
+  return count > visible.value
+})
+
+const canScroll = computed(() => (showControls.value))
+
 let ro: ResizeObserver | null = null
 onMounted(() => {
   container.value = track.value?.parentElement as HTMLElement | null
   const calc = () => {
     const w = container.value?.clientWidth ?? 0
+
+    // If we're mounting during a route transition, width can be 0.
+    // Retry next frame until layout is ready.
+    if (w === 0) {
+      requestAnimationFrame(calc)
+      return
+    }
+
     containerWidth.value = w
-    visible.value = w >= 1024 ? 3 : w >= 500 ? 2 : 1
+
+    const fit = Math.floor((w + props.gap) / (props.minItemWidth + props.gap))
+    const nextVisible = Math.max(1, Math.min(props.maxVisible, fit))
+
+    // Force to maxVisible if we are "desktop wide enough"
+    visible.value = w >= 1024 ? props.maxVisible : nextVisible
   }
   ro = new ResizeObserver(calc)
   if (container.value) ro.observe(container.value)
@@ -137,12 +163,29 @@ const ready = computed(() =>
 )
 
 async function parkAndShow() {
-  // park at -stepPx, then reveal after DOM paints
+  if (!canScroll.value) {
+    // show all items, no "buffer slot"
+    transitionOn.value = false
+    offsetPx.value = 0
+    isLoading.value = false
+    return
+  }
+
+  // normal infinite behavior
   offsetPx.value = -stepPx.value
   await nextTick()
-  // small rAF to avoid flash on very fast layouts
   requestAnimationFrame(() => { isLoading.value = false })
 }
+
+watch(
+  () => ready.value,
+  async (r) => {
+    if (!r) return
+    // even if isLoading is already false/true, force a correct park once geometry is valid
+    await parkAndShow()
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   // initial attempt once mounted
@@ -154,7 +197,7 @@ watch([stepPx, () => itemsLocal.value.length, visible, containerWidth], async ()
   if (!ready.value) return
   if (!transitionOn.value) {
     // If we’re not mid-animation, keep the parked transform in sync
-    offsetPx.value = -stepPx.value
+    offsetPx.value = canScroll.value ? -stepPx.value : 0
   }
   // If we were loading (first paint or items arrived), finish now
   if (isLoading.value) await parkAndShow()
@@ -162,25 +205,29 @@ watch([stepPx, () => itemsLocal.value.length, visible, containerWidth], async ()
 
 /* ---------------- controls ---------------- */
 function next(evt?: MouseEvent) {
+  if (!canScroll.value) return
   if (itemsLocal.value.length <= 1) return
   if (offsetPx.value !== -stepPx.value) return
+
   ;(evt?.target as HTMLButtonElement | undefined)?.setAttribute?.('disabled', 'true')
   transitionOn.value = true
-  // animate right by one card
   offsetPx.value = 0
 }
 
 function prev(evt?: MouseEvent) {
+  if (!canScroll.value) return
   if (itemsLocal.value.length <= 1) return
   if (offsetPx.value !== -stepPx.value) return
+
   ;(evt?.target as HTMLButtonElement | undefined)?.setAttribute?.('disabled', 'true')
   transitionOn.value = true
-  // animate left by one card
   offsetPx.value = -2 * stepPx.value
 }
 
 /** rotate + snap after animation completes */
 function onTransitionEnd(e: TransitionEvent) {
+  if (!canScroll.value) return
+
   if (e.propertyName !== 'transform') return
   transitionOn.value = false
 
@@ -204,6 +251,7 @@ function onTransitionEnd(e: TransitionEvent) {
 defineExpose({
   next,
   prev,
-  getLoading: () => isLoading.value
+  getLoading: () => isLoading.value,
+  showControls
 })
 </script>
