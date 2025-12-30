@@ -1,7 +1,7 @@
 <template>
   <!-- Our Logos and pagelinking -->
   <BaseLayoutPageCTA :has-title="false" :has-button="false">
-      <Nav class="flex justify-center items-center gap-16">
+      <nav class="flex justify-center items-center gap-16">
           <BaseUiAction v-if="!isCarouselLoading && (carousel?.showControls ?? false)" type="button" variant="blank" class="w-8 h-8 bg-black/20 hover:bg-white/20 transition-colors ease-in-out duration-500 text-white rounded-full" styling="flex justify-center items-center" @click="carousel?.prev()">
               <BaseIcon name="line-md:chevron-small-left" />
           </BaseUiAction>
@@ -13,7 +13,7 @@
           <BaseUiAction v-if="!isCarouselLoading && (carousel?.showControls ?? false)" type="button" variant="blank" class="w-8 h-8 bg-black/20 hover:bg-white/20 transition-colors ease-in-out duration-500 text-white rounded-full" styling="flex justify-center items-center" @click="carousel?.next()">
               <BaseIcon name="line-md:chevron-small-right" />
           </BaseUiAction>
-      </Nav>
+      </nav>
   </BaseLayoutPageCTA>
 </template>
 
