@@ -1,6 +1,6 @@
 <template>
   <!-- Our Logos and pagelinking -->
-  <BaseLayoutPageCTA :has-title="false" :has-button="false">
+  <BaseLayoutPageCTA :has-title="false" :has-button="false" background="logos-spotlight" :background-image="BACKGROUND_IMAGE" :background-image-opacity="0.1" background-image-blend-mode="normal" class="max-sm:hidden">
       <nav class="flex justify-center items-center gap-16">
           <BaseUiAction v-if="!isCarouselLoading && (carousel?.showControls ?? false)" type="button" variant="blank" class="w-8 h-8 bg-black/20 hover:bg-white/20 transition-colors ease-in-out duration-500 text-white rounded-full" styling="flex justify-center items-center" @click="carousel?.prev()">
               <BaseIcon name="line-md:chevron-small-left" />
@@ -20,14 +20,16 @@
 <script lang="ts" setup>
 import type { BaseInteractiveCarousel } from '../../../../.nuxt/components.js';
 
+const BACKGROUND_IMAGE = "https://firebasestorage.googleapis.com/v0/b/goldengatemanorinc.firebasestorage.app/o/marketing-edits%2Fblack-white-bridge.jpg?alt=media&token=4427e617-b3bb-4db8-81a0-d15300e6ec24"
+
 const isCarouselLoading = ref<boolean>(true)
 
 const logos = [
+    { to: '/gas-and-goods', imageSrc: '/images/logos/gas-station.png', alt: 'Golden Gate Manor Inc. Gas and Goods logo', label: 'Navigate to Gas and Goods Page' },
     { to: '/assisted-living', imageSrc: '/images/logos/assisted-living.png', alt: 'Golden Gate Manor Inc. Assisted Living logo', label: 'Navigate to Assisted Living Page' },
-    { to: '/non-medical', imageSrc: '/images/logos/city-cab.png', alt: 'Golden Gate Manor Inc. City Cab logo', label: 'Navigate to Non-Medical Transportation Page' },
     { to: '/nemt', imageSrc: '/images/logos/nemt.png', alt: 'Golden Gate Manor Inc. NEMT logo', label: 'Navigate to NEMT Page' },
     { to: '/medical-supplies', imageSrc: '/images/logos/medical-supply.png', alt: 'Golden Gate Manor Inc. Medical Supply logo', label: 'Navigate to Medical Supply Page' },
-    { to: '/gas-and-goods', imageSrc: '/images/logos/gas-station.png', alt: 'Golden Gate Manor Inc. Gas and Goods logo', label: 'Navigate to Gas and Goods Page' },
+    { to: '/non-medical', imageSrc: '/images/logos/city-cab.png', alt: 'Golden Gate Manor Inc. City Cab logo', label: 'Navigate to Non-Medical Transportation Page' },
 ];
 
 type logoItem = {
