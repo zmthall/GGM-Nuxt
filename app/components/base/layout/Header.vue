@@ -1,5 +1,5 @@
 <template>
-    <header class="max-md:hidden flex items-center justify-between p-3 bg-brand-background-header h-header">
+    <header class="max-md:hidden flex items-center justify-between p-3 bg-brand-background h-header">
         <!-- Left Header -->
         <div class="flex justify-between items-center">
             <NuxtLink to="/">
@@ -17,7 +17,7 @@
                     ref="contactButton"
                     data-button="contacts"
                     aria-label="business contact numbers"
-                    class="flex items-center p-2 border-2 border-transparent rounded-xl bg-brand-background-header hover:bg-brand-primary hover:border-brand-secondary group transition-colors duration-300 ease-in-out"
+                    class="flex items-center p-2 border-2 border-transparent rounded-xl bg-brand-background hover:bg-brand-primary hover:border-brand-secondary group transition-colors duration-300 ease-in-out"
                     @click="toggleContactServices">
                     <BaseIcon name="ic:round-call" hover-color="group-hover:text-brand-light-gray" />
                     <span class="font-bold text-brand-primary group-hover:text-brand-light-gray">Contacts</span>

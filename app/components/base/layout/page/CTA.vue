@@ -1,5 +1,9 @@
 <template>
-  <section class="w-full text-white py-12 px-4 sm:px-8 relative overflow-hidden" :class="sectionClass" :style="sectionStyle">
+  <section
+    class="w-full text-white py-12 px-4 sm:px-8 relative overflow-hidden"
+    :class="[sectionClass, { 'max-md:hidden': !showsOnMobile }]"
+    :style="sectionStyle"
+  >
     <div v-if="hasBgOverlay" class="absolute inset-0 pointer-events-none" :style="bgOverlayStyle" />
 
     <div class="max-w-6xl mx-auto text-center space-y-4 relative">
@@ -41,6 +45,7 @@ const props = withDefaults(defineProps<{
   backgroundImageBlendMode?: BackgroundBlendMode
   backgroundImagePosition?: string
   backgroundImageSize?: string
+  showsOnMobile?: boolean
 }>(), {
   title: undefined,
   description: undefined,
@@ -54,7 +59,8 @@ const props = withDefaults(defineProps<{
   backgroundImageOpacity: 0.05,
   backgroundImageBlendMode: 'soft-light',
   backgroundImagePosition: 'center',
-  backgroundImageSize: 'cover'
+  backgroundImageSize: 'cover',
+  showsOnMobile: true
 })
 
 const sectionClass = computed(() => {
