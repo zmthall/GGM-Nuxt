@@ -62,7 +62,7 @@
         <BaseLayoutPageSection bg="default" margin="default">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl font-bold text-brand-primary mb-4">Community Events Images</h2>
-                <CommunityImageCarousel :images image-selection/>
+                <CommunityImageCarousel />
                 <div class="flex justify-center mt-8">
                     <BaseUiAction to="/admin/community" class="py-2 px-4">Edit Community Images</BaseUiAction>
                 </div>
@@ -106,7 +106,6 @@
 import type { ContactFormData } from '../../models/admin/ContactForm.js';
 import type { RideRequestFormData } from '../../models/admin/RideRequestForm.js';
 import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
-import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData.js';
 import type { WatchStopHandle } from 'vue'
 
 const rideModalOpen = ref<boolean>(false);
@@ -152,33 +151,6 @@ const currentPage = ref<number>(1)
 const pageSize = 5
 const hasMorePages = ref<boolean>(true)
 const loadingMore = ref<boolean>(false)
-
-const images = ref<FetchImages>([])
-const imageLoading = ref<boolean>(true)
-
-const fetchImages = async (): Promise<void> => {
-  try {
-    imageLoading.value = true
-    const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'https://api.goldengatemanor.com/'
-    })
-    
-    // Filter out null slots and create array of only filled slots
-    images.value = Object.entries(response.slots)
-      .filter(([_key, slot]) => slot !== null) // Remove null slots
-      .map(([key, slot]) => ({
-        id: key,
-        src: slot.src,
-        alt: slot.alt,
-        lastUpdated: slot.lastUpdated
-      }))
-  } catch (error) {
-    console.error('Failed to fetch images:', error)
-    images.value = []
-  } finally {
-    imageLoading.value = false
-  }
-}
 
 const fetchEvents = async (): Promise<void> => {
   try {
@@ -261,7 +233,6 @@ onMounted(async () => {
       fetchRideRequests(true, 3, requestPage.value),
       fetchContactMessages(true, 3, contactPage.value),
       // these are public; safe to run now too
-      fetchImages(),
       fetchEvents(),
     ])
     return
@@ -275,7 +246,6 @@ onMounted(async () => {
       await Promise.allSettled([
         fetchRideRequests(true, 3, requestPage.value),
         fetchContactMessages(true, 3, contactPage.value),
-        fetchImages(),
         fetchEvents(),
       ])
     },

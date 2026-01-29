@@ -21,7 +21,7 @@
       <div class="absolute inset-0 flex items-center justify-center px-6">
         <div class="flex flex-col items-center text-center gap-6">
           <div class="transition-all duration-500 ease-out" :class="textGroupClass">
-            <h1 class="text-3xl font-extrabold text-brand-primary">
+            <h1 class="text-3xl font-extrabold text-brand-primary whitespace-nowrap">
               <span class="text-4xl">One Company.</span>
               <span class="font-normal"> Many services you can depend on.</span>
             </h1>
@@ -31,8 +31,8 @@
             </div>
           </div>
 
-          <div ref="logoEl" class="transition-opacity duration-700 ease-out" :class="logoOpacityClass">
-            <NuxtImg src="/images/layout/Full company GGM Logo.png" sizes="250px" width="350" height="279" format="webp" loading="eager" class="select-none drop-shadow-hero" />
+          <div ref="logoEl" class="transition-opacity duration-700 ease-out w-[200px] lg:w-[350px]" :class="logoOpacityClass">
+            <NuxtImg src="/images/layout/Full company GGM Logo.png" sizes="250px" width="350" height="279" format="webp" loading="eager" class="select-none drop-shadow-hero w-full" />
           </div>
 
           <!-- HOME POINT marker (center) -->
