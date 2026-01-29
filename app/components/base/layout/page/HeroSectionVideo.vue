@@ -44,6 +44,26 @@
       <div ref="dockPointEl" class="absolute right-3 bottom-3 w-px h-px pointer-events-none"/>
     </div>
   </section>
+
+  <BaseLayoutPageHeroSection class="md:hidden" src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
+    <div class="w-full p-4">
+        <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4 ">
+            <p class="text-3xl">Welcome to</p>
+            <h1 class="text-center flex flex-col" >
+                <span class="text-6xl font-extrabold text-brand-secondary">
+                    Golden Gate Manor
+                </span>
+                <span class="text-2xl uppercase">
+                    One Company. Many services you can depend on.
+                </span>
+            </h1>
+        </div>
+        <p class="text-xl text-center">
+            For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical Medicaid transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.
+        </p>
+    </div>
+    <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
+  </BaseLayoutPageHeroSection>
 </template>
 
 <script setup lang="ts">
