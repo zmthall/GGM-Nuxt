@@ -15,6 +15,12 @@
 <script setup lang="ts">
 const modalOpen = defineModel<boolean>({ default: true })
 
+useHead({
+  bodyAttrs: {
+    class: computed(() => (modalOpen.value) ? 'no-scroll' : '')
+  }
+})
+
 const props = withDefaults(defineProps<{
   csv?: string | null
 }>(), {
