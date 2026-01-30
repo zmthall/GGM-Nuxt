@@ -479,14 +479,34 @@ function handlePrint() {
   }
 
   const html = node.outerHTML
-  const headStyles = Array.from(document.querySelectorAll('link[rel="stylesheet"], style')).map(el => (el as HTMLElement).outerHTML).join('')
-  const printCss = `@page{size:landscape;margin:0.5in;}html,body{height:auto;overflow:visible;}body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}::-webkit-scrollbar{display:none!important;}*{-ms-overflow-style:none;scrollbar-width:none;}.shadow-lg{box-shadow:none!important;}.grid{page-break-inside:avoid;break-inside:avoid;}`
+
+  const origin = window.location.origin
+  const baseTag = `<base href="${origin}/">`
+
+  const styleTags = Array.from(document.querySelectorAll('style'))
+    .map(el => (el as HTMLElement).outerHTML)
+    .join('')
+
+  const stylesheetLinks = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    .map(el => {
+      const href = (el as HTMLLinkElement).getAttribute('href')
+      if (!href) return ''
+      const absHref = new URL(href, window.location.href).href
+      return `<link rel="stylesheet" href="${absHref}">`
+    })
+    .join('')
+
+  const headStyles = `${baseTag}${stylesheetLinks}${styleTags}`
+
+  const printCss = `@page{size:landscape;margin:0.5in;}html,body{height:auto;overflow:visible;}body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}*{overflow:visible!important;}*::-webkit-scrollbar{display:none!important;}*{-ms-overflow-style:none;scrollbar-width:none;}.shadow-lg{box-shadow:none!important;}.grid{page-break-inside:avoid;break-inside:avoid;}.bg-white{background:#fff!important;}`
+
+  // IMPORTANT: no <script> tag in here (avoids SFC/parser pain)
   const doc = `<!doctype html><html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Content Calendar</title>${headStyles}<style>${printCss}</style></head><body>${html}</body></html>`
 
   const blob = new Blob([doc], { type: 'text/html' })
   const url = URL.createObjectURL(blob)
-  const w = window.open(url, '_blank')
 
+  const w = window.open(url, '_blank')
   if (!w) {
     URL.revokeObjectURL(url)
     window.alert('Popup blocked. Please allow popups and try again.')
@@ -494,22 +514,31 @@ function handlePrint() {
   }
 
   let printed = false
-  const onLoad = () => {
+
+  const cleanup = () => {
+    setTimeout(() => URL.revokeObjectURL(url), 10_000)
+  }
+
+  const tryPrint = () => {
     if (printed) return
     printed = true
     try {
       w.focus()
       w.print()
+    } catch {
+      // if print throws, at least keep the window open for manual print
     } finally {
-      w.removeEventListener('load', onLoad)
-      setTimeout(() => { try { w.close() } catch {
-        //
-      } }, 250)
+      cleanup()
     }
   }
 
-  w.addEventListener('load', onLoad)
-  setTimeout(() => URL.revokeObjectURL(url), 10_000)
+  // If the new window loads normally, print right away (after a tiny delay for CSS)
+  w.addEventListener('load', () => {
+    setTimeout(tryPrint, 250)
+  })
+
+  // Fallback: if load never fires reliably, attempt after 1s anyway
+  setTimeout(tryPrint, 1000)
 }
 
 async function copyShareLink() {
