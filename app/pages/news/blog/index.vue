@@ -69,7 +69,7 @@
                 <div v-if="posts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <li v-for="(post, idx) in posts" :key="post.id">
-                            <NuxtLink :to="`/news${post.path}`" class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <NuxtLink :to="`/news${post.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
                                         <div>
@@ -93,11 +93,13 @@
                                     </div>
                                     <div>
                                         <div class="flex flex-col justify-left gap-2 pt-4 px-2">
-                                            <ul class="flex gap-2 items-center">
+                                            <ul v-if="post.tags != undefined && post.tags.length <= 3" class="flex gap-2 items-center">
                                                 <li v-for="tag in post.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
                                                     {{ tag }}
                                                 </li>
                                             </ul>
+                                            <BaseInteractiveTextRotator v-if="post.tags != undefined && post.tags?.length > 3" :items="post.tags" variant="marquee" marquee-direction="right" :marquee-seconds="10" wrapper-class="w-full overflow-hidden" text-class="text-sm text-white" marquee-gap-class="pr-3" marquee-item-class="bg-brand-primary border-brand-secondary border-2 p-2 mx-1 text-white rounded-lg" marquee-track-class="[animation-play-state:paused] group-hover:[animation-play-state:running]" />
+
                                             <time :datetime="formatDates.formatDatetime(post.published)">
                                                 Published on: {{ formatDates.formatShortDate(post.published) }}
                                             </time>

@@ -1,22 +1,18 @@
 <template>
   <div :class="wrapperClass">
-    <!-- fade -->
     <Transition v-if="variant === 'fade'" name="fade" mode="out-in">
       <p :key="activeItem" :class="textClass">{{ activeItem }}</p>
     </Transition>
 
-    <!-- slide-fade -->
     <Transition v-else-if="variant === 'slide-fade'" name="slideFade" mode="out-in">
       <p :key="activeItem" :class="textClass">{{ activeItem }}</p>
     </Transition>
 
-    <!-- type (type + delete) -->
     <p v-else-if="variant === 'type'" :class="textClass">
       <span>{{ typedText }}</span>
       <span v-if="showCursor" class="inline-block align-baseline">{{ cursorChar }}</span>
     </p>
 
-    <!-- type-reveal (type + fade out, no delete) -->
     <Transition v-else-if="variant === 'type-reveal'" name="fade" mode="out-in">
       <p :key="typeRevealKey" :class="textClass">
         <span>{{ typeRevealText }}</span>
@@ -24,38 +20,29 @@
       </p>
     </Transition>
 
-    <!-- inline-swap -->
     <p v-else-if="variant === 'inline-swap'" :class="textClass">
       <span>{{ inlinePrefix }}</span>
       <span class="font-extrabold">{{ activeItem }}</span>
       <span>{{ inlineSuffix }}</span>
     </p>
 
-    <!-- chips -->
     <div v-else-if="variant === 'chips'" class="flex flex-wrap justify-center gap-2">
-      <span v-for="(it, i) in items" :key="`${it}-${i}`" class="px-3 py-1 rounded-full border-2 text-sm tracking-wide" :class="i === index ? 'text-brand-primary bg-white/25 shadow-hero border-brand-primary/50' : 'text-brand-primary/70 border-brand-primary/25 bg-white/10'">
-        {{ it }}
-      </span>
+      <span v-for="(it, i) in items" :key="`${it}-${i}`" class="px-3 py-1 rounded-full border-2 text-sm tracking-wide" :class="i === index ? 'text-brand-primary bg-white/25 shadow-hero border-brand-primary/50' : 'text-brand-primary/70 border-brand-primary/25 bg-white/10'">{{ it }}</span>
     </div>
 
-    <!-- stepper -->
     <div v-else-if="variant === 'stepper'" class="flex flex-col items-center gap-2">
       <p :class="textClass">{{ activeItem }}</p>
       <div class="flex gap-2">
-        <span v-for="(it, i) in items" :key="`${it}-${i}`" class="h-2 w-2 rounded-full" :class="i === index ? 'bg-brand-primary' : 'bg-brand-primary/30'">
-          <!-- placeholder -->
-        </span>
+        <span v-for="(it, i) in items" :key="`${it}-${i}`" class="h-2 w-2 rounded-full" :class="i === index ? 'bg-brand-primary' : 'bg-brand-primary/30'"></span>
       </div>
     </div>
 
-    <!-- marquee -->
     <div v-else-if="variant === 'marquee'" class="w-full overflow-hidden">
-      <div class="marquee-track whitespace-nowrap will-change-transform" :style="{ animationDuration: marqueeDuration }">
-        <span v-for="(it, i) in marqueeItems" :key="`${it}-${i}`" class="inline-block pr-10" :class="textClass">{{ it }}</span>
+      <div class="marquee-track whitespace-nowrap will-change-transform" :class="[marqueeDirectionClass, marqueeTrackClass]" :style="{ animationDuration: marqueeDuration }">
+        <span v-for="(it, i) in marqueeItems" :key="`${it}-${i}`" class="inline-flex items-center" :class="[textClass, marqueeItemClass, marqueeGapClass]">{{ it }}</span>
       </div>
     </div>
 
-    <!-- fallback -->
     <p v-else :class="textClass">{{ activeItem }}</p>
   </div>
 </template>
@@ -64,6 +51,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 type Variant = 'fade' | 'slide-fade' | 'type' | 'type-reveal' | 'inline-swap' | 'chips' | 'stepper' | 'marquee'
+type MarqueeDirection = 'left' | 'right'
 
 const props = withDefaults(defineProps<{
   items: string[]
@@ -81,6 +69,10 @@ const props = withDefaults(defineProps<{
   inlinePrefix?: string
   inlineSuffix?: string
   marqueeSeconds?: number
+  marqueeDirection?: MarqueeDirection
+  marqueeItemClass?: string
+  marqueeGapClass?: string
+  marqueeTrackClass?: string
 }>(), {
   variant: 'fade',
   wrapperClass: 'min-h-[1.75rem]',
@@ -95,7 +87,11 @@ const props = withDefaults(defineProps<{
   cursorChar: '▍',
   inlinePrefix: 'We provide ',
   inlineSuffix: '.',
-  marqueeSeconds: 18
+  marqueeSeconds: 18,
+  marqueeDirection: 'left',
+  marqueeItemClass: '',
+  marqueeGapClass: 'pr-6',
+  marqueeTrackClass: ''
 })
 
 const index = ref(0)
@@ -110,6 +106,7 @@ const typeRevealKey = ref(0)
 
 const marqueeItems = computed(() => props.items.length ? [...props.items, ...props.items] : [])
 const marqueeDuration = computed(() => `${props.marqueeSeconds}s`)
+const marqueeDirectionClass = computed(() => props.marqueeDirection === 'right' ? 'dir-right' : 'dir-left')
 
 let fadeTimer: number | null = null
 let typeTimer: number | null = null
@@ -241,7 +238,7 @@ onMounted(() => {
   start()
 })
 
-watch(() => [props.variant, props.items.join('|')], () => {
+watch(() => [props.variant, props.items.join('|'), props.marqueeDirection], () => {
   index.value = 0
   typedText.value = ''
   typeRevealText.value = ''
@@ -262,6 +259,10 @@ onBeforeUnmount(() => {
 .slideFade-enter-from{opacity:0; transform:translateY(6px)}
 .slideFade-leave-to{opacity:0; transform:translateY(-6px)}
 
-.marquee-track{animation-name:marquee; animation-timing-function:linear; animation-iteration-count:infinite}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-track{animation-timing-function:linear; animation-iteration-count:infinite}
+.marquee-track.dir-left{animation-name:marquee-left}
+.marquee-track.dir-right{animation-name:marquee-right}
+
+@keyframes marquee-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes marquee-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 </style>
