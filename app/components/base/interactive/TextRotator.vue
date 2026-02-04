@@ -33,7 +33,7 @@
     <div v-else-if="variant === 'stepper'" class="flex flex-col items-center gap-2">
       <p :class="textClass">{{ activeItem }}</p>
       <div class="flex gap-2">
-        <span v-for="(it, i) in items" :key="`${it}-${i}`" class="h-2 w-2 rounded-full" :class="i === index ? 'bg-brand-primary' : 'bg-brand-primary/30'"></span>
+        <span v-for="(it, i) in items" :key="`${it}-${i}`" class="h-2 w-2 rounded-full" :class="i === index ? 'bg-brand-primary' : 'bg-brand-primary/30'" />
       </div>
     </div>
 

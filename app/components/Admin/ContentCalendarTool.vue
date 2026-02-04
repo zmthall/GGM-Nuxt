@@ -122,7 +122,7 @@
         <div class="space-y-4">
           <div class="flex items-center justify-between gap-3">
             <h2 class="text-xl text-brand-primary font-bold">Load Calendar</h2>
-            <button type="button" class="px-3 py-1 rounded bg-zinc-200 hover:bg-zinc-300 transition" @click="refreshCalendarList" :disabled="loadModalBusy">
+            <button type="button" class="px-3 py-1 rounded bg-zinc-200 hover:bg-zinc-300 transition" :disabled="loadModalBusy" @click="refreshCalendarList">
               Refresh
             </button>
           </div>
@@ -150,11 +150,11 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                  <button type="button" class="px-3 py-1 rounded bg-brand-primary text-white hover:opacity-90 transition" @click="loadCalendar(item.key)" :disabled="loadModalBusy">
+                  <button type="button" class="px-3 py-1 rounded bg-brand-primary text-white hover:opacity-90 transition" :disabled="loadModalBusy" @click="loadCalendar(item.key)">
                     Load
                   </button>
 
-                  <button type="button" class="px-3 py-1 rounded bg-red-600 text-white hover:bg-red-700 transition" @click="deleteCalendar(item.key)" :disabled="loadModalBusy">
+                  <button type="button" class="px-3 py-1 rounded bg-red-600 text-white hover:bg-red-700 transition" :disabled="loadModalBusy" @click="deleteCalendar(item.key)">
                     Delete
                   </button>
                 </div>
@@ -163,7 +163,7 @@
 
             <div class="mt-3">
               <label class="block text-xs font-semibold text-zinc-600 mb-1">Filter (optional)</label>
-              <input v-model="calendarFilter" type="text" class="w-full border border-zinc-300 rounded px-3 py-2 text-sm" placeholder="e.g. 2026-04" />
+              <input v-model="calendarFilter" type="text" class="w-full border border-zinc-300 rounded px-3 py-2 text-sm" placeholder="e.g. 2026-04">
             </div>
           </div>
 

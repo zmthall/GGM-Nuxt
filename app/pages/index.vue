@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseLayoutPageHeroSectionVideo />
+        <BaseLayoutPageHeroSectionVideo :active="false" />
             
         <BaseInteractiveLogosNav :shows-on-mobile="false" />
 

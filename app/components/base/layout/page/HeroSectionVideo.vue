@@ -1,5 +1,5 @@
 <template>
-  <section class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden">
+  <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden">
     <BaseInteractiveHeroVideo ref="heroVideo" src="/videos/temp.mp4" muted loop @ready="videoReady = true" @play="onVideoPlay" @pause="onVideoPause" />
 
     <div class="absolute inset-0 z-1 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
@@ -45,7 +45,7 @@
     </div>
   </section>
 
-  <BaseLayoutPageHeroSection class="md:hidden" src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
+  <BaseLayoutPageHeroSection :class="[{'md:hidden': active }]" src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
     <div class="w-full p-4">
         <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4 ">
             <p class="text-3xl">Welcome to</p>
@@ -68,6 +68,10 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
+
+defineProps<{
+  active: boolean;
+}>()
 
 const services = [
   'Non-Emergency Medical Transportation',
