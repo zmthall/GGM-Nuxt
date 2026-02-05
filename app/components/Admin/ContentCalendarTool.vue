@@ -7,7 +7,7 @@
           {{ title }}
         </h1>
 
-        <div class="mb-4">
+        <div v-if="inputData.length === 0" class="mb-4">
           <label class="block text-sm font-medium text-gray-700 mb-2">Paste your CSV data here:</label>
           <textarea v-model="inputData" class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm" placeholder="Date,Day,PostType,ServiceLine,CityFocus,WorkingTitle,PrimaryKeyword,PrimaryQuestionAnswered,Notes" />
         </div>
@@ -36,7 +36,7 @@
               🖨️ Print Calendar
             </button>
 
-            <button type="button" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition flex items-center gap-2" @click="saveCopyShareLink">
+            <button v-if="authStore.role === 'admin'" type="button" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition flex items-center gap-2" @click="saveCopyShareLink">
               💾 Save / Copy Link
             </button>
           </div>
@@ -170,7 +170,7 @@
                     Load
                   </button>
 
-                  <button type="button" class="px-3 py-1 rounded bg-red-600 text-white hover:bg-red-700 transition" :disabled="loadModalBusy" @click="deleteCalendar(item.key)">
+                  <button v-if="authStore.role === 'admin'" type="button" class="px-3 py-1 rounded bg-red-600 text-white hover:bg-red-700 transition disabled:grayscale" :disabled="loadModalBusy" @click="deleteCalendar(item.key)">
                     Delete
                   </button>
                 </div>
@@ -191,6 +191,8 @@
 
 <script setup lang="ts">
 import type { LocationQueryRaw } from 'vue-router'
+
+const authStore = useAuthStore();
 
 type CalendarPost = {
   date: Date
