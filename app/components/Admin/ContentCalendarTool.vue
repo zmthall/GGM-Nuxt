@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4">
+  <div class="bg-gray-50 p-4">
     <div class="max-w-7xl mx-auto">
       <div v-if="showToolbar" class="bg-white rounded-lg shadow-lg p-6 mb-6 print:hidden">
         <h1 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
@@ -118,7 +118,7 @@
         </div>
       </div>
 
-      <BaseInteractiveModal v-model="loadModalOpen" small-modal :padding="3" @close="closeLoadModal">
+      <BaseInteractiveModal v-model="loadModalOpen" small-modal styling="justify-between overflow-auto" :padding="3" @close="closeLoadModal">
         <div class="space-y-4">
           <div class="flex items-center justify-between gap-3">
             <h2 class="text-xl text-brand-primary font-bold">Load Calendar</h2>
@@ -136,10 +136,15 @@
           </div>
 
           <div v-else>
+            <div class="my-3">
+              <label class="block text-xs font-semibold text-zinc-600 mb-1">Filter (optional)</label>
+              <input v-model="calendarFilter" type="text" class="w-full border border-zinc-300 rounded px-3 py-2 text-sm" placeholder="e.g. 2026-04">
+            </div>
+
             <div v-if="calendarItems.length === 0" class="text-sm text-gray-600">
               No saved calendars yet.
             </div>
-
+            
             <ul v-else class="divide-y divide-zinc-200 border border-zinc-200 rounded">
               <li v-for="item in filteredCalendarItems" :key="item.key" class="flex items-center justify-between gap-3 p-3 hover:bg-zinc-50">
                 <div class="flex flex-col">
@@ -160,11 +165,6 @@
                 </div>
               </li>
             </ul>
-
-            <div class="mt-3">
-              <label class="block text-xs font-semibold text-zinc-600 mb-1">Filter (optional)</label>
-              <input v-model="calendarFilter" type="text" class="w-full border border-zinc-300 rounded px-3 py-2 text-sm" placeholder="e.g. 2026-04">
-            </div>
           </div>
 
           <div class="flex justify-end gap-2 pt-2">

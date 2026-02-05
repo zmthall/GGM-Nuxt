@@ -4,10 +4,6 @@
       <h2 class="mb-6 text-2xl text-brand-primary font-bold">Content Calendar</h2>
 
       <AdminContentCalendarTool :show-toolbar="true" :sync-url="true" :initial-data="initialCsv" @generated="onGenerated" />
-
-      <div class="mt-4 flex justify-end px-4 gap-4">
-        <BaseUiAction type="button" class="px-2 py-1" @click="closeModal">Close</BaseUiAction>
-      </div>
     </div>
   </BaseInteractiveModal>
 </template>
