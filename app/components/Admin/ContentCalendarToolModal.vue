@@ -30,11 +30,6 @@ const emit = defineEmits<{
 
 const initialCsv = computed(() => props.csv ?? '');
 
-function closeModal() {
-  modalOpen.value = false
-  emit('close')
-}
-
 function onGenerated(posts: unknown[]) {
   emit('generated', Array.isArray(posts) ? posts.length : 0)
 }

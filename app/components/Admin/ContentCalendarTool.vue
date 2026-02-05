@@ -12,7 +12,7 @@
           <textarea v-model="inputData" class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm" placeholder="Date,Day,PostType,ServiceLine,CityFocus,WorkingTitle,PrimaryKeyword,PrimaryQuestionAnswered,Notes" />
         </div>
 
-        <div class="flex gap-3 flex-wrap">
+        <div v-if="posts.length === 0" class="flex gap-3 flex-wrap">
           <button type="button" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" @click="handleGenerate">
             Generate Calendar
           </button>
@@ -20,8 +20,14 @@
           <button v-if="posts.length === 0" type="button" class="px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-zinc-800 transition" @click="openLoadModal">
             📂 Load Calendar
           </button>
+        </div>
 
-          <template v-if="posts.length > 0">
+        <div v-if="posts.length > 0" class="flex gap-3 justify-between">
+          <div class="flex gap-3">
+            <button type="button" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" @click="handleGenerate">
+              Generate Calendar
+            </button>
+            
             <button type="button" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center gap-2" @click="exportToICS">
               ⬇️ Export to Google Calendar
             </button>
@@ -33,7 +39,12 @@
             <button type="button" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition flex items-center gap-2" @click="saveCopyShareLink">
               💾 Save / Copy Link
             </button>
-          </template>
+          </div>
+          <div>
+            <button type="button" class="px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-zinc-800 transition flex items-center gap-2" @click="handleReset">
+              ♻️ Reset
+            </button>
+          </div>
         </div>
       </div>
 
@@ -144,7 +155,7 @@
             <div v-if="calendarItems.length === 0" class="text-sm text-gray-600">
               No saved calendars yet.
             </div>
-            
+
             <ul v-else class="divide-y divide-zinc-200 border border-zinc-200 rounded">
               <li v-for="item in filteredCalendarItems" :key="item.key" class="flex items-center justify-between gap-3 p-3 hover:bg-zinc-50">
                 <div class="flex flex-col">
@@ -179,6 +190,8 @@
 </template>
 
 <script setup lang="ts">
+import type { LocationQueryRaw } from 'vue-router'
+
 type CalendarPost = {
   date: Date
   day: string
@@ -626,6 +639,35 @@ async function saveAndBuildShortUrl(): Promise<string | null> {
   } catch (e) {
     console.error('saveAndBuildShortUrl failed:', e)
     return null
+  }
+}
+
+function clearQueryParam(query: LocationQueryRaw, key: string): LocationQueryRaw {
+  const { [key]: _removed, ...rest } = query
+  return rest
+}
+
+async function handleReset() {
+  inputData.value = ''
+  posts.value = []
+  selectedPost.value = null
+  currentMonth.value = new Date()
+
+  loadModalOpen.value = false
+  loadModalBusy.value = false
+  loadModalError.value = null
+  calendarFilter.value = ''
+  calendarItems.value = []
+
+  if (props.syncUrl) {
+    const q0: LocationQueryRaw = { ...(route.query as LocationQueryRaw) }
+
+    const q1 = clearQueryParam(q0, CALENDAR_OPEN_PARAM)
+    const q2 = clearQueryParam(q1, KEY_PARAM)
+    const q3 = clearQueryParam(q2, props.queryKey)
+    const q4 = clearQueryParam(q3, STORAGE_KEY_PARAM)
+
+    await router.replace({ query: q4 })
   }
 }
 
