@@ -10,7 +10,22 @@ export type ContentCalendarRecord = {
 
 type StoreShape = Record<string, ContentCalendarRecord>
 
-const FILE_PATH = path.resolve(process.cwd(), 'server', 'data', 'content-calendars.json')
+function getAppRootFromCwd() {
+  const cwd = process.cwd()
+
+  // If we're running from a Nitro build output, cwd will often include "/.output"
+  // We want the directory *above* ".output" (your real project root).
+  const marker = `${path.sep}.output`
+  const idx = cwd.lastIndexOf(marker)
+
+  if (idx === -1) return cwd
+
+  // Keep everything before "/.output"
+  return cwd.slice(0, idx)
+}
+
+const APP_ROOT = getAppRootFromCwd()
+const FILE_PATH = path.join(APP_ROOT, 'server', 'data', 'content-calendars.json')
 
 async function ensureFile() {
   try {
@@ -45,10 +60,9 @@ export function isValidCalendarKey(key: string) {
 
 export async function listCalendars() {
   const store = await readStore()
-  const items = Object.values(store)
+  return Object.values(store)
     .sort((a, b) => (a.key < b.key ? 1 : -1))
     .map(({ key, createdAt, updatedAt }) => ({ key, createdAt, updatedAt }))
-  return items
 }
 
 export async function getCalendar(key: string) {
@@ -77,6 +91,7 @@ export async function deleteCalendar(key: string) {
   const store = await readStore()
   if (!Object.prototype.hasOwnProperty.call(store, key)) return false
 
+  // eslint-safe: remove without `delete store[key]`
   const { [key]: _removed, ...rest } = store
   await writeStore(rest)
 
