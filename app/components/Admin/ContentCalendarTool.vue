@@ -7,7 +7,7 @@
           {{ title }}
         </h1>
 
-        <div v-if="inputData.length === 0" class="mb-4">
+        <div class="mb-4">
           <label class="block text-sm font-medium text-gray-700 mb-2">Paste your CSV data here:</label>
           <textarea v-model="inputData" class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm" placeholder="Date,Day,PostType,ServiceLine,CityFocus,WorkingTitle,PrimaryKeyword,PrimaryQuestionAnswered,Notes" />
         </div>
@@ -292,10 +292,12 @@ async function tryLoadFromKeyParam(key: string) {
 
     const headers = await getAuthHeaders()
 
-    const rec = await $fetch<{ key: string; csv: string }>(
-      `/api/admin/blog/content-calendar/${encodeURIComponent(key)}`,
-      { method: 'GET', headers }
-    )
+    const rec = await $fetch<{ key: string; csv: string }>(`/api/calendar/${encodeURIComponent(key)}`, {
+      baseURL: "https://api.goldengatemanor.com",
+      method: 'GET',
+      headers
+    })
+
 
     const csv = String(rec?.csv ?? '').trim()
     if (!csv) return false
@@ -623,11 +625,13 @@ async function saveAndBuildShortUrl(): Promise<string | null> {
 
   try {
     const headers = await getAuthHeaders()
-    await $fetch(`/api/admin/blog/content-calendar/${key}`, {
+    await $fetch(`/api/calendar/${encodeURIComponent(key)}`, {
+      baseURL: "https://api.goldengatemanor.com",
       method: 'PUT',
       body: { csv },
       headers
     })
+
 
     const base = window.location.origin + window.location.pathname
     const params = new URLSearchParams(window.location.search)
@@ -818,10 +822,12 @@ async function refreshCalendarList() {
 
   try {
     const headers = await getAuthHeaders()
-    const res = await $fetch<{ items: CalendarListItem[] }>('/api/admin/blog/content-calendar', {
+    const res = await $fetch<{ items: CalendarListItem[] }>(`/api/calendar`, {
+      baseURL: "https://api.goldengatemanor.com",
       method: 'GET',
       headers
     })
+
     calendarItems.value = Array.isArray(res?.items) ? res.items : []
   } catch (e) {
     console.error('refreshCalendarList failed:', e)
@@ -839,10 +845,12 @@ async function loadCalendar(key: string) {
 
   try {
     const headers = await getAuthHeaders()
-    const rec = await $fetch<{ key: string; csv: string }>(`/api/admin/blog/content-calendar/${encodeURIComponent(key)}`, {
+    const rec = await $fetch<{ key: string; csv: string }>(`/api/calendar/${encodeURIComponent(key)}`, {
+      baseURL: "https://api.goldengatemanor.com",
       method: 'GET',
       headers
     })
+
 
     const csv = String(rec?.csv ?? '').trim()
     if (!csv) {
@@ -872,7 +880,8 @@ async function deleteCalendar(key: string) {
 
   try {
     const headers = await getAuthHeaders()
-    await $fetch(`/api/admin/blog/content-calendar/${encodeURIComponent(key)}`, {
+    await $fetch(`/api/calendar/${encodeURIComponent(key)}`, {
+      baseURL: "https://api.goldengatemanor.com",
       method: 'DELETE',
       headers
     })

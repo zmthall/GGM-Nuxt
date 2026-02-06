@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center !my-6">
-    <BaseUiAction :to :href :variant :styling>
+    <BaseUiAction :to :href :variant :styling new-page>
       <slot mdc-unwrap="p" />
     </BaseUiAction>
   </div>
