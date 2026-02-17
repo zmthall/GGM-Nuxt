@@ -27,3 +27,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Video File
+Real_Final_Golden_Gate_Inc_Commercial.mp4

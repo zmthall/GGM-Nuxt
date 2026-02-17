@@ -1,6 +1,6 @@
 <template>
   <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden">
-    <BaseInteractiveHeroVideo ref="heroVideo" src="/videos/temp.mp4" muted loop @ready="videoReady = true" @play="onVideoPlay" @pause="onVideoPause" />
+    <BaseInteractiveHeroVideo ref="heroVideo" :src="videoSrc" muted loop @ready="videoReady = true" @play="onVideoPlay" @pause="onVideoPause" />
 
     <div class="absolute inset-0 z-1 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
 
@@ -71,6 +71,7 @@ import { computed, onBeforeUnmount, ref } from 'vue'
 
 defineProps<{
   active: boolean;
+  videoSrc: string;
 }>()
 
 const services = [
