@@ -6,7 +6,7 @@
             <h1 class="text-3xl font-bold text-brand-primary">
               {{ post?.title }}
             </h1>
-            <p>Reading time: {{ readingTime }}</p>
+            <p>Reading time: {{ post?.readTime === 1 ? '1 minute' : `${post?.readTime} minutes` }}</p>
             <time v-if="post.date" :datetime="formatDates.formatDatetime(post.date)">
               Published On: {{ formatDates.formatDisplayDate(post.published) }}
             </time>
@@ -77,35 +77,40 @@
         Related Posts
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <li v-for="(relatedPost, idx) in relatedPosts" :key="relatedPost.id">
-            <NuxtLink :to="`/news${relatedPost.path}`" class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+        <li v-for="(relatedPost) in relatedPosts" :key="relatedPost.id">
+            <NuxtLink :to="`/news${relatedPost.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                     <div class="h-1/2 relative">
                         <div>
                             <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                                <span class="text-sm text-white">Read Time: {{ postReadingTimes[idx] }}</span>
+                                <span class="text-sm text-white">Read Time: {{ relatedPost.readTime === 1 ? '1 minute' : `${relatedPost.readTime} minutes` }}</span>
                             </p>
                         </div>
-                        <NuxtImg
-                          format="webp,avif" 
-                          :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
-                          :alt="relatedPost.thumbnailAlt || relatedPost.title" 
-                          :title="relatedPost.thumbnailAlt || relatedPost.title" 
-                          :width="relatedPost.thumbnailWidth || ''"
-                          :height="relatedPost.thumbnailHeight || ''"
-                          loading="eager"
-                          class="object-cover h-full w-full"
-                        />        
+                        <div class="aspect-[2/1]">
+                            <NuxtImg 
+                                format="webp,avif"
+                                :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                :alt="relatedPost.thumbnailAlt || relatedPost.title" 
+                                :title="relatedPost.thumbnailAlt || relatedPost.title" 
+                                :width="relatedPost.thumbnailWidth || ''"
+                                :height="relatedPost.thumbnailHeight || ''"
+                                loading="eager"
+                                class="object-cover h-full w-full"
+                                :placeholder="relatedPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                            />        
+                        </div>
                     </div>
                     <div>
-                        <div class="flex justify-left flex-col gap-2 pt-4 px-2">
-                            <ul class="flex gap-2 items-center">
+                        <div class="flex flex-col justify-left gap-2 pt-4 px-2">
+                            <ul v-if="relatedPost.tags != undefined && relatedPost.tags.length <= 3" class="flex gap-2 items-center">
                                 <li v-for="tag in relatedPost.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
                                     {{ tag }}
                                 </li>
                             </ul>
-                            <time :datetime="formatDates.formatDatetime(relatedPost.date)">
-                                Posted on: {{ formatDates.formatShortDate(relatedPost.date) }}
+                            <BaseInteractiveTextRotator v-if="relatedPost.tags != undefined && relatedPost.tags?.length > 3" :items="relatedPost.tags" variant="marquee" marquee-direction="right" :marquee-seconds="10" wrapper-class="w-full overflow-hidden" text-class="text-sm text-white" marquee-gap-class="pr-3" marquee-item-class="bg-brand-primary border-brand-secondary border-2 p-2 mx-1 text-white rounded-lg" marquee-track-class="[animation-play-state:paused] group-hover:[animation-play-state:running]" />
+
+                            <time :datetime="formatDates.formatDatetime(relatedPost.published)">
+                                Published on: {{ formatDates.formatShortDate(relatedPost.published) }}
                             </time>
                         </div>
                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
@@ -150,7 +155,6 @@
 </template>
 
 <script setup lang="ts">
-import { useReading } from '../../../../composables/blog/reading';
 import { useBlogSchema } from '../../../../composables/blog/schema';
 import { useText } from '../../../../composables/text';
 import { useDateFormat } from '../../../../composables/dates/dateFormat';
@@ -166,17 +170,6 @@ const text = useText();
 const slug = Array.isArray(route.params.slug) 
   ? route.params.slug.join("/") 
   : route.params.slug;
-
-const reading = useReading();
-const { data: readingTime } = await useAsyncData<string | undefined>(
-  `reading-time-${slug}`,
-  () => reading.getReadingTime(slug as string),
-  {
-    // let it run on server so SSR has the value
-    server: true,
-    default: () => undefined,
-  }
-)
 
 // Build the content path
 const contentPath = `/blog/post/${slug}`;
@@ -297,8 +290,6 @@ const scrollToHeading = (id: string) => {
   }
 }
 
-const postReadingTimes = ref<string[]>([])
-
 const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${route.path}`, async () => {
   if (!post.value || !post.value.tags || post.value.tags.length === 0) {
     return []
@@ -308,7 +299,7 @@ const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${route.pa
   const allPosts = await queryCollection('blog')
     .where('path', '<>', post.value.path)
     .where('draft', '<>', true)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body')
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published', 'readTime')
     .all()
   
   // Filter posts that have at least one matching tag
@@ -322,21 +313,8 @@ const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${route.pa
   return relatedPosts
 })
 
-const getPostReadingTimes = () => {
-  relatedPosts.value?.forEach(async (post) => {
-    const postPathArr = post.path.split('/');
 
-    const postSlug = postPathArr[postPathArr.length - 1];
-
-    const postReadingTime = await reading.getReadingTime(postSlug as string)
-    
-    postReadingTimes.value.push(postReadingTime as string)
-  })
-}
-
-onMounted(() => {
-  getPostReadingTimes();
-  
+onMounted(() => {  
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

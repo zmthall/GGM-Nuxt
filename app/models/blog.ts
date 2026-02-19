@@ -11,6 +11,7 @@ export interface BlogPost {
   thumbnailHeight?: string;
   thumbnailWidth?: string;
   staffPick?: boolean;
+  readTime: number;
   published?: string;
   // These are added by Nuxt Content automatically
   body?: unknown;
@@ -27,6 +28,7 @@ export interface AllPosts {
   date?: string;
   title: string;
   description?: string;
+  readTime: number;
   thumbnail?: string;
   thumbnailAlt?: string;
   thumbnailHeight?: string;

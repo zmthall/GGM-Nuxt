@@ -37,9 +37,14 @@
       </div>
     </div>
 
-    <div v-else-if="variant === 'marquee'" class="w-full overflow-hidden">
-      <div class="marquee-track whitespace-nowrap will-change-transform" :class="[marqueeDirectionClass, marqueeTrackClass]" :style="{ animationDuration: marqueeDuration }">
-        <span v-for="(it, i) in marqueeItems" :key="`${it}-${i}`" class="inline-flex items-center" :class="[textClass, marqueeItemClass, marqueeGapClass]">{{ it }}</span>
+    <div v-else-if="variant === 'marquee'" ref="marqueeViewportRef" class="w-full overflow-hidden">
+      <div ref="marqueeTrackRef" class="marquee-track will-change-transform" :class="[marqueeDirectionClass, marqueeTrackClass]" :style="{ animationDuration: marqueeDuration }">
+        <div ref="marqueeSetRef" class="marquee-set whitespace-nowrap">
+          <span v-for="(it, i) in marqueeSetItems" :key="`m-0-${i}-${it}`" class="inline-flex items-center" :class="[textClass, marqueeItemClass, marqueeGapClass]">{{ it }}</span>
+        </div>
+        <div class="marquee-set whitespace-nowrap" aria-hidden="true">
+          <span v-for="(it, i) in marqueeSetItems" :key="`m-1-${i}-${it}`" class="inline-flex items-center" :class="[textClass, marqueeItemClass, marqueeGapClass]">{{ it }}</span>
+        </div>
       </div>
     </div>
 
@@ -48,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 type Variant = 'fade' | 'slide-fade' | 'type' | 'type-reveal' | 'inline-swap' | 'chips' | 'stepper' | 'marquee'
 type MarqueeDirection = 'left' | 'right'
@@ -104,7 +109,6 @@ const showCursor = computed(() => props.cursor)
 const typeRevealText = ref('')
 const typeRevealKey = ref(0)
 
-const marqueeItems = computed(() => props.items.length ? [...props.items, ...props.items] : [])
 const marqueeDuration = computed(() => `${props.marqueeSeconds}s`)
 const marqueeDirectionClass = computed(() => props.marqueeDirection === 'right' ? 'dir-right' : 'dir-left')
 
@@ -219,8 +223,40 @@ function startStepper() {
   startFade()
 }
 
+const marqueeViewportRef = ref<HTMLElement | null>(null)
+const marqueeTrackRef = ref<HTMLElement | null>(null)
+const marqueeSetRef = ref<HTMLElement | null>(null)
+const marqueeRepeat = ref(1)
+let marqueeRO: ResizeObserver | null = null
+
+const marqueeSetItems = computed(() => {
+  if (!props.items.length) return []
+  const out: string[] = []
+  for (let i = 0; i < marqueeRepeat.value; i++) out.push(...props.items)
+  return out
+})
+
+async function syncMarqueeRepeat() {
+  if (props.variant !== 'marquee') return
+  if (!import.meta.client) return
+  if (!marqueeViewportRef.value || !marqueeSetRef.value) return
+  if (!props.items.length) return
+
+  marqueeRepeat.value = 1
+  await nextTick()
+
+  const viewportW = marqueeViewportRef.value.getBoundingClientRect().width
+  const setW = marqueeSetRef.value.getBoundingClientRect().width
+  if (!viewportW || !setW) return
+
+  const target = viewportW + 8
+  const needed = Math.max(1, Math.ceil(target / setW))
+  marqueeRepeat.value = needed
+}
+
 function startMarquee() {
   clearAllTimers()
+  void syncMarqueeRepeat()
 }
 
 function start() {
@@ -234,11 +270,18 @@ function start() {
   else startFade()
 }
 
-onMounted(() => {
+onMounted(async () => {
   start()
+
+  if (import.meta.client) {
+    marqueeRO = new ResizeObserver(() => {
+      void syncMarqueeRepeat()
+    })
+    if (marqueeViewportRef.value) marqueeRO.observe(marqueeViewportRef.value)
+  }
 })
 
-watch(() => [props.variant, props.items.join('|'), props.marqueeDirection], () => {
+watch(() => [props.variant, props.items.join('|'), props.marqueeDirection], async () => {
   index.value = 0
   typedText.value = ''
   typeRevealText.value = ''
@@ -248,6 +291,8 @@ watch(() => [props.variant, props.items.join('|'), props.marqueeDirection], () =
 
 onBeforeUnmount(() => {
   clearAllTimers()
+  if (marqueeRO) marqueeRO.disconnect()
+  marqueeRO = null
 })
 </script>
 
@@ -259,10 +304,10 @@ onBeforeUnmount(() => {
 .slideFade-enter-from{opacity:0; transform:translateY(6px)}
 .slideFade-leave-to{opacity:0; transform:translateY(-6px)}
 
-.marquee-track{animation-timing-function:linear; animation-iteration-count:infinite}
+.marquee-track{display:flex; width:max-content; animation-timing-function:linear; animation-iteration-count:infinite}
 .marquee-track.dir-left{animation-name:marquee-left}
 .marquee-track.dir-right{animation-name:marquee-right}
 
-@keyframes marquee-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes marquee-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes marquee-left{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+@keyframes marquee-right{0%{transform:translate3d(-50%,0,0)}100%{transform:translate3d(0,0,0)}}
 </style>

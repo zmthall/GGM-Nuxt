@@ -38,6 +38,7 @@ export default defineEventHandler(async (event) => {
     author: data.author ? String(data.author) : undefined,
     draft: Boolean(data.draft),
     staffPick: Boolean(data.staffPick),
+    readTime: Number(data.readTime ?? 0),
     tags: Array.isArray(data.tags)
       ? data.tags.map(String)
       : data.tags ? [String(data.tags)] : [],

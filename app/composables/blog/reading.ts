@@ -1,48 +1,35 @@
 export const useReading = () => {
   const getWordCount = (markdown: string | null | undefined) => {
-    if (!markdown || typeof markdown !== "string") return 0;
+    if (!markdown || typeof markdown !== "string") return 0
 
     let cleaned = markdown
-      .replace(
-        /::[A-Za-z0-9_]+(?:\{[^}]*\})?\s*([\s\S]*?)::/g,
-        "$1"
-      )
-      .replace(/(^|\n)#{1,6}\s*References[\s\S]*$/i, "");
 
-    // Remove markdown syntax to avoid inflated word counts
+    cleaned = cleaned.replace(/::BlogAtAGlance(?:\{[^}]*\})?\s*[\s\S]*?::/g, " ")
+    cleaned = cleaned.replace(/::BlogReferences(?:\{[^}]*\})?\s*[\s\S]*?::/g, " ")
+
+    cleaned = cleaned.replace(/::[A-Za-z0-9_]+(?:\{[^}]*\})?\s*([\s\S]*?)::/g, "$1")
+
     cleaned = cleaned
-      // .replace
-      .replace(/[`*_>#-]/g, "")
+      .replace(/(^|\n)---(\n|$)/g, ' ')
+      .replace(/```[\s\S]*?```/g, " ")
+      .replace(/~~~[\s\S]*?~~~/g, " ")
+      .replace(/`[^`]*`/g, " ")
       .replace(/!\[.*?\]\(.*?\)/g, " ")
       .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/[*_>#~=-]/g, " ")
       .replace(/\s+/g, " ")
-      .trim();
+      .trim()
 
-    if (!cleaned) return 0;
-    return cleaned.split(" ").length;
-  };
-
-  const getReadingTime = async (slug: string): Promise<string | undefined> => {
-    const postBodyStr = await getPostBody(slug)
-
-    const count = getWordCount(postBodyStr);
-    if (!count) return undefined;
-
-    const minutes = Math.ceil(count / 250);
-    return minutes === 1 ? "1 minute" : `${minutes} minutes`;
-  };
-
-  // Page Body (string)
-  const getPostBody = async (slug: string): Promise<string> => {
-    const response = await $fetch<{ body: string }>(`/api/blog/${slug}`, {
-        method: 'GET'
-      })
-
-      return response.body;
+    if (!cleaned) return 0
+    return cleaned.split(" ").filter(Boolean).length
   }
 
-  return {
-    getWordCount,
-    getReadingTime,
-  };
+  const getReadingMinutes = (markdown: string | null | undefined) => {
+    const words = getWordCount(markdown)
+    if (!words) return 0
+    return Math.max(1, Math.ceil(words / 250))
+  }
+
+  return { getWordCount, getReadingMinutes }
 }

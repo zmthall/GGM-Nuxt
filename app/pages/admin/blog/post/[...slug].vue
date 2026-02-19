@@ -17,7 +17,7 @@
           </h1>
 
           <p v-if="body" clas="mb-0!">
-            Reading time: {{ readingTime }}
+            Reading time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}
           </p>
 
           <time
@@ -81,6 +81,23 @@
           class="prose prose-lg space-y-2 text-xl text-brand-main-text"
           v-html="renderedHtml"
         />
+        <!-- REFERENCES (extracted from markdown) -->
+        <BlogReferences v-if="referenceItems?.length" class="mb-8">
+        <ul class="list-disc pl-5 space-y-1">
+          <li v-for="ref in referenceItems" :key="ref.key">
+            <span
+              v-if="ref.isLink"
+              class="link cursor-pointer"
+              aria-disabled="true"
+              role="link"
+              tabindex="-1"
+              v-html="sanitize(ref.html)"
+            />
+            <span v-else v-html="sanitize(ref.html)" />
+          </li>
+        </ul>
+      </BlogReferences>
+
 
         <div class="md:hidden">
           <BlogPostSocialShare />
@@ -129,69 +146,56 @@
     </div>
 
     <!-- RELATED POSTS -->
-    <BaseLayoutPageSection
-      v-if="relatedPosts && relatedPosts.length > 0"
-      bg="alt"
-      margin="default"
-    >
-      <h2 class="text-2xl font-bold text-brand-primary mb-4">Related Posts</h2>
+    <BaseLayoutPageSection v-if="relatedPosts && relatedPosts.length > 0" bg="alt" margin="default">
+      <h2 class="text-2xl font-bold text-brand-primary mb-4">
+        Related Posts
+      </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <li v-for="(relatedPost, idx) in relatedPosts" :key="relatedPost.id">
-          <NuxtLink
-            :to="`/admin${relatedPost.path}`"
-            class="flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out"
-          >
-            <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
-              <div class="h-1/2 relative">
-                <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                  <span class="text-sm text-white">
-                    Read Time:
-                    {{ postReadingTimes[idx] }}
-                  </span>
-                </p>
+        <li v-for="(relatedPost) in relatedPosts" :key="relatedPost.id">
+            <NuxtLink :to="`/news${relatedPost.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+                <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
+                    <div class="h-1/2 relative">
+                        <div>
+                            <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
+                                <span class="text-sm text-white">Read Time: {{ relatedPost.readTime === 1 ? '1 minute' : `${relatedPost.readTime} minutes` }}</span>
+                            </p>
+                        </div>
+                        <div class="aspect-[2/1]">
+                            <NuxtImg 
+                                format="webp,avif"
+                                :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                :alt="relatedPost.thumbnailAlt || relatedPost.title" 
+                                :title="relatedPost.thumbnailAlt || relatedPost.title" 
+                                :width="relatedPost.thumbnailWidth || ''"
+                                :height="relatedPost.thumbnailHeight || ''"
+                                loading="eager"
+                                class="object-cover h-full w-full"
+                                :placeholder="relatedPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                            />        
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-col justify-left gap-2 pt-4 px-2">
+                            <ul v-if="relatedPost.tags != undefined && relatedPost.tags.length <= 3" class="flex gap-2 items-center">
+                                <li v-for="tag in relatedPost.tags" :key="tag" class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg">
+                                    {{ tag }}
+                                </li>
+                            </ul>
+                            <BaseInteractiveTextRotator v-if="relatedPost.tags != undefined && relatedPost.tags?.length > 3" :items="relatedPost.tags" variant="marquee" marquee-direction="right" :marquee-seconds="10" wrapper-class="w-full overflow-hidden" text-class="text-sm text-white" marquee-gap-class="pr-3" marquee-item-class="bg-brand-primary border-brand-secondary border-2 p-2 mx-1 text-white rounded-lg" marquee-track-class="[animation-play-state:paused] group-hover:[animation-play-state:running]" />
 
-                <NuxtImg
-                  format="webp,avif"
-                  :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'"
-                  :alt="relatedPost.thumbnailAlt || relatedPost.title"
-                  :title="relatedPost.thumbnailAlt || relatedPost.title"
-                  :width="relatedPost.thumbnailWidth || ''"
-                  :height="relatedPost.thumbnailHeight || ''"
-                  loading="eager"
-                  class="object-cover h-full w-full"
-                />
-              </div>
-
-              <div>
-                <div class="flex flex-col gap-2 pt-4 px-2">
-                  <ul class="flex gap-2 items-center">
-                    <li
-                      v-for="tag in relatedPost.tags"
-                      :key="tag"
-                      class="bg-brand-primary border-brand-secondary border-2 p-2 text-white rounded-lg"
-                    >
-                      {{ tag }}
-                    </li>
-                  </ul>
-
-                  <time :datetime="formatDates.formatShortDate(relatedPost.date)">
-                    Posted on: {{ formatDates.formatShortDate(relatedPost.date) }}
-                  </time>
+                            <time :datetime="formatDates.formatDatetime(relatedPost.published)">
+                                Published on: {{ formatDates.formatShortDate(relatedPost.published) }}
+                            </time>
+                        </div>
+                        <div class="flex flex-col justify-between px-2 pt-2 pb-4">
+                            <h3 class="text-xl font-bold text-brand-primary post-title">{{ relatedPost.title }}</h3>
+                            <p class="post-body">{{ relatedPost.summary ? text.truncateText(relatedPost.summary, 100) : '' }}</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="flex flex-col justify-between px-2 pt-2 pb-4">
-                  <h3 class="text-xl font-bold text-brand-primary post-title">
-                    {{ relatedPost.title }}
-                  </h3>
-                  <p class="post-body">
-                    {{ relatedPost.summary ? text.truncateText(relatedPost.summary, 100) : '' }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </NuxtLink>
+            </NuxtLink>
         </li>
-      </ul>
+    </ul>
     </BaseLayoutPageSection>
   </div>
 
@@ -204,7 +208,6 @@
 
 <script setup lang="ts">
 import { nanoid } from 'nanoid'
-import { useReading } from '../../../../composables/blog/reading'
 import { useBlogSchema } from '../../../../composables/blog/schema'
 import { useText } from '../../../../composables/text'
 import { useDateFormat } from '../../../../composables/dates/dateFormat'
@@ -229,18 +232,6 @@ const slug = Array.isArray(route.params.slug)
   ? route.params.slug.join('/')
   : (route.params.slug as string)
 
-const reading = useReading();
-const { data: readingTime } = await useAsyncData<string | undefined>(
-  `reading-time-${slug}`,
-  () => reading.getReadingTime(slug as string),
-  {
-    // let it run on server so SSR has the value
-    server: true,
-    default: () => undefined,
-  }
-)
-
-
 const contentPath = `/blog/post/${slug}`
 
 /* ---------- DEFAULT POST ---------- */
@@ -250,6 +241,7 @@ const emptyPost = (): BlogPost => ({
   description: '',
   date: '',
   author: '',
+  readTime: 0,
   draft: true,
   tags: [],
   thumbnail: '',
@@ -341,6 +333,66 @@ function transformBlogCenteredAction(md: string): string {
   })
 }
 
+type ReferenceItem = {
+  key: string
+  html: string
+  isLink: boolean
+}
+
+const referenceItems = ref<ReferenceItem[] | null>(null)
+
+function formatInline(md: string) {
+  return md
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+}
+
+function extractReferences(md: string): { cleaned: string; items: ReferenceItem[] | null } {
+  const regex = /::BlogReferences(?:\{[^}]*\})?\s*([\s\S]*?)\s*::/m
+  const match = md.match(regex)
+
+  if (!match?.[1]) {
+    return { cleaned: md, items: null }
+  }
+
+  const inner = match[1].trim()
+
+  const mdLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/
+  const urlRegex = /(https?:\/\/[^\s)]+)/
+
+  const items: ReferenceItem[] = inner
+    .split('\n')
+    .map(l => l.trim())
+    .filter(l => l.startsWith('-'))
+    .map(l => l.replace(/^-+\s*/, '').trim())
+    .filter(Boolean)
+    .map((line, idx): ReferenceItem => {
+      let isLink = false
+      let working = line
+
+      // If it's [Label](URL), drop the URL and keep only the label text
+      const mdLinkMatch = working.match(mdLinkRegex)
+      if (mdLinkMatch?.[1]) {
+        isLink = true
+        const label = mdLinkMatch[1].trim()
+        working = working.replace(mdLinkRegex, label)
+      } else if (urlRegex.test(working)) {
+        // If it contains a bare URL, treat the entire line as "link-looking"
+        isLink = true
+      }
+
+      return {
+        key: `${idx}-${working}`,
+        html: formatInline(working),
+        isLink
+      }
+    })
+
+  return {
+    cleaned: md.replace(regex, '').trim(),
+    items: items.length ? items : null
+  }
+}
 
 
 /* ---------- HTML PREVIEW RENDERING ---------- */
@@ -353,15 +405,20 @@ watch(
     if (!trimmed) {
       renderedHtml.value = ''
       atAGlanceItems.value = null
+      referenceItems.value = null
       return
     }
 
     // 1) Extract ::BlogAtAGlance block
-    const { cleaned, items } = extractAtAGlance(trimmed)
-    atAGlanceItems.value = items
+    const a = extractAtAGlance(trimmed)
+    atAGlanceItems.value = a.items
 
-    // 2) Transform ::BlogCenteredAction blocks into HTML buttons
-    const withButtons = transformBlogCenteredAction(cleaned)
+    // 2) Extract ::BlogReferences block (NEW)
+    const r = extractReferences(a.cleaned)
+    referenceItems.value = r.items
+
+    // 3) Transform ::BlogCenteredAction blocks into HTML buttons
+    const withButtons = transformBlogCenteredAction(r.cleaned)
 
     try {
       const idToken = await authStore.getIdToken()
@@ -380,9 +437,6 @@ watch(
   { immediate: true }
 )
 
-
-const postReadingTimes = ref<string[]>([])
-
 /* ---------- RELATED POSTS ---------- */
 const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost[]>(
   `admin-blog-related-${route.path}`,
@@ -397,6 +451,7 @@ const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost
         'date',
         'title',
         'thumbnail',
+        'readTime',
         'thumbnailAlt',
         'thumbnailWidth',
         'thumbnailHeight',
@@ -413,18 +468,6 @@ const { data: relatedPosts, execute: execRelated } = await useAsyncData<BlogPost
   { server: false, immediate: false, default: () => [] }
 )
 
-const getPostReadingTimes = () => {
-  relatedPosts.value?.forEach(async (post) => {
-    if(!post.path) return;
-    const postPathArr = post.path.split('/');
-
-    const postSlug = postPathArr[postPathArr.length - 1];
-
-    const postReadingTime = await reading.getReadingTime(postSlug as string)
-    
-    postReadingTimes.value.push(postReadingTime as string)
-  })
-}
 
 /* ---------- AUTH GATE ---------- */
 const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
@@ -436,7 +479,6 @@ onMounted(async () => {
   if (canFetch.value) {
     await execPost()
     if (post.value.id) await execRelated()
-    getPostReadingTimes();
     return
   }
 

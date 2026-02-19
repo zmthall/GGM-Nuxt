@@ -31,6 +31,7 @@ export default defineEventHandler(async (event) => {
           date: data.date || '',
           title: data.title || '',
           thumbnail: data.thumbnail || '',
+          readTime: data.readTime || 0,
           thumbnailAlt: data.thumbnailAlt || '',
           thumbnailWidth: data.thumbnailWidth || '',
           thumbnailHeight: data.thumbnailHeight || '',

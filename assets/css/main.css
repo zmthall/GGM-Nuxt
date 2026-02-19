@@ -1,9 +1,9 @@
 .link {
-    @apply font-semibold underline text-brand-primary hover:text-brand-link-hover
+    @apply font-semibold underline text-brand-primary hover:text-brand-link-hover;
 }
 
 .link-light {
-  @apply font-semibold underline text-white hover:text-brand-link-hover
+  @apply font-semibold underline text-white hover:text-brand-link-hover;
 }
 
 .cv-auto{ content-visibility: auto; contain-intrinsic-size: 1px 800px; }

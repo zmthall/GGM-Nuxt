@@ -10,6 +10,7 @@ type BlogMeta = {
   author?: string;
   draft?: boolean;
   staffPick?: boolean;
+  readTime?: number;
   tags?: string[];
   thumbnail?: string;
   thumbnailAlt?: string;
@@ -23,7 +24,7 @@ type IncomingMeta = Partial<BlogMeta>
 
 const updatable = [
   'title', 'date', 'description','author','draft', 'staffPick',
-  'thumbnail','thumbnailAlt','thumbnailHeight','thumbnailWidth','summary', 'published',
+  'thumbnail','thumbnailAlt','thumbnailHeight','thumbnailWidth','summary', 'published', 'readTime',
 ] as const satisfies readonly (keyof BlogMeta)[]
 
 type UpdatePayload = {

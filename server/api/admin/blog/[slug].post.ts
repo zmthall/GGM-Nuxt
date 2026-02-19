@@ -11,6 +11,7 @@ type BlogMeta = {
   author?: string
   draft?: boolean
   staffPick?: boolean;
+  readTime?: number;
   tags?: string[]
   thumbnail?: string
   thumbnailAlt?: string
@@ -56,6 +57,7 @@ const normalizeMeta = (m?: BlogMeta): ServerBlogMeta => {
     draft: Boolean(m?.draft ?? false),
     staffPick: Boolean(m?.staffPick ?? false),
     tags,
+    readTime: Number(m?.readTime ?? 0),
     thumbnail: m?.thumbnail ?? '',
     thumbnailAlt: m?.thumbnailAlt ?? '',
     thumbnailHeight: m?.thumbnailHeight ?? '',

@@ -68,13 +68,13 @@
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
                 <div v-if="posts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <li v-for="(post, idx) in posts" :key="post.id">
+                        <li v-for="post in posts" :key="post.id">
                             <NuxtLink :to="`/news${post.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
                                         <div>
                                             <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                                                <span class="text-sm text-white">Read Time: {{ postReadingTimes[idx] }}</span>
+                                                <span class="text-sm text-white">Read Time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}</span>
                                             </p>
                                         </div>
                                         <div class="aspect-[2/1]">
@@ -127,7 +127,6 @@
 
 <script setup lang='ts'>
 import { useDateFormat } from '../../../composables/dates/dateFormat'
-import { useReading } from '../../../composables/blog/reading'
 import type { AllPosts } from '../../../models/blog'
 
 const authStore = useAuthStore();
@@ -159,7 +158,6 @@ useSeoMeta({
 })
 
 const formatDates = useDateFormat()
-const reading = useReading()
 const text = useText();
 
 const cutoffISO = new Date(Date.now() + 60_000).toISOString()
@@ -172,7 +170,7 @@ const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
     .select(
       'path','date','title',
       'thumbnail','thumbnailAlt','thumbnailWidth','thumbnailHeight',
-      'tags','summary','published'
+      'tags','summary','published', 'readTime'
     )
     .first()
 })
@@ -192,7 +190,6 @@ const staffPicks = computed(() => {
 })
 
 const posts = ref<AllPosts[]>([])
-const postReadingTimes = ref<string[]>([])
 
 const page = ref(1)
 const limit = 8
@@ -204,7 +201,7 @@ const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
   return queryCollection('blog')
     .where('draft', '<>', true)
     .where('published', '<', cutoffISO)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published')
+    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published', 'readTime')
     .order('published', 'DESC')
     .limit(limit)
     .all()
@@ -212,24 +209,12 @@ const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
 
 posts.value = initialPosts.value || []
 
-const getPostReadingTimes = () => {
-  posts.value?.forEach(async (post) => {
-    const postPathArr = post.path.split('/');
-
-    const postSlug = postPathArr[postPathArr.length - 1];
-
-    const postReadingTime = await reading.getReadingTime(postSlug as string)
-    
-    postReadingTimes.value.push(postReadingTime as string)
-  })
-}
-
 const loadMore = async () => {
   if (!hasMorePages.value || isLoading.value) return
   isLoading.value = true
   page.value++
 
-  const newPosts = await $fetch('/api/blog/posts', {
+  const newPosts = await $fetch<AllPosts[]>('/api/blog/posts', {
     query: { page: page.value, limit }
   })
 
@@ -240,7 +225,6 @@ const loadMore = async () => {
 
 onMounted(() => {
     if (initialPosts.value) {
-        getPostReadingTimes()
         if(initialPosts.value.length < limit)
             // This was the last page
             hasMorePages.value = false

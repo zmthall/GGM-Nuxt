@@ -22,6 +22,7 @@ export default defineContentConfig({
         staffPick: z.boolean().optional(),
         summary: z.string(),
         published: z.string().optional(),
+        readTime: z.number(),
         _file: z.string(),
         _id: z.string(),
         _path: z.string(),
