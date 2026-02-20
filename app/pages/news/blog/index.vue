@@ -32,7 +32,7 @@
                                 <div class="bg-brand-primary">
                                     <div class="flex flex-col flex-wrap sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
                                         <ul class="flex gap-2 items-center max-sm:hidden">
-                                            <li v-for="tag in latestPost.tags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
+                                            <li v-for="tag in topTags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
                                                 {{ tag }}
                                             </li>
                                         </ul>
@@ -174,6 +174,8 @@ const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
     )
     .first()
 })
+
+const topTags = computed(() => (latestPost.value?.tags ?? []).slice(0, 3))
 
 const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {
   return queryCollection('blog')
