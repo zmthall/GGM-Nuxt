@@ -14,11 +14,15 @@
     <DeferRender when="visible">
       <LazyBaseLayoutFooter />
     </DeferRender>
+  
+    <AdCommunityVotesSupportModal v-model="cvOpen" :open-chance="0.65" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
   </main>
 </template>
 
 <script setup lang="ts">
 import ORG_SCHEMA from '@/data/orgSchema.json'
+
+const cvOpen = ref(false)
 
 defineOptions({
   name: "DefaultPages"
@@ -48,6 +52,9 @@ useHead({
     crossorigin: 'anonymous'
   }
 ],
+  bodyAttrs: {
+    class: computed(() => (cvOpen.value) ? 'no-scroll' : '')
+  }
 })
 
 useSeoMeta({
