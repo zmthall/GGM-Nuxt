@@ -28,7 +28,7 @@
     "id": "linkedin-social",
     "name": "LinkedIn",
     "icon": "brandico:linkedin-rect",
-    "url": "https://www.linkedin.com/company/golden-gate-manor/",
+    "url": "https://www.linkedin.com/company/golden-gate-manor",
     "alt": "Follow us on LinkedIn",
     "enabled": false,
     "note": "Account not active yet"
@@ -37,7 +37,7 @@
     "id": "instagram-social",
     "name": "Instagram",
     "icon": "simple-icons:instagram",
-    "url": "https://www.instagram.com/goldengatemanor/",
+    "url": "https://www.instagram.com/goldengatemanor",
     "alt": "Follow us on Instagram",
     "enabled": false
   },
