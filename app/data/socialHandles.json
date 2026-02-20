@@ -21,8 +21,7 @@
     "icon": "line-md:twitter-x-alt",
     "url": "https://x.com/GoldenGateManor",
     "alt": "Follow us on Twitter",
-    "enabled": false,
-    "note": "Temporarily disabled"
+    "enabled": true
   },
   {
     "id": "linkedin-social",
@@ -39,7 +38,7 @@
     "icon": "simple-icons:instagram",
     "url": "https://www.instagram.com/goldengatemanor",
     "alt": "Follow us on Instagram",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "youtube-social",
