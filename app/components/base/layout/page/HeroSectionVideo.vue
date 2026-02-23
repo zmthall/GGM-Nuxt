@@ -8,7 +8,7 @@
     >
       <NuxtImg
         v-if="!videoReady"
-        src="/images/pages/home/hero-poster.jpg"
+        src="/images/home-images/Web_video_placeholder.png"
         alt=""
         aria-hidden="true"
         width="1920"
@@ -35,13 +35,13 @@
     />
 
     <!-- Overlay -->
-    <div class="absolute inset-0 z-10 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
+    <div class="absolute inset-0 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
 
     <!-- UI layer -->
-    <div class="absolute inset-0 z-20 pointer-events-none">
+    <div class="absolute inset-0 pointer-events-none">
 
       <!-- Controls: Play/Pause button + Autoplay toggle -->
-      <div v-if="videoReady" class="pointer-events-auto absolute top-4 left-4 z-30 flex items-center gap-3">
+      <div v-if="videoReady" class="pointer-events-auto absolute top-4 left-4 flex items-center gap-3">
         <button
           type="button"
           class="px-4 py-2 rounded-lg bg-transparent transition-all duration-200"
@@ -71,7 +71,7 @@
         <!-- LOGO: in-flow when idle, absolute docked to bottom-right when playing -->
         <div
           class="w-[200px] lg:w-[350px] shrink-0 transition-all duration-700 ease-[cubic-bezier(.2,.9,.2,1)]"
-          :class="playing ? 'absolute z-10 opacity-70' : 'opacity-100'"
+          :class="playing ? 'absolute opacity-70' : 'opacity-100'"
           :style="playing ? logoPlayedStyle : {}"
         >
           <NuxtImg
