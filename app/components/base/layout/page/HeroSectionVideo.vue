@@ -160,7 +160,7 @@ const services = [
 const LOCK_MS = 750
 const PAUSE_DELAY_MS = 150
 const AUTOPLAY_INITIAL_DELAY_MS = 3000
-const REPLAY_DELAY_MS = 5000
+const REPLAY_DELAY_MS = 8000
 // How many seconds before the video ends to start returning the logo/text
 const OUTRO_SECONDS = 2.5
 const AUTOPLAY_STORAGE_KEY = 'ggm-hero-autoplay'
