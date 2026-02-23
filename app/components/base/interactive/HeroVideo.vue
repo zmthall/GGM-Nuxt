@@ -5,7 +5,6 @@
       class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out"
       :class="isReady ? 'opacity-100' : 'opacity-0'"
       :muted="muted"
-      :loop="loop"
       playsinline
       preload="auto"
     >
@@ -20,15 +19,14 @@ import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 withDefaults(defineProps<{
   src?: string
   muted?: boolean
-  loop?: boolean
 }>(), {
   src: '/videos/temp.mp4',
   muted: true,
-  loop: true
 })
 
 const emit = defineEmits<{
-  (e: 'ready' | 'play' | 'pause' | 'ended'): void
+  (e: 'ready' | 'play' | 'pause' | 'ended' | 'buffered'): void
+  (e: 'timeupdate', currentTime: number, duration: number): void
   (e: 'error', err: unknown): void
 }>()
 
@@ -39,25 +37,23 @@ const isPlaying = ref(false)
 function play() {
   const el = videoEl.value
   if (!el) return
-
   el.play()
-    .then(() => {
-      isPlaying.value = true
-      emit('play')
-    })
-    .catch((err) => {
-      isPlaying.value = false
-      emit('error', err)
-    })
+    .then(() => { isPlaying.value = true; emit('play') })
+    .catch((err) => { isPlaying.value = false; emit('error', err) })
 }
 
 function pause() {
   const el = videoEl.value
   if (!el) return
   el.pause()
-  // 'pause' event will also set state; but keep it in sync immediately
   isPlaying.value = false
   emit('pause')
+}
+
+function rewind() {
+  const el = videoEl.value
+  if (!el) return
+  try { el.currentTime = 0 } catch { /* noop */ }
 }
 
 function toggle() {
@@ -65,7 +61,7 @@ function toggle() {
   else play()
 }
 
-defineExpose({ play, pause, toggle, isReady, isPlaying, videoEl })
+defineExpose({ play, pause, rewind, toggle, isReady, isPlaying, videoEl })
 
 let cleanup: (() => void) | null = null
 
@@ -74,13 +70,9 @@ function resetVideo(el: HTMLVideoElement) {
   isPlaying.value = false
   try {
     el.pause()
-    try { el.currentTime = 0 } catch {
-      //placeholder
-    }
+    try { el.currentTime = 0 } catch { /* noop */ }
     el.load()
-  } catch {
-    //placeholder
-  }
+  } catch { /* noop */ }
 }
 
 onMounted(async () => {
@@ -92,6 +84,7 @@ onMounted(async () => {
   const onCanPlayThrough = () => {
     isReady.value = true
     emit('ready')
+    emit('buffered')
   }
 
   const onLoadedData = () => {
@@ -101,21 +94,13 @@ onMounted(async () => {
     }
   }
 
-  const onPlay = () => {
-    isPlaying.value = true
-    emit('play')
+  const onPlay       = () => { isPlaying.value = true;  emit('play') }
+  const onPause      = () => { isPlaying.value = false; emit('pause') }
+  const onEnded      = () => { isPlaying.value = false; emit('ended') }
+  const onTimeUpdate = () => {
+    if (!el.duration) return
+    emit('timeupdate', el.currentTime, el.duration)
   }
-
-  const onPause = () => {
-    isPlaying.value = false
-    emit('pause')
-  }
-
-  const onEnded = () => {
-    isPlaying.value = false
-    emit('ended')
-  }
-
   const onError = () => {
     const err = el.error ?? new Error('Video error')
     isPlaying.value = false
@@ -128,13 +113,16 @@ onMounted(async () => {
   el.addEventListener('play', onPlay)
   el.addEventListener('pause', onPause)
   el.addEventListener('ended', onEnded)
+  el.addEventListener('timeupdate', onTimeUpdate)
   el.addEventListener('error', onError)
 
   cleanup = () => {
     el.removeEventListener('canplaythrough', onCanPlayThrough)
+    el.removeEventListener('loadeddata', onLoadedData)
     el.removeEventListener('play', onPlay)
     el.removeEventListener('pause', onPause)
     el.removeEventListener('ended', onEnded)
+    el.removeEventListener('timeupdate', onTimeUpdate)
     el.removeEventListener('error', onError)
   }
 
@@ -143,17 +131,14 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-  const el = videoEl.value
   if (cleanup) cleanup()
+  const el = videoEl.value
   if (!el) return
-
   try {
     el.pause()
     el.removeAttribute('src')
     while (el.firstChild) el.removeChild(el.firstChild)
     el.load()
-  } catch {
-    //placeholder
-  }
+  } catch { /* noop */ }
 })
 </script>

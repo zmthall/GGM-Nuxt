@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseLayoutPageHeroSectionVideo video-src="/videos/Real_Final_Golden_Gate_Inc_Commercial.mp4" :active="false" />
+        <BaseLayoutPageHeroSectionVideo video-src="/videos/Final_website_video.mp4" :active="true" />
             
         <BaseInteractiveLogosNav :shows-on-mobile="false" />
 

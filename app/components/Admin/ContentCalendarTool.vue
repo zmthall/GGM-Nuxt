@@ -123,9 +123,15 @@
             </div>
           </div>
 
-          <button type="button" class="mt-6 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" @click="selectedPost = null">
-            Close
-          </button>
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition" @click="copyPostRequest(selectedPost)">
+              {{ copied ? 'Copied!' : 'Copy Ruleset + Brief' }}
+            </button>
+
+            <button type="button" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" @click="selectedPost = null">
+              Close
+            </button>
+          </div>
         </div>
       </div>
 
@@ -541,6 +547,92 @@ function getServiceColor(serviceFocus: string) {
 
 function selectPost(post: CalendarPost) {
   selectedPost.value = post
+}
+
+type SelectedPost = {
+  date: Date // <-- matches your real data
+  day: string
+  type: string
+  serviceFocus: string
+  cityFocus: string
+  workingTitle: string
+  primaryKeyword: string
+  coreQuestion: string
+  notes?: string
+}
+
+const copied = ref(false)
+
+function toISODate(value: Date | string) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+
+  // fallback if you ever pass a string later
+  try {
+    const d = new Date(value)
+    if (!Number.isNaN(d.getTime())) return d.toISOString().slice(0, 10)
+  } catch {
+    // ignore
+  }
+  return String(value)
+}
+
+function buildNewPostTemplate(post: SelectedPost) {
+  const additionalInfoParts = [
+    `Scheduled date: ${toISODate(post.date)}`,
+    `Post type: ${post.type}`,
+    post.notes ? `Notes: ${post.notes}` : null
+  ].filter(Boolean)
+
+  const additionalInfo = additionalInfoParts.join(' | ')
+
+  return [
+    'New Blog Post',
+    `Company/department: {{ ${post.serviceFocus} }}`,
+    `Main topic: {{ ${post.workingTitle} }}`,
+    `Post main keyword: {{ ${post.primaryKeyword} }}`,
+    'Post additional keywords: {{ [] }}',
+    `Question to answer in post: {{ ${post.coreQuestion} }}`,
+    `Audience/location focus: {{ ${post.cityFocus} }}`,
+    'Tone constraints: {{  }}',
+    'Call-to-action destination: {{  }}',
+    `Additional information: {{ ${additionalInfo} }}`
+  ].join('\n')
+}
+
+async function copyText(text: string) {
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch {
+    try {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.setAttribute('readonly', 'true')
+      ta.style.position = 'fixed'
+      ta.style.top = '0'
+      ta.style.left = '0'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      const ok = document.execCommand('copy')
+      document.body.removeChild(ta)
+      return ok
+    } catch {
+      return false
+    }
+  }
+}
+
+async function copyPostRequest(post: SelectedPost) {
+  const payload = buildNewPostTemplate(post)
+  const ok = await copyText(payload)
+
+  if (ok) {
+    copied.value = true
+    window.setTimeout(() => { copied.value = false }, 1200)
+  } else {
+    alert('Copy failed. Your browser may be blocking clipboard access.')
+  }
 }
 
 function formatDate(d: Date) {

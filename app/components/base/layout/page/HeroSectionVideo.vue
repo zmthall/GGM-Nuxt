@@ -1,78 +1,153 @@
 <template>
   <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden">
-    <BaseInteractiveHeroVideo ref="heroVideo" :src="videoSrc" muted loop @ready="videoReady = true" @play="onVideoPlay" @pause="onVideoPause" />
 
-    <div class="absolute inset-0 z-1 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
+    <!-- Poster: NuxtImg for optimization + preload. Fades out once video is ready. -->
+    <Transition
+      leave-active-class="transition-opacity duration-700"
+      leave-to-class="opacity-0"
+    >
+      <NuxtImg
+        v-if="!videoReady"
+        src="/images/pages/home/hero-poster.jpg"
+        alt=""
+        aria-hidden="true"
+        width="1920"
+        height="1080"
+        format="webp"
+        loading="eager"
+        preload
+        sizes="100vw"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    </Transition>
 
-    <div class="absolute inset-0 z-2">
-      <button
-        v-if="videoReady"
-        type="button"
-        class="absolute top-4 left-4 z-30 px-4 py-2 rounded-lg bg-transparent bg-brand-primary transition-all duration-200"
-        :disabled="buttonDisabled"
-        :class="uiPlaying
-          ? 'font-normal  hover:bg-brand-primary hover:opacity-100 border-2 text-white border-white opacity-20'
-          : 'font-extrabold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white'"
-        @click="handleHeroButton"
-      >
-        {{ buttonLabel }}
-      </button>
+    <BaseInteractiveHeroVideo
+      ref="heroVideo"
+      :src="videoSrc"
+      muted
+      @ready="videoReady = true"
+      @buffered="onBuffered"
+      @play="onVideoPlay"
+      @pause="onVideoPause"
+      @ended="onVideoEnded"
+      @timeupdate="onTimeUpdate"
+      @error="onVideoError"
+    />
 
-      <div class="absolute inset-0 flex items-center justify-center px-6">
-        <div class="flex flex-col items-center text-center gap-6">
-          <div class="transition-all duration-500 ease-out" :class="textGroupClass">
-            <h1 class="text-3xl font-extrabold text-brand-primary whitespace-nowrap">
-              <span class="text-4xl">One Company.</span>
-              <span class="font-normal"> Many services you can depend on.</span>
-            </h1>
+    <!-- Overlay -->
+    <div class="absolute inset-0 z-10 bg-brand-secondary transition-opacity duration-700 ease-out" :class="overlayOpacityClass" />
 
-            <div class="mt-4">
-              <BaseInteractiveTextRotator :items="services" variant="chips" :interval-ms="1800" wrapper-class="min-h-[2.25rem] flex items-center justify-center" />
-            </div>
-          </div>
+    <!-- UI layer -->
+    <div class="absolute inset-0 z-20 pointer-events-none">
 
-          <div ref="logoEl" class="transition-opacity duration-700 ease-out w-[200px] lg:w-[350px]" :class="logoOpacityClass">
-            <NuxtImg src="/images/layout/Full company GGM Logo.png" sizes="250px" width="350" height="279" format="webp" loading="eager" class="select-none drop-shadow-hero w-full" />
-          </div>
+      <!-- Controls: Play/Pause button + Autoplay toggle -->
+      <div v-if="videoReady" class="pointer-events-auto absolute top-4 left-4 z-30 flex items-center gap-3">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg bg-transparent transition-all duration-200"
+          :disabled="buttonDisabled"
+          :class="buttonClass"
+          @click="handleHeroButton"
+        >
+          {{ buttonLabel }}
+        </button>
 
-          <!-- HOME POINT marker (center) -->
-          <div ref="homePointEl" class="w-px h-px pointer-events-none" />
-        </div>
+        <label class="flex items-center gap-1.5 cursor-pointer select-none text-sm">
+          <input
+            type="checkbox"
+            class="w-3.5 h-3.5 cursor-pointer accent-brand-primary"
+            :checked="autoplayEnabled"
+            @change="toggleAutoplay"
+          >
+          <span :class="playing ? 'text-white opacity-40' : 'text-brand-primary font-semibold'">
+            Autoplay
+          </span>
+        </label>
       </div>
 
-      <!-- DOCK POINT: bottom-right -->
-      <div ref="dockPointEl" class="absolute right-3 bottom-3 w-px h-px pointer-events-none"/>
+      <!-- Centered column: logo + text in normal flow when idle -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-6 px-6">
+
+        <!-- LOGO: in-flow when idle, absolute docked to bottom-right when playing -->
+        <div
+          class="w-[200px] lg:w-[350px] shrink-0 transition-all duration-700 ease-[cubic-bezier(.2,.9,.2,1)]"
+          :class="playing ? 'absolute z-10 opacity-70' : 'opacity-100'"
+          :style="playing ? logoPlayedStyle : {}"
+        >
+          <NuxtImg
+            src="/images/layout/Full company GGM Logo.png"
+            sizes="350px"
+            width="350"
+            height="279"
+            format="webp"
+            loading="eager"
+            class="select-none drop-shadow-hero w-full"
+          />
+        </div>
+
+        <!-- TEXT: in-flow when idle, absolute + fade out when playing -->
+        <div
+          class="flex flex-col items-center text-center transition-all duration-500 ease-out"
+          :class="playing
+            ? 'absolute inset-0 flex items-center justify-center opacity-0 scale-95 -translate-y-2 pointer-events-none'
+            : 'opacity-100 scale-100 translate-y-0'"
+        >
+          <h1 class="text-3xl font-extrabold text-brand-primary whitespace-nowrap">
+            <span class="text-4xl">One Company.</span>
+            <span class="font-normal"> Many services you can depend on.</span>
+          </h1>
+          <div class="mt-4">
+            <BaseInteractiveTextRotator
+              :items="services"
+              variant="chips"
+              :interval-ms="1800"
+              wrapper-class="min-h-[2.25rem] flex items-center justify-center"
+            />
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <BaseLayoutPageHeroSection :class="[{'md:hidden': active }]" src="/images/pages/home/hero.jpg" centered alt="Golden Gate Bridge heroshot image" title="Golden Gate Bridge heroshot image" loading="eager">
+  <BaseLayoutPageHeroSection
+    :class="[{ 'md:hidden': active }]"
+    src="/images/pages/home/hero.jpg"
+    centered
+    alt="Golden Gate Bridge heroshot image"
+    title="Golden Gate Bridge heroshot image"
+    loading="eager"
+  >
     <div class="w-full p-4">
-        <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4 ">
-            <p class="text-3xl">Welcome to</p>
-            <h1 class="text-center flex flex-col" >
-                <span class="text-6xl font-extrabold text-brand-secondary">
-                    Golden Gate Manor
-                </span>
-                <span class="text-2xl uppercase">
-                    One Company. Many services you can depend on.
-                </span>
-            </h1>
-        </div>
-        <p class="text-xl text-center">
-            For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical Medicaid transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.
-        </p>
+      <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4">
+        <p class="text-3xl">Welcome to</p>
+        <h1 class="text-center flex flex-col">
+          <span class="text-6xl font-extrabold text-brand-secondary">Golden Gate Manor</span>
+          <span class="text-2xl uppercase">One Company. Many services you can depend on.</span>
+        </h1>
+      </div>
+      <p class="text-xl text-center">
+        For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical Medicaid transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.
+      </p>
     </div>
-    <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4 " to="/company/contact-us">Contact Us</BaseUiAction>
+    <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4" to="/company/contact-us">Contact Us</BaseUiAction>
   </BaseLayoutPageHeroSection>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
-defineProps<{
-  active: boolean;
-  videoSrc: string;
+const props = defineProps<{
+  active: boolean
+  videoSrc: string
 }>()
+
+type HeroVideoExpose = {
+  play: () => void
+  pause: () => void
+  rewind: () => void
+  toggle: () => void
+}
 
 const services = [
   'Non-Emergency Medical Transportation',
@@ -82,203 +157,154 @@ const services = [
   'Convenience Store'
 ]
 
-const LOGO_SCALE = 0.4
-const MOVE_MS = 1500
-const INTRO_DELAY_MS = 0
-const VIDEO_START_DELAY_MS = 0
+const LOCK_MS = 750
+const PAUSE_DELAY_MS = 150
+const AUTOPLAY_INITIAL_DELAY_MS = 3000
+const REPLAY_DELAY_MS = 5000
+// How many seconds before the video ends to start returning the logo/text
+const OUTRO_SECONDS = 2.5
+const AUTOPLAY_STORAGE_KEY = 'ggm-hero-autoplay'
 
-const OVERLAY_IN_DELAY_MS = 0
-const PAUSE_AFTER_OVERLAY_MS = 0
+const logoPlayedStyle = {
+  bottom: '12px',
+  right: '12px',
+  top: 'auto',
+  left: 'auto',
+  width: '100px',
+}
 
+// ── State ──────────────────────────────────────────────────────────────────────
 const videoReady = ref(false)
-const phase = ref<'idle' | 'animating' | 'played'>('idle')
-
 const uiPlaying = ref(false)
+const playing = ref(false)
+const outroTriggered = ref(false)  // ensures we only trigger the outro once per play
 const transitionLock = ref(false)
+const heroVideo = ref<HeroVideoExpose | null>(null)
 
-const heroVideo = ref<{
-  play: () => void
-  pause: () => void
-  toggle: () => void
-  isPlaying: boolean
-} | null>(null)
+// ── Autoplay preference ────────────────────────────────────────────────────────
+const autoplayEnabled = ref<boolean>(
+  typeof window !== 'undefined'
+    ? (localStorage.getItem(AUTOPLAY_STORAGE_KEY) ?? 'true') === 'true'
+    : true
+)
 
-const logoEl = ref<HTMLElement | null>(null)
-const homePointEl = ref<HTMLElement | null>(null)
-const dockPointEl = ref<HTMLElement | null>(null)
+function toggleAutoplay(e: Event) {
+  const checked = (e.target as HTMLInputElement).checked
+  autoplayEnabled.value = checked
+  localStorage.setItem(AUTOPLAY_STORAGE_KEY, String(checked))
+  if (!checked) clearReplayTimer()
+}
 
-// ✅ NEW: remember the exact dock transform from the intro
-const lastDockDx = ref(0)
-const lastDockDy = ref(0)
+// ── Timer helpers ──────────────────────────────────────────────────────────────
+let replayTimer: ReturnType<typeof setTimeout> | null = null
 
-const overlayOpacityClass = computed(() => {
-  if (phase.value === 'played') return 'opacity-20'
-  return 'opacity-75'
-})
+function clearReplayTimer() {
+  if (replayTimer !== null) {
+    clearTimeout(replayTimer)
+    replayTimer = null
+  }
+}
 
-const textGroupClass = computed(() => {
-  if (phase.value === 'idle') return 'opacity-100 scale-100 translate-y-0'
-  return 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
-})
+function schedulePlay(delayMs: number) {
+  clearReplayTimer()
+  if (!autoplayEnabled.value) return
+  replayTimer = setTimeout(() => {
+    if (autoplayEnabled.value && !playing.value) {
+      startPlaying()
+    }
+  }, delayMs)
+}
 
-const logoOpacityClass = computed(() => (phase.value === 'played' ? 'opacity-70' : 'opacity-100'))
-
-const buttonDisabled = computed(() => !videoReady.value || transitionLock.value)
-const buttonLabel = computed(() => (uiPlaying.value ? 'Pause' : 'Play'))
+// ── Video event handlers ───────────────────────────────────────────────────────
+function onBuffered() {
+  schedulePlay(AUTOPLAY_INITIAL_DELAY_MS)
+}
 
 function onVideoPlay() {
   uiPlaying.value = true
+  outroTriggered.value = false  // reset for each new play
 }
 
-function onVideoPause() {
+function onVideoPause() { uiPlaying.value = false }
+
+function onTimeUpdate(currentTime: number, duration: number) {
+  // When within OUTRO_SECONDS of the end, flip playing to false so the logo
+  // and text animate back to center — video keeps playing underneath
+  if (!outroTriggered.value && duration > 0 && (duration - currentTime) <= OUTRO_SECONDS) {
+    outroTriggered.value = true
+    playing.value = false
+  }
+}
+
+function onVideoEnded() {
+  // Video has fully finished — pause, rewind, and schedule the next autoplay
+  heroVideo.value?.pause()
+  heroVideo.value?.rewind()
   uiPlaying.value = false
+  playing.value = false
+  outroTriggered.value = false
+  schedulePlay(REPLAY_DELAY_MS)
 }
 
-function measureBottomRight(el: Element) {
-  const r = el.getBoundingClientRect()
-  return { x: r.right, y: r.bottom }
+function onVideoError() {
+  uiPlaying.value = false
+  playing.value = false
+  outroTriggered.value = false
 }
 
-function clearLogoAnim(logo: HTMLElement) {
-  logo.style.transition = ''
-  logo.style.transform = ''
-  logo.style.transformOrigin = ''
-  logo.style.willChange = ''
-}
-
-function lockTransition() {
-  transitionLock.value = true
-}
-
-function unlockTransition() {
-  transitionLock.value = false
-}
-
-async function runIntroSequenceThenPlay() {
-  if (!videoReady.value || phase.value !== 'idle') return
-
-  const logo = logoEl.value
-  const dock = dockPointEl.value
-  if (!logo || !dock) return
-
-  uiPlaying.value = true
-  lockTransition()
-  phase.value = 'animating'
-
-  const from = measureBottomRight(logo)
-  const to = measureBottomRight(dock)
-
-  const dx = to.x - from.x
-  const dy = to.y - from.y
-
-  // ✅ store the exact dock transform so reverse can be perfect + simple
-  lastDockDx.value = dx
-  lastDockDy.value = dy
-
-  await new Promise((r) => setTimeout(r, INTRO_DELAY_MS))
-
-  const k1x = dx * 0.06
-  const k1y = dy * 0.55
-  const k2x = dx * 0.18
-  const k2y = dy * 0.85
-  const k3x = dx * 0.55
-  const k3y = dy * 0.97
-
-  const s1 = 1 - (1 - LOGO_SCALE) * 0.35
-  const s2 = 1 - (1 - LOGO_SCALE) * 0.65
-
-  clearLogoAnim(logo)
-
-  logo.style.willChange = 'transform'
-  logo.style.transformOrigin = 'bottom right'
-  logo.style.transition = `transform ${MOVE_MS}ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease-out`
-  logo.style.transform = `translate3d(${k1x}px, ${k1y}px, 0) scale(${s1})`
-
-  requestAnimationFrame(() => {
-    logo.style.transform = `translate3d(${k2x}px, ${k2y}px, 0) scale(${s2})`
-    requestAnimationFrame(() => {
-      logo.style.transform = `translate3d(${k3x}px, ${k3y}px, 0) scale(${LOGO_SCALE})`
-      requestAnimationFrame(() => {
-        // ✅ final dock state
-        logo.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${LOGO_SCALE})`
-      })
-    })
-  })
-
-  await new Promise((r) => setTimeout(r, MOVE_MS))
-  phase.value = 'played'
-
-  await new Promise((r) => setTimeout(r, VIDEO_START_DELAY_MS))
+// ── Play/pause helpers ─────────────────────────────────────────────────────────
+function startPlaying() {
+  outroTriggered.value = false
+  playing.value = true
   heroVideo.value?.play()
-
-  unlockTransition()
 }
 
-async function reverseIntroSequenceThenPause() {
-  if (!videoReady.value || phase.value !== 'played') return
-
-  const logo = logoEl.value
-  if (!logo) return
-
-  uiPlaying.value = false
-  lockTransition()
-
-  // overlay fade-in first
-  phase.value = 'animating'
-
-  window.setTimeout(() => {
-    heroVideo.value?.pause()
-  }, PAUSE_AFTER_OVERLAY_MS)
-
-  await new Promise((r) => setTimeout(r, OVERLAY_IN_DELAY_MS))
-
-  // ✅ SIMPLE RETURN: snap to the dock transform, then transition back to center
-  const dx = lastDockDx.value
-  const dy = lastDockDy.value
-
-  logo.style.willChange = 'transform'
-  logo.style.transformOrigin = 'bottom right'
-
-  // snap (no transition) to guarantee starting point is correct
-  logo.style.transition = 'transform 0s'
-  logo.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${LOGO_SCALE})`
-  void logo.offsetWidth
-
-  // animate straight back to center
-  requestAnimationFrame(() => {
-    logo.style.transition = `transform ${MOVE_MS}ms cubic-bezier(.2,.9,.2,1), opacity 700ms ease-out`
-    logo.style.transform = 'translate3d(0px, 0px, 0) scale(1)'
-  })
-
-  await new Promise((r) => setTimeout(r, MOVE_MS))
-
-  clearLogoAnim(logo)
-  phase.value = 'idle'
-  unlockTransition()
+function stopPlaying() {
+  playing.value = false
+  outroTriggered.value = false
+  window.setTimeout(() => { heroVideo.value?.pause() }, PAUSE_DELAY_MS)
 }
 
+function lockFor(ms: number) {
+  transitionLock.value = true
+  window.setTimeout(() => { transitionLock.value = false }, ms)
+}
+
+// ── Manual button ──────────────────────────────────────────────────────────────
 function handleHeroButton() {
   if (buttonDisabled.value) return
-
-  if (phase.value === 'idle') {
-    runIntroSequenceThenPlay()
-    return
-  }
-
-  if (phase.value === 'played') {
-    reverseIntroSequenceThenPause()
-    return
+  lockFor(LOCK_MS)
+  clearReplayTimer()
+  if (!playing.value && !uiPlaying.value) {
+    startPlaying()
+  } else {
+    stopPlaying()
   }
 }
 
-onBeforeUnmount(() => {
+// ── Computed ───────────────────────────────────────────────────────────────────
+const overlayOpacityClass = computed(() =>
+  playing.value ? 'opacity-20' : 'opacity-75'
+)
+
+const buttonDisabled = computed(() => !videoReady.value || transitionLock.value)
+const buttonLabel = computed(() => (uiPlaying.value ? 'Pause' : 'Play'))
+const buttonClass = computed(() =>
+  uiPlaying.value
+    ? 'font-normal hover:bg-brand-primary hover:opacity-100 border-2 text-white border-white opacity-20'
+    : 'font-extrabold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white'
+)
+
+// ── Lifecycle ──────────────────────────────────────────────────────────────────
+function reset() {
+  clearReplayTimer()
   heroVideo.value?.pause()
-  const logo = logoEl.value
-  if (logo) clearLogoAnim(logo)
-  phase.value = 'idle'
-  transitionLock.value = false
   uiPlaying.value = false
-  lastDockDx.value = 0
-  lastDockDy.value = 0
-})
+  playing.value = false
+  outroTriggered.value = false
+  transitionLock.value = false
+}
+
+watch(() => props.active, (v) => { if (!v) reset() })
+onBeforeUnmount(reset)
 </script>
