@@ -1,5 +1,5 @@
 <template>
-  <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden">
+  <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden z-6">
 
     <!-- Poster: NuxtImg for optimization + preload. Fades out once video is ready. -->
     <Transition
