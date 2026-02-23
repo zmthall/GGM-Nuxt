@@ -1,5 +1,5 @@
 <template>
-    <footer class="flex flex-col">
+    <footer class="flex flex-col z-6">
         <!-- Top Information Header -->
         <div class="bg-brand-primary text-white px-6 py-10 grid grid-cols-1 gap-12 grid-flow-row md:grid-cols-2 2xl:grid-cols-4">
             <!-- Mission statement and social branding -->
