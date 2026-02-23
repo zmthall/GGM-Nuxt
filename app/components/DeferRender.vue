@@ -75,7 +75,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="host">
+  <div ref="host z-6">
     <!-- Always output children in SSR for crawlers -->
     <slot v-if="ready" name="default" />
     <!-- Optional placeholder for client render delay -->
