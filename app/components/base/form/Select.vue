@@ -1,6 +1,6 @@
 <template>
     <div class="relative w-full group">
-        <label v-if="label" :for="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
+        <label v-if="label && !noLabel" :for="label" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <select
             :id="label"
             v-model="selectValue"
@@ -12,7 +12,7 @@
         </select>
 
         <!-- Custom chevron icon -->
-        <div :class="['pointer-events-none absolute inset-y-0 right-3 flex items-center', { 'mt-4': !label, 'mt-7': label }]">
+        <div :class="['pointer-events-none absolute inset-y-0 right-3 flex items-center', { 'mt-4': !label && noLabel, 'mt-7': label && !noLabel }]">
             <BaseIcon name="mdi:chevron-down" size="size-5" color="text-gray-200" hover-color="group-hover:text-brand-primary/50" custom-class="group-focus-within:text-brand-primary/50"/>
         </div>
     </div>
@@ -28,6 +28,7 @@ defineProps<{
     values: string[];
     labels: string[];
     label?: string;
+    noLabel?: boolean
 }>()
 
 const selectValue = defineModel<string>()

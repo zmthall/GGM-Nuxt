@@ -9,7 +9,7 @@ export interface UserData {
     email: string;
     id: string;
     lastLogin: string;
-    role: 'admin' | 'user';
+    role: 'admin' | 'user' | 'correspondence';
     status: 'active' | 'disabled';
     lastPasswordReset: string;
 }
@@ -24,5 +24,5 @@ export interface AddUserData {
     email: string;
     password: string;
     displayName?: string;
-    role: 'admin' | 'user';
+    role: 'admin' | 'user' | 'correspondence';
 }

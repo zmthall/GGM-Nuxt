@@ -14,7 +14,7 @@
             <BaseFormInput v-model="newUser.password" label="password" name="password"  type="password"/>
           </div>
           <div>
-            <BaseFormSelect v-model="newUser.role" label="Role" name="role" :labels="['Admin', 'User']" :values="['admin', 'user']" />
+            <BaseFormSelect v-model="newUser.role" label="Role" name="role" :labels="['Admin', 'User', 'Correspondence']" :values="['admin', 'user', 'correspondence']" />
           </div>
         </div>
       </div>

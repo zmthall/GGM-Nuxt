@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authStore.authorized">
+  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
     <BaseLayoutPageSection margin="top" bg="transparent" class="min-h-[calc(50vh-2rem)]">
       <BaseLayoutPageContainer>
         <BaseUiAction type="button" class="py-4 px-12 mb-4 group" styling="flex items-center justify-center gap-2" @click="showAddEvent">Add New Event<BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" /></BaseUiAction>
@@ -69,6 +69,19 @@
     </BaseLayoutPageSection>
     <AdminAddEventModal v-model="addEventModal"/>
   </div>
+
+  <div v-else-if="authStore.role === 'correspondence'">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <BaseLayoutCard :centered="false">
+          <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+            <p>You do not have access to the Events Management page. Please contact an administrator if you believe this is an error.</p>
+          </div>
+        </BaseLayoutCard>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+  </div>
+
   <div v-else>
     <AdminLogin />
   </div>

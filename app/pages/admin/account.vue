@@ -1,5 +1,5 @@
 <template>
-  <div v-if="auth.authorized">
+  <div v-if="authStore.authorized">
     <BaseLayoutCard
       v-if="!loadingUserInformation"
       class="m-4 sm:w-1/2 sm:mx-auto mt-8 overflow-hidden"
@@ -23,7 +23,7 @@
             </div>
           </div>
 
-          <div class="flex gap-2">
+          <div v-if="authStore.role !== 'correspondence'" class="flex gap-2">
             <button v-if="!editDisplayName" aria-label="Edit display name" class="group flex" @click="openEdit">
               <BaseIcon name="material-symbols:edit-square" color="text-slate-300" hover-color="group-hover:text-brand-primary"/>
             </button>
@@ -55,7 +55,7 @@
             </button>
 
             <button
-              v-if="!auth.user?.emailVerified"
+              v-if="!authStore.user?.emailVerified"
               class="flex p-2 bg-green-600 text-white rounded-lg hover:bg-green-800 justify-center disabled:bg-slate-400"
               :disabled="verifying"
               @click="emailVerificationRequest"
@@ -103,7 +103,7 @@ import type { FetchUser, UserData } from '~/models/admin/user'
 
 definePageMeta({ layout: 'admin' })
 
-const auth = useAuthStore()
+const authStore = useAuthStore()
 const dateFormat = useDateFormat()
 const API = 'https://api.goldengatemanor.com'
 
@@ -118,7 +118,7 @@ const resetting = ref(false)
 let verifyTimer: ReturnType<typeof setTimeout> | null = null
 
 // --- helpers
-const canFetch = computed(() => auth.isFirebaseReady && auth.authorized)
+const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
 const currentName = computed(() => userInformation.value?.displayName ?? '')
 
 // Name validation + “dirty” detection
@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
 
 const getUserInformation = async (showLoading = true) => {
   if (!canFetch.value) return
-  const idToken = await auth.getIdToken()
+  const idToken = await authStore.getIdToken()
   if (!idToken) return
 
   profileAbort.value?.abort()
@@ -171,7 +171,7 @@ const closeEdit = () => {
 const saveEdit = async () => {
   if (!nameValid.value || !nameDirty.value) { closeEdit(); return }
 
-  const idToken = await auth.getIdToken()
+  const idToken = await authStore.getIdToken()
   if (!idToken) return
 
   try {
@@ -199,13 +199,13 @@ const canRequestPasswordReset = computed(() => {
   return mins >= 30
 })
 
-const canSeeDeleteButton = computed(() => userInformation.value?.role !== 'admin')
+const canSeeDeleteButton = computed(() => authStore.role !== 'admin' && authStore.role !== 'correspondence')
 
 const passwordResetRequest = async () => {
   if (resetting.value) return
   resetting.value = true
   try {
-    const idToken = await auth.getIdToken()
+    const idToken = await authStore.getIdToken()
     if (!idToken) return
 
     await $fetch('/api/users/update-password-reset', {
@@ -237,7 +237,7 @@ const emailVerificationRequest = async () => {
   if (verifying.value) return
   verifying.value = true
   try {
-    const idToken = await auth.getIdToken()
+    const idToken = await authStore.getIdToken()
     if (!idToken) return
 
     const res = await $fetch<FetchUser>('/api/users/profile/send-verification', {
@@ -263,7 +263,7 @@ const emailVerificationRequest = async () => {
 }
 
 const deleteAccountRequest = async () => {
-  const idToken = await auth.getIdToken()
+  const idToken = await authStore.getIdToken()
   if (!idToken) return
 
   try {
@@ -284,7 +284,7 @@ const deleteAccountRequest = async () => {
 
 // Refetch when auth is ready/logged-in; refetch when the user identity changes
 watch(
-  () => [auth.isFirebaseReady, auth.authorized, auth.user?.uid] as const,
+  () => [authStore.isFirebaseReady, authStore.authorized, authStore.user?.uid] as const,
   async ([ready, authed, uid]) => {
     if (!ready || !authed || !uid) return
     await getUserInformation(true) // will run once per identity

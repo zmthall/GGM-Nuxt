@@ -81,23 +81,30 @@
             <div
               v-if="openRoleFor?.id === u.id"
               ref="roleMenuRef"
-              class="z-[1000] fixed w-28 overflow-hidden rounded-md border bg-white shadow-lg"
+              class="z-[1000] fixed w-32 overflow-hidden rounded-md border bg-white shadow-lg"
               :style="roleMenuStyle"
               @click.stop
             >
               <button
-                class="block w-full px-3 py-1.5 text-left text-sm hover:bg-gray-50"
+                class="block w-full px-3 py-1.5 text-center text-sm hover:bg-gray-50"
                 :class="u.role === 'admin' ? 'font-medium text-gray-900' : 'text-gray-700'"
                 @click="selectRole(u, 'admin')"
               >
                 Admin
               </button>
               <button
-                class="block w-full px-3 py-1.5 text-left text-sm hover:bg-gray-50"
+                class="block w-full px-3 py-1.5 text-center text-sm hover:bg-gray-50"
                 :class="u.role === 'user' ? 'font-medium text-gray-900' : 'text-gray-700'"
                 @click="selectRole(u, 'user')"
               >
                 User
+              </button>
+              <button
+                class="block w-full px-3 py-1.5 text-center text-sm hover:bg-gray-50"
+                :class="u.role === 'correspondence' ? 'font-medium text-gray-900' : 'text-gray-700'"
+                @click="selectRole(u, 'correspondence')"
+              >
+                Correspondence
               </button>
             </div>
           </Teleport>
@@ -154,7 +161,7 @@ import type { UserData } from '~/models/admin/user'
 import type { Pagination } from '~/models/Pagination'
 import { useDateFormat } from '../../composables/dates/dateFormat.js'
 
-type UserRole = 'admin' | 'user'
+type UserRole = 'admin' | 'user' | 'correspondence'
 
 /** Props & Emits */
 const authStore = useAuthStore()

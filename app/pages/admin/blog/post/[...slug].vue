@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div v-if="authStore.authorized">
+  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
     <div class="md:grid md:grid-cols-15 md:max-w-[1500px] md:mx-auto">
 
       <!-- MAIN BLOG COLUMN -->
@@ -196,6 +196,15 @@
             </NuxtLink>
         </li>
     </ul>
+    </BaseLayoutPageSection>
+  </div>
+  <div v-else-if="authStore.role === 'correspondence'">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+          <p>You do not have access to the Blog Management page. Please contact an administrator if you believe this is an error.</p>
+        </div>
+      </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
 

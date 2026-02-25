@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authStore.authorized">
+  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
     <BaseLayoutPageSection margin="top" bg="transparent" class="min-h-[calc(50vh-2rem)]">
       <BaseLayoutPageContainer class="space-y-4">
         <h2 class="text-2xl text-brand-primary font-bold">Community Page Images:</h2>
@@ -82,6 +82,16 @@
         </div>
       </div>
     </BaseInteractiveModal>
+  </div>
+
+  <div v-else-if="authStore.role === 'correspondence'">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+          <p>You do not have access to the Community Management page. Please contact an administrator if you believe this is an error.</p>
+        </div>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
   </div>
 
   <div v-else>

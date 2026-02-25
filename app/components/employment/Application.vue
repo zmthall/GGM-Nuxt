@@ -51,7 +51,7 @@
             <BaseFormFileUpload v-if="application.driving.hasMVR === 'yes'" v-model="application.driving.MVR" name="MVR" label="Attach your MVR:"/>
           </div>
           <div>
-            <BaseFormFileUpload v-model="application.driving.driversLicense" name="dl" label="Attach Your Driver's License:"/>
+            <BaseFormFileUpload v-model="application.driving.driversLicense" name="drivers-license" label="Attach Your Driver's License:"/>
           </div>
         </div>
       </BaseLayoutPageSection>
@@ -110,7 +110,7 @@
   </form>
 </template>
 
-<script lang="ts" setup>
+|<script lang="ts" setup>
 import { useRecaptcha } from '../../composables/messages/recaptcha';
 
 const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
@@ -159,7 +159,6 @@ onMounted(() => {
   loadRecaptcha()
 })
 
-// Clean up ReCAPTCHA when component unmounts
 onUnmounted(() => {
   unloadRecaptcha()
 })
@@ -172,7 +171,7 @@ watch(
 
     const next = { ...route.query }
     if (val) next.select = val
-    else delete next.select // remove param if empty
+    else delete next.select
 
     router.replace({ query: next })
   }
@@ -194,7 +193,6 @@ const validateApplicationForm = () => {
   const isDrivingPosition = drivingPositions.includes(position)
   const canAskFelony = !notAllowedToAskFelony.includes(position)
 
-  // Always required fields
   if (!application.personal.firstName || 
       !application.personal.lastName || 
       !application.personal.address || 
@@ -210,125 +208,70 @@ const validateApplicationForm = () => {
     }
   }
 
-  // Position selection validation
   if (!position) {
-    return {
-      success: false,
-      message: 'Please select a position to apply for'
-    }
+    return { success: false, message: 'Please select a position to apply for' }
   }
 
-  // Age validation
   if (application.personal.over18 !== 'yes') {
-    return {
-      success: false,
-      message: 'You must be over 18 to apply'
-    }
+    return { success: false, message: 'You must be over 18 to apply' }
   }
 
-  // Citizenship validation
   if (application.personal.citizen !== 'yes') {
-    return {
-      success: false,
-      message: 'You must be a US citizen or authorized to work in the US'
-    }
+    return { success: false, message: 'You must be a US citizen or authorized to work in the US' }
   }
 
-  // Felony validation (only for positions where we can ask)
   if (canAskFelony && !application.personal.felony) {
-    return {
-      success: false,
-      message: 'Please answer the felony conviction question'
-    }
+    return { success: false, message: 'Please answer the felony conviction question' }
   }
 
-  // Driving position specific validations
   if (isDrivingPosition) {
-    // Required driving fields
     if (!application.driving.hasEndorsements ||
         !application.driving.hasAccidents ||
         !application.driving.hasTrafficConvictions ||
         !application.driving.hasMVR) {
-      return {
-        success: false,
-        message: 'Please complete all driving-related questions for this position'
-      }
+      return { success: false, message: 'Please complete all driving-related questions for this position' }
     }
 
-    // Driver's license file requirement
     if (!application.driving.driversLicense || application.driving.driversLicense.length === 0) {
-      return {
-        success: false,
-        message: 'Driver\'s license copy is required for driving positions'
-      }
+      return { success: false, message: 'Driver\'s license copy is required for driving positions' }
     }
 
-    // MVR requirement
     if (application.driving.hasMVR === 'yes' && 
         (!application.driving.MVR || application.driving.MVR.length === 0)) {
-      return {
-        success: false,
-        message: 'Please upload your MVR document'
-      }
+      return { success: false, message: 'Please upload your MVR document' }
     }
 
-    // Endorsements details
     if (application.driving.hasEndorsements === 'yes' && !application.driving.endorsements.trim()) {
-      return {
-        success: false,
-        message: 'Please provide details about your endorsements'
-      }
+      return { success: false, message: 'Please provide details about your endorsements' }
     }
 
-    // Accidents details
     if (application.driving.hasAccidents === 'yes' && !application.driving.accidents.trim()) {
-      return {
-        success: false,
-        message: 'Please provide details about your accidents'
-      }
+      return { success: false, message: 'Please provide details about your accidents' }
     }
 
-    // Traffic convictions details
     if (application.driving.hasTrafficConvictions === 'yes' && !application.driving.trafficConvictions.trim()) {
-      return {
-        success: false,
-        message: 'Please provide details about your traffic convictions'
-      }
+      return { success: false, message: 'Please provide details about your traffic convictions' }
     }
   }
 
-  // "Other" explanation validation
   if (application.work.learnedAboutUs === 'other' && !application.work.otherExplain.trim()) {
-    return {
-      success: false,
-      message: 'Please explain how you learned about us'
-    }
+    return { success: false, message: 'Please explain how you learned about us' }
   }
 
-  // Date validation
   const startDate = new Date(application.work.dateAvailableToStart)
   const today = new Date()
-  today.setHours(0, 0, 0, 0) // Reset time to compare just dates
+  today.setHours(0, 0, 0, 0)
   
   if (startDate < today) {
-    return {
-      success: false,
-      message: 'Available start date cannot be in the past'
-    }
+    return { success: false, message: 'Available start date cannot be in the past' }
   }
 
-  // All validations passed
-  return {
-    success: true,
-    message: 'Application is valid'
-  }
+  return { success: true, message: 'Application is valid' }
 }
 
-// Narrower, reusable checks
 const isFile = (v: unknown): v is File =>
   typeof File !== 'undefined' && v instanceof File;
 
-// Generic extractor for arrays of objects with a known file key
 function filesFrom<T extends Record<string, unknown>, K extends keyof T>(
   items: ReadonlyArray<T> | undefined,
   key: K
@@ -347,13 +290,9 @@ const submitApplication = async () => {
     isSubmitting.value = true
     submitResult.value = null
     
-    // Validate required fields
     const validation = validateApplicationForm()
     if(!validation.success) {
-      submitResult.value = {
-        success: false,
-        message: validation.message
-      }
+      submitResult.value = { success: false, message: validation.message }
       return
     }
 
@@ -362,93 +301,84 @@ const submitApplication = async () => {
     const dlFiles = filesFrom<FileWrap, 'file'>(application.driving.driversLicense, 'file');
     const resumeFiles = filesFrom<FileWrap, 'file'>(application.work.resume, 'file');
 
-  
     const token = await executeRecaptcha('application_form')
-    
     const verification = await verifyWithServer(token)
     
-    if (verification.success && verification.data?.valid) {
-      // Create FormData for file uploads
-      const formData = new FormData()
-      
-      // Add the application data as a JSON string
-      formData.append('applicationData', JSON.stringify({
-        personal: application.personal,
-        driving: {
-          ...application.driving,
-          MVR: [], // Remove file objects
-          driversLicense: [] // Remove file objects
-        },
-        work: {
-          ...application.work,
-          resume: [] // Remove file objects
-        }
-      }))
-      
-      // Add files individually
-      for (const f of mvrFiles) formData.append('MVR', f, f.name);
-      for (const f of dlFiles) formData.append('dl', f, f.name);
-      for (const f of resumeFiles) formData.append('resume', f, f.name);
-      
-      // Submit with FormDat
-      await $fetch('/api/application/submit', {
-        baseURL: 'https://api.goldengatemanor.com/',
-        method: 'POST',
-        body: formData // No headers needed for FormData
-      })
-      
-      submitResult.value = {
-        success: true,
-        message: 'Application submitted successfully!',
-        score: verification.data.score
-      }
-      
-      // Reset form...
-      Object.assign(application, {
-        personal: {
-          select: route.query.select || '',
-          firstName: '',
-          lastName: '',
-          address: '',
-          phoneNumber: '',
-          over18: 'no',
-          citizen: 'no',
-          felony: 'no',
-        },
-        driving: {
-          hasEndorsements: 'no',
-          endorsements: '',
-          hasAccidents: 'no',
-          accidents: '',
-          hasTrafficConvictions: 'no',
-          trafficConvictions: '',
-          hasMVR: 'no',
-          MVR: [],
-          driversLicense: []
-        },
-        work: {
-          learnedAboutUs: '',
-          otherExplain: '',
-          hasWorkedAtGoldenGate: 'no',
-          employmentType: 'full-time',
-          availability: '',
-          willingToWorkOvertime: 'no',
-          preferablePayRate: '',
-          dateAvailableToStart: '',
-          resume: []
-        }
-      })
-
-      setTimeout(() => {
-        submitResult.value = null;
-      }, 5000);
-    } else {
-      submitResult.value = {
-        success: false,
-        message: verification.message || 'ReCAPTCHA verification failed'
-      }
+    if (!(verification.success && verification.data?.valid)) {
+      submitResult.value = { success: false, message: verification.message || 'ReCAPTCHA verification failed' }
+      return
     }
-    
+
+    const formData = new FormData()
+
+    formData.append('applicationData', JSON.stringify({
+      personal: application.personal,
+      driving: {
+        ...application.driving,
+        MVR: [],
+        driversLicense: []
+      },
+      work: {
+        ...application.work,
+        resume: []
+      }
+    }))
+
+    for (const f of mvrFiles) formData.append('MVR', f, f.name)
+    for (const f of dlFiles) formData.append('driversLicense', f, f.name) // ✅ key aligned to backend
+    for (const f of resumeFiles) formData.append('resume', f, f.name)
+
+    await $fetch('/api/application/submit', {
+      baseURL: 'http://127.0.0.1:4000',
+      method: 'POST',
+      body: formData
+    })
+
+    submitResult.value = {
+      success: true,
+      message: 'Application submitted successfully!',
+      score: verification.data.score
+    }
+
+    Object.assign(application, {
+      personal: {
+        select: route.query.select || '',
+        firstName: '',
+        lastName: '',
+        address: '',
+        phoneNumber: '',
+        over18: 'no',
+        citizen: 'no',
+        felony: 'no',
+      },
+      driving: {
+        hasEndorsements: 'no',
+        endorsements: '',
+        hasAccidents: 'no',
+        accidents: '',
+        hasTrafficConvictions: 'no',
+        trafficConvictions: '',
+        hasMVR: 'no',
+        MVR: [],
+        driversLicense: []
+      },
+      work: {
+        learnedAboutUs: '',
+        otherExplain: '',
+        hasWorkedAtGoldenGate: 'no',
+        employmentType: 'full-time',
+        availability: '',
+        willingToWorkOvertime: 'no',
+        preferablePayRate: '',
+        dateAvailableToStart: '',
+        resume: []
+      }
+    })
+
+    setTimeout(() => {
+      submitResult.value = null;
+    }, 5000);
+
   } catch (error) {
     console.error('Form submission error:', error)
     submitResult.value = {

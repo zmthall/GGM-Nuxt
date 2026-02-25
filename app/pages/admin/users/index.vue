@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authStore.authorized">
+  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
@@ -44,6 +44,19 @@
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
+  
+   <div v-else-if="authStore.role === 'correspondence'">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <BaseLayoutCard :centered="false">
+          <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+            <p>You do not have access to the User Management page. Please contact an administrator if you believe this is an error.</p>
+          </div>
+        </BaseLayoutCard>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+  </div>
+
   <div v-else>
     <AdminLogin />
   </div>

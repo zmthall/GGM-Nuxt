@@ -1,6 +1,6 @@
 <template>
     <div class="relative w-full">
-        <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{
+        <label v-if="label" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{
             label }}</label>
         <input
             v-if="type === 'tel'"
