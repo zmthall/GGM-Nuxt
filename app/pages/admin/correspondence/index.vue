@@ -132,7 +132,7 @@
                           {{ downloadingId === application.id ? 'Downloading…' : 'Export' }}
                         </button>
 
-                        <button v-if="authStore.role !== 'correspondence'" class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" type="button" @click.stop="deleteApplication(application.id, 10, false, queryFilters)">
+                        <button v-if="authStore.role !== 'correspondence'" class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" type="button" @click.stop="deleteApplication(application.id, 5, false, queryFilters)">
                           Delete
                         </button>
                       </div>
