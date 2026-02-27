@@ -1,7 +1,7 @@
 <template>
   <div ref="root" class="relative">
     <!-- Trigger Button -->
-    <button type="button" class="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200" @click="toggle">
+    <button :title="`Messages: ${counts.messagesNew}, Ride Requests: ${counts.rideRequestsNew}, Applications: ${counts.applicationsNew}`" type="button" class="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200" @click="toggle">
       <span class="relative inline-flex items-center">
         <BaseIcon name="material-symbols:circle-notifications" />
 
