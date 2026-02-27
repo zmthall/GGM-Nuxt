@@ -53,10 +53,10 @@
                 <button
                   class="rounded-md bg-white px-3 py-2 text-sm font-medium text-brand-primary hover:brightness-95 disabled:opacity-60 disabled:cursor-not-allowed"
                   type="button"
-                  :disabled="!applications?.length || exportingBulk"
+                  :disabled="!(applications?.some(a => a.status === 'new')) || exportingBulk"
                   @click="exportCurrentPageZip"
                 >
-                  {{ exportingBulk ? 'Exporting…' : 'Export Page ZIP' }}
+                  {{ exportingBulk ? 'Exporting…' : 'Export New ZIP' }}
                 </button>
               </div>
             </template>

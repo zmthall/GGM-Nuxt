@@ -198,6 +198,7 @@
     </ul>
     </BaseLayoutPageSection>
   </div>
+  
   <div v-else-if="authStore.role === 'correspondence'">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>

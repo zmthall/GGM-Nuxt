@@ -2,9 +2,12 @@
 <template>
     <div v-if="authStore.authorized && $route.path !== '/admin/login'" class="h-16 bg-brand-primary sticky top-0 px-4 shadow-primary z-15">
       <nav class="w-full h-full flex items-center justify-between" aria-label="Main dashboard navigation toggling">
-        <button>
-          <BaseIcon name="charm:menu-hamburger" color="text-white" hover-color="hover:text-zinc-500" @click="toggleDashboardDrawer"/>
-        </button>
+        <div class="flex gap-4">
+          <button>
+            <BaseIcon name="charm:menu-hamburger" color="text-white" hover-color="hover:text-zinc-500" @click="toggleDashboardDrawer"/>
+          </button>
+          <AdminNotificationsDropdown />
+        </div>
         <div class="flex gap-2">
           <AdminRebuildButton v-if="authStore.role === 'admin'" />
           <BaseUiAction type="button" variant="secondary" class="text-white border-2 border-brand-secondary rounded-xl p-2 hover:text-brand-primary hover:bg-brand-secondary" @click="logoutUser">

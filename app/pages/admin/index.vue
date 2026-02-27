@@ -109,10 +109,10 @@
                         <button
                           class="rounded-md bg-white px-3 py-2 text-sm font-medium text-brand-primary hover:brightness-95 disabled:opacity-60 disabled:cursor-not-allowed"
                           type="button"
-                          :disabled="!applications?.length || exportingBulk"
+                          :disabled="!(applications?.some(a => a.status === 'new')) || exportingBulk"
                           @click="exportCurrentPageZip"
                         >
-                          {{ exportingBulk ? 'Exporting…' : 'Export Page ZIP' }}
+                          {{ exportingBulk ? 'Exporting…' : 'Export New ZIP' }}
                         </button>
                       </div>
                     </template>
@@ -237,19 +237,19 @@ const nextContactPage = () => fetchContactMessages(false, 3, contactPage.value +
 const prevContactPage = () => fetchContactMessages(false, 3, Math.max(1, contactPage.value - 1))
 const setContactPage  = (p: number) => fetchContactMessages(false, 3, p)
 
-const nextApplicationPage = () => fetchApplications(false, 3, applicationPage.value + 1, false, queryFilters.value)
-const prevApplicationPage = () => fetchApplications(false, 3, Math.max(1, applicationPage.value - 1), false, queryFilters.value)
-const setApplicationPage = (p: number) => fetchApplications(false, 3, p, false, queryFilters.value)
+const nextApplicationPage = () => fetchApplications(false, 3, applicationPage.value + 1, true, queryFilters.value)
+const prevApplicationPage = () => fetchApplications(false, 3, Math.max(1, applicationPage.value - 1), true, queryFilters.value)
+const setApplicationPage = (p: number) => fetchApplications(false, 3, p, true, queryFilters.value)
 
 // Toolbar actions
 const applyFilters = async () => {
-  await fetchApplications(true, 3, 1, false, queryFilters.value)
+  await fetchApplications(true, 3, 1, true, queryFilters.value)
 }
 
 const clearFilters = async () => {
   selectedDepartment.value = 'all'
   positionSearch.value = ''
-  await fetchApplications(true, 3, 1, false, {})
+  await fetchApplications(true, 3, 1, true, {})
 }
 
 // Export actions (via composable)
@@ -265,7 +265,11 @@ const downloadPacket = async (id: string) => {
 const exportCurrentPageZip = async () => {
   exportingBulk.value = true
   try {
-    const ids = (applications.value || []).map(a => a.id).filter(Boolean)
+    const ids = (applications.value || [])
+      .filter(a => a.status === 'new')
+      .map(a => a.id)
+      .filter(Boolean)
+
     if (!ids.length) return
     await downloadBulkPackets(ids)
   } finally {
@@ -397,7 +401,7 @@ onMounted(async () => {
     await Promise.allSettled([
       fetchRideRequests(true, 3, requestPage.value),
       fetchContactMessages(true, 3, contactPage.value),
-      fetchApplications(true, 3, applicationPage.value, false, queryFilters.value),
+      fetchApplications(true, 3, applicationPage.value, true, queryFilters.value),
       fetchEvents(),
     ])
 
@@ -412,7 +416,7 @@ onMounted(async () => {
       await Promise.allSettled([
         fetchRideRequests(true, 3, requestPage.value),
         fetchContactMessages(true, 3, contactPage.value),
-        fetchApplications(true, 10, applicationPage.value, false, queryFilters.value),
+        fetchApplications(true, 3, applicationPage.value, true, queryFilters.value),
         fetchEvents(),
       ])
     },
