@@ -130,7 +130,6 @@ import { useDateFormat } from '../../../composables/dates/dateFormat'
 import type { AllPosts } from '../../../models/blog'
 
 const authStore = useAuthStore();
-console.log(authStore.role)
 
 defineOptions({
     name: 'BlogPostsPage'

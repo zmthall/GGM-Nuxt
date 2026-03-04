@@ -53,6 +53,14 @@
                 <span class="font-semibold">Words:</span> {{ readingStats.words }}
               </div>
             </div>
+
+            <div class="mt-3 flex justify-end">
+              <BaseUiAction type="button" class="px-2 py-1" @click="copyRawMarkdown">
+                <span v-if="copyState === 'copied'">Copied!</span>
+                <span v-else-if="copyState === 'error'">Copy failed</span>
+                <span v-else>Copy Raw Markdown</span>
+              </BaseUiAction>
+            </div>
           </div>
 
           <div class="sm:w-1/2 relative border-2 border-zinc-100 rounded-lg p-4 space-y-2">
@@ -217,6 +225,104 @@ const readingStats = computed(() => {
   const minutes = words > 0 ? Math.max(1, Math.ceil(words / 250)) : 0
   return { words, minutes }
 })
+
+/* =========================
+   NEW: raw markdown builder + copy button logic
+   ========================= */
+const copyState = ref<'idle' | 'copied' | 'error'>('idle')
+
+const yamlQuote = (v: string) => `"${String(v ?? '').replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`
+
+const indentBlock = (v: string) => String(v ?? '').split('\n').map(line => `  ${line}`).join('\n')
+
+const buildFrontmatter = (m: BlogPostWithReadTime | null) => {
+  if (!m) return ''
+  const lines: string[] = []
+
+  const pushStr = (k: string, v: unknown) => {
+    const s = String(v ?? '')
+    if (s.trim().length === 0) return
+    lines.push(`${k}: ${yamlQuote(s)}`)
+  }
+
+  const pushBool = (k: string, v: unknown) => {
+    lines.push(`${k}: ${v ? 'true' : 'false'}`)
+  }
+
+  const pushNum = (k: string, v: unknown) => {
+    if (v === undefined || v === null || String(v).trim() === '') return
+    const n = Number(v)
+    lines.push(`${k}: ${Number.isFinite(n) ? n : yamlQuote(String(v))}`)
+  }
+
+  pushStr('title', m.title)
+  pushStr('description', m.description)
+
+  if (String(m.summary ?? '').trim().length > 0) {
+    lines.push(`summary: |-\n${indentBlock(String(m.summary ?? ''))}`)
+  }
+
+  pushStr('date', m.date)
+  pushStr('author', m.author)
+
+  pushBool('draft', !!m.draft)
+  pushBool('staffPick', !!m.staffPick)
+
+  if (Array.isArray(m.tags) && m.tags.length > 0) {
+    lines.push('tags:')
+    m.tags.forEach((t) => lines.push(`  - ${yamlQuote(String(t))}`))
+  } else {
+    lines.push('tags: []')
+  }
+
+  pushStr('thumbnail', m.thumbnail)
+  pushStr('thumbnailAlt', m.thumbnailAlt)
+  pushNum('thumbnailWidth', m.thumbnailWidth)
+  pushNum('thumbnailHeight', m.thumbnailHeight)
+  pushNum('readTime', m.readTime)
+
+  return `---\n${lines.join('\n')}\n---\n`
+}
+
+const rawMarkdown = computed(() => {
+  const fm = buildFrontmatter(meta.value)
+  const b = String(body.value ?? '')
+  return `${fm}\n${b}`.replace(/^\n+/, '')
+})
+
+const copyRawMarkdown = async () => {
+  if (!import.meta.client) return
+  const text = rawMarkdown.value
+
+  try {
+    await navigator.clipboard.writeText(text)
+    copyState.value = 'copied'
+    window.setTimeout(() => { copyState.value = 'idle' }, 1500)
+    return
+  } catch (e) {
+    console.error('navigator.clipboard.writeText failed:', e)
+    // fallback for older/locked-down clipboard environments
+    try {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.setAttribute('readonly', '')
+      ta.style.position = 'fixed'
+      ta.style.top = '-9999px'
+      ta.style.left = '-9999px'
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+      copyState.value = 'copied'
+      window.setTimeout(() => { copyState.value = 'idle' }, 1500)
+      return
+    } catch (err) {
+      console.error('copyRawMarkdown failed:', err)
+      copyState.value = 'error'
+      window.setTimeout(() => { copyState.value = 'idle' }, 2000)
+    }
+  }
+}
 
 const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
   const idToken = await authStore.getIdToken()
