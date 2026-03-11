@@ -1,5 +1,43 @@
 {
   "company": "Golden Gate Manor",
+  "header": {
+    "links": {
+      "home": "Home",
+      "assisted-living": "Assisted Living",
+      "non-medical": "Non-Medical",
+      "nemt": "NEMT",
+      "medical-supplies": "Medical Supplies",
+      "gas-and-goods": "Gas",
+      "news": "News",
+      "company": "Company",
+      "resources": "Resources"
+    },
+    "sublinks": {
+      "community": "Community",
+      "blog": "Blog",
+      "about-us": "About Us",
+      "location": "Find Us",
+      "policies": "Policies",
+      "contact": "Contact Us",
+      "join": "Join Our Team",
+      "faq": "FAQ",
+      "map": "Service Area Map",
+      "forms": "Forms & Documents",
+      "schedule": "Schedule a Ride"
+    },
+    "cta": {
+      "schedule": "Schedule a Ride",
+      "contacts": "Contacts"
+    },
+    "contacts": {
+      "non-medical": "Non-Medical",
+      "nemt": "NEMT",
+      "assisted-living": "Assisted Living",
+      "medical-supplies": "Medical Supplies",
+      "gas-and-goods-1": "Gas & Goods 1",
+      "gas-and-goods-2": "Gas & Goods 2"
+    }
+  },
   "home": {
     "hero": {
       "eyebrow": "Welcome to",

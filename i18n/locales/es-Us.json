@@ -1,5 +1,43 @@
 {
   "company": "Golden Gate Manor",
+  "header": {
+    "links": {
+        "home": "Inicio",
+        "assisted-living": "Vida Asistida",
+        "non-medical": "No Médico",
+        "nemt": "NEMT",
+        "medical-supplies": "Suministros",
+        "gas-and-goods": "Gas",
+        "news": "Noticias",
+        "company": "Empresa",
+        "resources": "Recursos"
+    },
+    "sublinks": {
+        "community": "Comunidad",
+        "blog": "Blog",
+        "about-us": "Sobre Nosotros",
+        "location": "Ubícanos",
+        "policies": "Políticas",
+        "contact": "Contáctenos",
+        "join": "Únete al Equipo",
+        "faq": "Preguntas Frecuentes",
+        "map": "Mapa de Servicio",
+        "forms": "Formularios y Documentos",
+        "schedule": "Programe un Viaje"
+    },
+    "cta": {
+        "schedule": "Programe un Viaje",
+        "contacts": "Contactos" 
+    },
+    "contacts": {
+      "non-medical": "No Médico",
+      "nemt": "NEMT",
+      "assisted-living": "Vida Asistida",
+      "medical-supplies": "Suministros Médicos",
+      "gas-and-goods-1": "Gas & Goods 1",
+      "gas-and-goods-2": "Gas & Goods 2"
+    }
+  },
   "home": {
     "hero": {
       "eyebrow": "Bienvenido a",

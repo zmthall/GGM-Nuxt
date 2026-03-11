@@ -11,7 +11,7 @@
         <!-- /Left Header -->
         <!-- Right Header -->
         <div class="flex items-center gap-2">
-            <BaseUiAction to="/resources/schedule-a-ride" variant="cta" class="z-10 p-2">Schedule a Ride</BaseUiAction>
+            <BaseUiAction :to="$localePath('/resources/schedule-a-ride')" variant="cta" class="z-10 p-2">{{ $t('header.cta.schedule') }}</BaseUiAction>
             <div class="relative">
                 <button 
                     ref="contactButton"
@@ -20,7 +20,7 @@
                     class="flex items-center p-2 border-2 border-transparent rounded-xl bg-brand-background hover:bg-brand-primary hover:border-brand-secondary group transition-colors duration-300 ease-in-out"
                     @click="toggleContactServices">
                     <BaseIcon name="ic:round-call" hover-color="group-hover:text-brand-light-gray" />
-                    <span class="font-bold text-brand-primary group-hover:text-brand-light-gray">Contacts</span>
+                    <span class="font-bold text-brand-primary group-hover:text-brand-light-gray">{{ $t('header.cta.contacts') }}</span>
                     <BaseIcon name="ic:sharp-arrow-drop-down" hover-color="group-hover:text-brand-light-gray" />
                 </button>
                 <div 
@@ -33,7 +33,7 @@
                             v-for="contactService in contactServices" :key="contactService.id"
                             class="flex gap-10 w-full justify-between p-2 border-b-2 border-b-brand-light-gray/35 last:border-b-0"
                         >
-                            <span class="font-semibold whitespace-nowrap">{{ contactService.name }}</span>
+                            <span class="font-semibold whitespace-nowrap">{{ $t(`header.contacts.${contactService.id}`) }}</span>
                             <CallRailLink
                                     v-if="contactService.id === 'Non-Medical' || contactService.id === 'NEMT'"
                                     :tel="contactService.number"

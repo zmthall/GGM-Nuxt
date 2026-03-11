@@ -4,21 +4,21 @@
             <ul :class="['grid h-[35px]', gridColumns]">
                 <li 
                     v-for="navLink in navLinks" :key="navLink.id" class="relative"
-                    @mouseenter="toggleSublinks(navLink.name)" @mouseleave="toggleSublinks(null)"
-                    @focusin="toggleSublinks(navLink.name)" @focusout="toggleSublinks(null)">
+                    @mouseenter="toggleSublinks($t(`header.links.${navLink.id}`))" @mouseleave="toggleSublinks(null)"
+                    @focusin="toggleSublinks($t(`header.links.${navLink.id}`))" @focusout="toggleSublinks(null)">
                     <NuxtLink 
-                        :to="navLink.slug"
+                        :to="$localePath(navLink.slug)"
                         class="w-full h-full text-center flex items-center justify-center font-bold responsive-text bg-brand-primary whitespace-nowrap uppercase px-2 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-500 ease-in-out">
-                        {{ navLink.name }}</NuxtLink>
+                        {{ $t(`header.links.${navLink.id}`) }}</NuxtLink>
                     <ul 
                         v-if="navLink.sublinks"
-                        :class="['absolute bg-white text-brand-primary font-bold w-full text-center rounded-b-md overflow-hidden sublink-nav', { 'active': isSublinkActive(navLink.name) }]">
+                        :class="['absolute bg-white text-brand-primary font-bold w-full text-center rounded-b-md overflow-hidden sublink-nav', { 'active': isSublinkActive($t(`header.links.${navLink.id}`)) }]">
                         <li v-for="sublink in navLink.sublinks" :key="sublink.id">
                             <NuxtLink
-                                :to="sublink.slug"
+                                :to="$localePath(sublink.slug)"
                                 class="w-full h-full block hover:bg-brand-secondary py-2 responsive-text"
                             >
-                                {{ sublink.name }}
+                                {{ $t(`header.sublinks.${sublink.id}`) }}
                             </NuxtLink>
                         </li>
                     </ul>
@@ -65,24 +65,24 @@
                             <li v-for="navLink in navLinks" :key="navLink.id" class="w-3/4">
                                 <NuxtLink 
                                     v-if="!navLink.sublinks"
-                                    :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
+                                    :to="$localePath(navLink.slug)" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
                                     @click="toggleDrawer">
-                                    {{ navLink.name }} 
+                                    {{ $t(`header.links.${navLink.id}`) }} 
                                 </NuxtLink>
                                 <button 
                                     v-if="navLink.sublinks" class="text-brand-primary group hover:text-brand-link-hover font-semibold text-center flex justify-center items-center w-full py-1"
-                                    @click="toggleMobileSublinks(navLink.name, $event)"
+                                    @click="toggleMobileSublinks($t(`header.links.${navLink.id}`), $event)"
                                     >
-                                    {{ navLink.name }}
+                                    {{ $t(`header.links.${navLink.id}`) }}
                                     <BaseIcon name="material-symbols:arrow-drop-down-rounded" class="pointer-events-none group-hover:text-brand-link-hover"/>
                                 </button>
                                 <ul v-if="navLink.sublinks" :class="['flex flex-col gap-2 w-full sublink-mobile-nav relative bg-gray-50']">
                                     <template v-for="(sublink, idx) in navLink.sublinks" :key="sublink.id">
                                         <li v-if="idx === 0 && navLink.id !== 'company'" class="before:top-0 before:absolute before:w-full before:h-[2px] before:bg-gray-200">
-                                            <NuxtLink :to="navLink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ navLink.name }}</NuxtLink>
+                                            <NuxtLink :to="$localePath(sublink.slug)" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ $t(`header.links.${navLink.id}`) }}</NuxtLink>
                                         </li>
                                         <li>
-                                            <NuxtLink :to="sublink.slug" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ sublink.name }}</NuxtLink>
+                                            <NuxtLink :to="$localePath(sublink.slug)" class="text-brand-primary hover:text-brand-link-hover font-semibold text-center flex justify-center items-center py-2" @click="toggleDrawer">{{ $t(`header.sublinks.${sublink.id}`) }}</NuxtLink>
                                         </li>
                                     </template>
                                 </ul>
