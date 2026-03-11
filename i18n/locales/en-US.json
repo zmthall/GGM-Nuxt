@@ -1,5 +1,27 @@
 {
-    "home": {
-        
+  "company": "Golden Gate Manor",
+  "home": {
+    "hero": {
+      "eyebrow": "Welcome to",
+      "title": "One Company. Many services you can depend on.",
+      "titleLines": [
+        "One Company.",
+        "Many services you can depend on."
+      ],
+      "paragraph": "For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical Medicaid transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.",
+      "services": [
+        "Non-Emergency Medical Transportation",
+        "Non-Medical Transportation",
+        "Assisted Living",
+        "Medical Supplies",
+        "Convenience Store"
+      ],
+      "button": "Contact Us",
+      "video": {
+        "play": "Play",
+        "pause": "Pause",
+        "autoplay": "Autoplay"
+      }
     }
+  }
 }

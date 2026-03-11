@@ -60,7 +60,7 @@
             @change="toggleAutoplay"
           >
           <span :class="playing ? 'text-white opacity-40' : 'text-brand-primary font-semibold'">
-            Autoplay
+            {{ $t('home.hero.video.autoplay') }}
           </span>
         </label>
       </div>
@@ -92,9 +92,9 @@
             ? 'absolute inset-0 flex items-center justify-center opacity-0 scale-95 -translate-y-2 pointer-events-none'
             : 'opacity-100 scale-100 translate-y-0'"
         >
-          <h1 class="text-3xl font-extrabold text-brand-primary whitespace-nowrap">
-            <span class="text-4xl">One Company.</span>
-            <span class="font-normal"> Many services you can depend on.</span>
+          <h1 class="flex gap-1 flex-wrap justify-center items-end text-3xl font-extrabold text-brand-primary whitespace-nowrap">
+            <span class="text-4xl">{{ $t('home.hero.titleLines[0]')}}</span>
+            <span class="font-normal">{{ $t('home.hero.titleLines[1]') }}</span>
           </h1>
           <div class="mt-4">
             <BaseInteractiveTextRotator
@@ -120,22 +120,23 @@
   >
     <div class="w-full p-4">
       <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4">
-        <p class="text-3xl">Welcome to</p>
+        <p class="text-3xl">{{ $t('home.hero.eyebrow')}}</p>
         <h1 class="text-center flex flex-col">
-          <span class="text-6xl font-extrabold text-brand-secondary">Golden Gate Manor</span>
-          <span class="text-2xl uppercase">One Company. Many services you can depend on.</span>
+          <span class="text-6xl font-extrabold text-brand-secondary">{{ $t('company')}}</span>
+          <span class="text-2xl uppercase">{{ $t('home.hero.title')}}</span>
         </h1>
       </div>
       <p class="text-xl text-center">
-        For over 20 years, Golden Gate Manor Inc. has delivered compassionate, community-based services throughout Southern Colorado. We provide non-emergency medical and non-medical Medicaid transportation, assisted living homes in Pueblo, durable medical equipment and supplies, and now retail convenience through Golden Gate Gas and Goods. We're committed to helping you live life with ease, comfort, and confidence.
+        {{ $t('home.hero.paragraph') }}
       </p>
     </div>
-    <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4" to="/company/contact-us">Contact Us</BaseUiAction>
+    <BaseUiAction styling="py-4 px-8 uppercase text-2xl" class="mt-4" :to="$localePath('/company/contact-us')">{{ $t('home.hero.button')}}</BaseUiAction>
   </BaseLayoutPageHeroSection>
 </template>
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import type { VueMessageType } from 'vue-i18n'
 
 const props = defineProps<{
   active: boolean
@@ -149,13 +150,19 @@ type HeroVideoExpose = {
   toggle: () => void
 }
 
-const services = [
-  'Non-Emergency Medical Transportation',
-  'Non-Medical Transportation',
-  'Assisted Living',
-  'Medical Supplies',
-  'Convenience Store'
-]
+// const services = [
+//   'Non-Emergency Medical Transportation',
+//   'Non-Medical Transportation',
+//   'Assisted Living',
+//   'Medical Supplies',
+//   'Convenience Store'
+// ]
+
+const services = computed<string[]>(() => {
+  const raw = $tm('home.hero.services') as []
+  if (!Array.isArray(raw)) return []
+  return raw.map((item: VueMessageType) => $rt(item))
+})
 
 const LOCK_MS = 750
 const PAUSE_DELAY_MS = 150
@@ -288,7 +295,7 @@ const overlayOpacityClass = computed(() =>
 )
 
 const buttonDisabled = computed(() => !videoReady.value || transitionLock.value)
-const buttonLabel = computed(() => (uiPlaying.value ? 'Pause' : 'Play'))
+const buttonLabel = computed(() => (uiPlaying.value ? $t('home.hero.video.pause') : $t('home.hero.video.play')))
 const buttonClass = computed(() =>
   uiPlaying.value
     ? 'font-normal hover:bg-brand-primary hover:opacity-100 border-2 text-white border-white opacity-20'

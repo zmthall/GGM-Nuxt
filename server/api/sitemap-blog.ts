@@ -1,5 +1,4 @@
-export default defineEventHandler(async (event) => {
-  // Build a local YYYY-MM-DD string for **tomorrow** (avoids TZ off-by-one)
+export default defineSitemapEventHandler(async (event) => {
   const tomorrow = (() => {
     const d = new Date()
     d.setHours(0, 0, 0, 0)
@@ -10,14 +9,12 @@ export default defineEventHandler(async (event) => {
     return `${y}-${m}-${day}`
   })()
 
-  // Grab posts (no <= operator), then filter in JS
   const all = await queryCollection(event, 'blog')
     .where('draft', '<>', true)
     .select('path', 'date', 'title', 'published')
     .order('date', 'DESC')
     .all()
 
-  // Keep posts with no `published` (legacy) OR published < tomorrow (i.e., published up to today)
   const posts = all.filter(p => !p.published || p.published < tomorrow)
 
   return posts.map(post => ({

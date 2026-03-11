@@ -1,3 +1,27 @@
 {
-    
+  "company": "Golden Gate Manor",
+  "home": {
+    "hero": {
+      "eyebrow": "Bienvenido a",
+      "title": "Una sola empresa. Muchos servicios en los que puede confiar.",
+      "titleLines": [
+        "Una sola empresa.",
+        "Muchos servicios en los que puede confiar."
+      ],
+      "paragraph": "Por más de 20 años, Golden Gate Manor Inc. ha brindado servicios compasivos y enfocados en la comunidad en todo el sur de Colorado. Ofrecemos transporte médico que no es de emergencia y transporte no médico con Medicaid, hogares de vida asistida en Pueblo, equipo y suministros médicos duraderos, y ahora también servicio minorista a través de Golden Gate Gas and Goods. Estamos comprometidos a ayudarle a vivir con facilidad, comodidad y confianza.",
+      "services": [
+        "Transporte Médico No Urgente",
+        "Transporte No Médico",
+        "Vida Asistida",
+        "Suministros Médicos",
+        "Tienda de Conveniencia"
+      ],
+      "button": "Contáctenos",
+        "video": {
+            "play": "Reproducir",
+            "pause": "Pausar",
+            "autoplay": "Reproducción Automática"
+        }
+    }
+  }
 }

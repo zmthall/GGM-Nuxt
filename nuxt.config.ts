@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   site: {
     name: 'Golden Gate Manor',
-    url: 'https://goldengatemanor.com',
+    url: process.env.SITE_URL || 'https://goldengatemanor.com',
     description: 'Medicaid-approved NEMT, assisted living & medical supplies in Southern Colorado.'
   },
   css: ["./assets/css/main.css"],
@@ -135,9 +135,10 @@ export default defineNuxtConfig({
     },
   },
   sitemap: {
+    sitemapsPathPrefix: '/',
     sitemaps: {
       'sitemap-main': {
-        exclude: ['/admin/**', '/news/blog/**', '/news', '/resources/support-center', '/company', '/resources/community-resources', '/resources/support-center/ordering-medical-supplies', '/resources/support-center/request-assisted-care'],
+        exclude: ['/admin/**', '/news/blog/**', '/news'],
         includeAppSources: true,
       },
       'sitemap-blog': {
