@@ -11,18 +11,8 @@ export default defineNuxtConfig({
     description: 'Medicaid-approved NEMT, assisted living & medical supplies in Southern Colorado.'
   },
   css: ["./assets/css/main.css"],
-  modules: [
-    '@nuxt/content',
-    '@nuxt/eslint',
-    '@nuxt/icon',
-    '@nuxt/image',
-    // '@nuxt/scripts',
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@nuxtjs/robots'
-  ],
+  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/icon', '@nuxt/image', // '@nuxt/scripts',
+  '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n'],
   nitro: {
     compressPublicAssets: true,
   },
@@ -89,6 +79,14 @@ export default defineNuxtConfig({
     ...(process.env.BUILD_TYPE === 'DEV'
       ? { '/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } } }
       : { })
+  },
+  i18n: {
+    strategy: 'prefix_except_default',
+    locales: [
+      { code: 'en', language: 'en-US', file: 'en-US.json' },
+      { code: 'es', language: 'es-US', file: 'es-US.json' }
+    ],
+    defaultLocale: 'en',
   },
   runtimeConfig: {
     apiKey: process.env.API_KEY,
