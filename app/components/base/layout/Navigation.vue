@@ -28,7 +28,7 @@
         <header
             class="md:hidden sticky top-0 left-0 w-full bg-brand-background-header text-white flex items-center justify-between px-4 h-[50px] z-10">
             <div class="flex justify-between items-center">
-                <NuxtLink to="/">
+                <NuxtLink :to="$localePath('/')">
                     <NuxtImg 
                         src="/images/layout/logo.png" width="300" height="29" sizes="xs:350px 225px" quality="70" alt="Golden Gate Manor Inc. Logo"
                         format="avif,webp" class="max-xs:w-[225px] xs:w-[300px]" loading="eager" :preload="{ fetchPriority: 'high' }" decoding="async" title="Golden Gate Manor Inc. Logo"  />
@@ -52,7 +52,8 @@
                     class="fixed top-0 right-0 h-full w-[80%] max-w-sm flex flex-col items-center bg-white z-20 shadow-md px-4 py-8 md:hidden">
                     <div class="mb-4 border-b-2 border-b-slate-50 pb-4 max-w-[250px] aspect-[5/4]">
                         <NuxtLink 
-                            to="/" class="font-bold text-brand-primary text-xl w-full h-[183px] block"
+                            :to="$localePath('/')"
+                            class="font-bold text-brand-primary text-xl w-full h-[183px] block"
                             @click="toggleDrawer">
                             <NuxtImg src="/images/layout/Full company GGM Logo.png" quality="50" width="250" height="199" sizes="250px" format="avif,webp" densities="1" :preload="{ fetchPriority: 'high' }" :placeholder="fullLogoPH" class="w-full h-full object-contain" />
                         </NuxtLink>

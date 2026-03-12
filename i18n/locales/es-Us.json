@@ -1,33 +1,40 @@
 {
-  "company": "Golden Gate Manor",
+  "company": {
+    "slogan": "Las personas que valoran su calidad de vida pueden contar con nosotros",
+    "mission-statement": [
+      "Nuestra Misión:",
+      "Mejorar la calidad de vida, todos y cada uno de los días."
+    ],
+    "mission": "Mejorar la calidad de vida, todos y cada uno de los días."
+  },
   "header": {
     "links": {
-        "home": "Inicio",
-        "assisted-living": "Vida Asistida",
-        "non-medical": "No Médico",
-        "nemt": "NEMT",
-        "medical-supplies": "Suministros",
-        "gas-and-goods": "Gas",
-        "news": "Noticias",
-        "company": "Empresa",
-        "resources": "Recursos"
+      "home": "Inicio",
+      "assisted-living": "Vida Asistida",
+      "non-medical": "No Médico",
+      "nemt": "NEMT",
+      "medical-supplies": "Suministros",
+      "gas-and-goods": "Gas",
+      "news": "Noticias",
+      "company": "Empresa",
+      "resources": "Recursos"
     },
     "sublinks": {
-        "community": "Comunidad",
-        "blog": "Blog",
-        "about-us": "Sobre Nosotros",
-        "location": "Ubícanos",
-        "policies": "Políticas",
-        "contact": "Contáctenos",
-        "join": "Únete al Equipo",
-        "faq": "Preguntas Frecuentes",
-        "map": "Mapa de Servicio",
-        "forms": "Formularios y Documentos",
-        "schedule": "Programe un Viaje"
+      "community": "Comunidad",
+      "blog": "Blog",
+      "about-us": "Sobre Nosotros",
+      "location": "Ubícanos",
+      "policies": "Políticas",
+      "contact": "Contáctenos",
+      "join": "Únase a Nuestro Equipo",
+      "faq": "Preguntas Frecuentes",
+      "map": "Mapa de Servicio",
+      "forms": "Formularios y Documentos",
+      "schedule": "Programe un Viaje"
     },
     "cta": {
-        "schedule": "Programe un Viaje",
-        "contacts": "Contactos" 
+      "schedule": "Programe un Viaje",
+      "contacts": "Contactos"
     },
     "contacts": {
       "non-medical": "No Médico",
@@ -36,6 +43,65 @@
       "medical-supplies": "Suministros Médicos",
       "gas-and-goods-1": "Gas & Goods 1",
       "gas-and-goods-2": "Gas & Goods 2"
+    }
+  },
+  "footer": {
+    "social": "Síganos:",
+    "locations": {
+      "title": "Ubicaciones",
+      "admin": "Oficina Administrativa",
+      "transportation": {
+        "title": "Oficina de Transporte",
+        "front": "Recepción",
+        "dispatch": "Oficina de Despacho"
+      },
+      "assisted-living": "Vida Asistida",
+      "medical-supply": "Suministros Médicos",
+      "gas-and-goods": "Gas & Goods",
+      "main": "Oficina Principal",
+      "button": ["Ver Más", "Ver Menos"]
+    },
+    "quick-links": {
+      "title": "Enlaces Rápidos",
+      "footer-schedule-a-ride": "Programe un Viaje",
+      "footer-join-our-team": "Únase a Nuestro Equipo",
+      "footer-contact-us": "Contáctenos",
+      "footer-assisted-living": "Información de Vida Asistida",
+      "footer-locations": "Ver Ubicaciones",
+      "footer-medical-supplies": "Comprar Suministros Médicos"
+    },
+    "office-hours": {
+      "title": "Horario de Oficina",
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Oficina Cerrada",
+      "content": {
+        "title": "Transporte 24/7 en el que Puede Confiar",
+        "paragraph": "Aunque nuestro horario de oficina está establecido, nuestro compromiso nunca se detiene. Los servicios de transporte y los hogares de vida asistida de Golden Gate Manor están disponibles las 24 horas del día, los 7 días de la semana, lo que garantiza atención y traslados confiables en todo Colorado. Trabajamos arduamente para que nuestros servicios sean accesibles cuando más los necesita."
+      }
+    },
+    "career": {
+      "title": "Únase a Nuestro Equipo",
+      "paragraph": "Siempre estamos buscando personas compasivas y confiables para unirse a nuestros equipos de cuidado y transporte.",
+      "links": {
+        "assisted-living": "Vida Asistida",
+        "transportation": "Transporte",
+        "medical-supplies": "Suministros Médicos",
+        "gas-and-goods": "Gas & Goods",
+        "general": "General"
+      }
+    },
+    "policies": {
+      "ride-cancellation-policy": "Política de Cancelación de Viajes",
+      "terms-and-conditions": "Términos y Condiciones",
+      "privacy-policy": "Política de Privacidad",
+      "accessibility-statement": "Accesibilidad",
+      "site-map": "Mapa del Sitio"
     }
   },
   "home": {
@@ -55,11 +121,128 @@
         "Tienda de Conveniencia"
       ],
       "button": "Contáctenos",
-        "video": {
-            "play": "Reproducir",
-            "pause": "Pausar",
-            "autoplay": "Reproducción Automática"
+      "video": {
+        "play": "Reproducir",
+        "pause": "Pausar",
+        "autoplay": "Reproducción Automática"
+      }
+    },
+    "overview-section": {
+      "title": "Con raíces locales. Comprometidos con mucho más.",
+      "paragraph": "Golden Gate Manor es una empresa familiar que agrupa varios servicios y ofrece servicios aprobados por Medicaid, incluidos transporte médico no urgente (NEMT) y transporte no médico con Medicaid en vans accesibles para sillas de ruedas, vida asistida, equipo y suministros médicos duraderos, y gasolineras en Pueblo, Colorado. Con equipos dedicados en todos nuestros departamentos, más de 20 años de experiencia, más de 40 vehículos en nuestra flotilla y cinco diferentes casas de vida asistida, trabajamos arduamente para atender las necesidades diarias de nuestros clientes en todo el sur de Colorado.",
+      "button": "Más Información"
+    },
+    "services-section": {
+      "title": [
+        "Servicios",
+        "Que Ofrecemos"
+      ],
+      "cards": {
+        "assisted-living": {
+          "title": [
+            "Vida",
+            "Asistida"
+          ],
+          "description": "Las casas de vida asistida de Golden Gate Manor son instalaciones altamente respetadas y certificadas por Medicaid ubicadas en Pueblo, Colorado. En cada una de nuestras 5 ubicaciones, hay personal capacitado disponible las 24 horas del día, los 7 días de la semana, para brindar atención, ayuda con medicamentos, habilidades de vida diaria, comidas, transporte y manejo del tratamiento."
+        },
+        "nemt": {
+          "title": [
+            "Transporte",
+            "NEMT"
+          ],
+          "description": "Nuestra flotilla de más de 40 vehículos, incluidas vans accesibles para sillas de ruedas, brinda nuestro servicio de transporte médico no urgente (NEMT) en todo el sur de Colorado y hacia principales zonas de citas, como Denver. De manera confiable, lo llevamos a sus citas médicas cubiertas y servicios aprobados, y de regreso a casa, cuando necesita una mano amiga."
+        },
+        "non-medical": {
+          "title": [
+            "Transporte",
+            "No Médico"
+          ],
+          "description": "Nos enorgullece ser una de las únicas empresas en el condado de Pueblo, incluido Pueblo West, que ofrece servicios de transporte no médico a miembros elegibles de la comunidad que son personas mayores o viven con una discapacidad y reciben asistencia de Medicaid. Podemos llevarlo a hacer diligencias personales, asistir a eventos familiares o incluso simplemente salir a un lugar para relajarse; estamos aquí para ayudar."
+        },
+        "medical-supplies": {
+          "title": [
+            "Equipo Médico",
+            "y Suministros"
+          ],
+          "description": "Golden Gate Medical Supplies ofrece equipo y suministros médicos duraderos de alta calidad a precios accesibles en todo Colorado. Trabajamos de cerca para garantizar que nuestro compromiso con la atención de calidad se entregue cuando y donde se necesite. Además, ofrecemos entrega a domicilio y envíos para facilitar el acceso."
+        },
+        "button": "Más Información"
+      }
+    },
+    "cta": {
+      "title": "¿Necesita un Viaje? Estamos Listos Cuando Usted Lo Esté.",
+      "description": "Ya sea una cita médica, una ida al supermercado o simplemente llegar a donde necesita ir, nuestros conductores confiables están aquí para ayudarle, las 24 horas del día, los 7 días de la semana. Reservar es rápido, sencillo y está a solo un clic.",
+      "button": "Programe un Viaje"
+    },
+    "why-us": {
+      "title": [
+        "Más que un Viaje.",
+        "Más que una Empresa."
+      ],
+      "intro": "Somos uno de los proveedores de transporte médico no urgente (NEMT) con más trayectoria en el sur de Colorado, y mucho más. Golden Gate Manor Inc. conecta nuestros servicios: vida asistida, transporte, suministros médicos, gasolineras y apoyo comunitario bajo un mismo paraguas para facilitar que nuestros clientes reciban la atención y el apoyo que necesitan, cuando lo necesitan. Como empresa familiar, entendemos la importancia de una ayuda impulsada por la comunidad, envuelta en cuidado y compasión; no es solo lo que hacemos, es quienes somos.",
+      "mission": {
+        "title": "Una Misión Basada en el Cuidado, Construida para la Independencia",
+        "paragraph": [
+          "Aquí en Golden Gate Manor Inc., creemos que el verdadero cuidado nace de la conexión. Por eso, hemos construido más que una red de servicios aquí en Pueblo, Colorado: hemos construido un sistema de apoyo. Entendemos que no todas las áreas de la vida de una persona están siempre cubiertas. Ya sea un viaje al otro lado de la ciudad para una cita, un lugar cómodo para vivir o acceso a equipo y suministros médicos duraderos esenciales, nuestro objetivo es simple: ayudar a las personas a vivir plenamente, con independencia y dignidad. Como empresa familiar, queremos asegurarnos de que los servicios que reciba vengan acompañados de compasión y comprensión.",
+          "No solo servimos a la comunidad; somos parte de ella y creemos en invertir en los niños que darán forma al futuro de nuestra comunidad. Por eso, retribuir es tan importante como presentarnos cada día. Nuestro equipo demuestra este compromiso patrocinando eventos locales y equipos deportivos infantiles, y colaborando con organizaciones que apoyan a las poblaciones desatendidas. Nuestro equipo trabaja duro, disfruta lo que hace y se presenta con corazón por una comunidad de la que estamos orgullosos de formar parte.",
+          "Cuando elige Golden Gate Manor, está eligiendo más que una empresa; se está uniendo a una comunidad que se preocupa y lleva compasión a todo lo que hace. Nos esforzamos por ser más que un negocio: nos esforzamos por ser una familia extendida para quienes puedan necesitar una mano adicional."
+        ],
+        "button": "Vea Nuestro Impacto en la Comunidad"
+      },
+      "sets-apart": {
+        "title": "Lo Que Nos Distingue",
+        "cards": {
+          "community-first": {
+            "title": "Enfoque Comunitario",
+            "paragraph": "Nuestra empresa nació localmente y se enorgullece de Pueblo. Nuestra misión continua es cerrar brechas en diferentes áreas de atención y hacer que estos servicios vitales sean más accesibles para las personas que los necesitan. La independencia, la comodidad y la compasión no deberían ser un lujo."
+          },
+          "proven": {
+            "title": "Trayectoria Comprobada",
+            "paragraph": "Somos uno de los proveedores de transporte médico no urgente (NEMT) más antiguos del sur de Colorado, construidos sobre confiabilidad, compasión y dedicación a lo largo de décadas. Con más de 20 años de experiencia brindando servicios en diferentes áreas de atención y una flotilla de más de 40 vehículos, incluidas vans accesibles para sillas de ruedas, nos aseguramos de que nuestros clientes siempre cuenten con servicios confiables para llegar a tiempo a sus citas y vivir cómodamente. Todos nuestros servicios están respaldados por nuestra experiencia y recursos para brindar atención especializada y de alta calidad."
+          },
+          "umbrella": {
+            "title": "Red Integral de Cuidado",
+            "paragraph": "Golden Gate Manor Inc. conecta nuestros servicios: vida asistida, transporte, suministros médicos, gasolineras y apoyo comunitario para ofrecer una red de servicios fluida enfocada en la comodidad, la independencia y la conveniencia. Nuestra comunidad nos importa tanto como los clientes a quienes servimos."
+          },
+          "people-first": {
+            "title": "Las Personas Primero",
+            "paragraph": "Priorizamos las necesidades de nuestros clientes, así como su cuidado y dignidad. Todo nuestro equipo está capacitado para actuar con empatía, integridad y tratar a su familia como si fuera la nuestra. Nos esforzamos por tener un impacto real en la comunidad y estamos orgullosos de formar parte activa de ella."
+          },
+          "review": {
+            "content": "\"Gente maravillosa, servicio maravilloso, siempre a tiempo. De verdad están dispuestos a detenerse para que pueda comer algo o ir al baño.\"",
+            "reviewer": "Felicity F."
+          }
         }
+      }
+    },
+    "support-section": {
+      "title": "¿Necesita ayuda para comenzar?",
+      "tiles": {
+        "contact": {
+          "title": "Contáctenos",
+          "paragraph": "Envíenos un mensaje para hacer preguntas."
+        },
+        "faq": {
+          "title": "Preguntas Frecuentes",
+          "paragraph": "Un resumen de las preguntas más comunes."
+        },
+        "qualify": {
+          "title": "Cómo Calificar",
+          "paragraph": "Cómo calificar para transporte."
+        },
+        "first-ride": {
+          "title": "Su Primer Viaje",
+          "paragraph": "Qué esperar en su primer viaje."
+        },
+        "scheduling": {
+          "title": "Programar un Viaje",
+          "paragraph": "Cómo programar un viaje con nosotros."
+        },
+        "requesting-van": {
+          "title": "Solicitar Van Accesible",
+          "paragraph": "Cómo pedir un viaje con adaptaciones."
+        }
+      }
     }
   }
 }

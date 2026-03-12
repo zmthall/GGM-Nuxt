@@ -1,19 +1,26 @@
 {
   "footer": {
     "navLinks": [
-      { "id": "footer-schedule-a-ride", "name": "Schedule a Ride", "href": "/resources/schedule-a-ride", "icon": "akar-icons:schedule", "external": false },
-      { "id": "footer-join-our-team", "name": "Join Our Team", "href": "/company/employment", "icon": "fluent:people-team-add-20-filled", "external": false },
-      { "id": "footer-contact-us", "name": "Contact Us", "href": "/company/contact-us", "icon": "material-symbols:stacked-email", "external": false },
-      { "id": "footer-assisted-living", "name": "Assisted Living Information", "href": "/assisted-living", "icon": "material-symbols:family-home", "external": false },
-      { "id": "footer-locations", "name": "View Locations", "href": "/company/location", "icon": "material-symbols:location-on", "external": false },
-      { "id": "footer-medical-supplies", "name": "Shop Medical Supplies", "href": "https://www.goldengatemedicalsupply.com", "icon": "material-symbols:medical-information", "external": true }
+      { "id": "footer-schedule-a-ride", "href": "/resources/schedule-a-ride", "icon": "akar-icons:schedule", "external": false },
+      { "id": "footer-join-our-team", "href": "/company/employment", "icon": "fluent:people-team-add-20-filled", "external": false },
+      { "id": "footer-contact-us", "href": "/company/contact-us", "icon": "material-symbols:stacked-email", "external": false },
+      { "id": "footer-assisted-living", "href": "/assisted-living", "icon": "material-symbols:family-home", "external": false },
+      { "id": "footer-locations", "href": "/company/location", "icon": "material-symbols:location-on", "external": false },
+      { "id": "footer-medical-supplies", "href": "https://www.goldengatemedicalsupply.com", "icon": "material-symbols:medical-information", "external": true }
     ],
     "policyLinks": [
-      { "id": "ride-cancellation-policy", "name": "Ride Cancellation Policy", "href": "/company/policies/ride-cancellation", "external": false },
-      { "id": "terms-and-conditions", "name": "Terms & Conditions", "href": "/company/policies/terms-and-conditions", "external": false },
-      { "id": "privacy-policy", "name": "Privacy Policy", "href": "/company/policies/privacy", "external": false },
-      { "id": "accessibility-statement", "name": "Accessibility", "href": "/company/policies/accessibility", "external": false },
-      { "id": "site-map", "name": "Site Map", "href": "/sitemap_index.xml", "external": false }
+      { "id": "ride-cancellation-policy", "href": "/company/policies/ride-cancellation", "external": false },
+      { "id": "terms-and-conditions", "href": "/company/policies/terms-and-conditions", "external": false },
+      { "id": "privacy-policy", "href": "/company/policies/privacy", "external": false },
+      { "id": "accessibility-statement", "href": "/company/policies/accessibility", "external": false },
+      { "id": "site-map", "href": "/sitemap_index.xml", "external": false }
+    ],
+    "careerLinks": [
+      { "id": "assisted-living", "href": "/company/employment/apply?select=al_general", "external": false },
+      { "id": "transportation", "href": "/company/employment/apply?select=nemt_general", "external": false },
+      { "id": "medical-supplies", "href": "/company/employment/apply?select=ms_general", "external": false },
+      { "id": "gas-and-goods", "href": "/company/employment/apply?select=gg_general", "external": false },
+      { "id": "general", "href": "/company/employment/apply?select=general", "external": false }
     ]
   }
 }

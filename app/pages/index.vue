@@ -39,12 +39,12 @@
             
                             <!-- Text Content -->
                             <div>
-                                <h2 class="text-3xl font-extrabold text-brand-primary mb-4">Locally Rooted. Broadly Committed.</h2>
+                                <h2 class="text-3xl font-extrabold text-brand-primary mb-4">{{ $t('home.overview-section.title') }}</h2>
                                 <p class="text-base text-brand-dark-gray leading-relaxed mb-6">
-                                        Golden Gate Manor is a family-owned umbrella company providing Medicaid-approved services including non-emergency medical transportation (NEMT) and non-medical Medicaid transportation with wheelchair accessible vans, assisted living, durable medical equipment and supplies, and gas stations in Pueblo, Colorado. With dedicated teams across all departments and 20 years of business experience under our belt, 40+ vehicles in our fleet, and five different assisted living house locations; we work hard to meet the daily needs of our clients throughout Southern Colorado. 
+                                        {{ $t('home.overview-section.paragraph') }}
                                 </p>
-                                    <BaseUiAction to="/company/about-us" styling="py-4 px-8">
-                                    Learn More About Us
+                                    <BaseUiAction :to="$localePath('/company/about-us')" styling="py-4 px-8">
+                                    {{ $t('home.overview-section.button') }}
                                 </BaseUiAction>
                             </div>
                         </div>
@@ -57,59 +57,59 @@
                 <BaseLayoutPageSection margin="default" bg="alt" styling="flex flex-col" class="cv-auto">
                         <h2 class="text-center font-extrabold flex flex-col mb-8 text-4xl">
                             <span class="text-gray-500">
-                                Services
+                                {{ $t('home.services-section.title[0]') }}
                             </span>
-                            <span class="text-brand-primary">We Offer</span>
+                            <span class="text-brand-primary">{{ $t('home.services-section.title[1]') }}</span>
                         </h2>
                         <div class="flex justify-center flex-wrap gap-8">
-                            <NuxtLink to="/assisted-living">
-                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                            <NuxtLink :to="$localePath('/assisted-living')">
+                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-care-staff-area" :cta="$t('home.services-section.cards.button')" cta-size="w-full h-max" cta-class="p-3">
                                     <div>
                                         <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
-                                            <span class="text-gray-500">Assisted</span>
-                                            <span class="text-brand-primary">Living</span>
+                                            <span class="text-gray-500">{{ $t('home.services-section.cards.assisted-living.title[0]') }}</span>
+                                            <span class="text-brand-primary">{{ $t('home.services-section.cards.assisted-living.title[1]') }}</span>
                                         </h2>
                                         <p class="mb-4 text-center text-lg">
-                                            Golden Gate Manor Assisted Living houses are highly respected, Medicaid-certified facilities located in Pueblo, Colorado. At each of our 5 locations, trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals, transportation, and treatment management.
+                                            {{ $t('home.services-section.cards.assisted-living.description') }}
                                         </p>
                                     </div>
                                 </LazyBaseLayoutCard>
                             </NuxtLink>
-                            <NuxtLink to="/nemt">
-                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                            <NuxtLink :to="$localePath('/nemt')">
+                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:i-ambulance" :cta="$t('home.services-section.cards.button')" cta-size="w-full h-max" cta-class="p-3">
                                     <div>
                                         <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
-                                            <span class="text-gray-500">NEMT</span>
-                                            <span class="text-brand-primary">Transportation</span>
+                                            <span class="text-gray-500">{{ $t('home.services-section.cards.nemt.title[0]') }}</span>
+                                            <span class="text-brand-primary">{{ $t('home.services-section.cards.nemt.title[1]') }}</span>
                                         </h2>
                                         <p class="mb-4 text-center text-lg">
-                                            Our fleet of 40+ vehicles, including wheelchair accessible vans, delivers our non-emergency medical transportation (NEMT) service across Southern Colorado and to main appointment areas, such as Denver. Reliably, we will get you to and from covered medical appointments and approved services when you need a helping hand.
+                                            {{ $t('home.services-section.cards.nemt.description') }}
                                         </p>
                                     </div>
                                 </LazyBaseLayoutCard>
                             </NuxtLink>
-                            <NuxtLink to="/non-medical">
-                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                            <NuxtLink :to="$localePath('/non-medical')">
+                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="material-symbols:local-taxi-rounded" :cta="$t('home.services-section.cards.button')" cta-size="w-full h-max" cta-class="p-3">
                                     <div>
                                         <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
-                                            <span class="text-gray-500">Non-Medical</span>
-                                            <span class="text-brand-primary">Transportation</span>
+                                            <span class="text-gray-500">{{ $t('home.services-section.cards.non-medical.title[0]') }}</span>
+                                            <span class="text-brand-primary">{{ $t('home.services-section.cards.non-medical.title[1]') }}</span>
                                         </h2>
                                         <p class="mb-4 text-center text-lg">
-                                            We are proud to be one of the only companies in Pueblo County, including Pueblo West, to provide non-medical transportation services to eligible community members who are disabled or elderly receiving Medicaid assistance. We can take you to run personal errands, attend family events, or even just a trip to a place to relax; we're here to help.
+                                            {{ $t('home.services-section.cards.non-medical.description') }}
                                         </p>
                                     </div>
                                 </LazyBaseLayoutCard>
                             </NuxtLink>
-                           <NuxtLink to="/medical-supplies">
-                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" cta="Learn More" cta-size="w-full h-max" cta-class="p-3">
+                           <NuxtLink :to="$localePath('/medical-supplies')">
+                                <LazyBaseLayoutCard class="bg-brand-background xs:w-[325px]" hover-group icon-size="size-32" icon-name="medical-icon:first-aid" :cta="$t('home.services-section.cards.button')" cta-size="w-full h-max" cta-class="p-3">
                                     <div>
                                         <h2 class="text-center font-extrabold flex flex-col mb-4 text-xl mt-2">
-                                            <span class="text-gray-500">Durable Medical</span>
-                                            <span class="text-brand-primary">Equipment/Supplies</span>
+                                            <span class="text-gray-500">{{ $t('home.services-section.cards.medical-supplies.title[0]') }}</span>
+                                            <span class="text-brand-primary">{{ $t('home.services-section.cards.medical-supplies.title[1]') }}</span>
                                         </h2>
                                         <p class="mb-4 text-center text-lg">
-                                            Golden Gate Medical Supplies offers high-quality durable medical equipment and supplies with accessible pricing throughout Colorado. We work closely to ensure our commitment to quality care is delivered when and where it's needed. In addition, we provide home delivery and shipping services to make accessibility easier.
+                                            {{ $t('home.services-section.cards.medical-supplies.description') }}
                                         </p>
                                     </div>
                                 </LazyBaseLayoutCard>
@@ -120,9 +120,9 @@
 
             <!-- Schedule a Ride CTA -->
             <DeferRender when="visible" ssr>
-                <LazyBaseLayoutPageCTA title="Need a Ride? We're Ready When You Are." to="/resources/schedule-a-ride" button-label="Schedule a Ride" class="cv-auto">
+                <LazyBaseLayoutPageCTA :title="$t('home.cta.title')" :to="$localePath('/resources/schedule-a-ride')" :button-label="$t('home.cta.button')" class="cv-auto">
                     <p class="text-xl">
-                        Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.
+                        {{ $t('home.cta.description') }}
                     </p>
                 </LazyBaseLayoutPageCTA>
             </DeferRender>             
@@ -134,35 +134,41 @@
                         <div class="mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
                             <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
                                 <span class="text-gray-500">
-                                    More Than a Ride.
+                                    {{ $t('home.why-us.title[0]') }}
                                 </span>
                                 <span class="text-brand-primary">
-                                    More Than a Business.
+                                    {{ $t('home.why-us.title[1]') }}
                                 </span>
                             </h2>
                             <p class="text-lg sm:text-2xl">
-                                We are one of Southern Colorado's longest-running non-emergency medical transportation (NEMT) provider - and so much more. Golden Gate Manor Inc. connects our services: assisted living, transportation, medical supplies, gas stations, and community support under one umbrella to make it easier for our clients to receive the care and attention they need when they need it. Being family owned, we understand the need for community driven assistance wrapped in care and compassion; it's not just what we do, it's who we are.
+                                {{ $t('home.why-us.intro') }}
                             </p>
                         </div>
         
                         <div class="space-y-2 mb-4 px-2 sm:max-w-[1200px] sm:mx-auto">
-                            <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">A Mission Rooted in Care, Built for Independence</h3>
+                            <h3 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
+                                {{ $t('home.why-us.mission.title') }}
+                            </h3>
                             <p class="text-lg sm:text-2xl">
-                                Here at Golden Gate Manor Inc., we believe true care is rooted in connection. With this being said, we've built more than a network of services here in Pueblo, Colorado —we've built a support system. We understand that not all aspects of a person's life are available at all times. Whether it's a ride across town for an appointment, a comfortable place to live, or access to essential durable medical equipment and supplies, our goal is simple: help people live fully, independently, and with dignity. As a family-owned business, we want to make sure that the services received come with compassion and understanding.
+                                {{ $t('home.why-us.mission.paragraph[0]') }}
                             </p>
                             <p class="text-lg sm:text-2xl">
-                                We don't just serve the community, we are part of it and we believe in investing in the children who will shape our community's future. That's why giving back is just as important as showing up. Our team demonstrates this commitment by sponsoring local events and kids' sports teams, and by partnering with organizations that uplift the underserved. Our team works hard, plays hard, and shows up with heart for a community we are proud to be part of.
+                                {{ $t('home.why-us.mission.paragraph[1]') }}
                             </p>
                             <div class="flex justify-center !my-4">
-                                <BaseUiAction class="py-4 px-8" to="/news/community">See Our Community Impact</BaseUiAction>
+                                <BaseUiAction class="py-4 px-8" :to="$localePath('/company/about-us')">
+                                    {{ $t('home.why-us.mission.button') }}
+                                </BaseUiAction>
                             </div>
                             <p class="text-lg sm:text-2xl">
-                                When you choose Golden Gate Manor, you're choosing more than a company, you're joining a community that cares and brings compassion to everything we do. We strive to be more than a business — we strive to be an extended family for those who may need another helping hand.
+                                {{ $t('home.why-us.mission.paragraph[2]') }}
                             </p>
                         </div>
         
                         <div>
-                            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">What Sets Us Apart</h2>
+                            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">
+                                {{ $t('home.why-us.sets-apart.title') }}
+                            </h2>
                             <div class="sm:grid sm:grid-cols-2 sm:gap-8 md:mx-12">
                                  <!-- Two-column layout -->
                                  <div class="space-y-2 mb-4 px-2">
@@ -171,33 +177,33 @@
                                           <!-- 4 Pillar Cards -->
                                           <LazyBaseLayoutCard>
                                             <div>
-                                                <h3 class="font-extrabold text-lg">Community-First Approach</h3>
+                                                <h3 class="font-extrabold text-lg">{{ $t('home.why-us.sets-apart.cards.community-first.title') }}</h3>
                                                 <p>
-                                                    Our company is locally grown and Pueblo-proud. Our continued mission is to bridge the gaps in different areas of care and make these vital services more accessible for people who need them. Independence, comfort, and compassion should not be a luxury.
+                                                    {{ $t('home.why-us.sets-apart.cards.community-first.paragraph') }}
                                                 </p>
                                             </div>
                                           </LazyBaseLayoutCard>
                                           <LazyBaseLayoutCard>
                                             <div>
-                                                <h3 class="font-extrabold text-lg">Proven Track Record</h3>
+                                                <h3 class="font-extrabold text-lg">{{ $t('home.why-us.sets-apart.cards.proven.title') }}</h3>
                                                 <p>
-                                                    We're one of Southern Colorado's oldest non-emergency medical transportation (NEMT) providers, built on reliability, compassion, and dedication that has spanned decades. With over 20 years of experience providing services across different care-based fields and a fleet of 40+ vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable services so that they can make it on time to their appointments and live comfortably. All of our services are backed by our experience and resources to deliver high-quality and specialized care.
+                                                    {{ $t('home.why-us.sets-apart.cards.proven.paragraph') }}
                                                 </p>
                                             </div>
                                           </LazyBaseLayoutCard>
                                           <LazyBaseLayoutCard>
                                             <div>
-                                                <h3 class="font-extrabold text-lg">Umbrella of Care</h3>
+                                                <h3 class="font-extrabold text-lg">{{ $t('home.why-us.sets-apart.cards.umbrella.title') }}</h3>
                                                 <p>
-                                                    Golden Gate Manor Inc. connects our services—assisted living, transportation, medical supplies, gas stations, and community support—to offer a seamless network of services for comfort, independence, and convenience. Our community matters to us just as much as the clients we serve.
+                                                    {{ $t('home.why-us.sets-apart.cards.umbrella.paragraph') }}
                                                 </p>
                                             </div>
                                           </LazyBaseLayoutCard>
                                           <LazyBaseLayoutCard>
                                             <div>
-                                                <h3 class="font-extrabold text-lg">People Over Profit</h3>
+                                                <h3 class="font-extrabold text-lg">{{ $t('home.why-us.sets-apart.cards.people-first.title') }}</h3>
                                                 <p>
-                                                    We prioritize the needs of our clients, care, and dignity. Our entire team is trained to lead with empathy, act with integrity, and treat your family like our own family. We strive to have real community impact and are proud to be a working part of this community.
+                                                    {{ $t('home.why-us.sets-apart.cards.people-first.paragraph') }}
                                                 </p>
                                             </div>
                                           </LazyBaseLayoutCard>
@@ -206,8 +212,8 @@
                                   <!-- Testimonial (supporting statement) -->
                                   <aside class="bg-gray-400 p-4 text-black rounded-lg text-xl sm:text-white sm:h-max sm:px-12 sm:py-28 sm:my-auto sm:bg-brand-primary">
                                       <blockquote class="space-y-4">
-                                          <span>"Wonderful people, wonderful service, always on time. Actually willing to stop and let me get a bite to eat or use the bathroom."</span>
-                                          <footer>— Felicity F.</footer>
+                                          <span>{{ $t('home.why-us.sets-apart.cards.review.content') }}</span>
+                                          <footer>— {{ $t('home.why-us.sets-apart.cards.review.reviewer') }}</footer>
                                       </blockquote>
                                   </aside>
                             </div>
@@ -220,7 +226,7 @@
                 <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
                     <BaseLayoutPageContainer>
                         <div>
-                            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">Need help getting started?</h2>
+                            <h2 class="text-2xl text-center font-bold text-brand-primary flex flex-col mb-4">{{ $t('home.support-section.title') }}</h2>
                             <SupportCenterSection />
                         </div>
                     </BaseLayoutPageContainer>

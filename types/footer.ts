@@ -9,6 +9,7 @@ interface FooterLink {
 interface FooterData {
   navLinks: FooterLink[];
   policyLinks: FooterLink[];
+  careerLinks: FooterLink[];
 }
 
 export interface FooterJson {

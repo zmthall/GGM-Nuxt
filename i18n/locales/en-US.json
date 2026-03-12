@@ -1,5 +1,12 @@
 {
-  "company": "Golden Gate Manor",
+  "company": {
+    "slogan": "People who value their quality of life can depend on us",
+    "mission-statement": [
+      "Our Mission:",
+      "To improve the quality of life, each and every day."
+    ],
+    "mission": "To improve the quality of life, each and every day."
+  },
   "header": {
     "links": {
       "home": "Home",
@@ -38,6 +45,65 @@
       "gas-and-goods-2": "Gas & Goods 2"
     }
   },
+  "footer": {
+    "social": "Follow Us:",
+    "locations": {
+      "title": "Locations",
+      "admin": "Administration Office",
+      "transportation": {
+        "title": "Transportation Office",
+        "front": "Front Office",
+        "dispatch": "Dispatch Office"
+      },
+      "assisted-living": "Assisted Living",
+      "medical-supply": "Medical Supply",
+      "gas-and-goods": "Gas & Goods",
+      "main": "Main Office",
+      "button": ["View More", "View Less"]
+    },
+    "quick-links": {
+      "title": "Quick Links",
+      "footer-schedule-a-ride": "Schedule a Ride",
+      "footer-join-our-team": "Join Our Team",
+      "footer-contact-us": "Contact Us",
+      "footer-assisted-living": "Assisted Living Information",
+      "footer-locations": "View Locations",
+      "footer-medical-supplies": "Shop Medical Supplies"
+    },
+    "office-hours": {
+      "title": "Office Hours",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Office Closed",
+      "content": {
+        "title": "24/7 Transportation You Can Depend On",
+        "paragraph": "Even though our office hours are set, our commitment never stops. Golden Gate Manor's transportation services and assisted living homes are available 24/7, ensuring reliable care and rides throughout Colorado. We work hard to make our services accessible whenever you need it most."
+      }
+    },
+    "career": {
+      "title": "Join Our Team",
+      "paragraph": "We're always looking for compassionate, dependable people to join our care and transportation teams.",
+      "links": {
+        "assisted-living": "Assisted Living",
+        "transportation": "Transportation",
+        "medical-supplies": "Medical Supplies",
+        "gas-and-goods": "Gas & Goods",
+        "general": "General"
+      }
+    },
+      "policies": {
+          "ride-cancellation-policy": "Ride Cancellation Policy",
+          "terms-and-conditions": "Terms & Conditions",
+          "privacy-policy": "Privacy Policy",
+          "accessibility-statement": "Accessibility",
+          "site-map": "Site Map"
+      }
+  },
   "home": {
     "hero": {
       "eyebrow": "Welcome to",
@@ -59,6 +125,105 @@
         "play": "Play",
         "pause": "Pause",
         "autoplay": "Autoplay"
+      }
+    },
+    "overview-section": {
+      "title": "Locally Rooted. Broadly Committed.",
+      "paragraph": "Golden Gate Manor is a family-owned umbrella company providing Medicaid-approved services including non-emergency medical transportation (NEMT) and non-medical Medicaid transportation with wheelchair accessible vans, assisted living, durable medical equipment and supplies, and gas stations in Pueblo, Colorado. With dedicated teams across all departments and 20 years of business experience under our belt, 40+ vehicles in our fleet, and five different assisted living house locations; we work hard to meet the daily needs of our clients throughout Southern Colorado.",
+      "button": "Learn More"
+    },
+    "services-section": {
+      "title": ["Services", "We Offer"],
+      "cards": {
+        "assisted-living": {
+          "title": ["Assisted", "Living"],
+          "description": "Golden Gate Manor Assisted Living houses are highly respected, Medicaid-certified facilities located in Pueblo, Colorado. At each of our 5 locations, trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals, transportation, and treatment management."
+        },
+        "nemt": {
+          "title": ["NEMT", "Transportation"],
+          "description": "Our fleet of 40+ vehicles, including wheelchair accessible vans, delivers our non-emergency medical transportation (NEMT) service across Southern Colorado and to main appointment areas, such as Denver. Reliably, we will get you to and from covered medical appointments and approved services when you need a helping hand."
+        },
+        "non-medical": {
+          "title": ["Non-Medical", "Transportation"],
+          "description": "We are proud to be one of the only companies in Pueblo County, including Pueblo West, to provide non-medical transportation services to eligible community members who are disabled or elderly receiving Medicaid assistance. We can take you to run personal errands, attend family events, or even just a trip to a place to relax; we're here to help."
+        },
+        "medical-supplies": {
+          "title": ["Durable Medical", "Equipment/Supplies"],
+          "description": "Golden Gate Medical Supplies offers high-quality durable medical equipment and supplies with accessible pricing throughout Colorado. We work closely to ensure our commitment to quality care is delivered when and where it's needed. In addition, we provide home delivery and shipping services to make accessibility easier."
+        },
+        "button": "Learn More"
+      }
+    },
+    "cta": {
+      "title": "Need a Ride? We're Ready When You Are.",
+      "description": "Whether it's a medical appointment, a grocery run, or just getting where you need to go — our dependable drivers are here to help, 24/7. Booking is fast, simple, and just a click away.",
+      "button": "Schedule a Ride"
+    },
+    "why-us": {
+      "title": ["More Than a Ride.", "More Than a Business."],
+      "intro": "We are one of Southern Colorado's longest-running non-emergency medical transportation (NEMT) provider - and so much more. Golden Gate Manor Inc. connects our services: assisted living, transportation, medical supplies, gas stations, and community support under one umbrella to make it easier for our clients to receive the care and attention they need when they need it. Being family owned, we understand the need for community driven assistance wrapped in care and compassion; it's not just what we do, it's who we are.",
+      "mission": {
+        "title": "A Mission Rooted in Care, Built for Independence",
+        "paragraph": [
+          "Here at Golden Gate Manor Inc., we believe true care is rooted in connection. With this being said, we've built more than a network of services here in Pueblo, Colorado —we've built a support system. We understand that not all aspects of a person's life are available at all times. Whether it's a ride across town for an appointment, a comfortable place to live, or access to essential durable medical equipment and supplies, our goal is simple: help people live fully, independently, and with dignity. As a family-owned business, we want to make sure that the services received come with compassion and understanding.",
+          "We don't just serve the community, we are part of it and we believe in investing in the children who will shape our community's future. That's why giving back is just as important as showing up. Our team demonstrates this commitment by sponsoring local events and kids' sports teams, and by partnering with organizations that uplift the underserved. Our team works hard, plays hard, and shows up with heart for a community we are proud to be part of.",
+          "When you choose Golden Gate Manor, you're choosing more than a company, you're joining a community that cares and brings compassion to everything we do. We strive to be more than a business — we strive to be an extended family for those who may need another helping hand."
+        ],
+        "button": "See Our Community Impact"
+      },
+      "sets-apart": {
+        "title": "What Sets Us Apart",
+        "cards": {
+          "community-first": {
+            "title": "Community-First Approach",
+            "paragraph": "Our company is locally grown and Pueblo-proud. Our continued mission is to bridge the gaps in different areas of care and make these vital services more accessible for people who need them. Independence, comfort, and compassion should not be a luxury."
+          },
+          "proven": {
+            "title": "Proven Track Record",
+            "paragraph": "We're one of Southern Colorado's oldest non-emergency medical transportation (NEMT) providers, built on reliability, compassion, and dedication that has spanned decades. With over 20 years of experience providing services across different care-based fields and a fleet of 40+ vehicles, including wheelchair-accessible vans, we ensure our clients always have dependable services so that they can make it on time to their appointments and live comfortably. All of our services are backed by our experience and resources to deliver high-quality and specialized care."
+          },
+          "umbrella": {
+            "title": "Umbrella of Care",
+            "paragraph": "Golden Gate Manor Inc. connects our services—assisted living, transportation, medical supplies, gas stations, and community support—to offer a seamless network of services for comfort, independence, and convenience. Our community matters to us just as much as the clients we serve."
+          },
+          "people-first": {
+            "title": "People Over Profit",
+            "paragraph": "We prioritize the needs of our clients, care, and dignity. Our entire team is trained to lead with empathy, act with integrity, and treat your family like our own family. We strive to have real community impact and are proud to be a working part of this community."
+          },
+          "review": {
+            "content": "\"Wonderful people, wonderful service, always on time. Actually willing to stop and let me get a bite to eat or use the bathroom.\"",
+            "reviewer": "Felicity F."
+          }
+        }
+      }
+    },
+    "support-section": {
+      "title": "Need help getting started?",
+      "tiles": {
+        "contact": {
+          "title": "Reach Out",
+          "paragraph": "Send us a message to ask questions directly."
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "paragraph": "An overview of questions we get asked."
+        },
+        "qualify": {
+          "title": "How to Qualify",
+          "paragraph": "A breakdown of qualifying for transportation."
+        },
+        "first-ride": {
+          "title": "Prepare for your First Ride",
+          "paragraph": "What to expect on your first ride."
+        },
+        "scheduling": {
+          "title": "Scheduling a Ride",
+          "paragraph": "How to schedule a ride with us."
+        },
+        "requesting-van": {
+          "title": "Requesting Accessible Van",
+          "paragraph": "How to request a trip with accommodations."
+        }
       }
     }
   }

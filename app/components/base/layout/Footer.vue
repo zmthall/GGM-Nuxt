@@ -6,11 +6,11 @@
             <div>
                 <h2 class="flex flex-col text-brand-secondary font-bold capitalize text-xl">
                     <span class="border-b border-b-brand-secondary inline-block pb-1 mb-2">Golden Gate Manor Inc:</span>
-                    <span>People who value their quality of life can depend on us</span>
+                    <span>{{ $t('company.slogan') }}</span>
                 </h2>
-                <p>Our Mission:</p>
-                <p>To improve the quality of life, each and every day.</p>
-                <p>Follow Us:</p>
+                <p>{{ $t('company.mission-statement[0]') }}</p>
+                <p>{{ $t('company.mission-statement[1]') }}</p>
+                <p>{{ $t('footer.social') }}</p>
                 <div v-if="socialHandles" class="flex gap-2">
                     <nav aria-label="social media handle navigation">
                         <ul class="flex gap-2">
@@ -28,10 +28,11 @@
             <div>
                 <h2
                     class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
-                    Locations</h2>
+                    {{ $t('footer.locations.title') }}
+                </h2>
                 <ul class="flex flex-col gap-4">
                     <li class="flex flex-col">
-                        <h3 class="font-bold underline">Administration Office</h3>
+                        <h3 class="font-bold underline">{{ $t('footer.locations.admin') }}</h3>
                         <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -44,10 +45,10 @@
                         </a>
                     </li>
                     <li class="flex flex-col">
-                        <h3 class="font-bold underline">Transportation Hub</h3>
+                        <h3 class="font-bold underline">{{ $t('footer.locations.transportation.title') }}</h3>
                         <ul>
                             <li class="flex flex-col">
-                                <h3 class="font-bold">Front Office</h3>
+                                <h3 class="font-bold">{{ $t('footer.locations.transportation.front') }}</h3>
                                 <a href="https://www.google.com/maps/search/?api=1&query=648+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -70,7 +71,7 @@
                                 </CallRailLink>
                             </li>
                             <li class="flex flex-col">
-                                <h3 class="font-bold">Dispatch Office</h3>
+                                <h3 class="font-bold">{{ $t('footer.locations.transportation.dispatch') }}</h3>
                                 <a href="https://www.google.com/maps/search/?api=1&query=648+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                                     <BaseIcon 
                                         name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -95,8 +96,8 @@
                         </ul>
                     </li>
                     <li class="flex flex-col">
-                        <h3 class="font-bold underline flex items-center">Assisted Living</h3>
-                        <h4 class="font-bold">Main office</h4>
+                        <h3 class="font-bold underline flex items-center">{{ $t('footer.locations.assisted-living') }}</h3>
+                        <h4 class="font-bold">{{ $t('footer.locations.main') }}</h4>
                         <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -119,8 +120,8 @@
                         <button
                             class="items-center border-2 border-brand-white flex w-max p-1 mt-1 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-300 ease-in-out rounded-md"
                             @click="toggleViewMore(0)">
-                            <span v-if="!viewMore[0]">View More</span>
-                            <span v-else>View Less</span>
+                            <span v-if="!viewMore[0]">{{ $t('footer.locations.button[0]') }}</span>
+                            <span v-else>{{ $t('footer.locations.button[1]') }}</span>
                             <BaseIcon v-if="!viewMore[0]" name="ic:sharp-arrow-drop-down" color="text-brand-white" size="size-4" />
                             <BaseIcon v-else name="ic:sharp-arrow-drop-up" color="text-brand-white" size="size-4" />
                         </button>
@@ -196,7 +197,7 @@
                         </ul>
                     </li>
                     <li class="flex flex-col">
-                        <h3 class="font-bold underline">Medical Supply</h3>
+                        <h3 class="font-bold underline">{{ $t('footer.locations.medical-supply') }}</h3>
                         <a href="https://www.google.com/maps/search/?api=1&query=612+S+Union+Ave,+Pueblo,+CO+81004" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -209,8 +210,8 @@
                         </a>
                     </li>
                     <li class="flex flex-col">
-                        <h3 class="font-bold underline">Gas Stations</h3>
-                        <h4 class="font-bold">Main office</h4>
+                        <h3 class="font-bold underline">{{ $t('footer.locations.gas-and-goods') }}</h3>
+                        <h4 class="font-bold">{{ $t('footer.locations.main') }}</h4>
                         <a href="https://www.google.com/maps/search/?api=1&query=1242+S+Prairie+Ave,+Pueblo,+CO+81005" class="group hover:text-brand-secondary" target="_blank" rel="noopener noreferrer">
                             <BaseIcon 
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
@@ -224,8 +225,8 @@
                         <button
                             class="items-center border-2 border-brand-white flex w-max p-1 mt-1 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-300 ease-in-out rounded-md"
                             @click="toggleViewMore(1)">
-                            <span v-if="!viewMore[1]">View More</span>
-                            <span v-else>View Less</span>
+                            <span v-if="!viewMore[1]">{{ $t('footer.locations.button[0]') }}</span>
+                            <span v-else>{{ $t('footer.locations.button[1]') }}</span>
                             <BaseIcon v-if="!viewMore[1]" name="ic:sharp-arrow-drop-down" color="text-brand-white" size="size-4" />
                             <BaseIcon v-else name="ic:sharp-arrow-drop-up" color="text-brand-white" size="size-4" />
                         </button>
@@ -266,16 +267,17 @@
             <div>
                 <h2
                     class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
-                    Quick Links</h2>
+                    {{ $t('footer.quick-links.title') }}
+                </h2>
                 <nav v-if="footer" aria-label="Footer Navigation/Business description">
                     <ul class="flex flex-col gap-4 font-semibold">
                         <li v-for="navLink in footer.navLinks" :key="navLink.id">
                             <NuxtLink 
                                 v-if="!navLink.external && navLink.href" :to="navLink.href"
-                                class="hover:text-brand-secondary hover:underline group flex items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</NuxtLink>
+                                class="hover:text-brand-secondary hover:underline group flex items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" />{{ $t(`footer.quick-links.${navLink.id}`) }}</NuxtLink>
                             <a 
                                 v-if="navLink.external" :href="navLink.href" target="_blank" rel="noopener noreferrer" title="Opens in a new tab"
-                                class="hover:text-brand-secondary hover:underline flex group items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" /> {{ navLink.name }}</a>
+                                class="hover:text-brand-secondary hover:underline flex group items-center gap-2 w-max"><BaseIcon v-if="navLink.icon" :name="navLink.icon" color="text-brand-white" hover-color="group-hover:text-brand-secondary" />{{ $t(`footer.quick-links.${navLink.id}`) }}</a>
                         </li>
                     </ul>
                 </nav>
@@ -285,68 +287,46 @@
                 <div>
                     <h2
                         class="flex flex-col text-brand-secondary font-bold border-b border-b-brand-secondary pb-1 mb-2 text-xl">
-                        Office Hours</h2>
+                        {{ $t('footer.office-hours.title') }}
+                    </h2>
                     <ul class="text-2xl mb-2">
                         <li class="flex justify-between">
-                            <span>Monday</span><span class="font-bold">8AM-4PM</span>
+                            <span>{{ $t('footer.office-hours.monday') }}</span><span class="font-bold">8AM-4PM</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Tuesday</span><span class="font-bold">8AM-4PM</span>
+                            <span>{{ $t('footer.office-hours.tuesday') }}</span><span class="font-bold">8AM-4PM</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Wednesday</span><span class="font-bold">8AM-4PM</span>
+                            <span>{{ $t('footer.office-hours.wednesday') }}</span><span class="font-bold">8AM-4PM</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Thursday</span><span class="font-bold">8AM-4PM</span>
+                            <span>{{ $t('footer.office-hours.thursday') }}</span><span class="font-bold">8AM-4PM</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Friday</span><span class="font-bold">8AM-4PM</span>
+                            <span>{{ $t('footer.office-hours.friday') }}</span><span class="font-bold">8AM-4PM</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Saturday</span><span class="font-bold">Office Closed</span>
+                            <span>{{ $t('footer.office-hours.saturday') }}</span><span class="font-bold">{{ $t('footer.office-hours.closed') }}</span>
                         </li>
                         <li class="flex justify-between">
-                            <span>Sunday</span><span class="font-bold">Office Closed</span>
+                            <span>{{ $t('footer.office-hours.sunday') }}</span><span class="font-bold">{{ $t('footer.office-hours.closed') }}</span>
                         </li>
                     </ul>
-                    <h3 class="font-bold text-brand-secondary">24/7 Transportation You Can Depend On</h3>
-                    <p>Even though our office hours are set, our commitment never stops. Golden Gate Manor's transportation services and assisted living homes are available 24/7, ensuring reliable care and rides throughout Colorado. We work hard to make our services accessible whenever you need it most.</p>
+                    <h3 class="font-bold text-brand-secondary">{{ $t('footer.office-hours.content.title') }}</h3>
+                    <p>{{ $t('footer.office-hours.content.paragraph') }}</p>
                 </div>
                 <div class="text-center mt-6 border-t border-white/30 pt-4">
-                    <h3 class="text-brand-secondary font-bold text-lg mb-2">Join Our Team</h3>
+                    <h3 class="text-brand-secondary font-bold text-lg mb-2">{{ $t('footer.career.title') }}</h3>
                     <p class="text-sm mb-3">
-                        We're always looking for compassionate, dependable people to join our care and transportation teams.
+                        {{ $t('footer.career.paragraph') }}
                     </p>
                     <div class="flex flex-wrap justify-center gap-3">
                         <NuxtLink
-                        to="/company/employment/apply?select=al_general"
-                        class="hover:text-brand-secondary underline"
+                            v-for="careerLink in footer.careerLinks" :key="careerLink.id"
+                            :to="careerLink.href"
+                            class="hover:text-brand-secondary underline"
                         >
-                        Assisted Living
-                        </NuxtLink>
-                        <NuxtLink
-                        to="/company/employment/apply?select=transportation_general"
-                        class="hover:text-brand-secondary underline"
-                        >
-                        Transportation
-                        </NuxtLink>
-                        <NuxtLink
-                        to="/company/employment/apply?select=ms_general"
-                        class="hover:text-brand-secondary underline"
-                        >
-                        Medical Supply
-                        </NuxtLink>
-                        <NuxtLink
-                        to="/company/employment/apply?select=gs_general"
-                        class="hover:text-brand-secondary underline"
-                        >
-                        Gas & Goods
-                        </NuxtLink>
-                        <NuxtLink
-                        to="/company/employment/apply?select=general"
-                        class="hover:text-brand-secondary underline"
-                        >
-                        General
+                            {{ $t(`footer.career.links.${careerLink.id}`) }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -374,8 +354,8 @@
             <nav class="flex justify-center" aria-label="Footer Navigation">
                 <ul class="flex flex-wrap justify-center sm:flex text-left gap-2 w-max">
                     <li v-for="policyLink in footer.policyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">
-                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="policyLink.href" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</NuxtLink>
-                        <a v-else :href="policyLink.href" class="hover:text-brand-secondary hover:underline">{{ policyLink.name }}</a>
+                        <NuxtLink v-if="policyLink.id !== 'site-map'" :to="$localePath(policyLink.href)" class="hover:text-brand-secondary hover:underline">{{ $t(`footer.policies.${policyLink.id}`) }}</NuxtLink>
+                        <a v-else :href="policyLink.href" class="hover:text-brand-secondary hover:underline">{{ $t(`footer.policies.${policyLink.id}`) }}</a>
                     </li>
                 </ul>
             </nav>

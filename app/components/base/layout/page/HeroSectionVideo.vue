@@ -122,7 +122,7 @@
       <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4">
         <p class="text-3xl">{{ $t('home.hero.eyebrow')}}</p>
         <h1 class="text-center flex flex-col">
-          <span class="text-6xl font-extrabold text-brand-secondary">{{ $t('company')}}</span>
+          <span class="text-6xl font-extrabold text-brand-secondary">Golden Gate Manor</span>
           <span class="text-2xl uppercase">{{ $t('home.hero.title')}}</span>
         </h1>
       </div>
