@@ -126,7 +126,11 @@ async function triggerRebuild() {
     })
 
     if (response.ok) {
-      buildPollInterval.value = setInterval(checkBuildStatus, 3000)
+      setTimeout(() => {
+        checkBuildStatus()
+
+        buildPollInterval.value = setInterval(checkBuildStatus, 5000)
+      }, 10000)
     } else {
       error(response.message || 'Failed to start build')
       isBuilding.value = false
