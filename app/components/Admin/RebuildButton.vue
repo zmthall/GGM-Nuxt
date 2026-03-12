@@ -10,6 +10,14 @@ const restartPollInterval = ref<ReturnType<typeof setInterval> | null>(null)
 
 const initialRuntimeMarker = ref<string | null>(null)
 
+function getErrorMessage(err: unknown) {
+  if (err instanceof Error) {
+    return err.message
+  }
+
+  return 'Unknown error'
+}
+
 async function getAuthHeaders() {
   const idToken = await authStore.getIdToken()
 
@@ -55,8 +63,26 @@ function buildCacheBustedUrl() {
   return url.toString()
 }
 
-function navigateFresh() {
-  window.location.replace(buildCacheBustedUrl())
+async function stabilizeAndReload() {
+  const freshUrl = buildCacheBustedUrl()
+
+  await new Promise(resolve => setTimeout(resolve, 4000))
+
+  try {
+    await fetch(freshUrl, {
+      method: 'GET',
+      cache: 'no-store',
+      credentials: 'include',
+      headers: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache'
+      }
+    })
+  } catch (err) {
+    console.error('Warm-up fetch failed before reload:', err)
+  }
+
+  window.location.replace(freshUrl)
 }
 
 async function waitForRestart() {
@@ -70,9 +96,7 @@ async function waitForRestart() {
 
       success('App restarted. Loading fresh page...')
 
-      setTimeout(() => {
-        navigateFresh()
-      }, 1500)
+      await stabilizeAndReload()
     }
   } catch (err) {
     console.error('Failed to check runtime marker:', err)
@@ -108,7 +132,7 @@ async function triggerRebuild() {
       isBuilding.value = false
     }
   } catch (err: unknown) {
-    error('Error starting build: ' + (err as Error).message)
+    error('Error starting build: ' + getErrorMessage(err))
     isBuilding.value = false
   }
 }

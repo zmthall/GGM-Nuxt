@@ -190,8 +190,6 @@ import type { ApplicationFormData } from '../../models/Application.js';
 import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
 import type { WatchStopHandle } from 'vue'
 
-console.log("Successful rebuild.")
-
 const departmentLabels = [
   'All Departments',
   'City Cab',

@@ -74,7 +74,23 @@ export default defineNuxtConfig({
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
     },
     // noindexing on /admin pages
-    '/admin/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    // Admin pages: do not cache the HTML document
+    '/admin/**': {
+      headers: {
+        'x-robots-tag': 'noindex, nofollow',
+        'cache-control': 'no-store, no-cache, must-revalidate, max-age=0',
+        pragma: 'no-cache',
+        expires: '0'
+      }
+    },
+    // Admin APIs: do not cache status/runtime responses
+    '/api/admin/**': {
+      headers: {
+        'cache-control': 'no-store, no-cache, must-revalidate, max-age=0',
+        pragma: 'no-cache',
+        expires: '0'
+      }
+    },
     // noindexing on deemed dev production
     ...(process.env.BUILD_TYPE === 'DEV'
       ? { '/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } } }
