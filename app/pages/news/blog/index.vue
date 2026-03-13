@@ -263,11 +263,4 @@ onMounted(() => {
     -webkit-line-clamp: var(--max-lines);
     position: relative;
   }
-
-  @media(min-width: 640px) {
-    .post-body {
-        display: block;
-    }
-  }
-
 </style>
