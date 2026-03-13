@@ -125,14 +125,14 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 import { useDateFormat } from '../../../composables/dates/dateFormat'
 import type { AllPosts } from '../../../models/blog'
 
-const authStore = useAuthStore();
+const authStore = useAuthStore()
 
 defineOptions({
-    name: 'BlogPostsPage'
+  name: 'BlogPostsPage'
 })
 
 definePageMeta({
@@ -141,10 +141,11 @@ definePageMeta({
 })
 
 useHead({
-    titleTemplate: null
+  titleTemplate: null
 })
 
 const runtimeConfig = useRuntimeConfig()
+
 useSeoMeta({
   title: 'Golden Gate Manor Blog | All resources under one umbrella',
   ogTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
@@ -154,23 +155,31 @@ useSeoMeta({
   twitterTitle: 'Golden Gate Manor Blog | All resources under one umbrella',
   twitterDescription: 'Your complete resource hub for healthcare transportation, assisted living, and community services in Southern Colorado. Expert insights."',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterCard: 'summary_large_image',
+  twitterCard: 'summary_large_image'
 })
 
 const formatDates = useDateFormat()
-const text = useText();
+const text = useText()
 
 const cutoffISO = new Date(Date.now() + 60_000).toISOString()
 
 const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
   return queryCollection('blog')
-    .where('draft', '<>', true)          // safer than '<>' in Content
-    .where('published', '<', cutoffISO)  // equivalent to <= now (with buffer)
-    .order('published', 'DESC')          // IMPORTANT: actually get “latest”
+    .where('draft', '<>', true)
+    .where('published', '<', cutoffISO)
+    .order('published', 'DESC')
     .select(
-      'path','date','title',
-      'thumbnail','thumbnailAlt','thumbnailWidth','thumbnailHeight',
-      'tags','summary','published', 'readTime'
+      'path',
+      'date',
+      'title',
+      'thumbnail',
+      'thumbnailAlt',
+      'thumbnailWidth',
+      'thumbnailHeight',
+      'tags',
+      'summary',
+      'published',
+      'readTime'
     )
     .first()
 })
@@ -191,47 +200,62 @@ const staffPicks = computed(() => {
   return shuffled.slice(0, 4)
 })
 
-const posts = ref<AllPosts[]>([])
-
-const page = ref(1)
 const limit = 8
-const isLoading = ref<boolean>(false)
-const hasMorePages = ref<boolean>(true)
+const posts = ref<AllPosts[]>([])
+const page = ref(1)
+const isLoading = ref(false)
+const hasMorePages = ref(true)
 
-// Load initial posts
-const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
-  return queryCollection('blog')
-    .where('draft', '<>', true)
-    .where('published', '<', cutoffISO)
-    .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published', 'readTime')
-    .order('published', 'DESC')
-    .limit(limit)
-    .all()
-})
+const appendUniquePosts = (incoming: AllPosts[]) => {
+  const seen = new Set(posts.value.map(post => post.path))
 
-posts.value = initialPosts.value || []
-
-const loadMore = async () => {
-  if (!hasMorePages.value || isLoading.value) return
-  isLoading.value = true
-  page.value++
-
-  const newPosts = await $fetch<AllPosts[]>('/api/blog/posts', {
-    query: { page: page.value, limit }
+  const uniquePosts = incoming.filter(post => {
+    if (!post?.path) return false
+    if (seen.has(post.path)) return false
+    seen.add(post.path)
+    return true
   })
 
-  if (newPosts?.length) posts.value.push(...newPosts)
-  if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
-  isLoading.value = false
+  posts.value = [...posts.value, ...uniquePosts]
 }
 
-onMounted(() => {
-    if (initialPosts.value) {
-        if(initialPosts.value.length < limit)
-            // This was the last page
-            hasMorePages.value = false
-    }
+const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
+  return $fetch<AllPosts[]>('/api/blog/posts', {
+    query: { page: 1, limit }
+  })
 })
+
+posts.value = [...(initialPosts.value ?? [])]
+hasMorePages.value = (initialPosts.value?.length ?? 0) === limit
+
+const loadMore = async () => {
+  if (isLoading.value || !hasMorePages.value) return
+
+  isLoading.value = true
+  const nextPage = page.value + 1
+
+  try {
+    const newPosts = await $fetch<AllPosts[]>('/api/blog/posts', {
+      query: { page: nextPage, limit }
+    })
+
+    if (!newPosts?.length) {
+      hasMorePages.value = false
+      return
+    }
+
+    appendUniquePosts(newPosts)
+    page.value = nextPage
+
+    if (newPosts.length < limit) {
+      hasMorePages.value = false
+    }
+  } catch (error) {
+    console.error('Failed to load more posts:', error)
+  } finally {
+    isLoading.value = false
+  }
+}
 </script>
 
 <style scoped>
