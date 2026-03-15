@@ -39,7 +39,7 @@ export const useRecaptcha = () => {
   const verifyWithServer = async (token: string): Promise<RecaptchaServerResponse> => {
     try {
       const response = await $fetch<RecaptchaServerResponse>('/api/recaptcha/verify', {
-        baseURL: 'https://api.goldengatemanor.com/',
+        baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
         method: 'POST',
         body: { token }
       })

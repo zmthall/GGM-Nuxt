@@ -244,7 +244,7 @@ const saveEdit = async (idx: number) => {
     }
 
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToSave.id}`, {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${idToken}`,
@@ -281,7 +281,7 @@ const updateArchive = async (idx: number) => {
     }
 
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToSave.id}/archive`, {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${idToken}`,
@@ -329,7 +329,7 @@ const deleteEvent = async (idx: number) => {
     const idToken = await authStore.getIdToken();
   
     const response = await $fetch<EventUpdateResponse>(`/api/events/${eventToDelete.id}`, {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${idToken}`,

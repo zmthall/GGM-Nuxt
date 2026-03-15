@@ -324,7 +324,7 @@ const fetchEvents = async (): Promise<void> => {
     eventLoading.value = true;
         
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: pageSize
@@ -352,7 +352,7 @@ const loadMoreEvents = async (): Promise<void> => {
     currentPage.value++;
     
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: currentPage.value,
         limit: pageSize

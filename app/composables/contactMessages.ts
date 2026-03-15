@@ -36,7 +36,7 @@ export const useContactMessages = () => {
   const listAbort = shallowRef<AbortController | null>(null)
   onBeforeUnmount(() => listAbort.value?.abort())
 
-  const API = 'https://api.goldengatemanor.com'
+  const API = useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
 
   // Helpers
   const getTokenOrNull = async (): Promise<string | null> => {

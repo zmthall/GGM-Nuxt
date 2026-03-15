@@ -50,7 +50,7 @@ const loginUser = async () => {
         const idToken = await authStore.getIdToken();
     
         const response = await $fetch<{ success: boolean }>(`/api/users/update-login`, {
-            baseURL: 'https://api.goldengatemanor.com',
+            baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${idToken}`

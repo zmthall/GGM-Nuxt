@@ -123,7 +123,8 @@ export default defineNuxtConfig({
       recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
       microsoftUetId: process.env.MICROSOFT_UET_ID,
-      buildType: process.env.BUILD_TYPE
+      buildType: process.env.BUILD_TYPE,
+      useLocalApi: process.env.USE_LOCAL_API === 'true'
     }
   },
   typescript: {

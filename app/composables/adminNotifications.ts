@@ -28,7 +28,7 @@ export const useAdminNotifications = () => {
       errorMsg.value = null
 
       const res = await $fetch<NotificationResponse>('/api/notification', {
-        baseURL: 'https://api.goldengatemanor.com',
+        baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
         method: 'GET'
       })
 

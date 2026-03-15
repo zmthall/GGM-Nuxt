@@ -32,7 +32,7 @@ const fetchImages = async (): Promise<void> => {
   try {
     imageLoading.value = true
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'https://api.goldengatemanor.com/'
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
     })
     
     // Filter out null slots and create array of only filled slots
@@ -61,7 +61,7 @@ const openImageModal = async () => {
   modalImagesLoading.value = true
   try {
     const response = await $fetch<{ success: boolean, data: { houseId: string, items: Slide[] } }>(`/api/community/images?signed=true`, {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'GET',
     })
 

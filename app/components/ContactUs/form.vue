@@ -118,7 +118,7 @@ const submitContact = async () => {
     
     if (verification.success && verification.data?.valid) {
       await $fetch('/api/contact-form/submit', {
-        baseURL: 'https://api.goldengatemanor.com',
+        baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
