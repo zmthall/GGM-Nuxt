@@ -83,6 +83,8 @@ export const useRideRequests = () => {
     }
   }
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateRideStatus = async (
     msg: { id: string; status: RideRequestStatus },
     pageSize = 5,
@@ -100,7 +102,10 @@ export const useRideRequests = () => {
         headers: { Authorization: `Bearer ${token}` },
         body: { status: msg.status }, // $fetch stringifies for you
       })
-      if (res.success) await fetchRideRequests(false, pageSize, page, omit)
+      if (res.success) {
+        await fetchRideRequests(false, pageSize, page, omit)
+        fetchNotifications()
+      }
     } catch (e) {
       console.error('updateRideStatus:', (e as Error).message)
     }

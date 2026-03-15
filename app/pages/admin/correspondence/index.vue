@@ -72,7 +72,6 @@
                     :applications="applications"
                     :pagination="applicationsPagination"
                     :has-toolbar="true"
-                    :application-modal-data="applicationModalData"
                     @change-status="(payload) => updateApplicationStatus(payload, 5, applicationPage, false, queryFilters)"
                     @change-tags="(payload) => updateApplicationTags(payload, 5, applicationPage, false, queryFilters)"
                     @prev-page="prevApplicationPage"

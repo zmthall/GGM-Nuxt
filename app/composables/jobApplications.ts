@@ -116,6 +116,8 @@ export const useJobApplications = () => {
 
   // ---- Status ----
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateApplicationStatus = async (
     message: { id: string; status: ApplicationRequestStatus },
     pageSize = 10,
@@ -136,6 +138,7 @@ export const useJobApplications = () => {
       })
       if (res.success) {
         await fetchApplications(false, pageSize, page, omit, filters)
+        fetchNotifications()
       }
     } catch (e) {
       console.error('updateApplicationStatus:', (e as Error).message)

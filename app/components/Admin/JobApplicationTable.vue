@@ -213,6 +213,8 @@ import type { ApplicationFormData, ApplicationRequestStatus } from '../../models
 const text = useText()
 
 defineProps<{
+  modelValue: boolean
+  data: ApplicationFormData | null
   applications: ApplicationFormData[]
   loading?: boolean
   pagination?: Pagination | null
@@ -220,6 +222,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+  (e: 'update:data', value: ApplicationFormData | null): void
   (e: 'prev-page' | 'next-page'): void
   (e: 'page-change', page: number): void
   (e: 'change-status', payload: { id: string, status: ApplicationRequestStatus }): void

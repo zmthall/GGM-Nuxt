@@ -86,6 +86,8 @@ export const useContactMessages = () => {
     }
   }
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateContactStatus = async (
     message: { id: string; status: ContactFormStatus },
     pageSize = 5,
@@ -105,6 +107,7 @@ export const useContactMessages = () => {
       })
       if (res.success) {
         await fetchContactMessages(false, pageSize, page, omit)
+        fetchNotifications()
       }
     } catch (e) {
       console.error('updateContactStatus:', (e as Error).message)

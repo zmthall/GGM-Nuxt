@@ -55,29 +55,16 @@
 </template>
 
 <script setup lang="ts">
-type NotificationResponse = {
-  success: boolean
-  data: {
-    totalNew: number
-    rideRequestsNew: number
-    messagesNew: number
-    applicationsNew: number
-    updatedAt?: string
-  }
-}
-
 const open = ref(false)
-const loading = ref(true)
-const errorMsg = ref<string | null>(null)
+const root = ref<HTMLElement | null>(null)
 
-const counts = ref({
-  totalNew: 0,
-  rideRequestsNew: 0,
-  messagesNew: 0,
-  applicationsNew: 0
-})
-
-const totalNew = computed(() => counts.value.totalNew)
+const {
+  loading,
+  errorMsg,
+  counts,
+  totalNew,
+  fetchNotifications
+} = useAdminNotifications()
 
 const items = computed(() => ([
   {
@@ -105,8 +92,6 @@ const items = computed(() => ([
 
 const visibleItems = computed(() => items.value.filter(i => i.count > 0))
 
-const root = ref<HTMLElement | null>(null)
-
 function toggle() {
   open.value = !open.value
 }
@@ -126,47 +111,20 @@ function onClickOutside(e: MouseEvent) {
   if (target && !el.contains(target)) closeNavDropdown()
 }
 
-async function fetchNotifications() {
-  try {
-    errorMsg.value = null
-    const res = await $fetch<NotificationResponse>('/api/notification', { 
-      baseURL: 'https://api.goldengatemanor.com',
-      method: 'GET' 
-    })
-
-    if (!res?.success) {
-      throw new Error('Failed to load notifications')
-    }
-
-    const d = res.data
-    counts.value = {
-      totalNew: Number(d.totalNew ?? 0),
-      rideRequestsNew: Number(d.rideRequestsNew ?? 0),
-      messagesNew: Number(d.messagesNew ?? 0),
-      applicationsNew: Number(d.applicationsNew ?? 0)
-    }
-  } catch (err) {
-    errorMsg.value = (err as Error).message ?? 'Failed to load notifications'
-  } finally {
-    loading.value = false
-  }
-}
-
 let interval: ReturnType<typeof setInterval> | null = null
 
 onMounted(async () => {
   await fetchNotifications()
 
-  // Poll every 10 seconds (adjust as you like)
   interval = setInterval(fetchNotifications, 10000)
 
   document.addEventListener('mousedown', onClickOutside)
-  window.addEventListener('keydown', onKeydown)
+  globalThis.addEventListener('keydown', onKeydown)
 })
 
 onBeforeUnmount(() => {
   if (interval) clearInterval(interval)
   document.removeEventListener('mousedown', onClickOutside)
-  window.removeEventListener('keydown', onKeydown)
+  globalThis.removeEventListener('keydown', onKeydown)
 })
 </script>
