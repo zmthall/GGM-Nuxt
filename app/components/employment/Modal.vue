@@ -32,7 +32,7 @@
           </ul>
         </div>
       </div>
-      <BaseUiAction :to="`/company/employment/apply?select=${modalContent.select}`" class="py-2 px-4 self-center mt-8">Apply Now</BaseUiAction>
+      <BaseUiAction :to="`/company/employment/apply?select=${modalContent.select_label}`" class="py-2 px-4 self-center mt-8">Apply Now</BaseUiAction>
     </div>
   </BaseInteractiveModal>
 </template>

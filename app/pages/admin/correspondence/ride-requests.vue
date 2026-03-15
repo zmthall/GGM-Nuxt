@@ -11,7 +11,6 @@
                         :ride-requests="rideRequests" 
                         :pagination="rideRequestsPagination" 
                         :has-toolbar="false" 
-                        :ride-request-modal-data="rideRequestModalData"
                         @change-status="(payload) => updateRideStatus(payload, 10, requestPage, false)"
                         @change-tags="(payload) => updateRideTags(payload, 10, requestPage, false)"
                         @export-pdf="exportRidePDF"

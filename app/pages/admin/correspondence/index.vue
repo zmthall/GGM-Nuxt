@@ -40,7 +40,6 @@
                         :ride-requests="rideRequests" 
                         :pagination="rideRequestsPagination" 
                         :has-toolbar="false" 
-                        :ride-request-modal-data="rideRequestModalData"
                         @change-status="updateRideStatus"
                         @change-tags="updateRideTags"
                         @export-pdf="exportRidePDF"
