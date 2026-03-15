@@ -263,7 +263,7 @@ const openModal = async (event: Event) => {
       }
 
       const modalFetch = await $fetch(`/api/jobs/${select}`, {
-        baseURL: 'http://127.0.0.1:4000'
+        baseURL: 'https://api.goldengatemanor.com',
       }) as JobDescriptionFetch;
 
       loadingModal.value = false;
