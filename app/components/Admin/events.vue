@@ -5,13 +5,13 @@
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 flex sm:flex-col justify-center min-w-28 min-h-20">
         <div v-if="!editModeStates[idx]" class="flex flex-row justify-center items-center gap-4 sm:flex-col">
           <div class="flex flex-row gap-2 sm:gap-1">
-            <span>{{ getDateMonth(event.date) }}</span>
-            <span>{{ getDateDay(event.date) }}</span>
+            <span>{{ getDateMonth(event.dateStart) }}</span>
+            <span>{{ getDateDay(event.dateStart) }}</span>
           </div>
-          <span v-if="event.dateTo">To</span>
-          <div v-if="event.dateTo" class="flex flex-row gap-2 sm:gap-1">
-            <span>{{ getDateMonth(event.dateTo) }}</span>
-            <span>{{ getDateDay(event.dateTo) }}</span>
+          <span v-if="event.dateEnd">To</span>
+          <div v-if="event.dateEnd" class="flex flex-row gap-2 sm:gap-1">
+            <span>{{ getDateMonth(event.dateEnd) }}</span>
+            <span>{{ getDateDay(event.dateEnd) }}</span>
           </div>
         </div>
       </div>
@@ -54,8 +54,8 @@
           <BaseUiAction v-if="!editModeStates[idx]" :href="event.link" rel="noopener noreferrer" target="_blank" class="px-8 py-4 mt-8 group md:flex md:whitespace-nowrap"><span class="text-brand-secondary group-hover:text-brand-primary transition-colors duration-500 ease-in-out font-extrabold">+</span> <span>More Info</span></BaseUiAction>
           <div v-else class="space-y-2">
             <BaseFormInput v-model="getEvent(idx).link" label="Link" :name="`link-${getEvent(idx).id}`" type="text"/>
-            <BaseFormDatePicker v-model="getEvent(idx).date" label="Date" :name="`date-${getEvent(idx).id}`" date-format="m/d/Y" />
-            <BaseFormDatePicker v-model="getEvent(idx).dateTo" label="Date To" :name="`date-to-${getEvent(idx).id}`" date-format="m/d/Y" />
+            <BaseFormDatePicker v-model="getEvent(idx).dateStart" label="Date" :name="`date-${getEvent(idx).id}`" date-format="m/d/Y" />
+            <BaseFormDatePicker v-model="getEvent(idx).dateEnd" label="Date To" :name="`date-to-${getEvent(idx).id}`" date-format="m/d/Y" />
             <BaseFormToggleSwitch v-model="getEvent(idx).archived" label="Archived" :name="`archived-${getEvent(idx).id}`" />
           </div>
         </div>
@@ -66,8 +66,8 @@
     <li v-for="(event, idx) in currentEvents" :key="event.id" class="flex flex-col sm:flex-row lg:w-[75%]">
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 sm:flex sm:flex-col sm:justify-center min-w-28">
         <div class="flex flex-col">
-          <span>{{ getDateMonth(event.date) }}</span>
-          <span>{{ getDateDay(event.date) }}</span>
+          <span>{{ getDateMonth(event.dateStart) }}</span>
+          <span>{{ getDateDay(event.dateStart) }}</span>
         </div>
       </div>
       <div class="bg-[#d2d2ff] p-4 max-sm:rounded-b-lg sm:rounded-r-lg flex justify-between items-center w-full relative">
@@ -110,9 +110,7 @@ const props = withDefaults(defineProps<{
   archived: false,
 })
 
-const emit = defineEmits<{
-  (e: 'eventsUpdated', events: EventsData): void
-}>()
+const emit = defineEmits<(e: 'eventsUpdated', events: EventsData) => void>()
 
 const editModeStates = ref<boolean[]>([]);
 const expandedStates = ref<boolean[]>([]);
@@ -126,8 +124,8 @@ const deleteIdx = ref<number | null>(null)
 
 const createEmptyEvent = (): EventsData[0] => ({
   id: '',
-  date: '',
-  dateTo: undefined,
+  dateStart: '',
+  dateEnd: undefined,
   title: '',
   archived: false,
   location: '',
@@ -143,7 +141,7 @@ const getEvent = (idx: number) => {
 const getDateMonth = (date: string) => {
     const dateItem = new Date(date);
 
-    if (dateItem && !isNaN(dateItem.getTime())) {
+    if (dateItem && !Number.isNaN(dateItem.getTime())) {
       const dateMonth = dateItem.toLocaleDateString('en-US', { month: 'long' }).length <= 4 ?  
       dateItem.toLocaleDateString('en-US', { month: 'long' }) : 
       dateItem.toLocaleDateString('en-US', { month: 'short' }) + '.';
@@ -175,7 +173,7 @@ const getOrdinalSuffix = (day: number): string => {
 const getDateDay = (date: string) => {
     const dateItem = new Date(date);
 
-    if (dateItem && !isNaN(dateItem.getTime())) {
+    if (dateItem && !Number.isNaN(dateItem.getTime())) {
         const day = dateItem.getDate();
         return day + getOrdinalSuffix(day);
     }
@@ -224,7 +222,7 @@ const cancelEditEventState = (idx: number) => {
   const savedEvent = lastSavedEvents.value[idx]
   const originalEvent = props.events[idx]
   
-  if (savedEvent && savedEvent.id && savedEvent.date && savedEvent.title) {
+  if (savedEvent && savedEvent.id && savedEvent.dateStart && savedEvent.title) {
     currentEvents.value[idx] = { ...savedEvent }
   } else if (originalEvent) {
     currentEvents.value[idx] = { ...originalEvent }
@@ -260,7 +258,7 @@ const saveEdit = async (idx: number) => {
       lastSavedEvents.value[idx] = { ...eventToSave }
       emit('eventsUpdated', currentEvents.value)
       if (previousArchivedState !== eventToSave.archived) {
-        window.location.reload()
+        globalThis.location.reload()
         return
       }
     }
@@ -295,7 +293,7 @@ const updateArchive = async (idx: number) => {
       lastSavedEvents.value[idx] = { ...eventToSave }
       emit('eventsUpdated', currentEvents.value)
       if (previousArchivedState !== eventToSave.archived) {
-        window.location.reload()
+        globalThis.location.reload()
         return
       }
     }

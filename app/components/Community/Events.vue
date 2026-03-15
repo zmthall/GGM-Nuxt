@@ -5,13 +5,13 @@
       <div class="bg-brand-primary text-white font-bold text-2xl text-center py-3 sm:px-8 flex sm:flex-col justify-center min-w-28 min-h-20">
         <div class="flex flex-row justify-center items-center gap-4 sm:flex-col">
           <div class="flex flex-row gap-2 sm:gap-1">
-            <span>{{ getDateMonth(event.date) }}</span>
-            <span>{{ getDateDay(event.date) }}</span>
+            <span>{{ getDateMonth(event.dateStart) }}</span>
+            <span>{{ getDateDay(event.dateStart) }}</span>
           </div>
-          <span v-if="event.dateTo">To</span>
-          <div v-if="event.dateTo" class="flex flex-row gap-2 sm:gap-1">
-            <span>{{ getDateMonth(event.dateTo) }}</span>
-            <span>{{ getDateDay(event.dateTo) }}</span>
+          <span v-if="event.dateEnd">To</span>
+          <div v-if="event.dateEnd" class="flex flex-row gap-2 sm:gap-1">
+            <span>{{ getDateMonth(event.dateEnd) }}</span>
+            <span>{{ getDateDay(event.dateEnd) }}</span>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<{
 const getDateMonth = (date: string) => {
     const dateItem = new Date(date);
 
-    if (dateItem && !isNaN(dateItem.getTime())) {
+    if (dateItem && !Number.isNaN(dateItem.getTime())) {
       const dateMonth = dateItem.toLocaleDateString('en-US', { month: 'long' }).length <= 4 ?  
       dateItem.toLocaleDateString('en-US', { month: 'long' }) : 
       dateItem.toLocaleDateString('en-US', { month: 'short' }) + '.';
@@ -88,7 +88,7 @@ const getOrdinalSuffix = (day: number): string => {
 const getDateDay = (date: string) => {
     const dateItem = new Date(date);
 
-    if (dateItem && !isNaN(dateItem.getTime())) {
+    if (dateItem && !Number.isNaN(dateItem.getTime())) {
         const day = dateItem.getDate();
         return day + getOrdinalSuffix(day);
     }

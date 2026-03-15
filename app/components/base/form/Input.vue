@@ -1,12 +1,11 @@
 <template>
     <div class="relative w-full">
-        <label v-if="label" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{
-            label }}</label>
+        <label v-if="label" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <input
             v-if="type === 'tel'"
             :id="name" ref="inputRef" v-model="textValue" :name="name"
             :class="['border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
-            pattern="^(\(\d{3}\)\s?|\d{3}-?)\d{3}-?\d{4}$"
+            pattern="^(\\(\\d{3}\\)\\s?|\\d{3}-?)\\d{3}-?\\d{4}$"
             type="tel" :placeholder :autocomplete
             @keydown="restrictPhoneInput">
         <input 
@@ -28,13 +27,12 @@
     </div>
 </template>
 
-
 <script setup lang='ts'>
 defineOptions({
     name: 'BaseFormInput'
 })
 
-const showPassword = ref(false);
+const showPassword = ref(false)
 const inputRef = ref<HTMLInputElement | null>(null)
 
 const props = withDefaults(defineProps<{
@@ -56,52 +54,54 @@ const isPassword = computed(() => {
 })
 
 const isPasswordShown = computed(() => {
-    if (props.type === 'password')
-        return showPassword.value
-    else return false;
+    if (props.type === 'password') return showPassword.value
+    return false
 })
 
 const toggleShowPassword = () => {
-    if (props.type === 'password' && !showPassword.value) {
-        if (inputRef.value) {
-            inputRef.value.setAttribute('type', 'text')
-            showPassword.value = true;
-        }
-    } else {
-        if (inputRef.value) {
-            inputRef.value.setAttribute('type', 'password')
-            showPassword.value = false;
-        }
+    if (props.type === 'password' && !showPassword.value && inputRef.value) {
+        inputRef.value.setAttribute('type', 'text')
+        showPassword.value = true
+        return;
+    }
+    if (props.type === 'password' && inputRef.value) {
+        inputRef.value.setAttribute('type', 'password')
+        showPassword.value = false
     }
 }
 
 const hasLabel = computed(() => {
-    if (props.label)
-        return props.label.length > 0
-    else return false
+    if (props.label) return props.label.length > 0
+    return false
 })
 
-const allowedPhoneCharacters = ['0','1','2','3','4','5','6','7','8','9','(',')','-', ' '];
+const allowedPhoneCharacters = new Set(['0','1','2','3','4','5','6','7','8','9','(',')','-', ' '])
 
 const restrictPhoneInput = (e: KeyboardEvent) => {
-  const key = e.key;
-  const isCtrlCombo = e.ctrlKey || e.metaKey;
+    const key = e.key
+    const isCtrlCombo = e.ctrlKey || e.metaKey
 
-  // Allow common control keys
-  if (
-    ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Home', 'End'].includes(key) ||
-    isCtrlCombo
-  ) {
-    return;
-  }
+    if (
+        ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Home', 'End'].includes(key) ||
+        isCtrlCombo
+    ) {
+        return
+    }
 
-  // Block if not allowed
-  if (!allowedPhoneCharacters.includes(key)) {
-    e.preventDefault();
-  }
-};
+    if (!allowedPhoneCharacters.has(key)) {
+        e.preventDefault()
+    }
+}
 
-const textValue = defineModel<string | number | null>();
+const focus = () => {
+    inputRef.value?.focus()
+}
+
+defineExpose({
+    focus
+})
+
+const textValue = defineModel<string | number | null>()
 </script>
 
 <style></style>
