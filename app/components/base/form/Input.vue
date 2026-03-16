@@ -5,7 +5,7 @@
             v-if="type === 'tel'"
             :id="name" ref="inputRef" v-model="textValue" :name="name"
             :class="['border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
-            pattern="^(\\(\\d{3}\\)\\s?|\\d{3}-?)\\d{3}-?\\d{4}$"
+            pattern="^(?:\+?1[\s-]?)?(?:\(\d{3}\)\s?\d{3}[\s-]?\d{4}|\d{3}[\s-]?\d{3}[\s-]?\d{4})$"
             type="tel" :placeholder :autocomplete
             @keydown="restrictPhoneInput">
         <input 
@@ -75,7 +75,7 @@ const hasLabel = computed(() => {
     return false
 })
 
-const allowedPhoneCharacters = new Set(['0','1','2','3','4','5','6','7','8','9','(',')','-', ' '])
+const allowedPhoneCharacters = new Set(['0','1','2','3','4','5','6','7','8','9','(',')','-', ' ', '+'])
 
 const restrictPhoneInput = (e: KeyboardEvent) => {
     const key = e.key

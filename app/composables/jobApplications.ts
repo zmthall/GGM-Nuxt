@@ -193,6 +193,7 @@ export const useJobApplications = () => {
       if (res.success) {
         await fetchApplications(false, pageSize, 1, omit, filters)
         applicationPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteApplication:', (e as Error).message)

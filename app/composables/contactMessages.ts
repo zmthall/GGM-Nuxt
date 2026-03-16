@@ -185,6 +185,7 @@ export const useContactMessages = () => {
       if (res.success) {
         await fetchContactMessages(false, pageSize, 1, omit)
         contactPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteContactMessage:', (e as Error).message)

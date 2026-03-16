@@ -179,6 +179,7 @@ export const useRideRequests = () => {
       if (res.success) {
         await fetchRideRequests(false, pageSize, 1, omit)
         requestPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteRideRequest:', (e as Error).message)
