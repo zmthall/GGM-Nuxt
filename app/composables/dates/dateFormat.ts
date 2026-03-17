@@ -1,6 +1,6 @@
 // app/composables/useDateFormat.ts
 export const useDateFormat = () => {
-  const parseFlexibleDate = (dateInput: string | Date | undefined): Date | null => {
+  const parseFlexibleDate = (dateInput: string | Date | undefined | null): Date | null => {
     if (!dateInput) return null;
     if (dateInput instanceof Date) return dateInput;
     
