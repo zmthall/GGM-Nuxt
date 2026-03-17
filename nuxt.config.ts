@@ -131,7 +131,6 @@ export default defineNuxtConfig({
     tsConfig: { compilerOptions: { types: ['google.maps'] } }
   },
   app: {
-    buildAssetsDir: "assets",
     head: {
       htmlAttrs: {
         lang: 'en'
