@@ -255,7 +255,7 @@ const openModal = async (event: Event) => {
 
     if (event.target) {
       const target = event.target as HTMLElement;
-      const select = target.getAttribute('data-select')
+      const select = target.dataset.select
 
       if (!select) {
         console.error('No data-select attribute found')
@@ -263,7 +263,7 @@ const openModal = async (event: Event) => {
       }
 
       const modalFetch = await $fetch(`/api/jobs/${select}`, {
-        baseURL: 'https://api.goldengatemanor.com/'
+        baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       }) as JobDescriptionFetch;
 
       loadingModal.value = false;

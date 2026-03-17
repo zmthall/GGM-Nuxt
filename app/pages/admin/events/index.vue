@@ -118,7 +118,7 @@ const fetchEvents = async (): Promise<void> => {
   try {
     eventLoading.value = true;
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: activePageSize
@@ -141,7 +141,7 @@ const fetchArchivedEvents = async (): Promise<void> => {
   try {
     archiveEventLoading.value = true;
     const response = await $fetch<CommunityEventsResponse>('/api/events/archived', {
-      baseURL: 'https://api.goldengatemanor.com',
+     baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: archivedPageSize
@@ -168,7 +168,7 @@ const loadMoreActiveEvents = async (): Promise<void> => {
     currentActivePage.value++;
     
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: currentActivePage.value,
         limit: activePageSize
@@ -200,7 +200,7 @@ const loadMoreArchivedEvents = async (): Promise<void> => {
     currentArchivedPage.value++;
     
     const response = await $fetch<CommunityEventsResponse>('/api/events/archived', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: currentArchivedPage.value,
         limit: archivedPageSize

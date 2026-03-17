@@ -23,8 +23,8 @@
         <div>
           <div class="space-y-2">
             <BaseFormInput v-model="newEvent.link" label="Link" name="link" type="text"/>
-            <BaseFormDatePicker v-model="newEvent.date" label="Date" name="date" date-format="m/d/Y"  />
-            <BaseFormDatePicker v-model="newEvent.dateTo" label="Date To" name="date-to" date-format="m/d/Y"  />
+            <BaseFormDatePicker v-model="newEvent.dateStart" label="Date" name="date" date-format="m/d/Y"  />
+            <BaseFormDatePicker v-model="newEvent.dateEnd" label="Date To" name="date-to" date-format="m/d/Y"  />
           </div>
         </div>
       </div>
@@ -43,8 +43,8 @@ const modalOpen = defineModel<boolean>();
 const authStore = useAuthStore();
 
 const newEvent = reactive<AddEventData>({
-  date: '',
-  dateTo: undefined,
+  dateStart: '',
+  dateEnd: undefined,
   title: '',
   location: '',
   address: '',
@@ -72,7 +72,7 @@ const addEvent = async () => {
 
   try {
     const response = await $fetch(`/api/events`, {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${idToken}`,
@@ -82,7 +82,7 @@ const addEvent = async () => {
     })
 
     if(response) {
-      window.location.reload()
+      globalThis.location.reload()
     }
   } catch (err: unknown) {
     console.error('Failed to add event:', err)

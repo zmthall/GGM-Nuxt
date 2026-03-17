@@ -80,7 +80,7 @@ const openImageModal = async (houseId: string) => {
   const currentHouse = houses.value.find((house) => house.id === houseId);
   try {
     const response = await $fetch<{ success: boolean, data: { houseId: string, items: Slide[] } }>(`/api/houses/images/${houseId}?signed=true`, {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'GET',
     })
 

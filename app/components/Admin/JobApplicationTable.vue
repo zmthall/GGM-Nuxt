@@ -213,6 +213,8 @@ import type { ApplicationFormData, ApplicationRequestStatus } from '../../models
 const text = useText()
 
 defineProps<{
+  modelValue: boolean
+  data: ApplicationFormData | null
   applications: ApplicationFormData[]
   loading?: boolean
   pagination?: Pagination | null
@@ -220,6 +222,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+  (e: 'update:data', value: ApplicationFormData | null): void
   (e: 'prev-page' | 'next-page'): void
   (e: 'page-change', page: number): void
   (e: 'change-status', payload: { id: string, status: ApplicationRequestStatus }): void
@@ -360,9 +364,9 @@ const positionMenu = () => {
   const gap = 6
   let top = rect.bottom + gap
   let left = rect.left
-  if (top + menuH > window.innerHeight) top = rect.top - menuH - gap
+  if (top + menuH > globalThis.innerHeight) top = rect.top - menuH - gap
   const pad = 8
-  if (left + menuW > window.innerWidth - pad) left = window.innerWidth - menuW - pad
+  if (left + menuW > globalThis.innerWidth - pad) left = globalThis.innerWidth - menuW - pad
   if (left < pad) left = pad
   statusMenuStyle.value = { top: `${Math.max(pad, top)}px`, left: `${left}px` }
 }
@@ -377,17 +381,17 @@ const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeStatusMen
 const handleResize = () => { if (openStatusFor.value) positionMenu() }
 
 onMounted(() => {
-  window.addEventListener('click', closeStatusMenu, true)
-  window.addEventListener('keydown', handleKey)
-  window.addEventListener('resize', handleResize)
-  window.addEventListener('scroll', closeStatusMenu, true)
+  globalThis.addEventListener('click', closeStatusMenu, true)
+  globalThis.addEventListener('keydown', handleKey)
+  globalThis.addEventListener('resize', handleResize)
+  globalThis.addEventListener('scroll', closeStatusMenu, true)
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('click', closeStatusMenu, true)
-  window.removeEventListener('keydown', handleKey)
-  window.removeEventListener('resize', handleResize)
-  window.removeEventListener('scroll', closeStatusMenu, true)
+  globalThis.removeEventListener('click', closeStatusMenu, true)
+  globalThis.removeEventListener('keydown', handleKey)
+  globalThis.removeEventListener('resize', handleResize)
+  globalThis.removeEventListener('scroll', closeStatusMenu, true)
 })
 
 /** Modal */
@@ -408,13 +412,17 @@ const showAllTags = ref(false)
 const tagModalFor = ref<ApplicationFormData | null>(null)
 const tagsDraft = ref<string[]>([])
 const newTag = ref('')
-const newTagInputRef = ref<HTMLInputElement | null>(null)
+const newTagInputRef = ref<Array<{ focus?: () => void }> | null>(null)
 
 const openTagModal = (row: ApplicationFormData, opts?: { focusInput?: boolean }) => {
   tagModalFor.value = row
   tagsDraft.value = [...(row.tags || [])]
   newTag.value = ''
-  nextTick(() => { if (opts?.focusInput) newTagInputRef.value?.focus() })
+
+  nextTick(() => {
+    if (!opts?.focusInput) return
+    newTagInputRef.value?.[0]?.focus?.()
+  })
 }
 
 const closeTagModal = () => {
@@ -422,7 +430,7 @@ const closeTagModal = () => {
   newTag.value = ''
 }
 
-const sanitizeTag = (t: string) => t.trim().replace(/\s+/g, ' ')
+const sanitizeTag = (t: string) => t.trim().replaceAll(/\s+/g, ' ')
 const addDraftTag = () => {
   if (!newTag.value) return
   const parts = newTag.value.split(/[;,；]+/).map(sanitizeTag).filter(Boolean)

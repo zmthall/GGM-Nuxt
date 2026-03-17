@@ -12,7 +12,6 @@
                         :ride-requests="rideRequests" 
                         :pagination="rideRequestsPagination" 
                         :has-toolbar="false" 
-                        :ride-request-modal-data="rideRequestModalData"
                         @change-status="(payload) => updateRideStatus(payload, 3, requestPage)"
                         @change-tags="(payload) => updateRideTags(payload, 3, requestPage)"
                         @export-pdf="exportRidePDF"
@@ -68,7 +67,6 @@
                     :applications="applications"
                     :pagination="applicationsPagination"
                     :has-toolbar="true"
-                    :application-modal-data="applicationModalData"
                     @change-status="(payload) => updateApplicationStatus(payload, 3, applicationPage, false, queryFilters)"
                     @change-tags="(payload) => updateApplicationTags(payload, 3, applicationPage, false, queryFilters)"
                     @prev-page="prevApplicationPage"
@@ -326,7 +324,7 @@ const fetchEvents = async (): Promise<void> => {
     eventLoading.value = true;
         
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: pageSize
@@ -354,7 +352,7 @@ const loadMoreEvents = async (): Promise<void> => {
     currentPage.value++;
     
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: currentPage.value,
         limit: pageSize

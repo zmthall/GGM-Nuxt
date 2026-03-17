@@ -32,7 +32,7 @@ export const useRideRequests = () => {
   const canFetch = computed(() => auth.isFirebaseReady && auth.authorized)
 
   // ----- infra
-  const API = 'https://api.goldengatemanor.com'
+  const API = useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
   const listAbort = shallowRef<AbortController | null>(null)
   onBeforeUnmount(() => listAbort.value?.abort())
 
@@ -83,6 +83,8 @@ export const useRideRequests = () => {
     }
   }
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateRideStatus = async (
     msg: { id: string; status: RideRequestStatus },
     pageSize = 5,
@@ -100,7 +102,10 @@ export const useRideRequests = () => {
         headers: { Authorization: `Bearer ${token}` },
         body: { status: msg.status }, // $fetch stringifies for you
       })
-      if (res.success) await fetchRideRequests(false, pageSize, page, omit)
+      if (res.success) {
+        await fetchRideRequests(false, pageSize, page, omit)
+        fetchNotifications()
+      }
     } catch (e) {
       console.error('updateRideStatus:', (e as Error).message)
     }
@@ -174,6 +179,7 @@ export const useRideRequests = () => {
       if (res.success) {
         await fetchRideRequests(false, pageSize, 1, omit)
         requestPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteRideRequest:', (e as Error).message)

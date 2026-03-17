@@ -106,7 +106,7 @@ const fetchImages = async (): Promise<void> => {
   try {
     imageLoading.value = true
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'https://api.goldengatemanor.com/'
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
     })
     
     // Filter out null slots and create array of only filled slots
@@ -132,7 +132,7 @@ const fetchEvents = async (): Promise<void> => {
     eventLoading.value = true;
         
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: 1,
         limit: pageSize
@@ -160,7 +160,7 @@ const loadMoreEvents = async (): Promise<void> => {
     currentPage.value++;
     
     const response = await $fetch<CommunityEventsResponse>('/api/events', {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       query: {
         page: currentPage.value,
         limit: pageSize

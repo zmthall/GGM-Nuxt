@@ -329,7 +329,7 @@ const submitApplication = async () => {
     for (const f of resumeFiles) formData.append('resume', f, f.name)
 
     await $fetch('/api/application/submit', {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'POST',
       body: formData
     })

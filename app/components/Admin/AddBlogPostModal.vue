@@ -348,7 +348,7 @@ const getUserDisplayName = async () => {
     const idToken = await authStore.getIdToken()
 
     const response = await $fetch<FetchUser>(`/api/users/profile`, {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'GET',
       headers: { 'Authorization': `Bearer ${idToken}` }
     })

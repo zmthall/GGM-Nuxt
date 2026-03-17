@@ -147,7 +147,7 @@ const fetchImages = async (): Promise<void> => {
     previewImageLoading.value = true
 
     const response = await $fetch<CommunityImagesResponse>('/api/media/community-shown', {
-      baseURL: 'https://api.goldengatemanor.com/'
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
     })
 
     const slots = normalizeSlots(response.slots as Array<SlotData> | Record<string, SlotData>)
@@ -184,7 +184,7 @@ const deleteSlot = async (slot: number): Promise<void> => {
   const idToken = await authStore.getIdToken()
   try {
     const response = await $fetch<ImageUpdateResponse>(`/api/media/delete-shown/${slot}`, {
-      baseURL: 'https://api.goldengatemanor.com/',
+      baseURL: useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'DELETE',
       headers: { Authorization: `Bearer ${idToken}` }
     })
@@ -206,7 +206,7 @@ const uploadImageToSlot = async (): Promise<void> => {
 
   try {
     const response = await $fetch<ImageUpdateResponse>(`/api/media/community-shown/${currentImage.value}`, {
-      baseURL: 'https://api.goldengatemanor.com',
+      baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
       method: 'PUT',
       headers: { Authorization: `Bearer ${idToken}` },
       body: formData
@@ -240,7 +240,7 @@ const toggleAddImageModal = async (idx: number, isEdit = false): Promise<void> =
     isEditingLoading.value = true
     try {
       const blob = await $fetch<Blob>(`/api/media/community-shown/image/${idx}`, {
-        baseURL: 'https://api.goldengatemanor.com',
+        baseURL: useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com',
         responseType: 'blob' as const,
         query: { format: 'blob' }
       })

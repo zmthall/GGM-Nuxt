@@ -36,7 +36,7 @@ export const useContactMessages = () => {
   const listAbort = shallowRef<AbortController | null>(null)
   onBeforeUnmount(() => listAbort.value?.abort())
 
-  const API = 'https://api.goldengatemanor.com'
+  const API = useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
 
   // Helpers
   const getTokenOrNull = async (): Promise<string | null> => {
@@ -86,6 +86,8 @@ export const useContactMessages = () => {
     }
   }
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateContactStatus = async (
     message: { id: string; status: ContactFormStatus },
     pageSize = 5,
@@ -105,6 +107,7 @@ export const useContactMessages = () => {
       })
       if (res.success) {
         await fetchContactMessages(false, pageSize, page, omit)
+        fetchNotifications()
       }
     } catch (e) {
       console.error('updateContactStatus:', (e as Error).message)
@@ -182,6 +185,7 @@ export const useContactMessages = () => {
       if (res.success) {
         await fetchContactMessages(false, pageSize, 1, omit)
         contactPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteContactMessage:', (e as Error).message)

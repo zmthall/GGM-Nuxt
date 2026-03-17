@@ -382,7 +382,7 @@ const emit = defineEmits<{
 }>()
 
 const rideRequestsCols = [
-  { key: 'status', label: 'Status' },
+  { key: 'status', label: 'Status', sortable: true },
   { key: 'name', label: 'Name' },
   { key: 'email', label: 'Email' },
   { key: 'phone', label: 'Phone Number' },
@@ -456,17 +456,17 @@ const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeStatusMen
 const handleResize = () => { if (openStatusFor.value) positionMenu() }
 
 onMounted(() => {
-  window.addEventListener('click', closeStatusMenu, true)
-  window.addEventListener('keydown', handleKey)
-  window.addEventListener('resize', handleResize)
-  window.addEventListener('scroll', closeStatusMenu, true)
+  globalThis.addEventListener('click', closeStatusMenu, true)
+  globalThis.addEventListener('keydown', handleKey)
+  globalThis.addEventListener('resize', handleResize)
+  globalThis.addEventListener('scroll', closeStatusMenu, true)
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('click', closeStatusMenu, true)
-  window.removeEventListener('keydown', handleKey)
-  window.removeEventListener('resize', handleResize)
-  window.removeEventListener('scroll', closeStatusMenu, true)
+  globalThis.removeEventListener('click', closeStatusMenu, true)
+  globalThis.removeEventListener('keydown', handleKey)
+  globalThis.removeEventListener('resize', handleResize)
+  globalThis.removeEventListener('scroll', closeStatusMenu, true)
 })
 
 const messageModalOpen = defineModel<boolean>({ default: false });
@@ -486,14 +486,16 @@ const showAllTags = ref(false)
 const tagModalFor = ref<RideRequestFormData | null>(null)
 const tagsDraft = ref<string[]>([])
 const newTag = ref('')
-const newTagInputRef = ref<HTMLInputElement | null>(null)
+const newTagInputRef = ref<Array<{ focus?: () => void }> | null>(null)
 
 const openTagModal = (row: RideRequestFormData, opts?: { focusInput?: boolean }) => {
   tagModalFor.value = row
   tagsDraft.value = [...(row.tags || [])]
   newTag.value = ''
+
   nextTick(() => {
-    if (opts?.focusInput) newTagInputRef.value?.focus()
+    if (!opts?.focusInput) return
+    newTagInputRef.value?.[0]?.focus?.()
   })
 }
 
@@ -503,7 +505,7 @@ const closeTagModal = () => {
 }
 
 const sanitizeTag = (t: string) => {
-  return t.trim().replace(/\s+/g, ' ')
+  return t.trim().replaceAll(/\s+/g, ' ')
 }
 
 const addDraftTag = () => {

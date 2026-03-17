@@ -1,8 +1,8 @@
 export type EventsData = {
         id: string;
-        date: string;
+        dateStart: string;
         archived: boolean;
-        dateTo?: string;
+        dateEnd?: string;
         title: string;
         location: string;
         address: string;
@@ -11,8 +11,8 @@ export type EventsData = {
 }[]
 
 export type AddEventData = {
-    date: string;
-    dateTo?: string;
+    dateStart: string;
+    dateEnd?: string;
     title: string;
     location: string;
     address: string;
@@ -24,8 +24,8 @@ export interface EventUpdateResponse {
   success: boolean;
   data?: {
     id: string;
-    date: string;
-    dateTo?: string;
+    dateStart: string;
+    dateEnd?: string;
     archived: boolean;
     title: string;
     location: string;

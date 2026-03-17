@@ -38,8 +38,7 @@ export const useJobApplications = () => {
   onBeforeUnmount(() => listAbort.value?.abort())
 
   // ✅ Hardcode for now (swap when ready)
-  const API = 'https://api.goldengatemanor.com'
-  // const API = 'http://127.0.0.1:4000'
+  const API = useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
 
   // Helpers
   const getTokenOrNull = async (): Promise<string | null> => {
@@ -116,6 +115,8 @@ export const useJobApplications = () => {
 
   // ---- Status ----
 
+  const { fetchNotifications } = useAdminNotifications()
+
   const updateApplicationStatus = async (
     message: { id: string; status: ApplicationRequestStatus },
     pageSize = 10,
@@ -136,6 +137,7 @@ export const useJobApplications = () => {
       })
       if (res.success) {
         await fetchApplications(false, pageSize, page, omit, filters)
+        fetchNotifications()
       }
     } catch (e) {
       console.error('updateApplicationStatus:', (e as Error).message)
@@ -191,6 +193,7 @@ export const useJobApplications = () => {
       if (res.success) {
         await fetchApplications(false, pageSize, 1, omit, filters)
         applicationPage.value = 1
+        fetchNotifications()
       }
     } catch (e) {
       console.error('deleteApplication:', (e as Error).message)
