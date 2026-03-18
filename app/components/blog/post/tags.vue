@@ -1,9 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   post: {
     tags?: string[]
   }
-}>()
+  isAside?: boolean
+}>(), {
+  isAside: false
+})
 
 const expanded = ref(false)
 
@@ -24,7 +27,7 @@ const toggleExpanded = () => {
 </script>
 
 <template>
-  <div v-if="allTags.length" class="mt-2 mb-7 flex flex-wrap gap-2 max-[1000px]:gap-1.5 max-[700px]:gap-2 max-[500px]:gap-1.5">
+  <div v-if="allTags.length" class="flex flex-wrap gap-2 max-[1000px]:gap-1.5 max-[700px]:gap-2 max-[500px]:gap-1.5" :class="{'mt-2 mb-7 ': isAside }">
     <span
       v-for="tag in visibleTags"
       :key="tag"

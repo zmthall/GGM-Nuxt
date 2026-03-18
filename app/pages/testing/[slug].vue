@@ -15,12 +15,12 @@
               <BaseIcon name="ph:diamond-fill" size="size-[8px]" color="text-brand-primary/15" class="max-xs:hidden"/>
               <span class="max-xs:hidden">{{ `${post?.readTime} min read` }}</span>
             </div>
-            <BlogPostTags :post="post" class="min-[1000px]:hidden"/>
-            <div class="border-t border-brand-primary/5 mt-3 mb-4 pt-2">
+            <BlogPostTags :post="post" class="min-[1000px]:hidden mt-2 mb-3" />
+            <div class="border-t border-brand-primary/5 mb-4 pt-4">
               <p class="text-lg text-brand-main-text/85 leading-relaxed">{{ post.summary }}</p>
             </div>
           </div>
-          <div class="w-full space-y-4">
+          <div class="w-full my-6">
             <div class="relative overflow-hidden rounded-lg min-[1000px]:hidden shadow-primary">
               <div class="flex items-center gap-2 absolute z-1 top-3 left-3 bg-brand-primary/40 px-2 py-1 rounded-lg xs:hidden">
                 <span class="text-white/75 text-xs">{{ `${post?.readTime} min read` }}</span>
@@ -55,20 +55,20 @@
                 has-inset
               />         
           </div>
-          <BlogPostTags :post="post" />
+          <BlogPostTags :post="post" is-aside />
           <div>
             <BlogPostSocialShare is-aside />
           </div>
         </aside>
       </BaseLayoutPageSection>
     </div> 
-   <!-- <BaseLayoutPageSection v-if="relatedPosts && relatedPosts.length > 0" bg="alt" margin="default">
+   <BaseLayoutPageSection v-if="relatedPosts && relatedPosts.length > 0" bg="alt" margin="default">
       <h2 class="text-2xl font-bold text-brand-primary mb-4">
         Related Posts
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <li v-for="(relatedPost) in relatedPosts" :key="relatedPost.id">
-            <NuxtLink :to="`/news${relatedPost.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+            <NuxtLink :to="blogPostsAPI.getBlogPostLink(relatedPost.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                     <div class="h-1/2 relative">
                         <div>
@@ -77,16 +77,14 @@
                             </p>
                         </div>
                         <div class="aspect-[2/1]">
-                            <NuxtImg 
+                            <BlogPostImage
                                 format="webp,avif"
-                                :src="relatedPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                :src="relatedPost.thumbnail" 
                                 :alt="relatedPost.thumbnailAlt || relatedPost.title" 
                                 :title="relatedPost.thumbnailAlt || relatedPost.title" 
-                                :width="relatedPost.thumbnailWidth || ''"
-                                :height="relatedPost.thumbnailHeight || ''"
-                                loading="eager"
-                                class="object-cover h-full w-full"
-                                :placeholder="relatedPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
+                                :width="relatedPost.thumbnailWidth || undefined"
+                                :height="relatedPost.thumbnailHeight || undefined"
+                                loading="lazy"
                             />        
                         </div>
                     </div>
@@ -99,8 +97,8 @@
                             </ul>
                             <BaseInteractiveTextRotator v-if="relatedPost.tags != undefined && relatedPost.tags?.length > 3" :items="relatedPost.tags" variant="marquee" marquee-direction="right" :marquee-seconds="10" wrapper-class="w-full overflow-hidden" text-class="text-sm text-white" marquee-gap-class="pr-3" marquee-item-class="bg-brand-primary border-brand-secondary border-2 p-2 mx-1 text-white rounded-lg" marquee-track-class="[animation-play-state:paused] group-hover:[animation-play-state:running]" />
 
-                            <time :datetime="formatDates.formatDatetime(relatedPost.published)">
-                                Published on: {{ formatDates.formatShortDate(relatedPost.published) }}
+                            <time :datetime="formatDates.formatDatetime(relatedPost.publishTimestamp ?? undefined)" class="text-xs text-brand-main-text/80">
+                                Published on: {{ formatDates.formatShortDate(relatedPost.publishTimestamp ?? undefined) }}
                             </time>
                         </div>
                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
@@ -112,7 +110,7 @@
             </NuxtLink>
         </li>
     </ul>
-    </BaseLayoutPageSection> -->
+    </BaseLayoutPageSection>
     <!-- <Teleport to="body">
         <ClientOnly>
             <button v-if="showTOC" ref="tocButtonRef" :class="['fixed top-1/2 -translate-y-1/2 left-0 w-10 h-10 transition-transform duration-500 ease-in-out group z-16 flex justify-start items-center rounded-r-full bg-brand-primary border-r-2 border-t-2 border-b-2 border-brand-secondary hover:bg-brand-secondary hover:border-brand-primary', {'translate-x-[250px] sm:translate-x-80': tocDrawerOpen, 'translate-x-0': !tocDrawerOpen}]" title="Table of Contents" @click="toggleTOCDrawer">
@@ -151,6 +149,7 @@ import type { BlogPostFull } from '~/models/blog';
 
 const route = useRoute();
 const formatDates = useDateFormat();
+const text = useText()
 const blogPostsAPI = useBlogPostsApi();
 
 // Get the slug from the URL
@@ -172,6 +171,12 @@ if (!post.value) {
 } else {
   route.meta.breadcrumblabel = post.value.title
 }
+
+const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${slug}`,
+  () => blogPostsAPI.getRelatedPosts(post.value?.id ?? ""),
+)
+
+console.log(relatedPosts.value) // Debug log to inspect the fetched related posts data --- IGNORE ---
 
 // SEO
 const runtimeConfig = useRuntimeConfig()

@@ -48,6 +48,14 @@ export const useBlogPostsApi = () => {
     return response.data.map(mappers.mapBlogPostTinyRecord)
   }
 
+  const getRelatedPosts = async (id: string): Promise<BlogPostCard[]> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostCardApiRecord[]>>(
+      `${baseURL}/api/blog-posts/related-posts/${id}`
+    )
+
+    return response.data.map(mappers.mapBlogPostCardRecord)
+  }
+
   const validateSlug = async (slug: string): Promise<{ exists: boolean}> => {
     const response = await $fetch<ApiSuccessResponse<{ exists: boolean}>>(
       `${baseURL}/api/blog-posts/exists/slug/${slug}/published`
@@ -56,12 +64,18 @@ export const useBlogPostsApi = () => {
     return response.data
   }
 
+  const getBlogPostLink = (slug: string): string => {
+  return `/testing/${slug}`
+}
+
   return {
     getPublishedPostBySlug,
     getPublishedPosts,
     getPublishedSlugs,
     getLatestPost,
     getStaffPicks,
-    validateSlug
+    getRelatedPosts,
+    validateSlug,
+    getBlogPostLink
   }
 }
