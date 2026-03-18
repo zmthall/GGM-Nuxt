@@ -1,5 +1,5 @@
 <template>
-  <ul class="ml-8 list-decimal text-brand-main-text">
+  <ul class="blog-post-margin list-decimal text-brand-main-text">
     <slot />
   </ul>
 </template>
@@ -8,6 +8,8 @@
 
 </script>
 
-<style>
-
+<style scoped>
+#blog-post-article .blog-post-margin {
+  @apply ml-8 !mt-0.5;
+}
 </style>

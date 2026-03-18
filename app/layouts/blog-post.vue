@@ -4,7 +4,7 @@
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <AdminAllPageDashboard />
-    <BaseLayoutPageBreadcrumb class="mt-4"/>
+    <BaseLayoutPageBreadcrumb :is-blog-page="true"/>
     <slot />
     <BaseLayoutFooter />
   </main>

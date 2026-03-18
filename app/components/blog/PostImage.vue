@@ -5,12 +5,14 @@ withDefaults(defineProps<{
   title: string
   width?: number | null
   height?: number | null
+  hasInset?: boolean
   loading?: 'eager' | 'lazy'
 }>(), {
   alt: undefined,
   width: null,
   height: null,
-  loading: 'lazy'
+  loading: 'lazy',
+  hasInset: false
 })
 
 const fallbackSrc = '/images/blog/blog-default-thumbnail.png'
@@ -23,6 +25,7 @@ const handleImageError = () => {
 
 <template>
   <div class="relative aspect-[2/1] overflow-hidden">
+    <div v-if="hasInset" class="absolute shadow-light-interior z-1 w-full h-full" />
     <NuxtImg
       v-if="!hasImageError"
       format="webp,avif"
@@ -32,7 +35,7 @@ const handleImageError = () => {
       :width="width ?? undefined"
       :height="height ?? undefined"
       :loading="loading"
-      class="absolute inset-0 h-full w-full object-cover"
+      class="absoluteh-full w-full object-cover"
       :placeholder="src ? '' : '/images/blog/blog-default-placeholder.webp'"
       @error="handleImageError"
     />

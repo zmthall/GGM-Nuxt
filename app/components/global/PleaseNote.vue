@@ -1,15 +1,25 @@
 <template>
-  <div :class="{ 'text-[#A3150D] leading-tight': !darkMode, 'text-white leading-tight': darkMode }">
-    <span class="underline font-bold">Please Note:</span> <slot />
+  <div
+    :class="[
+      darkMode ? 'text-white' : 'text-[#A3150D]',
+      'rounded-lg leading-snug blog-post-margin'
+    ]"
+  >
+    <p class="m-0">
+      <span class="underline font-bold">Please Note:</span>
+      <slot />
+    </p>
   </div>
 </template>
 
 <script lang="ts" setup>
 defineProps<{
-  darkMode?: boolean;
+  darkMode?: boolean
 }>()
 </script>
 
-<style>
-
+<style scoped>
+#blog-post-article .blog-post-margin {
+  @apply !my-4;
+}
 </style>

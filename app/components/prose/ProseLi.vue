@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="contained-spacing">
     <slot />
   </li>
 </template>
@@ -8,6 +8,9 @@
 
 </script>
 
-<style>
+<style scoped>
+.at-a-glance .contained-spacing {
+  @apply my-0.5 leading-relaxed
+}
 
 </style>

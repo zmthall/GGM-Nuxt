@@ -2,6 +2,7 @@ export const colors = {
   brand: {
     'primary': "#121b75",
     "primary-50": "#121b7580",
+    "primary-10": "#121b751a",
     'secondary': "#eae39e",
     "main-text": "#1e1e1e",
     "secondary-text": "#dddddd",

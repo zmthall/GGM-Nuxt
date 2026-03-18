@@ -1,4 +1,10 @@
 <script setup lang="ts">
+const props = withDefaults(defineProps<{
+  isBlogPage?: boolean
+}>(), {
+  isBlogPage: false
+})
+
 type BreadcrumbOverrideItem = {
   label: string
   to?: string
@@ -37,7 +43,11 @@ const isLinkItem = (item: Record<string, unknown>) => {
 </script>
 
 <template>
-  <nav v-if="!hideBreadcrumb && items.length" aria-label="Breadcrumbs" class="mx-4 mt-2 p-2 bg-zinc-300 font-bold max-sm:hidden">
+  <nav
+  v-if="!hideBreadcrumb && items.length"
+  aria-label="Breadcrumbs"
+  :class="['p-2 bg-zinc-300 font-bold max-sm:hidden', props.isBlogPage ? 'mx-4 mt-4' : 'mx-4 mt-2']"
+>
     <ol class="flex flex-wrap items-center">
       <li v-for="(item, index) in items" :key="`${item.label}-${index}`" class="flex items-center">
         <template v-if="isLinkItem(item) && index !== items.length - 1">

@@ -124,6 +124,7 @@ import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
 import { useDateFormat } from '~/composables/dates/dateFormat'
 import type { BlogPostCard, BlogPostTiny, PaginationMeta } from '~/models/blog'
 
+
 const authStore = useAuthStore()
 
 defineOptions({
@@ -133,11 +134,7 @@ defineOptions({
 definePageMeta({
   title: 'Resources & Insights from Golden Gate Manor',
   breadcrumbLabel: 'Blog Posts',
-  breadcrumbOverrides: [
-    undefined,
-    { label: 'Community', to: '/news/community' },
-    undefined
-  ]
+  layout: 'blog-post'
 })
 
 useHead({
@@ -188,7 +185,7 @@ const topTags = (tags: string[]) => {
 }
 
 const getBlogPostLink = (slug: string): string => {
-  return `/news/blog/post/${slug}`
+  return `/testing/${slug}`
 }
 
 // Fetch Latest Post

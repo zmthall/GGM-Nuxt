@@ -1,31 +1,27 @@
 <template>
   <div>
-    <div class="min-[900px]:grid min-[900px]:grid-cols-16 min-[900px]:max-w-[1500px] min-[900px]:mx-auto">
+    <div class="min-[1000px]:grid min-[1000px]:grid-cols-16 min-[1000px]:max-w-[1500px] min-[1000px]:mx-auto">
       <BaseLayoutPageSection v-if="post" margin="top" class="col-span-12">
           <div class="mb-2">
             <h1 class="text-3xl font-bold text-brand-primary">
               {{ post?.title }}
             </h1>
-            <div class="flex items-center gap-2 text-md font-main">
+            <div class="flex items-center gap-2 font-main text-sm mt-1">
               <p v-if="post.author">By {{ post.author }}</p>
-              <BaseIcon name="ph:diamond-fill" size="size-[8px]" color="text-brand-primary/30"  />
+              <BaseIcon name="ph:diamond-fill" size="size-[8px]" color="text-brand-primary/15"  />
               <time v-if="post.publishTimestamp" :datetime="formatDates.formatDatetime(post.publishTimestamp ?? undefined)">
                 {{ formatDates.formatDisplayDate(post.publishTimestamp ?? undefined) }}
               </time>
-              <BaseIcon name="ph:diamond-fill" size="size-[8px]" color="text-brand-primary/30" class="max-xs:hidden"/>
+              <BaseIcon name="ph:diamond-fill" size="size-[8px]" color="text-brand-primary/15" class="max-xs:hidden"/>
               <span class="max-xs:hidden">{{ `${post?.readTime} min read` }}</span>
             </div>
-            <div v-if="post.tags.length" class="min-[900px]:hidden flex gap-2 mt-3 mb-5">
-              <span v-for="tag in post.tags.slice(0, 3)" :key="tag" class="bg-gradient-to-r from-brand-secondary/30 to-brand-primary/20 border-brand-primary/20 border-[1.5px] px-3.5 py-1.5 text-text text-sm rounded-full">
-                {{ tag }}
-              </span>
-            </div>
-            <div class="border-t border-brand-primary/5 mt-5 mb-4 pt-4">
-              <p class="text-lg leading-relaxed text-text/80">{{ post.summary }}</p>
+            <BlogPostTags :post="post" class="min-[1000px]:hidden"/>
+            <div class="border-t border-brand-primary/5 mt-3 mb-4 pt-2">
+              <p class="text-lg text-brand-main-text/85 leading-relaxed">{{ post.summary }}</p>
             </div>
           </div>
           <div class="w-full space-y-4">
-            <div class="relative overflow-hidden rounded-lg min-[900px]:hidden shadow-primary">
+            <div class="relative overflow-hidden rounded-lg min-[1000px]:hidden shadow-primary">
               <div class="flex items-center gap-2 absolute z-1 top-3 left-3 bg-brand-primary/40 px-2 py-1 rounded-lg xs:hidden">
                 <span class="text-white/75 text-xs">{{ `${post?.readTime} min read` }}</span>
               </div>
@@ -36,18 +32,18 @@
                 :title="post.thumbnailAlt || post.title" 
                 :width="post.thumbnailWidth || undefined"    
                 :height="post.thumbnailHeight || undefined"
-                loading="eager" 
+                loading="eager"
               />        
             </div>
           </div>
-          <BlogPostContentRenderer v-if="post.content" :content="post.content" />
-          <div class="min-[900px]:hidden">
-            <BlogPostSocialShare />
+          <BlogPostContentRenderer v-if="post.content" id="blog-post-article" :content="post.content" />
+          <div class="min-[1000px]:hidden">
+            <BlogPostSocialShare class="mt-3"/>
           </div>
       </BaseLayoutPageSection>
-      <BaseLayoutPageSection v-if="post" :padding="false" class="col-span-4 max-[900px]:hidden my-8 px-4">
-        <aside class="sticky top-20">
-          <div class="w-full max-h-[400px] overflow-hidden rounded-lg aspect-[2/1]">
+      <BaseLayoutPageSection v-if="post" :padding="false" class="col-span-4 max-[1000px]:hidden my-8 px-4">
+        <aside class="sticky top-20 shadow-interior p-3 rounded-md">
+          <div class="w-full max-h-[400px] overflow-hidden rounded-[3px] aspect-[2/1]">
             <BlogPostImage
                 format="webp,avif"
                 :src="post.thumbnail" 
@@ -56,13 +52,10 @@
                 :width="post.thumbnailWidth || undefined"    
                 :height="post.thumbnailHeight || undefined"
                 loading="eager" 
+                has-inset
               />         
           </div>
-          <div v-if="post.tags.length" class="flex gap-2 mt-4 mb-7">
-            <span v-for="tag in post.tags.slice(0, 2)" :key="tag" class="bg-gradient-to-r from-brand-secondary/30 to-brand-primary/20 border-brand-primary/20 border-[1.5px] px-3.5 py-1.5 text-text text-sm rounded-full">
-              {{ tag }}
-            </span>
-          </div>
+          <BlogPostTags :post="post" />
           <div>
             <BlogPostSocialShare is-aside />
           </div>
@@ -176,7 +169,33 @@ if (!post.value) {
     statusCode: 404,
     statusMessage: 'Blog post not found'
   })
+} else {
+  route.meta.breadcrumblabel = post.value.title
 }
+
+// SEO
+const runtimeConfig = useRuntimeConfig()
+useSeoMeta({
+  title: `${post.value.title} | Golden Gate Manor Blog`,
+  ogTitle: `${post.value.title} | Golden Gate Manor Blog`,
+  description: post.value.seoDescription,
+  ogDescription: post.value.seoDescription,
+  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  twitterTitle: `${post.value.title} | Golden Gate Manor Blog`,
+  twitterDescription: post.value.seoDescription,
+  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  twitterCard: 'summary_large_image',
+})
+
+// Use the blog-post layout
+definePageMeta({
+  layout: 'blog-post',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Blog', to: '/news/blog' },
+    undefined
+  ]
+});
 
 // const { data: post } = await useAsyncData(`blog-post-${slug}`,
 //   () =>  blogPostsAPI.getPublishedPostBySlug(slug)
@@ -219,13 +238,6 @@ if (!post.value) {
 //       statusMessage: 'Blog post not found'
 //     })
 // }
-
-// // Use the blog-post layout
-// definePageMeta({
-//   layout: 'blog-post',
-//   breadcrumbLabel: 'Blog Posts',
-//   pageHeader: false
-// });
 
 // interface TocItem {
 //   depth: number
@@ -359,27 +371,9 @@ if (!post.value) {
 //     observer.disconnect()
 //   })
 // })
-
-// // SEO
-// const runtimeConfig = useRuntimeConfig()
-// useSeoMeta({
-//   title: `${post.value.title} | Golden Gate Manor Blog`,
-//   ogTitle: `${post.value.title} | Golden Gate Manor Blog`,
-//   description: post.value.description,
-//   ogDescription: post.value.description,
-//   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-//   twitterTitle: `${post.value.title} | Golden Gate Manor Blog`,
-//   twitterDescription: post.value.description,
-//   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-//   twitterCard: 'summary_large_image',
-// })
 </script>
 
 <style scoped>
-h2, h3, h4 {
-  @apply font-headings !font-extrabold;
-}
-
 .post-title {
     --max-lines: 1;
     display: -webkit-box;

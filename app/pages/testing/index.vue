@@ -133,7 +133,8 @@ defineOptions({
 
 definePageMeta({
   title: 'Resources & Insights from Golden Gate Manor',
-  breadcrumbLabel: 'Blog Posts'
+  breadcrumbLabel: 'Blog Posts',
+  layout: 'blog-post'
 })
 
 useHead({

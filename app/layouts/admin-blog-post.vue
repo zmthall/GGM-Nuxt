@@ -6,7 +6,7 @@
       <DeferRender when="idle">
         <LazyAdminAllPageDashboard v-if="auth.authorized" />
       </DeferRender>
-      <BaseLayoutPageBreadcrumb v-if="showBreadcrumb && auth.authorized" class="mt-4" />
+      <BaseLayoutPageBreadcrumb is-blog-page />
       <BaseToastContainer />
       <slot />
     </ClientOnly>
@@ -16,10 +16,7 @@
 <script setup lang="ts">
 import type { WatchStopHandle } from 'vue'
 
-const route = useRoute()
 const auth  = useAuthStore()
-
-const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 
 useHead({
   link: [

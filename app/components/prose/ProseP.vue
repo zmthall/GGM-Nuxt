@@ -1,5 +1,5 @@
 <template>
-  <p class="text-brand-main-text text-md">
+  <p class="text-lg leading-snug">
     <slot />
   </p>
 </template>

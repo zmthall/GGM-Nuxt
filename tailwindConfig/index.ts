@@ -12,8 +12,10 @@ import { height } from "./height";
 import { listStyleType } from "./listStyleType";
 import { gridTemplateColumns } from "./gridTemplateColumns";
 import { gridColumn } from "./gridColumn";
+import { backgroundImage } from "./backgroundImage";
 
 export default {
+  backgroundImage,
   colors,
   height,
   fontFamily,

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     url: process.env.SITE_URL || 'https://goldengatemanor.com',
     description: 'Medicaid-approved NEMT, assisted living & medical supplies in Southern Colorado.'
   },
-  css: ["./assets/css/main.css"],
+  css: ['~/assets/css/main.css'],
   modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/icon', // '@nuxt/scripts',
   '@nuxt/image', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n', '@nuxtjs/mdc'],
   nitro: {
@@ -57,10 +57,6 @@ export default defineNuxtConfig({
     '/privacy-policy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
     '/privacypolicy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
 
-    // Caching
-    '/_nuxt/**': {
-      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
-    },
     // dev domain shows /assets/* — cover that too
     '/assets/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }

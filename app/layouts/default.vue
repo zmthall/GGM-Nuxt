@@ -9,7 +9,7 @@
     </DeferRender>
     <!-- Page headers and breadcrumb with ability to disable on specific pages  -->
     <BaseLayoutPageHeader v-if="showHeader" :title="pageHeader"/>
-    <BaseLayoutPageBreadcrumb v-if="showBreadcrumb"/>
+    <BaseLayoutPageBreadcrumb />
     <slot />
     <BaseUiLanguageSwitcher />
     <DeferRender when="visible">
@@ -68,7 +68,6 @@ const pageHeader = computed(() => {
 
 const route = useRoute();
 const showHeader = computed(() => route.meta.showPageHeader !== false)
-const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 </script>
 
 <style>
@@ -82,5 +81,6 @@ const showBreadcrumb = computed(() => !route.meta.customBreadcrumb)
 
   body {
     overflow-y: auto;
+    color: var(--text)
   }
 </style>

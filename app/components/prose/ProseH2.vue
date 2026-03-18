@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-2xl font-bold text-brand-primary">
+  <h2 class="text-2xl font-bold text-brand-primary !mt-4">
     <slot />
   </h2>
 </template>
