@@ -113,7 +113,6 @@ const closeImageModal = () => {
 }
 
 const imagesLoaded = () => {
-  console.log('Images loaded event fired!')
   modalImagesLoading.value = false;
 }
 

@@ -47,7 +47,12 @@ const activeSocialHandles = socialHandles.filter(s => s.enabled !== false);
 
 definePageMeta({
   title: 'Golden Gate Manor Service Locations',
-  breadcrumbLabel: 'Locations'
+  breadcrumbLabel: 'Locations',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined
+  ]
 })
 
 useHead({

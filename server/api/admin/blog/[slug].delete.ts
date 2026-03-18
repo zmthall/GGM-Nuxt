@@ -60,7 +60,6 @@ export default defineEventHandler(async (event) => {
       if (await exists(imgOutput)) {
         try {
           await fsp.unlink(imgOutput)
-          console.log('Deleted image from .output/public:', imgOutput)
         } catch (e) {
           console.error('Failed to delete from .output/public:', e)
         }

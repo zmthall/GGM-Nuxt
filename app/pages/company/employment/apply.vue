@@ -11,7 +11,13 @@ const noticesCompleted = ref<boolean>(false)
 
 definePageMeta({
   title: 'Golden Gate Manor - Pre-Application',
-  breadcrumbLabel: 'Pre-Application'
+  breadcrumbLabel: 'Pre-Application',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 useHead({

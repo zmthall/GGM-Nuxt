@@ -7,7 +7,7 @@
 
 <script setup lang='ts'>
 defineOptions({
-    name: 'BaseUiIcon'
+    name: 'BaseIcon'
 })
 
 withDefaults(defineProps<{

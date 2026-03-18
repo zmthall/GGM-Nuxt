@@ -7,7 +7,7 @@
                 @mouseenter="hoverToggle"
                 @mouseleave="hoverToggle"
             >
-                <BaseUiIcon name="garden:question-mark-fill-12" color="text-brand-primary" hover-color="group-hover:bg-brand-secondary" size="size-3" />
+                <BaseIcon name="garden:question-mark-fill-12" color="text-brand-primary" hover-color="group-hover:bg-brand-secondary" size="size-3" />
             </button>
             <div v-if="isShown" class="absolute bottom-[-0.75rem] left:0 translate-y-[100%] p-3 triangle-top bg-white drop-filter min-w-[300px]">
                 <button v-if="clickVariant" class="absolute top-0 right-0 flex m-[2px]" @click="closeTooltip">

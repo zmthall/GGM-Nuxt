@@ -16,7 +16,7 @@
                                         </p>
                                     </div>
                                     <div class="aspect-[2/1]">
-                                        <BlogCardImage 
+                                        <BlogPostImage
                                             :src="latestPost.thumbnail || ''" 
                                             :alt="latestPost.thumbnailAlt || latestPost.title" 
                                             :title="latestPost.thumbnailAlt || latestPost.title"
@@ -69,13 +69,11 @@
                             <NuxtLink :to="getBlogPostLink(post.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
-                                        <div>
-                                            <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                                                <span class="text-sm text-white">Read Time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}</span>
-                                            </p>
+                                        <div class="flex items-center gap-2 absolute z-1 top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
+                                            <span class="text-sm text-white">Read Time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}</span>
                                         </div>
                                         <div class="aspect-[2/1]">
-                                            <BlogCardImage 
+                                            <BlogPostImage
                                                 :src="post.thumbnail" 
                                                 :alt="post.thumbnailAlt || post.title" 
                                                 :title="post.thumbnailAlt || post.title"
@@ -106,8 +104,8 @@
                             </NuxtLink>
                         </li>
                     </ul>
-                    <div v-if="allPostsPagination.hasNextPage" class="flex justify-center mt-8">
-                        <BaseUiAction type="button" class="py-4 px-8" @click="console.log('more!')">View More</BaseUiAction>
+                    <div v-if="postPagination.hasNextPage" class="flex justify-center mt-8">
+                        <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
                     </div>
                 </div>
                 <div v-else-if="isLoadingPosts" class="flex justify-center items-center p-8 animate-pulse">
@@ -122,9 +120,10 @@
 </template>
 
 <script setup lang="ts">
-import { useBlogPostsApi } from '../composables/blog/blogPostsAPI.js'
-import { useDateFormat } from '../composables/dates/dateFormat.js'
-import type { PaginationMeta, BlogPostCard, BlogPostTiny, PaginatedResult } from '../models/blog.js'
+import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
+import { useDateFormat } from '~/composables/dates/dateFormat'
+import type { BlogPostCard, BlogPostTiny, PaginationMeta } from '~/models/blog'
+
 
 const authStore = useAuthStore()
 
@@ -159,6 +158,25 @@ const blogPostsAPI = useBlogPostsApi();
 const formatDates = useDateFormat();
 const text = useText();
 
+const defaultPagination: PaginationMeta = {
+  currentPage: 1,
+  pageSize: 1,
+  hasNextPage: false,
+  hasPreviousPage: false,
+  totalPages: 1,
+  totalItems: 0
+}
+
+const blogState = useState<{
+    posts: BlogPostCard[];
+    pagination: PaginationMeta;
+    initialized: boolean;
+  }>('blog-posts', () => ({
+    posts: [],
+    pagination: defaultPagination,
+    initialized: false
+}))
+
 // Helpers
 
 const topTags = (tags: string[]) => {
@@ -166,7 +184,7 @@ const topTags = (tags: string[]) => {
 }
 
 const getBlogPostLink = (slug: string): string => {
-  return `/news/blog/post/${slug}`
+  return `/testing/${slug}`
 }
 
 // Fetch Latest Post
@@ -182,85 +200,52 @@ const { data: staffPicks } = await useAsyncData<BlogPostTiny[] | null>('blog-sta
 const pageSize = 8
 const page = ref(1)
 
-const defaultPagination: PaginationMeta = {
-  currentPage: 1,
-  pageSize: 1,
-  hasNextPage: false,
-  hasPreviousPage: false,
-  totalPages: 1,
-  totalItems: 0
-}
-
-const { data: allPostsResult, pending: isLoadingPosts } = await useAsyncData<PaginatedResult<BlogPostCard>>(
-  () => `blog-all-posts-page-${page.value}-size-${pageSize}`,
-  () =>
-    blogPostsAPI.getPublishedPosts({
+const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
+  'blog-initial-posts',
+  () => blogPostsAPI.getPublishedPosts({
       page: page.value,
       pageSize,
       orderField: 'publish_timestamp',
       orderDirection: 'desc'
     }),
-  {
-    default: () => ({
-      data: [],
-      pagination: defaultPagination
-    })
-  }
+    {
+        default: () => ({
+            data: [],
+            pagination: defaultPagination
+        })
+    }
 )
 
-const allPosts = computed(() => allPostsResult.value?.data ?? [])
-const allPostsPagination = computed(() => allPostsResult.value?.pagination ?? defaultPagination)
+if(!blogState.value.initialized && initialPostsReturn.value) {
+  blogState.value.posts = initialPostsReturn.value.data ?? []
+  blogState.value.pagination = initialPostsReturn.value.pagination ?? { ...defaultPagination}
+  blogState.value.initialized = true
+}
 
-// const appendUniquePosts = (incoming: AllPosts[]) => {
-//   const seen = new Set(posts.value.map(post => post.path))
+const allPosts = computed(() => blogState.value.posts)
+const postPagination = computed(() => blogState.value.pagination)
 
-//   const uniquePosts = incoming.filter(post => {
-//     if (!post?.path) return false
-//     if (seen.has(post.path)) return false
-//     seen.add(post.path)
-//     return true
-//   })
+// Load More 
 
-//   posts.value = [...posts.value, ...uniquePosts]
-// }
+const loadMore = async () => {
+    if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
+    if(!postPagination.value.hasNextPage) return; // No more pages to load
 
-// const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
-//   return $fetch<AllPosts[]>('/api/blog/posts', {
-//     query: { page: 1, limit }
-//   })
-// })
+    const nextPage = blogState.value.pagination.currentPage + 1;
 
-// posts.value = [...(initialPosts.value ?? [])]
-// hasMorePages.value = (initialPosts.value?.length ?? 0) === limit
+    const response = await blogPostsAPI.getPublishedPosts({
+        page: nextPage,
+        pageSize,
+        orderField: 'publish_timestamp',
+        orderDirection: 'desc'
+    })
 
-// const loadMore = async () => {
-//   if (isLoading.value || !hasMorePages.value) return
+    const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
+    const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
 
-//   isLoading.value = true
-//   const nextPage = page.value + 1
-
-//   try {
-//     const newPosts = await $fetch<AllPosts[]>('/api/blog/posts', {
-//       query: { page: nextPage, limit }
-//     })
-
-//     if (!newPosts?.length) {
-//       hasMorePages.value = false
-//       return
-//     }
-
-//     appendUniquePosts(newPosts)
-//     page.value = nextPage
-
-//     if (newPosts.length < limit) {
-//       hasMorePages.value = false
-//     }
-//   } catch (error) {
-//     console.error('Failed to load more posts:', error)
-//   } finally {
-//     isLoading.value = false
-//   }
-// }
+    blogState.value.posts = [...blogState.value.posts, ...newPosts]
+    blogState.value.pagination = response.pagination ?? { ...defaultPagination }
+}
 </script>
 
 <style scoped>

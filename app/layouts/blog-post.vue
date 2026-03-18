@@ -4,7 +4,7 @@
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <AdminAllPageDashboard />
-    <BaseLayoutPageBreadcrumb v-if="showBreadcrumb" class="mt-4"/>
+    <BaseLayoutPageBreadcrumb class="mt-4"/>
     <slot />
     <BaseLayoutFooter />
   </main>
@@ -45,8 +45,4 @@ useHead({
 useSeoMeta({
   author: 'Zachary Thallas',
 })
-
-const route = useRoute();
-
-const showBreadcrumb = computed(() => !route.meta.customBreadcrumb);
 </script>

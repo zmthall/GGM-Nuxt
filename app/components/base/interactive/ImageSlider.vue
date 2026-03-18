@@ -207,9 +207,9 @@ function onImageLoad(index: number) {
   }
   
   // Optional: still emit when ALL are loaded if you want that too
-  if (allImagesLoaded.value) {
-    console.log('All images loaded')
-  }
+  // if (allImagesLoaded.value) {
+  //   console.log('All images loaded')
+  // }
 }
 
 function onImageError(index: number) {

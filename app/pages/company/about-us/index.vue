@@ -250,7 +250,12 @@ const officeHref = `tel:${officeTel}`
 
 definePageMeta({
   title: 'About Golden Gate Manor Inc.',
-  breadcrumbLabel: 'About Us'
+  breadcrumbLabel: 'About Us',
+  breadcrumbOverrides: [
+    undefined,
+    false,
+    undefined
+  ]
 })
 
 useSeoMeta({

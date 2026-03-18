@@ -688,7 +688,13 @@
 <script lang="ts" setup>
 definePageMeta({
   title: 'Privacy Policy Golden Gate Manor Inc.',
-  breadcrumbLabel: 'Privacy'
+  breadcrumbLabel: 'Privacy',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

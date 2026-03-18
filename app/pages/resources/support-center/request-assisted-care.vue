@@ -7,7 +7,13 @@
 <script setup lang='ts'>
 definePageMeta({
   title: 'How to Request Assisted Living Care',
-  breadcrumbLabel: 'Request Care'
+  breadcrumbLabel: 'Request Care',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Resources', to: '/resources' },
+    false,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

@@ -135,7 +135,13 @@
 <script lang="ts" setup>
 definePageMeta({
   title: 'Terms and Conditions',
-  breadcrumbLabel: 'Terms & Conditions'
+  breadcrumbLabel: 'Terms & Conditions',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

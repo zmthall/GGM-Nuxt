@@ -1,111 +1,133 @@
 // composables/buildCrumbs.ts
 
 /**
- * use: buildCrumbs() — quick README
- * Purpose: Single source for visual breadcrumbs + Schema.org BreadcrumbList.
+ * buildCrumbs() — route-driven breadcrumbs for UI + Schema.org
  *
- * Minimal setup:
- * - nuxt.config.ts → runtimeConfig.public.siteUrl = 'https://yourdomain.com' (no trailing slash)
- * - Per page, optional route meta:
- *     title: string
- *     breadcrumbLabel?: string     // shorter UI/SEO label
- *     breadcrumb?: false           // hide this level (UI + Schema)
- *     noindex?: true               // skip schema on this page
+ * Notes:
+ * - Uses Nuxt's managed useRoute() composable
+ * - Uses route.matched instead of router.getRoutes().find(route.path)
+ * - Avoids transition lag caused by manually hiding breadcrumbs during routing
  *
- * In layout (Schema.org):
- *   const { schema, shouldEmit } = buildCrumbs()
- *   if (shouldEmit.value) useSchemaOrg([ defineBreadcrumb(schema.value) ])
- *
- * In component (UI):
- *   const { crumbs, isAdmin } = buildCrumbs()
- *   <!-- first link -->
- *   <NuxtLink :to="isAdmin ? '/admin' : '/'">{{ isAdmin ? 'Dashboard Home' : 'Home' }}</NuxtLink>
- *   <!-- trail -->
- *   <NuxtLink v-for="c in crumbs" :key="c.path" :to="c.path" v-if="!c.isLast">{{ c.label }}</NuxtLink>
- *   <span v-else>{{ c.label }}</span>
- *
- * Returns:
- * - crumbs: { path, label, isLast }[]   // for rendering
- * - schema: { itemListElement: ... }    // pass to defineBreadcrumb()
- * - shouldEmit: Ref<boolean>            // true on public, indexable pages
- * - isAdmin: Ref<boolean>               // convenience flag for first crumb
+ * Supported route meta:
+ * - title: string
+ * - breadcrumbLabel?: string
+ * - breadcrumb?: false
+ * - noindex?: true
+ * - robots?: 'noindex'
  */
 
-import { useRoute, useRouter } from 'vue-router'
-import { useRuntimeConfig } from '#app'
-
-type Crumb = { path: string; label: string; isLast: boolean }
+type Crumb = {
+  path: string
+  label: string
+  isLast: boolean
+}
 
 const MAX_LABEL_LENGTH = 22
-const toLabel = (slug: string) =>
-  slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+
+const toLabel = (segment: string): string => {
+  return segment
+    .replaceAll('-', ' ')
+    .replaceAll(/\b\w/g, char => char.toUpperCase())
+}
 
 export function buildCrumbs() {
   const route = useRoute()
-  const router = useRouter()
   const runtime = useRuntimeConfig()
 
-  const baseUrl = ((runtime.public?.siteUrl as string) || '').replace(/\/$/, '')
-  const isHome = computed(() => route.path === '/' || route.path === '/admin')
+  const baseUrl = String(runtime.public?.siteUrl || '').replace(/\/$/, '')
   const isAdmin = computed(() => route.path.startsWith('/admin'))
+  const isHome = computed(() => route.path === '/' || route.path === '/admin')
 
-  const matchedRoute = computed(() => router.getRoutes().find(r => r.path === route.path))
-  const hideBreadcrumb = computed(() => matchedRoute.value?.meta?.breadcrumb === false)
-  const noindex = computed(
-    () => matchedRoute.value?.meta?.noindex === true || matchedRoute.value?.meta?.robots === 'noindex'
-  )
+  const matchedVisibleRoutes = computed(() => {
+    return route.matched.filter(record => record.meta?.breadcrumb !== false)
+  })
+
+  const hideBreadcrumb = computed(() => {
+    return matchedVisibleRoutes.value.at(-1)?.meta?.breadcrumb === false
+  })
+
+  const noindex = computed(() => {
+    const last = matchedVisibleRoutes.value.at(-1)
+    return last?.meta?.noindex === true || last?.meta?.robots === 'noindex'
+  })
 
   const crumbs = computed<Crumb[]>(() => {
-    const segments = route.path.split('/').filter(Boolean)
-    let fullPath = ''
-    const out: Crumb[] = []
+    const visibleMatched = matchedVisibleRoutes.value
+      .filter(record => record.path !== '/')
+      .filter(record => record.path !== '/admin')
 
-    segments.forEach((segment, index) => {
-      fullPath += `/${segment}`
-      const r = router.getRoutes().find(rr => rr.path === fullPath)
-
-      // skip hidden routes
-      if (r?.meta?.breadcrumb === false) return
-      // skip admin root segment in the trail
-      if (segment === 'admin') return
-
-      const rawTitle = typeof r?.meta?.title === 'string' ? r.meta.title : null
+    return visibleMatched.map((record, index, arr) => {
       const customLabel =
-        typeof r?.meta?.breadcrumbLabel === 'string' ? r.meta.breadcrumbLabel : null
+        typeof record.meta?.breadcrumbLabel === 'string'
+          ? record.meta.breadcrumbLabel
+          : null
 
-      const label = customLabel || rawTitle || toLabel(segment)
+      const rawTitle =
+        typeof record.meta?.title === 'string'
+          ? record.meta.title
+          : null
+
+      let fallbackLabel = ''
+
+      if (record.path === route.path) {
+        const segments = route.path.split('/').filter(Boolean)
+        fallbackLabel = toLabel(segments.at(-1) || '')
+      } else {
+        const recordSegments = record.path.split('/').filter(Boolean)
+        fallbackLabel = toLabel(recordSegments.at(-1) || '')
+      }
+
+      const label = customLabel || rawTitle || fallbackLabel
 
       if (import.meta.dev && rawTitle && rawTitle.length >= MAX_LABEL_LENGTH && !customLabel) {
         console.warn(`[Breadcrumb] Long title "${rawTitle}" has no breadcrumbLabel defined.`)
       }
 
-      out.push({
-        path: fullPath,
-        label,
-        isLast: index === segments.length - 1,
-      })
-    })
+      let resolvedPath = record.path
 
-    return out
+      for (const [key, value] of Object.entries(route.params)) {
+        const paramValue = Array.isArray(value) ? value.join('/') : String(value)
+        resolvedPath = resolvedPath.replace(`[${key}]`, paramValue)
+        resolvedPath = resolvedPath.replace(`:${key}`, paramValue)
+      }
+
+      return {
+        path: resolvedPath,
+        label,
+        isLast: index === arr.length - 1,
+      }
+    })
   })
 
-  // JSON-LD itemListElement for defineBreadcrumb()
   const schema = computed(() => {
     const head = isAdmin.value
       ? { name: 'Dashboard Home', item: `${baseUrl}/admin` }
       : { name: 'Home', item: `${baseUrl}/` }
 
-    const tail = crumbs.value.map(c =>
-      c.isLast ? { name: c.label } : { name: c.label, item: `${baseUrl}${c.path}` }
-    )
+    const tail = crumbs.value.map(crumb => {
+      if (crumb.isLast) {
+        return { name: crumb.label }
+      }
+
+      return {
+        name: crumb.label,
+        item: `${baseUrl}${crumb.path}`,
+      }
+    })
 
     return {
       itemListElement: [head, ...tail],
-      // positions are auto-computed by @nuxt/seo schema-org
     }
   })
 
-  const shouldEmit = computed(() => !isHome.value && !hideBreadcrumb.value && !noindex.value)
+  const shouldEmit = computed(() => {
+    return !isHome.value && !hideBreadcrumb.value && !noindex.value
+  })
 
-  return { schema, crumbs, shouldEmit, isAdmin }
+  return {
+    schema,
+    crumbs,
+    shouldEmit,
+    isAdmin,
+  }
 }

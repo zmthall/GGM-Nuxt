@@ -233,7 +233,13 @@
 <script setup lang='ts'>
 definePageMeta({
   title: 'Qualification for Transportation Services',
-  breadcrumbLabel: 'Qualification'
+  breadcrumbLabel: 'Qualification',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Resources', to: '/resources' },
+    false,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

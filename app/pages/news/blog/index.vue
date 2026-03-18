@@ -6,7 +6,7 @@
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
                 <div>
                     <div class="flex flex-col gap-8 sm:flex-row">
-                        <NuxtLink :to="`/news${latestPost.path}`" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <NuxtLink :to="getBlogPostLink(latestPost.slug)" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
                             <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-1/2">
                                 <div class="h-1/2 relative">
                                     <div>
@@ -16,28 +16,25 @@
                                         </p>
                                     </div>
                                     <div class="aspect-[2/1]">
-                                        <NuxtImg 
-                                            format="webp,avif"
-                                            :src="latestPost.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                        <BlogPostImage
+                                            :src="latestPost.thumbnail || ''" 
                                             :alt="latestPost.thumbnailAlt || latestPost.title" 
                                             :title="latestPost.thumbnailAlt || latestPost.title"
-                                            :width="latestPost.thumbnailWidth || ''"
-                                            :height="latestPost.thumbnailHeight || ''" 
+                                            :width="latestPost.thumbnailWidth || undefined"
+                                            :height="latestPost.thumbnailHeight || undefined" 
                                             loading="eager"
-                                            class="object-cover h-full w-full"
-                                            :placeholder="latestPost.thumbnail ? '' : '/images/blog/blog-default-placeholder.'"
                                         />        
                                     </div>
                                 </div>
                                 <div class="bg-brand-primary">
                                     <div class="flex flex-col flex-wrap sm:flex-row sm:items-center gap-4 py-4 px-8 text-white">
                                         <ul class="flex gap-2 items-center max-sm:hidden">
-                                            <li v-for="tag in topTags" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
+                                            <li v-for="tag in topTags(latestPost.tags)" :key="tag" class="bg-brand-secondary border-brand-primary border-2 p-2 text-brand-primary rounded-lg">
                                                 {{ tag }}
                                             </li>
                                         </ul>
-                                        <time :datetime="formatDates.formatDatetime(latestPost.published)">
-                                            Published on: {{ formatDates.formatShortDate(latestPost.published) }}
+                                        <time :datetime="formatDates.formatDatetime(latestPost.publishTimestamp ?? undefined)">
+                                            Published on: {{ formatDates.formatShortDate(latestPost.publishTimestamp ?? undefined) }}
                                         </time>
                                     </div>
                                     <div class="flex flex-col justify-between px-8 py-4 text-white">
@@ -50,10 +47,10 @@
                         <div v-if="staffPicks && staffPicks.length > 0" class="sm:border-l-2 sm:border-l-brand-primary/20 mx-4 sm:mx-0 sm:ml-8 sm:pl-8 sm:w-1/2">
                             <h3 class="text-4xl font-bold text-brand-primary mb-4">Staff Picks</h3>
                             <ul class="space-y-4">
-                                <li v-for="staffPick in staffPicks" :key="staffPick.id" class="group">
-                                    <nuxt-link :to="`/news${staffPick.path}`" class="flex flex-col">
+                                <li v-for="(staffPick) in staffPicks" :key="staffPick.id" class="group">
+                                    <nuxt-link :to="getBlogPostLink(staffPick.slug)" class="flex flex-col">
                                         <span class="text-lg font-bold font-headings sm:group-hover:scale-105 post-title">{{ staffPick.title }}</span>
-                                        <span class="text-md group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105 staffpick-body ml-2">{{ staffPick.description }}</span>
+                                        <span class="text-md group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105 staffpick-body ml-2">{{ staffPick.summary }}</span>
                                     </nuxt-link>
                                 </li>
                             </ul>
@@ -63,32 +60,26 @@
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
-        <BaseLayoutPageSection :margin="posts.length > 0 ? 'default' : 'top'" :bg="posts.length > 0 ? 'alt' : 'transparent'">
+        <BaseLayoutPageSection :margin="allPosts.length > 0 ? 'default' : 'top'" :bg="allPosts.length > 0 ? 'alt' : 'transparent'">
             <BaseLayoutPageContainer>
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8">All Blog Posts</h2>
-                <div v-if="posts.length > 0">
+                <div v-if="allPosts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <li v-for="post in posts" :key="post.id">
-                            <NuxtLink :to="`/news${post.path}`" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <li v-for="post in allPosts" :key="post.id">
+                            <NuxtLink :to="getBlogPostLink(post.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
-                                        <div>
-                                            <p class="flex items-center gap-2 absolute top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
-                                                <span class="text-sm text-white">Read Time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}</span>
-                                            </p>
+                                        <div class="flex items-center gap-2 absolute z-1 top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
+                                            <span class="text-sm text-white">Read Time: {{ post.readTime === 1 ? '1 minute' : `${post.readTime} minutes` }}</span>
                                         </div>
                                         <div class="aspect-[2/1]">
-                                            <NuxtImg 
-                                                format="webp,avif"
-                                                :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" 
+                                            <BlogPostImage
+                                                :src="post.thumbnail" 
                                                 :alt="post.thumbnailAlt || post.title" 
-                                                :title="post.thumbnailAlt || post.title" 
-                                                :width="post.thumbnailWidth || ''"
-                                                :height="post.thumbnailHeight || ''"
-                                                loading="eager"
-                                                class="object-cover h-full w-full"
-                                                :placeholder="post.thumbnail ? '' : '/images/blog/blog-default-placeholder.webp'"
-                                            />        
+                                                :title="post.thumbnailAlt || post.title"
+                                                :width="post.thumbnailWidth || undefined"
+                                                :height="post.thumbnailHeight || undefined" 
+                                                loading="lazy" />       
                                         </div>
                                     </div>
                                     <div>
@@ -100,8 +91,8 @@
                                             </ul>
                                             <BaseInteractiveTextRotator v-if="post.tags != undefined && post.tags?.length > 3" :items="post.tags" variant="marquee" marquee-direction="right" :marquee-seconds="10" wrapper-class="w-full overflow-hidden" text-class="text-sm text-white" marquee-gap-class="pr-3" marquee-item-class="bg-brand-primary border-brand-secondary border-2 p-2 mx-1 text-white rounded-lg" marquee-track-class="[animation-play-state:paused] group-hover:[animation-play-state:running]" />
 
-                                            <time :datetime="formatDates.formatDatetime(post.published)">
-                                                Published on: {{ formatDates.formatShortDate(post.published) }}
+                                            <time :datetime="formatDates.formatDatetime(post.publishTimestamp ?? undefined)">
+                                                Published on: {{ formatDates.formatShortDate(post.publishTimestamp ?? undefined) }}
                                             </time>
                                         </div>
                                         <div class="flex flex-col justify-between px-2 pt-2 pb-4">
@@ -113,9 +104,12 @@
                             </NuxtLink>
                         </li>
                     </ul>
-                    <div v-if="hasMorePages" class="flex justify-center mt-8">
+                    <div v-if="postPagination.hasNextPage" class="flex justify-center mt-8">
                         <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
                     </div>
+                </div>
+                <div v-else-if="isLoadingPosts" class="flex justify-center items-center p-8 animate-pulse">
+                    Loading posts...
                 </div>
                 <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
                     <p>New posts are being planned! Check back soon or <NuxtLink to="/company/contact-us" class="link">contact us</NuxtLink> to stay updated.</p>
@@ -126,8 +120,9 @@
 </template>
 
 <script setup lang="ts">
-import { useDateFormat } from '../../../composables/dates/dateFormat'
-import type { AllPosts } from '../../../models/blog'
+import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
+import { useDateFormat } from '~/composables/dates/dateFormat'
+import type { BlogPostCard, BlogPostTiny, PaginationMeta } from '~/models/blog'
 
 const authStore = useAuthStore()
 
@@ -137,7 +132,12 @@ defineOptions({
 
 definePageMeta({
   title: 'Resources & Insights from Golden Gate Manor',
-  breadcrumbLabel: 'Blog Posts'
+  breadcrumbLabel: 'Blog Posts',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Community', to: '/news/community' },
+    undefined
+  ]
 })
 
 useHead({
@@ -158,115 +158,109 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-const formatDates = useDateFormat()
-const text = useText()
+const blogPostsAPI = useBlogPostsApi();
+const formatDates = useDateFormat();
+const text = useText();
 
-const cutoffISO = new Date(Date.now() + 60_000).toISOString()
-
-const { data: latestPost } = await useAsyncData('blog-latest-post', () => {
-  return queryCollection('blog')
-    .where('draft', '<>', true)
-    .where('published', '<', cutoffISO)
-    .order('published', 'DESC')
-    .select(
-      'path',
-      'date',
-      'title',
-      'thumbnail',
-      'thumbnailAlt',
-      'thumbnailWidth',
-      'thumbnailHeight',
-      'tags',
-      'summary',
-      'published',
-      'readTime'
-    )
-    .first()
-})
-
-const topTags = computed(() => (latestPost.value?.tags ?? []).slice(0, 3))
-
-const { data: allStaffPicks } = await useAsyncData('blog-staff-picks', () => {
-  return queryCollection('blog')
-    .where('staffPick', '=', true)
-    .where('published', '<', cutoffISO)
-    .select('path', 'id', 'title', 'description')
-    .all()
-})
-
-const staffPicks = computed(() => {
-  if (!allStaffPicks.value) return []
-  const shuffled = [...allStaffPicks.value].sort(() => Math.random() - 0.5)
-  return shuffled.slice(0, 4)
-})
-
-const limit = 8
-const posts = ref<AllPosts[]>([])
-const page = ref(1)
-const isLoading = ref(false)
-const hasMorePages = ref(true)
-
-const appendUniquePosts = (incoming: AllPosts[]) => {
-  const seen = new Set(posts.value.map(post => post.path))
-
-  const uniquePosts = incoming.filter(post => {
-    if (!post?.path) return false
-    if (seen.has(post.path)) return false
-    seen.add(post.path)
-    return true
-  })
-
-  posts.value = [...posts.value, ...uniquePosts]
+const defaultPagination: PaginationMeta = {
+  currentPage: 1,
+  pageSize: 1,
+  hasNextPage: false,
+  hasPreviousPage: false,
+  totalPages: 1,
+  totalItems: 0
 }
 
-const { data: initialPosts } = await useAsyncData('blog-posts-initial', () => {
-  return $fetch<AllPosts[]>('/api/blog/posts', {
-    query: { page: 1, limit }
-  })
-})
+const blogState = useState<{
+    posts: BlogPostCard[];
+    pagination: PaginationMeta;
+    initialized: boolean;
+  }>('blog-posts', () => ({
+    posts: [],
+    pagination: defaultPagination,
+    initialized: false
+}))
 
-posts.value = [...(initialPosts.value ?? [])]
-hasMorePages.value = (initialPosts.value?.length ?? 0) === limit
+// Helpers
+
+const topTags = (tags: string[]) => {
+  return (tags ?? []).slice(0, 3)
+}
+
+const getBlogPostLink = (slug: string): string => {
+  return `/news/blog/post/${slug}`
+}
+
+// Fetch Latest Post
+
+const { data: latestPost } = await useAsyncData<BlogPostCard | null>('blog-latest-post', () => blogPostsAPI.getLatestPost())
+
+// Fetch Staff Picks
+
+const { data: staffPicks } = await useAsyncData<BlogPostTiny[] | null>('blog-staff-picks', () => blogPostsAPI.getStaffPicks())
+
+// Fetch All Blog Posts
+
+const pageSize = 8
+const page = ref(1)
+
+const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
+  'blog-initial-posts',
+  () => blogPostsAPI.getPublishedPosts({
+      page: page.value,
+      pageSize,
+      orderField: 'publish_timestamp',
+      orderDirection: 'desc'
+    }),
+    {
+        default: () => ({
+            data: [],
+            pagination: defaultPagination
+        })
+    }
+)
+
+if(!blogState.value.initialized && initialPostsReturn.value) {
+  blogState.value.posts = initialPostsReturn.value.data ?? []
+  blogState.value.pagination = initialPostsReturn.value.pagination ?? { ...defaultPagination}
+  blogState.value.initialized = true
+}
+
+const allPosts = computed(() => blogState.value.posts)
+const postPagination = computed(() => blogState.value.pagination)
+
+// Load More 
 
 const loadMore = async () => {
-  if (isLoading.value || !hasMorePages.value) return
+    if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
+    if(!postPagination.value.hasNextPage) return; // No more pages to load
 
-  isLoading.value = true
-  const nextPage = page.value + 1
+    const nextPage = blogState.value.pagination.currentPage + 1;
 
-  try {
-    const newPosts = await $fetch<AllPosts[]>('/api/blog/posts', {
-      query: { page: nextPage, limit }
+    const response = await blogPostsAPI.getPublishedPosts({
+        page: nextPage,
+        pageSize,
+        orderField: 'publish_timestamp',
+        orderDirection: 'desc'
     })
 
-    if (!newPosts?.length) {
-      hasMorePages.value = false
-      return
-    }
+    const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
+    const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
 
-    appendUniquePosts(newPosts)
-    page.value = nextPage
-
-    if (newPosts.length < limit) {
-      hasMorePages.value = false
-    }
-  } catch (error) {
-    console.error('Failed to load more posts:', error)
-  } finally {
-    isLoading.value = false
-  }
+    blogState.value.posts = [...blogState.value.posts, ...newPosts]
+    blogState.value.pagination = response.pagination ?? { ...defaultPagination }
 }
 </script>
 
 <style scoped>
-    .post-title {
-        --max-lines: 1;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        line-clamp: var(--max-lines);
-        -webkit-line-clamp: var(--max-lines);
-    }
+  .post-title {
+      --max-lines: 1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-clamp: var(--max-lines);
+      -webkit-line-clamp: var(--max-lines);
+  }
 
   .post-body {
     --max-lines: 2;

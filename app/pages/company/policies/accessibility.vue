@@ -82,7 +82,13 @@
 <script lang="ts" setup>
 definePageMeta({
   title: 'Accessibility Statement',
-  breadcrumbLabel: 'Accessibility'
+  breadcrumbLabel: 'Accessibility',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

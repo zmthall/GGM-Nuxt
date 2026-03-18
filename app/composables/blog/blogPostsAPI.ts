@@ -18,8 +18,6 @@ export const useBlogPostsApi = () => {
       { params: { ...options } }
     )
 
-    console.log('API Response:', response) // Debug log to inspect the raw API response
-
     return {
       data: response.data.map(mappers.mapBlogPostCardRecord),
       pagination: response.pagination
@@ -50,11 +48,20 @@ export const useBlogPostsApi = () => {
     return response.data.map(mappers.mapBlogPostTinyRecord)
   }
 
+  const validateSlug = async (slug: string): Promise<{ exists: boolean}> => {
+    const response = await $fetch<ApiSuccessResponse<{ exists: boolean}>>(
+      `${baseURL}/api/blog-posts/exists/slug/${slug}/published`
+    )
+
+    return response.data
+  }
+
   return {
     getPublishedPostBySlug,
     getPublishedPosts,
     getPublishedSlugs,
     getLatestPost,
-    getStaffPicks
+    getStaffPicks,
+    validateSlug
   }
 }

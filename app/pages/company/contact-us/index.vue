@@ -73,7 +73,13 @@ const activeSocialHandles = socialHandles.filter(s => s.enabled !== false);
 definePageMeta({
   title: 'Contact Golden Gate Manor Team',
   alias: ['/company/contact-us/thank-you'],
-  breadcrumbLabel: 'Contact Us'
+  breadcrumbLabel: 'Contact Us',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 useHead({

@@ -7,7 +7,13 @@
 <script setup lang='ts'>
 definePageMeta({
   title: 'How to Order Medical Supplies or Equipment',
-  breadcrumbLabel: 'Prepare for Ride'
+  breadcrumbLabel: 'Prepare for Ride',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Resources', to: '/resources' },
+    false,
+    undefined
+  ]
 })
 
 useHead({

@@ -53,7 +53,6 @@ const fetchImages = async (): Promise<void> => {
 }
 
 const imagesLoaded = () => {
-  console.log('Images loaded event fired!')
   modalImagesLoading.value = false;
 }
 

@@ -96,6 +96,16 @@ export default defineNuxtConfig({
       ? { '/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } } }
       : { })
   },
+  mdc: {
+    components: {
+      prose: true
+    }
+  },
+  components: [
+    { path: '~/components', extensions: ['vue'],  },
+    { path: '~/components/prose', extensions: ['vue'], global: true },
+    { path: '~/components/global', extensions: ['vue'], global: true },
+  ],
   i18n: {
     strategy: 'prefix_except_default',
     locales: [

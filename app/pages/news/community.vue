@@ -70,7 +70,12 @@ import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesDa
 
 definePageMeta({
   title: 'Community Outreach and Events',
-  breadcrumbLabel: 'Community'
+  breadcrumbLabel: 'Community',
+  breadcrumbOverrides: [
+    undefined,
+    false,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

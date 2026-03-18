@@ -453,7 +453,13 @@ import company from '@/data/company.json'
 
 definePageMeta({
   title: 'Requesting Wheelchair Accessible Transportation in Pueblo, Colorado',
-  breadcrumbLabel: 'Requesting Accessible Vans'
+  breadcrumbLabel: 'Requesting Accessible Vans',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Resources', to: '/resources' },
+    false,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

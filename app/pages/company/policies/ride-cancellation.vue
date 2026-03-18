@@ -219,7 +219,13 @@ import company from '@/data/company.json'
 
 definePageMeta({
   title: 'Ride Cancellation Policy',
-  breadcrumbLabel: 'Ride Cancellation'
+  breadcrumbLabel: 'Ride Cancellation',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'About Us', to: '/company/about-us' },
+    undefined,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

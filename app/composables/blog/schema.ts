@@ -1,15 +1,19 @@
 // composables/useBlogSchema.js
-import type { BlogPost } from '../../models/blog'
+import type { BlogPostFull } from '../../models/blog'
 
 import { useReading } from "./reading";
 import { useBlogTags } from "./tags";
+
+const getBlogPostLink = (slug: string): string => {
+  return `/news/blog/post/${slug}`
+}
 
 export const useBlogSchema = () => {
   const { getTagCategory } = useBlogTags();
   const { getWordCount } = useReading();
   const runtimeConfig = useRuntimeConfig();
   
-  const generateBlogSchema = (post: BlogPost | null | undefined) => {
+  const generateBlogSchema = (post: BlogPostFull | null | undefined) => {
     if (!post) return null;
     
     // Determine if this should be medical or general based on tags
@@ -21,8 +25,8 @@ export const useBlogSchema = () => {
       "@context": "https://schema.org",
       "headline": post.title,
       "name": post.title,
-      "description": post.description,
-      "url": `${runtimeConfig.public.siteUrl}${post.path}`,
+      "description": post.seoDescription,
+      "url": `${runtimeConfig.public.siteUrl}${getBlogPostLink(post.slug)}`,
       "image": post.thumbnail ? `${runtimeConfig.public.siteUrl}${post.thumbnail}` : `${runtimeConfig.public.siteUrl}/images/blog/default-blog-image.jpg`,
       "author": {
         "@type": "Person",
@@ -33,11 +37,11 @@ export const useBlogSchema = () => {
         "@type": "Organization",
         "@id": `${runtimeConfig.public.siteUrl}#organization`
       },
-      "datePublished": post.date || post.createdAt,
-      "dateModified": post.updatedAt || post.date || post.createdAt,
+      "datePublished": post.publishTimestamp,
+      "dateModified": post.updatedAt,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${runtimeConfig.public.siteUrl}${post.path}`
+        "@id": `${runtimeConfig.public.siteUrl}${getBlogPostLink(post.slug)}`
       }
     };
     
@@ -51,7 +55,7 @@ export const useBlogSchema = () => {
           "audienceType": "Patient"
         },
         "medicalSpecialty": getArticleSection(post.tags),
-        "lastReviewed": post.date || post.updatedAt || post.createdAt,
+        "lastReviewed": post.updatedAt,
         "reviewedBy": {
           "@type": "Person",
           "name": "Golden Gate Manor Medical Team"
@@ -67,7 +71,7 @@ export const useBlogSchema = () => {
         ...baseSchema,
         "@type": "Article",
         "articleSection": getArticleSection(post.tags),
-        "wordCount": getWordCount(post.body),
+        "wordCount": getWordCount(post.content),
         "about": {
           "@type": "Thing",
           "name": post.title
@@ -87,36 +91,81 @@ export const useBlogSchema = () => {
   };
   
   // Helper function to get article section from tags
-  const getArticleSection = (tags: string[] | undefined) => {
-    if (!tags || tags.length === 0) return "General";
-    
-    const category = getTagCategory(tags);
-    const tagString = tags.join(" ").toLowerCase();
-    
-    if (category === 'medical') {
-      // Medical subcategories
-      if (tagString.includes('transport') || tagString.includes('nemt')) return "Medical Transportation";
-      if (tagString.includes('senior') || tagString.includes('elderly') || tagString.includes('geriatric')) return "Senior Care";
-      if (tagString.includes('assisted living') || tagString.includes('memory care')) return "Assisted Living";
-      if (tagString.includes('equipment') || tagString.includes('dme') || tagString.includes('supplies')) return "Medical Equipment";
-      if (tagString.includes('medicaid') || tagString.includes('medicare') || tagString.includes('insurance')) return "Healthcare Coverage";
-      if (tagString.includes('disability') || tagString.includes('mobility')) return "Disability Support";
-      if (tagString.includes('medication') || tagString.includes('therapy')) return "Medical Care";
-      return "Healthcare";
-    } else if (category === 'general') {
-      // General subcategories
-      if (tagString.includes('community') || tagString.includes('local')) return "Community";
-      if (tagString.includes('news') || tagString.includes('announcement') || tagString.includes('update')) return "Company News";
-      if (tagString.includes('staff') || tagString.includes('employee')) return "Staff Stories";
-      if (tagString.includes('event') || tagString.includes('celebration')) return "Events";
-      if (tagString.includes('tip') || tagString.includes('guide') || tagString.includes('how to')) return "Tips & Guides";
-      if (tagString.includes('safety') || tagString.includes('quality')) return "Safety & Quality";
-      if (tagString.includes('service') || tagString.includes('customer')) return "Customer Service";
-      return "Business";
-    }
-    
-    return "General";
-  };
+  type ArticleSection =
+  | "Healthcare"
+  | "Community"
+  | "Business"
+  | "Events"
+  | "General"
+  | "Medical Transportation"
+  | "Senior Care"
+  | "Assisted Living"
+  | "Medical Equipment"
+  | "Healthcare Coverage"
+  | "Disability Support"
+  | "Medical Care"
+  | "Company News"
+  | "Staff Stories"
+  | "Tips & Guides"
+  | "Safety & Quality"
+  | "Customer Service"
+
+type TagCategory = "medical" | "general"
+
+type SectionRule = {
+  section: ArticleSection
+  keywords: string[]
+}
+
+const MEDICAL_SECTION_RULES: SectionRule[] = [
+  { section: "Medical Transportation", keywords: ["transport", "nemt"] },
+  { section: "Senior Care", keywords: ["senior", "elderly", "geriatric"] },
+  { section: "Assisted Living", keywords: ["assisted living", "memory care"] },
+  { section: "Medical Equipment", keywords: ["equipment", "dme", "supplies"] },
+  { section: "Healthcare Coverage", keywords: ["medicaid", "medicare", "insurance"] },
+  { section: "Disability Support", keywords: ["disability", "mobility"] },
+  { section: "Medical Care", keywords: ["medication", "therapy"] }
+]
+
+const GENERAL_SECTION_RULES: SectionRule[] = [
+  { section: "Community", keywords: ["community", "local"] },
+  { section: "Company News", keywords: ["news", "announcement", "update"] },
+  { section: "Staff Stories", keywords: ["staff", "employee"] },
+  { section: "Events", keywords: ["event", "celebration"] },
+  { section: "Tips & Guides", keywords: ["tip", "guide", "how to"] },
+  { section: "Safety & Quality", keywords: ["safety", "quality"] },
+  { section: "Customer Service", keywords: ["service", "customer"] }
+]
+
+const matchesAnyKeyword = (text: string, keywords: string[]): boolean => {
+  return keywords.some(keyword => text.includes(keyword))
+}
+
+const findMatchingSection = (
+  text: string,
+  rules: SectionRule[],
+  fallback: ArticleSection
+): ArticleSection => {
+  const match = rules.find(rule => matchesAnyKeyword(text, rule.keywords))
+  return match?.section ?? fallback
+}
+
+const getArticleSection = (tags: string[] | undefined): ArticleSection => {
+  if (!tags?.length) return "General"
+
+  const category = getTagCategory(tags) as TagCategory
+  const tagString = tags.join(" ").toLowerCase()
+
+  if (category === "medical") {
+    return findMatchingSection(tagString, MEDICAL_SECTION_RULES, "Healthcare")
+  }
+
+  if (category === "general") {
+    return findMatchingSection(tagString, GENERAL_SECTION_RULES, "Business")
+  }
+
+  return "General"
+}
   
   return {
     generateBlogSchema

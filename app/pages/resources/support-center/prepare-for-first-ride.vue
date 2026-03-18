@@ -206,7 +206,13 @@ import company from '@/data/company.json'
 
 definePageMeta({
   title: 'How to Prepare for Your First Ride',
-  breadcrumbLabel: 'Prepare for Ride'
+  breadcrumbLabel: 'Prepare for Ride',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Resources', to: '/resources' },
+    false,
+    undefined
+  ]
 })
 
 const runtimeConfig = useRuntimeConfig()

@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <article class="prose prose-lg max-w-none">
+  <article class="blog-markdown prose prose-lg max-w-none">
     <MDC :value="props.content" tag="div" />
   </article>
 </template>
