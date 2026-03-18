@@ -26,7 +26,7 @@
                 <div 
                     v-if="contactOpen && contactServices"
                     ref="contactPopup"
-                    class="absolute right-0 translate-y-4 flex bg-brand-background-header drop-shadow-[0px_0px_4px_rgba(0,0,0,0.2)] rounded-lg p-2 arrow-top z-20"
+                    class="absolute right-0 translate-y-4 flex bg-brand-background-header drop-shadow-[0px_0px_4px_rgba(0,0,0,0.2)] rounded-lg p-2 arrow-top z-20 w-[300px]"
                     >
                     <ul class="flex flex-col">
                         <li 
@@ -35,14 +35,12 @@
                         >
                             <span class="font-semibold whitespace-nowrap">{{ $t(`header.contacts.${contactService.id}`) }}</span>
                             <CallRailLink
-                                    v-if="contactService.id === 'Non-Medical' || contactService.id === 'NEMT'"
-                                    :tel="contactService.number"
-                                    :display="contactService.number"
-                                    cls="link"
-                                    :aria-label="`Call us at ${contactService.number}`"
-                            >
-                                    {{ contactService.number }}
-                            </CallRailLink>
+                                v-if="contactService.id === 'non-medical' || contactService.id === 'nemt' || contactService.id === 'medical-supplies'"
+                                :tel="contactService.number"
+                                :display="contactService.number"
+                                cls="link"
+                                :aria-label="`Call us at ${contactService.number}`"
+                            />
                             <a
                                 v-else
                                 :href="`tel:${contactService.number}`"

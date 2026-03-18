@@ -1,7 +1,16 @@
 <template>
-  <a v-if="phone" :href="`tel:${phone.number}`" class="link">
+  <CallRailLink
+    v-if="phone && shouldUseCallRail"
+    :tel="phone.number"
+    :display="phone.label"
+    cls="link"
+    :aria-label="`Call ${phone.label}`"
+  />
+
+  <a v-else-if="phone" :href="`tel:${phone.number}`" class="link">
     {{ phone.label }}
   </a>
+
   <span v-else class="text-zinc-500">
     —
   </span>
@@ -25,11 +34,17 @@ const deptPhones: Record<Exclude<Department, 'other'>, PhoneInfo> = {
 }
 
 function formatUsPhone(input: string): PhoneInfo | null {
-  const digits = input.replace(/\D/g, '')
+  const digits = input.replaceAll(/\D/g, '')
 
-  // allow 10 digits, or 11 digits starting with 1
-  const ten = digits.length === 10 ? digits
-    : (digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : null)
+  let ten;
+
+  if(digits.length === 10) {
+    ten = digits
+  } else if (digits.length === 11 && digits.startsWith('1')) {
+    ten = digits.slice(1)
+  } else {
+    return null
+  }
 
   if (!ten) return null
 
@@ -38,8 +53,8 @@ function formatUsPhone(input: string): PhoneInfo | null {
   const last = ten.slice(6)
 
   return {
-    number: `+1${ten}`,                 // tel href
-    label: `(${area}) ${mid}-${last}`   // display
+    number: `+1${ten}`,
+    label: `(${area}) ${mid}-${last}`
   }
 }
 
@@ -47,6 +62,21 @@ const phone = computed<PhoneInfo | null>(() => {
   if (props.department !== 'other') return deptPhones[props.department]
   if (!props.number) return null
   return formatUsPhone(props.number)
+})
+
+const shouldUseCallRail = computed(() => {
+  if (!phone.value) return false
+
+  if (props.department === 'dispatch') return true
+  if (props.department === 'csr') return true
+  if (props.department === 'dme') return true
+
+  if (props.department === 'other') {
+    const digits = phone.value.number.replaceAll(/\D/g, '')
+    return ['17195432525', '17195443231', '17195697361'].includes(digits)
+  }
+
+  return false
 })
 </script>
 

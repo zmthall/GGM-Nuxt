@@ -58,16 +58,18 @@
                                 <CallRailLink
                                     tel="719-544-3231"
                                     display="(719) 544-3231"
-                                    cls="group hover:text-brand-secondary"
+                                    cls="group inline-flex items-center gap-2 hover:text-brand-secondary"
                                     aria-label="Call front office (719) 544-3231"
-                                >
-                                    <BaseIcon
+                                    >
+                                    <template #default="{ display }">
+                                        <BaseIcon
                                         name="ic:round-call"
                                         color="text-brand-white"
                                         size="4"
                                         hover-color="group-hover:text-brand-secondary"
-                                    />
-                                    (719) 544-3231
+                                        />
+                                        <span>{{ display }}</span>
+                                    </template>
                                 </CallRailLink>
                             </li>
                             <li class="flex flex-col">
@@ -84,13 +86,15 @@
                                     cls="group hover:text-brand-secondary"
                                     aria-label="Call front office (719) 543-2525"
                                 >
-                                    <BaseIcon
-                                        name="ic:round-call"
-                                        color="text-brand-white"
-                                        size="4"
-                                        hover-color="group-hover:text-brand-secondary"
-                                    />
-                                    (719) 543-2525
+                                    <template #default="{ display }">
+                                        <BaseIcon
+                                            name="ic:round-call"
+                                            color="text-brand-white"
+                                            size="4"
+                                            hover-color="group-hover:text-brand-secondary"
+                                        />
+                                        <span>{{ display }}</span>
+                                    </template>
                                 </CallRailLink>
                             </li>
                         </ul>
@@ -103,20 +107,11 @@
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
                         </a>
-                        <CallRailLink
-                            tel="719-924-9932"
-                            display="(719) 924-9932"
-                            cls="group hover:text-brand-secondary"
-                            aria-label="Call front office (719) 924-9932"
-                        >
-                            <BaseIcon
-                                name="ic:round-call"
-                                color="text-brand-white"
-                                size="4"
-                                hover-color="group-hover:text-brand-secondary"
-                            />
-                            (719) 924-9932
-                        </CallRailLink>
+                        <a href="tel:719-924-9932" class="group hover:text-brand-secondary">
+                            <BaseIcon 
+                                name="ic:round-call" color="text-brand-white" size="4"
+                                hover-color="group-hover:text-brand-secondary" /> (719) 924-9932
+                        </a>
                         <button
                             class="items-center border-2 border-brand-white flex w-max p-1 mt-1 hover:bg-brand-secondary hover:text-brand-primary transition-colors duration-300 ease-in-out rounded-md"
                             @click="toggleViewMore(0)">
@@ -203,11 +198,22 @@
                                 name="material-symbols:location-on" color="text-brand-white" size="size-4"
                                 hover-color="group-hover:text-brand-secondary" /> 612 S. Union Ave., Pueblo CO, 81004
                         </a>
-                        <a href="tel:719-569-7361" class="group hover:text-brand-secondary">
-                            <BaseIcon 
-                                name="ic:round-call" color="text-brand-white" size="4"
-                                hover-color="group-hover:text-brand-secondary" /> (719) 569-7361
-                        </a>
+                        <CallRailLink
+                            tel="719-569-7361"
+                            display="(719) 569-7361"
+                            cls="group hover:text-brand-secondary"
+                            aria-label="Call front office (719) 569-7361"
+                        >
+                            <template #default="{ display }">
+                                <BaseIcon
+                                    name="ic:round-call"
+                                    color="text-brand-white"
+                                    size="4"
+                                    hover-color="group-hover:text-brand-secondary"
+                                />
+                                <span>{{ display }}</span>
+                            </template>
+                        </CallRailLink>
                     </li>
                     <li class="flex flex-col">
                         <h3 class="font-bold underline">{{ $t('footer.locations.gas-and-goods') }}</h3>
