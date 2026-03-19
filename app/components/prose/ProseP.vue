@@ -1,5 +1,5 @@
 <template>
-  <p class="text-lg leading-snug">
+  <p class="custom-prose-p">
     <slot />
   </p>
 </template>
@@ -9,5 +9,7 @@
 </script>
 
 <style>
-
+.custom-prose-p {
+  @apply text-lg leading-snug;
+}
 </style>

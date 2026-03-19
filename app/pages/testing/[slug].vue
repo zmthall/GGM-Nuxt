@@ -16,7 +16,7 @@
               <span class="max-xs:hidden">{{ `${post?.readTime} min read` }}</span>
             </div>
             <BlogPostTags :post="post" class="min-[1000px]:hidden mt-2 mb-3" />
-            <div class="border-t border-brand-primary/5 mb-4 pt-4">
+            <div class="border-t border-brand-primary/5 mb-4 pt-4 mt-2">
               <p class="text-lg text-brand-main-text/85 leading-relaxed">{{ post.summary }}</p>
             </div>
           </div>
@@ -36,6 +36,7 @@
               />        
             </div>
           </div>
+          <BlogPostTableOfContents v-if="TOC.links.length" :toc="TOC" />
           <BlogPostContentRenderer v-if="post.content" id="blog-post-article" :content="post.content" />
           <div class="min-[1000px]:hidden">
             <BlogPostSocialShare class="mt-3"/>
@@ -147,6 +148,8 @@ import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI';
 import { useDateFormat } from '~/composables/dates/dateFormat';
 import type { BlogPostFull } from '~/models/blog';
 
+const TOC = computed(() => buildTocFromMdc(post.value?.content ?? ''))
+
 const route = useRoute();
 const formatDates = useDateFormat();
 const text = useText()
@@ -163,7 +166,7 @@ const { data: post } = await useAsyncData<BlogPostFull>(
   () => blogPostsAPI.getPublishedPostBySlug(slug ?? "")
 )
 
-if (!post.value) {
+if (post.value  === null || post.value === undefined) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Blog post not found'
@@ -175,8 +178,6 @@ if (!post.value) {
 const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${slug}`,
   () => blogPostsAPI.getRelatedPosts(post.value?.id ?? ""),
 )
-
-console.log(relatedPosts.value) // Debug log to inspect the fetched related posts data --- IGNORE ---
 
 // SEO
 const runtimeConfig = useRuntimeConfig()
@@ -201,181 +202,6 @@ definePageMeta({
     undefined
   ]
 });
-
-// const { data: post } = await useAsyncData(`blog-post-${slug}`,
-//   () =>  blogPostsAPI.getPublishedPostBySlug(slug)
-
-// )
-
-// console.log(post.value) // Debug log to inspect the fetched post data --- IGNORE ---
-
-// // Build the content path
-// const contentPath = `/blog/post/${slug}`;
-
-// // Fetch the specific post
-// const { data: post } = await useAsyncData(`blog-${slug}`, () =>
-//   queryCollection("blog").path(contentPath).first()
-// );
-
-// // Handle 404 if post doesn't exist
-// if (!post.value) {
-//   throw createError({
-//     statusCode: 404,
-//     statusMessage: 'Blog post not found'
-//   });
-// }
-
-// // Handle 404 if post is still a draft
-// if(post.value.draft) {
-//   throw createError({
-//     statusCode: 404,
-//     statusMessage: 'Blog post not found'
-//   })
-// }
-
-// // Handle 404 if post publish date is not current day
-// if(post.value.published) {
-//   const publishedDate = new Date(post.value.published)
-//   const currentDate = Date.now()
-//   if(!(publishedDate.getTime() <= currentDate))
-//     throw createError({
-//       statusCode: 404,
-//       statusMessage: 'Blog post not found'
-//     })
-// }
-
-// interface TocItem {
-//   depth: number
-//   id: string
-//   text: string
-//   children?: TocItem[]
-// }
-
-// interface TocData {
-//   links: TocItem[]
-//   searchDepth: number
-//   title: string
-// }
-
-// const TOC = post.value.body.toc as TocData
-// const tocDrawerOpen = ref<boolean>(false);
-// const selectedTOCItem = ref<string>('')
-// const tocRef = ref<HTMLElement | null>(null)
-// const tocButtonRef = ref<HTMLElement | null>(null)
-
-// onClickOutside(tocRef, (event) => {
-//   if (tocButtonRef.value && tocButtonRef.value.contains(event.target as Node)) {
-//     return
-//   }
-//   tocDrawerOpen.value = false
-// })
-
-// const toggleTOCDrawer = () => {
-//   tocDrawerOpen.value = !tocDrawerOpen.value;
-// }
-
-// // Flatten the TOC to get all items (including nested ones)
-// const getAllTocItems = (tocData: TocData | undefined): TocItem[] => {
-//   if (!tocData || !tocData.links) {
-//     return []
-//   }
-
-//   const allItems: TocItem[] = []
-  
-//   const traverse = (items: TocItem[]): void => {
-//     items.forEach(item => {
-//       allItems.push(item)
-//       if (item.children && item.children.length > 0) {
-//         traverse(item.children)
-//       }
-//     })
-//   }
-  
-//   traverse(tocData.links)
-//   return allItems
-// }
-
-// const showTOC = computed(() => {
-//   if(TOC.links.length >= 5) return true;
-//   return false;
-// })
-
-// if(post) {
-//   const articleSchema = blogSchema.generateBlogSchema(post.value as BlogPost)
-//   useHead({
-//     script: [
-//             {
-//         key: 'ld-json-article',
-//         type: 'application/ld+json',
-//         innerHTML: JSON.stringify(articleSchema),
-//         'data-schema': 'article' // 
-//       },
-//     ]
-//   })
-// }
-
-// const scrollToHeading = (id: string) => {
-//   const element = document.getElementById(id)
-//   if (element) {
-//     element.scrollIntoView({ behavior: 'smooth' })
-//   }
-// }
-
-// const { data: relatedPosts } = await useAsyncData(`blog-related-posts-${route.path}`, async () => {
-//   if (!post.value || !post.value.tags || post.value.tags.length === 0) {
-//     return []
-//   }
-  
-//   // Get all posts except current one
-//   const allPosts = await queryCollection('blog')
-//     .where('path', '<>', post.value.path)
-//     .where('draft', '<>', true)
-//     .select('path', 'id', 'date', 'title', 'thumbnail', 'thumbnailAlt', 'thumbnailWidth', 'thumbnailHeight', 'tags', 'summary', 'body', 'published', 'readTime')
-//     .all()
-  
-//   // Filter posts that have at least one matching tag
-//   const relatedPosts = allPosts
-//     .filter(blogPost => {
-//       if (!blogPost.tags || blogPost.tags.length === 0) return false
-//       return blogPost.tags.some(tag => post.value?.tags?.includes(tag))
-//     })
-//     .slice(0, 4)
-  
-//   return relatedPosts
-// })
-
-
-// onMounted(() => {  
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           selectedTOCItem.value = entry.target.id
-//         }
-//       })
-//     },
-//     {
-//       rootMargin: '-45px 0px -80% 0px', // Adjust based on your header height
-//       threshold: 0
-//     }
-//   )
-
-//   // Get all TOC items (flattened)
-//   const allTOCItems = getAllTocItems(TOC)
-
-//   // Observe all headings
-//   allTOCItems.forEach(item => {
-//     const element = document.getElementById(item.id)
-//     if (element) {
-//       observer.observe(element)
-//     }
-//   })
-
-//   // Cleanup
-//   onBeforeUnmount(() => {
-//     observer.disconnect()
-//   })
-// })
 </script>
 
 <style scoped>
