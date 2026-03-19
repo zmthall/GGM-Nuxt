@@ -150,24 +150,28 @@ export interface BlogPostPreviewApiRecord {
   id: string
   slug: string
   title: string
-  summary: string
   thumbnail: string
   thumbnail_alt: string
   thumbnail_width: number | null
   thumbnail_height: number | null
+  published: boolean
   publish_timestamp: string | null
+  draft: boolean
+  updated_at: string
 }
 
 export interface BlogPostPreview {
   id: string
   slug: string
   title: string
-  summary: string
   thumbnail: string
   thumbnailAlt: string
   thumbnailWidth: number | null
   thumbnailHeight: number | null
+  published: boolean
   publishTimestamp: string | null
+  draft: boolean
+  updatedAt: string
 }
 
 /**

@@ -6,7 +6,7 @@
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
                 <div>
                     <div class="flex flex-col gap-8 sm:flex-row">
-                        <NuxtLink :to="getBlogPostLink(latestPost.slug)" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <NuxtLink :to="blogPostsAPI.getBlogPostLink(latestPost.slug)" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
                             <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-1/2">
                                 <div class="h-1/2 relative">
                                     <div>
@@ -48,7 +48,7 @@
                             <h3 class="text-4xl font-bold text-brand-primary mb-4">Staff Picks</h3>
                             <ul class="space-y-4">
                                 <li v-for="(staffPick) in staffPicks" :key="staffPick.id" class="group">
-                                    <nuxt-link :to="getBlogPostLink(staffPick.slug)" class="flex flex-col">
+                                    <nuxt-link :to="blogPostsAPI.getBlogPostLink(staffPick.slug)" class="flex flex-col">
                                         <span class="text-lg font-bold font-headings sm:group-hover:scale-105 post-title">{{ staffPick.title }}</span>
                                         <span class="text-md group-hover:underline group-hover:text-brand-primary sm:group-hover:scale-105 staffpick-body ml-2">{{ staffPick.summary }}</span>
                                     </nuxt-link>
@@ -66,7 +66,7 @@
                 <div v-if="allPosts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <li v-for="post in allPosts" :key="post.id">
-                            <NuxtLink :to="getBlogPostLink(post.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <NuxtLink :to="blogPostsAPI.getBlogPostLink(post.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
                                         <div class="flex items-center gap-2 absolute z-1 top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
@@ -133,8 +133,14 @@ defineOptions({
 
 definePageMeta({
   title: 'Resources & Insights from Golden Gate Manor',
-  breadcrumbLabel: 'Blog Posts',
-  layout: 'blog-post'
+  layout: 'blog-post',
+  breadcrumbLabel: 'Blog',
+  breadcrumbOverrides: [
+    undefined,
+    { label: 'Community', to: '/news/community' },
+
+    undefined
+  ]
 })
 
 useHead({
@@ -182,10 +188,6 @@ const blogState = useState<{
 
 const topTags = (tags: string[]) => {
   return (tags ?? []).slice(0, 3)
-}
-
-const getBlogPostLink = (slug: string): string => {
-  return `/testing/${slug}`
 }
 
 // Fetch Latest Post

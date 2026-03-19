@@ -66,12 +66,14 @@ export const mapBlogPostPreviewRecord = (
     id: record.id,
     slug: record.slug,
     title: record.title,
-    summary: record.summary,
     thumbnail: record.thumbnail,
     thumbnailAlt: record.thumbnail_alt,
     thumbnailWidth: record.thumbnail_width,
     thumbnailHeight: record.thumbnail_height,
-    publishTimestamp: record.publish_timestamp
+    published: record.published,
+    publishTimestamp: record.publish_timestamp,
+    draft: record.draft,
+    updatedAt: record.updated_at
   }
 }
 

@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="rootEl" class="fixed bottom-4 left-4 z-50 sm:bottom-6 sm:left-6" @mouseenter="openMenu" @mouseleave="closeMenu" @focusout="handleFocusOut">
+  <div ref="rootEl" class="fixed bottom-4 left-4 z-14 sm:bottom-6 sm:left-6" @mouseenter="openMenu" @mouseleave="closeMenu" @focusout="handleFocusOut">
     <div class="group/lang-btn flex flex-col justify-end overflow-hidden rounded-[1.15rem] opacity-30 border border-[#b79b55] bg-white shadow-[0_14px_32px_rgba(15,31,92,0.18)] transition-[max-height] duration-250 ease-out hover:opacity-100" :style="containerStyle">
       <button v-for="item in availableLocales" :key="item.code" type="button" class="flex h-0 w-[125px] items-center gap-3 border-b border-[#e9dfc1] px-5 text-left text-[#10225c] transition duration-150 overflow-hidden hover:bg-[#f8f4ea] group-hover/lang-btn:h-10 focus:bg-[#f8f4ea] focus:outline-none" @click="switchLanguage(item.code)">
         <BaseIcon :name="getLocaleDisplay(item.code).icon" class="h-7 w-7 shrink-0" />

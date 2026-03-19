@@ -9,7 +9,7 @@
       aria-label="Open table of contents"
       :aria-expanded="drawerOpen ? 'true' : 'false'"
       aria-controls="blog-post-toc-drawer"
-      @click="openDrawer"
+      @click="toggleDrawer"
     >
       <BaseIcon name="mdi:format-list-bulleted" color="text-inherit" />
     </button>
@@ -128,7 +128,7 @@ const props = withDefaults(defineProps<{
   maxDepth?: number
 }>(), {
   scrollOffset: 120,
-  maxDepth: 3
+  maxDepth: 4
 })
 
 const drawerOpen = ref(false)
@@ -212,8 +212,8 @@ const getIndicatorColorClass = (link: FlatTocLink): string => {
   return 'text-white/35 group-hover:text-brand-secondary'
 }
 
-const openDrawer = (): void => {
-  drawerOpen.value = true
+const toggleDrawer = (): void => {
+  drawerOpen.value = !drawerOpen.value
 }
 
 const closeDrawer = (): void => {
