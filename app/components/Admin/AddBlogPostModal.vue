@@ -253,24 +253,24 @@ const readingStats = computed(() => {
   return { words, minutes }
 })
 
-const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
-  const idToken = await authStore.getIdToken()
+// const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
+//   const idToken = await authStore.getIdToken()
 
-  if (!imageData.value?.file) throw new Error('No image selected')
+//   if (!imageData.value?.file) throw new Error('No image selected')
 
-  const form = new FormData()
-  form.append('file', imageData.value.file)
-  form.append('alt', imageData.value.alt ?? '')
-  form.append('slug', post.value?.slug ?? 'post')
+//   const form = new FormData()
+//   form.append('file', imageData.value.file)
+//   form.append('alt', imageData.value.alt ?? '')
+//   form.append('slug', post.value?.slug ?? 'post')
 
-  const res = await $fetch<{ ok: true; url: string; alt: string }>('/api/admin/blog/image', {
-    method: 'POST',
-    body: form,
-    headers: { 'Authorization': `Bearer ${idToken}` }
-  })
+//   const res = await $fetch<{ ok: true; url: string; alt: string }>('/api/admin/blog/image', {
+//     method: 'POST',
+//     body: form,
+//     headers: { 'Authorization': `Bearer ${idToken}` }
+//   })
 
-  return { url: res.url, alt: res.alt }
-}
+//   return { url: res.url, alt: res.alt }
+// }
 
 const isAuthor = computed(() => {
   return !!meta.value && author.value === meta.value.author
