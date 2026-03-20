@@ -12,8 +12,6 @@ export const useBlogPostsApi = () => {
       { params: { ...options } }
     )
 
-    console.log('getAllPosts response:', response)
-
     return {
       data: response.data.map(mappers.mapBlogPostPreviewRecord),
       pagination: response.pagination
@@ -25,6 +23,14 @@ export const useBlogPostsApi = () => {
   const getPublishedPostBySlug = async (slug: string): Promise<BlogPostFull> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
       `${baseURL}/api/blog-posts/slug/${slug}/published`
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
+  }
+
+  const getPostById = async (id: string): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts/id/${id}`
     )
 
     return mappers.mapBlogPostFullRecord(response.data)
@@ -75,11 +81,11 @@ export const useBlogPostsApi = () => {
     }
 
   const getBlogPostLink = (slug: string): string => {
-    return `/news/blog/post/${slug}`
+    return `/testing/post/${slug}`
   }
 
   const getBlogPostLinkAdmin = (slug: string): string => {
-    return `/admin/blog/post/${slug}`
+    return `/admin/testing/post/${slug}`
   }
 
   return {
@@ -94,5 +100,6 @@ export const useBlogPostsApi = () => {
     // Admin API Methods (not exposed to public facing components)
     getAllPosts,
     getBlogPostLinkAdmin,
+    getPostById
   }
 }

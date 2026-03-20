@@ -20,7 +20,7 @@ export interface ApiPaginatedSuccessResponse<T> {
 
 export interface PaginatedResult<T> {
   data: T[]
-  pagination: PaginationMeta
+  pagination: PaginationMeta,
 }
 
 export type BlogPostOrderField =

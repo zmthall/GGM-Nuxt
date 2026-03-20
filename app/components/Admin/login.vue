@@ -43,6 +43,16 @@ const email = ref('');
 const password = ref('');
 const authStore = useAuthStore();
 
+const breadcrumbVisibilityOverride = useBreadcrumbVisibility()
+
+onMounted(() => {
+  breadcrumbVisibilityOverride.value = false
+})
+
+onBeforeUnmount(() => {
+  breadcrumbVisibilityOverride.value = null
+})
+
 const loginUser = async () => {
     try {
         await firebaseAuth?.loginUser(email.value, password.value)

@@ -122,7 +122,7 @@
 <script setup lang="ts">
 import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
 import { useDateFormat } from '~/composables/dates/dateFormat'
-import type { BlogPostCard, BlogPostTiny, PaginationMeta } from '~/models/blog'
+import type { BlogPostCard, BlogPostTiny, PaginationMeta, PaginationOptions } from '~/models/blog'
 
 
 const authStore = useAuthStore()
@@ -192,25 +192,20 @@ const { data: latestPost } = await useAsyncData<BlogPostCard | null>('blog-lates
 
 const { data: staffPicks } = await useAsyncData<BlogPostTiny[] | null>('blog-staff-picks', () => blogPostsAPI.getStaffPicks())
 
-// Fetch All Blog Posts
+// Fetch All published Blog Posts
 
 const pageSize = 8
 const page = ref(1)
+const postOptions = computed((): PaginationOptions => ({
+  page: page.value,
+  pageSize,
+  orderField: 'publish_timestamp',
+  orderDirection: 'desc'
+}))
 
 const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
   'blog-initial-posts',
-  () => blogPostsAPI.getPublishedPosts({
-      page: page.value,
-      pageSize,
-      orderField: 'publish_timestamp',
-      orderDirection: 'desc'
-    }),
-    {
-        default: () => ({
-            data: [],
-            pagination: defaultPagination
-        })
-    }
+  () => blogPostsAPI.getPublishedPosts(postOptions.value)
 )
 
 if(!blogState.value.initialized && initialPostsReturn.value) {

@@ -5,9 +5,9 @@
         <BaseLayoutCard :centered="false">
           <div v-if="!isLoadingPosts">
             <div v-if="allPosts.length > 0" class="mb-4 flex justify-between">
-              <!-- <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
+              <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
                 <span>Add New Post</span><BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5" />
-              </BaseUiAction> -->
+              </BaseUiAction>
 
               <div class="flex gap-2">
                 <div>
@@ -16,9 +16,9 @@
                   <AdminContentCalendarToolModal v-if="openContentCalendar" v-model="openContentCalendar" :csv="calendarCsv" @close="openContentCalendar = false" />
                 </div>
 
-                <!-- <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
+                <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
                   <BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5" /><span>Website Blog</span>
-                </BaseUiAction> -->
+                </BaseUiAction>
               </div>
             </div>
 
@@ -26,9 +26,22 @@
 
             <ul v-if="allPosts.length > 0" class="overflow-x-auto flex flex-col">
               <li v-for="post in allPosts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
-                <button class="p-4 flex justify-between gap-10 w-full min-w-[675px]" @click="console.log(`openEditPostModal(post.slug))`)">
+                <div 
+                      class="p-4 flex justify-between gap-10 w-full min-w-[675px] cursor-pointer" 
+                      type="button"
+                      aria-label="Open blog post editor"
+                      @click="console.log('openEditPost(post.slug)')"
+                >
                   <div class="flex gap-2 min-w-[675px] max-w-[675px]">
-                    <NuxtImg format="webp,avif" :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" :alt="post.thumbnailAlt || ''" :title="post.thumbnailAlt || ''" :width="post.thumbnailWidth || '128'" :height="post.thumbnailHeight || '80'" class="w-32 h-20 object-cover" />
+                    <BlogPostImage 
+                      format="webp,avif" 
+                      :src="post.thumbnail" 
+                      :alt="post.thumbnailAlt || ''" 
+                      :title="post.thumbnailAlt || ''" 
+                      :width="post.thumbnailWidth ?? undefined" 
+                      :height="post.thumbnailHeight ?? undefined"
+                      loading="lazy"
+                    />
                     <div class="flex flex-col items-start justify-center">
                       <p class="text-xs">Last Updated: {{ formatDates.formatShortDateNoLeadingZero(post.updatedAt) }}</p>
                       <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
@@ -38,10 +51,10 @@
                     </div>
                   </div>
 
-                  <!-- <div class="flex self-end gap-2 h-full">
-                    <button title="Edit" class="group flex" @click.stop="openEditPostModal(getSlug(post.path))"><BaseIcon name="material-symbols:edit-square-outline-rounded" hover-color="group-hover:text-brand-link-hover" /></button>
-                    <NuxtLink title="Preview" class="group flex" :to="`/admin${post.path}`" @click.stop><BaseIcon name="material-symbols:preview" hover-color="group-hover:text-brand-link-hover" /></NuxtLink>
-                    <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(getSlug(post.path))"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
+                  <div class="flex self-end gap-2 h-full">
+                    <button title="Edit" class="group flex" @click.stop="openEditPostModal(post.id)"><BaseIcon name="material-symbols:edit-square-outline-rounded" hover-color="group-hover:text-brand-link-hover" /></button>
+                    <NuxtLink title="Preview" class="group flex" :to="blogPostsAPI.getBlogPostLinkAdmin(post.slug)" @click.stop><BaseIcon name="material-symbols:preview" hover-color="group-hover:text-brand-link-hover" /></NuxtLink>
+                    <button title="Delete" class="group flex" @click.stop="console.log('showDeleteConfirmation(getSlug(post.path))')"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
                   </div>
 
                   <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2']">
@@ -52,15 +65,15 @@
                         <time :datetime="post.publishTimestamp ?? undefined" class="w-max">{{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}</time>
                       </div>
                     </div>
-                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="showPublishModal(getSlug(post.path))">Publish</BaseUiAction>
-                  </div> -->
-                </button>
+                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="console.log('showPublishModal(getSlug(post.path))')">Publish</BaseUiAction>
+                  </div>
+                </div>
               </li>
             </ul>
 
-            <!-- <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
-              <p>There are no blog posts. <button class="link" @click="openAddPostModal">Add a blog post</button> to get started.</p>
-            </div> -->
+            <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+              <p>There are no blog posts. <button class="link" @click="console.log('openAddPostModal')">Add a blog post</button> to get started.</p>
+            </div>
           </div>
 
           <div v-else class="animate-pulse">
@@ -68,13 +81,13 @@
           </div>
         </BaseLayoutCard>
 
-        <!-- <div v-if="hasMorePages" class="flex justify-center mt-8">
+        <div v-if="postPagination.hasNextPage" class="flex justify-center mt-8">
           <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
-        </div> -->
+        </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
-    <!-- <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:slug="blogPostModalSlug" @close="closePostModal" @create-post="refreshPosts" @edited-post="refreshPosts" /> -->
+    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="refreshPosts" @edited-post="refreshPosts" />
 
     <!-- <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
       <p>Are you sure you want to delete this blog post?</p>
@@ -122,6 +135,7 @@ import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI.js';
 import { useDateFormat } from '../../../composables/dates/dateFormat.js';
 import type { BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog.js';
 
+definePageMeta({ layout: 'admin' })
 
 const authStore = useAuthStore();
 const blogPostsAPI = useBlogPostsApi();
@@ -165,18 +179,10 @@ const postOptions = computed((): PaginationOptions => ({
   orderDirection: 'desc'
 }))
 
-const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
-  'blog-initial-posts',
-  () => blogPostsAPI.getAllPosts(postOptions.value),
-    {
-        default: () => ({
-            data: [],
-            pagination: defaultPagination
-        })
-    }
+const { data: initialPostsReturn, pending: isLoadingPosts, refresh: refreshPosts } = await useAsyncData(
+  'blog-initial-posts-admin',
+  () => blogPostsAPI.getAllPosts(postOptions.value)
 )
-
-console.log('initialPostsReturn', initialPostsReturn.value)
 
 if(!blogState.value.initialized && initialPostsReturn.value) {
   blogState.value.posts = initialPostsReturn.value.data ?? []
@@ -185,7 +191,37 @@ if(!blogState.value.initialized && initialPostsReturn.value) {
 }
 
 const allPosts = computed(() => blogState.value.posts)
-// const postPagination = computed(() => blogState.value.pagination)
+const postPagination = computed(() => blogState.value.pagination)
+
+// Load more posts for pagination
+
+const loadMore = async () => {
+    if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
+    if(!postPagination.value.hasNextPage) return; // No more pages to load
+
+    const nextPage = blogState.value.pagination.currentPage + 1;
+
+    const response = await blogPostsAPI.getAllPosts({
+        page: nextPage,
+        pageSize,
+        orderField: 'publish_timestamp',
+        orderDirection: 'desc'
+    })
+
+    const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
+    const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
+
+    blogState.value.posts = [...blogState.value.posts, ...newPosts]
+    blogState.value.pagination = response.pagination ?? { ...defaultPagination }
+}
+
+// Blog Post Modals and Actions
+const blogPostModalOpen = ref(false)
+const blogPostModalId = ref<string | null>(null)
+
+const openAddPostModal = () => { blogPostModalOpen.value = true }
+const openEditPostModal = (id: string) => { blogPostModalId.value = id; blogPostModalOpen.value = true }
+const closePostModal = () => { blogPostModalId.value = null }
 
 </script>
 

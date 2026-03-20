@@ -13,8 +13,15 @@ type BreadcrumbOverrideItem = {
 }
 
 const route = useRoute()
+const breadcrumbVisibilityOverride = useBreadcrumbVisibility()
 
-const hideBreadcrumb = computed(() => route.meta.breadcrumb === false)
+const hideBreadcrumb = computed(() => {
+  if (breadcrumbVisibilityOverride.value !== null) {
+    return breadcrumbVisibilityOverride.value === false
+  }
+
+  return route.meta.breadcrumb === false
+})
 
 const breadcrumbOverrides = computed(() => {
   const overrides = route.meta.breadcrumbOverrides
