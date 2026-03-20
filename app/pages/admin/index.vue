@@ -182,10 +182,10 @@
 </template>
 
 <script setup lang='ts'>
-import type { ContactFormData } from '../../models/admin/ContactForm.js';
-import type { RideRequestFormData } from '../../models/admin/RideRequestForm.js';
-import type { ApplicationFormData } from '../../models/Application.js';
-import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
+import type { ContactFormData } from '../../models/admin/ContactForm';
+import type { RideRequestFormData } from '../../models/admin/RideRequestForm';
+import type { ApplicationFormData } from '../../models/Application';
+import type { CommunityEventsResponse, EventsData } from '../../models/EventsData';
 import type { WatchStopHandle } from 'vue'
 
 const departmentLabels = [

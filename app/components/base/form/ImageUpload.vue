@@ -60,7 +60,7 @@
 <script setup lang='ts'>
 import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
-import type { ImageDataFile } from '../../../models/ImagesData.js'
+import type { ImageDataFile } from '../../../models/ImagesData'
 
 defineOptions({
   name: 'BaseImageUploadCropper'

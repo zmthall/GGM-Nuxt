@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { BaseInteractiveCarousel } from '../../../../.nuxt/components.js';
+import type { BaseInteractiveCarousel } from '../../../../.nuxt/components';
 
 const BACKGROUND_IMAGE = "https://firebasestorage.googleapis.com/v0/b/goldengatemanorinc.firebasestorage.app/o/marketing-edits%2Fblack-white-bridge.jpg?alt=media&token=4427e617-b3bb-4db8-81a0-d15300e6ec24"
 

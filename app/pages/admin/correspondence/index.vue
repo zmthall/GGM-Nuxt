@@ -149,9 +149,9 @@
 </template>
 
 <script setup lang='ts'>
-import type { ContactFormData } from '../../../models/admin/ContactForm.js';
+import type { ContactFormData } from '../../../models/admin/ContactForm';
 import type { RideRequestFormData } from '../../../models/admin/RideRequestForm';
-import type { ApplicationFormData } from '../../../models/Application.js';
+import type { ApplicationFormData } from '../../../models/Application';
 
 const departmentLabels = [
   'All Departments',

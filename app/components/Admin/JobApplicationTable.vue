@@ -208,7 +208,7 @@
 
 <script lang="ts" setup>
 import type { Pagination } from '~/models/Pagination'
-import type { ApplicationFormData, ApplicationRequestStatus } from '../../models/Application.js';
+import type { ApplicationFormData, ApplicationRequestStatus } from '../../models/Application';
 
 const text = useText()
 

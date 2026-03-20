@@ -131,9 +131,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI.js';
-import { useDateFormat } from '../../../composables/dates/dateFormat.js';
-import type { BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog.js';
+import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI';
+import { useDateFormat } from '../../../composables/dates/dateFormat';
+import type { BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog';
 
 definePageMeta({ layout: 'admin' })
 

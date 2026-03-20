@@ -105,7 +105,7 @@ import type {
   CommunityImagesResponse,
   FetchImages,
   ImageDataFile
-} from '../../../models/ImagesData.js'
+} from '../../../models/ImagesData'
 
 const authStore = useAuthStore()
 

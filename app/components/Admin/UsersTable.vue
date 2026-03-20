@@ -159,7 +159,7 @@
 <script setup lang="ts">
 import type { UserData } from '~/models/admin/user'
 import type { Pagination } from '~/models/Pagination'
-import { useDateFormat } from '../../composables/dates/dateFormat.js'
+import { useDateFormat } from '../../composables/dates/dateFormat'
 
 type UserRole = 'admin' | 'user' | 'correspondence'
 

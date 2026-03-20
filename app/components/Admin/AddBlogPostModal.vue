@@ -123,10 +123,10 @@
 
 <script lang="ts" setup>
 import type { BlogPostFull } from '~/models/blog'
-import type { ImageDataFile } from '../../models/ImagesData.js'
-import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI.js'
-import type { FetchUser } from '~/models/admin/user.js'
-import { useAdminMarkdownPreviewScrollSync, type AdminMarkdownEditorExpose, type AdminMdcPreviewExpose } from '../../composables/blog/AdminMarkdownPreviewScrollSync.js'
+import type { ImageDataFile } from '../../models/ImagesData'
+import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
+import type { FetchUser } from '~/models/admin/user'
+import { useAdminMarkdownPreviewScrollSync, type AdminMarkdownEditorExpose, type AdminMdcPreviewExpose } from '../../composables/blog/adminMarkdownPreviewScrollSync'
 
 const getUserDisplayName = async (): Promise<string> => {
   try {

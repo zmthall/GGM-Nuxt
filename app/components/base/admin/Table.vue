@@ -91,7 +91,7 @@
 
 <script setup lang="ts" generic="T extends Record<string, any>">
 import type { Pagination } from '~/models/Pagination'
-import type { Column, SortDir } from '../../../models/admin/tables.js'
+import type { Column, SortDir } from '../../../models/admin/tables'
 
 const props = withDefaults(defineProps<{
   rows: T[]

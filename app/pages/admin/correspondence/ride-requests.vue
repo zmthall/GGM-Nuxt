@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { RideRequestFormData } from '../../../models/admin/RideRequestForm.js';
+import type { RideRequestFormData } from '../../../models/admin/RideRequestForm';
 
 const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)

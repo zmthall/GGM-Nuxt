@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BaseInteractiveCarousel } from '../../../.nuxt/components.js';
+import type { BaseInteractiveCarousel } from '../../../.nuxt/components';
 import rawHouses from '@/data/houses.json'
 
 type Slide = { url: string; w?: number; h?: number; alt?: string }

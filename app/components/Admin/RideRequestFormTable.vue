@@ -359,9 +359,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useDateFormat } from '../../composables/dates/dateFormat.js';
-import type { RideRequestFormData, RideRequestStatus } from '../../models/admin/RideRequestForm.js';
-import type { Pagination } from '../../models/Pagination.js';
+import { useDateFormat } from '../../composables/dates/dateFormat';
+import type { RideRequestFormData, RideRequestStatus } from '../../models/admin/RideRequestForm';
+import type { Pagination } from '../../models/Pagination';
 
 const dateFormat = useDateFormat();
 const text = useText();

@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { JobDescription } from '../../models/JobDescription.js';
+import type { JobDescription } from '../../models/JobDescription';
 
 defineProps<{
   modalContent: JobDescription | null;

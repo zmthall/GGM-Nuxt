@@ -246,7 +246,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { ImageData } from '../models/ImagesData.js';
+import type { ImageData } from '../models/ImagesData';
 
 // const news = undefined;
 // const blogs = undefined;

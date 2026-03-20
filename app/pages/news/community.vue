@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { CommunityEventsResponse, EventsData } from '../../models/EventsData.js';
+import type { CommunityEventsResponse, EventsData } from '../../models/EventsData';
 import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData';
 
 definePageMeta({

@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { FileWrapper } from '../../../models/BaseComponents.js';
+import type { FileWrapper } from '../../../models/BaseComponents';
 import { nanoid } from 'nanoid';
 
 defineOptions({

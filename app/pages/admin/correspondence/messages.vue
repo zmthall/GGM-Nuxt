@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { ContactFormData } from '../../../models/admin/ContactForm.js';
+import type { ContactFormData } from '../../../models/admin/ContactForm';
 
 const nextContactPage = () => fetchContactMessages(false, 10, contactPage.value + 1, false)
 const prevContactPage = () => fetchContactMessages(false, 10, Math.max(1, contactPage.value - 1), false)

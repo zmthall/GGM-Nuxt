@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { NavigationItems } from '../../../models/AsideNav.js';
+import type { NavigationItems } from '../../../models/AsideNav';
 
 defineProps<{
   navigationItems: NavigationItems;

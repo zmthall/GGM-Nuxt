@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData.js';
+import type { CommunityImagesResponse, FetchImages } from '../../models/ImagesData';
 
 type Slide = { url: string; w?: number; h?: number; alt?: string }
 

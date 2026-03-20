@@ -88,7 +88,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CommunityEventsResponse, EventsData } from '../../../models/EventsData.js';
+import type { CommunityEventsResponse, EventsData } from '../../../models/EventsData';
 
 const authStore = useAuthStore();
 definePageMeta({

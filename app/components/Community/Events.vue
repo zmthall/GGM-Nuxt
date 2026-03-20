@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { EventsData } from '../../models/EventsData.js';
+import type { EventsData } from '../../models/EventsData';
 
 const expandedStates = ref<boolean[]>([]);
 

@@ -218,7 +218,7 @@
 
 <script setup lang='ts'>
 import { BaseLayoutPageCTA, BaseLayoutPageSection, BaseUiAction } from '#components'
-import type { JobDescription, JobDescriptionFetch } from '../../../models/JobDescription.js'
+import type { JobDescription, JobDescriptionFetch } from '../../../models/JobDescription'
 
 const modalOpen = ref<boolean>(false)
 const modalContent = ref<JobDescription | null>(null)

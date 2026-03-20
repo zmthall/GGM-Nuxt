@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { AddEventData } from '../../models/EventsData.js';
+import type { AddEventData } from '../../models/EventsData';
 
 const modalOpen = defineModel<boolean>();
 const authStore = useAuthStore();

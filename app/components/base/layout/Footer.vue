@@ -372,7 +372,7 @@
 <script setup lang='ts'>
 import raw from '@/data/footer.json'
 import socialHandles from '@/data/socialHandles.json'
-import type { FooterJson } from '../../../../types/footer.js';
+import type { FooterJson } from '../../../../types/footer';
 
 const activeSocialHandels = socialHandles.filter(s => s.enabled !== false);
 

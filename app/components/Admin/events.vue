@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { EventsData, EventUpdateResponse } from '../../models/EventsData.js';
+import type { EventsData, EventUpdateResponse } from '../../models/EventsData';
 
 const props = withDefaults(defineProps<{
   events: EventsData;

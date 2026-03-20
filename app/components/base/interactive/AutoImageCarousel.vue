@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ImageData } from '../../../models/ImagesData.js';
+import type { ImageData } from '../../../models/ImagesData';
 
 const isPlaying = ref<boolean>(false);
 

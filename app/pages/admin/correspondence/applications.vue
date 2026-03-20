@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ApplicationFormData } from '../../../models/Application.js'
+import type { ApplicationFormData } from '../../../models/Application'
 
 const authStore = useAuthStore()
 

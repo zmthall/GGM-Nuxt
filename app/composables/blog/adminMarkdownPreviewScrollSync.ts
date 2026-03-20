@@ -1,5 +1,3 @@
-import { nextTick, onBeforeUnmount, ref, watch, type Ref } from 'vue'
-
 export interface AdminMarkdownEditorExpose {
   getScrollElement: () => HTMLElement | null
 }
