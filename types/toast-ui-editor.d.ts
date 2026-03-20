@@ -24,7 +24,7 @@ declare module '@toast-ui/editor' {
   export default class Editor {
     constructor(options: EditorOptions)
     getMarkdown(): string
-    setMarkdown(markdown: string): void
+    setMarkdown(markdown: string, updatePreview?: boolean): void
     getHTML(): string
     insertText(text: string): void
     on(event: 'change' | 'focus' | 'blur', handler: () => void): void

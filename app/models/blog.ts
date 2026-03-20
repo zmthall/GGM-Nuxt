@@ -3,6 +3,11 @@ export interface ApiSuccessResponse<T> {
   data: T
 }
 
+export interface ApiDeletedSuccessResponse {
+  success: boolean
+  deleted: boolean
+}
+
 export interface PaginationMeta {
   currentPage: number
   pageSize: number
@@ -189,6 +194,17 @@ export interface BlogPostSeoApiRecord {
   publish_timestamp: string | null
 }
 
+export interface BlogPostUpdateRecord {
+  id: string
+  created_at: string
+  slug: string
+  canonical_url: string
+  published: boolean
+  publish_timestamp: string | null
+  draft: boolean
+  updated_at: string
+}
+
 export interface BlogPostSeo {
   id: string
   slug: string
@@ -199,6 +215,17 @@ export interface BlogPostSeo {
   seoImage: string
   canonicalUrl: string
   publishTimestamp: string | null
+}
+
+export interface BlogPostUpdate {
+  id: string
+  createdAt: string
+  slug: string
+  canonicalUrl: string
+  published: boolean
+  publishTimestamp: string | null
+  draft: boolean
+  updatedAt: string
 }
 
 /**

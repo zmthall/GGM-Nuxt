@@ -30,7 +30,7 @@
                       class="p-4 flex justify-between gap-10 w-full min-w-[675px] cursor-pointer" 
                       type="button"
                       aria-label="Open blog post editor"
-                      @click="console.log('openEditPost(post.slug)')"
+                      @click="openEditPostModal(post.id)"
                 >
                   <div class="flex gap-2 min-w-[675px] max-w-[675px]">
                     <BlogPostImage 
@@ -54,18 +54,18 @@
                   <div class="flex self-end gap-2 h-full">
                     <button title="Edit" class="group flex" @click.stop="openEditPostModal(post.id)"><BaseIcon name="material-symbols:edit-square-outline-rounded" hover-color="group-hover:text-brand-link-hover" /></button>
                     <NuxtLink title="Preview" class="group flex" :to="blogPostsAPI.getBlogPostLinkAdmin(post.slug)" @click.stop><BaseIcon name="material-symbols:preview" hover-color="group-hover:text-brand-link-hover" /></NuxtLink>
-                    <button title="Delete" class="group flex" @click.stop="console.log('showDeleteConfirmation(getSlug(post.path))')"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
+                    <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(post.id)"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
                   </div>
 
-                  <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2']">
-                    <div class="space-y-2">
-                      <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800">Draft</span>
-                      <div v-if="post.published" class="flex flex-col items-center">
+                  <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2 h-full']">
+                    <div class="space-y-2 flex items-center">
+                      <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800 text-xs">Draft</span>
+                      <div v-if="post.published && !post.draft" class="flex flex-col items-center">
                         <span class="bg-green-300 px-2 py-1 rounded-full text-green-800">Published</span>
                         <time :datetime="post.publishTimestamp ?? undefined" class="w-max">{{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}</time>
                       </div>
                     </div>
-                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="console.log('showPublishModal(getSlug(post.path))')">Publish</BaseUiAction>
+                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="showPublishModal(post.id)">Publish</BaseUiAction>
                   </div>
                 </div>
               </li>
@@ -89,15 +89,15 @@
 
     <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="refreshPosts" @edited-post="refreshPosts" />
 
-    <!-- <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
+    <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
       <p>Are you sure you want to delete this blog post?</p>
       <div class="flex justify-end mt-2 gap-2">
         <BaseUiAction type="button" class="py-1 px-2" @click="confirmDelete">Yes</BaseUiAction>
         <BaseUiAction type="button" class="py-1 px-2" @click="cancelDelete">No</BaseUiAction>
       </div>
-    </BaseInteractiveModal> -->
+    </BaseInteractiveModal>
 
-    <!-- <BaseInteractiveModal v-model="blogPostPublishModalOpen" :padding="3" small-modal @close="cancelPublish">
+    <BaseInteractiveModal v-model="blogPostPublishModalOpen" :padding="3" small-modal @close="closePublish">
       <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Publish Date Information</h2>
       <div class="h-full">
         <div class="h-full flex flex-col justify-between">
@@ -108,12 +108,12 @@
             </div>
           </div>
           <div class="flex justify-end gap-2 w-full">
-            <BaseUiAction type="button" class="py-1 px-2" @click="cancelPublish">Cancel</BaseUiAction>
+            <BaseUiAction type="button" class="py-1 px-2" @click="closePublish">Cancel</BaseUiAction>
             <BaseUiAction type="button" class="py-1 px-2" @click="publishPost">Publish Post</BaseUiAction>
           </div>
         </div>
       </div>
-    </BaseInteractiveModal> -->
+    </BaseInteractiveModal>
   </div>
   <div v-else-if="authStore.role === 'correspondence'">
     <BaseLayoutPageSection bg="transparent" margin="top">
@@ -175,7 +175,7 @@ const page = ref(1)
 const postOptions = computed((): PaginationOptions => ({
   page: page.value,
   pageSize,
-  orderField: 'created_at',
+  orderField: 'updated_at',
   orderDirection: 'desc'
 }))
 
@@ -222,6 +222,71 @@ const blogPostModalId = ref<string | null>(null)
 const openAddPostModal = () => { blogPostModalOpen.value = true }
 const openEditPostModal = (id: string) => { blogPostModalId.value = id; blogPostModalOpen.value = true }
 const closePostModal = () => { blogPostModalId.value = null }
+
+// Delete Modal
+const deleteConfirmationModal = ref(false)
+
+const showDeleteConfirmation = (id: string) => {
+  blogPostModalId.value = id
+  deleteConfirmationModal.value = true
+}
+
+const confirmDelete = async () => {
+  if(!blogPostModalId.value) return
+
+  const deleteId = blogPostModalId.value
+  const deleteReturn = await blogPostsAPI.deletePost(deleteId)
+
+  if (deleteReturn.deleted) {
+    blogState.value.posts = blogState.value.posts.filter(post => post.id !== deleteId)
+    deleteConfirmationModal.value = false
+    blogPostModalId.value = null
+  }
+}
+
+const cancelDelete = () => {
+  deleteConfirmationModal.value = false
+  blogPostModalId.value = null
+}
+
+// Publish Modal
+const blogPostPublishModalOpen = ref(false)
+const publishToggle = ref(true)
+const publishDate = ref<string>('')
+
+const showPublishModal = (id: string) => {
+  blogPostModalId.value = id
+  blogPostPublishModalOpen.value = true
+}
+
+const publishPost = async () => {
+  if (!blogPostModalId.value) return
+
+  try {
+    const publishId = blogPostModalId.value
+    const publishDateValue = publishToggle.value ? new Date().toISOString() : publishDate.value
+
+    const publishReturn = await blogPostsAPI.publishPost(publishId, publishDateValue)
+
+    if (publishReturn) {
+      blogState.value.posts = blogState.value.posts
+        .map(post => post.id === publishId ? { ...post, ...publishReturn } : post)
+        .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+
+      closePublish()
+    }
+  } catch (error) {
+    console.error('Failed to publish post:', error)
+  }
+}
+
+const closePublish = () => {
+  console.log('close publish modal')
+  blogPostPublishModalOpen.value = false
+  blogPostModalId.value = null
+  publishToggle.value = true
+  publishDate.value = ''
+}
 
 </script>
 

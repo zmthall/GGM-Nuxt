@@ -1,4 +1,4 @@
-import type { ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, PaginatedResult, PaginationOptions } from '~/models/blog'
+import type { ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions } from '~/models/blog'
 import mappers from '~/utils/blogPostMappers'
 
 export const useBlogPostsApi = () => {
@@ -16,6 +16,36 @@ export const useBlogPostsApi = () => {
       data: response.data.map(mappers.mapBlogPostPreviewRecord),
       pagination: response.pagination
     }
+  }
+
+  const createPost = () => {
+    return
+  }
+
+  const updatePost = () => {
+    return
+  }
+
+  const unpublishPost = () => {
+      
+  }
+
+  const publishPost = async (id: string, publishTimestamp: string): Promise<BlogPostUpdate> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostUpdateRecord>>(`${baseURL}/api/blog-posts/publish/${id}`, {
+      method: 'PATCH',
+      body: { publishTimestamp }
+    })
+
+    return mapBlogPostUpdateRecord(response.data)
+  }
+
+  const deletePost = async (id: string): Promise<ApiDeletedSuccessResponse> => {
+    const response = await $fetch<ApiDeletedSuccessResponse>(
+      `${baseURL}/api/blog-posts/${id}`,
+      { method: 'DELETE' }
+    )
+
+    return response
   }
 
   // Public API methods for fetching public facing blog posts and related data
@@ -100,6 +130,11 @@ export const useBlogPostsApi = () => {
     // Admin API Methods (not exposed to public facing components)
     getAllPosts,
     getBlogPostLinkAdmin,
-    getPostById
+    getPostById,
+    createPost,
+    updatePost,
+    publishPost,
+    unpublishPost,
+    deletePost
   }
 }

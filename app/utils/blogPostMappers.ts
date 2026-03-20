@@ -10,7 +10,9 @@ import type {
   BlogPostSlug,
   BlogPostSlugApiRecord,
   BlogPostTiny,
-  BlogPostTinyApiRecord
+  BlogPostTinyApiRecord,
+  BlogPostUpdate,
+  BlogPostUpdateRecord
 } from '~/models/blog'
 
 export const mapBlogPostFullRecord = (record: BlogPostFullApiRecord): BlogPostFull => {
@@ -91,6 +93,19 @@ export const mapBlogPostSeoRecord = (record: BlogPostSeoApiRecord): BlogPostSeo 
   }
 }
 
+export const mapBlogPostUpdateRecord = (record: BlogPostUpdateRecord): BlogPostUpdate => {
+  return {
+    id: record.id,
+    createdAt: record.created_at,
+    slug: record.slug,
+    canonicalUrl: record.canonical_url,
+    published: record.published,
+    publishTimestamp: record.publish_timestamp,
+    draft: record.draft,
+    updatedAt: record.updated_at
+  }
+}
+
 export const mapBlogPostTinyRecord = (record: BlogPostTinyApiRecord): BlogPostTiny => {
   return {
     id: record.id,
@@ -124,6 +139,10 @@ export const mapBlogPostSeoRecords = (records: BlogPostSeoApiRecord[]): BlogPost
   return records.map(mapBlogPostSeoRecord)
 }
 
+export const mapBlogUpdateRecords = (records: BlogPostUpdateRecord[]): BlogPostUpdate[] => {
+  return records.map(mapBlogPostUpdateRecord)
+}
+
 export const mapBlogPostTinyRecords = (records: BlogPostTinyApiRecord[]): BlogPostTiny[] => {
   return records.map(mapBlogPostTinyRecord)
 }
@@ -137,11 +156,13 @@ export default {
   mapBlogPostCardRecord,
   mapBlogPostPreviewRecord,
   mapBlogPostSeoRecord,
+  mapBlogPostUpdateRecord,
   mapBlogPostTinyRecord,
   mapBlogPostSlugRecord,
   mapBlogPostFullRecords,
   mapBlogPostCardRecords,
   mapBlogPostPreviewRecords,
+  mapBlogUpdateRecords,
   mapBlogPostSeoRecords,
   mapBlogPostTinyRecords,
   mapBlogPostSlugRecords
