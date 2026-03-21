@@ -138,7 +138,6 @@ definePageMeta({
   breadcrumbOverrides: [
     undefined,
     { label: 'Community', to: '/news/community' },
-
     undefined
   ]
 })

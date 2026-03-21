@@ -255,3 +255,9 @@ export interface BlogPostSlugApiRecord {
 export interface BlogPostSlug {
   slug: string
 }
+
+export interface UploadImageRecord {
+  path: string
+  width: number | null
+  height: number | null
+}

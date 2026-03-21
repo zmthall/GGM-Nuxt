@@ -1,4 +1,4 @@
-import type { ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions } from '~/models/blog'
+import type { ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions, UploadImageRecord } from '~/models/blog'
 import mappers from '~/utils/blogPostMappers'
 
 export const useBlogPostsApi = () => {
@@ -18,8 +18,16 @@ export const useBlogPostsApi = () => {
     }
   }
 
-  const createPost = () => {
-    return
+  const createPost = async (post: BlogPostFull): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts`,
+      {
+        method: 'POST',
+        body: post
+      }
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
   }
 
   const updatePost = () => {
@@ -36,7 +44,7 @@ export const useBlogPostsApi = () => {
       body: { publishTimestamp }
     })
 
-    return mapBlogPostUpdateRecord(response.data)
+    return mappers.mapBlogPostUpdateRecord(response.data)
   }
 
   const deletePost = async (id: string): Promise<ApiDeletedSuccessResponse> => {
@@ -47,6 +55,36 @@ export const useBlogPostsApi = () => {
 
     return response
   }
+
+  const uploadThumbnailImage = async (file: File): Promise<UploadImageRecord> => {
+    const formData = new FormData()
+    formData.append('thumbnailImage', file)
+
+    const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-thumbnail`, {
+      method: 'POST',
+      body: formData
+    })
+
+    response.data.path = `${useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'}${response.data.path}`
+
+
+    console.log(response.data)
+
+    return response.data;
+  }
+
+  const uploadSeoImage = async (file: File): Promise<UploadImageRecord> => {
+    const formData = new FormData()
+    formData.append('seoImage', file)
+
+    const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-seo`, {
+      method: 'POST',
+      body: formData
+    })
+
+    return response.data
+  }
+
 
   // Public API methods for fetching public facing blog posts and related data
 
@@ -111,7 +149,7 @@ export const useBlogPostsApi = () => {
     }
 
   const getBlogPostLink = (slug: string): string => {
-    return `/testing/post/${slug}`
+    return `/news/blog/post/${slug}`
   }
 
   const getBlogPostLinkAdmin = (slug: string): string => {
@@ -135,6 +173,8 @@ export const useBlogPostsApi = () => {
     updatePost,
     publishPost,
     unpublishPost,
-    deletePost
+    deletePost,
+    uploadThumbnailImage,
+    uploadSeoImage
   }
 }

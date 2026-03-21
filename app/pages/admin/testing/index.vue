@@ -38,8 +38,8 @@
                       :src="post.thumbnail" 
                       :alt="post.thumbnailAlt || ''" 
                       :title="post.thumbnailAlt || ''" 
-                      :width="post.thumbnailWidth ?? undefined" 
-                      :height="post.thumbnailHeight ?? undefined"
+                      :width="136" 
+                      :height="68"
                       loading="lazy"
                     />
                     <div class="flex flex-col items-start justify-center">
@@ -87,7 +87,7 @@
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
-    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="refreshPosts" @edited-post="refreshPosts" />
+    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="addNewPost" @edited-post="refreshPosts" />
 
     <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
       <p>Are you sure you want to delete this blog post?</p>
@@ -133,7 +133,7 @@
 <script lang="ts" setup>
 import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI';
 import { useDateFormat } from '../../../composables/dates/dateFormat';
-import type { BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog';
+import type { BlogPostFull, BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog';
 
 definePageMeta({ layout: 'admin' })
 
@@ -181,7 +181,10 @@ const postOptions = computed((): PaginationOptions => ({
 
 const { data: initialPostsReturn, pending: isLoadingPosts, refresh: refreshPosts } = await useAsyncData(
   'blog-initial-posts-admin',
-  () => blogPostsAPI.getAllPosts(postOptions.value)
+  () => blogPostsAPI.getAllPosts(postOptions.value),
+  {
+    watch: [postOptions.value]
+  }
 )
 
 if(!blogState.value.initialized && initialPostsReturn.value) {
@@ -194,7 +197,6 @@ const allPosts = computed(() => blogState.value.posts)
 const postPagination = computed(() => blogState.value.pagination)
 
 // Load more posts for pagination
-
 const loadMore = async () => {
     if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
     if(!postPagination.value.hasNextPage) return; // No more pages to load
@@ -213,6 +215,11 @@ const loadMore = async () => {
 
     blogState.value.posts = [...blogState.value.posts, ...newPosts]
     blogState.value.pagination = response.pagination ?? { ...defaultPagination }
+}
+
+// Add newly created post to the blogState and re-sort
+const addNewPost = (post: BlogPostFull): void => {
+  blogState.value.posts.unshift(post)
 }
 
 // Blog Post Modals and Actions

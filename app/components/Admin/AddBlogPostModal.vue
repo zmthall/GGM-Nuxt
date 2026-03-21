@@ -20,6 +20,11 @@
               <BaseFormInput v-model="meta.seoDescription" type="text" label="SEO Description" name="seoDescription" />
               <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.seoDescription.length > 155 }]">{{ meta.seoDescription.length }} Characters</div>
             </div>
+            
+            <div v-if="meta.title !== undefined">
+              <BaseFormInput v-model="meta.title" type="text" label="Post Title" name="title" />
+              <div :class="['text-xs flex justify-end px-4', { 'text-red-800': meta.title.length > 155 }]">{{ meta.title.length }} Characters</div>
+            </div>
 
             <BaseFormTextArea v-model="meta.summary" label="Summary" name="summary" />
           </div>
@@ -34,7 +39,7 @@
               </button>
             </div>
 
-            <BaseFormImageUpload v-else v-model="imageData" name="slot-image" :aspect-ratio="2/1" />
+            <BaseFormImageUpload v-else v-model="thumbnailImageData" name="slot-image" :aspect-ratio="2/1" />
           </div>
 
           <div class="relative border-2 border-zinc-100 rounded-lg p-4">
@@ -113,7 +118,7 @@
 
         <div class="mt-4 flex justify-end px-4 gap-4">
           <BaseUiAction type="button" class="px-2 py-1" @click="closeModal">Cancel</BaseUiAction>
-          <BaseUiAction v-if="isCreating && isAuthor" type="button" class="px-2 py-1" @click="console.log('createBlogPost')">Create Post</BaseUiAction>
+          <BaseUiAction v-if="isCreating && isAuthor" type="button" class="px-2 py-1" @click="createBlogPost">Create Post</BaseUiAction>
           <BaseUiAction v-else-if="isEditing && isAuthor" type="button" class="px-2 py-1" @click="console.log('saveBlogPostEdit')">Save Post Edit</BaseUiAction>
         </div>
       </div>
@@ -146,7 +151,7 @@ const getUserDisplayName = async (): Promise<string> => {
 }
 
 const authStore = useAuthStore()
-const blogPostAPI = useBlogPostsApi()
+const blogPostsAPI = useBlogPostsApi()
 
 const modalOpen = defineModel<boolean>({ default: true })
 const postId = defineModel<string | null>('id', { default: null })
@@ -158,7 +163,12 @@ const previewPanelRef = ref<AdminMdcPreviewExpose | null>(null)
 
 const changeImage = ref<boolean>(false)
 
-const imageData = ref<ImageDataFile>({
+const thumbnailImageData = ref<ImageDataFile>({
+  file: null,
+  alt: ''
+})
+
+const seoImageData = ref<ImageDataFile>({
   file: null,
   alt: ''
 })
@@ -168,7 +178,7 @@ const author = ref<string | undefined>(undefined)
 
 const { data: post, execute: fetchPost } = await useAsyncData(
   'admin-blog-post-modal-post',
-  () => blogPostAPI.getPostById(postId.value ?? 'nonexistent-id'),
+  () => blogPostsAPI.getPostById(postId.value ?? 'nonexistent-id'),
   { immediate: postId.value !== null }
 )
 
@@ -183,12 +193,10 @@ watch(postId, async (newId) => {
 watch(() => meta.value?.publishTimestamp, (newTimestamp) => {
   if (!meta.value) return
 
-  if (newTimestamp !== '') {
+  if (newTimestamp) {
     meta.value.published = true
-    console.log(meta.value.published)
   } else {
     meta.value.published = false
-    console.log(meta.value.published)
   }
 }, { deep: true })
 
@@ -202,7 +210,10 @@ useHead({
   }
 })
 
-const emit = defineEmits<(e: 'close' | 'create-post' | 'edited-post' | 'not-author') => void>()
+const emit = defineEmits<{
+  (e: 'create-post', post: BlogPostFull): void
+  (e: 'close' | 'edited-post'): void
+}>()
 
 const closeModal = () => {
   modalOpen.value = false
@@ -253,24 +264,66 @@ const readingStats = computed(() => {
   return { words, minutes }
 })
 
-// const uploadBlogImage = async (): Promise<{ url: string; alt: string }> => {
-//   const idToken = await authStore.getIdToken()
+const createBlogPost = async () => {
+  try {
+    if (!meta.value) {
+      console.error('Blog post data is missing.')
+      return null
+    }
 
-//   if (!imageData.value?.file) throw new Error('No image selected')
+    if (!meta.value.id || !meta.value.slug || !meta.value.title || !meta.value.summary || !meta.value.content) {
+      console.error('Missing required fields.')
+      return null
+    }
 
-//   const form = new FormData()
-//   form.append('file', imageData.value.file)
-//   form.append('alt', imageData.value.alt ?? '')
-//   form.append('slug', post.value?.slug ?? 'post')
+    const payload: BlogPostFull = { ...toRaw(meta.value) }
 
-//   const res = await $fetch<{ ok: true; url: string; alt: string }>('/api/admin/blog/image', {
-//     method: 'POST',
-//     body: form,
-//     headers: { 'Authorization': `Bearer ${idToken}` }
-//   })
+    if (thumbnailImageData.value.file) {
+      const thumbnailUpload = await blogPostsAPI.uploadThumbnailImage(thumbnailImageData.value.file)
 
-//   return { url: res.url, alt: res.alt }
-// }
+      if (!thumbnailUpload?.path) {
+        console.error('Thumbnail upload failed.')
+        return null
+      }
+
+      payload.thumbnail = thumbnailUpload.path
+      payload.thumbnailAlt = thumbnailImageData.value.alt || ''
+      payload.thumbnailWidth = thumbnailUpload.width
+      payload.thumbnailHeight = thumbnailUpload.height
+    }
+
+    if (seoImageData.value.file) {
+      const seoUpload = await blogPostsAPI.uploadSeoImage(seoImageData.value.file)
+
+      if (!seoUpload?.path) {
+        console.error('SEO image upload failed.')
+        return null
+      }
+
+      payload.seoImage = seoUpload.path
+    }
+
+    const createdPost = await blogPostsAPI.createPost(payload)
+
+    if (!createdPost) {
+      console.error('Post creation failed.')
+      return null
+    }
+
+    meta.value = createdPost
+
+    thumbnailImageData.value = { file: null, alt: '' }
+    seoImageData.value = { file: null, alt: '' }
+
+    modalOpen.value = false
+    emit('create-post', createdPost)
+
+    return createdPost
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}
 
 const isAuthor = computed(() => {
   return !!meta.value && author.value === meta.value.author
