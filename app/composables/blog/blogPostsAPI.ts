@@ -1,4 +1,4 @@
-import type { ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions, UploadImageRecord } from '~/models/blog'
+import type { ApiCheckUniquePostResponse, ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions, UploadImageRecord } from '~/models/blog'
 import mappers from '~/utils/blogPostMappers'
 
 export const useBlogPostsApi = () => {
@@ -16,6 +16,21 @@ export const useBlogPostsApi = () => {
       data: response.data.map(mappers.mapBlogPostPreviewRecord),
       pagination: response.pagination
     }
+  }
+
+  const checkUniquePost = async (post: {
+    id?: string
+    slug?: string
+    title?: string
+    canonicalUrl?: string
+    excludeId?: string
+  }) => {
+    return await $fetch<ApiCheckUniquePostResponse>(`${baseURL}/api/blog-posts/check-unique`, {
+      method: 'POST',
+      body: {
+        post
+      }
+    })
   }
 
   const createPost = async (post: BlogPostFull): Promise<BlogPostFull> => {
@@ -175,6 +190,7 @@ export const useBlogPostsApi = () => {
     unpublishPost,
     deletePost,
     uploadThumbnailImage,
-    uploadSeoImage
+    uploadSeoImage,
+    checkUniquePost
   }
 }

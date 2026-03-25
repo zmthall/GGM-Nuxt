@@ -278,6 +278,27 @@ const createBlogPost = async () => {
 
     const payload: BlogPostFull = { ...toRaw(meta.value) }
 
+    const uniqueCheck = await blogPostsAPI.checkUniquePost({
+      id: payload.id,
+      slug: payload.slug,
+      title: payload.title,
+      canonicalUrl: payload.canonicalUrl
+    })
+
+    if (!uniqueCheck?.success) {
+      throw new Error('Failed to verify blog post uniqueness.')
+    }
+
+    if (!uniqueCheck.unique) {
+      const matchedPost = uniqueCheck.match
+
+      throw new Error(
+        matchedPost
+          ? `Post is not unique. It matches existing post: ${matchedPost.title} (${matchedPost.id}).`
+          : 'Post is not unique.'
+      )
+    }
+
     if (thumbnailImageData.value.file) {
       const thumbnailUpload = await blogPostsAPI.uploadThumbnailImage(thumbnailImageData.value.file)
 
