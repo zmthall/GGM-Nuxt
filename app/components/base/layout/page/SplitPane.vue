@@ -52,7 +52,7 @@ const startDragging = (event: MouseEvent): void => {
 }
 
 const desktopWrapperClass = computed(() => {
-  return props.mobileBreakpointClass === 'lg' ? 'hidden lg:grid mt-2' : props.mobileBreakpointClass === 'md' ? 'hidden md:grid' : 'hidden xl:grid'
+  return props.mobileBreakpointClass === 'lg' ? 'hidden lg:grid' : props.mobileBreakpointClass === 'md' ? 'hidden md:grid' : 'hidden xl:grid'
 })
 
 const mobileWrapperClass = computed(() => {

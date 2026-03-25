@@ -45,8 +45,16 @@ export const useBlogPostsApi = () => {
     return mappers.mapBlogPostFullRecord(response.data)
   }
 
-  const updatePost = () => {
-    return
+  const updatePost = async (id: string, post: BlogPostFull): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts/${id}`,
+      {
+        method: 'PATCH',
+        body: post
+      }
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
   }
 
   const unpublishPost = () => {
@@ -79,11 +87,6 @@ export const useBlogPostsApi = () => {
       method: 'POST',
       body: formData
     })
-
-    response.data.path = `${useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'}${response.data.path}`
-
-
-    console.log(response.data)
 
     return response.data;
   }

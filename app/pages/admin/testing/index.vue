@@ -34,8 +34,9 @@
                 >
                   <div class="flex gap-2 min-w-[675px] max-w-[675px]">
                     <BlogPostImage 
+                      :key="post.thumbnail"
                       format="webp,avif" 
-                      :src="post.thumbnail" 
+                      :src="getMediaUrl(post.thumbnail)" 
                       :alt="post.thumbnailAlt || ''" 
                       :title="post.thumbnailAlt || ''" 
                       :width="136" 
@@ -87,7 +88,7 @@
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
-    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="addNewPost" @edited-post="refreshPosts" />
+    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="addNewPost" @edited-post="updatePost" />
 
     <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
       <p>Are you sure you want to delete this blog post?</p>
@@ -142,6 +143,20 @@ const blogPostsAPI = useBlogPostsApi();
 const formatDates = useDateFormat();
 const text = useText();
 
+const getMediaUrl = (path?: string | null): string => {
+  if (!path) return ''
+
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path
+  }
+
+  const apiBase = useRuntimeConfig().public.useLocalApi
+    ? 'http://127.0.0.1:4000'
+    : 'https://api.goldengatemanor.com'
+
+  return `${apiBase}${path}`
+}
+
 const defaultPagination: PaginationMeta = {
   currentPage: 1,
   pageSize: 1,
@@ -179,7 +194,7 @@ const postOptions = computed((): PaginationOptions => ({
   orderDirection: 'desc'
 }))
 
-const { data: initialPostsReturn, pending: isLoadingPosts, refresh: refreshPosts } = await useAsyncData(
+const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
   'blog-initial-posts-admin',
   () => blogPostsAPI.getAllPosts(postOptions.value),
   {
@@ -220,6 +235,14 @@ const loadMore = async () => {
 // Add newly created post to the blogState and re-sort
 const addNewPost = (post: BlogPostFull): void => {
   blogState.value.posts.unshift(post)
+}
+
+const updatePost = (post: BlogPostFull): void => {
+  blogState.value.posts = blogState.value.posts
+    .map(existingPost => existingPost.id === post.id ? post : existingPost)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+
+  console.log('updated post in state:', blogState.value.posts.find(p => p.id === post.id))
 }
 
 // Blog Post Modals and Actions
