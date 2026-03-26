@@ -51,7 +51,7 @@
     </div>
 
     <!-- Alt Text Input (shown when image exists) -->
-    <div v-if="uploadedImage" class="mt-4">
+    <div v-if="uploadedImage && !noAlt" class="mt-4">
       <BaseFormInput v-model="altText" type="text" name="alt-text-input" label="Alt Text" placeholder="Describe this image..."/>
     </div>
   </div>
@@ -88,6 +88,7 @@ const props = withDefaults(defineProps<{
   maxSize?: number
   stencilProps?: StencilProps
   slotIndex?: number | null
+  noAlt?: boolean
 }>(), {
   label: undefined,
   aspectRatio: undefined,

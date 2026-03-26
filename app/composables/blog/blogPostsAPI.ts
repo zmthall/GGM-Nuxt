@@ -103,20 +103,27 @@ export const useBlogPostsApi = () => {
     return response.data
   }
 
+  const getPostById = async (id: string): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts/id/${id}`
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
+  }
+
+  const getPostBySlug = async (slug: string): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts/slug/${slug}`
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
+  }
 
   // Public API methods for fetching public facing blog posts and related data
 
   const getPublishedPostBySlug = async (slug: string): Promise<BlogPostFull> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
       `${baseURL}/api/blog-posts/slug/${slug}/published`
-    )
-
-    return mappers.mapBlogPostFullRecord(response.data)
-  }
-
-  const getPostById = async (id: string): Promise<BlogPostFull> => {
-    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
-      `${baseURL}/api/blog-posts/id/${id}`
     )
 
     return mappers.mapBlogPostFullRecord(response.data)
@@ -194,6 +201,7 @@ export const useBlogPostsApi = () => {
     deletePost,
     uploadThumbnailImage,
     uploadSeoImage,
-    checkUniquePost
+    checkUniquePost,
+    getPostBySlug
   }
 }

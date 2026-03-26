@@ -41,6 +41,7 @@
                       :title="post.thumbnailAlt || ''" 
                       :width="136" 
                       :height="68"
+                      small-image
                       loading="lazy"
                     />
                     <div class="flex flex-col items-start justify-center">
@@ -198,7 +199,7 @@ const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData
   'blog-initial-posts-admin',
   () => blogPostsAPI.getAllPosts(postOptions.value),
   {
-    watch: [postOptions.value]
+    watch: [postOptions]
   }
 )
 

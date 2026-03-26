@@ -7,6 +7,7 @@ withDefaults(defineProps<{
   height?: number | null
   hasInset?: boolean
   loading?: 'eager' | 'lazy'
+  smallImage?: boolean
 }>(), {
   alt: undefined,
   width: null,
@@ -24,7 +25,7 @@ const handleImageError = () => {
 </script>
 
 <template>
-  <div class="relative aspect-[2/1] max-w-[136px] overflow-hidden">
+  <div class="relative aspect-[2/1] overflow-hidden" :class="{'max-w-[136px]': smallImage}">
     <div v-if="hasInset" class="absolute shadow-light-interior z-1 w-full h-full" />
     <NuxtImg
       v-if="!hasImageError"

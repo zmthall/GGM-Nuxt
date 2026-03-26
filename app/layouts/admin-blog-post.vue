@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main class="admin-blog-post min-h-[100vh] bg-brand-background">
     <ClientOnly>
       <BaseLayoutAdminHeader />
 
@@ -10,7 +10,7 @@
       <BaseToastContainer />
       <slot />
     </ClientOnly>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

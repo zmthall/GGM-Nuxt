@@ -29,17 +29,36 @@
             <BaseFormTextArea v-model="meta.summary" label="Summary" name="summary" />
           </div>
 
-          <div class="relative border-2 border-zinc-100 rounded-lg p-4 sm:w-1/2">
-            <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Image</h3>
-
-            <div v-if="meta.thumbnail && !changeImage" class="relative">
-              <NuxtImg format="webp,avif" :src="getMediaUrl(meta.thumbnail)" :width="meta.thumbnailWidth ?? undefined" :height="meta.thumbnailHeight ?? undefined" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager" />
-              <button title="Delete Image" class="absolute bottom-2 left-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors duration-200 z-10 flex" @click="setChangeImage">
-                <BaseIcon name="material-symbols:delete-forever" size="size-5" color="text-white" />
-              </button>
+          <div class="relative border-2 border-zinc-100 rounded-lg px-4 pt-4 pb-6 sm:w-1/2">
+            <div>
+              <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Image</h3>
+  
+              <div v-if="meta.thumbnail && !changeThumbnailImage" class="relative">
+                <NuxtImg format="webp,avif" :src="getMediaUrl(meta.thumbnail)" :width="meta.thumbnailWidth ?? undefined" :height="meta.thumbnailHeight ?? undefined" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager" />
+                <button title="Delete Image" class="absolute bottom-2 left-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors duration-200 z-10 flex" @click="setChangeThumbnailImage">
+                  <BaseIcon name="material-symbols:delete-forever" size="size-5" color="text-white" />
+                </button>
+              </div>
+  
+              <BaseFormImageUpload v-else v-model="thumbnailImageData" name="slot-image-thumbnail" :aspect-ratio="2/1" />
             </div>
-
-            <BaseFormImageUpload v-else v-model="thumbnailImageData" name="slot-image" :aspect-ratio="2/1" />
+            <button class="absolute bottom-0 left-0 w-full bg-white/20 hover:bg-zinc-50" title="Show SEO Image" @click="toggleSEOImageEdit">
+              <BaseIcon v-if="!showSEOImage" name="lets-icons:expand-down" size="size-4" />
+              <BaseIcon v-else name="lets-icons:expand-up" size="size-4" />
+            </button>
+            <div class="overflow-hidden" :class="{'h-0': !showSEOImage }">
+              <div class="mt-4">
+                <h3 class="font-bold mb-2">SEO Image</h3>
+                <div v-if="meta.seoImage && !changeSEOImage" class="relative">
+                  <NuxtImg format="webp,avif" :src="getMediaUrl(meta.seoImage)" loading="eager" />
+                  <button title="Delete Image" class="absolute bottom-2 left-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors duration-200 z-10 flex" @click="setChangeSEOImage">
+                    <BaseIcon name="material-symbols:delete-forever" size="size-5" color="text-white" />
+                  </button>
+                </div>
+    
+                <BaseFormImageUpload v-else v-model="seoImageData" name="slot-image-seo" :aspect-ratio="16/9" no-alt />
+              </div>
+            </div>
           </div>
 
           <div class="relative border-2 border-zinc-100 rounded-lg p-4">
@@ -176,7 +195,13 @@ const editorHeight = '500px'
 const editorPanelRef = ref<AdminMarkdownEditorExpose | null>(null)
 const previewPanelRef = ref<AdminMdcPreviewExpose | null>(null)
 
-const changeImage = ref<boolean>(false)
+const changeThumbnailImage = ref<boolean>(false)
+const changeSEOImage = ref<boolean>(false)
+const showSEOImage = ref<boolean>(false)
+
+const toggleSEOImageEdit = () => {
+  showSEOImage.value = !showSEOImage.value
+}
 
 const thumbnailImageData = ref<ImageDataFile>({
   file: null,
@@ -215,8 +240,12 @@ watch(() => meta.value?.publishTimestamp, (newTimestamp) => {
   }
 }, { deep: true })
 
-const setChangeImage = () => {
-  changeImage.value = true
+const setChangeThumbnailImage = () => {
+  changeThumbnailImage.value = true
+}
+
+const setChangeSEOImage = () => {
+  changeSEOImage.value = true
 }
 
 useHead({

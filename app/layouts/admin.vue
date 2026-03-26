@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main class="admin min-h-[100vh]">
     <ClientOnly>
       <!-- Light header can render immediately. If it’s heavy, also lazy/defer it. -->
       <BaseLayoutAdminHeader />
@@ -18,7 +18,7 @@
       <BaseToastContainer />
       <slot />
     </ClientOnly>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
