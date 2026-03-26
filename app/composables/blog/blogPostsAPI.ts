@@ -63,12 +63,7 @@ export const useBlogPostsApi = () => {
     const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-thumbnail`, {
       method: 'POST',
       body: formData
-    })
-
-    response.data.path = `${useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'}${response.data.path}`
-
-
-    console.log(response.data)
+    })  
 
     return response.data;
   }
