@@ -33,7 +33,7 @@
             <h3 class="absolute -top-[1.25rem] left-1 bg-white p-1 font-bold">Post Image</h3>
 
             <div v-if="meta.thumbnail && !changeImage" class="relative">
-              <NuxtImg format="webp,avif" :src="meta.thumbnail" :width="meta.thumbnailWidth ?? undefined" :height="meta.thumbnailHeight ?? undefined" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager" />
+              <NuxtImg format="webp,avif" :src="getMediaUrl(meta.thumbnail)" :width="meta.thumbnailWidth ?? undefined" :height="meta.thumbnailHeight ?? undefined" :alt="meta.thumbnailAlt" :title="meta.thumbnailAlt" loading="eager" />
               <button title="Delete Image" class="absolute bottom-2 left-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors duration-200 z-10 flex" @click="setChangeImage">
                 <BaseIcon name="material-symbols:delete-forever" size="size-5" color="text-white" />
               </button>
@@ -119,7 +119,7 @@
         <div class="mt-4 flex justify-end px-4 gap-4">
           <BaseUiAction type="button" class="px-2 py-1" @click="closeModal">Cancel</BaseUiAction>
           <BaseUiAction v-if="isCreating && isAuthor" type="button" class="px-2 py-1" @click="createBlogPost">Create Post</BaseUiAction>
-          <BaseUiAction v-else-if="isEditing && isAuthor" type="button" class="px-2 py-1" @click="console.log('saveBlogPostEdit')">Save Post Edit</BaseUiAction>
+          <BaseUiAction v-else-if="isEditing && isAuthor" type="button" class="px-2 py-1" @click="editBlogPost">Save Post Edit</BaseUiAction>
         </div>
       </div>
     </BaseInteractiveModal>
@@ -149,6 +149,21 @@ const getUserDisplayName = async (): Promise<string> => {
     return 'Unknown User'
   }
 }
+
+const getMediaUrl = (path?: string | null): string => {
+  if (!path) return ''
+
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path
+  }
+
+  const apiBase = useRuntimeConfig().public.useLocalApi
+    ? 'http://127.0.0.1:4000'
+    : 'https://api.goldengatemanor.com'
+
+  return `${apiBase}${path}`
+}
+
 
 const authStore = useAuthStore()
 const blogPostsAPI = useBlogPostsApi()
@@ -211,8 +226,8 @@ useHead({
 })
 
 const emit = defineEmits<{
-  (e: 'create-post', post: BlogPostFull): void
-  (e: 'close' | 'edited-post'): void
+  (e: 'create-post' | 'edited-post', post: BlogPostFull): void
+  (e: 'close' ): void
 }>()
 
 const closeModal = () => {
@@ -278,6 +293,27 @@ const createBlogPost = async () => {
 
     const payload: BlogPostFull = { ...toRaw(meta.value) }
 
+    const uniqueCheck = await blogPostsAPI.checkUniquePost({
+      id: payload.id,
+      slug: payload.slug,
+      title: payload.title,
+      canonicalUrl: payload.canonicalUrl
+    })
+
+    if (!uniqueCheck?.success) {
+      throw new Error('Failed to verify blog post uniqueness.')
+    }
+
+    if (!uniqueCheck.unique) {
+      const matchedPost = uniqueCheck.match
+
+      throw new Error(
+        matchedPost
+          ? `Post is not unique. It matches existing post: ${matchedPost.title} (${matchedPost.id}).`
+          : 'Post is not unique.'
+      )
+    }
+
     if (thumbnailImageData.value.file) {
       const thumbnailUpload = await blogPostsAPI.uploadThumbnailImage(thumbnailImageData.value.file)
 
@@ -319,6 +355,89 @@ const createBlogPost = async () => {
     emit('create-post', createdPost)
 
     return createdPost
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}
+
+const editBlogPost = async () => {
+  try {
+    if (!meta.value) {
+      console.error('Blog post data is missing.')
+      return null
+    }
+
+    if (!meta.value.id || !meta.value.slug || !meta.value.title || !meta.value.summary || !meta.value.content) {
+      console.error('Missing required fields.')
+      return null
+    }
+
+    const payload: BlogPostFull = { ...toRaw(meta.value) }
+
+    const uniqueCheck = await blogPostsAPI.checkUniquePost({
+      id: payload.id,
+      slug: payload.slug,
+      title: payload.title,
+      canonicalUrl: payload.canonicalUrl,
+      excludeId: payload.id
+    })
+
+    if (!uniqueCheck?.success) {
+      throw new Error('Failed to verify blog post uniqueness.')
+    }
+
+    if (!uniqueCheck.unique) {
+      const matchedPost = uniqueCheck.match
+
+      throw new Error(
+        matchedPost
+          ? `Post is not unique. It matches existing post: ${matchedPost.title} (${matchedPost.id}).`
+          : 'Post is not unique.'
+      )
+    }
+
+    if (thumbnailImageData.value.file) {
+      const thumbnailUpload = await blogPostsAPI.uploadThumbnailImage(thumbnailImageData.value.file)
+
+      if (!thumbnailUpload?.path) {
+        console.error('Thumbnail upload failed.')
+        return null
+      }
+
+      payload.thumbnail = thumbnailUpload.path
+      payload.thumbnailAlt = thumbnailImageData.value.alt || ''
+      payload.thumbnailWidth = thumbnailUpload.width
+      payload.thumbnailHeight = thumbnailUpload.height
+    }
+
+    if (seoImageData.value.file) {
+      const seoUpload = await blogPostsAPI.uploadSeoImage(seoImageData.value.file)
+
+      if (!seoUpload?.path) {
+        console.error('SEO image upload failed.')
+        return null
+      }
+
+      payload.seoImage = seoUpload.path
+    }
+
+    const updatedPost = await blogPostsAPI.updatePost(payload.id, payload)
+
+    if (!updatedPost) {
+      console.error('Post update failed.')
+      return null
+    }
+
+    meta.value = updatedPost
+
+    thumbnailImageData.value = { file: null, alt: '' }
+    seoImageData.value = { file: null, alt: '' }
+
+    modalOpen.value = false
+    emit('edited-post', updatedPost)
+
+    return updatedPost
   } catch (err) {
     console.error(err)
     return null

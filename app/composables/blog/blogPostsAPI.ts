@@ -1,4 +1,4 @@
-import type { ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions, UploadImageRecord } from '~/models/blog'
+import type { ApiCheckUniquePostResponse, ApiDeletedSuccessResponse, ApiPaginatedSuccessResponse, ApiSuccessResponse, BlogPostCard, BlogPostCardApiRecord, BlogPostFull, BlogPostFullApiRecord, BlogPostPreview, BlogPostPreviewApiRecord, BlogPostTiny, BlogPostTinyApiRecord, BlogPostUpdate, BlogPostUpdateRecord, PaginatedResult, PaginationOptions, UploadImageRecord } from '~/models/blog'
 import mappers from '~/utils/blogPostMappers'
 
 export const useBlogPostsApi = () => {
@@ -18,6 +18,21 @@ export const useBlogPostsApi = () => {
     }
   }
 
+  const checkUniquePost = async (post: {
+    id?: string
+    slug?: string
+    title?: string
+    canonicalUrl?: string
+    excludeId?: string
+  }) => {
+    return await $fetch<ApiCheckUniquePostResponse>(`${baseURL}/api/blog-posts/check-unique`, {
+      method: 'POST',
+      body: {
+        post
+      }
+    })
+  }
+
   const createPost = async (post: BlogPostFull): Promise<BlogPostFull> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
       `${baseURL}/api/blog-posts`,
@@ -30,8 +45,16 @@ export const useBlogPostsApi = () => {
     return mappers.mapBlogPostFullRecord(response.data)
   }
 
-  const updatePost = () => {
-    return
+  const updatePost = async (id: string, post: BlogPostFull): Promise<BlogPostFull> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
+      `${baseURL}/api/blog-posts/${id}`,
+      {
+        method: 'PATCH',
+        body: post
+      }
+    )
+
+    return mappers.mapBlogPostFullRecord(response.data)
   }
 
   const unpublishPost = () => {
@@ -63,7 +86,7 @@ export const useBlogPostsApi = () => {
     const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-thumbnail`, {
       method: 'POST',
       body: formData
-    })  
+    })
 
     return response.data;
   }
@@ -170,6 +193,7 @@ export const useBlogPostsApi = () => {
     unpublishPost,
     deletePost,
     uploadThumbnailImage,
-    uploadSeoImage
+    uploadSeoImage,
+    checkUniquePost
   }
 }

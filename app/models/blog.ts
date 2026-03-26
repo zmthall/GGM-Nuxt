@@ -1,3 +1,9 @@
+export interface ApiCheckUniquePostResponse {
+  success: boolean
+  unique: boolean
+  match: BlogPostFull | null
+}
+
 export interface ApiSuccessResponse<T> {
   success: boolean
   data: T
