@@ -178,7 +178,7 @@ export const useBlogPostsApi = () => {
   }
 
   const getBlogPostLinkAdmin = (slug: string): string => {
-    return `/admin/testing/post/${slug}`
+    return `/admin/blog/post/${slug}`
   }
 
   return {

@@ -3,8 +3,8 @@
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false">
-          <div v-if="!isLoadingInitial">
-            <div v-if="posts.length > 0" class="mb-4 flex justify-between">
+          <div v-if="!isLoadingPosts">
+            <div v-if="allPosts.length > 0" class="mb-4 flex justify-between">
               <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
                 <span>Add New Post</span><BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5" />
               </BaseUiAction>
@@ -24,37 +24,52 @@
 
             <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Blog Posts</h2>
 
-            <ul v-if="posts.length > 0" class="overflow-x-auto flex flex-col">
-              <li v-for="post in posts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
-                <button class="p-4 flex justify-between gap-10 w-full min-w-[675px]" @click="openEditPostModal(getSlug(post.path))">
+            <ul v-if="allPosts.length > 0" class="overflow-x-auto flex flex-col">
+              <li v-for="post in allPosts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
+                <div 
+                      class="p-4 flex justify-between gap-10 w-full min-w-[675px] cursor-pointer" 
+                      type="button"
+                      aria-label="Open blog post editor"
+                      @click="openEditPostModal(post.id)"
+                >
                   <div class="flex gap-2 min-w-[675px] max-w-[675px]">
-                    <NuxtImg format="webp,avif" :src="post.thumbnail || '/images/blog/blog-default-thumbnail.png'" :alt="post.thumbnailAlt || ''" :title="post.thumbnailAlt || ''" :width="post.thumbnailWidth || '128'" :height="post.thumbnailHeight || '80'" class="w-32 h-20 object-cover" />
+                    <BlogPostImage 
+                      :key="post.thumbnail"
+                      format="webp,avif" 
+                      :src="getMediaUrl(post.thumbnail)" 
+                      :alt="post.thumbnailAlt || ''" 
+                      :title="post.thumbnailAlt || ''" 
+                      :width="136" 
+                      :height="68"
+                      small-image
+                      loading="lazy"
+                    />
                     <div class="flex flex-col items-start justify-center">
-                      <p class="text-xs">Last Updated: {{ dateFormat.formatShortDateNoLeadingZero(post.date) }}</p>
+                      <p class="text-xs">Last Updated: {{ formatDates.formatShortDateNoLeadingZero(post.updatedAt) }}</p>
                       <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
-                      <NuxtLink v-if="post.path" :to="isPublished(post) ? `/news${post.path}` : `/admin${post.path}`" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>
-                        {{ getSlug(post.path) }}
+                      <NuxtLink :to="post.published ? blogPostsAPI.getBlogPostLink(post.slug) : blogPostsAPI.getBlogPostLinkAdmin(post.slug)" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>
+                        {{ post.slug }}
                       </NuxtLink>
                     </div>
                   </div>
 
                   <div class="flex self-end gap-2 h-full">
-                    <button title="Edit" class="group flex" @click.stop="openEditPostModal(getSlug(post.path))"><BaseIcon name="material-symbols:edit-square-outline-rounded" hover-color="group-hover:text-brand-link-hover" /></button>
-                    <NuxtLink title="Preview" class="group flex" :to="`/admin${post.path}`" @click.stop><BaseIcon name="material-symbols:preview" hover-color="group-hover:text-brand-link-hover" /></NuxtLink>
-                    <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(getSlug(post.path))"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
+                    <button title="Edit" class="group flex" @click.stop="openEditPostModal(post.id)"><BaseIcon name="material-symbols:edit-square-outline-rounded" hover-color="group-hover:text-brand-link-hover" /></button>
+                    <NuxtLink title="Preview" class="group flex" :to="blogPostsAPI.getBlogPostLinkAdmin(post.slug)" @click.stop><BaseIcon name="material-symbols:preview" hover-color="group-hover:text-brand-link-hover" /></NuxtLink>
+                    <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(post.id)"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
                   </div>
 
-                  <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2']">
-                    <div class="space-y-2">
-                      <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800">Draft</span>
-                      <div v-if="post.published" class="flex flex-col items-center">
+                  <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2 h-full']">
+                    <div class="space-y-2 flex items-center">
+                      <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800 text-xs">Draft</span>
+                      <div v-if="post.published && !post.draft" class="flex flex-col items-center">
                         <span class="bg-green-300 px-2 py-1 rounded-full text-green-800">Published</span>
-                        <time :datetime="post.published" class="w-max">{{ dateFormat.formatShortDateNoLeadingZero(post.published) }}</time>
+                        <time :datetime="post.publishTimestamp ?? undefined" class="w-max">{{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}</time>
                       </div>
                     </div>
-                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="showPublishModal(getSlug(post.path))">Publish</BaseUiAction>
+                    <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="showPublishModal(post.id)">Publish</BaseUiAction>
                   </div>
-                </button>
+                </div>
               </li>
             </ul>
 
@@ -68,13 +83,13 @@
           </div>
         </BaseLayoutCard>
 
-        <div v-if="hasMorePages" class="flex justify-center mt-8">
+        <div v-if="postPagination.hasNextPage" class="flex justify-center mt-8">
           <BaseUiAction type="button" class="py-4 px-8" @click="loadMore">View More</BaseUiAction>
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
-    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:slug="blogPostModalSlug" @close="closePostModal" @create-post="refreshPosts" @edited-post="refreshPosts" />
+    <AdminAddBlogPostModal v-if="blogPostModalOpen" v-model="blogPostModalOpen" v-model:id="blogPostModalId" @close="closePostModal" @create-post="addNewPost" @edited-post="updatePost" />
 
     <BaseInteractiveModal v-model="deleteConfirmationModal" hide-close tiny-modal :padding="2">
       <p>Are you sure you want to delete this blog post?</p>
@@ -84,7 +99,7 @@
       </div>
     </BaseInteractiveModal>
 
-    <BaseInteractiveModal v-model="blogPostPublishModalOpen" :padding="3" small-modal @close="cancelPublish">
+    <BaseInteractiveModal v-model="blogPostPublishModalOpen" :padding="3" small-modal @close="closePublish">
       <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Publish Date Information</h2>
       <div class="h-full">
         <div class="h-full flex flex-col justify-between">
@@ -95,7 +110,7 @@
             </div>
           </div>
           <div class="flex justify-end gap-2 w-full">
-            <BaseUiAction type="button" class="py-1 px-2" @click="cancelPublish">Cancel</BaseUiAction>
+            <BaseUiAction type="button" class="py-1 px-2" @click="closePublish">Cancel</BaseUiAction>
             <BaseUiAction type="button" class="py-1 px-2" @click="publishPost">Publish Post</BaseUiAction>
           </div>
         </div>
@@ -118,277 +133,192 @@
 </template>
 
 <script lang="ts" setup>
-import type { BlogPost } from '../../../models/blog'
-import { useDateFormat } from '../../../composables/dates/dateFormat'
+import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI';
+import { useDateFormat } from '../../../composables/dates/dateFormat';
+import type { BlogPostFull, BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog';
 
 definePageMeta({ layout: 'admin' })
 
-const route = useRoute()
+const authStore = useAuthStore();
+const blogPostsAPI = useBlogPostsApi();
+const formatDates = useDateFormat();
+const text = useText();
+
+const getMediaUrl = (path?: string | null): string => {
+  if (!path) return ''
+
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path
+  }
+
+  const apiBase = useRuntimeConfig().public.useLocalApi
+    ? 'http://127.0.0.1:4000'
+    : 'https://api.goldengatemanor.com'
+
+  return `${apiBase}${path}`
+}
+
+const defaultPagination: PaginationMeta = {
+  currentPage: 1,
+  pageSize: 1,
+  hasNextPage: false,
+  hasPreviousPage: false,
+  totalPages: 1,
+  totalItems: 0
+}
+
+const blogState = useState<{
+    posts: BlogPostPreview[];
+    pagination: PaginationMeta;
+    initialized: boolean;
+  }>('blog-posts-admin', () => ({
+    posts: [],
+    pagination: defaultPagination,
+    initialized: false
+}))
+
+
+// Content Calendar
 
 const openContentCalendar = ref(false)
 const calendarCsv = ref('')
 
-const authStore = useAuthStore()
-const text = useText()
-const dateFormat = useDateFormat()
+// Fetch all Admin Blog Posts
 
-const STORAGE_PREFIX = 'content-calendar:'
-const STORAGE_KEY_PARAM = 'dataKey'
-
-// ---------- state
-const posts = ref<BlogPost[]>([])
-const isLoading = ref(false)
-const hasMorePages = ref(true)
+const pageSize = 10
 const page = ref(1)
-const limit = 10
 
-const deleteConfirmationModal = ref(false)
-const deleteSlug = ref<string | null>(null)
+const postOptions = computed((): PaginationOptions => ({
+  page: page.value,
+  pageSize,
+  orderField: 'updated_at',
+  orderDirection: 'desc'
+}))
 
-const blogPostPublishModalOpen = ref(false)
-const publishSlug = ref<string | null>(null)
-const publishToggle = ref(true)
-const publishDate = ref('')
-
-const blogPostModalOpen = ref(false)
-const blogPostModalSlug = ref<string | null>(null)
-
-// ---------- helpers
-const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
-
-const getSlug = (path?: string): string => {
-  if (!path) return ''
-  const arr = path.split('/')
-  return arr[arr.length - 1] || ''
-}
-
-const isPublished = (post: BlogPost): boolean => {
-  if (post.draft) return false
-  const s = String(post.published ?? '').trim()
-  if (!s) return false
-  const publishedAt = /^\d{4}-\d{2}-\d{2}$/.test(s) ? new Date(`${s}T23:59:59.999Z`) : new Date(s)
-  const ts = publishedAt.getTime()
-  if (Number.isNaN(ts)) return false
-  return ts <= Date.now()
-}
-
-function isTruthyParam(v: unknown) {
-  const raw = Array.isArray(v) ? v[0] : v
-  const s = String(raw ?? '').toLowerCase().trim()
-  return s === '1' || s === 'true' || s === 'yes' || s === 'on'
-}
-
-function getQueryString(key: string): string {
-  const v = route.query?.[key]
-  return Array.isArray(v) ? String(v[0] ?? '') : String(v ?? '')
-}
-
-function maybeOpenCalendarFromQuery() {
-  if (!import.meta.client) return
-  if (!isTruthyParam(route.query?.calendar)) return
-
-  const qpData = getQueryString('data')
-  if (qpData) {
-    try {
-      calendarCsv.value = decodeURIComponent(qpData)
-    } catch {
-      calendarCsv.value = qpData
-    }
-    openContentCalendar.value = true
-    return
-  }
-
-  const qpKey = getQueryString(STORAGE_KEY_PARAM)
-  if (qpKey) {
-    try {
-      const stored = sessionStorage.getItem(`${STORAGE_PREFIX}${qpKey}`)
-      if (stored) calendarCsv.value = stored
-    } catch {
-      //
-    }
-    openContentCalendar.value = true
-    return
-  }
-
-  openContentCalendar.value = true
-}
-
-onMounted(() => {
-  maybeOpenCalendarFromQuery()
-})
-
-watch(
-  () => route.query,
-  () => {
-    maybeOpenCalendarFromQuery()
+const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
+  'blog-initial-posts-admin',
+  () => blogPostsAPI.getAllPosts(postOptions.value),
+  {
+    watch: [postOptions]
   }
 )
 
-const isLoadingInitial = ref(true)
-const initialPosts = ref<BlogPost[]>([])
-
-const fetchInitialPosts = async () => {
-  isLoadingInitial.value = true
-
-  const idToken = await authStore.getIdToken()
-  try {
-    const result = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
-      method: 'GET',
-      query: { page: 1, limit },
-      headers: {
-        'authorization': `Bearer ${idToken}`
-      }
-    })
-    initialPosts.value = result
-  } catch (e) {
-    console.error('fetchInitialPosts:', e)
-  } finally {
-    isLoadingInitial.value = false
-  }
+if(!blogState.value.initialized && initialPostsReturn.value) {
+  blogState.value.posts = initialPostsReturn.value.data ?? []
+  blogState.value.pagination = initialPostsReturn.value.pagination ?? { ...defaultPagination}
+  blogState.value.initialized = true
 }
 
-// seed list & hasMore
-watch(
-  initialPosts,
-  (list) => {
-    posts.value = list ?? []
-    hasMorePages.value = (posts.value.length === limit)
-  },
-  { immediate: true }
-)
+const allPosts = computed(() => blogState.value.posts)
+const postPagination = computed(() => blogState.value.pagination)
 
-// fetch only when Firebase is ready + user authorized
-onMounted(async () => {
-  const { $getFirebase } = useNuxtApp()
-  await $getFirebase()
-
-  if (canFetch.value) {
-    await fetchInitialPosts()
-    return
-  }
-
-  const stop = watch(
-    canFetch,
-    async (ok) => {
-      if (!ok) return
-      stop()
-      await fetchInitialPosts()
-    },
-    { immediate: false }
-  )
-})
-
-// ---------- actions (all internal $fetch calls)
+// Load more posts for pagination
 const loadMore = async () => {
-  if (!hasMorePages.value || isLoading.value || !canFetch.value) return
-  isLoading.value = true
-  page.value++
+    if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
+    if(!postPagination.value.hasNextPage) return; // No more pages to load
 
-  const idToken = await authStore.getIdToken()
+    const nextPage = blogState.value.pagination.currentPage + 1;
 
-  try {
-    const newPosts = await $fetch<BlogPost[]>('/api/admin/blog/posts', {
-      method: 'GET',
-      query: { page: page.value, limit },
-      headers: {
-        'Authorization': `Bearer ${idToken}`
-      }
+    const response = await blogPostsAPI.getAllPosts({
+        page: nextPage,
+        pageSize,
+        orderField: 'publish_timestamp',
+        orderDirection: 'desc'
     })
-    if (newPosts?.length) posts.value.push(...newPosts)
-    if ((newPosts?.length ?? 0) < limit) hasMorePages.value = false
-  } catch (e) {
-    console.error('loadMore:', (e as Error).message)
-  } finally {
-    isLoading.value = false
-  }
+
+    const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
+    const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
+
+    blogState.value.posts = [...blogState.value.posts, ...newPosts]
+    blogState.value.pagination = response.pagination ?? { ...defaultPagination }
 }
 
-const refreshPosts = async () => {
-  blogPostModalOpen.value = false
-  page.value = 1
-  await fetchInitialPosts()
+// Add newly created post to the blogState and re-sort
+const addNewPost = (post: BlogPostFull): void => {
+  blogState.value.posts.unshift(post)
 }
 
-const showDeleteConfirmation = (slug: string) => {
-  deleteSlug.value = slug
+const updatePost = (post: BlogPostFull): void => {
+  blogState.value.posts = blogState.value.posts
+    .map(existingPost => existingPost.id === post.id ? post : existingPost)
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+
+  console.log('updated post in state:', blogState.value.posts.find(p => p.id === post.id))
+}
+
+// Blog Post Modals and Actions
+const blogPostModalOpen = ref(false)
+const blogPostModalId = ref<string | null>(null)
+
+const openAddPostModal = () => { blogPostModalOpen.value = true }
+const openEditPostModal = (id: string) => { blogPostModalId.value = id; blogPostModalOpen.value = true }
+const closePostModal = () => { blogPostModalId.value = null }
+
+// Delete Modal
+const deleteConfirmationModal = ref(false)
+
+const showDeleteConfirmation = (id: string) => {
+  blogPostModalId.value = id
   deleteConfirmationModal.value = true
 }
-const cancelDelete = () => {
-  deleteConfirmationModal.value = false
-  deleteSlug.value = null
-}
+
 const confirmDelete = async () => {
-  if (deleteSlug.value) await deletePost(deleteSlug.value)
-  deleteConfirmationModal.value = false
-  deleteSlug.value = null
-}
+  if(!blogPostModalId.value) return
 
-const deletePost = async (slug: string) => {
-  const idToken = await authStore.getIdToken()
+  const deleteId = blogPostModalId.value
+  const deleteReturn = await blogPostsAPI.deletePost(deleteId)
 
-  try {
-    await $fetch(`/api/admin/blog/${slug}`, {
-      method: 'DELETE',
-      query: { removeImage: true },
-      headers: {
-        'Authorization': `Bearer ${idToken}`
-      }
-    })
-    await fetchInitialPosts()
-  } catch (e) {
-    console.error('deletePost:', (e as Error).message)
+  if (deleteReturn.deleted) {
+    blogState.value.posts = blogState.value.posts.filter(post => post.id !== deleteId)
+    deleteConfirmationModal.value = false
+    blogPostModalId.value = null
   }
 }
 
-const showPublishModal = (slug: string) => {
-  publishSlug.value = slug
+const cancelDelete = () => {
+  deleteConfirmationModal.value = false
+  blogPostModalId.value = null
+}
+
+// Publish Modal
+const blogPostPublishModalOpen = ref(false)
+const publishToggle = ref(true)
+const publishDate = ref<string>('')
+
+const showPublishModal = (id: string) => {
+  blogPostModalId.value = id
   blogPostPublishModalOpen.value = true
 }
-const cancelPublish = () => {
-  publishSlug.value = null
+
+const publishPost = async () => {
+  if (!blogPostModalId.value) return
+
+  try {
+    const publishId = blogPostModalId.value
+    const publishDateValue = publishToggle.value ? new Date().toISOString() : publishDate.value
+
+    const publishReturn = await blogPostsAPI.publishPost(publishId, publishDateValue)
+
+    if (publishReturn) {
+      blogState.value.posts = blogState.value.posts
+        .map(post => post.id === publishId ? { ...post, ...publishReturn } : post)
+        .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+
+      closePublish()
+    }
+  } catch (error) {
+    console.error('Failed to publish post:', error)
+  }
+}
+
+const closePublish = () => {
+  console.log('close publish modal')
   blogPostPublishModalOpen.value = false
+  blogPostModalId.value = null
   publishToggle.value = true
   publishDate.value = ''
 }
 
-const publishPost = async () => {
-  if (!publishSlug.value) return
-
-  let pDate: string
-  if (publishToggle.value) {
-    pDate = new Date().toISOString()
-  } else {
-    if (!publishDate.value) {
-      console.error('Publish Date is missing')
-      return
-    }
-    pDate = new Date(publishDate.value).toISOString()
-  }
-
-  const idToken = await authStore.getIdToken()
-
-  try {
-    await $fetch(`/api/admin/blog/${publishSlug.value}`, {
-      method: 'PUT',
-      body: { meta: { published: pDate, draft: false, date: new Date().toISOString() } },
-      headers: {
-        'Authorization': `Bearer ${idToken}`
-      }
-    })
-    cancelPublish()
-    await fetchInitialPosts()
-  } catch (e) {
-    console.error('publishPost:', (e as Error).message)
-  }
-}
-
-const openAddPostModal = () => { blogPostModalOpen.value = true }
-const openEditPostModal = (slug: string) => { blogPostModalSlug.value = slug; blogPostModalOpen.value = true }
-const closePostModal = () => { blogPostModalSlug.value = null }
-
-onMounted(() => {
-  if ((initialPosts.value?.length ?? 0) < limit) hasMorePages.value = false
-})
 </script>
 
 <style scoped>
