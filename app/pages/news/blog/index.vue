@@ -17,8 +17,8 @@
                                     </div>
                                     <div class="aspect-[2/1]">
                                         <BlogPostImage
-                                            :src="getMediaUrl(latestPost.thumbnail)" 
-                                            :alt="latestPost.thumbnailAlt || latestPost.title" 
+                                            :src="blogPostsAPI.getMediaUrl(latestPost.thumbnail)"
+                                            :alt="latestPost.thumbnailAlt || latestPost.title"
                                             :title="latestPost.thumbnailAlt || latestPost.title"
                                             :width="latestPost.thumbnailWidth || undefined"
                                             :height="latestPost.thumbnailHeight || undefined" 
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="aspect-[2/1]">
                                             <BlogPostImage
-                                                :src="getMediaUrl(post.thumbnail)" 
+                                                :src="blogPostsAPI.getMediaUrl(post.thumbnail)" 
                                                 :alt="post.thumbnailAlt || post.title" 
                                                 :title="post.thumbnailAlt || post.title"
                                                 :width="post.thumbnailWidth || undefined"
@@ -123,20 +123,6 @@
 import { useBlogPostsApi } from '~/composables/blog/blogPostsAPI'
 import { useDateFormat } from '~/composables/dates/dateFormat'
 import type { BlogPostCard, BlogPostTiny, PaginationMeta } from '~/models/blog'
-
-const getMediaUrl = (path?: string | null): string => {
-  if (!path) return ''
-
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    return path
-  }
-
-  const apiBase = useRuntimeConfig().public.useLocalApi
-    ? 'http://127.0.0.1:4000'
-    : 'https://api.goldengatemanor.com'
-
-  return `${apiBase}${path}`
-}
 
 const authStore = useAuthStore()
 

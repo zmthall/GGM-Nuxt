@@ -36,7 +36,7 @@
                     <BlogPostImage 
                       :key="post.thumbnail"
                       format="webp,avif" 
-                      :src="getMediaUrl(post.thumbnail)" 
+                      :src="blogPostsAPI.getMediaUrl(post.thumbnail)" 
                       :alt="post.thumbnailAlt || ''" 
                       :title="post.thumbnailAlt || ''" 
                       :width="136" 
@@ -144,20 +144,6 @@ const blogPostsAPI = useBlogPostsApi();
 const formatDates = useDateFormat();
 const text = useText();
 
-const getMediaUrl = (path?: string | null): string => {
-  if (!path) return ''
-
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    return path
-  }
-
-  const apiBase = useRuntimeConfig().public.useLocalApi
-    ? 'http://127.0.0.1:4000'
-    : 'https://api.goldengatemanor.com'
-
-  return `${apiBase}${path}`
-}
-
 const defaultPagination: PaginationMeta = {
   currentPage: 1,
   pageSize: 1,
@@ -222,7 +208,7 @@ const loadMore = async () => {
     const response = await blogPostsAPI.getAllPosts({
         page: nextPage,
         pageSize,
-        orderField: 'publish_timestamp',
+        orderField: 'updated_at',
         orderDirection: 'desc'
     })
 

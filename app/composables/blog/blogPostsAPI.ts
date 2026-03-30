@@ -181,6 +181,20 @@ export const useBlogPostsApi = () => {
     return `/admin/blog/post/${slug}`
   }
 
+  const getMediaUrl = (path?: string | null): string => {
+    if (!path) return ''
+
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path
+    }
+
+    const apiBase = useRuntimeConfig().public.useLocalApi
+      ? 'http://127.0.0.1:4000'
+      : 'https://api.goldengatemanor.com'
+
+    return `${apiBase}${path}`
+  }
+
   return {
     // Public API Methods
     getPublishedPostBySlug,
@@ -190,6 +204,7 @@ export const useBlogPostsApi = () => {
     getStaffPicks,
     getRelatedPosts,
     getBlogPostLink,
+    getMediaUrl,
     // Admin API Methods (not exposed to public facing components)
     getAllPosts,
     getBlogPostLinkAdmin,

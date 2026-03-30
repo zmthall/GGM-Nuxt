@@ -26,8 +26,9 @@
                 <span class="text-white/75 text-xs">{{ `${post?.readTime} min read` }}</span>
               </div>
               <BlogPostImage
+                :key="post.thumbnail"
                 format="webp,avif"
-                :src="post.thumbnail" 
+                :src="blogPostsAPI.getMediaUrl(post.thumbnail)" 
                 :alt="post.thumbnailAlt || post.title" 
                 :title="post.thumbnailAlt || post.title" 
                 :width="post.thumbnailWidth || undefined"    
@@ -45,8 +46,9 @@
         <aside class="sticky top-20 shadow-interior p-3 rounded-md">
           <div class="w-full max-h-[400px] overflow-hidden rounded-[3px] aspect-[2/1]">
             <BlogPostImage
+                :key="post.thumbnail"
                 format="webp,avif"
-                :src="post.thumbnail" 
+                :src="blogPostsAPI.getMediaUrl(post.thumbnail)" 
                 :alt="post.thumbnailAlt || post.title" 
                 :title="post.thumbnailAlt || post.title" 
                 :width="post.thumbnailWidth || undefined"    
