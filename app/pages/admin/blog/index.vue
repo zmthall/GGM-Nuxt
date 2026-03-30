@@ -46,7 +46,7 @@
                     />
                     <div class="flex flex-col items-start justify-center">
                       <p class="text-xs">Last Updated: {{ formatDates.formatShortDateNoLeadingZero(post.updatedAt) }}</p>
-                      <h3 :title="post.title" class="text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
+                      <h3 :title="post.title" class="post-title text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
                       <NuxtLink :to="post.published ? blogPostsAPI.getBlogPostLink(post.slug) : blogPostsAPI.getBlogPostLinkAdmin(post.slug)" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>
                         {{ post.slug }}
                       </NuxtLink>
@@ -308,4 +308,13 @@ const closePublish = () => {
 </script>
 
 <style scoped>
+h3.post-title {
+  --max-lines: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: var(--max-lines);
+  -webkit-line-clamp: var(--max-lines);
+}
+
 </style>
