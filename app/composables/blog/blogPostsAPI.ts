@@ -126,6 +126,8 @@ export const useBlogPostsApi = () => {
       `${baseURL}/api/blog-posts/slug/${slug}/published`
     )
 
+    console.log(slug, response.data)
+
     return mappers.mapBlogPostFullRecord(response.data)
   }
 

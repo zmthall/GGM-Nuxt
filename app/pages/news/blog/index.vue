@@ -6,7 +6,11 @@
                 <h2 class="text-2xl text-brand-primary font-bold border-b border-b-brand-primary/20 mb-8 max-sm:hidden">Latest Post - See What is New:</h2>
                 <div>
                     <div class="flex flex-col gap-8 sm:flex-row">
-                        <NuxtLink :to="blogPostsAPI.getBlogPostLink(latestPost.slug)" class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <NuxtLink 
+                            :to="blogPostsAPI.getBlogPostLink(latestPost.slug)"
+                            prefetch class="flex h-max sm:w-1/2 sm:hover:scale-105 transition-transform duration-500 ease-in-out"
+                            @mouseenter="prefetchPost(latestPost.slug)"
+                            >
                             <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-1/2">
                                 <div class="h-1/2 relative">
                                     <div>
@@ -66,7 +70,11 @@
                 <div v-if="allPosts.length > 0">
                     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <li v-for="post in allPosts" :key="post.id">
-                            <NuxtLink :to="blogPostsAPI.getBlogPostLink(post.slug)" class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <NuxtLink 
+                                :to="blogPostsAPI.getBlogPostLink(post.slug)" 
+                                prefetch class="group flex sm:mx-auto lg:hover:scale-105 transition-transform duration-500 ease-in-out"
+                                @mouseenter="prefetchPost(post.slug)"
+                                >
                                 <div class="flex flex-col shadow-primary rounded-xl overflow-hidden h-full">
                                     <div class="h-1/2 relative">
                                         <div class="flex items-center gap-2 absolute z-1 top-2 left-2 bg-brand-primary/50 p-1 rounded-lg">
@@ -144,6 +152,13 @@ definePageMeta({
 useHead({
   titleTemplate: null
 })
+
+const prefetchPost = (slug: string) => {
+  useAsyncData(
+    `blog-post-${slug}`,
+    () => blogPostsAPI.getPublishedPostBySlug(slug)
+  )
+}
 
 const runtimeConfig = useRuntimeConfig()
 
