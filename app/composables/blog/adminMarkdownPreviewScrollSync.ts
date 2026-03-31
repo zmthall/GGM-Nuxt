@@ -364,10 +364,6 @@ export const useAdminMarkdownPreviewScrollSync = (
     const previewScrollEl = previewRef.value?.getScrollElement() ?? null
 
     if (!editorScrollEl || !previewScrollEl) {
-      console.log('[scroll-sync] missing scroll elements', {
-        editorScrollEl,
-        previewScrollEl
-      })
       return
     }
 
@@ -393,11 +389,6 @@ export const useAdminMarkdownPreviewScrollSync = (
     editorCleanup = () => editorScrollEl.removeEventListener('scroll', onEditorScroll)
     previewCleanup = () => previewScrollEl.removeEventListener('scroll', onPreviewScroll)
     isBound.value = true
-
-    console.log('[scroll-sync] bound listeners', {
-      editorScrollEl,
-      previewScrollEl
-    })
   }
 
   const setupResizeObserver = (): void => {
@@ -419,19 +410,6 @@ export const useAdminMarkdownPreviewScrollSync = (
     await measureSections()
     bindListeners()
     setupResizeObserver()
-
-    console.log('[scroll-sync] refresh complete', {
-      isBound: isBound.value,
-      sections: sections.value,
-      tuning: {
-        EDITOR_TO_PREVIEW_ADVANCE,
-        PREVIEW_TO_EDITOR_SLOWDOWN,
-        EDITOR_TO_PREVIEW_MAPPED_WEIGHT,
-        EDITOR_TO_PREVIEW_RATIO_WEIGHT,
-        PREVIEW_TO_EDITOR_MAPPED_WEIGHT,
-        PREVIEW_TO_EDITOR_RATIO_WEIGHT
-      }
-    })
   }
 
   watch(

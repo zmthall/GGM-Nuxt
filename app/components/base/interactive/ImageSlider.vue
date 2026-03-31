@@ -205,11 +205,6 @@ function onImageLoad(index: number) {
     firstImageLoaded.value = true
     emit('imagesLoaded') // Emit when first image loads
   }
-  
-  // Optional: still emit when ALL are loaded if you want that too
-  // if (allImagesLoaded.value) {
-  //   console.log('All images loaded')
-  // }
 }
 
 function onImageError(index: number) {
@@ -239,7 +234,7 @@ watch([() => slides.value, idx], async ([s]) => {
       loaded.add(i)
       if (!firstReady.value) firstReady.value = true
     } catch { 
-      console.log(`Image ${i} failed to preload`)
+      // Placeholder for error handling, e.g. set a flag to show an error state on the image
     }
   }
   // prefetch neighbors for smooth next/prev

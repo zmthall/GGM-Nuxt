@@ -49,7 +49,6 @@ export default defineEventHandler(async (event) => {
         try {
           await fsp.unlink(imgPublic)
           removedImage = thumb
-          console.log('Deleted image from public:', imgPublic)
         } catch (e) {
           console.error('Failed to delete from public:', e)
         }

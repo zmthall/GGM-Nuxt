@@ -4,12 +4,27 @@ import mappers from '~/utils/blogPostMappers'
 export const useBlogPostsApi = () => {
   const baseURL = useRuntimeConfig().public.useLocalApi  ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
 
+  const authStore = useAuthStore()
+
+  const getFirebaseToken = async () => {
+    if (!authStore.user) {
+      throw new Error('User not authenticated')
+    }
+
+    return await authStore.user.getIdToken()
+  }
+
+  const getAuthHeaders = async () => {
+    const token = await getFirebaseToken()
+    return { Authorization: `Bearer ${token}` }
+  }
+
   // Admin API methods for managing blog posts (not exposed to public facing components)
 
   const getAllPosts = async (options: PaginationOptions): Promise<PaginatedResult<BlogPostPreview>> => {
     const response = await $fetch<ApiPaginatedSuccessResponse<BlogPostPreviewApiRecord>>(
       `${baseURL}/api/blog-posts/all`,
-      { params: { ...options } }
+      { params: { ...options }, headers: await getAuthHeaders() }
     )
 
     return {
@@ -25,8 +40,10 @@ export const useBlogPostsApi = () => {
     canonicalUrl?: string
     excludeId?: string
   }) => {
+
     return await $fetch<ApiCheckUniquePostResponse>(`${baseURL}/api/blog-posts/check-unique`, {
       method: 'POST',
+      headers: await getAuthHeaders(),
       body: {
         post
       }
@@ -38,6 +55,7 @@ export const useBlogPostsApi = () => {
       `${baseURL}/api/blog-posts`,
       {
         method: 'POST',
+        headers: await getAuthHeaders(),
         body: post
       }
     )
@@ -50,6 +68,7 @@ export const useBlogPostsApi = () => {
       `${baseURL}/api/blog-posts/${id}`,
       {
         method: 'PATCH',
+        headers: await getAuthHeaders(),
         body: post
       }
     )
@@ -57,13 +76,22 @@ export const useBlogPostsApi = () => {
     return mappers.mapBlogPostFullRecord(response.data)
   }
 
-  const unpublishPost = () => {
-      
+  const unpublishPost = async (id: string): Promise<BlogPostUpdate> => {
+    const response = await $fetch<ApiSuccessResponse<BlogPostUpdateRecord>>(
+      `${baseURL}/api/blog-posts/unpublish/${id}`,
+      {
+        method: 'PATCH',
+        headers: await getAuthHeaders()
+      }
+    )
+
+    return mappers.mapBlogPostUpdateRecord(response.data)
   }
 
   const publishPost = async (id: string, publishTimestamp: string): Promise<BlogPostUpdate> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostUpdateRecord>>(`${baseURL}/api/blog-posts/publish/${id}`, {
       method: 'PATCH',
+      headers: await getAuthHeaders(),
       body: { publishTimestamp }
     })
 
@@ -73,7 +101,7 @@ export const useBlogPostsApi = () => {
   const deletePost = async (id: string): Promise<ApiDeletedSuccessResponse> => {
     const response = await $fetch<ApiDeletedSuccessResponse>(
       `${baseURL}/api/blog-posts/${id}`,
-      { method: 'DELETE' }
+      { method: 'DELETE', headers: await getAuthHeaders() }
     )
 
     return response
@@ -85,7 +113,8 @@ export const useBlogPostsApi = () => {
 
     const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-thumbnail`, {
       method: 'POST',
-      body: formData
+      body: formData,
+      headers: await getAuthHeaders()
     })
 
     return response.data;
@@ -97,6 +126,7 @@ export const useBlogPostsApi = () => {
 
     const response = await $fetch<ApiSuccessResponse<UploadImageRecord>>(`${baseURL}/api/blog-posts/upload-seo`, {
       method: 'POST',
+      headers: await getAuthHeaders(),
       body: formData
     })
 
@@ -105,7 +135,8 @@ export const useBlogPostsApi = () => {
 
   const getPostById = async (id: string): Promise<BlogPostFull> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
-      `${baseURL}/api/blog-posts/id/${id}`
+      `${baseURL}/api/blog-posts/id/${id}`,
+      { headers: await getAuthHeaders() }
     )
 
     return mappers.mapBlogPostFullRecord(response.data)
@@ -113,7 +144,8 @@ export const useBlogPostsApi = () => {
 
   const getPostBySlug = async (slug: string): Promise<BlogPostFull> => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
-      `${baseURL}/api/blog-posts/slug/${slug}`
+      `${baseURL}/api/blog-posts/slug/${slug}`,
+      { headers: await getAuthHeaders() }
     )
 
     return mappers.mapBlogPostFullRecord(response.data)
@@ -125,8 +157,6 @@ export const useBlogPostsApi = () => {
     const response = await $fetch<ApiSuccessResponse<BlogPostFullApiRecord>>(
       `${baseURL}/api/blog-posts/slug/${slug}/published`
     )
-
-    console.log(slug, response.data)
 
     return mappers.mapBlogPostFullRecord(response.data)
   }

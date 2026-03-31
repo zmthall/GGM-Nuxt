@@ -228,8 +228,6 @@ const updatePost = (post: BlogPostFull): void => {
   blogState.value.posts = blogState.value.posts
     .map(existingPost => existingPost.id === post.id ? post : existingPost)
     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
-
-  console.log('updated post in state:', blogState.value.posts.find(p => p.id === post.id))
 }
 
 // Blog Post Modals and Actions
@@ -298,7 +296,6 @@ const publishPost = async () => {
 }
 
 const closePublish = () => {
-  console.log('close publish modal')
   blogPostPublishModalOpen.value = false
   blogPostModalId.value = null
   publishToggle.value = true
