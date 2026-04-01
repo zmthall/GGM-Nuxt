@@ -12,6 +12,13 @@
     "form": {
       "select": {
         "default-option": "Select an option"
+      },
+      "recaptcha": {
+        "text-before": "This site is protected by reCAPTCHA and the Google",
+        "privacy-policy": "Privacy Policy",
+        "text-middle": "and",
+        "terms-of-service": "Terms of Service",
+        "text-after": "apply."
       }
     },
     "please-note": {
@@ -153,18 +160,89 @@
       "idle": "Send Message",
       "loading": "Sending Message..."
     },
-    "recaptcha": {
-      "text-before": "This site is protected by reCAPTCHA and the Google",
-      "privacy-policy": "Privacy Policy",
-      "text-middle": "and",
-      "terms-of-service": "Terms of Service",
-      "text-after": "apply."
-    },
     "feedback": {
       "success": "Message sent successfully!",
       "error": "Message failed to send. Please try again.",
       "submitting": "Submitting message, please wait...",
       "required-fields": "Please fill in all required fields"
+    }
+  },
+  "schedule-form": {
+    "sections": {
+      "passenger": {
+        "title": "Passenger Information",
+        "fields": {
+          "name": {
+            "label": "Name",
+            "placeholder": "First and Last"
+          },
+          "dob": {
+            "label": "Date of Birth",
+            "placeholder": "Select your birthdate"
+          },
+          "phone": {
+            "label": "Phone Number"
+          },
+          "email": {
+            "label": "Email"
+          },
+          "medicaid": {
+            "label": "Medicaid ID",
+            "placeholder": "Enter your Medicaid ID"
+          }
+        }
+      },
+      "trip": {
+        "title": "Trip Information",
+        "note": {
+          "paragraphs": [
+            "All trips are on a first come first serve basis, with this in mind, please make sure to schedule trips 24-48 hours prior to the trip date to make sure that we can accommodate the trip. We cannot promise availability for trips that were not scheduled 24-48 hours prior to the trip.",
+            "If your trip falls on a Monday, please schedule the ride on the Friday prior so that we can certify that we have received it in ample time to accommodate the trip. We cannot promise availability for trips on Monday that were not scheduled on the prior Friday.",
+            "Golden Gate Manor staff thanks you for your understanding and we appreciate your efforts to ease the scheduling process.",
+            "If you have any questions or concerns regarding our ability to accommodate a trip please call us at"
+          ],
+          "link": {
+            "aria": "Call (719) 543-2525"
+          }
+        },
+        "fields": {
+          "appointment_date": {
+            "label": "Appointment Date",
+            "placeholder": "Select a Date"
+          },
+          "appointment_time": {
+            "label": "Appointment Time",
+            "placeholder": "Select a Time"
+          },
+          "pickup": {
+            "label": "Pickup Address"
+          },
+          "dropoff": {
+            "label": "Drop-Off Address"
+          },
+          "notes": {
+            "label": "Notes/Messages/Special Requirements",
+            "placeholder": "If you need anything specific, such as a wheelchair accessible van, request it here."
+          }
+        }
+      },
+      "terms": {
+        "title": "Agree to Terms",
+        "checkbox": {
+          "text": "I certify the information provided is accurate to the best of my knowledge and that I have read Golden Gate Manor's",
+          "link": "Ride Cancellation Policy."
+        },
+        "submit": {
+          "idle": "Submit Request",
+          "loading": "Submitting Request..."
+        }
+      }
+    },
+    "feedback": {
+      "success": "Ride request sent successfully!",
+      "error": "Ride request failed to send. Please try again.",
+      "submitting": "Submitting ride request, please wait...",
+      "validation": "Please fill in all required fields"
     }
   },
   "home": {
@@ -369,10 +447,7 @@
   "non-medical": {
     "meta": {
       "title": "Pueblo Non-Medical Transport",
-      "description": "Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.",
-      "breadcrumb": {
-        "label": "Non-Medical"
-      }
+      "description": "Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more."
     },
     "banner": {
       "alt-title": "Line-up of Golden Gate Manor Inc cars in Pueblo Colorado"

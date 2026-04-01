@@ -33,10 +33,10 @@
         <!-- Recaptcha Privacy Notice -->
         <div class="text-xs text-gray-700">
           <span>
-            {{ $t('contact-form.recaptcha.text-before') }}&nbsp;
+            {{ $t('components.form.recaptcha.text-before') }}&nbsp;
           </span>
-          <a href="https://policies.google.com/privacy" class="link">{{ $t('contact-form.recaptcha.privacy-policy') }}</a><span>&nbsp;{{ $t('contact-form.recaptcha.text-middle') }}&nbsp;</span> 
-          <a href="https://policies.google.com/terms" class="link">{{ $t('contact-form.recaptcha.terms-of-service') }}</a><span>&nbsp;{{ $t('contact-form.recaptcha.text-after') }}</span>
+          <a href="https://policies.google.com/privacy" class="link">{{ $t('components.form.recaptcha.privacy-policy') }}</a><span>&nbsp;{{ $t('components.form.recaptcha.text-middle') }}&nbsp;</span> 
+          <a href="https://policies.google.com/terms" class="link">{{ $t('components.form.recaptcha.terms-of-service') }}</a><span>&nbsp;{{ $t('components.form.recaptcha.text-after') }}</span>
         </div>
 
           <!-- Add feedback -->
@@ -44,14 +44,14 @@
           v-if="submitResult" class="mt-4 p-3 rounded-md" 
           :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
           <div v-if="submitResult.success && submitResult.score" class="text-sm">
-            {{ $t('contact-form.recaptcha.success')}}
+            {{ $t('contact-form.feedback.success')}}
           </div>
           <div v-else>
-            {{ $t('contact-form.recaptcha.error')}}
+            {{ $t('contact-form.feedback.error')}}
           </div>
         </div>
         <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
-          {{ $t('contact-form.recaptcha.submitting')}}
+          {{ $t('contact-form.feedback.submitting')}}
         </div>
       </BaseLayoutPageSection>
     </div>

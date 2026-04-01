@@ -12,6 +12,13 @@
     "form": {
       "select": {
         "default-option": "Seleccione una opción"
+      },
+      "recaptcha": {
+        "text-before": "Este sitio está protegido por reCAPTCHA y las",
+        "privacy-policy": "Políticas de Privacidad",
+        "text-middle": "y los",
+        "terms-of-service": "Términos del Servicio",
+        "text-after": "de Google se aplican."
       }
     },
     "please-note": {
@@ -153,18 +160,88 @@
       "idle": "Enviar Mensaje",
       "loading": "Enviando Mensaje..."
     },
-    "recaptcha": {
-      "text-before": "Este sitio está protegido por reCAPTCHA y las",
-      "privacy-policy": "Políticas de Privacidad",
-      "text-middle": "y los",
-      "terms-of-service": "Términos del Servicio",
-      "text-after": "de Google se aplican."
-    },
     "feedback": {
       "success": "¡Mensaje enviado con éxito!",
       "error": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo.",
       "submitting": "Enviando mensaje, por favor espere...",
       "required-fields": "Por favor complete todos los campos obligatorios"
+    }
+  },
+  "schedule-form": {
+    "sections": {
+      "passenger": {
+        "title": "Información del Pasajero",
+        "fields": {
+          "name": {
+            "label": "Nombre",
+            "placeholder": "Nombre y Apellido"
+          },
+          "dob": {
+            "label": "Fecha de Nacimiento",
+            "placeholder": "Seleccione su fecha de nacimiento"
+          },
+          "phone": {
+            "label": "Número de Teléfono"
+          },
+          "email": {
+            "label": "Correo Electrónico"
+          },
+          "medicaid": {
+            "label": "ID de Medicaid",
+            "placeholder": "Ingrese su ID de Medicaid"
+          }
+        }
+      },
+      "trip": {
+        "title": "Información del Viaje",
+        "note": {
+          "paragraphs": [
+            "Todos los viajes se programan por orden de llegada. Por favor asegúrese de programar su viaje con 24 a 48 horas de anticipación para que podamos acomodarlo. No podemos garantizar disponibilidad para viajes que no se programen con este tiempo.",
+            "Si su viaje es un lunes, por favor prográmelo el viernes anterior para asegurar que lo recibimos con suficiente anticipación. No podemos garantizar disponibilidad para viajes del lunes que no se hayan programado el viernes previo.",
+            "El personal de Golden Gate Manor le agradece su comprensión y valoramos su esfuerzo para facilitar el proceso de programación.",
+            "Si tiene alguna pregunta o inquietud sobre nuestra capacidad para acomodar un viaje, por favor llámenos al"
+          ]
+        },
+        "fields": {
+          "appointment_date": {
+            "label": "Fecha de la Cita",
+            "placeholder": "Seleccione una Fecha"
+          },
+          "appointment_time": {
+            "label": "Hora de la Cita",
+            "placeholder": "Seleccione una Hora"
+          },
+          "pickup": {
+            "label": "Dirección de Recogida",
+            "placeholder": "Ej. 300 Colorado Ave., Pueblo, CO, 81004"
+          },
+          "dropoff": {
+            "label": "Dirección de Destino",
+            "placeholder": "Ej. 300 Colorado Ave., Pueblo, CO, 81004"
+          },
+          "notes": {
+            "label": "Notas / Mensajes / Requisitos Especiales",
+            "placeholder": "Si necesita algo específico, como una van accesible para silla de ruedas, solicítelo aquí."
+          }
+        }
+      },
+      "terms": {
+        "title": "Aceptar los Términos",
+        "checkbox": {
+          "text": "Certifico que la información proporcionada es correcta según mi leal saber y entender y que he leído la",
+          "link": "Política de Cancelación de Viajes de Golden Gate Manor."
+        },
+        "submit": {
+          "idle": "Enviar Solicitud",
+          "loading": "Enviando Solicitud..."
+        }
+      }
+    },
+    "feedback": {
+      "success": "¡Solicitud de viaje enviada con éxito!",
+      "error": "No se pudo enviar la solicitud de viaje. Por favor intente nuevamente.",
+      "submitting": "Enviando solicitud de viaje, por favor espere...",
+      "validation": "Por favor complete todos los campos requeridos"
     }
   },
   "home": {

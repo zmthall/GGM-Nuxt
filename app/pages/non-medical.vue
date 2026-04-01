@@ -25,7 +25,7 @@
                 :title="$t('non-medical.cta.title')"
                 :description="$t('non-medical.cta.description')"
                 :button-label="$t('non-medical.cta.button') "
-                :to="$localePath('/company/contact-us')"
+                :to="$localePath('/resources/schedule-a-ride')"
             />
         </DeferRender>
         <DeferRender when="visible">
@@ -109,15 +109,23 @@ definePageMeta({
   breadcrumbLabel: 'Non-Medical'
 })
 
+const pageTitle = computed(() => {
+    return $t('non-medical.meta.title')
+})
+
+const pageDescription = computed(() => {
+    return $t('non-medical.meta.description')
+})
+
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Pueblo Non-Medical Transport',
-  ogTitle: 'Pueblo Non-Medical Transport',
-  description: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
-  ogDescription: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
+  title: pageTitle.value,
+  ogTitle: pageTitle.value,
+  description: pageDescription.value,
+  ogDescription: pageDescription.value,
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'Pueblo Non-Medical Transport',
-  twitterDescription: 'Enjoy stress-free personal transportation in Southern Colorado. Golden Gate Manor Inc. ensures safe, reliable travel for shopping, visits, and more.',
+  twitterTitle: pageTitle.value,
+  twitterDescription: pageDescription.value,
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })

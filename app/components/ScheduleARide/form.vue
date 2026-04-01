@@ -2,54 +2,55 @@
   <form @submit.prevent="submitRequest">
     <div class="sm:mx-4 mt-4 sm:my-8 px-2 py-8 bg-white sm:rounded-lg lg:shadow-primary lg:w-[75%] lg:mx-auto lg:p-8 xl:w-[60%] space-y-8">
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
-        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Passenger Information</h2>
-        <BaseFormInput v-model="form.name" autocomplete="name" name="Name" label="Name" placeholder="First and Last" />
-        <BaseFormDatePicker id="dob" v-model="form.dob" autocomplete="bday" label="Date of Birth" placeholder="Select your birthdate" start-date="January 1, 2000"/>
-        <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" label="Phone Number" name="phone" placeholder="(555) 555-5555" />
-        <BaseFormInput v-model="form.email" type="email" autocomplete="email" label="Email" name="email" placeholder="email@email.com" />
-        <BaseFormInput v-model="form.med_id" type="text" autocomplete="off" name="medicaid" label="Medicaid ID" placeholder="Enter your Medicaid ID" />
+        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">{{ $t('schedule-form.sections.passenger.title') }}</h2>
+        <BaseFormInput v-model="form.name" autocomplete="name" name="name" :label="$t('schedule-form.sections.passenger.fields.name.label')" :placeholder="$t('schedule-form.sections.passenger.fields.name.placeholder')" />
+        <BaseFormDatePicker id="dob" v-model="form.dob" autocomplete="bday" :label="$t('schedule-form.sections.passenger.fields.dob.label')" :placeholder="$t('schedule-form.sections.passenger.fields.dob.placeholder')" start-date="January 1, 2000"/>
+        <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" :label="$t('schedule-form.sections.passenger.fields.phone.label')" name="phone" placeholder="(555) 555-5555" />
+        <BaseFormInput v-model="form.email" type="email" autocomplete="email" :label="$t('schedule-form.sections.passenger.fields.email.label')" name="email" placeholder="email@email.com" />
+        <BaseFormInput v-model="form.med_id" type="text" autocomplete="off" name="medicaid" :label="$t('schedule-form.sections.passenger.fields.medicaid.label')" :placeholder="$t('schedule-form.sections.passenger.fields.medicaid.placeholder')" />
       </BaseLayoutPageSection>
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
-        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Trip Information</h2>
+        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">{{ $t('schedule-form.sections.trip.title') }}</h2>
         <PleaseNote>
           <div class="space-y-2">
-            <p>All trips are on a first come first serve basis, with this in mind, please make sure to schedule trips 24-48 hours prior to the trip date to make sure that we can accommodate the trip. We cannot promise availability for trips that were not scheduled 24-48 hours prior to the trip.</p>
-            <p>If your trip falls on a Monday, please schedule the ride on the Friday prior so that we can certify that we have received it in ample time to accommodate the trip. We cannot promise availability for trips on Monday that were not scheduled on the prior Friday.</p>
-            <p>Golden Gate Manor staff thanks you for your understanding and we appreciate your efforts to ease the scheduling process.</p>
             <p>
-              If you have any questions or concerns regarding our ability to accommodate a trip
-              please call us at
-              <ClientOnly>
-                <a href="tel:719-543-2525" class="text-brand-primary underline">
-                  (719) 543-2525
-                </a>
-              </ClientOnly>
-              <noscript>
-                <a href="tel:719-543-2525" class="text-brand-primary underline">
-                  (719) 543-2525
-                </a>
-              </noscript>.
+              {{ $t('schedule-form.sections.trip.note.paragraphs[0]') }}
+            </p>
+            <p>
+              {{ $t('schedule-form.sections.trip.note.paragraphs[1]') }}
+            </p>
+            <p>{{ $t('schedule-form.sections.trip.note.paragraphs[2]') }}</p>
+            <p>
+              {{ $t('schedule-form.sections.trip.note.paragraphs[3]') }}
+              <CallRailLink
+                  tel="719-543-2525"
+                  display="(719) 543-2525"
+                  cls="link"
+                  :aria-label="$t('schedule-form.sections.trip.note.link.aria')"
+              />.
             </p>
           </div>
         </PleaseNote>
-        <BaseFormDatePicker id="apt_date" v-model="form.apt_date" autocomplete="off" label="Appointment Date" placeholder="Select a Date" min-date/>
-        <BaseFormTimePicker id="apt_time" v-model="form.apt_time" autocomplete="off" label="Appointment Time" placeholder="Select a Time" />
-        <BaseFormInput v-model="form.pickup_address" type="text" autocomplete="street-address" name="pickup-address" label="Pickup Address" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
-        <BaseFormInput v-model="form.dropoff_address" type="text" autocomplete="street-address" name="dropoff-address" label="Drop-Off Address" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
-        <BaseFormTextArea v-model="form.notes" autocomplete="off" name="notes" label="Notes/Messages/Special Requirements" placeholder="If you need anything specific, such as a wheelchair accessible van, request it here."/>
+        <BaseFormDatePicker id="apt_date" v-model="form.apt_date" autocomplete="off" :label="$t('schedule-form.sections.trip.fields.appointment_date.label')" :placeholder="$t('schedule-form.sections.trip.fields.appointment_date.placeholder')" min-date/>
+        <BaseFormTimePicker id="apt_time" v-model="form.apt_time" autocomplete="off" :label="$t('schedule-form.sections.trip.fields.appointment_time.label')" :placeholder="$t('schedule-form.sections.trip.fields.appointment_time.placeholder')" />
+        <BaseFormInput v-model="form.pickup_address" type="text" autocomplete="street-address" name="pickup-address" :label="$t('schedule-form.sections.trip.fields.pickup.label')" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
+        <BaseFormInput v-model="form.dropoff_address" type="text" autocomplete="street-address" name="dropoff-address" :label="$t('schedule-form.sections.trip.fields.dropoff.label')" placeholder="e.g. 300 Colorado Ave., Pueblo, CO, 81004" />
+        <BaseFormTextArea v-model="form.notes" autocomplete="off" name="notes" :label="$t('schedule-form.sections.trip.fields.notes.label')" :placeholder="$t('schedule-form.sections.trip.fields.notes.placeholder')"/>
       </BaseLayoutPageSection>
       <BaseLayoutPageSection bg="transparent" class="space-y-2">
-        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">Agree to Terms</h2>
-        <BaseFormCheckbox v-model="form.acknowledge" name="attestation"><p>I certify the information provided is accurate to the best of my knowledge and that I have read Golden Gate Manor's <NuxtLink to="/company/policies/ride-cancellation" rel="noopener" target="_blank" class="link" @click.stop>Ride Cancellation Policy</NuxtLink>.</p></BaseFormCheckbox>
+        <h2 class="font-extrabolds text-2xl pb-2 border-b border-gray-200">{{ $t('schedule-form.sections.terms.title') }}</h2>
+        <BaseFormCheckbox v-model="form.acknowledge" name="attestation"><p>{{ $t('schedule-form.sections.terms.checkbox.text') }} <NuxtLink :to="$localePath('/company/policies/ride-cancellation')" rel="noopener" target="_blank" class="link" @click.stop>{{ $t('schedule-form.sections.terms.checkbox.link') }}</NuxtLink>.</p></BaseFormCheckbox>
         <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="py-4 px-8 block !mt-8">
-          <span v-if="!isSubmitting">Submit Request</span>
-          <span v-else class="animate-pulse">Submitting Request</span>
+          <span v-if="!isSubmitting">{{ $t('schedule-form.sections.terms.submit.idle') }}</span>
+          <span v-else class="animate-pulse">{{ $t('schedule-form.sections.terms.submit.loading') }}</span>
         </BaseUiAction>
         <!-- Recaptcha Privacy Notice -->
-        <div class="text-xs text-gray-500">
-          This site is protected by reCAPTCHA and the Google 
-          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a> and 
-          <a href="https://policies.google.com/terms" class="link">Terms of Service</a> apply.
+        <div class="text-xs text-gray-700">
+          <span>
+            {{ $t('components.form.recaptcha.text-before') }}&nbsp;
+          </span>
+          <a href="https://policies.google.com/privacy" class="link">{{ $t('components.form.recaptcha.privacy-policy') }}</a><span>&nbsp;{{ $t('components.form.recaptcha.text-middle') }}&nbsp;</span> 
+          <a href="https://policies.google.com/terms" class="link">{{ $t('components.form.recaptcha.terms-of-service') }}</a><span>&nbsp;{{ $t('components.form.recaptcha.text-after') }}</span>
         </div>
       </BaseLayoutPageSection>
 
@@ -57,14 +58,14 @@
         v-if="submitResult" class="mt-4 p-3 rounded-md" 
         :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
         <div v-if="submitResult.success && submitResult.score" class="text-sm">
-          Ride request sent successfully!
+          {{ $t('schedule-form.feedback.success')}}
         </div>
         <div v-else>
-          Ride request failed to send. Please try again.
+          {{ $t('schedule-form.feedback.error')}}
         </div>
       </div>
       <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
-        Submitting ride request, please wait...
+        {{ $t('schedule-form.feedback.submitting') }}
       </div>
     </div>
   </form>
