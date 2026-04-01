@@ -4,8 +4,8 @@
       <BaseLayoutPageSection :padding="false" class="space-y-1" bg="transparent">
         <BaseFormSelect 
           v-model="form.reason"
-          :values="['general', 'complaint', 'question', 'transportation', 'assisted_living', 'medical_supply', 'accessibility']" 
-          :labels="['General Contact', 'File a Complaint', 'Question or Inquiry', 'Transportation Services', 'Assisted Living', 'Medical Supplies', 'Accessibility']" 
+          :values="['general', 'complaint', 'question', 'transportation', 'assisted_living', 'medical_supply', 'accessibility', 'translation']" 
+          :labels="['General Contact', 'File a Complaint', 'Question or Inquiry', 'Transportation Services', 'Assisted Living', 'Medical Supplies', 'Accessibility', 'Translation']" 
           label="Reason for Contact"
           />
 

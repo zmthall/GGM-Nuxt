@@ -20,6 +20,7 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
+
     <BaseLayoutPageSection bg="transparent">
       <BaseLayoutPageContainer>
         <h2 class="text-2xl font-bold text-brand-primary">Measures to Support Accessibility</h2>
@@ -29,9 +30,9 @@
               accessibility of the site:
           </p>
           <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text">
-              <li class="">Ensures accessibility is part of their continuous improvement process</li>
-              <li class="">Employs formal accessibility quality assurance methods</li>
-              <li class="">Keeps abreast of the technical and legal aspects of accessibility to the best of their ability</li>
+              <li>Ensures accessibility is part of their continuous improvement process</li>
+              <li>Employs formal accessibility quality assurance methods</li>
+              <li>Keeps abreast of the technical and legal aspects of accessibility to the best of their ability</li>
           </ul>
           <p class="text-xl text-brand-main-text">
               As a business, we make every attempt to ensure information 
@@ -57,6 +58,30 @@
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
+
+    <BaseLayoutPageSection bg="transparent">
+    <BaseLayoutPageContainer>
+      <h2 class="text-2xl font-bold text-brand-primary">Language Accessibility</h2>
+      <div class="space-y-2">
+        <p class="text-xl text-brand-main-text">
+            We are currently in the process of making our website more accessible for translated content so that more visitors can more easily understand the information we provide.
+        </p>
+        <p class="text-xl text-brand-main-text">
+            At this time, portions of this website may be translated from English to Spanish using AI-assisted translation tools. Not all content has been translated yet, and some pages may still be in the process of being updated or translated.
+        </p>
+        <p class="text-xl text-brand-main-text">
+            While we make every effort to provide clear and helpful translated content, automated translation may not always be fully accurate, complete, or contextually correct.
+        </p>
+        <p class="text-xl text-brand-main-text">
+            If you notice an error in translated content, please contact us using the form below and select 'Translation' as the reason for your message. When reaching out, please include the page where the issue appears and the specific translated text that you believe is incorrect so we can review and improve it.
+        </p>
+        <p class="text-xl text-brand-main-text">
+            We appreciate your patience and feedback as we continue working to make our website more accessible and understandable for all visitors.
+        </p>
+      </div>
+    </BaseLayoutPageContainer>
+  </BaseLayoutPageSection>
+
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="pDefault" bg="transparent">
         <BaseLayoutPageContainer>
@@ -65,8 +90,8 @@
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
                   If you wish to report an accessibility issue, have any 
-                  questions, or need assistance, please contact us via the 
-                  Contact Form below or via email at 
+                  questions, need assistance, or would like to report a translation issue, 
+                  please contact us via the Contact Form below or via email at 
                   <a href="mailto:accessibility@goldengatemanor.com" class="link break-all">
                       accessibility@goldengatemanor.com</a>.
               </p>
@@ -107,7 +132,6 @@ useSeoMeta({
 defineOptions({
     name: 'AccessibilityPage'
 })
-
 </script>
 
 <style>
