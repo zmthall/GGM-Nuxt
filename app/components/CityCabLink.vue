@@ -5,14 +5,14 @@
       :href="MED_URL"
       @ab-test-click="trackCTA('breadcrumb')"
     >
-      Visit Our City Cab Website
+      {{ $t('components.city-cab-link.label') }}
     </BaseUiBreadCrumbCTA>
 
     <div v-if="chosen === 'under-image'" class="flex justify-center">
       <BaseUiAction
         :href="withUtm(MED_URL, 'under-image')"
         :ab-button="true"
-        title="Opens in new tab"
+        :title="$t('components.new-tab-title')"
         :new-page="true"
         class="group"
         styling="flex items-center py-2 px-4"
@@ -25,7 +25,7 @@
           hover-color="group-hover:text-brand-primary"
           class="transition-colors ease-in-out duration-500"
         />
-        <div>Visit Our City Cab Website</div>
+        <div>{{ $t('components.city-cab-link.label') }}</div>
       </BaseUiAction>
     </div>
   </template>

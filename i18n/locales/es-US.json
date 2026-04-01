@@ -20,7 +20,11 @@
      "interactive-map": {
       "cta": "Haga clic para cargar el mapa interactivo",
       "loading": "Cargando mapa…"
-     }
+     },
+      "city-cab-link": {
+        "label": "Visite Nuestro Sitio Web de City Cab"
+      },
+      "new-tab-title":  "Abre en una nueva pestaña"
   },
   "header": {
     "links": {
@@ -378,6 +382,87 @@
     },
     "map": {
       "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
+    }
+  },
+  "non-medical": {
+    "meta": {
+      "title": "Transporte No Médico en Pueblo",
+      "description": "Disfrute de transporte personal sin estrés en el sur de Colorado. Golden Gate Manor Inc. ofrece viajes seguros y confiables para compras, visitas y más.",
+      "breadcrumb": {
+        "label": "No Médico"
+      }
+    },
+    "banner": {
+      "alt-title": "Fila de vehículos de Golden Gate Manor Inc. en Pueblo, Colorado"
+    },
+    "overview": {
+      "title": "Descripción General del Transporte No Médico",
+      "paragraphs": [
+        "Golden Gate Manor Transportation entiende que no siempre es posible depender únicamente de la ayuda de familiares, amigos o del transporte público para sus necesidades de traslado en Pueblo, Colorado, especialmente cuando desea mantener su independencia. Tener acceso a transporte no médico seguro y confiable puede ser difícil de encontrar en el condado de Pueblo y el condado de Otero, por eso estamos aquí para ofrecer una solución. Con nuestra flota de más de 40 vehículos, puede contar con nosotros para llevarlo a donde necesite ir mientras mantiene su independencia.",
+        "Nos enorgullece ser una de las únicas compañías en el condado de Pueblo y el condado de Otero que ofrece transporte no médico aprobado por DSS/DHS a miembros elegibles de la comunidad que tienen una discapacidad y/o son adultos mayores y que también reciben asistencia de Medicaid. Ya sea que necesite hacer diligencias personales, asistir a un evento familiar o simplemente salir a la comunidad para otras actividades recreativas, Golden Gate Manor Transportation/Pueblo City Cab puede llevarlo de manera rápida y confiable. Siempre estamos felices de responder cualquier pregunta que pueda tener sobre el proceso."
+      ],
+      "button": "Contáctenos"
+    },
+    "cta": {
+      "title": "¿Ya fue aprobado a través de DSS/DHS?",
+      "description": "Utilice nuestro formulario de programación en línea para reservar rápidamente su transporte no médico y llegar a donde necesita ir más rápido. Haremos todo lo posible por acomodar su viaje, especialmente cuando se programe con 24 a 48 horas de anticipación.",
+      "button": "Programe un Viaje Ahora"
+    },
+    "schedule": {
+      "title": "¿Cómo Programo un Viaje?",
+      "paragraphs": [
+        "Si nunca ha utilizado nuestros servicios para transporte no médico, comience por comunicarse con el Departamento de Servicios Humanos (DHS) al",
+        "para determinar su elegibilidad para la acomodación del viaje o siguiendo los pasos en el",
+        "Si tiene Medicaid y también participa en un programa Home Community Based Service Waiver, puede ser aprobado a través de DHS para servicios de transporte no médico aquí en Pueblo, Colorado (incluyendo Pueblo West, Colorado). Después de este paso, cuando esté listo para programar su primer viaje con Golden Gate Manor Transportation/Pueblo City Cab, llámenos al",
+        "Con nuestra flota de más de 40 vehículos, hay conductores y citas disponibles las 24 horas del día, los 7 días de la semana. Nuestros servicios de despacho operan 24/7 para adaptarse a las necesidades de nuestros clientes. Si parece que Golden Gate Manor Transportation no está disponible,",
+        "es nuestra empresa hermana que está abierta las 24 horas del día, los 365 días del año. Asegúrese de comunicarse con nosotros de 24 a 48 horas antes de la salida de su viaje para que podamos acomodarlo y tener una mayor garantía de disponibilidad."
+      ],
+      "links": {
+        "hcpf": "sitio web de Health Care Policy & Financing para transporte no médico",
+        "city-cab": {
+          "aria": "Pueblo City Cab — abre en una nueva pestaña",
+          "label": "Pueblo City Cab"
+        }
+      },
+      "image": {
+        "alt-title": "Vehículos de Golden Manor Inc. y City Cab"
+      }
+    },
+    "information": {
+      "title": "¿Qué Información Necesito?",
+      "paragraph": "Antes de viajar con Golden Gate Manor Transportation, la elegibilidad debe ser aprobada por el Departamento de Servicios Humanos (DHS); prepárese antes de comunicarse con nosotros llamando primero a DHS al 719-583-6900 para la aprobación de elegibilidad. Una vez que se apruebe su elegibilidad y tenga su número de viajes mensuales asignados, comuníquese con nosotros llamando al",
+      "paragraph-end": "y esté preparado para proporcionar su nombre, dirección de recogida y el destino al que viaja. Nuestros representantes de servicio al cliente capacitados lo guiarán a través del proceso de programación del viaje y cualquier otra información relevante será solicitada durante la llamada, incluyendo, entre otras cosas:",
+      "image": {
+        "alt-title": "Vehículo de transporte cerca del tren Santa Fe en la estación de tren de Pueblo"
+      },
+      "cards": {
+        "personal": {
+          "title": "Información Personal:",
+          "items": [
+            "Su nombre completo",
+            "Su número de identificación de Health First Colorado",
+            "Su fecha de nacimiento",
+            "Su dirección de recogida"
+          ]
+        },
+        "destination": {
+          "title": "Detalles del Destino:",
+          "items": [
+            "Fecha y hora de su transporte",
+            "Dirección completa del destino"
+          ]
+        },
+        "passengers": {
+          "title": "Pasajeros Adicionales:",
+          "items": [
+            "Determine si necesitará asistencia; se permite hasta un pasajero adicional para ayudarle con los viajes."
+          ]
+        }
+      },
+      "closing": "¡Gracias por elegir Golden Gate Manor Transportation/Pueblo City Cab para todas sus necesidades de transporte no médico! Esperamos poder servirle. Si tiene alguna pregunta o inquietud relacionada con sus viajes, desde verificar si han sido ingresados en el sistema de despacho hasta preguntas sobre nuestros servicios, no dude en comunicarse con nosotros en cualquier momento para que podamos ayudarle. Nuestro objetivo es hacer que el proceso sea lo más sencillo y fluido posible para que pueda llegar a donde necesita de manera confiable y rápida.",
+      "icon-image": {
+        "alt-title": "Símbolo de signo de interrogación"
+      }
     }
   }
 }
