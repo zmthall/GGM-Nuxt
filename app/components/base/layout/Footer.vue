@@ -356,7 +356,7 @@
         </div> -->
         <!-- Bottom Copyright Footer -->
         <div v-if="footer" class="flex flex-col min-[875px]:flex-row md:justify-between px-2 py-6 bg-brand-primary text-white border-t-2 border-t-white/50 text-center">
-            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-2 min-[875px]:mb-0 md:mx-0">© 2024 Golden Gate Manor, Inc.</NuxtLink>
+            <NuxtLink to="/" class="hover:text-brand-secondary hover:underline inline-block mx-auto mb-2 min-[875px]:mb-0 md:mx-0">© 2026 Golden Gate Manor, Inc.</NuxtLink>
             <nav class="flex justify-center" aria-label="Footer Navigation">
                 <ul class="flex flex-wrap justify-center sm:flex text-left gap-2 w-max">
                     <li v-for="policyLink in footer.policyLinks" :key="policyLink.id" class="w-max pl-4 sm:first-of-type:pl-0 sm:pl-2 sm:border-l sm:first-of-type:border-l-0">

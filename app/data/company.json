@@ -63,5 +63,8 @@
       "address": "1103 N. Elizabeth St., Pueblo CO, 81003",
       "phone": "719-253-9840"
     }
+  },
+  "emails": {
+    "accessibility": "accessibility@goldengatemanor.com"
   }
 }

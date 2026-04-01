@@ -2,20 +2,13 @@
   <div class="space-y-4">
     <BaseLayoutPageSection margin="pTop" bg="transparent">
       <BaseLayoutPageContainer>
-        <h2 class="text-2xl font-bold text-brand-primary">Our Commitment</h2>
+        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.commitment.title') }}</h2>
         <div class="space-y-2">
           <p class="text-xl text-brand-main-text">
-              As a business serving the public good, we are committed to 
-              providing digital accessibility for people with disabilities. 
-              We continue to work to improve user experience for everyone while 
-              applying relevant accessibility tools and standards. 
+              {{ $t('accessibility.commitment.paragraphs[0]')}}
           </p>
           <p class="text-xl text-brand-main-text">
-              Our site is built with code that is compliant with W3C 
-              standards for HTML and CSS. The site displays correctly in 
-              current tested browsers using standards compliant with
-              HTML/CSS code and should continue to display correctly on 
-              future browsers. 
+              {{ $t('accessibility.commitment.paragraphs[1]') }}
           </p>
         </div>
       </BaseLayoutPageContainer>
@@ -23,37 +16,23 @@
 
     <BaseLayoutPageSection bg="transparent">
       <BaseLayoutPageContainer>
-        <h2 class="text-2xl font-bold text-brand-primary">Measures to Support Accessibility</h2>
+        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.measures.title') }}</h2>
         <div class="space-y-2">
           <p class="text-xl text-brand-main-text">
-              Our company takes the following measures to ensure the 
-              accessibility of the site:
+              {{ $t('accessibility.measures.intro') }}
           </p>
           <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text">
-              <li>Ensures accessibility is part of their continuous improvement process</li>
-              <li>Employs formal accessibility quality assurance methods</li>
-              <li>Keeps abreast of the technical and legal aspects of accessibility to the best of their ability</li>
+              <li>{{ $t('accessibility.measures.items[0]') }}</li>
+              <li>{{ $t('accessibility.measures.items[1]') }}</li>
+              <li>{{ $t('accessibility.measures.items[2]') }}</li>
           </ul>
           <p class="text-xl text-brand-main-text">
-              As a business, we make every attempt to ensure information 
-              concerning our prices, promotions, and events are 
-              understandable to all visitors, as well as our hours of 
-              operation and location.
+              {{ $t('accessibility.measures.paragraphs[0]') }}
           </p>
           <p class="text-xl text-brand-main-text">
-              While there are not clearly defined legal requirements for 
-              commercial websites serving the public, we have a strong 
-              commitment in meeting all visitor needs. If you encounter 
-              content or features of the site that are not accessible to 
-              those with disabilities, you may contact us using the form 
-              below or by emailing us directly at
-              <a href="mailto:accessibility@goldengatemanor.com" class="link break-all">accessibility@goldengatemanor.com</a>. 
-              Please provide the page and a brief 
-              description of the content or functionality where the issue was 
-              encountered, along with a suggestion for improvement. We 
-              appreciate your feedback and comments as we continue our 
-              journey to accommodate all visitors to our site in terms of 
-              accessibility.
+              {{ $t('accessibility.measures.paragraphs[1]') }}
+              <a :href="`mailto:${emails.accessibility}`" class="link break-all">{{ emails.accessibility }}</a>. 
+              {{ $t('accessibility.measures.paragraphs[2]') }}
           </p>
         </div>
       </BaseLayoutPageContainer>
@@ -61,22 +40,22 @@
 
     <BaseLayoutPageSection bg="transparent">
     <BaseLayoutPageContainer>
-      <h2 class="text-2xl font-bold text-brand-primary">Language Accessibility</h2>
+      <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.language.title')}}</h2>
       <div class="space-y-2">
         <p class="text-xl text-brand-main-text">
-            We are currently in the process of making our website more accessible for translated content so that more visitors can more easily understand the information we provide.
+            {{ $t('accessibility.language.paragraphs[0]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            At this time, portions of this website may be translated from English to Spanish using AI-assisted translation tools. Not all content has been translated yet, and some pages may still be in the process of being updated or translated.
+            {{ $t('accessibility.language.paragraphs[1]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            While we make every effort to provide clear and helpful translated content, automated translation may not always be fully accurate, complete, or contextually correct.
+            {{ $t('accessibility.language.paragraphs[2]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            If you notice an error in translated content, please contact us using the form below and select 'Translation' as the reason for your message. When reaching out, please include the page where the issue appears and the specific translated text that you believe is incorrect so we can review and improve it.
+            {{ $t('accessibility.language.paragraphs[3]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            We appreciate your patience and feedback as we continue working to make our website more accessible and understandable for all visitors.
+            {{ $t('accessibility.language.paragraphs[4]') }}
         </p>
       </div>
     </BaseLayoutPageContainer>
@@ -86,14 +65,12 @@
       <BaseLayoutPageSection margin="pDefault" bg="transparent">
         <BaseLayoutPageContainer>
           <div>
-            <h2 class="text-2xl font-bold text-brand-primary">Contact Us</h2>
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.contact.title') }}</h2>
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
-                  If you wish to report an accessibility issue, have any 
-                  questions, need assistance, or would like to report a translation issue, 
-                  please contact us via the Contact Form below or via email at 
-                  <a href="mailto:accessibility@goldengatemanor.com" class="link break-all">
-                      accessibility@goldengatemanor.com</a>.
+                  {{ $t('accessibility.contact.paragraph') }}
+                  <a :href="`mailto:${emails.accessibility}`" class="link break-all">
+                      {{ emails.accessibility }}</a>.
               </p>
               <LazyContactUsForm class="bg-white p-4 md:p-8 rounded-lg md:w-3/4 mx-auto"/>
             </div>
@@ -105,6 +82,11 @@
 </template>
 
 <script lang="ts" setup>
+import { emails } from '@/data/company.json'
+
+const pageTitle = computed(() => $t('accessibility.meta.title'))
+const pageDescription = computed(() => $t('accessibility.meta.description'))
+
 definePageMeta({
   title: 'Accessibility Statement',
   breadcrumbLabel: 'Accessibility',
@@ -118,13 +100,13 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-  title: 'Accessibility Statement',
-  ogTitle: 'Accessibility Statement',
-  description: 'Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here.',
-  ogDescription: 'Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here.',
+  title: pageTitle.value,
+  ogTitle: pageTitle.value,
+  description: pageDescription.value,
+  ogDescription: pageDescription.value,
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-  twitterTitle: 'Accessibility Statement',
-  twitterDescription: 'Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here.',
+  twitterTitle: pageTitle.value,
+  twitterDescription: pageDescription.value,
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })

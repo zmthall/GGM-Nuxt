@@ -4,39 +4,39 @@
       <BaseLayoutPageSection :padding="false" class="space-y-1" bg="transparent">
         <BaseFormSelect 
           v-model="form.reason"
-          :values="['general', 'complaint', 'question', 'transportation', 'assisted_living', 'medical_supply', 'accessibility', 'translation']" 
-          :labels="['General Contact', 'File a Complaint', 'Question or Inquiry', 'Transportation Services', 'Assisted Living', 'Medical Supplies', 'Accessibility', 'Translation']" 
-          label="Reason for Contact"
+          :values="['general', 'complaint', 'question', 'translation', 'accessibility', 'transportation', 'assisted_living', 'medical_supply']" 
+          :labels="reasonLabel"
+          :label="$t('contact-form.reason.label')"
           />
 
         <div class="lg:flex lg:gap-2">
-          <BaseFormInput v-model="form.first_name" autocomplete="given-name" name="first-name" label="First Name*" />
-          <BaseFormInput v-model="form.last_name" autocomplete="family-name" name="last-name" label="Last Name"/>
+          <BaseFormInput v-model="form.first_name" autocomplete="given-name" name="first-name" :label="$t('contact-form.fields.first-name')" required aria-required />
+          <BaseFormInput v-model="form.last_name" autocomplete="family-name" name="last-name" :label="$t('contact-form.fields.last-name')" />
         </div>
 
-        <BaseFormInput v-model="form.email" type="email" autocomplete="email" name="email" label="Email*" />
-        <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" name="phone" label="Phone" />
+        <BaseFormInput v-model="form.email" type="email" autocomplete="email" name="email" :label="$t('contact-form.fields.email')" required aria-required />
+        <BaseFormInput v-model="form.phone" type="tel" autocomplete="tel" name="phone" :label="$t('contact-form.fields.phone')" />
 
         <BaseFormSelect 
           v-model="form.contact_method"
           :values="['email', 'phone']"
-          :labels="['Email', 'Phone']"
-          label="Preferred Contact Method"
+          :labels="contactMethodOptions"
+          :label="$t('contact-form.contact-method-options.email')"
         />
 
-        <BaseFormTextArea v-model="form.message" name="message" label="Comment/Inquiry/Message*"/>
+        <BaseFormTextArea v-model="form.message" name="message" :label="$t('contact-form.fields.message')" required aria-required />
 
         <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="w-full p-2" >
-          <span v-if="!isSubmitting">Send Message</span>
-          <span v-else class="animate-pulse">Sending Message...</span>
+          <span v-if="!isSubmitting">{{ $t('contact-form.submit.idle') }}</span>
+          <span v-else class="animate-pulse">{{ $t('contact-form.submit.loading') }}</span>
         </BaseUiAction>
         <!-- Recaptcha Privacy Notice -->
         <div class="text-xs text-gray-700">
           <span>
-            This site is protected by reCAPTCHA and the Google 
+            {{ $t('contact-form.recaptcha.text-before') }}&nbsp;
           </span>
-          <a href="https://policies.google.com/privacy" class="link">Privacy Policy</a><span> and </span> 
-          <a href="https://policies.google.com/terms" class="link">Terms of Service</a><span> apply.</span>
+          <a href="https://policies.google.com/privacy" class="link">{{ $t('contact-form.recaptcha.privacy-policy') }}</a><span>&nbsp;{{ $t('contact-form.recaptcha.text-middle') }}&nbsp;</span> 
+          <a href="https://policies.google.com/terms" class="link">{{ $t('contact-form.recaptcha.terms-of-service') }}</a><span>&nbsp;{{ $t('contact-form.recaptcha.text-after') }}</span>
         </div>
 
           <!-- Add feedback -->
@@ -44,14 +44,14 @@
           v-if="submitResult" class="mt-4 p-3 rounded-md" 
           :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
           <div v-if="submitResult.success && submitResult.score" class="text-sm">
-            Message sent successfully!
+            {{ $t('contact-form.recaptcha.success')}}
           </div>
           <div v-else>
-            Message failed to send. Please try again.
+            {{ $t('contact-form.recaptcha.error')}}
           </div>
         </div>
         <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
-          Submitting message, please wait...
+          {{ $t('contact-form.recaptcha.submitting')}}
         </div>
       </BaseLayoutPageSection>
     </div>
@@ -84,6 +84,12 @@ onUnmounted(() => {
 
 const isSubmitting = ref(false)
 const submitResult = ref<{ success: boolean; message: string; score?: number } | null>(null)
+const reasonLabel = computed(() => {
+  return [$t('contact-form.reason.options.general'), $t('contact-form.reason.options.complaint'), $t('contact-form.reason.options.question'), $t('contact-form.reason.options.translation'), $t('contact-form.reason.options.accessibility'), $t('contact-form.reason.options.transportation'), $t('contact-form.reason.options.assisted_living'), $t('contact-form.reason.options.medical_supply')]
+})
+const contactMethodOptions = computed(() => {
+  return [$t('contact-form.contact-method-options.email'), $t('contact-form.contact-method-options.phone')]
+})
 
 const { trigger: triggerVirtualThankYou } = useVirtualThankYou({
   slug: 'thank-you',
@@ -107,7 +113,7 @@ const submitContact = async () => {
     if (!form.first_name || !form.email || !form.message) {
       submitResult.value = {
         success: false,
-        message: 'Please fill in all required fields'
+        message: $t('contact-form.feedback.required-fields')
       }
       return
     }

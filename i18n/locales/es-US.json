@@ -7,6 +7,13 @@
     ],
     "mission": "Mejorar la calidad de vida, todos y cada uno de los días."
   },
+  "components": {
+    "form": {
+      "select": {
+        "default-option": "Seleccione una opción"
+      }
+    }
+  },
   "header": {
     "links": {
       "home": "Inicio",
@@ -104,7 +111,55 @@
       "site-map": "Mapa del Sitio"
     }
   },
+  "contact-form": {
+    "reason": {
+      "label": "Motivo del Contacto",
+      "options": {
+        "general": "Contacto General",
+        "complaint": "Presentar una Queja",
+        "question": "Pregunta o Consulta",
+        "transportation": "Servicios de Transporte",
+        "assisted_living": "Vida Asistida",
+        "medical_supply": "Suministros Médicos",
+        "accessibility": "Accesibilidad",
+        "translation": "Traducción"
+      }
+    },
+    "fields": {
+      "first-name": "Nombre*",
+      "last-name": "Apellido",
+      "email": "Correo Electrónico*",
+      "phone": "Teléfono",
+      "contact-method": "Método de Contacto Preferido",
+      "message": "Comentario/Consulta/Mensaje*"
+    },
+    "contact-method-options": {
+      "email": "Correo Electrónico",
+      "phone": "Teléfono"
+    },
+    "submit": {
+      "idle": "Enviar Mensaje",
+      "loading": "Enviando Mensaje..."
+    },
+    "recaptcha": {
+      "text-before": "Este sitio está protegido por reCAPTCHA y las",
+      "privacy-policy": "Políticas de Privacidad",
+      "text-middle": "y los",
+      "terms-of-service": "Términos del Servicio",
+      "text-after": "de Google se aplican."
+    },
+    "feedback": {
+      "success": "¡Mensaje enviado con éxito!",
+      "error": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo.",
+      "submitting": "Enviando mensaje, por favor espere...",
+      "required-fields": "Por favor complete todos los campos obligatorios"
+    }
+  },
   "home": {
+    "meta": {
+      "title": "Transporte NEMT en Pueblo CO | Aprobado por Medicaid | Golden Gate Manor",
+      "description": "Golden Gate Manor ofrece transporte NEMT aprobado por Medicaid y vida asistida en Pueblo, CO. Más de 20 años de experiencia, flotilla de más de 40 vehículos y vans accesibles para sillas de ruedas. Llame al (719) 544-3231."
+    },
     "hero": {
       "eyebrow": "Bienvenido a",
       "title": "Una sola empresa. Muchos servicios en los que puede confiar.",
@@ -243,6 +298,47 @@
           "paragraph": "Cómo pedir un viaje con adaptaciones."
         }
       }
+    }
+  },
+  "accessibility": {
+    "meta": {
+      "title": "Declaración de Accesibilidad",
+      "description": "Golden Gate Manor Inc. está comprometido a garantizar la accesibilidad digital y física para personas con discapacidades. Lea aquí nuestra declaración completa de accesibilidad."
+    },
+    "commitment": {
+      "title": "Nuestro Compromiso",
+      "paragraphs": [
+        "Como empresa que sirve al bien público, estamos comprometidos con brindar accesibilidad digital para las personas con discapacidades. Continuamos trabajando para mejorar la experiencia del usuario para todos mientras aplicamos herramientas y estándares de accesibilidad relevantes.",
+        "Nuestro sitio está construido con código que cumple con los estándares W3C para HTML y CSS. El sitio se muestra correctamente en los navegadores actuales que han sido probados usando código HTML/CSS conforme a estándares y debería seguir mostrándose correctamente en futuros navegadores."
+      ]
+    },
+    "measures": {
+      "title": "Medidas para Apoyar la Accesibilidad",
+      "intro": "Nuestra empresa toma las siguientes medidas para garantizar la accesibilidad del sitio:",
+      "items": [
+        "Garantiza que la accesibilidad forme parte de su proceso de mejora continua",
+        "Emplea métodos formales de aseguramiento de calidad de accesibilidad",
+        "Se mantiene al tanto de los aspectos técnicos y legales de la accesibilidad en la medida de sus posibilidades"
+      ],
+      "paragraphs": [
+        "Como empresa, hacemos todo lo posible para garantizar que la información relacionada con nuestros precios, promociones y eventos sea comprensible para todos los visitantes, así como también nuestros horarios de atención y ubicación.",
+        "Aunque no existen requisitos legales claramente definidos para los sitios web comerciales que sirven al público, tenemos un fuerte compromiso con satisfacer las necesidades de todos los visitantes. Si encuentra contenido o funciones del sitio que no sean accesibles para personas con discapacidades, puede comunicarse con nosotros usando el formulario a continuación o enviándonos un correo electrónico directamente a",
+        "Por favor proporcione la página y una breve descripción del contenido o funcionalidad donde encontró el problema, junto con una sugerencia de mejora. Agradecemos sus comentarios y observaciones mientras continuamos nuestro camino para adaptarnos a todos los visitantes de nuestro sitio en términos de accesibilidad."
+      ]
+    },
+    "language": {
+      "title": "Accesibilidad de Idioma",
+      "paragraphs": [
+        "Actualmente estamos en el proceso de hacer que nuestro sitio web sea más accesible para el contenido traducido, para que más visitantes puedan entender más fácilmente la información que proporcionamos.",
+        "En este momento, partes de este sitio web pueden estar traducidas del inglés al español mediante herramientas de traducción asistidas por IA. Aún no todo el contenido ha sido traducido, y algunas páginas todavía pueden estar en proceso de actualización o traducción.",
+        "Aunque hacemos todo lo posible por ofrecer contenido traducido claro y útil, la traducción automatizada puede no ser siempre completamente precisa, completa o correcta en su contexto.",
+        "Si nota un error en el contenido traducido, comuníquese con nosotros usando el formulario a continuación y seleccione 'Translation' como el motivo de su mensaje. Al comunicarse, incluya la página donde aparece el problema y el texto traducido específico que considera incorrecto para que podamos revisarlo y mejorarlo.",
+        "Agradecemos su paciencia y sus comentarios mientras seguimos trabajando para hacer que nuestro sitio web sea más accesible y comprensible para todos los visitantes."
+      ]
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
     }
   }
 }

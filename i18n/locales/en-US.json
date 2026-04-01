@@ -7,6 +7,13 @@
     ],
     "mission": "To improve the quality of life, each and every day."
   },
+  "components": {
+    "form": {
+      "select": {
+        "default-option": "Select an option"
+      }
+    }
+  },
   "header": {
     "links": {
       "home": "Home",
@@ -104,7 +111,55 @@
           "site-map": "Site Map"
       }
   },
+  "contact-form": {
+    "reason": {
+      "label": "Reason for Contact",
+      "options": {
+        "general": "General Contact",
+        "complaint": "File a Complaint",
+        "question": "Question or Inquiry",
+        "translation": "Translation",
+        "accessibility": "Accessibility",
+        "transportation": "Transportation Services",
+        "assisted_living": "Assisted Living",
+        "medical_supply": "Medical Supplies"
+      }
+    },
+    "fields": {
+      "first-name": "First Name*",
+      "last-name": "Last Name",
+      "email": "Email*",
+      "phone": "Phone",
+      "contact-method": "Preferred Contact Method",
+      "message": "Comment/Inquiry/Message*"
+    },
+    "contact-method-options": {
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "submit": {
+      "idle": "Send Message",
+      "loading": "Sending Message..."
+    },
+    "recaptcha": {
+      "text-before": "This site is protected by reCAPTCHA and the Google",
+      "privacy-policy": "Privacy Policy",
+      "text-middle": "and",
+      "terms-of-service": "Terms of Service",
+      "text-after": "apply."
+    },
+    "feedback": {
+      "success": "Message sent successfully!",
+      "error": "Message failed to send. Please try again.",
+      "submitting": "Submitting message, please wait...",
+      "required-fields": "Please fill in all required fields"
+    }
+  },
   "home": {
+    "meta": {
+      "title": "NEMT Transportation Pueblo CO | Medicaid Approved | Golden Gate Manor",
+      "description": "Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Call (719) 544-3231."
+    },
     "hero": {
       "eyebrow": "Welcome to",
       "title": "One Company. Many services you can depend on.",
@@ -225,6 +280,47 @@
           "paragraph": "How to request a trip with accommodations."
         }
       }
+    }
+  },
+  "accessibility": {
+    "meta": {
+      "title": "Accessibility Statement",
+      "description": "Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "paragraphs": [
+        "As a business serving the public good, we are committed to providing digital accessibility for people with disabilities. We continue to work to improve user experience for everyone while applying relevant accessibility tools and standards.",
+        "Our site is built with code that is compliant with W3C standards for HTML and CSS. The site displays correctly in current tested browsers using standards compliant with HTML/CSS code and should continue to display correctly on future browsers."
+      ]
+    },
+    "measures": {
+      "title": "Measures to Support Accessibility",
+      "intro": "Our company takes the following measures to ensure the accessibility of the site:",
+      "items": [
+        "Ensures accessibility is part of their continuous improvement process",
+        "Employs formal accessibility quality assurance methods",
+        "Keeps abreast of the technical and legal aspects of accessibility to the best of their ability"
+      ],
+      "paragraphs": [
+        "As a business, we make every attempt to ensure information concerning our prices, promotions, and events are understandable to all visitors, as well as our hours of operation and location.",
+        "While there are not clearly defined legal requirements for commercial websites serving the public, we have a strong commitment in meeting all visitor needs. If you encounter content or features of the site that are not accessible to those with disabilities, you may contact us using the form below or by emailing us directly at",
+        "Please provide the page and a brief description of the content or functionality where the issue was encountered, along with a suggestion for improvement. We appreciate your feedback and comments as we continue our journey to accommodate all visitors to our site in terms of accessibility."
+      ]
+    },
+    "language": {
+      "title": "Language Accessibility",
+      "paragraphs": [
+        "We are currently in the process of making our website more accessible for translated content so that more visitors can more easily understand the information we provide.",
+        "At this time, portions of this website may be translated from English to Spanish using AI-assisted translation tools. Not all content has been translated yet, and some pages may still be in the process of being updated or translated.",
+        "While we make every effort to provide clear and helpful translated content, automated translation may not always be fully accurate, complete, or contextually correct.",
+        "If you notice an error in translated content, please contact us using the form below and select 'Translation' as the reason for your message. When reaching out, please include the page where the issue appears and the specific translated text that you believe is incorrect so we can review and improve it.",
+        "We appreciate your patience and feedback as we continue working to make our website more accessible and understandable for all visitors."
+      ]
+    },
+    "contact": {
+      "title": "Contact Us",
+      "paragraph": "If you wish to report an accessibility issue, have any questions, need assistance, or would like to report a translation issue, please contact us via the Contact Form below or via email at"
     }
   }
 }

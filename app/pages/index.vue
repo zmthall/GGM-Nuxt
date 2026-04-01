@@ -262,13 +262,13 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-    title: 'NEMT Transportation Pueblo CO | Medicaid Approved | Golden Gate Manor',
-    ogTitle: 'NEMT Transportation Pueblo CO | Medicaid Approved | Golden Gate Manor',
-    description: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Call (719) 544-3231.',
-    ogDescription: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Call (719) 544-3231.',
+    title: $t('home.meta.title'),
+    ogTitle: $t('home.meta.title'),
+    description: $t('home.meta.description'),
+    ogDescription: $t('home.meta.description'),
     ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-    twitterTitle: 'NEMT Transportation Pueblo CO | Medicaid Approved | Golden Gate Manor',
-    twitterDescription: 'Golden Gate Manor provides Medicaid-approved NEMT & assisted living in Pueblo, CO. 20+ years experience, 40+ vehicle fleet, wheelchair accessible. Call (719) 544-3231.',
+    twitterTitle: $t('home.meta.title'),
+    twitterDescription: $t('home.meta.description'),
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })
