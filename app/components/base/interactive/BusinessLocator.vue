@@ -6,7 +6,7 @@
       v-if="mode === 'click' && !isReady"
       type="button"
       class="group absolute inset-0 w-full h-full"
-      :aria-label="cta || 'Click to Load interactive map'"
+      :aria-label="cta || $t('components.interactive-map.cta')"
       @click="triggerInit"
     >
       <NuxtImg
@@ -31,7 +31,7 @@
           <!-- simple play icon -->
           <BaseIcon name="tdesign:gesture-click-filled" color="text-brand-main-text" hover-color="group-hover:text-brand-primary"/>
           <span class="text-brand-main-text font-semibold">
-            {{ cta || 'Click to Load interactive map' }}
+            {{ cta || $t('components.interactive-map.cta') }}
           </span>
         </div>
       </div>
@@ -43,7 +43,7 @@
       class="absolute inset-0 flex justify-center items-center"
       aria-hidden="true"
     >
-      <span class="animate-pulse">Loading map…</span>
+      <span class="animate-pulse">{{ $t('components.interactive-map.loading') }}</span>
     </div>
 
     <!-- MAP LAYER (fades in when ready) -->
@@ -67,7 +67,7 @@ const props = withDefaults(defineProps<{
   mode: 'auto',
   facadeSrc: '',
   facadeAlt: '',
-  cta: 'Click to Load interactive map',
+  cta: '',
 })
 
 const { public: { googleMapsKey } } = useRuntimeConfig()
@@ -108,7 +108,7 @@ async function initOnce() {
     ])
     if (canceled) return
 
-    const locator = document.createElement('gmpx-store-locator') as any
+    const locator = document.createElement('gmpx-store-locator')
     // Remove unless you have a valid styled Map ID
     locator.setAttribute('map-id', 'YOUR_MAP_ID')
 

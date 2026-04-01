@@ -4,37 +4,33 @@
         <BaseLayoutPageSection margin="pTop" class="md:grid md:grid-cols-2 md:max-w-[1200px] md:mx-auto md:gap-8">
         <!-- Left Page -->
             <div class="space-y-2">
-                <h2 class="font-extrabold text-2xl max-sm:hidden">GET IN TOUCH:</h2>
+                <h2 class="font-extrabold text-2xl max-sm:hidden">G{{ $t('contact.sections.left.title') }}</h2>
                 <p class="text-xl ">
-                    Send us a message to get in touch with one of our team members. 
-                    We're here to address any inquiries, questions, or concerns you 
-                    may have regarding our transportation services, our assisted 
-                    living services, or our medical supply services.
+                    {{ $t('contact.sections.left.description') }}
                 </p>
                 <PleaseNote class="text-xl">
                     <div class="space-y-2">
-                        <p>This form is specifically for general inquiries and 
-                        customer service-related matters. If you need to schedule a ride 
-                        with our transportation service, please use our dedicated 
-                        <NuxtLink to="/resources/schedule-a-ride" class="link">Schedule A Ride</NuxtLink> form.</p>
-                        <p>We prioritize ride requests submitted 
-                        through that form and cannot guarantee accommodation for rides 
-                        requested through this contact form. We appreciate your 
-                        understanding and look forward to assisting you!</p>
+                        <p>
+                            {{ $t('contact.sections.note.paragraphs[0]') }}
+                            <NuxtLink :to="$localePath('/resources/schedule-a-ride')" class="link">{{ $t('contact.sections.note.link') }}</NuxtLink>{{ $t('contact.sections.note.paragraphs[1]') }}
+                        </p>
+                        <p>
+                            {{ $t('contact.sections.note.paragraphs[2]') }}
+                        </p>
                     </div>
                 </PleaseNote>
                 <div class="business-information">
                     <BaseLayoutPageListItem :title="company.name" has-icon :size="12" icon-name="material-symbols:location-on-rounded">
                         <NuxtLink to="/company/location" class="link">{{ company.address }}</NuxtLink>
                     </BaseLayoutPageListItem>
-                    <BaseLayoutPageListItem  title="Phone" has-icon :size="12" icon-name="ic:round-call">
+                    <BaseLayoutPageListItem  :title="$t('contact.sections.business.phone')" has-icon :size="12" icon-name="ic:round-call">
                         <a :href="`tel:${company.phone}`" class="link">{{ company.phone }}</a>
                     </BaseLayoutPageListItem>
-                    <BaseLayoutPageListItem title="Hours" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
-                        <span>{{ company.hours }}</span>
+                    <BaseLayoutPageListItem :title="$t('contact.sections.business.hours')" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
+                        <span>{{ $t('company.hours') }}</span>
                     </BaseLayoutPageListItem>
                     <BaseLayoutPageListItem class="mt-4 mb-8 ml-2 font-bold">
-                        <h2 class="text-2xl font-bold uppercase mb-4">Get Connected:</h2>
+                        <h2 class="text-2xl font-bold uppercase mb-4">{{ $t('contact.sections.business.connected') }}</h2>
                         <div>
                             <ul v-if="socialHandles" class="flex gap-4">
                             <li v-for="socialHandle in activeSocialHandles" :key="socialHandle.id">
@@ -51,7 +47,7 @@
             <!-- Right Page -->
              <DeferRender when="visible" eager-if-in-view>
                  <div class="space-y-2 cv-auto">
-                     <h2 class="font-extrabold text-2xl">CONTACT US:</h2>
+                     <h2 class="font-extrabold text-2xl">{{ $t('contact.sections.form.title') }}</h2>
                      <ContactUsForm />
                  </div>
              </DeferRender>

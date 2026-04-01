@@ -1,7 +1,7 @@
 <template>
   <div :class="[darkMode ? 'text-white leading-tight' : 'text-[#A3150D] leading-tight blog-post']">
     <div class="font-bold underline">
-      Please Note:
+      {{ $t('components.please-note.title') }}
     </div>
     <div class="[&>p]:m-0">
       <slot />

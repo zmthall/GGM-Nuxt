@@ -47,5 +47,13 @@
     "url": "https://www.youtube.com/@GoldenGateManorInc",
     "alt": "Follow our content on YouTube",
     "enabled": true
+  },
+  {
+    "id": "tiktok-social",
+    "name": "TikTok",
+    "icon": "line-md:tiktok",
+    "url": "https://www.tiktok.com/@goldengatemanor.inc",
+    "alt": "Follow us on TikTok",
+    "enabled": true
   }
 ]

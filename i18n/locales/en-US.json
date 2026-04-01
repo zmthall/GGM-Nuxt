@@ -5,13 +5,21 @@
       "Our Mission:",
       "To improve the quality of life, each and every day."
     ],
-    "mission": "To improve the quality of life, each and every day."
+    "mission": "To improve the quality of life, each and every day.",
+    "hours": "8:00AM-4:00PM Monday to Friday"
   },
   "components": {
     "form": {
       "select": {
         "default-option": "Select an option"
       }
+    },
+    "please-note": {
+      "title": "Please Note:"
+    },
+    "interactive-map": {
+      "cta": "Click to Load interactive map",
+      "loading": "Loading map…"
     }
   },
   "header": {
@@ -322,5 +330,37 @@
       "title": "Contact Us",
       "paragraph": "If you wish to report an accessibility issue, have any questions, need assistance, or would like to report a translation issue, please contact us via the Contact Form below or via email at"
     }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Golden Gate Manor Inc. | Southern Colorado",
+      "description": "Get in touch with Golden Gate Manor Inc. for transportation, assisted living, and medical supply services. Proudly serving Pueblo and Southern Colorado."
+    },
+    "sections": {
+      "left": {
+        "title": "GET IN TOUCH:",
+        "description": "Send us a message to get in touch with one of our team members. We're here to address any inquiries, questions, or concerns you may have regarding our transportation services, our assisted living services, or our medical supply services."
+      },
+      "note": {
+        "paragraphs": [
+          "This form is specifically for general inquiries and customer service-related matters. If you need to schedule a ride with our transportation service, please use our dedicated",
+          " form.",
+          "We prioritize ride requests submitted through that form and cannot guarantee accommodation for rides requested through this contact form. We appreciate your understanding and look forward to assisting you!"
+        ],
+        "link": "Schedule A Ride"
+      },
+      "business": {
+        "phone": "Phone",
+        "hours": "Hours",
+        "connected": "Get Connected:"
+      },
+      "form": {
+        "title": "CONTACT US:"
+      }
+    },
+    "map": {
+      "alt": "Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"
+    }
   }
+
 }

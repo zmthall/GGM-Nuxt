@@ -18,7 +18,7 @@
           </BaseLayoutPageListItem>
           <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
             <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>
-            <p class="border-b border-b-black w-max">{{ company.hours }}</p>
+            <p class="border-b border-b-black w-max">{{ $t('company.hours') }}</p>
           </BaseLayoutPageListItem>
           <BaseLayoutPageListItem class="mt-12 font-bold" has-left-border>
             <h2 class="text-2xl font-bold text-brand-primary mb-4">Get Connected</h2>

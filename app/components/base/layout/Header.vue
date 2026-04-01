@@ -2,7 +2,7 @@
     <header class="max-md:hidden flex items-center justify-between p-3 bg-brand-background h-header">
         <!-- Left Header -->
         <div class="flex justify-between items-center">
-            <NuxtLink to="/">
+            <NuxtLink :to="$localePath('/')">
                 <NuxtImg 
                     src="/images/layout/logo.png" width="450" height="43" sizes="md:300px lg:450px 2xl:500px"
                     alt="Golden Gate Manor Inc. Logo" format="webp, avif" quality="60" loading="eager" title="Golden Gate Manor Inc. Logo" />

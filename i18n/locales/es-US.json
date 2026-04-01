@@ -5,14 +5,22 @@
       "Nuestra Misión:",
       "Mejorar la calidad de vida, todos y cada uno de los días."
     ],
-    "mission": "Mejorar la calidad de vida, todos y cada uno de los días."
+    "mission": "Mejorar la calidad de vida, todos y cada uno de los días.",
+    "hours": "8:00AM - 4:00PM de lunes a viernes"
   },
   "components": {
     "form": {
       "select": {
         "default-option": "Seleccione una opción"
       }
-    }
+    },
+    "please-note": {
+      "title": "Por Favor Tenga en Cuenta:"
+     },
+     "interactive-map": {
+      "cta": "Haga clic para cargar el mapa interactivo",
+      "loading": "Cargando mapa…"
+     }
   },
   "header": {
     "links": {
@@ -339,6 +347,37 @@
     "contact": {
       "title": "Contáctenos",
       "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contactar a Golden Gate Manor Inc. | Sur de Colorado",
+      "description": "Comuníquese con Golden Gate Manor Inc. para servicios de transporte, vida asistida y suministros médicos. Orgullosamente sirviendo a Pueblo y el sur de Colorado."
+    },
+    "sections": {
+      "left": {
+        "title": "PÓNGASE EN CONTACTO:",
+        "description": "Envíenos un mensaje para comunicarse con uno de los miembros de nuestro equipo. Estamos aquí para atender cualquier consulta, pregunta o inquietud que pueda tener sobre nuestros servicios de transporte, vida asistida o suministros médicos."
+      },
+      "note": {
+        "paragraphs": [
+          "Este formulario está destinado específicamente para consultas generales y asuntos relacionados con el servicio al cliente. Si necesita programar un viaje con nuestro servicio de transporte, utilice nuestro formulario dedicado de",
+          ".",
+          "Damos prioridad a las solicitudes de transporte enviadas a través de ese formulario y no podemos garantizar la atención de solicitudes realizadas mediante este formulario de contacto. ¡Agradecemos su comprensión y esperamos poder ayudarle!"
+        ],
+        "link": "Programar un Viaje"
+      },
+      "business": {
+        "phone": "Teléfono",
+        "hours": "Horario",
+        "connected": "Conéctese con Nosotros:"
+      },
+      "form": {
+        "title": "CONTÁCTENOS:"
+      }
+    },
+    "map": {
+      "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
     }
   }
 }
