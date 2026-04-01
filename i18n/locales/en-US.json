@@ -6,7 +6,9 @@
       "To improve the quality of life, each and every day."
     ],
     "mission": "To improve the quality of life, each and every day.",
-    "hours": "8:00AM-4:00PM Monday to Friday"
+    "hours": "8:00AM-4:00PM Monday to Friday",
+    "csr-phone": "Call (719) 544-3231",
+    "dispatch-phone": "Call (719) 543-2525"
   },
   "components": {
     "form": {
@@ -30,6 +32,14 @@
     },
     "city-cab-link": {
       "label": "Visit Our City Cab Website"
+    },
+    "service-area-map": {
+      "legend": {
+        "title": "Service Area",
+        "not-includeed": "Not Included in Service Area",
+        "included": "Included in Service Area"
+      },
+      "alt-title": "service area map visualization"
     },
     "new-tab-title": "Opens in a new tab"
   },
@@ -521,5 +531,124 @@
         "alt-title": "Question mark symbol"
       }
     }
+  },
+  "nemt": {
+    "meta": {
+      "title": "Non-Emergency Medical Transportation, Pueblo",
+      "description": "Reliable Non-Emergency Medical Transportation (NEMT) in Pueblo with wheelchair accessibility, safety features, and experienced drivers.",
+      "breadcrumb": {
+        "label": "NEMT"
+      }
+    },
+    "banner": {
+      "alt-title": "Line-up of Golden Gate Manor Inc cars in Pueblo Colorado"
+    },
+    "top": {
+      "title": "What is Non-Emergency Transportation (NEMT)?",
+      "paragraph": "Non-Emergent Medical Transportation (NEMT) is transportation to and from covered non-emergency medical appointments and services; if it is a Medicaid approved appointment we can get you there. With our fleet of over 40 vehicles, including wheelchair accessible vans, we can make sure that our clients make it to and from their appointments on time anywhere in our serviceable area in Southern Colorado.",
+      "video": {
+        "title": "Golden Gate Manor Superbowl 2025 Commercial"
+      },
+      "pdf": {
+        "label": "Medical Certificate of Transportation Service Form"
+      },
+      "table": {
+        "title": "Types of Transportation Available in Pueblo, Colorado",
+        "rows": [
+          ["Bus", "Citi Lift"],
+          ["Mobility Van", "Taxicab"],
+          ["Private Vehicle", "Non-Emergency Vehicle"],
+          ["Mileage Reimbursement"]
+        ]
+      }
+    },
+    "transportation-information": {
+      "title": "Transportation Information",
+      "faqs": {
+        "title": "FAQs",
+        "items": {
+          "eligibility": {
+            "label": "WHO IS ELIGIBLE?",
+            "paragraph": "If you have Colorado Medicaid benefits you may be eligible to utilize our services. All you need is a current Medicaid insurance ID and you need to be going to and from an Medicaid approved appointment. We pickup within our service area, which is mostly in Southern Colorado, and we can take you to appointments throughout Colorado including Denver. Our service area is specific to where we are able to pick you up from not for where we are able to take you."
+          },
+          "how-to-schedule": {
+            "label": "HOW DO THEY SCHEDULE A RIDE?",
+            "paragraphs": [
+              "To help us serve you better, please schedule your ride at least 24 hours in advance by calling",
+              "between 8:00 AM and 4:00 PM, Monday through Friday. This allows us the necessary time to arrange your transportation efficiently.",
+              "If it is after normal business hours, call our dispatch at",
+              "Our scheduling/dispatch office is open 24/7. Please don't hesitate to reach out if you have any questions."
+            ]
+          },
+          "how-to-cancel": {
+            "label": "HOW DO THEY CANCEL A RIDE?",
+            "paragraphs": [
+              "If you need to cancel a ride, please call at least two hours before your scheduled pick-up time at",
+              "If it is after normal business hours, call our dispatch at",
+              "Please make sure to read our",
+              "to understand proper cancellation procedures."
+            ],
+            "policy-link": "Ride Cancellation Policy"
+          },
+          "services-covered": {
+            "label": "WHICH SERVICES ARE COVERED?",
+            "paragraph": "We provide transportation assistance for those services covered by Medicaid. We cannot transport to services not covered under the Medicaid program, such as to and from locations that are not medical appointments. If the service request is farther than 25 miles you will need to fill out a Medical Certificate of Transportation Services beyond 25 Miles form which is found within the initial paperwork below."
+          },
+          "client-approval": {
+            "label": "HOW DOES THE CLIENT GET APPROVED?",
+            "paragraphs": [
+              "The attending Physician, Physician's Assistant, Nurse Practitioner, Therapist, or licensed healthcare professional must complete and sign the Medical Certificate of Transportation Services.",
+              "If a client lives beyond 25 miles from the Medical Provider then the additional 25 mile form must be filled out, which is found within the initial paperwork below."
+            ]
+          },
+          "when-to-be-ready": {
+            "label": "WHEN SHOULD THEY BE READY FOR THEIR RIDE?",
+            "paragraph": "When you call us for a ride, we will give you the timeframe you should be ready to be picked up by. For shared rides, you may be asked to be ready earlier than expected. Unexpected delays may occur due to traffic or weather conditions, so please keep that in mind when utilizing our services for non-emergency medical transportation (NEMT) needs."
+          }
+        }
+      },
+      "schedule-help": {
+        "title": "How Do I Schedule A Ride?",
+        "paragraphs": [
+          "Once approved, please call at least 48 hours before your appointment to schedule a ride. Reservation hours are Monday to Friday, 8:00 AM - 4:00 PM. To cancel a scheduled ride, please call at least two hours before your scheduled pick-up.",
+          "Our office is open Monday to Friday, 8:00 AM - 4:00 PM, for any questions, cancellations, or urgent care appointments. Urgent appointments are scheduled based on availability; therefore trips are not always guaranteed."
+        ]
+      },
+      "availability": {
+        "title": "DRIVERS AND APPOINTMENTS AVAILABLE 24/7",
+        "business-hours": {
+          "title": "Business Hours Numbers",
+          "hours": "Office Hours: M-F 8:00AM-4:00PM"
+        },
+        "after-hours": {
+          "title": "After Business Hours Number"
+        }
+      }
+    },
+    "eligible-places": {
+      "title": "Eligible Places of Services",
+      "paragraphs": [
+        "Transportation of clients to/from a Medicaid enrolled provider to a Colorado Medicaid covered service.",
+        "All regions on the map highlighted in green are within the jurisdiction of Golden Gate Manor in the State of Colorado. This is the areas that we are able to pick our clients up from. We will still be able to take you to appointments from, for example, Pueblo, Colorado, to Denver, Colorado. If you have any specific questions if your area is serviceable, don't hesitate to call us and ask. Our customer service representatives will be able to answer all questions regarding our service area.",
+        "Give us a call at",
+        "for eligibility in your county. If after hours, call"
+      ]
+    },
+    "driver-safety": {
+      "title": ["Safe Drivers", "Camera Equipped Vehicles"],
+      "paragraph": "There are both front and rear facing cameras installed in all of our company vehicles. They have the added benefit of ensuring our drivers are not distracted. In addition, they will be documenting any events that may occur while a client is utilizing our services.",
+      "images": {
+        "vehicle-camera": {
+          "alt-title": "Vehicles equipped with front and back facing cameras"
+        },
+        "distracted-driver": {
+          "alt-title": "Cameras recognize distractions"
+        },
+        "dash-cam": {
+          "alt-title": "An example of the mounted camera"
+        }
+      }
+    },
+    "button": "Schedule A Ride Online"
   }
 }

@@ -60,7 +60,7 @@
                                     display="(719) 544-3231"
                                     cls="group inline-flex items-center gap-2 hover:text-brand-secondary"
                                     aria-label="Call front office (719) 544-3231"
-                                    >
+                                >
                                     <template #default="{ display }">
                                         <BaseIcon
                                         name="ic:round-call"

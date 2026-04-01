@@ -6,7 +6,9 @@
       "Mejorar la calidad de vida, todos y cada uno de los días."
     ],
     "mission": "Mejorar la calidad de vida, todos y cada uno de los días.",
-    "hours": "8:00AM - 4:00PM de lunes a viernes"
+    "hours": "8:00AM - 4:00PM de lunes a viernes",
+    "csr-phone": "Llamada (719) 544-3231",
+    "dispatch-phone": "Llamada (719) 543-2525"
   },
   "components": {
     "form": {
@@ -30,6 +32,14 @@
      },
       "city-cab-link": {
         "label": "Visite Nuestro Sitio Web de City Cab"
+      },
+      "service-area-map": {
+        "legend": {
+          "title": "Área de Servicio",
+          "not-included": "No incluido en el área de servicio",
+          "included": "Incluido en el área de servicio"
+        },
+        "alt-title": "Visualización del área de servicio"
       },
       "new-tab-title":  "Abre en una nueva pestaña"
   },
@@ -541,5 +551,124 @@
         "alt-title": "Símbolo de signo de interrogación"
       }
     }
+  },
+  "nemt": {
+    "meta": {
+      "title": "Transporte Médico No Urgente en Pueblo",
+      "description": "Transporte médico no urgente (NEMT) confiable en Pueblo con accesibilidad para sillas de ruedas, funciones de seguridad y conductores con experiencia.",
+      "breadcrumb": {
+        "label": "NEMT"
+      }
+    },
+    "banner": {
+      "alt-title": "Fila de vehículos de Golden Gate Manor Inc. en Pueblo, Colorado"
+    },
+    "pdf": {
+      "label": "Certificado Médico de Transporte"
+    },
+    "top": {
+      "title": "¿Qué es el Transporte Médico No Urgente (NEMT)?",
+      "paragraph": "El Transporte Médico No Urgente (NEMT) es el transporte hacia y desde citas y servicios médicos no urgentes cubiertos; si se trata de una cita aprobada por Medicaid, podemos llevarlo. Con nuestra flotilla de más de 40 vehículos, incluidas vans accesibles para sillas de ruedas, podemos asegurarnos de que nuestros clientes lleguen y regresen de sus citas a tiempo en cualquier lugar dentro de nuestra área de servicio en el sur de Colorado.",
+      "video": {
+        "title": "Comercial de Golden Gate Manor del Super Bowl 2025"
+      },
+      "table": {
+        "title": "Tipos de Transporte Disponibles en Pueblo, Colorado",
+        "rows": [
+          ["Autobús", "Citi Lift"],
+          ["Van de Movilidad", "Taxi"],
+          ["Vehículo Privado", "Vehículo No Urgente"],
+          ["Reembolso de Millaje"]
+        ]
+      }
+    },
+    "transportation-information": {
+      "title": "Información de Transporte",
+      "faqs": {
+        "title": "Preguntas Frecuentes",
+        "items": {
+          "eligibility": {
+            "label": "¿QUIÉN ES ELEGIBLE?",
+            "paragraph": "Si tiene beneficios de Medicaid de Colorado, puede ser elegible para utilizar nuestros servicios. Todo lo que necesita es una identificación vigente de Medicaid y dirigirse hacia y desde una cita aprobada por Medicaid. Recogemos dentro de nuestra área de servicio, que se encuentra principalmente en el sur de Colorado, y podemos llevarlo a citas en todo Colorado, incluido Denver. Nuestra área de servicio se refiere específicamente a dónde podemos recogerlo, no a dónde podemos llevarlo."
+          },
+          "how-to-schedule": {
+            "label": "¿CÓMO PROGRAMAN UN VIAJE?",
+            "paragraphs": [
+              "Para poder atenderle mejor, programe su viaje con al menos 24 horas de anticipación llamando al",
+              "entre las 8:00 AM y las 4:00 PM, de lunes a viernes. Esto nos permite contar con el tiempo necesario para organizar su transporte de manera eficiente.",
+              "Si es después del horario normal de oficina, llame a nuestro despacho al",
+              "Nuestra oficina de programación/despacho está abierta 24/7. No dude en comunicarse con nosotros si tiene alguna pregunta."
+            ]
+          },
+          "how-to-cancel": {
+            "label": "¿CÓMO CANCELAN UN VIAJE?",
+            "paragraphs": [
+              "Si necesita cancelar un viaje, por favor llame al menos dos horas antes de la hora programada de recogida al",
+              "Si es después del horario normal de oficina, llame a nuestro despacho al",
+              "Por favor asegúrese de leer nuestra",
+              "para comprender los procedimientos correctos de cancelación."
+            ],
+            "policy-link": "Política de Cancelación de Viajes"
+          },
+          "services-covered": {
+            "label": "¿QUÉ SERVICIOS ESTÁN CUBIERTOS?",
+            "paragraph": "Ofrecemos asistencia de transporte para aquellos servicios cubiertos por Medicaid. No podemos transportar a servicios que no estén cubiertos por el programa Medicaid, como lugares que no sean citas médicas. Si la solicitud de servicio es a más de 25 millas, deberá completar un formulario de Certificado Médico de Servicios de Transporte Más Allá de 25 Millas, el cual se encuentra dentro de la documentación inicial a continuación."
+          },
+          "client-approval": {
+            "label": "¿CÓMO ES APROBADO EL CLIENTE?",
+            "paragraphs": [
+              "El médico tratante, asistente médico, enfermero practicante, terapeuta o profesional de la salud autorizado debe completar y firmar el Certificado Médico de Servicios de Transporte.",
+              "Si un cliente vive a más de 25 millas del proveedor médico, entonces también deberá completarse el formulario adicional de 25 millas, el cual se encuentra dentro de la documentación inicial a continuación."
+            ]
+          },
+          "when-to-be-ready": {
+            "label": "¿CUÁNDO DEBEN ESTAR LISTOS PARA SU VIAJE?",
+            "paragraph": "Cuando nos llame para solicitar un viaje, le daremos el horario en el que debe estar listo para ser recogido. En viajes compartidos, es posible que se le pida estar listo antes de lo esperado. Pueden ocurrir retrasos inesperados debido al tráfico o al clima, así que por favor tenga eso en cuenta al utilizar nuestros servicios para necesidades de transporte médico no urgente (NEMT)."
+          }
+        }
+      },
+      "schedule-help": {
+        "title": "¿Cómo Programo un Viaje?",
+        "paragraphs": [
+          "Una vez aprobado, por favor llame al menos 48 horas antes de su cita para programar un viaje. El horario de reservaciones es de lunes a viernes, de 8:00 AM a 4:00 PM. Para cancelar un viaje programado, por favor llame al menos dos horas antes de su hora de recogida programada.",
+          "Nuestra oficina está abierta de lunes a viernes, de 8:00 AM a 4:00 PM, para cualquier pregunta, cancelación o cita de atención urgente. Las citas urgentes se programan según disponibilidad; por lo tanto, los viajes no siempre están garantizados."
+        ]
+      },
+      "availability": {
+        "title": "CONDUCTORES Y CITAS DISPONIBLES 24/7",
+        "business-hours": {
+          "title": "Números en Horario de Oficina",
+          "hours": "Horario de Oficina: L-V 8:00AM-4:00PM"
+        },
+        "after-hours": {
+          "title": "Número Después del Horario de Oficina"
+        }
+      }
+    },
+    "eligible-places": {
+      "title": "Lugares Elegibles de Servicio",
+      "paragraphs": [
+        "Transporte de clientes hacia y desde un proveedor inscrito en Medicaid para un servicio cubierto por Colorado Medicaid.",
+        "Todas las regiones del mapa resaltadas en verde se encuentran dentro de la jurisdicción de Golden Gate Manor en el estado de Colorado. Estas son las áreas desde donde podemos recoger a nuestros clientes. Aun así, podremos llevarlo a citas desde, por ejemplo, Pueblo, Colorado, hasta Denver, Colorado. Si tiene preguntas específicas sobre si su área está dentro del servicio, no dude en llamarnos y preguntar. Nuestros representantes de servicio al cliente podrán responder todas sus preguntas sobre nuestra área de servicio.",
+        "Llámenos al",
+        "para conocer la elegibilidad en su condado. Si es después del horario de oficina, llame al"
+      ]
+    },
+    "driver-safety": {
+      "title": ["Conductores Seguros", "Vehículos Equipados con Cámaras"],
+      "paragraph": "Hay cámaras instaladas tanto en la parte delantera como en la trasera de todos los vehículos de nuestra empresa. Tienen el beneficio adicional de asegurar que nuestros conductores no se distraigan. Además, documentarán cualquier evento que pueda ocurrir mientras un cliente esté utilizando nuestros servicios.",
+      "images": {
+        "vehicle-camera": {
+          "alt-title": "Vehículos equipados con cámaras delanteras y traseras"
+        },
+        "distracted-driver": {
+          "alt-title": "Las cámaras reconocen distracciones"
+        },
+        "dash-cam": {
+          "alt-title": "Un ejemplo de la cámara montada"
+        }
+      }
+    },
+    "button": "Programar un Viaje en Línea"
   }
 }
