@@ -251,12 +251,7 @@ const {
   }
 )
 
-const TOC = computed(() => {
-  console.time('buildTocFromMdc')
-  const result = buildTocFromMdc(post.value?.content ?? '')
-  console.timeEnd('buildTocFromMdc')
-  return result
-})
+const TOC = computed(() => buildTocFromMdc(post.value?.content ?? ''))
 
 const {
   data: relatedPosts

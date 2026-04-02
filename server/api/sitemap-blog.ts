@@ -1,31 +1,37 @@
-export default defineSitemapEventHandler(async (event) => {
-  const tomorrow = (() => {
-    const d = new Date()
-    d.setHours(0, 0, 0, 0)
-    d.setDate(d.getDate() + 1)
-    const y = d.getFullYear()
-    const m = String(d.getMonth() + 1).padStart(2, '0')
-    const day = String(d.getDate()).padStart(2, '0')
-    return `${y}-${m}-${day}`
-  })()
+export default defineSitemapEventHandler(async () => {
+  const runtimeConfig = useRuntimeConfig()
 
-  const all = await queryCollection(event, 'blog')
-    .where('draft', '<>', true)
-    .select('path', 'date', 'title', 'published')
-    .order('date', 'DESC')
-    .all()
+  const apiBase = runtimeConfig.public.useLocalApi
+    ? 'http://127.0.0.1:4000'
+    : 'https://api.goldengatemanor.com'
 
-  const posts = all.filter(p => !p.published || p.published < tomorrow)
+  type BlogPostSitemapRecord = {
+    slug: string
+    canonical_url: string
+    publish_timestamp: string | null
+    updated_at: string
+  }
 
-  return posts.map(post => ({
-    loc: `/news/blog/post/${post.path.split('/').pop()}`,
-    lastmod: (post.date
-      ? new Date(post.date)
-      : post.published
-        ? new Date(post.published)
-        : new Date()
-    ).toISOString(),
-    priority: 0.8,
-    changefreq: 'weekly'
-  }))
+  type ApiSuccessResponse<T> = {
+    success: boolean
+    data: T
+  }
+
+  const response = await $fetch<ApiSuccessResponse<BlogPostSitemapRecord[]>>(
+    `${apiBase}/api/blog-posts/sitemap`
+  )
+
+  return response.data
+    .filter(post => post.slug)
+    .map(post => ({
+      loc: post.canonical_url || `/news/blog/post/${post.slug}`,
+      lastmod: (post.updated_at
+        ? new Date(post.updated_at)
+        : post.publish_timestamp
+          ? new Date(post.publish_timestamp)
+          : new Date()
+      ).toISOString(),
+      priority: 0.8,
+      changefreq: 'weekly'
+    }))
 })

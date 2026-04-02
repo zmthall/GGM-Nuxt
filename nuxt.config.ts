@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     description: 'Medicaid-approved NEMT, assisted living & medical supplies in Southern Colorado.'
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/icon', // '@nuxt/scripts',
+  modules: ['@nuxt/eslint', '@nuxt/icon', // '@nuxt/scripts',
   '@nuxt/image', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n', '@nuxtjs/mdc'],
   nitro: {
     compressPublicAssets: true,
@@ -211,14 +211,5 @@ export default defineNuxtConfig({
       maxAge: 60 * 60 * 24 * 30, // 30 days
     },
     domains: ['i.ytimg.com', 'public.flourish.studio']
-  },
-  content: {
-    build: {
-      markdown: {
-        toc: {
-          depth: 4, // include h3 headings
-        }
-      }
-    }
   }
 })
