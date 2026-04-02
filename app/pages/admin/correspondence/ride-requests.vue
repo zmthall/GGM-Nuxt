@@ -37,6 +37,16 @@
 <script setup lang='ts'>
 import type { RideRequestFormData } from '../../../models/admin/RideRequestForm';
 
+definePageMeta({
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined,
+    undefined
+  ]
+})
+
 const rideModalOpen = ref<boolean>(false);
 const rideRequestModalData = ref<RideRequestFormData | null>(null)
 
@@ -59,10 +69,6 @@ const {
 
 defineOptions({
     name: 'AdminMessagesPage'
-});
-
-definePageMeta({
-    layout: 'admin',
 });
 
 onMounted(async () => {

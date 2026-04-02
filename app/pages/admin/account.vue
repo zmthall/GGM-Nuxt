@@ -101,7 +101,14 @@
 import { useDateFormat } from '~/composables/dates/dateFormat'
 import type { FetchUser, UserData } from '~/models/admin/user'
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin'},
+    false,
+    undefined
+  ]
+})
 
 const authStore = useAuthStore()
 const dateFormat = useDateFormat()

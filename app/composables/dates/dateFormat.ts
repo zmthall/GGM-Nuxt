@@ -147,14 +147,23 @@ export const useDateFormat = () => {
     return `${y}-${m}-${day}`; // local date
   };
 
-  /** Date formatting */
-  const tableFormatDate = (iso?: string) => {
+  // /** Date formatting */ Mon day, year, time AM/PM
+  const tableFormatDateWithTime = (iso?: string) => {
     if (!iso) return '—'
     const d = new Date(iso)
     if (isNaN(d.getTime())) return '—'
     return new Intl.DateTimeFormat(undefined, {
       year: 'numeric', month: 'short', day: '2-digit',
       hour: '2-digit', minute: '2-digit'
+    }).format(d)
+  }
+
+  const tableFormatDate = (iso?: string) => {
+    if (!iso) return '—'
+    const d = new Date(iso)
+    if (isNaN(d.getTime())) return '—'
+    return new Intl.DateTimeFormat(undefined, {
+      year: 'numeric', month: 'short', day: '2-digit'
     }).format(d)
   }
 
@@ -167,6 +176,7 @@ export const useDateFormat = () => {
     formatShortDate,
     formatIsoDate,
     formatShortDateNoLeadingZero,
-    tableFormatDate
+    tableFormatDate,
+    tableFormatDateWithTime
   };
 };

@@ -1,4 +1,3 @@
-// authStore.ts - Hybrid approach
 import type { User } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import type { FetchUser } from '~/models/admin/user'
@@ -7,32 +6,31 @@ type UserRole = 'admin' | 'correspondence' | 'user'
 
 function normalizeRole(input: unknown): UserRole | null {
   const v = String(input ?? '').trim().toLowerCase()
+
   if (v === 'admin') return 'admin'
   if (v === 'correspondence') return 'correspondence'
   if (v === 'user') return 'user'
+
   return null
 }
 
 export const useAuthStore = defineStore('auth', () => {
-  // Cookie for immediate UI state (prevents flash)
   const authCookie = useCookie('user-authorized', {
     default: () => false,
-    maxAge: 60 * 60 * 24 * 30, // 30 days (longer than Firebase refresh)
+    maxAge: 60 * 60 * 24 * 30,
     sameSite: 'strict'
   })
 
   const user = ref<User | undefined>(undefined)
   const error = ref<string | undefined>(undefined)
   const role = ref<UserRole | null>(null)
-  const isFirebaseReady = ref(false) // Track if Firebase has initialized
+  const isFirebaseReady = ref(false)
 
-  // Use cookie for initial state, then switch to Firebase auth
   const authorized = computed(() => {
     if (!isFirebaseReady.value) {
-      // Before Firebase is ready, use cookie to prevent flash
       return authCookie.value
     }
-    // After Firebase is ready, use actual auth state
+
     return !!user.value
   })
 
@@ -46,24 +44,32 @@ export const useAuthStore = defineStore('auth', () => {
       return token
     } catch (err) {
       console.error('Error getting ID token:', err)
+
       if (err instanceof Error) {
         setError(err.message)
       }
+
       return null
     }
   }
 
   const setUser = (userData: User | undefined) => {
     user.value = userData
-    // Update cookie to match Firebase state
     authCookie.value = !!userData
+
     if (userData) {
       error.value = undefined
+    } else {
+      role.value = null
     }
   }
 
-  const setFirebaseReady = () => {
-    isFirebaseReady.value = true
+  const resetRole = () => {
+    role.value = null
+  }
+
+  const setFirebaseReady = (value = true) => {
+    isFirebaseReady.value = value
   }
 
   const setError = (errorMessage: string | undefined) => {
@@ -78,10 +84,17 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const getUserRole = async () => {
-    if (!user.value) return
+    if (!user.value) {
+      role.value = null
+      return null
+    }
 
     const idToken = await getIdToken()
-    if (!idToken) return
+
+    if (!idToken) {
+      role.value = null
+      return null
+    }
 
     try {
       const response = await $fetch<FetchUser>('/api/users/profile', {
@@ -93,27 +106,34 @@ export const useAuthStore = defineStore('auth', () => {
       })
 
       if (response.success) {
-        role.value = normalizeRole(response.data?.role) // ✅ supports correspondence
-      } else {
-        role.value = null
-        console.warn('Role fetch failed:', response)
+        const normalizedRole = normalizeRole(response.data?.role)
+        role.value = normalizedRole
+        return normalizedRole
       }
+
+      role.value = null
+      console.warn('Role fetch failed:', response)
+      return null
     } catch (err) {
       console.error('Error fetching role:', err)
       role.value = null
+      return null
     }
   }
 
-  const refreshRole = async () => getUserRole()
+  const refreshRole = async () => {
+    return await getUserRole()
+  }
 
   return {
     user,
     role,
-    refreshRole,
     error,
     authorized,
-    getIdToken,
     isFirebaseReady,
+    getIdToken,
+    refreshRole,
+    resetRole,
     setUser,
     setFirebaseReady,
     setError,

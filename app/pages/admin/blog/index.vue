@@ -1,10 +1,22 @@
 <template>
-  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
+  <div v-if="isLoadingPage">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false">
-          <div v-if="!isLoadingPosts">
-            <div v-if="allPosts.length > 0" class="mb-4 flex justify-between">
+          <div class="animate-pulse">
+            Loading Blog Posts...
+          </div>
+        </BaseLayoutCard>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+  </div>
+
+  <div v-else-if="canAccessBlogAdmin">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <BaseLayoutCard :centered="false">
+          <div v-if="allPosts.length > 0">
+            <div class="mb-4 flex justify-between">
               <BaseUiAction type="button" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
                 <span>Add New Post</span><BaseIcon name="material-symbols:add-circle" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5" />
               </BaseUiAction>
@@ -12,11 +24,10 @@
               <div class="flex gap-2">
                 <div>
                   <BaseUiAction type="button" class="px-2 py-1" @click="openContentCalendar = true">Open Calendar</BaseUiAction>
-
                   <AdminContentCalendarToolModal v-if="openContentCalendar" v-model="openContentCalendar" :csv="calendarCsv" @close="openContentCalendar = false" />
                 </div>
 
-                <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2" @click="openAddPostModal">
+                <BaseUiAction to="/news/blog" class="py-1 px-2 group" styling="flex items-center gap-2">
                   <BaseIcon name="mdi:arrow-top-left-bold-box-outline" color="text-white" hover-color="group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out" size="size-5" /><span>Website Blog</span>
                 </BaseUiAction>
               </div>
@@ -24,26 +35,11 @@
 
             <h2 class="mb-4 border-b border-b-zinc-200 text-2xl text-brand-primary font-bold">Blog Posts</h2>
 
-            <ul v-if="allPosts.length > 0" class="overflow-x-auto flex flex-col">
+            <ul class="overflow-x-auto flex flex-col">
               <li v-for="post in allPosts" :key="post.id" class="odd:bg-zinc-200 even:bg-zinc-100 hover:bg-zinc-300 min-w-max">
-                <div 
-                      class="p-4 flex justify-between gap-10 w-full min-w-[675px] cursor-pointer" 
-                      type="button"
-                      aria-label="Open blog post editor"
-                      @click="openEditPostModal(post.id)"
-                >
+                <div class="p-4 flex justify-between gap-10 w-full min-w-[675px] cursor-pointer" type="button" aria-label="Open blog post editor" @click="openEditPostModal(post.id)">
                   <div class="flex gap-2 min-w-[675px] max-w-[675px]">
-                    <BlogPostImage 
-                      :key="post.thumbnail"
-                      format="webp,avif" 
-                      :src="blogPostsAPI.getMediaUrl(post.thumbnail)" 
-                      :alt="post.thumbnailAlt || ''" 
-                      :title="post.thumbnailAlt || ''" 
-                      :width="136" 
-                      :height="68"
-                      small-image
-                      loading="lazy"
-                    />
+                    <BlogPostImage :key="post.thumbnail" format="webp,avif" :src="blogPostsAPI.getMediaUrl(post.thumbnail)" :alt="post.thumbnailAlt || ''" :title="post.thumbnailAlt || ''" :width="136" :height="68" small-image loading="lazy" />
                     <div class="flex flex-col items-start justify-center">
                       <p class="text-xs">Last Updated: {{ formatDates.formatShortDateNoLeadingZero(post.updatedAt) }}</p>
                       <h3 :title="post.title" class="post-title text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
@@ -59,7 +55,7 @@
                     <button title="Delete" class="group flex" @click.stop="showDeleteConfirmation(post.id)"><BaseIcon name="material-symbols:delete-forever" hover-color="group-hover:text-brand-link-hover" /></button>
                   </div>
 
-                  <div :class="['min-w-[100px] flex flex-col justify-center items-center self-end gap-2 h-full']">
+                  <div class="min-w-[100px] flex flex-col justify-center items-center self-end gap-2 h-full">
                     <div class="space-y-2 flex items-center">
                       <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800 text-xs">Draft</span>
                       <div v-if="post.published && !post.draft" class="flex flex-col items-center">
@@ -72,14 +68,10 @@
                 </div>
               </li>
             </ul>
-
-            <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
-              <p>There are no blog posts. <button class="link" @click="openAddPostModal">Add a blog post</button> to get started.</p>
-            </div>
           </div>
 
-          <div v-else class="animate-pulse">
-            Loading Blog Posts...
+          <div v-else class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary">
+            <p>There are no blog posts. <button class="link" @click="openAddPostModal">Add a blog post</button> to get started.</p>
           </div>
         </BaseLayoutCard>
 
@@ -117,10 +109,11 @@
       </div>
     </BaseInteractiveModal>
   </div>
-  <div v-else-if="authStore.role === 'correspondence'">
+
+  <div v-else-if="isCorrespondenceBlocked">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
-        <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+        <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary">
           <p>You do not have access to the Blog Management page. Please contact an administrator if you believe this is an error.</p>
         </div>
       </BaseLayoutPageContainer>
@@ -133,16 +126,28 @@
 </template>
 
 <script lang="ts" setup>
-import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI';
-import { useDateFormat } from '../../../composables/dates/dateFormat';
-import type { BlogPostFull, BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog';
+import { useBlogPostsApi } from '../../../composables/blog/blogPostsAPI'
+import { useDateFormat } from '../../../composables/dates/dateFormat'
+import type { BlogPostFull, BlogPostPreview, PaginationMeta, PaginationOptions } from '../../../models/blog'
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({
+  layout: 'admin',
+  middleware: ['secure'],
+  secure: {
+    allowedRoles: ['admin', 'user'],
+    forbiddenTo: '/admin',
+  },
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined
+  ]
+})
 
-const authStore = useAuthStore();
-const blogPostsAPI = useBlogPostsApi();
-const formatDates = useDateFormat();
-const text = useText();
+const authStore = useAuthStore()
+const blogPostsAPI = useBlogPostsApi()
+const formatDates = useDateFormat()
+const text = useText()
 
 const defaultPagination: PaginationMeta = {
   currentPage: 1,
@@ -154,74 +159,95 @@ const defaultPagination: PaginationMeta = {
 }
 
 const blogState = useState<{
-    posts: BlogPostPreview[];
-    pagination: PaginationMeta;
-    initialized: boolean;
-  }>('blog-posts-admin', () => ({
-    posts: [],
-    pagination: defaultPagination,
-    initialized: false
+  posts: BlogPostPreview[]
+  pagination: PaginationMeta
+  initialized: boolean
+}>('blog-posts-admin', () => ({
+  posts: [],
+  pagination: { ...defaultPagination },
+  initialized: false
 }))
-
-
-// Content Calendar
 
 const openContentCalendar = ref(false)
 const calendarCsv = ref('')
 
-// Fetch all Admin Blog Posts
-
 const pageSize = 10
-const page = ref(1)
 
-const postOptions = computed((): PaginationOptions => ({
-  page: page.value,
+const initialPostOptions = computed((): PaginationOptions => ({
+  page: 1,
   pageSize,
   orderField: 'updated_at',
   orderDirection: 'desc'
 }))
 
-const { data: initialPostsReturn, pending: isLoadingPosts } = await useAsyncData(
+const canAccessBlogAdmin = computed(() => {
+  return authStore.isFirebaseReady && authStore.authorized && (authStore.role === 'admin' || authStore.role === 'user')
+})
+
+const isCorrespondenceBlocked = computed(() => {
+  return authStore.isFirebaseReady && authStore.authorized && authStore.role === 'correspondence'
+})
+
+const shouldLoadInitialPosts = computed(() => {
+  return canAccessBlogAdmin.value && !blogState.value.initialized
+})
+
+const {
+  data: initialPostsReturn,
+  pending: initialPostsPending
+} = await useAsyncData(
   'blog-initial-posts-admin',
-  () => blogPostsAPI.getAllPosts(postOptions.value),
+  async () => {
+    if (!shouldLoadInitialPosts.value) return null
+    return await blogPostsAPI.getAllPosts(initialPostOptions.value)
+  },
   {
-    watch: [postOptions]
+    default: () => null,
+    watch: [shouldLoadInitialPosts]
   }
 )
 
-if(!blogState.value.initialized && initialPostsReturn.value) {
+watchEffect(() => {
+  if (!initialPostsReturn.value) return
+  if (blogState.value.initialized) return
+
   blogState.value.posts = initialPostsReturn.value.data ?? []
-  blogState.value.pagination = initialPostsReturn.value.pagination ?? { ...defaultPagination}
+  blogState.value.pagination = initialPostsReturn.value.pagination ?? { ...defaultPagination }
   blogState.value.initialized = true
-}
+})
 
 const allPosts = computed(() => blogState.value.posts)
 const postPagination = computed(() => blogState.value.pagination)
 
-// Load more posts for pagination
+const isLoadingPage = computed(() => {
+  if (!authStore.isFirebaseReady) return true
+  if (authStore.authorized && authStore.role === null) return true
+  if (shouldLoadInitialPosts.value && initialPostsPending.value) return true
+  return false
+})
+
 const loadMore = async () => {
-    if(isLoadingPosts.value) return; // Prevent multiple simultaneous loads
-    if(!postPagination.value.hasNextPage) return; // No more pages to load
+  if (isLoadingPage.value) return
+  if (!postPagination.value.hasNextPage) return
 
-    const nextPage = blogState.value.pagination.currentPage + 1;
+  const nextPage = blogState.value.pagination.currentPage + 1
 
-    const response = await blogPostsAPI.getAllPosts({
-        page: nextPage,
-        pageSize,
-        orderField: 'updated_at',
-        orderDirection: 'desc'
-    })
+  const response = await blogPostsAPI.getAllPosts({
+    page: nextPage,
+    pageSize,
+    orderField: 'updated_at',
+    orderDirection: 'desc'
+  })
 
-    const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
-    const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
+  const existingPostIDs = new Set(blogState.value.posts.map(post => post.id))
+  const newPosts = (response.data ?? []).filter(post => !existingPostIDs.has(post.id))
 
-    blogState.value.posts = [...blogState.value.posts, ...newPosts]
-    blogState.value.pagination = response.pagination ?? { ...defaultPagination }
+  blogState.value.posts = [...blogState.value.posts, ...newPosts]
+  blogState.value.pagination = response.pagination ?? { ...defaultPagination }
 }
 
-// Add newly created post to the blogState and re-sort
 const addNewPost = (post: BlogPostFull): void => {
-  blogState.value.posts.unshift(post)
+  blogState.value.posts = [post, ...blogState.value.posts].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
 }
 
 const updatePost = (post: BlogPostFull): void => {
@@ -230,15 +256,23 @@ const updatePost = (post: BlogPostFull): void => {
     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
 }
 
-// Blog Post Modals and Actions
 const blogPostModalOpen = ref(false)
 const blogPostModalId = ref<string | null>(null)
 
-const openAddPostModal = () => { blogPostModalOpen.value = true }
-const openEditPostModal = (id: string) => { blogPostModalId.value = id; blogPostModalOpen.value = true }
-const closePostModal = () => { blogPostModalId.value = null }
+const openAddPostModal = () => {
+  blogPostModalId.value = null
+  blogPostModalOpen.value = true
+}
 
-// Delete Modal
+const openEditPostModal = (id: string) => {
+  blogPostModalId.value = id
+  blogPostModalOpen.value = true
+}
+
+const closePostModal = () => {
+  blogPostModalId.value = null
+}
+
 const deleteConfirmationModal = ref(false)
 
 const showDeleteConfirmation = (id: string) => {
@@ -247,7 +281,7 @@ const showDeleteConfirmation = (id: string) => {
 }
 
 const confirmDelete = async () => {
-  if(!blogPostModalId.value) return
+  if (!blogPostModalId.value) return
 
   const deleteId = blogPostModalId.value
   const deleteReturn = await blogPostsAPI.deletePost(deleteId)
@@ -264,7 +298,6 @@ const cancelDelete = () => {
   blogPostModalId.value = null
 }
 
-// Publish Modal
 const blogPostPublishModalOpen = ref(false)
 const publishToggle = ref(true)
 const publishDate = ref<string>('')
@@ -301,7 +334,6 @@ const closePublish = () => {
   publishToggle.value = true
   publishDate.value = ''
 }
-
 </script>
 
 <style scoped>
@@ -313,5 +345,4 @@ h3.post-title {
   line-clamp: var(--max-lines);
   -webkit-line-clamp: var(--max-lines);
 }
-
 </style>

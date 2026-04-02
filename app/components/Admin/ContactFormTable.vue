@@ -310,7 +310,7 @@
 
         <!-- Sent -->
         <td class="px-4 py-3">
-          <div class="w-max">{{ dateFormat.tableFormatDate(u.created_at) }}</div>
+          <div class="w-max">{{ dateFormat.tableFormatDateWithTime(u.created_at) }}</div>
         </td>
 
         <!-- ID -->

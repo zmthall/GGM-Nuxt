@@ -124,19 +124,19 @@
 
         <!-- Created -->
         <td class="px-4 py-3">
-          <div class="text-gray-900">{{ dateFormat.tableFormatDate(u.created_at) }}</div>
+          <div class="text-gray-900">{{ dateFormat.tableFormatDateWithTime(u.created_at) }}</div>
           <div v-if="u.created_by" class="text-xs text-gray-500">by {{ u.created_by }}</div>
         </td>
 
         <!-- Updated -->
         <td class="px-4 py-3">
-          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDate(u.updated?.at) }}</div>
+          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDateWithTime(u.updated?.at) }}</div>
           <div v-if="u.updated?.by" class="text-xs text-gray-500">by {{ u.updated.by }}</div>
         </td>
 
         <!-- Last Login -->
         <td class="px-4 py-3">
-          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDate(u.lastLogin) }}</div>
+          <div class="text-gray-900 w-max">{{ dateFormat.tableFormatDateWithTime(u.lastLogin) }}</div>
         </td>
 
         <!-- ID -->

@@ -47,7 +47,13 @@ defineOptions({
 })
 
 definePageMeta({
-    layout: 'admin',
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined,
+    undefined
+  ]
 })
 
 const contactModalOpen = ref<boolean>(false);

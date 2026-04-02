@@ -109,7 +109,14 @@ import type {
 
 const authStore = useAuthStore()
 
-definePageMeta({ layout: 'admin' })
+definePageMeta({
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined
+  ]
+})
 
 // ---- Local slot typing to avoid `any`
 type SlotData = {

@@ -1,5 +1,17 @@
 <template>
-  <div v-if="authStore.authorized && authStore.role !== 'correspondence'">
+  <div v-if="isLoadingPage">
+    <BaseLayoutPageSection bg="transparent" margin="top">
+      <BaseLayoutPageContainer>
+        <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
+          <div class="p-8 text-xl text-brand-main-text animate-pulse">
+            Loading Users...
+          </div>
+        </BaseLayoutCard>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageSection>
+  </div>
+
+  <div v-else-if="canAccessUserManagement">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
@@ -44,12 +56,12 @@
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
   </div>
-  
-   <div v-else-if="authStore.role === 'correspondence'">
+
+  <div v-else-if="isCorrespondenceBlocked">
     <BaseLayoutPageSection bg="transparent" margin="top">
       <BaseLayoutPageContainer>
         <BaseLayoutCard :centered="false">
-          <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary mb-">
+          <div class="p-8 text-xl text-brand-main-text bg-zinc-300 rounded-xl shadow-primary">
             <p>You do not have access to the User Management page. Please contact an administrator if you believe this is an error.</p>
           </div>
         </BaseLayoutCard>
@@ -73,38 +85,65 @@ definePageMeta({
     allowedRoles: ['admin'],
     forbiddenTo: '/admin',
   },
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined
+  ]
 })
 
 const authStore = useAuthStore()
 
-// ---- state
-const usersList  = ref<UserData[]>([])
+const usersList = ref<UserData[]>([])
 const pagination = ref<Pagination | null>(null)
-const page       = ref<number>(1)
-const loading    = ref<boolean>(false)
+const page = ref<number>(1)
+const loading = ref<boolean>(false)
+const initialized = ref(false)
 
-// ---- infra
 const API = useRuntimeConfig().public.useLocalApi ? 'http://127.0.0.1:4000' : 'https://api.goldengatemanor.com'
 const listAbort = shallowRef<AbortController | null>(null)
-onBeforeUnmount(() => listAbort.value?.abort())
 
-const canFetch = computed(() => authStore.isFirebaseReady && authStore.authorized)
+onBeforeUnmount(() => {
+  listAbort.value?.abort()
+})
+
+const canAccessUserManagement = computed(() => {
+  return authStore.isFirebaseReady && authStore.authorized && authStore.role === 'admin'
+})
+
+const isCorrespondenceBlocked = computed(() => {
+  return authStore.isFirebaseReady && authStore.authorized && authStore.role === 'correspondence'
+})
+
+const shouldLoadInitialUsers = computed(() => {
+  return canAccessUserManagement.value && !initialized.value
+})
+
+const isLoadingPage = computed(() => {
+  if (!authStore.isFirebaseReady) return true
+  if (authStore.authorized && authStore.role === null) return true
+  if (shouldLoadInitialUsers.value && loading.value) return true
+  return false
+})
+
 const getTokenOrNull = async (): Promise<string | null> => {
   const t = await authStore.getIdToken()
   return t ?? null
 }
 
-// ---- actions
-const fetchUsers = async (isLoading = true, p = page.value, pageSize = 10) => {
-  if (!canFetch.value) return null
+const fetchUsers = async (showLoading = true, p = page.value, pageSize = 10) => {
+  if (!canAccessUserManagement.value) return null
+
   const token = await getTokenOrNull()
   if (!token) return null
 
-  // cancel in-flight
   listAbort.value?.abort()
   listAbort.value = new AbortController()
 
-  if (isLoading) loading.value = true
+  if (showLoading) {
+    loading.value = true
+  }
+
   try {
     const res = await $fetch<{ success: boolean; data: UserData[]; pagination: Pagination }>(
       '/api/users/admin/get-users',
@@ -118,13 +157,14 @@ const fetchUsers = async (isLoading = true, p = page.value, pageSize = 10) => {
     )
 
     if (res.success) {
-      usersList.value  = res.data
+      usersList.value = res.data
       pagination.value = res.pagination
-      page.value       = res.pagination.currentPage ?? p
+      page.value = res.pagination.currentPage ?? p
+      initialized.value = true
     }
+
     return res
   } catch (e) {
-    // Ignore aborts; log other errors
     if (!(e instanceof DOMException && e.name === 'AbortError')) {
       console.error('fetchUsers:', (e as Error).message)
     }
@@ -134,12 +174,15 @@ const fetchUsers = async (isLoading = true, p = page.value, pageSize = 10) => {
   }
 }
 
-const refresh = async () => fetchUsers(false, page.value)
+const refresh = async () => {
+  return await fetchUsers(false, page.value)
+}
 
-// pagination handlers (clamped)
 const nextPage = () => {
   const next = (pagination.value?.currentPage ?? page.value) + 1
-  if (pagination.value?.hasNextPage) fetchUsers(false, next)
+  if (pagination.value?.hasNextPage) {
+    fetchUsers(false, next)
+  }
 }
 
 const prevPage = () => {
@@ -155,7 +198,8 @@ const setPage = (p: number) => {
 }
 
 const sendPasswordResetEmail = async (uid: string) => {
-  if (!uid || !canFetch.value) return
+  if (!uid || !canAccessUserManagement.value) return
+
   const token = await getTokenOrNull()
   if (!token) return
 
@@ -171,7 +215,8 @@ const sendPasswordResetEmail = async (uid: string) => {
 }
 
 const updateUserRole = async (uid: string, role: string) => {
-  if (!uid || !role || !canFetch.value) return
+  if (!uid || !role || !canAccessUserManagement.value) return
+
   const token = await getTokenOrNull()
   if (!token) return
 
@@ -180,16 +225,20 @@ const updateUserRole = async (uid: string, role: string) => {
       baseURL: API,
       method: 'PUT',
       headers: { Authorization: `Bearer ${token}` },
-      body: { role }, // $fetch will JSON.stringify for you
+      body: { role },
     })
-    if (res.success) await refresh()
+
+    if (res.success) {
+      await refresh()
+    }
   } catch (e) {
     console.error('updateUserRole:', (e as Error).message)
   }
 }
 
 const disableAccount = async (uid: string) => {
-  if (!uid || !canFetch.value) return
+  if (!uid || !canAccessUserManagement.value) return
+
   const token = await getTokenOrNull()
   if (!token) return
 
@@ -199,14 +248,18 @@ const disableAccount = async (uid: string) => {
       method: 'PUT',
       headers: { Authorization: `Bearer ${token}` },
     })
-    if (res.success) await refresh()
+
+    if (res.success) {
+      await refresh()
+    }
   } catch (e) {
     console.error('disableAccount:', (e as Error).message)
   }
 }
 
 const deleteAccount = async (uid: string) => {
-  if (!uid || !canFetch.value) return
+  if (!uid || !canAccessUserManagement.value) return
+
   const token = await getTokenOrNull()
   if (!token) return
 
@@ -216,17 +269,20 @@ const deleteAccount = async (uid: string) => {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     })
-    if (res.success) await refresh()
+
+    if (res.success) {
+      await refresh()
+    }
   } catch (e) {
     console.error('deleteAccount:', (e as Error).message)
   }
 }
 
-// 🔐 Only fetch when auth is ready + authorized; runs on reload & client nav
 watch(
-  () => authStore.isFirebaseReady && authStore.authorized,
-  async ok => {
-    if (ok) await fetchUsers(true, 1)
+  shouldLoadInitialUsers,
+  async (shouldLoad) => {
+    if (!shouldLoad) return
+    await fetchUsers(true, 1)
   },
   { immediate: true }
 )

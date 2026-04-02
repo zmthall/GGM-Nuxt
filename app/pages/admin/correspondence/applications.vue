@@ -90,6 +90,16 @@
 <script setup lang="ts">
 import type { ApplicationFormData } from '../../../models/Application'
 
+definePageMeta({
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined,
+    undefined
+  ]
+})
+
 const authStore = useAuthStore()
 
 const applicationModalOpen = ref<boolean>(false)
@@ -184,10 +194,6 @@ const exportCurrentPageZip = async () => {
 
 defineOptions({
   name: 'AdminApplicationsPage'
-})
-
-definePageMeta({
-  layout: 'admin'
 })
 
 onMounted(async () => {

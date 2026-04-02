@@ -91,8 +91,14 @@
 import type { CommunityEventsResponse, EventsData } from '../../../models/EventsData';
 
 const authStore = useAuthStore();
+
 definePageMeta({
-    layout: 'admin',
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined
+  ]
 })
 
 // Existing states

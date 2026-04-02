@@ -68,7 +68,7 @@
 
         <!-- Start date -->
         <td class="px-4 py-3">
-          <div class="w-max">{{ a.work?.dateAvailableToStart || '—' }}</div>
+          <div class="w-max">{{ dateFormat.tableFormatDate(a.work?.dateAvailableToStart) || '—' }}</div>
         </td>
 
         <!-- Tags -->
@@ -129,9 +129,9 @@
           </Teleport>
         </td>
 
-        <!-- Created -->
+        <!-- Submitted (table) -->
         <td class="px-4 py-3">
-          <div class="w-max">{{ a.created_at }}</div>
+          <div class="w-max">{{ dateFormat.tableFormatDateWithTime(a.created_at) }}</div>
         </td>
 
         <!-- ID -->
@@ -161,7 +161,7 @@
       <BaseUiAction type="button" class="absolute top-3 left-3 text-gray-400 hover:text-gray-600 p-1" @click="emit('export-pdf', applicationModalData.id)">Export</BaseUiAction>
 
       <div class="flex flex-col items-center py-2">
-        <time class="text-zinc-400 text-xs" :datetime="applicationModalData.created_at">Submitted: {{ applicationModalData.created_at }}</time>
+        <time class="text-zinc-400 text-xs" :datetime="applicationModalData.created_at">Submitted: {{ dateFormat.tableFormatDateWithTime(applicationModalData.created_at) }}</time>
       </div>
 
       <div class="flex flex-col overflow-y-auto space-y-3">
@@ -185,7 +185,7 @@
           <p v-if="applicationModalData.work.availability"><span class="font-semibold">Availability:</span> {{ applicationModalData.work.availability }}</p>
           <p><span class="font-semibold">Overtime:</span> {{ applicationModalData.work.willingToWorkOvertime }}</p>
           <p><span class="font-semibold">Pay rate:</span> {{ applicationModalData.work.preferablePayRate }}</p>
-          <p><span class="font-semibold">Start date:</span> {{ applicationModalData.work.dateAvailableToStart }}</p>
+          <p><span class="font-semibold">Start date:</span> {{ dateFormat.tableFormatDate(applicationModalData.work.dateAvailableToStart) }}</p>
           <p><span class="font-semibold">Resume:</span> <a v-if="applicationModalData.work.resume?.url" :href="applicationModalData.work.resume.url" class="link" target="_blank" rel="noopener noreferrer">Open</a><span v-else> Not provided</span></p>
         </div>
 
@@ -209,8 +209,10 @@
 <script lang="ts" setup>
 import type { Pagination } from '~/models/Pagination'
 import type { ApplicationFormData, ApplicationRequestStatus } from '../../models/Application';
+import { useDateFormat } from '../../composables/dates/dateFormat.js';
 
 const text = useText()
+const dateFormat = useDateFormat()
 
 defineProps<{
   modelValue: boolean

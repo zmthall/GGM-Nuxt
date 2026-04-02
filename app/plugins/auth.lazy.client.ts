@@ -18,6 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     ])
 
     const cfg = useRuntimeConfig().public.firebase
+
     const app = initializeApp({
       apiKey: cfg.apiKey,
       authDomain: cfg.authDomain,
@@ -29,15 +30,33 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     const { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged } = authMod
     const auth = getAuth(app)
+
     await setPersistence(auth, browserLocalPersistence)
+
     const db = getDatabase(app)
 
     await new Promise<void>((resolve) => {
       let first = true
-      onAuthStateChanged(auth, (user) => {
-        if (user) authStore.setUser(user)
-        else authStore.clearAuth()
-        if (first) { authStore.setFirebaseReady(); first = false; resolve() }
+
+      onAuthStateChanged(auth, async (user) => {
+        try {
+          if (user) {
+            authStore.setUser(user)
+            authStore.resetRole()
+            await authStore.refreshRole()
+          } else {
+            authStore.clearAuth()
+          }
+        } catch (error) {
+          console.error('Error during auth initialization:', error)
+          authStore.clearAuth()
+        } finally {
+          if (first) {
+            authStore.setFirebaseReady(true)
+            first = false
+            resolve()
+          }
+        }
       })
     })
 
@@ -45,9 +64,16 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   const getFirebase = async (): Promise<FB> => {
-    if (!bundlePromise) bundlePromise = init()
+    if (!bundlePromise) {
+      bundlePromise = init()
+    }
+
     const fb = await bundlePromise
-    if (!nuxtApp.$firebase) nuxtApp.provide('firebase', fb) // back-compat
+
+    if (!nuxtApp.$firebase) {
+      nuxtApp.provide('firebase', fb)
+    }
+
     return fb
   }
 

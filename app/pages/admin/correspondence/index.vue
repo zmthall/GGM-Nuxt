@@ -153,6 +153,15 @@ import type { ContactFormData } from '../../../models/admin/ContactForm';
 import type { RideRequestFormData } from '../../../models/admin/RideRequestForm';
 import type { ApplicationFormData } from '../../../models/Application';
 
+definePageMeta({
+  layout: 'admin',
+  breadcrumbOverrides: [
+    { label: 'Dashboard', to: '/admin' },
+    false,
+    undefined
+  ]
+})
+
 const departmentLabels = [
   'All Departments',
   'City Cab',
@@ -280,10 +289,6 @@ const {
 
 defineOptions({
     name: 'AdminMessagesPage'
-});
-
-definePageMeta({
-    layout: 'admin',
 });
 
 onMounted(async () => {
