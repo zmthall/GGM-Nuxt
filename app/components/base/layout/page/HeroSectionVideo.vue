@@ -9,7 +9,7 @@
       <NuxtImg
         v-if="!videoReady"
         src="/images/home-images/Web_video_placeholder.png"
-        alt=""
+        alt="Union Ave sign for Golden Gate Manor with medical supplies sign"
         aria-hidden="true"
         width="1920"
         height="1080"
@@ -24,7 +24,7 @@
     <BaseInteractiveHeroVideo
       ref="heroVideo"
       :src="videoSrc"
-      muted
+      :muted="isMuted"
       @ready="videoReady = true"
       @buffered="onBuffered"
       @play="onVideoPlay"
@@ -42,6 +42,9 @@
 
       <!-- Controls: Play/Pause button + Autoplay toggle -->
       <div v-if="videoReady" class="pointer-events-auto absolute top-4 left-4 flex items-center gap-3">
+        <button class="p-2 group rounded-full bg-brand-primary bg-opacity-20 hover:bg-opacity-100 transition-all duration-200 flex" @click="toggleMute">
+          <BaseIcon :name="mutedIcon" size="size-4" color="text-white/40" hover-color="group-hover:text-white" />
+        </button>
         <button
           type="button"
           class="px-4 py-2 rounded-lg bg-transparent transition-all duration-200"
@@ -64,6 +67,8 @@
           </span>
         </label>
       </div>
+
+
 
       <!-- Centered column: logo + text in normal flow when idle -->
       <div class="absolute inset-0 flex flex-col items-center justify-center gap-6 px-6">
@@ -146,6 +151,8 @@ const props = defineProps<{
 type HeroVideoExpose = {
   play: () => void
   pause: () => void
+  mute: () => void
+  unmute: () => void
   rewind: () => void
   toggle: () => void
 }
@@ -187,6 +194,19 @@ const playing = ref(false)
 const outroTriggered = ref(false)  // ensures we only trigger the outro once per play
 const transitionLock = ref(false)
 const heroVideo = ref<HeroVideoExpose | null>(null)
+
+// ── Muted Settings ────────────────────────────────────────────────────────
+
+const MUTED_STORAGE_KEY = 'ggm-hero-muted'
+const isMuted = ref<boolean>(typeof window !== 'undefined'
+    ? (localStorage.getItem(MUTED_STORAGE_KEY) ?? 'true') === 'true'
+    : true)
+const mutedIcon = computed(() => isMuted.value ? 'mingcute:volume-mute-fill' :'mingcute:volume-fill')
+
+const toggleMute = () => {
+  isMuted.value = !isMuted.value
+  localStorage.setItem(MUTED_STORAGE_KEY, String(isMuted.value))
+}
 
 // ── Autoplay preference ────────────────────────────────────────────────────────
 const autoplayEnabled = ref<boolean>(

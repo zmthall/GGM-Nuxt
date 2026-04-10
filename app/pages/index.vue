@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BaseLayoutPageHeroSectionVideo video-src="/videos/Final_website_video.mp4" :active="true" />
+        <BaseLayoutPageHeroSectionVideo video-src="/videos/Final_website_video_with_sound.mp4" :active="true" />
             
         <BaseInteractiveLogosNav :shows-on-mobile="false" />
 

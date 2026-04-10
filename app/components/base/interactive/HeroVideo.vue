@@ -14,9 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
-
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   src?: string
   muted?: boolean
 }>(), {
@@ -33,6 +31,10 @@ const emit = defineEmits<{
 const videoEl = ref<HTMLVideoElement | null>(null)
 const isReady = ref(false)
 const isPlaying = ref(false)
+
+watch(() => props.muted, (val) => {
+  videoEl.value!.muted = val
+})
 
 function play() {
   const el = videoEl.value
