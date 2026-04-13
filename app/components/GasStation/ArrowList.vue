@@ -1,20 +1,20 @@
 <template>
   <div>
     <BaseLayoutPageArrowListItem v-for="(location, idx) in locations" :key="location.id" :color="location.arrowColor">
-          <template #number>{{ `0${idx + 1}`}}</template>
-          <template #default>
-            <div class="pl-0 sm:pl-28 md:pl-24 max-sm:pt-32">
-              <div class="text-xl font-bold">
-                <span>{{ location.title }}</span><span class="max-[950px]:hidden">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a :href="`tel:${location.phone}`" class="link-light max-[950px]:hidden">{{ locations[0]?.phone }}</a>
-              </div>
-              <ul class="ml-6 border-l-[4px] border-l-brand-primary pl-2 text-white font-bold">
-                <li v-for="detail in location.details" :key="detail">
-                  {{ detail }}
-                </li>
-              </ul>
-            </div>
-          </template>
-        </BaseLayoutPageArrowListItem>
+      <template #number>{{ `0${idx + 1}`}}</template>
+      <template #default>
+        <div class="pl-0 sm:pl-28 md:pl-24 max-sm:pt-32">
+          <div class="text-xl font-bold">
+            <span>{{ location.title }}</span><span class="max-[950px]:hidden">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a :href="`tel:${location.phone}`" class="link-light max-[950px]:hidden">{{ locations[0]?.phone }}</a>
+          </div>
+          <ul class="ml-6 border-l-[4px] border-l-brand-primary pl-2 text-white font-bold">
+            <li v-for="detail in location.details" :key="detail">
+              {{ detail }}
+            </li>
+          </ul>
+        </div>
+      </template>
+    </BaseLayoutPageArrowListItem>
   </div>
 </template>
 

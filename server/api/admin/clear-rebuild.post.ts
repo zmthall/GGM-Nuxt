@@ -1,4 +1,4 @@
-// server/api/admin/rebuild-clear.post.ts
+// server/api/admin/clear-rebuild.post.ts
 import { existsSync, unlinkSync } from 'fs'
 import { join } from 'path'
 
