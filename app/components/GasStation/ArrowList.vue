@@ -52,6 +52,7 @@ if (company) {
       details: [
         "Completely renovated with modern amenities",
         "Expanded product selection",
+        "Convenience-focused layout with no fuel services",
       ],
     }
   );
