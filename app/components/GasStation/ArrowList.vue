@@ -3,7 +3,7 @@
     <BaseLayoutPageArrowListItem v-for="(location, idx) in locations" :key="location.id" :color="location.arrowColor">
           <template #number>{{ `0${idx + 1}`}}</template>
           <template #default>
-            <div class="pl-36 md:pl-24 py-4">
+            <div class="pl-0 sm:pl-28 md:pl-24 max-sm:pt-32">
               <div class="text-xl font-bold">
                 <span>{{ location.title }}</span><span class="max-[950px]:hidden">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a :href="`tel:${location.phone}`" class="link-light max-[950px]:hidden">{{ locations[0]?.phone }}</a>
               </div>

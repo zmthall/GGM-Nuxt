@@ -4,13 +4,13 @@
     <!-- ARROW BACKGROUND -->
     <div
       :class="[
-        'absolute inset-0 arrow',
+        'absolute inset-0 arrow rounded-lg md:rounded-none',
         {
           'bg-green-700': color === 'green',
           'bg-red-700': color === 'red'
         }
       ]"
-    ></div>
+    />
 
     <!-- NUMBER -->
     <div
@@ -23,7 +23,7 @@
     <!-- CONTENT -->
     <div
       :class="[
-        'relative z-10 px-6 py-4 pl-24',
+        'relative z-10 px-6 py-4',
         {
           'text-white': color === 'green' || color === 'red'
         }
@@ -44,12 +44,11 @@ defineProps<{
 <style scoped>
 .arrow {
   height: 100%;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 60px) 0,
-    100% 50%,
-    calc(100% - 60px) 100%,
-    0 100%
-  );
+}
+
+@media (min-width: 768px) {
+  .arrow {
+    clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 50%, calc(100% - 60px) 100%, 0 100%);
+  }
 }
 </style>
