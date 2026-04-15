@@ -2,18 +2,9 @@ import { exec } from 'child_process'
 import { promisify } from 'util'
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs'
 import { join, dirname } from 'path'
+import type { BuildStatus } from '~~/types/rebuild'
 
 const execAsync = promisify(exec)
-
-interface BuildStatus {
-  id: string
-  status: 'running' | 'success' | 'failed'
-  startedAt: string
-  completedAt?: string
-  message?: string
-  error?: string
-  logs?: string[]
-}
 
 const BUILD_STATUS_FILE = join(process.cwd(), 'tmp', 'build-status.json')
 

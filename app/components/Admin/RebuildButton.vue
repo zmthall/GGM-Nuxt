@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import type { BuildStatus } from '~~/types/rebuild.js'
+
 const authStore = useAuthStore()
-const { success, error } = useToast()
+const { info, success, error } = useToast()
 
 const isBuilding = ref(false)
+const isWaitingForRestart = ref(false)
+
+/* -------------------------
+   POLLING STATE
+------------------------- */
+const buildPollInterval = ref<ReturnType<typeof setInterval> | null>(null)
+const restartPollInterval = ref<ReturnType<typeof setInterval> | null>(null)
+const initialRuntimeMarker = ref<string | null>(null)
 
 /* -------------------------
    AUTH
@@ -15,11 +25,80 @@ async function getAuthHeaders() {
 }
 
 /* -------------------------
-   ACTIONS
+   HELPERS
+------------------------- */
+function stopBuildPolling() {
+  if (buildPollInterval.value) {
+    clearInterval(buildPollInterval.value)
+    buildPollInterval.value = null
+  }
+}
+
+function stopRestartPolling() {
+  if (restartPollInterval.value) {
+    clearInterval(restartPollInterval.value)
+    restartPollInterval.value = null
+  }
+}
+
+function buildCacheBustedUrl() {
+  const url = new URL(window.location.href)
+  url.searchParams.set('_reload', String(Date.now()))
+  return url.toString()
+}
+
+async function stabilizeAndReload() {
+  const freshUrl = buildCacheBustedUrl()
+
+  await new Promise(resolve => setTimeout(resolve, 4000))
+
+  try {
+    await fetch(freshUrl, {
+      method: 'GET',
+      cache: 'no-store',
+      credentials: 'include',
+      headers: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache'
+      }
+    })
+  } catch {
+    // Ignore errors from this fetch, as the server may be temporarily unavailable during restart
+  }
+
+  window.location.replace(freshUrl)
+}
+
+/* -------------------------
+   RUNTIME MARKER
+------------------------- */
+async function fetchRuntimeMarker() {
+  const headers = await getAuthHeaders()
+
+  const res = await $fetch('/api/admin/runtime', {
+    headers,
+    query: { t: Date.now() }
+  })
+
+  if (!res?.ok || !res?.runtime?.marker) {
+    throw new Error('Failed to get runtime marker')
+  }
+
+  return res.runtime.marker as string
+}
+
+/* -------------------------
+   BUILD FLOW
 ------------------------- */
 async function triggerRebuild() {
   try {
     isBuilding.value = true
+    isWaitingForRestart.value = false
+
+    stopBuildPolling()
+    stopRestartPolling()
+
+    initialRuntimeMarker.value = await fetchRuntimeMarker()
 
     const headers = await getAuthHeaders()
 
@@ -33,12 +112,79 @@ async function triggerRebuild() {
       isBuilding.value = false
       return
     }
+
+    info('Starting rebuild...', 60000)
+
+    setTimeout(() => {
+      checkBuildStatus()
+      buildPollInterval.value = setInterval(checkBuildStatus, 5000)
+    }, 8000)
+
   } catch (err: unknown) {
     error((err as Error).message || 'Error starting build')
     isBuilding.value = false
   }
 }
 
+async function checkBuildStatus() {
+  try {
+    const headers = await getAuthHeaders()
+
+    const res = await $fetch<{ ok: boolean; data: BuildStatus; success: boolean }>('/api/admin/rebuild-status', {
+      headers,
+      query: { t: Date.now() }
+    })
+
+    if (res.ok && res.data) {
+      if (res.success) {
+        stopBuildPolling()
+
+        isWaitingForRestart.value = true
+        success('Build completed. Waiting for restart...')
+
+        restartPollInterval.value = setInterval(waitForRestart, 2500)
+      }
+
+      if (res.data.status === 'failed') {
+        stopBuildPolling()
+        stopRestartPolling()
+
+        isBuilding.value = false
+        isWaitingForRestart.value = false
+
+        error('Build failed: ' + res.data.error)
+      }
+    }
+  } catch (err) {
+    console.error('Status check failed', err)
+  }
+}
+
+async function waitForRestart() {
+  try {
+    const currentMarker = await fetchRuntimeMarker()
+
+    if (
+      initialRuntimeMarker.value &&
+      currentMarker !== initialRuntimeMarker.value
+    ) {
+      stopRestartPolling()
+
+      isBuilding.value = false
+      isWaitingForRestart.value = false
+
+      success('App restarted. Reloading...')
+
+      await stabilizeAndReload()
+    }
+  } catch {
+    // Ignore errors during restart polling, as the server may be temporarily unavailable
+  }
+}
+
+/* -------------------------
+   CLEAR REBUILD
+------------------------- */
 async function clearRebuild() {
   try {
     const headers = await getAuthHeaders()
@@ -49,6 +195,13 @@ async function clearRebuild() {
     })
 
     success('Build status cleared')
+
+    isBuilding.value = false
+    isWaitingForRestart.value = false
+
+    stopBuildPolling()
+    stopRestartPolling()
+
     closeMenu()
   } catch (err: unknown) {
     error((err as Error).message || 'Failed to clear build')
@@ -56,20 +209,17 @@ async function clearRebuild() {
 }
 
 /* -------------------------
-   CONTEXT MENU STATE
+   CONTEXT MENU
 ------------------------- */
 const showMenu = ref(false)
 const menuX = ref(0)
 const menuY = ref(0)
 
-/* -------------------------
-   HANDLERS
-------------------------- */
 function handleRightClick(e: MouseEvent) {
   e.preventDefault()
 
-  menuX.value = e.clientX
-  menuY.value = e.clientY
+  menuX.value = Math.min(e.clientX, window.innerWidth - 160)
+  menuY.value = Math.min(e.clientY, window.innerHeight - 60)
 
   showMenu.value = true
 }
@@ -78,13 +228,18 @@ function closeMenu() {
   showMenu.value = false
 }
 
-/* close when clicking anywhere */
+/* -------------------------
+   LIFECYCLE
+------------------------- */
 onMounted(() => {
   window.addEventListener('click', closeMenu)
 })
 
 onUnmounted(() => {
   window.removeEventListener('click', closeMenu)
+
+  stopBuildPolling()
+  stopRestartPolling()
 })
 </script>
 
@@ -100,10 +255,16 @@ onUnmounted(() => {
       @click="triggerRebuild"
       @contextmenu="handleRightClick"
     >
-      {{ isBuilding ? 'Building...' : 'Rebuild Site' }}
+      {{
+        isWaitingForRestart
+          ? 'Restarting...'
+          : isBuilding
+            ? 'Building...'
+            : 'Rebuild Site'
+      }}
     </BaseUiAction>
 
-    <!-- CUSTOM CONTEXT MENU -->
+    <!-- CONTEXT MENU -->
     <transition name="fade">
       <div
         v-if="showMenu"

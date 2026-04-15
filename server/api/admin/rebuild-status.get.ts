@@ -1,16 +1,7 @@
 // server/api/admin/rebuild-status.get.ts
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
-
-interface BuildStatus {
-  id: string
-  status: 'running' | 'success' | 'failed'
-  startedAt: string
-  completedAt?: string
-  message?: string
-  error?: string
-  logs?: string[]
-}
+import type { BuildStatus } from '~~/types/rebuild'
 
 export default defineEventHandler(async (event) => {
   const user = event.context.user
@@ -29,7 +20,8 @@ export default defineEventHandler(async (event) => {
       const status: BuildStatus = JSON.parse(readFileSync(BUILD_STATUS_FILE, 'utf-8'))
       return {
         ok: true,
-        status
+        success: status.status === 'success',
+        data: status
       }
     }
     
