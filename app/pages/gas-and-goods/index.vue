@@ -50,7 +50,7 @@
               </p>
             </div>
             <div class="md:w-1/2 aspect-[5/3] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
-                <NuxtImg src="/images/pages/gas-and-goods/elizabeth-location.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" :title="$t('non-medical.schedule.image.alt-title')" :alt="$t('non-medical.schedule.image.alt-title')" loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
+                <NuxtImg src="/images/pages/gas-and-goods/gas-station-essentials.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" title="Shelves stocked with essentials like cereals, canned foods, or pet needs from food to litter." alt="Shelves stocked with essentials like cereals, canned foods, or pet needs from food to litter." loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
             </div>  
           </div>
 
@@ -161,10 +161,10 @@
             <div class="flex flex-col gap-4">
               <h2 class="text-2xl font-bold text-brand-primary">Our Commitment to the Community</h2>
               <p class="text-xl text-brand-main-text">
-                Golden Gate Gas & Goods is more than just a place to stop—we’re committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service and creating spaces people can depend on.
+                Golden Gate Gas & Goods is more than just a place to stop—we're committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service and creating spaces people can depend on.
               </p>
               <p class="text-xl text-brand-main-text">
-                We look forward to serving you at our newly renovated locations. Whether you’re stopping in for fuel at one of our full-service sites or visiting one of our convenience-focused stores, you can expect quality products, a clean environment, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know—we take all suggestions into consideration because we want our locations to reflect what the community truly wants.
+                We look forward to serving you at our newly renovated locations. Whether you're stopping in for fuel at one of our full-service sites or visiting one of our convenience-focused stores, you can expect quality products, a clean environment, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know—we take all suggestions into consideration because we want our locations to reflect what the community truly wants.
               </p>
               <BaseUiAction to="/company/about-us" class="px-8 py-4 self-center">Read More</BaseUiAction>
             </div>
