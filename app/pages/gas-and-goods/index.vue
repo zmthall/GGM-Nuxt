@@ -32,7 +32,38 @@
     </BaseLayoutPageSection>
 
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+      <BaseLayoutPageSection margin="default" class="cv-auto" bg="alt">
+        <BaseLayoutPageContainer class="space-y-4">
+          <h2 class="text-2xl font-bold text-brand-primary">
+            Golden Gate Goods - Elizabeth Location
+          </h2>
+
+          <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
+            <div class="space-y-4 md:w-1/2">
+              <p class="text-xl text-brand-main-text">
+                As we continue to grow, our vision is expanding beyond traditional convenience stores. At our Elizabeth location, Golden Gate Goods represents a new direction—one centered around community, accessibility, and thoughtful product selection.
+              </p>
+  
+              <p class="text-xl text-brand-main-text">
+                This location is designed to provide easier access to a wider range of foods, snacks, and everyday essentials. Our goal is to create a space where community members can find what they need without having to travel far, while also discovering new products that reflect local demand and preferences.
+                We are focused on building a store that feels intentional—clean, welcoming, and stocked with items that matter to the people who live nearby. From quick grab-and-go options to a growing variety of food choices, Golden Gate Goods is about making everyday access simpler and more reliable.
+              </p>
+            </div>
+            <div class="md:w-1/2 aspect-[5/3] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
+                <NuxtImg src="/images/pages/gas-and-goods/elizabeth-location.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" :title="$t('non-medical.schedule.image.alt-title')" :alt="$t('non-medical.schedule.image.alt-title')" loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
+            </div>  
+          </div>
+
+
+          <p class="text-xl text-brand-main-text">
+            This is just the beginning of what Golden Gate Goods will become. As always, we welcome feedback from the community so we can continue shaping this space into something that truly serves the people around it.
+          </p>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4 flex flex-col">
           <div class="space-y-5">
             <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
@@ -51,7 +82,7 @@
     </DeferRender>
 
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" class="cv-auto">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer>
           <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">
             Step Into Our Beer Cave (Prairie & Northern)
@@ -81,7 +112,7 @@
     </DeferRender> 
 
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4">
           <h2 class="text-2xl font-bold text-brand-primary">Our Locations:</h2>
           <LazyGasStationArrowList />
@@ -124,7 +155,7 @@
     </DeferRender>
 
     <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" class="cv-auto">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer>
           <LazyBaseLayoutCard class="bg-white md:w-3/4 mx-auto">
             <div class="flex flex-col gap-4">
@@ -138,37 +169,6 @@
               <BaseUiAction to="/company/about-us" class="px-8 py-4 self-center">Read More</BaseUiAction>
             </div>
           </LazyBaseLayoutCard>
-        </BaseLayoutPageContainer>
-      </BaseLayoutPageSection>
-    </DeferRender>
-
-    <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" class="cv-auto" bg="alt">
-        <BaseLayoutPageContainer class="space-y-4">
-          <h2 class="text-2xl font-bold text-brand-primary">
-            Golden Gate Goods – Elizabeth Location
-          </h2>
-
-          <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
-            <div class="space-y-4 md:w-1/2">
-              <p class="text-xl text-brand-main-text">
-                As we continue to grow, our vision is expanding beyond traditional convenience stores. At our Elizabeth location, Golden Gate Goods represents a new direction—one centered around community, accessibility, and thoughtful product selection.
-              </p>
-  
-              <p class="text-xl text-brand-main-text">
-                This location is designed to provide easier access to a wider range of foods, snacks, and everyday essentials. Our goal is to create a space where community members can find what they need without having to travel far, while also discovering new products that reflect local demand and preferences.
-                We are focused on building a store that feels intentional—clean, welcoming, and stocked with items that matter to the people who live nearby. From quick grab-and-go options to a growing variety of food choices, Golden Gate Goods is about making everyday access simpler and more reliable.
-              </p>
-            </div>
-            <div class="md:w-1/2 aspect-[5/3] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
-                <NuxtImg src="/images/pages/gas-and-goods/elizabeth-location.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" :title="$t('non-medical.schedule.image.alt-title')" :alt="$t('non-medical.schedule.image.alt-title')" loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
-            </div>  
-          </div>
-
-
-          <p class="text-xl text-brand-main-text">
-            This is just the beginning of what Golden Gate Goods will become. As always, we welcome feedback from the community so we can continue shaping this space into something that truly serves the people around it.
-          </p>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
     </DeferRender>
