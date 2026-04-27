@@ -1,9 +1,9 @@
 <template>
   <!-- Root fills whatever container it's placed in -->
-  <div class="flex flex-col min-h-0 h-full w-full">
+  <div class="flex flex-col min-h-0 h-full mx-4">
     <!-- Viewport grows; aspectRatio optional; no hardcoded aspect-[16/9] -->
     <div
-      class="relative overflow-hidden rounded-2xl bg-gray-100 flex-1 min-h-0 flex items-center justify-center"
+      class="relative overflow-hidden flex-1 min-h-0 flex items-center justify-center"
       :style="viewportStyle"
       role="region" aria-roledescription="carousel"
       :aria-label="`Image carousel (${total} slides)`"
@@ -13,6 +13,12 @@
       @pointercancel.passive="cancelPointer"
       @pointerleave.passive="cancelPointer"
     >
+      <div
+        v-if="!allImagesLoaded"
+        class="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm"
+      >
+        <span class="text-sm text-gray-600">Loading images...</span>
+      </div>
       <template v-if="hasSlides">
         <div 
           class="flex h-full w-full transition-transform duration-500"
