@@ -23,6 +23,7 @@
             class="w-3/4 justify-self-center"
             poster="podcast"
             :has-shadow="false"
+            image-loading="eager"
           />
         </div>
 

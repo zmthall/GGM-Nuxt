@@ -20,14 +20,15 @@
         :alt="title"
         :title="title"
         :sizes="sizes"
-        format="avif,webp"
+        format="webp"
         quality="60"
         densities="1"
         class="w-full h-full object-cover"
-        loading="lazy"
+        :loading="imageLoading"
         decoding="async"
         :width="imageWidth"
         :height="imageHeight"
+        :preload="imagePreload"
       />
       <!-- Play button -->
       <span class="pointer-events-none absolute inset-0 grid place-items-center">
@@ -56,6 +57,7 @@ const props = withDefaults(defineProps<{
   sizes?: string;
   imageWidth?: string;
   imageHeight?: string;
+  imageLoading?: 'lazy' | 'eager';
   aspectRatio?: string;           // e.g. '16/9'
   poster?: 'hq' | 'mq' | 'sd' | 'max' | 'podcast'; // quality
   eagerOnView?: boolean;          // swap to iframe when near viewport
@@ -67,10 +69,19 @@ const props = withDefaults(defineProps<{
   poster: 'hq',
   imageWidth: undefined,
   imageHeight: undefined,
+  imageLoading: 'lazy',
   eagerOnView: false,
   hasTitle: true,
   hasShadow: true,
   sizes: undefined
+})
+
+const imagePreload = computed(() => {
+  if (props.imageLoading === 'eager') {
+    return { fetchPriority: 'high' as const }
+  }
+
+  return undefined
 })
 
 const root = ref<HTMLElement | null>(null)
