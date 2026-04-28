@@ -1,7 +1,8 @@
 <template>
   <div
     ref="root"
-    class="yt-lite relative w-full overflow-hidden rounded-lg shadow-primary"
+    class="yt-lite relative overflow-hidden rounded-lg"
+    :class="{ 'shadow-primary': hasShadow }"
     :style="`aspect-ratio:${aspectRatio}`"
   >
     <!-- Poster -->
@@ -13,7 +14,7 @@
       @click="activate"
       @keydown.enter.prevent="activate"
     >
-      <h2 v-if="!activated" class="absolute top-0 left-1/2 -translate-x-1/2 w-full backdrop-blur-md text-white font-bold text-xl">{{ title }}</h2>
+      <h2 v-if="!activated && hasTitle" class="absolute top-0 left-1/2 py-2 -translate-x-1/2 w-full backdrop-blur-md text-white font-bold text-xl">{{ title }}</h2>
       <NuxtImg
         :src="posterUrl"
         :alt="title"
@@ -56,8 +57,10 @@ const props = withDefaults(defineProps<{
   imageWidth?: string;
   imageHeight?: string;
   aspectRatio?: string;           // e.g. '16/9'
-  poster?: 'hq' | 'mq' | 'sd' | 'max'; // quality
+  poster?: 'hq' | 'mq' | 'sd' | 'max' | 'podcast'; // quality
   eagerOnView?: boolean;          // swap to iframe when near viewport
+  hasTitle?: boolean;
+  hasShadow?: boolean;
 }>(), {
   title: 'YouTube video',
   aspectRatio: '16/9',
@@ -65,6 +68,8 @@ const props = withDefaults(defineProps<{
   imageWidth: undefined,
   imageHeight: undefined,
   eagerOnView: false,
+  hasTitle: true,
+  hasShadow: true,
   sizes: undefined
 })
 
@@ -75,14 +80,16 @@ const posterFile = computed(() => {
   switch (props.poster) {
     case 'max': return 'maxresdefault.jpg'
     case 'sd':  return 'sddefault.jpg'
-    case 'mq':  return 'mqdefault.jpg'
+    case 'podcast':  return '/images/pages/podcast/G&G-thumbnail.png'
     default:    return 'hqdefault.jpg'
   }
 })
 
-const posterUrl = computed(() =>
-  `https://i.ytimg.com/vi/${props.videoId}/${posterFile.value}`
-)
+const posterUrl = computed(() => {
+  if(props.poster === 'podcast') return posterFile.value
+
+  return `https://i.ytimg.com/vi/${props.videoId}/${posterFile.value}`
+})
 
 const iframeSrc = computed(() =>
   `https://www.youtube-nocookie.com/embed/${props.videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=en`

@@ -28,6 +28,7 @@
     "slug": "/news/community",
     "sublinks": [
       { "id": "community", "slug": "/news/community" },
+      { "id": "podcast", "slug": "/news/podcast" },
       { "id": "blog", "slug": "/news/blog" }
     ]
   },

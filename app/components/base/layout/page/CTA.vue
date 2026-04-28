@@ -6,7 +6,7 @@
   >
     <div v-if="hasBgOverlay" class="absolute inset-0 pointer-events-none" :style="bgOverlayStyle" />
 
-    <div class="max-w-6xl mx-auto text-center space-y-4 relative">
+    <div class="mx-auto space-y-4 relative" :class="{ 'max-w-6xl text-center': centeredText }">
       <h2 class="text-2xl sm:text-4xl font-extrabold">
         {{ title }}
       </h2>
@@ -37,8 +37,9 @@ const props = withDefaults(defineProps<{
   buttonLabel?: string
   to?: string
   href?: string
-  hasButton?: boolean
-  hasTitle?: boolean
+  hasButton?: boolean;
+  hasTitle?: boolean;
+  centeredText?: boolean;
   background?: CtaBackground
   backgroundImage?: string
   backgroundImageOpacity?: number
@@ -51,6 +52,7 @@ const props = withDefaults(defineProps<{
   description: undefined,
   hasButton: true,
   hasTitle: true,
+  centeredText: true,
   to: undefined,
   buttonLabel: undefined,
   href: undefined,
