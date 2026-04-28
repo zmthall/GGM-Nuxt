@@ -4,7 +4,7 @@
         <BaseLayoutPageSection margin="pTop" class="md:grid md:grid-cols-2 md:max-w-[1200px] md:mx-auto md:gap-8">
         <!-- Left Page -->
             <div class="space-y-2">
-                <h2 class="font-extrabold text-2xl max-sm:hidden">G{{ $t('contact.sections.left.title') }}</h2>
+                <h2 class="font-extrabold text-2xl max-sm:hidden">{{ $t('contact.sections.left.title') }}</h2>
                 <p class="text-xl ">
                     {{ $t('contact.sections.left.description') }}
                 </p>
