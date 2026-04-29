@@ -86,8 +86,11 @@ function ensureFlourishScript(): Promise<void> {
 function loadFlourish() {
   const el = flourishContainer.value
   if (!el || !window.Flourish?.loadEmbed) return
-  // clear any prior iframe (SPA re-entry)
-  el.querySelector('iframe')?.remove()
+
+  // 🛑 prevent double init
+  if (el.dataset.loaded === 'true') return
+  el.dataset.loaded = 'true'
+
   window.Flourish.loadEmbed(el)
 
   // post-inject: set attributes and nudge layout
