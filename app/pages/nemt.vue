@@ -70,7 +70,7 @@
       <BaseLayoutPageContainer>
         <div class="flex flex-col md:flex-row items-center justify-center gap-8">
           <h2 class="text-2xl font-bold mb-6 md:hidden">
-              Expanding Into the San Luis Valley
+              Coming Soon: Expanding Into the San Luis Valley
           </h2>
           <div class="md:flex-shrink-0">
             <NuxtImg 
@@ -84,7 +84,7 @@
           </div>
           <div>
             <h2 class="text-2xl font-bold mb-6 max-md:hidden">
-              Expanding Into the San Luis Valley
+              Coming Soon: Expanding Into the San Luis Valley
             </h2>
             <p class="text-lg">
               Golden Gate Manor Inc. is expanding its non-emergency medical transportation services into the San Luis Valley through SLV Transportation Red Willows.
@@ -431,12 +431,12 @@
     <div>
       <div class="text-center">
         <p class="text-base font-semibold text-slate-700 mb-2 tracking-wide">
-          Now Serving the San Luis Valley
+          Coming Soon to the San Luis Valley
         </p>
       </div>
       <div class="relative mt-4">
         <NuxtImg
-          src="/images/pages/nemt/slv-transportation-full-width.png"
+          src="/images/pages/nemt/SLV-transportation-full-width.png"
           alt="Golden Gate Manor Inc. by SLV Transportation Red Willows"
           class="w-full object-contain opacity-95"
           format="webp,avif"
