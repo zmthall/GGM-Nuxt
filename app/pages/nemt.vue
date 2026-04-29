@@ -444,9 +444,6 @@
           height="466"
           loading="lazy"
         />
-  
-        <!-- Top fade -->
-        <div class="absolute top-0 left-0 w-full md:h-14 bg-gradient-to-b from-[#e8e8e8] to-transparent" />
       </div>
     </div>
   </div>
