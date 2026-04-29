@@ -3,7 +3,7 @@
     <!-- Top Page -->
     <BaseLayoutPageSection margin="top">
       <div class="flex flex-col md:flex-row">
-        <div class="w-1/2 space-y-4">
+        <div class="md:w-1/2 space-y-4">
           <p class="text-xl text-brand-main-text">
             Gridlock & Gridlines is a community-first podcast based in Pueblo, serving Southern Colorado. The show explores the people, services, and everyday realities that keep our region moving—literally and figuratively. Through conversations across transportation, assisted living, medical supplies, and other support services, we bring clarity to complex systems and connect people to resources that are available and accessible. Expect honest discussion, practical insight, and a local voice that puts people first. The questions you meant to ask—answered.
           </p>
@@ -15,12 +15,12 @@
           </div>
         </div>
 
-        <div class="w-1/2">
+        <div class="max-md:mt-6 md:w-1/2">
           <BaseYoutubeLite
             video-id="Uz2gEuVx3XQ"
             title="Introduction: Who is Golden Gate Manor?"
             aspect-ratio="16/9"
-            class="w-3/4 justify-self-center"
+            class="w-full md:w-3/4 justify-self-center"
             poster="podcast"
             :has-shadow="false"
             image-loading="eager"

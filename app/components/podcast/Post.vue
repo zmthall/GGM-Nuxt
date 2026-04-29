@@ -32,7 +32,7 @@
             <BaseIcon
               name="logos:youtube-icon"
               size="size-16"
-              class="opacity-90 group-hover:scale-110 transition-transform"
+              class="opacity-90 md:group-hover:scale-110 transition-transform"
             />
           </div>
 

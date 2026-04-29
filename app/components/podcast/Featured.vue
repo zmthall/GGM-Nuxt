@@ -6,7 +6,7 @@
       :video-id="podcast.youtubeId"
       :has-title="false"
       aspect-ratio="16/9"
-      class="w-2/3 justify-self-center"
+      class="w-full md:w-2/3 justify-self-center"
       poster="podcast"
     />
 
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Buttons -->
-      <div class="flex gap-4 flex-wrap">
+      <div class="flex justify-center md:justify-start gap-4 flex-wrap">
         
         <!-- Primary -->
         <BaseUiAction
