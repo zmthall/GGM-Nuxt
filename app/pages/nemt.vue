@@ -60,15 +60,57 @@
             class="group text-xs w-full md:w-[calc(50%-1rem)]"
             styling="p-2 sm:p-4 flex flex-col md:flex-row gap-2 items-center justify-center">
               <BaseIcon name="uiw:file-pdf" class="group-hover:text-brand-secondary transition-colors duration-500 ease-in-out" size="size-5"/> 
-              <span class="inline-block">{{ $t('nemt.pdf.label') }}</span>
+              <span class="inline-block">{{ $t('nemt.top.pdf.label') }}</span>
           </BaseUiAction>
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
+    <BaseLayoutPageCTA margin="default" :has-button="false" :centered-text="false" class="overflow-hidden">
+      <BaseLayoutPageContainer>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+          <h2 class="text-2xl font-bold mb-6 md:hidden">
+              Expanding Into the San Luis Valley
+          </h2>
+          <div class="md:flex-shrink-0">
+            <NuxtImg 
+              src="/images/logos/golden-gate-by-SLV.png" 
+              alt="Golden Gate Manor Inc. by SLV Transportation Red Willows"
+              class="max-md:max-h-[200px] md:max-w-[300px] lg:max-w-[350px] object-contain opacity-90"
+              loading="lazy"
+              width="350"
+              height="333"
+            />
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold mb-6 max-md:hidden">
+              Expanding Into the San Luis Valley
+            </h2>
+            <p class="text-lg">
+              Golden Gate Manor Inc. is expanding its non-emergency medical transportation services into the San Luis Valley through SLV Transportation Red Willows.
+            </p>
+    
+            <p class="text-lg mt-4">
+              With an established fleet and a strong local presence in Alamosa, SLV Transportation has been a trusted provider in the region. This expansion allows us to build on that foundation while introducing additional resources, coordination, and support.
+            </p>
+    
+            <p class="text-lg mt-4">
+              Our goal is simple: to improve access to reliable transportation for individuals who depend on it—while maintaining the same trusted service the community already knows.
+            </p>
+
+            <div class="mt-6 max-md:justify-self-center">
+              <BaseUiAction to="/resources/schedule-a-ride" variant="secondary" styling="px-6 py-3">
+                Schedule a Ride
+              </BaseUiAction>
+            </div>
+          </div>
+        </div>
+      </BaseLayoutPageContainer>
+    </BaseLayoutPageCTA>
+    
     <!-- Transportation Information -->
      <DeferRender when="visible">
-       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+       <BaseLayoutPageSection margin="default" class="cv-auto">
          <BaseLayoutPageContainer class="bg-brand-primary rounded-lg shadow-primary">
              <h2 class="text-3xl font-bold text-white text-center pt-8">{{ $t('nemt.transportation-information.title') }}</h2>
              <div  class="flex flex-col lg:flex-row gap-8 mb-8 border-b-2 border-b-white px-3 sm:px-6 lg:px-8 py-8">
@@ -175,7 +217,7 @@
                          <BaseUiAction 
                            href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
                            rel="noopener noreferrer" class="p-2 mb-4 mt-8">
-                           {{ $t('nemt.pdf.label') }}
+                           {{ $t('nemt.top.pdf.label') }}
                          </BaseUiAction>
                      </LazyBaseInteractiveAccordionButton>
                    </li>
@@ -199,7 +241,7 @@
                        <BaseUiAction 
                          href="/pdfs/nemt/nemt-app&medical-certificate-of-trans-services.pdf" target="_blank"
                          rel="noopener noreferrer" class="p-2 mb-4 mt-8">
-                         {{ $t('nemt.pdf.label') }}
+                         {{ $t('nemt.top.pdf.label') }}
                        </BaseUiAction>
                      </LazyBaseInteractiveAccordionButton>
                    </li>
@@ -306,6 +348,36 @@
        </BaseLayoutPageSection>
      </DeferRender>
 
+    <!-- Driver Safety -->
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
+        <BaseLayoutPageContainer>
+          <LazyBaseLayoutCard class="bg-zinc-600">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:p-8 text-white gap-8">
+              <div class="lg:w-1/2">
+                  <h2 class="text-3xl flex flex-col text-center font-extrabold mb-4 ">
+                      <span class="text-brand-secondary">{{ $t('nemt.driver-safety.title[0]') }}</span>
+                      <span class="text-white">{{ $t('nemt.driver-safety.title[1]') }}</span>
+                  </h2>
+                  <p class="text-xl text-white dark-background">
+                      {{ $t('nemt.driver-safety.paragraph') }}
+                  </p>
+              </div>
+              <div class="lg:w-1/2">
+                  <div class="">
+                      <NuxtImg src="/images/pages/nemt/vehicle-camera.jpg" width="930" height="349" :alt="$t('nemt.driver-safety.images.vehicle-camera.alt-title')" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.vehicle-camera.alt-title')" />
+                  </div>
+                  <div class="flex">
+                      <NuxtImg src="/images/pages/nemt/distracted-driver-recognition.jpg" width="730" height="411" :alt="$t('nemt.driver-safety.images.distracted-driver.alt-title')" class="w-1/2" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.distracted-driver.alt-title')" />
+                      <NuxtImg src="/images/pages/nemt/dash-cam.jpg" :alt="$t('nemt.driver-safety.images.dash-cam.alt-title')" width="730" height="411" class="w-1/2" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.dash-cam.alt-title')" />
+                  </div>
+              </div>    
+            </div>
+          </LazyBaseLayoutCard>
+        </BaseLayoutPageContainer>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
     <!-- Eligible Places of Service -->
     <DeferRender when="visible">
       <BaseLayoutPageSection data-eligible-places-container margin="default" class="cv-auto">
@@ -355,35 +427,28 @@
       </BaseLayoutPageSection>
     </DeferRender>
 
-    <!-- Driver Safety -->
-    <DeferRender when="visible">
-      <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
-        <BaseLayoutPageContainer>
-          <LazyBaseLayoutCard class="bg-zinc-600">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:p-8 text-white gap-8">
-              <div class="lg:w-1/2">
-                  <h2 class="text-3xl flex flex-col text-center font-extrabold mb-4 ">
-                      <span class="text-brand-secondary">{{ $t('nemt.driver-safety.title[0]') }}</span>
-                      <span class="text-white">{{ $t('nemt.driver-safety.title[1]') }}</span>
-                  </h2>
-                  <p class="text-xl text-white dark-background">
-                      {{ $t('nemt.driver-safety.paragraph') }}
-                  </p>
-              </div>
-              <div class="lg:w-1/2">
-                  <div class="">
-                      <NuxtImg src="/images/pages/nemt/vehicle-camera.jpg" width="930" height="349" :alt="$t('nemt.driver-safety.images.vehicle-camera.alt-title')" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.vehicle-camera.alt-title')" />
-                  </div>
-                  <div class="flex">
-                      <NuxtImg src="/images/pages/nemt/distracted-driver-recognition.jpg" width="730" height="411" :alt="$t('nemt.driver-safety.images.distracted-driver.alt-title')" class="w-1/2" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.distracted-driver.alt-title')" />
-                      <NuxtImg src="/images/pages/nemt/dash-cam.jpg" :alt="$t('nemt.driver-safety.images.dash-cam.alt-title')" width="730" height="411" class="w-1/2" format="webp,avif" loading="lazy" :title="$t('nemt.driver-safety.images.dash-cam.alt-title')" />
-                  </div>
-              </div>    
-            </div>
-          </LazyBaseLayoutCard>
-        </BaseLayoutPageContainer>
-      </BaseLayoutPageSection>
-    </DeferRender>
+    <!-- Full Width Logo Band -->
+    <div>
+      <div class="text-center">
+        <p class="text-base font-semibold text-slate-700 mb-2 tracking-wide">
+          Now Serving the San Luis Valley
+        </p>
+      </div>
+      <div class="relative mt-4">
+        <NuxtImg
+          src="/images/pages/nemt/slv-transportation-full-width.png"
+          alt="Golden Gate Manor Inc. by SLV Transportation Red Willows"
+          class="w-full object-contain opacity-95"
+          format="webp,avif"
+          width="1484"
+          height="466"
+          loading="lazy"
+        />
+  
+        <!-- Top fade -->
+        <div class="absolute top-0 left-0 w-full md:h-14 bg-gradient-to-b from-[#e8e8e8] to-transparent" />
+      </div>
+    </div>
   </div>
 </template>
 
