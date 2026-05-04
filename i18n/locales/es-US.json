@@ -1,15 +1,4 @@
 {
-  "company": {
-    "slogan": "Las personas que valoran su calidad de vida pueden contar con nosotros",
-    "mission-statement": [
-      "Nuestra Misión:",
-      "Mejorar la calidad de vida, todos y cada uno de los días."
-    ],
-    "mission": "Mejorar la calidad de vida, todos y cada uno de los días.",
-    "hours": "8:00AM - 4:00PM de lunes a viernes",
-    "csr-phone": "Llamada (719) 544-3231",
-    "dispatch-phone": "Llamada (719) 543-2525"
-  },
   "components": {
     "form": {
       "select": {
@@ -979,6 +968,101 @@
         "read-time": "Tiempo de lectura"
       },
       "published": "Publicado el:"
+    }
+  },
+  "company": {
+    "slogan": "Las personas que valoran su calidad de vida pueden contar con nosotros",
+    "mission-statement": [
+      "Nuestra Misión:",
+      "Mejorar la calidad de vida, todos y cada uno de los días."
+    ],
+    "mission": "Mejorar la calidad de vida, todos y cada uno de los días.",
+    "hours": "8:00AM - 4:00PM de lunes a viernes",
+    "csr-phone": "Llamada (719) 544-3231",
+    "dispatch-phone": "Llamada (719) 543-2525",
+    "about-us": {
+      "top": {
+        "alt-title": "Vehículos de Golden Gate Manor alineados frente a nuestro centro de transporte",
+        "title": "Sobre Nosotros",
+        "paragraph": [
+          "Bienvenido a Golden Gate Manor Inc., una organización familiar construida sobre la compasión, la confianza y la comunidad. Con sede en Pueblo, Colorado, brindamos con orgullo atención personalizada y servicios confiables que mejoran la calidad de vida de quienes atendemos.",
+          "En Golden Gate Manor, nuestra misión es simple: servir a las personas con dignidad y cuidado en cada etapa de la vida. Ya sea que esté explorando opciones de vida asistida, programando transporte o buscando productos de salud confiables, nuestro equipo está aquí para ayudarle.",
+          "Puede comunicarse con nosotros al",
+          "o continuar leyendo a continuación para conocer más sobre cada división de nuestra empresa y cómo servimos con orgullo al sur de Colorado."
+        ],
+        "operations": {
+          "intro": "Nuestras operaciones incluyen:",
+          "list": [
+            "Hogares de vida asistida que ofrecen entornos seguros, cómodos y familiares donde los residentes reciben atención las 24 horas.",
+            "Servicios de transporte, tanto médicos como no médicos, que garantizan acceso confiable a citas, mandados y actividades sociales en todo el sur de Colorado.",
+            "Golden Gate Medical Supply, que ofrece equipos y suministros médicos asequibles y de alta calidad diseñados para ayudar a las personas a vivir de manera independiente.",
+            "Golden Gate Gas & Goods, nuestra incorporación más reciente, que brinda conveniencia y apoyo a la comunidad a través de nuestras estaciones locales de combustible y tienda."
+          ]
+        },
+        "button": "Contáctenos"
+      },
+
+      "assisted-living": {
+        "title": "Vida Asistida",
+        "paragraph": [
+          "Nuestras instalaciones de vida asistida certificadas por Medicaid brindan atención residencial a adultos mayores y personas que viven con enfermedades mentales. Nuestro personal de atención está disponible las 24 horas del día, los 7 días de la semana, para ayudar con las actividades diarias, incluyendo medicamentos, comidas, transporte y cuidado personal. También contamos con una enfermera de guardia disponible en cada instalación para responder a necesidades médicas urgentes.",
+          "Por favor llámenos al",
+          "si está interesado en realizar un recorrido por nuestras instalaciones. Damos una cálida bienvenida a todos los posibles residentes y a sus familias para que se unan a nosotros para el almuerzo. Esta reunión brinda una excelente oportunidad para conocer a nuestro dedicado personal, interactuar con los residentes actuales y experimentar personalmente todo lo que Golden Gate Manor tiene para ofrecer."
+        ],
+        "locations": {
+          "intro": "Contamos con 5 ubicaciones de vida asistida:",
+          "list": [
+            "Golden Gate Manor I 606 West Abriendo Ave. Pueblo, CO 81004",
+            "Golden Gate Manor II 1219 Lake Ave. Pueblo, CO 81004",
+            "Golden Horizon 2109 Chautard Dr. Pueblo, CO 81005",
+            "Golden View 525 West 9th St. Pueblo, CO 81003",
+            "Golden Valley 1033 East Evans Ave. Pueblo, CO 81004"
+          ]
+        }
+      },
+
+      "transportation": {
+        "title": "Servicios de Transporte",
+        "alt-title": "Vehículos de Pueblo City Cab y Golden Gate Manor Transportation frente a la oficina de despacho.",
+        "paragraph": [
+          "Golden Gate Manor ofrece transporte médico no urgente (NEMT) y servicios de transporte no médico. El NEMT incluye transporte hacia y desde citas médicas o servicios cubiertos que no son de emergencia y solo está disponible para miembros de Health First Colorado.",
+          "El transporte no médico está disponible para adultos mayores elegibles para Medicaid y personas con discapacidades en el área del condado de Pueblo. Este servicio proporciona transporte seguro y confiable para realizar mandados, asistir a eventos y otras actividades."
+        ]
+      },
+
+      "medical-supply": {
+        "title": "Suministros Médicos",
+        "alt-title": "Interior de la tienda Golden Gate Medical Supply en 612 South Union Avenue.",
+        "paragraph": [
+          "Nuestra tienda de suministros médicos, Golden Gate Medical Supply, está convenientemente ubicada en el centro de Pueblo, CO. Estamos comprometidos a mejorar el acceso a la atención médica en nuestra comunidad, por lo que seleccionamos nuestro inventario con un enfoque en la calidad y la asequibilidad. Nuestros productos incluyen camas de hospital, prendas de compresión, herramientas de diagnóstico, suministros de primeros auxilios y más.",
+          "Si necesita ayuda para elegir los productos adecuados para sus necesidades, siempre puede consultar con nuestro personal capacitado. Entendemos que comprar equipo médico puede ser una experiencia estresante, y estamos aquí para apoyarlo en cada paso del proceso."
+        ]
+      },
+
+      "gas-station": {
+        "title": "Estación de Gas",
+        "alt-title": "Frente de Golden Gate Gas and Goods con un vehículo de Golden Gate Transportation afuera",
+        "paragraph": [
+          "En Golden Gate Manor, estamos entusiasmados de comenzar una nueva etapa con la apertura de nuestras estaciones de gas bajo la marca Golden Gate Gas & Goods. Esta expansión representa un paso importante en nuestro compromiso de servir mejor a nuestra comunidad.",
+          "Nuestras estaciones no solo ofrecerán opciones convenientes de combustible, sino que también ampliarán los servicios que brindamos, asegurando que nuestros clientes tengan acceso a productos de calidad en un solo lugar. Nuestro objetivo es crear un ambiente limpio y acogedor donde todos se sientan valorados.",
+          "Le invitamos a ser parte de esta nueva etapa. Esperamos poder atenderle en nuestras estaciones. Gracias por acompañarnos mientras continuamos mejorando la calidad de vida de nuestra comunidad, un servicio a la vez."
+        ]
+      },
+
+      "our-team": {
+        "title": "Nuestro Equipo",
+        "paragraph": "El equipo de gestión de Golden Gate Manor cuenta con más de 35 años de experiencia en el cuidado de adultos mayores, personas con enfermedades mentales y en la supervisión de operaciones de transporte. Nuestra misión es crear un entorno acogedor y tranquilo, ya sea en nuestras instalaciones de vida asistida o utilizando nuestros servicios de transporte, para que usted y sus seres queridos se sientan como en casa.",
+        "specialized-staff": {
+          "intro": "Nuestro personal especializado incluye:",
+          "list": [
+            "El Vicepresidente de Operaciones, quien dedica tiempo y esfuerzo a garantizar que nuestras instalaciones sean seguras y cómodas, además de asegurar que nuestros servicios de transporte funcionen sin problemas.",
+            "Nuestros gerentes de casa dedicados, quienes brindan atención personalizada para satisfacer las necesidades individuales de cada residente.",
+            "Nuestros auxiliares QMAP altamente capacitados, quienes atienden las necesidades diarias de los residentes con cuidado y compasión.",
+            "Nuestro equipo de conductores capacitados y confiables, que garantizan el transporte seguro de nuestros clientes a sus citas y destinos.",
+            "Agencias externas, para reclutar y ubicar adecuadamente a personas que necesitan nuestros servicios."
+          ]
+        }
+      }
     }
   },
   "accessibility": {
