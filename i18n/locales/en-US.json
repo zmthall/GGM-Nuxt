@@ -781,6 +781,105 @@
       }
     }
   },
+  "gas-and-goods": {
+    "top": {
+      "title": "Golden Gate Gas & Goods Journey",
+      "paragraph": [
+        "What began as a vision to better serve the Pueblo community has transformed into reality at Golden Gate Gas & Goods. The journey to revitalize our locations has been both challenging and rewarding—a labor of love spanning many months of careful planning, demolition, and reconstruction. From gutting our tiny 152 sq ft convenience store to creating a 1100+ sq ft expanded experience, we've poured our hearts into every detail.",
+        "Across our locations, we've introduced new fuel tanks, modern pumps, expanded product offerings, and freshly designed interiors. At the same time, we've also reimagined what these spaces can be—some locations now focus entirely on being convenience-first stores, centered around quick access, variety, and a clean, welcoming experience without the need for fuel services.",
+        "While the process took time, watching these spaces evolve day by day has been truly remarkable. Each hole dug, every sq ft of cement poured, each shelf installed, and each new feature added represents our commitment to building more than just a stop along the way—we're creating community spots where neighbors can find quality products in environments designed for comfort and convenience.",
+        "This is just the start of our journey, and we are always open to feedback as we continue shaping spaces that truly serve their purpose. Whether you're stopping in for fuel at one location or visiting a convenience-focused store at another, our goal remains the same: provide a reliable, welcoming place for our community.",
+        "We invite you to experience the difference at Golden Gate Gas & Goods, where our renovation journey continues with you, our valued customers, at the heart of every decision we make. This transformation marks just the first chapter in our ongoing story."
+      ],
+      "button": [
+        "Contact Us",
+        "About Us"
+      ]
+    },
+    "elizabeth": {
+      "title": "Golden Gate Goods - Elizabeth Location",
+      "paragraph": [
+        "As we continue to grow, our vision is expanding beyond traditional convenience stores. At our Elizabeth location, Golden Gate Goods represents a new direction—one centered around community, accessibility, and thoughtful product selection.",
+        "This location is designed to provide easier access to a wider range of foods, snacks, and everyday essentials. Our goal is to create a space where community members can find what they need without having to travel far, while also discovering new products that reflect local demand and preferences. We are focused on building a store that feels intentional—clean, welcoming, and stocked with items that matter to the people who live nearby. From quick grab-and-go options to a growing variety of food choices, Golden Gate Goods is about making everyday access simpler and more reliable.",
+        "This is just the beginning of what Golden Gate Goods will become. As always, we welcome feedback from the community so we can continue shaping this space into something that truly serves the people around it."
+      ],
+      "alt-title": "Shelves stocked with essentials like cereals, canned foods, or pet needs from food to litter."
+    },
+    "more-than-stations": {
+      "title": "More Than Just Gas Stations",
+      "paragraph": [
+        "At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.",
+        "As we continue to grow, some of our locations are designed as convenience-first stores, focused entirely on quick access, variety, and a comfortable shopping experience—no fuel required. Others continue to provide full fuel services alongside our expanded retail offerings. Whether you're stopping in for a quick snack, grabbing a cold drink, or filling up your tank, we're committed to providing a superior experience every time you visit. Our renovations are about more than just updating our facilities—they're about creating welcoming spaces that serve the needs of our community in new and better ways.",
+        "We've invested in transforming our locations to better serve our community. From brand new fuel tanks and pumps at select sites to dramatically expanded store spaces across all locations, we're committed to providing a reliable, high-quality experience every time you visit."
+      ]
+    },
+    "beer-cave": {
+      "title": "Step Into Our Beer Cave (Prairie & Northern)",
+      "paragraph": "Ice-cold and walk-in ready—our Beer Cave is kept at a steady 34°F to 38°F for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a modern, community-first experience to Pueblo's south side right off of Prairie and Northern. Come on by and check-out our beer cave or continue exploring more about it.",
+      "button": "Explore the Beer Cave",
+      "cta-info": "Located inside Golden Gate Gas & Goods on Prairie and Northern"
+    },
+    "locations": {
+      "title": "Our Locations:",
+      "arrow": [
+        {
+          "title": "South Prairie Avenue:",
+          "details": [
+            "Expanded from 152 sq ft to over 1000 sq ft!",
+            "Features our new beer cave with expanded selection"
+          ]
+        },
+        {
+          "title": "Elizabeth Street:",
+          "details": [
+            "Completely renovated with modern amenities",
+            "Expanded product selection",
+            "Convenience-focused layout with no fuel services"
+          ]
+        }
+      ]
+    },
+    "offering": {
+      "title": "What We Offer",
+      "cards": [
+        {
+          "title": "Fuel Options Available",
+          "details": [
+            { "content": "Regular Unleaded", "icon": "bi:fuel-pump-fill" },
+            { "content": "Premium Unleaded", "icon": "bi:fuel-pump-fill" },
+            { "content": "Diesel", "icon": "bi:fuel-pump-diesel-fill" }
+          ]
+        },
+        {
+          "title": "Refreshments & Quick Bites",
+          "details": [
+            { "content": "Slushies and Shakes", "icon": "tabler:milkshake" },
+            { "content": "Hot dogs", "icon": "game-icons:hot-dog"},
+            { "content": "Coffee and Drinks", "icon": "simple-icons:buymeacoffee"},
+            { "content": "Grab-and-go snacks", "icon": "game-icons:chips-bag"},
+            { "content": "More to come!!!", "icon": "bi:patch-exclamation-fill"}
+          ]
+        },
+        {
+          "title": "Convenience Store Essentials",
+          "details": [
+            { "content": "Community Products", "icon": "fluent:people-community-12-filled"},
+            { "content": "Beer and Drinks", "icon": "streamline:beer-pitch-solid"},
+            { "content": "Everyday necessities", "icon": "material-symbols:local-mall-sharp"},
+            { "content": "Local favorites", "icon": "material-symbols:family-home-rounded"}
+          ]
+        }
+      ]
+    },
+    "commitment": {
+      "title": "Our Commitment to the Community",
+      "paragraph": [
+        "Golden Gate Gas & Goods is more than just a place to stop—we're committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service and creating spaces people can depend on.",
+        "We look forward to serving you at our newly renovated locations. Whether you're stopping in for fuel at one of our full-service sites or visiting one of our convenience-focused stores, you can expect quality products, a clean environment, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know—we take all suggestions into consideration because we want our locations to reflect what the community truly wants."
+      ],
+      "button": "Read More"
+    }
+  },
   "accessibility": {
     "meta": {
       "title": "Accessibility Statement",

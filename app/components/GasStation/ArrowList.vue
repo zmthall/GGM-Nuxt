@@ -9,7 +9,7 @@
           </div>
           <ul class="ml-6 border-l-[4px] border-l-brand-primary pl-2 text-white font-bold">
             <li v-for="detail in location.details" :key="detail">
-              {{ detail }}
+              {{ $rt(detail) }}
             </li>
           </ul>
         </div>
@@ -37,23 +37,16 @@ if (company) {
     {
       id: "ggmc-1",
       arrowColor: "red",
-      title: `South Prairie Avenue: ${company.gasStation.ggmc1.address}`,
+      title: `${$t('gas-and-goods.locations.arrow[0].title')} ${company.gasStation.ggmc1.address}`,
       phone: company.gasStation.ggmc1.phone,
-      details: [
-        "Expanded from 152 sq ft to over 1000 sq ft!",
-        "Features our new beer cave with expanded selection",
-      ],
+      details: $tm('gas-and-goods.locations.arrow[0].details')
     },
     {
       id: "ggmc-2",
       arrowColor: "green",
-      title: `Elizabeth Street: ${company.gasStation.ggmc2.address}`,
+      title: `${$t('gas-and-goods.locations.arrow[1].title')} ${company.gasStation.ggmc2.address}`,
       phone: company.gasStation.ggmc2.phone,
-      details: [
-        "Completely renovated with modern amenities",
-        "Expanded product selection",
-        "Convenience-focused layout with no fuel services",
-      ],
+      details: $tm('gas-and-goods.locations.arrow[1].details')
     }
   );
 }

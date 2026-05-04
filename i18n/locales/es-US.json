@@ -808,6 +808,111 @@
       }
     }
   },
+  "gas-and-goods": {
+    "top": {
+      "title": "La Trayectoria de Golden Gate Gas & Goods",
+      "paragraph": [
+        "Lo que comenzó como una visión para servir mejor a la comunidad de Pueblo se ha convertido en una realidad en Golden Gate Gas & Goods. El proceso de revitalizar nuestras ubicaciones ha sido tanto desafiante como gratificante—un verdadero trabajo hecho con dedicación durante muchos meses de planificación, demolición y reconstrucción. Desde vaciar por completo nuestra pequeña tienda de conveniencia de 152 pies cuadrados hasta crear una experiencia ampliada de más de 1100 pies cuadrados, hemos puesto nuestro corazón en cada detalle.",
+        "En todas nuestras ubicaciones, hemos incorporado nuevos tanques de combustible, bombas modernas, una selección ampliada de productos y espacios interiores rediseñados. Al mismo tiempo, también hemos reinventado lo que estos espacios pueden ser—algunas ubicaciones ahora se enfocan completamente en ser tiendas de conveniencia, centradas en el acceso rápido, la variedad y una experiencia limpia y acogedora sin necesidad de servicios de combustible.",
+        "Aunque el proceso tomó tiempo, ver cómo estos espacios evolucionaban día a día ha sido verdaderamente impresionante. Cada excavación, cada pie cuadrado de concreto colocado, cada estante instalado y cada nueva característica añadida representa nuestro compromiso de construir más que una simple parada—estamos creando espacios comunitarios donde los vecinos pueden encontrar productos de calidad en entornos diseñados para la comodidad y conveniencia.",
+        "Este es solo el comienzo de nuestro camino, y siempre estamos abiertos a recibir comentarios mientras continuamos dando forma a espacios que realmente cumplen su propósito. Ya sea que se detenga por combustible en una ubicación o visite una tienda centrada en conveniencia en otra, nuestro objetivo sigue siendo el mismo: brindar un lugar confiable y acogedor para nuestra comunidad.",
+        "Lo invitamos a experimentar la diferencia en Golden Gate Gas & Goods, donde nuestro proceso de renovación continúa con usted, nuestros valiosos clientes, en el centro de cada decisión que tomamos. Esta transformación marca solo el primer capítulo de nuestra historia."
+      ],
+      "button": [
+        "Contáctenos",
+        "Sobre Nosotros"
+      ]
+    },
+
+    "elizabeth": {
+      "title": "Golden Gate Goods - Ubicación en Elizabeth",
+      "paragraph": [
+        "A medida que continuamos creciendo, nuestra visión se está expandiendo más allá de las tiendas de conveniencia tradicionales. En nuestra ubicación de Elizabeth, Golden Gate Goods representa una nueva dirección—centrada en la comunidad, la accesibilidad y una selección de productos cuidadosamente elegida.",
+        "Esta ubicación está diseñada para brindar un acceso más fácil a una mayor variedad de alimentos, snacks y artículos esenciales del día a día. Nuestro objetivo es crear un espacio donde los miembros de la comunidad puedan encontrar lo que necesitan sin tener que viajar lejos, al mismo tiempo que descubren nuevos productos que reflejan la demanda y las preferencias locales. Nos enfocamos en construir una tienda intencional—limpia, acogedora y abastecida con artículos que realmente importan a quienes viven cerca. Desde opciones rápidas para llevar hasta una creciente variedad de alimentos, Golden Gate Goods busca hacer el acceso diario más simple y confiable.",
+        "Este es solo el comienzo de lo que Golden Gate Goods llegará a ser. Como siempre, damos la bienvenida a los comentarios de la comunidad para seguir moldeando este espacio en algo que realmente sirva a las personas que lo rodean."
+      ],
+      "alt-title": "Estantes abastecidos con artículos esenciales como cereales, alimentos enlatados y productos para mascotas."
+    },
+
+    "more-than-stations": {
+      "title": "Más que Solo Estaciones de Gas",
+      "paragraph": [
+        "En Golden Gate Gas & Goods, nos enorgullece ser su destino renovado y enfocado en la comunidad para combustible, refrescos y conveniencia. Nuestras tiendas completamente renovadas ofrecen un ambiente moderno y limpio con una selección ampliada de productos elegidos pensando en nuestra comunidad.",
+        "A medida que seguimos creciendo, algunas de nuestras ubicaciones están diseñadas como tiendas centradas en conveniencia, enfocadas completamente en el acceso rápido, la variedad y una experiencia de compra cómoda—sin necesidad de combustible. Otras continúan ofreciendo servicios completos de combustible junto con nuestras opciones ampliadas de venta. Ya sea que esté pasando por un snack rápido, tomando una bebida fría o llenando su tanque, estamos comprometidos a brindar una experiencia superior en cada visita. Nuestras renovaciones no solo se tratan de actualizar nuestras instalaciones—se trata de crear espacios acogedores que sirvan mejor a nuestra comunidad.",
+        "Hemos invertido en transformar nuestras ubicaciones para servir mejor a nuestra comunidad. Desde nuevos tanques y bombas en ubicaciones seleccionadas hasta la expansión significativa de nuestras tiendas, estamos comprometidos a ofrecer una experiencia confiable y de alta calidad en cada visita."
+      ]
+    },
+
+    "beer-cave": {
+      "title": "Entra a Nuestra Cueva de Cerveza (Prairie y Northern)",
+      "paragraph": "Fría y lista para entrar—nuestra Cueva de Cerveza se mantiene entre 34°F y 38°F para ofrecer cerveza fresca y perfectamente fría sin congelarse. Limpia, espaciosa y fácil de recorrer, es otra forma en la que estamos brindando una experiencia moderna y enfocada en la comunidad en el lado sur de Pueblo, justo en Prairie y Northern. Visítanos y conoce nuestra cueva de cerveza o sigue explorando más sobre ella.",
+      "button": "Ver Cueva de Cerveza",
+      "cta-info": "Ubicada dentro de Golden Gate Gas & Goods en Prairie y Northern"
+    },
+
+    "locations": {
+      "title": "Nuestras Ubicaciones:",
+      "arrow": [
+        {
+          "title": "Avenida South Prairie:",
+          "details": [
+            "¡Expandida de 152 pies cuadrados a más de 1000 pies cuadrados!",
+            "Incluye nuestra nueva cueva de cerveza con selección ampliada"
+          ]
+        },
+        {
+          "title": "Elizabeth Street:",
+          "details": [
+            "Completamente renovada con comodidades modernas",
+            "Selección de productos ampliada",
+            "Diseño enfocado en conveniencia sin servicios de combustible"
+          ]
+        }
+      ]
+    },
+
+    "offering": {
+      "title": "Lo Que Ofrecemos",
+      "cards": [
+        {
+          "title": "Opciones de Combustible",
+          "details": [
+            { "content": "Gasolina Regular", "icon": "bi:fuel-pump-fill" },
+            { "content": "Gasolina Premium", "icon": "bi:fuel-pump-fill" },
+            { "content": "Diésel", "icon": "bi:fuel-pump-diesel-fill" }
+          ]
+        },
+        {
+          "title": "Bebidas y Snacks",
+          "details": [
+            { "content": "Granizados y batidos", "icon": "tabler:milkshake" },
+            { "content": "Hot dogs", "icon": "game-icons:hot-dog"},
+            { "content": "Café y bebidas", "icon": "simple-icons:buymeacoffee"},
+            { "content": "Snacks para llevar", "icon": "game-icons:chips-bag"},
+            { "content": "¡Más próximamente!", "icon": "bi:patch-exclamation-fill"}
+          ]
+        },
+        {
+          "title": "Esenciales de Tienda",
+          "details": [
+            { "content": "Productos locales", "icon": "fluent:people-community-12-filled"},
+            { "content": "Cerveza y bebidas", "icon": "streamline:beer-pitch-solid"},
+            { "content": "Artículos de uso diario", "icon": "material-symbols:local-mall-sharp"},
+            { "content": "Favoritos locales", "icon": "material-symbols:family-home-rounded"}
+          ]
+        }
+      ]
+    },
+
+    "commitment": {
+      "title": "Nuestro Compromiso con la Comunidad",
+      "paragraph": [
+        "Golden Gate Gas & Goods es más que un simple lugar para detenerse—estamos comprometidos a mejorar nuestros vecindarios proporcionando instalaciones limpias y modernas junto con productos que nuestra comunidad quiere y necesita. Como parte de la familia de negocios Golden Gate en Pueblo, entendemos la importancia de un servicio confiable y de calidad, así como la creación de espacios en los que las personas puedan confiar.",
+        "Esperamos poder atenderle en nuestras ubicaciones recientemente renovadas. Ya sea que se detenga por combustible o visite una tienda enfocada en conveniencia, puede esperar productos de calidad, un ambiente limpio y una atmósfera amigable que haga de cada visita una experiencia agradable. Si siente que falta algo, háganoslo saber—tomamos todas las sugerencias en cuenta porque queremos que nuestras ubicaciones reflejen verdaderamente lo que la comunidad desea."
+      ],
+      "button": "Leer más"
+    }
+  },
   "accessibility": {
     "meta": {
       "title": "Declaración de Accesibilidad",

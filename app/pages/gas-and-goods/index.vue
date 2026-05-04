@@ -8,11 +8,11 @@
     />
     <BaseLayoutPageSection margin="top">
       <BaseLayoutPageContainer class="space-y-4">
-        <h2 class="text-2xl font-bold text-brand-primary">Golden Gate Gas & Goods Journey</h2>
-        <p class="text-xl text-brand-main-text">
-          What began as a vision to better serve the Pueblo community has transformed into reality at Golden Gate Gas & Goods. The journey to revitalize our locations has been both challenging and rewarding—a labor of love spanning many months of careful planning, demolition, and reconstruction. From gutting our tiny 152 sq ft convenience store to creating a 1100+ sq ft expanded experience, we've poured our hearts into every detail.
+        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('gas-and-goods.top.title') }}</h2>
+        <p v-for="paragraph in $tm('gas-and-goods.top.paragraph')" :key="paragraph" class="text-xl text-brand-main-text">
+          {{ $rt(paragraph) }}
         </p>
-        <p class="text-xl text-brand-main-text">
+        <!-- <p class="text-xl text-brand-main-text">
           Across our locations, we've introduced new fuel tanks, modern pumps, expanded product offerings, and freshly designed interiors. At the same time, we've also reimagined what these spaces can be—some locations now focus entirely on being convenience-first stores, centered around quick access, variety, and a clean, welcoming experience without the need for fuel services.
         </p>
         <p class="text-xl text-brand-main-text">
@@ -23,10 +23,10 @@
         </p>
         <p class="text-xl text-brand-main-text">
           We invite you to experience the difference at Golden Gate Gas & Goods, where our renovation journey continues with you, our valued customers, at the heart of every decision we make. This transformation marks just the first chapter in our ongoing story.
-        </p>
+        </p> -->
         <div class="flex justify-center sm:gap-8">
-          <BaseUiAction to="/company/contact-us" class="px-8 py-4">Contact Us</BaseUiAction>
-          <BaseUiAction to="/company/about-us" class="px-8 py-4">About Us</BaseUiAction>
+          <BaseUiAction :to="$localePath('/company/contact-us')" class="px-8 py-4">{{ $t('gas-and-goods.top.button[0]')}}</BaseUiAction>
+          <BaseUiAction :to="$localePath('/company/about-us')" class="px-8 py-4">{{ $t('gas-and-goods.top.button[1]')}}</BaseUiAction>
         </div>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
@@ -35,28 +35,27 @@
       <BaseLayoutPageSection margin="default" class="cv-auto" bg="alt">
         <BaseLayoutPageContainer class="space-y-4">
           <h2 class="text-2xl font-bold text-brand-primary">
-            Golden Gate Goods - Elizabeth Location
+            {{ $t('gas-and-goods.elizabeth.title') }}
           </h2>
 
           <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
             <div class="space-y-4 md:w-1/2">
               <p class="text-xl text-brand-main-text">
-                As we continue to grow, our vision is expanding beyond traditional convenience stores. At our Elizabeth location, Golden Gate Goods represents a new direction—one centered around community, accessibility, and thoughtful product selection.
+                {{ $t('gas-and-goods.elizabeth.paragraph[0]') }}
               </p>
   
               <p class="text-xl text-brand-main-text">
-                This location is designed to provide easier access to a wider range of foods, snacks, and everyday essentials. Our goal is to create a space where community members can find what they need without having to travel far, while also discovering new products that reflect local demand and preferences.
-                We are focused on building a store that feels intentional—clean, welcoming, and stocked with items that matter to the people who live nearby. From quick grab-and-go options to a growing variety of food choices, Golden Gate Goods is about making everyday access simpler and more reliable.
+                {{ $t('gas-and-goods.elizabeth.paragraph[1]') }}
               </p>
             </div>
             <div class="md:w-1/2 aspect-[5/3] overflow-hidden rounded-xl shadow-primary max-md:w-[80%] mx-auto">
-                <NuxtImg src="/images/pages/gas-and-goods/gas-station-essentials.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" title="Shelves stocked with essentials like cereals, canned foods, or pet needs from food to litter." alt="Shelves stocked with essentials like cereals, canned foods, or pet needs from food to litter." loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
+                <NuxtImg src="/images/pages/gas-and-goods/gas-station-essentials.jpg" class="w-full h-auto mx-auto" quality="60" format="webp,avif" :title="$t('gas-and-goods.elizabeth.alt-title')" :alt="$t('gas-and-goods.elizabeth.alt-title')" loading="lazy" height="960" width="1600" sizes="md:800px 80vw" placeholder />
             </div>  
           </div>
 
 
           <p class="text-xl text-brand-main-text">
-            This is just the beginning of what Golden Gate Goods will become. As always, we welcome feedback from the community so we can continue shaping this space into something that truly serves the people around it.
+            {{ $t('gas-and-goods.elizabeth.paragraph[2]') }}
           </p>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
@@ -66,15 +65,9 @@
       <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4 flex flex-col">
           <div class="space-y-5">
-            <h2 class="text-2xl font-bold text-brand-primary">More Than Just Gas Stations</h2>
-            <p class="text-xl text-brand-main-text">
-              At Golden Gate Gas & Goods, we're proud to be your newly renovated, community-focused destination for fuel, refreshments, and convenience. Our completely reimagined stores offer a modern, clean environment with an expanded selection of products chosen with our community in mind.
-            </p>
-            <p class="text-xl text-brand-main-text">
-              As we continue to grow, some of our locations are designed as convenience-first stores, focused entirely on quick access, variety, and a comfortable shopping experience—no fuel required. Others continue to provide full fuel services alongside our expanded retail offerings. Whether you're stopping in for a quick snack, grabbing a cold drink, or filling up your tank, we're committed to providing a superior experience every time you visit. Our renovations are about more than just updating our facilities—they're about creating welcoming spaces that serve the needs of our community in new and better ways. 
-            </p>
-            <p class="text-xl text-brand-main-text">
-              We've invested in transforming our locations to better serve our community. From brand new fuel tanks and pumps at select sites to dramatically expanded store spaces across all locations, we're committed to providing a reliable, high-quality experience every time you visit.
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('gas-and-goods.more-than-stations.title') }}</h2>
+            <p v-for="paragraph in $tm('gas-and-goods.more-than-stations.paragraph')" :key="paragraph" class="text-xl text-brand-main-text">
+              {{  $rt(paragraph) }}
             </p>
           </div>
         </BaseLayoutPageContainer>
@@ -85,7 +78,7 @@
       <BaseLayoutPageSection margin="default" bg="alt" class="cv-auto">
         <BaseLayoutPageContainer>
           <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">
-            Step Into Our Beer Cave (Prairie & Northern)
+            {{ $t('gas-and-goods.beer-cave.title') }}
           </h2>
           <div class="flex flex-col md:flex-row justify-center items-center gap-8">
             <div class="w-full md:w-1/2 flex justify-center aspect-[4/3] max-w-[500px]">
@@ -94,16 +87,15 @@
             </div>
             <div class="space-y-8 md:w-1/2">
               <p class="text-lg sm:text-xl text-brand-main-text">
-                Ice-cold and walk-in ready—our Beer Cave is kept at a steady <span class="whitespace-nowrap">34°F to 38°F</span>
-                for crisp, refreshing beer without freezing. Clean, spacious, and easy to browse, it's one more way we're bringing a
-                modern, community-first experience to Pueblo's south side right off of Prairie and Northern. Come on by and check-out our beer cave 
-                or continue exploring more about it.
+                {{ $t('gas-and-goods.beer-cave.paragraph') }}
               </p>
               <div class="flex items-center gap-4">
-                <BaseUiAction href="/gas-and-goods/beer-cave-pueblo" class="py-2 px-4">
-                  Explore the Beer Cave
+                <BaseUiAction :to="$localePath('/gas-and-goods/beer-cave-pueblo')" class="py-2 px-4">
+                  {{ $t('gas-and-goods.beer-cave.button') }}
                 </BaseUiAction>
-                <span class="text-sm text-brand-main-text/80">Located inside Golden Gate Gas & Goods on Prairie and Northern</span>
+                <span class="text-sm text-brand-main-text/80">
+                  {{ $t('gas-and-goods.beer-cave.cta-info') }}  
+                </span>
               </div>
             </div>
           </div>
@@ -114,40 +106,19 @@
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer class="space-y-4">
-          <h2 class="text-2xl font-bold text-brand-primary">Our Locations:</h2>
+          <h2 class="text-2xl font-bold text-brand-primary">{{ $t('gas-and-goods.locations.title') }}</h2>
           <LazyGasStationArrowList />
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
     </DeferRender>
 
     <DeferRender when="visible">
-      <BaseLayoutPageCTA title="What We Offer" :has-button="false">
+      <BaseLayoutPageCTA :title="$t('gas-and-goods.offering.title')" :has-button="false">
         <div class="flex gap-8 justify-center flex-wrap my-8">
-          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-            <h3 class="text-brand-primary text-xl font-bold">Fuel Options Available</h3>
+          <LazyBaseInteractiveHoverTile v-for="tile in offeringTiles" :key="tile.title" class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
+            <h3 class="text-brand-primary text-xl font-bold">{{ $rt(tile.title) }}</h3>
             <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Regular Unleaded</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-fill"/>Premium Unleaded</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="bi:fuel-pump-diesel-fill"/>Diesel</li>
-            </ul>
-          </LazyBaseInteractiveHoverTile>
-          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-            <h3 class="text-brand-primary text-xl font-bold">Refreshments & Quick Bites</h3>
-            <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-              <li class="flex gap-2 items-center"><BaseIcon name="tabler:milkshake"/>Slushies and Shakes</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="game-icons:hot-dog"/>Hot dogs</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="simple-icons:buymeacoffee"/>Coffee and Drinks</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="game-icons:chips-bag"/>Grab-and-go snacks</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="bi:patch-exclamation-fill"/>More to come!!!</li>
-            </ul>
-          </LazyBaseInteractiveHoverTile>
-          <LazyBaseInteractiveHoverTile class="w-[350px] h-[300px] flex flex-col justify-center text-brand-main-text text-left">
-            <h3 class="text-brand-primary text-xl font-bold">Convenience Store Essentials</h3>
-            <ul class="text-xl text-brand-main-text ml-8 mt-4 space-y-2 pl-4 border-l-[4px] border-l-brand-primary">
-              <li class="flex gap-2 items-center"><BaseIcon name="fluent:people-community-12-filled"/>Community Products</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="streamline:beer-pitch-solid"/>Beer and Drinks</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:local-mall-sharp"/>Everyday necessities</li>
-              <li class="flex gap-2 items-center"><BaseIcon name="material-symbols:family-home-rounded"/>Local favorites</li>
+              <li v-for="detail in tile.details" :key="detail.content" class="flex gap-2 items-center"><BaseIcon :name="$rt(detail.icon)"/>{{ $rt(detail.content)}}</li>
             </ul>
           </LazyBaseInteractiveHoverTile>
         </div>
@@ -159,14 +130,11 @@
         <BaseLayoutPageContainer>
           <LazyBaseLayoutCard class="bg-white md:w-3/4 mx-auto">
             <div class="flex flex-col gap-4">
-              <h2 class="text-2xl font-bold text-brand-primary">Our Commitment to the Community</h2>
-              <p class="text-xl text-brand-main-text">
-                Golden Gate Gas & Goods is more than just a place to stop—we're committed to enhancing our neighborhoods by providing clean, modern facilities and products that our community wants and needs. As part of the Golden Gate family of businesses in Pueblo, we understand the importance of reliable, quality service and creating spaces people can depend on.
+              <h2 class="text-2xl font-bold text-brand-primary">{{ $t('gas-and-goods.commitment.title') }}</h2>
+              <p v-for="paragraph in $tm('gas-and-goods.commitment.paragraph')" :key="paragraph" class="text-xl text-brand-main-text">
+                {{ $rt(paragraph) }}
               </p>
-              <p class="text-xl text-brand-main-text">
-                We look forward to serving you at our newly renovated locations. Whether you're stopping in for fuel at one of our full-service sites or visiting one of our convenience-focused stores, you can expect quality products, a clean environment, and a friendly atmosphere that makes every visit a pleasure. If you feel there is something missing, let us know—we take all suggestions into consideration because we want our locations to reflect what the community truly wants.
-              </p>
-              <BaseUiAction to="/company/about-us" class="px-8 py-4 self-center">Read More</BaseUiAction>
+              <BaseUiAction :to="$localePath('/company/about-us')" class="px-8 py-4 self-center">{{ $t('gas-and-goods.commitment.button')}}</BaseUiAction>
             </div>
           </LazyBaseLayoutCard>
         </BaseLayoutPageContainer>
@@ -176,6 +144,13 @@
 </template>
 
 <script lang="ts" setup>
+type OfferingTile = {
+  title: string
+  details: { content: string; icon: string }[]
+}
+
+const offeringTiles = $tm('gas-and-goods.offering.cards') as OfferingTile[]
+
 const bannerSlides = ref([
   {
     url: '/images/pages/gas-and-goods/gas-station-banner-ratio.jpg',
