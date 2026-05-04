@@ -4,26 +4,10 @@
     <BaseLayoutPageSection margin="pTop">
       <BaseLayoutPageContainer class="flex flex-col space-y-4">
         <CommunityImageCarousel :images image-selection />
-        <p class="text-xl text-brand-main-text">
-          Here at Golden Gate Manor, we're on a mission to enhance
-          lives daily. Our commitment to establishing an environment
-          that is welcoming and comfortable reflects our core objectives. We
-          strive to connect with our community, reaching as many individuals as
-          possible to foster independence. This mindset shapes our goals and
-          propels us to discover innovative ways to participate within the
-          community. As a family-owned business, we deeply value community impact.
+        <p v-for="paragraph in $tm('news.community.paragraph')" :key="paragraph" class="text-xl text-brand-main-text">
+          {{ $rt(paragraph) }}
         </p>
-        <p class="text-xl text-brand-main-text">
-          We are proud supporters of local initiatives like CASA and district
-          schools. Each year, we're driven to expand our community reach,
-          consistently working towards our mission of improving lives. If Golden
-          Gate Manor is participating in events explore the upcoming events
-          below/reach out for more details. If we aren't currently participating
-          in community events during a time when you have an event ongoing, please
-          reach out to us to discuss our involvement; we will get back to you with
-          our availability as soon as we can.
-        </p>
-        <BaseUiAction to="/company/contact-us" class="self-center !mt-8 py-6 px-12">Contact Us</BaseUiAction>
+        <BaseUiAction :to="$localePath('/company/contact-us')" class="self-center !mt-8 py-6 px-12">{{ $t('news.community.button')}}</BaseUiAction>
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
 
@@ -31,10 +15,10 @@
     <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" class="cv-auto">
         <BaseLayoutPageContainer>
-          <h2 class="text-2xl font-bold text-brand-primary">Upcoming Events for Golden Gate Manor, Inc:</h2>
+          <h2 class="text-2xl font-bold text-brand-primary">{{ $t('news.community.events.title') }}</h2>
           <div v-if="eventLoading && events.length === 0" class="my-4 font-extrabold animate-pulse text-2xl">
             <p>
-              Loading Events...
+              {{ $t('news.community.events.loading') }}
             </p>
           </div>
           <div v-else>
@@ -48,14 +32,14 @@
                 :disabled="loadingMore"
                 @click="loadMoreEvents"
               >
-                <span v-if="loadingMore">Loading More...</span>
-                <span v-else>Load More Events</span>
+                <span v-if="loadingMore">{{ $t('news.community.events.loading-more') }}</span>
+                <span v-else>{{ $t('news.community.events.load-more') }}</span>
               </BaseUiAction>
             </div>
             
             <!-- No More Events Message -->
             <div v-else-if="events.length > 0" class="text-center mt-8 text-gray-600 lg:w-[75%]">
-              <p>No more events to load</p>
+              <p>{{ $t('news.community.events.no-more-events') }}</p>
             </div>
           </div>
         </BaseLayoutPageContainer>

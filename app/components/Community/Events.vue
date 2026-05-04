@@ -37,7 +37,9 @@
     </li>
   </ul>
   <div v-else class="mt-4 bg-[#d2d2ff] rounded-lg w-full lg:w-[75%]">
-    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">New events are being planned! Check back soon or <nuxt-link to="/company/contact-us" class="link">contact us</nuxt-link> to stay updated.</p>
+    <p class="text-xl text-brand-main-text p-12 sm:py-20 sm:px-24 text-center">
+      {{ $t('components.events.planned-events[0]') }} <nuxt-link :to="$localePath('/company/contact-us')" class="link">{{ $t('components.events.contact') }}</nuxt-link> {{ $t('components.events.planned-events[1]') }}
+    </p>
   </div>
 </template>
 
