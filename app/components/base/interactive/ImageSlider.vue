@@ -17,7 +17,7 @@
         v-if="!allImagesLoaded"
         class="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm"
       >
-        <span class="text-sm text-gray-600">{{ $t('assisted-living.carousel.image-slider.loading')}}</span>
+        <span class="text-sm text-gray-600">{{ $t('components.image-carousel.loading')}}</span>
       </div>
       <template v-if="hasSlides">
         <div 
@@ -58,7 +58,7 @@
         </div>
       </template>
 
-      <div v-else class="text-gray-500 text-sm">{{ $t('assisted-living.carousel.image-slider.no-images') }}</div>
+      <div v-else class="text-gray-500 text-sm">{{ $t('components.image-carousel.no-images') }}</div>
     </div>
     
 

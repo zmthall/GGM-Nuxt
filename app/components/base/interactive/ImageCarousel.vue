@@ -4,13 +4,13 @@
             <BaseIcon name="codicon:triangle-left" color="text-gray-200/50 sm:text-brand-secondary" hover-color="group-hover:text-brand-primary sm:group-hover:text-brand-primary" class="transition-colors duration-500 ease-in-out"/>
         </button>
         <div class="w-full lg:w-4/5 h-full rounded-lg overflow-hidden relative bg-black">
-            <div v-if="!imageLoaded[0]" class="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">Loading Images...</div>
+            <div v-if="!imageLoaded[0]" class="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">{{ $t('components.image-carousel.loading') }}</div>
             <button v-if="imageLoaded[0]" class="absolute hidden sm:flex top-4 left-4 z-5 bg-gray-500/10 group hover:bg-gray-500 rounded-full transition-color duration-500 ease-in-out" :aria-label="isAutoPlaying ? 'Image pause button' : 'Image play button'" @click="toggleAutoPlay">
                 <BaseIcon v-if="isAutoPlaying" name="material-symbols:pause-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
                 <BaseIcon v-else name="material-symbols:play-circle-rounded" size="size-6" color="text-gray-200/30" hover-color="group-hover:text-brand-primary" class="transition-color duration-500 ease-in-out" />
             </button>
             <button v-if="imageLoaded[0]" class="absolute hidden sm:flex bg-gray-200/50 px-2 text-gray-800/80 rounded-lg top-4 right-4 z-5 hover:bg-gray-200/80 hover:text-gray-800/80" @click="emit('view-more')">
-                View More
+                {{ $t('components.image-carousel.view-more') }}
             </button>
             <ul class="h-full">
                 <li v-for="(image, idx) in images" :key="`${image.id}-${image.lastUpdated}`" :class="[{ 'hidden': hideImage(idx) }, 'h-full']">
@@ -19,7 +19,7 @@
                         <div 
                             v-if="!imageLoaded[idx]" 
                             class="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 animate-pulse"
-                        ><div class="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">Loading Images...</div></div>
+                        ><div class="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">{{ $t('components.image-carousel.loading')}}</div></div>
                         <NuxtImg 
                             :src="image.src" 
                             :alt="image.alt" 

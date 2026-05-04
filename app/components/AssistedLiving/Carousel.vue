@@ -38,7 +38,7 @@
               <template #default>
                 <div v-show="!modalImagesLoading" class="h-[90vh] mt-2">
                   <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute top-4 sm:left-1/2 sm:-translate-x-1/2 w-max">{{ modalHouseName }}</h2>
-                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">{{ $t('assisted-living.carousel.image-slider.counter[0]') }} {{ currentImage }} {{ $t('assisted-living.carousel.image-slider.counter[1]') }} {{ totalImages }}</span>
+                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">{{ $t('components.image-carousel.counter[0]') }} {{ currentImage }} {{ $t('components.image-carousel.counter[1]') }} {{ totalImages }}</span>
                   <BaseInteractiveImageSlider v-model="modalImages" show-thumbnails show-dots :max-height="'90vh'" @images-loaded="imagesLoaded" @change="setCurrentPage" @initial-load="setImageTotal"/>
                 </div>
                 <div v-show="modalImagesLoading" class="flex justify-center items-center h-full">

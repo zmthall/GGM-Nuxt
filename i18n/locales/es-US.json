@@ -41,6 +41,19 @@
         },
         "alt-title": "Visualización del área de servicio"
       },
+      "events": {
+        "planned-events": [
+          "¡Se están planificando nuevos eventos! Vuelva pronto o",
+          "para mantenerse actualizado."
+        ],
+        "contact": "contáctenos"
+      },
+      "image-carousel": {
+        "view-more": "Ver más",
+        "loading": "Cargando imágenes...",
+        "counter": ["Imagen", "de"],
+        "no-images": "No hay imágenes"
+      },
       "new-tab-title":  "Abre en una nueva pestaña"
   },
   "header": {
@@ -419,11 +432,6 @@
       "button": {
         "view-more": "Ver más",
         "directions": "Cómo llegar"
-      },
-      "image-slider": {
-        "loading": "Cargando imágenes...",
-        "counter": ["Imagen", "de"],
-        "no-images": "No hay imágenes"
       }
     },
     "amenities-section": {
@@ -911,6 +919,25 @@
         "Esperamos poder atenderle en nuestras ubicaciones recientemente renovadas. Ya sea que se detenga por combustible o visite una tienda enfocada en conveniencia, puede esperar productos de calidad, un ambiente limpio y una atmósfera amigable que haga de cada visita una experiencia agradable. Si siente que falta algo, háganoslo saber—tomamos todas las sugerencias en cuenta porque queremos que nuestras ubicaciones reflejen verdaderamente lo que la comunidad desea."
       ],
       "button": "Leer más"
+    }
+  },
+  "news": {
+    "community": {
+      "paragraph": [
+        "En Golden Gate Manor, tenemos la misión de mejorar vidas cada día. Nuestro compromiso de crear un entorno acogedor y cómodo refleja nuestros objetivos fundamentales. Nos esforzamos por conectar con nuestra comunidad, llegando a la mayor cantidad de personas posible para fomentar la independencia. Esta mentalidad define nuestras metas y nos impulsa a descubrir formas innovadoras de participar dentro de la comunidad. Como empresa familiar, valoramos profundamente el impacto en nuestra comunidad.",
+        "Nos enorgullece apoyar iniciativas locales como CASA y las escuelas del distrito. Cada año, nos motiva ampliar nuestro alcance comunitario, trabajando constantemente hacia nuestra misión de mejorar vidas. Si Golden Gate Manor está participando en eventos, explore los próximos eventos a continuación o para obtener más detalles. Si actualmente no estamos participando en eventos comunitarios durante un período en el que usted tenga un evento en curso, comuníquese con nosotros para hablar sobre nuestra posible participación; le responderemos con nuestra disponibilidad lo antes posible."
+      ],
+      "button": "Contáctenos",
+      "events": {
+        "title": "Próximos Eventos de Golden Gate Manor, Inc:",
+        "loading": "Cargando eventos...",
+        "loading-more": "Cargando más...",
+        "load-more": "Cargar más eventos",
+        "no-more-events": "No hay más eventos para mostrar"
+      },
+      "image-carousel": {
+          "title": "Imágenes de la comunidad 2025"
+        }
     }
   },
   "accessibility": {

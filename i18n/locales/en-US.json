@@ -48,6 +48,12 @@
       ],
       "contact": "contact us"
     },
+    "image-carousel": {
+      "view-more": "View More",
+      "loading": "Loading images...",
+      "counter": ["Image", "of"],
+      "no-images": "No images"
+    },
     "new-tab-title": "Opens in a new tab"
   },
   "header": {
@@ -409,11 +415,6 @@
       "button": {
         "view-more": "View More",
         "directions": "Directions"
-      },
-      "image-slider": {
-        "loading": "Loading images...",
-        "counter": ["Image", "of"],
-        "no-images": "No images"
       }
     },
     "amenities-section": {
@@ -900,6 +901,9 @@
         "loading-more": "Loading More...",
         "load-more": "Load More Events",
         "no-more-events": "No more events to load"
+      },
+      "image-carousel": {
+        "title": "Community Images 2025"
       }
     }
   },
