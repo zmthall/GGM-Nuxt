@@ -433,78 +433,6 @@
       "button": "GET FREE CONSULTATION"
     }
   },
-  "accessibility": {
-    "meta": {
-      "title": "Accessibility Statement",
-      "description": "Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here."
-    },
-    "commitment": {
-      "title": "Our Commitment",
-      "paragraphs": [
-        "As a business serving the public good, we are committed to providing digital accessibility for people with disabilities. We continue to work to improve user experience for everyone while applying relevant accessibility tools and standards.",
-        "Our site is built with code that is compliant with W3C standards for HTML and CSS. The site displays correctly in current tested browsers using standards compliant with HTML/CSS code and should continue to display correctly on future browsers."
-      ]
-    },
-    "measures": {
-      "title": "Measures to Support Accessibility",
-      "intro": "Our company takes the following measures to ensure the accessibility of the site:",
-      "items": [
-        "Ensures accessibility is part of their continuous improvement process",
-        "Employs formal accessibility quality assurance methods",
-        "Keeps abreast of the technical and legal aspects of accessibility to the best of their ability"
-      ],
-      "paragraphs": [
-        "As a business, we make every attempt to ensure information concerning our prices, promotions, and events are understandable to all visitors, as well as our hours of operation and location.",
-        "While there are not clearly defined legal requirements for commercial websites serving the public, we have a strong commitment in meeting all visitor needs. If you encounter content or features of the site that are not accessible to those with disabilities, you may contact us using the form below or by emailing us directly at",
-        "Please provide the page and a brief description of the content or functionality where the issue was encountered, along with a suggestion for improvement. We appreciate your feedback and comments as we continue our journey to accommodate all visitors to our site in terms of accessibility."
-      ]
-    },
-    "language": {
-      "title": "Language Accessibility",
-      "paragraphs": [
-        "We are currently in the process of making our website more accessible for translated content so that more visitors can more easily understand the information we provide.",
-        "At this time, portions of this website may be translated from English to Spanish using AI-assisted translation tools. Not all content has been translated yet, and some pages may still be in the process of being updated or translated.",
-        "While we make every effort to provide clear and helpful translated content, automated translation may not always be fully accurate, complete, or contextually correct.",
-        "If you notice an error in translated content, please contact us using the form below and select 'Translation' as the reason for your message. When reaching out, please include the page where the issue appears and the specific translated text that you believe is incorrect so we can review and improve it.",
-        "We appreciate your patience and feedback as we continue working to make our website more accessible and understandable for all visitors."
-      ]
-    },
-    "contact": {
-      "title": "Contact Us",
-      "paragraph": "If you wish to report an accessibility issue, have any questions, need assistance, or would like to report a translation issue, please contact us via the Contact Form below or via email at"
-    }
-  },
-  "contact": {
-    "meta": {
-      "title": "Contact Golden Gate Manor Inc. • Southern Colorado",
-      "description": "Get in touch with Golden Gate Manor Inc. for transportation, assisted living, and medical supply services. Proudly serving Pueblo and Southern Colorado."
-    },
-    "sections": {
-      "left": {
-        "title": "GET IN TOUCH:",
-        "description": "Send us a message to get in touch with one of our team members. We're here to address any inquiries, questions, or concerns you may have regarding our transportation services, our assisted living services, or our medical supply services."
-      },
-      "note": {
-        "paragraphs": [
-          "This form is specifically for general inquiries and customer service-related matters. If you need to schedule a ride with our transportation service, please use our dedicated",
-          " form.",
-          "We prioritize ride requests submitted through that form and cannot guarantee accommodation for rides requested through this contact form. We appreciate your understanding and look forward to assisting you!"
-        ],
-        "link": "Schedule A Ride"
-      },
-      "business": {
-        "phone": "Phone",
-        "hours": "Hours",
-        "connected": "Get Connected:"
-      },
-      "form": {
-        "title": "CONTACT US:"
-      }
-    },
-    "map": {
-      "alt": "Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"
-    }
-  },
   "non-medical": {
     "meta": {
       "title": "Pueblo Non-Medical Transport",
@@ -710,5 +638,219 @@
       }
     },
     "button": "Schedule A Ride Online"
+  },
+  "medical-supplies": {
+    "cta-button": "Visit Our Medical Supply Website",
+    "alt-title": "A peak into our medical supply store",
+    "overview": {
+      "title": "Golden Gate Medical Supply Overview:",
+      "paragraph": [
+        "Golden Gate Medical Supply, a division of Golden Gate Manor, proudly serves Colorado with affordable, accessible medical equipment and supplies through our convenient ecommerce platform, brick-and-mortar location in Pueblo, Colorado, and delivery services throughout Southern Colorado. We understand that navigating durable medical equipment and supplies can be overwhelming and sometimes it feels inaccessible. This is why we built our business around making the process easier, family-friendly, discreet, and accessible.",
+        "Whether you're shopping online, visiting our store, or need items delivered directly to your residence, we're here to provide the medical solutions you need to allow you to live your life independently and with the quality you deserve. Our durable medical equipment and supplies come from well-known vendors. We accept HSA, FSA, and most major insurance plans. Visit our",
+        "or contact us to learn about available payment options."
+      ],
+      "faq": "FAQ page",
+      "button": {
+        "read-more": "Read More",
+        "explore": "Explore Our Products"
+      }
+    },
+    "our-products": {
+      "title": "Our Products",
+      "paragraph": "We carry a comprehensive selection of durable medical equipment and supplies curated to meet your everyday health and mobility needs. Our inventory spans from essential daily supplies to specialized mobility equipment, all selected for quality and affordability. If there is something you noticed not within our catalog or not mentioned, just ask about it and we can look into providing it. We work with well-known, trusted vendors in the durable medical equipment and supplies industry.",
+      "orthotic-shoes": {
+        "title": [
+          "Orthotic Shoes",
+          "Professional Foot Care Solutions"
+        ],
+        "paragraph": [
+          "Professional-grade care and comfort is essential when it comes to footwear since your feet carry you through life. Our durable medical equipment includes Doctor Comfort orthotic shoes which combine the therapeutic benefits of orthotic shoes with everyday wearing. Our Dr. Comfort line is curated specifically for those who need specialized foot support, whether you're managing diabetes, arthritis, or other foot-related health concerns.",
+          "Our experienced team works closely with you and your physician, or other health care provider, to ensure proper fitting and appropriate coverage. Whether you're paying out of pocket, or utilizing FSA or HSA payment methods, we are committed to keeping you comfortable, confident, and moving forward because we understand that proper footwear is essential to your overall health and mobility."
+        ],
+        "alt-title": "Doctor Comfort shoe display"
+      },
+      "mobility-aids": {
+        "title": [
+          "Mobility Aids",
+          "Empowering Your Independence"
+        ],
+        "paragraph": [
+          "We understand that maintaining your mobility and independence is essential to your quality of life. Our durable medical equipment includes a curated selection of mobility aids that are carefully chosen to meet your unique needs with dignity and respect. Our line includes walkers, rollators, wheelchairs, grab bars, and lift chairs. Whether you have insurance that covers them, you are utilizing FSA/HSA payment methods, or you are paying out of pocket, we are here to support you every step of the way.",
+          "Our knowledgeable durable medical equipment specialists work discreetly with you and your healthcare provider to ensure you receive exactly the equipment you need, when you need it, to support your lifestyle. We strive to make sure that all of our patients live happy, independent lives because your comfort and confidence matters to us."
+        ],
+        "alt-title": "Mobility aids (wheelchair, walker, rollator) provided by Golden Gate Medical Supplies"
+      },
+      "wound-care": {
+        "title": [
+          "Wound Care",
+          "Healing with Compassionate Care"
+        ],
+        "paragraph": [
+          "When it comes to recovering from an injury or surgery, proper wound care is crucial. From bandages and wraps to advanced wound care, we are committed to providing you with the highest quality medical supplies and support from well-known and trusted vendors. We strive to keep stress at the minimum so you can focus on healing, which is why we accept FSA/HSA and insurance providers to assist with different products such as gauze, dressings, xeroform dressings, and other specialized wound care products.",
+          "We understand that each individual healing journey is personal, which is why we handle all wound care needs with the utmost discretion and professionalism. We strive to ensure you have access to the right products needed for a swift and easy recovery while maintaining your privacy and dignity throughout the process."
+        ],
+        "alt-title": "Gauze bandages - wound care supply"
+      },
+      "ostomy": {
+        "title": [
+          "Ostomy Care",
+          "Living Fully with Confidence"
+        ],
+        "paragraph": [
+          "Life and confidence shouldn't have to be limited due to managing ostomy care. This is why we provide a line of comprehensive ostomy supplies and support devices to ensure you are able to live comfortably and confidently. We ensure that throughout the process of ordering medical supplies from us that your privacy is always protected through our discreet services. We understand that these specific items deserve to be handled with sensitivity to meet your unique needs.",
+          "On top of this, we strive to make the process as simple as possible whether you will be paying for your ostomy supplies out of pocket, with FSA/HSA, or look into seeing if it is covered by your insurance. We are committed to providing reliable, high-quality medical supplies from well-known and trusted vendors. Our team is here to help you along the way to select the items you need from pouches and barriers, to accessories and skin care products to ensure you are able to live your life to the fullest."
+        ],
+        "alt-title": "Example of Ostomy supplies"
+      },
+      "incontinence": {
+        "title": [
+          "Incontinence Care",
+          "Dignity and Comfort First"
+        ],
+        "paragraph": [
+          "We understand the fact that incontinence care not only requires reliable and exceptional products but also requires respect and sensitivity. Our staff members are trained to make sure the process of selecting incontinence supplies from our line of medical supplies is done so with your comfort, dignity, and lifestyle in mind. We handle each aspect of your care with complete discretion and respect, not only ensuring you receive the right products but also ensuring that you leave happy without compromise to your own personal privacy.",
+          "From chux pads, bed pads/under pads, diapers, briefs, and pads, our team is dedicated to providing reliable and discreet service that helps you maintain your independence and confidence. Whether you're paying out of pocket, with FSA/HSA, checking eligibility through insurance, our team will support you every step of the way."
+        ],
+        "alt-title": "Example of incontinence (brief)"
+      },
+      "urology": {
+        "title": [
+          "Urology Supplies",
+          "Specialized Care You Can Trust"
+        ],
+        "paragraph": [
+          "Urological health requires specialized attention and the right supplies for optimal care and comfort. We provide a complete range of urology products and equipment from well-known and trusted vendors. Whether you're purchasing out of pocket, utilizing FSA/HSA payment methods, or inquiring about insurance coverage our professional team works with you and your healthcare providers to ensure that the products you receive are appropriate.",
+          "Our professional team is trained to ensure all medical supply matters are handled with complete confidentiality and discretion. We are committed to supporting you on your health journey with dignity, respect, and with the specialized care you need. Whether you are needing help selecting the correct catheter, or need specific accessories such as urinary bags/covers, we are here to help you in whatever capacity is necessary to leave you feeling comfortable and confident."
+        ],
+        "alt-title": "Example of urology (catheter)"
+      },
+      "button": {
+        "contact": "Contact Us",
+        "view": "View Products"
+      }
+    },
+    "insurance-information": {
+      "title": "Insurance Information",
+      "faqs": {
+        "title": "FAQs",
+        "insurances": {
+          "label": "What insurance do you take?",
+          "paragraph": [
+            "Currently at this time the following insurances are accepted for Durable Medical Equipment. We are currently working to expand our availability when it comes to insurance. If there are any other questions or concerns involving insurance please reach us via",
+            "or through"
+          ],
+          "link": [
+            "phone",
+            "email"
+          ]
+        },
+        "coverage": {
+          "label": "What does my insurance cover?",
+          "paragraph": "Reach out to your insurance provider to see if the item you are requesting is covered by your insurance."
+        },
+        "how-to-request": {
+          "label": "What do I have to fill out to request DME or supplies?",
+          "paragraph": "Before beginning the process of requesting DME and/or supplies, verify with your insurance provider to determine if the item being requested is covered through your insurance plan. Once insurance coverage is verified, contact a prescribing physician or practitioner to address the need or necessity of DME and/or supplies. The prescribing physician/practitioner will begin the process of collecting the materials necessary to show medical necessity to send to our DME Specialists. We cannot complete any orders without completing everything shown in the drop down titled \"What We Need for Orders\"."
+        },
+        "medicare": {
+          "label": "What is Medicare's defintion of DME?",
+          "definition": [
+            "Durable (can withstand repeated use).",
+            "Appropriate for use in the \"home\" (\"primarily used at home,\" but not exclusively).",
+            "Primarily and customarily needed for a medical purpose (the equipment/supplies would not be useful for someone who doesn't need it).",
+            "Necessary and reasonable for treatment of a condition or injury."
+          ]
+        },
+        "repairs": {
+          "label": "Does Golden Gate Medical Supplies do repairs?",
+          "paragraph": "We do not specialize in repairs but have been known to do simple repairs to items such as replacing brakes, wheels, accessories, etc. Repairs are to be done at the discretion of the patient through a certified service."
+        },
+        "out-of-pocket": {
+          "label": "Am I able to get DME and/or supplies out of pocket?",
+          "paragraph": "If you are looking to get medical equipment or supplies, you do not have to go through a prescriber to get the items you need. Before purchasing any items out of pocket, speak to a doctor or physician or practitioner to make sure you are getting the right items for the needs that you have. Ask about our unique rent-to-own programs so that we can help make the process more affordable."
+        }
+      },
+      "check-eligibility": {
+        "title": "How Do I Check Eligibility?",
+        "list": [
+          "The process is simple regardless of your insurance provider. First, discuss your medical supply/equipment needs with your doctor to get a prescription. From there, you can either call your insurance company to verify coverage for durable medical equipment/supplies, or let us do the work for you—just have your doctor fax the prescription to",
+          "and we'll check your eligibility and get back to you.",
+          "When your coverage is confirmed, we take care of the rest. We'll work with your doctor to collect any additional information needed, then get your supplies to you in whatever way works best—delivered right to your door or available for pickup at our store located at"
+        ],
+        "button": "Connect With Us Online"
+      }
+    }
+  },
+  "accessibility": {
+    "meta": {
+      "title": "Accessibility Statement",
+      "description": "Golden Gate Manor Inc. is committed to ensuring digital and physical accessibility for individuals with disabilities. Read our full accessibility statement here."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "paragraphs": [
+        "As a business serving the public good, we are committed to providing digital accessibility for people with disabilities. We continue to work to improve user experience for everyone while applying relevant accessibility tools and standards.",
+        "Our site is built with code that is compliant with W3C standards for HTML and CSS. The site displays correctly in current tested browsers using standards compliant with HTML/CSS code and should continue to display correctly on future browsers."
+      ]
+    },
+    "measures": {
+      "title": "Measures to Support Accessibility",
+      "intro": "Our company takes the following measures to ensure the accessibility of the site:",
+      "items": [
+        "Ensures accessibility is part of their continuous improvement process",
+        "Employs formal accessibility quality assurance methods",
+        "Keeps abreast of the technical and legal aspects of accessibility to the best of their ability"
+      ],
+      "paragraphs": [
+        "As a business, we make every attempt to ensure information concerning our prices, promotions, and events are understandable to all visitors, as well as our hours of operation and location.",
+        "While there are not clearly defined legal requirements for commercial websites serving the public, we have a strong commitment in meeting all visitor needs. If you encounter content or features of the site that are not accessible to those with disabilities, you may contact us using the form below or by emailing us directly at",
+        "Please provide the page and a brief description of the content or functionality where the issue was encountered, along with a suggestion for improvement. We appreciate your feedback and comments as we continue our journey to accommodate all visitors to our site in terms of accessibility."
+      ]
+    },
+    "language": {
+      "title": "Language Accessibility",
+      "paragraphs": [
+        "We are currently in the process of making our website more accessible for translated content so that more visitors can more easily understand the information we provide.",
+        "At this time, portions of this website may be translated from English to Spanish using AI-assisted translation tools. Not all content has been translated yet, and some pages may still be in the process of being updated or translated.",
+        "While we make every effort to provide clear and helpful translated content, automated translation may not always be fully accurate, complete, or contextually correct.",
+        "If you notice an error in translated content, please contact us using the form below and select 'Translation' as the reason for your message. When reaching out, please include the page where the issue appears and the specific translated text that you believe is incorrect so we can review and improve it.",
+        "We appreciate your patience and feedback as we continue working to make our website more accessible and understandable for all visitors."
+      ]
+    },
+    "contact": {
+      "title": "Contact Us",
+      "paragraph": "If you wish to report an accessibility issue, have any questions, need assistance, or would like to report a translation issue, please contact us via the Contact Form below or via email at"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Golden Gate Manor Inc. • Southern Colorado",
+      "description": "Get in touch with Golden Gate Manor Inc. for transportation, assisted living, and medical supply services. Proudly serving Pueblo and Southern Colorado."
+    },
+    "sections": {
+      "left": {
+        "title": "GET IN TOUCH:",
+        "description": "Send us a message to get in touch with one of our team members. We're here to address any inquiries, questions, or concerns you may have regarding our transportation services, our assisted living services, or our medical supply services."
+      },
+      "note": {
+        "paragraphs": [
+          "This form is specifically for general inquiries and customer service-related matters. If you need to schedule a ride with our transportation service, please use our dedicated",
+          " form.",
+          "We prioritize ride requests submitted through that form and cannot guarantee accommodation for rides requested through this contact form. We appreciate your understanding and look forward to assisting you!"
+        ],
+        "link": "Schedule A Ride"
+      },
+      "business": {
+        "phone": "Phone",
+        "hours": "Hours",
+        "connected": "Get Connected:"
+      },
+      "form": {
+        "title": "CONTACT US:"
+      }
+    },
+    "map": {
+      "alt": "Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"
+    }
   }
 }

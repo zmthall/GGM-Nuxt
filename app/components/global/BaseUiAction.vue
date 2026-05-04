@@ -25,7 +25,7 @@
         <a 
             :disabled
             :aria-label="ariaLabel"
-            :title
+            :title="newPage ? $t('components.new-tab-title') : title || ''"
             :class="[
                 { 'primary-style': (isPrimary && !hoverGroup) },
                 { 'primary-style-group': (isPrimary && hoverGroup) },
@@ -34,8 +34,8 @@
                 { 'cta-style group/cta': (isCTA && !hoverGroup) },
                 { 'cta-style-group group/cta': (isCTA && hoverGroup) },
                 { 'inline-block button-style': variant !== 'blank' && variant !== 'link'},
-                { 'link inline-block': variant === 'link'}
-                , size]" :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
+                { 'link inline-block': variant === 'link'}, size]" 
+                :href="href ?? '#'" :target="newPage ? '_blank' : ''" :rel="linkRel"
             @click.passive="abButton ? emit('ab-test-click') : ''"
         >
             <div :class="[{ 'group-hover/cta:before:animate-fill group-hover/cta:duration-[1.5s] content-wrapper': isCTA }, 'relative pointer-events-none', styling]">

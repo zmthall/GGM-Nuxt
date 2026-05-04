@@ -450,78 +450,6 @@
       "button": "OBTENER CONSULTA GRATIS"
     }
   },
-  "accessibility": {
-    "meta": {
-      "title": "Declaración de Accesibilidad",
-      "description": "Golden Gate Manor Inc. está comprometido a garantizar la accesibilidad digital y física para personas con discapacidades. Lea aquí nuestra declaración completa de accesibilidad."
-    },
-    "commitment": {
-      "title": "Nuestro Compromiso",
-      "paragraphs": [
-        "Como empresa que sirve al bien público, estamos comprometidos con brindar accesibilidad digital para las personas con discapacidades. Continuamos trabajando para mejorar la experiencia del usuario para todos mientras aplicamos herramientas y estándares de accesibilidad relevantes.",
-        "Nuestro sitio está construido con código que cumple con los estándares W3C para HTML y CSS. El sitio se muestra correctamente en los navegadores actuales que han sido probados usando código HTML/CSS conforme a estándares y debería seguir mostrándose correctamente en futuros navegadores."
-      ]
-    },
-    "measures": {
-      "title": "Medidas para Apoyar la Accesibilidad",
-      "intro": "Nuestra empresa toma las siguientes medidas para garantizar la accesibilidad del sitio:",
-      "items": [
-        "Garantiza que la accesibilidad forme parte de su proceso de mejora continua",
-        "Emplea métodos formales de aseguramiento de calidad de accesibilidad",
-        "Se mantiene al tanto de los aspectos técnicos y legales de la accesibilidad en la medida de sus posibilidades"
-      ],
-      "paragraphs": [
-        "Como empresa, hacemos todo lo posible para garantizar que la información relacionada con nuestros precios, promociones y eventos sea comprensible para todos los visitantes, así como también nuestros horarios de atención y ubicación.",
-        "Aunque no existen requisitos legales claramente definidos para los sitios web comerciales que sirven al público, tenemos un fuerte compromiso con satisfacer las necesidades de todos los visitantes. Si encuentra contenido o funciones del sitio que no sean accesibles para personas con discapacidades, puede comunicarse con nosotros usando el formulario a continuación o enviándonos un correo electrónico directamente a",
-        "Por favor proporcione la página y una breve descripción del contenido o funcionalidad donde encontró el problema, junto con una sugerencia de mejora. Agradecemos sus comentarios y observaciones mientras continuamos nuestro camino para adaptarnos a todos los visitantes de nuestro sitio en términos de accesibilidad."
-      ]
-    },
-    "language": {
-      "title": "Accesibilidad de Idioma",
-      "paragraphs": [
-        "Actualmente estamos en el proceso de hacer que nuestro sitio web sea más accesible para el contenido traducido, para que más visitantes puedan entender más fácilmente la información que proporcionamos.",
-        "En este momento, partes de este sitio web pueden estar traducidas del inglés al español mediante herramientas de traducción asistidas por IA. Aún no todo el contenido ha sido traducido, y algunas páginas todavía pueden estar en proceso de actualización o traducción.",
-        "Aunque hacemos todo lo posible por ofrecer contenido traducido claro y útil, la traducción automatizada puede no ser siempre completamente precisa, completa o correcta en su contexto.",
-        "Si nota un error en el contenido traducido, comuníquese con nosotros usando el formulario a continuación y seleccione 'Translation' como el motivo de su mensaje. Al comunicarse, incluya la página donde aparece el problema y el texto traducido específico que considera incorrecto para que podamos revisarlo y mejorarlo.",
-        "Agradecemos su paciencia y sus comentarios mientras seguimos trabajando para hacer que nuestro sitio web sea más accesible y comprensible para todos los visitantes."
-      ]
-    },
-    "contact": {
-      "title": "Contáctenos",
-      "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
-    }
-  },
-  "contact": {
-    "meta": {
-      "title": "Contactar a Golden Gate Manor Inc. | Sur de Colorado",
-      "description": "Comuníquese con Golden Gate Manor Inc. para servicios de transporte, vida asistida y suministros médicos. Orgullosamente sirviendo a Pueblo y el sur de Colorado."
-    },
-    "sections": {
-      "left": {
-        "title": "PÓNGASE EN CONTACTO:",
-        "description": "Envíenos un mensaje para comunicarse con uno de los miembros de nuestro equipo. Estamos aquí para atender cualquier consulta, pregunta o inquietud que pueda tener sobre nuestros servicios de transporte, vida asistida o suministros médicos."
-      },
-      "note": {
-        "paragraphs": [
-          "Este formulario está destinado específicamente para consultas generales y asuntos relacionados con el servicio al cliente. Si necesita programar un viaje con nuestro servicio de transporte, utilice nuestro formulario dedicado de",
-          ".",
-          "Damos prioridad a las solicitudes de transporte enviadas a través de ese formulario y no podemos garantizar la atención de solicitudes realizadas mediante este formulario de contacto. ¡Agradecemos su comprensión y esperamos poder ayudarle!"
-        ],
-        "link": "Programar un Viaje"
-      },
-      "business": {
-        "phone": "Teléfono",
-        "hours": "Horario",
-        "connected": "Conéctese con Nosotros:"
-      },
-      "form": {
-        "title": "CONTÁCTENOS:"
-      }
-    },
-    "map": {
-      "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
-    }
-  },
   "non-medical": {
     "meta": {
       "title": "Transporte No Médico en Pueblo",
@@ -730,5 +658,226 @@
       }
     },
     "button": "Programar un Viaje en Línea"
+  },
+  "medical-supplies": {
+    "alt-title": "Una mirada a nuestra tienda de suministros médicos",
+    "cta-button": "Visitar sitio de suministros médicos",
+    "overview": {
+      "title": "Descripción General de Golden Gate Medical Supply:",
+      "paragraph": [
+        "Golden Gate Medical Supply, una división de Golden Gate Manor, atiende con orgullo a Colorado ofreciendo equipos y suministros médicos accesibles y asequibles a través de nuestra conveniente plataforma de comercio electrónico, nuestra ubicación física en Pueblo, Colorado, y servicios de entrega en todo el sur de Colorado. Entendemos que navegar el mundo de los equipos médicos duraderos y suministros puede ser abrumador y, en ocasiones, parecer inaccesible. Por eso hemos construido nuestro negocio para hacer el proceso más sencillo, familiar, discreto y accesible.",
+        "Ya sea que compre en línea, visite nuestra tienda o necesite que los productos se entreguen directamente en su hogar, estamos aquí para brindarle las soluciones médicas que necesita para vivir de manera independiente y con la calidad que merece. Nuestros equipos y suministros médicos provienen de proveedores reconocidos. Aceptamos HSA, FSA y la mayoría de los seguros principales. Visite nuestra",
+        "o contáctenos para conocer las opciones de pago disponibles."
+      ],
+      "faq": "Preguntas Frecuentes",
+      "button": {
+        "read-more": "Leer más",
+        "explore": "Explorar nuestros productos"
+      }
+    },
+    "our-products": {
+      "title": "Nuestros Productos",
+      "paragraph": "Ofrecemos una selección integral de equipos médicos duraderos y suministros diseñados para satisfacer sus necesidades diarias de salud y movilidad. Nuestro inventario abarca desde suministros esenciales para el día a día hasta equipos especializados de movilidad, todos seleccionados por su calidad y accesibilidad. Si hay algo que no ve en nuestro catálogo o que no mencionamos, no dude en preguntarnos y con gusto veremos cómo podemos proporcionarlo. Trabajamos con proveedores reconocidos y de confianza dentro de la industria de equipos médicos duraderos y suministros.",
+
+      "orthotic-shoes": {
+        "title": [
+          "Zapatos Ortopédicos",
+          "Soluciones Profesionales para el Cuidado del Pie"
+        ],
+        "paragraph": [
+          "El cuidado y la comodidad de nivel profesional son esenciales cuando se trata de calzado, ya que sus pies lo acompañan a lo largo de la vida. Nuestro equipo médico duradero incluye zapatos ortopédicos Doctor Comfort que combinan los beneficios terapéuticos con el uso diario. Nuestra línea Dr. Comfort está diseñada específicamente para quienes necesitan soporte especializado en los pies, ya sea que estén manejando diabetes, artritis u otras condiciones relacionadas.",
+          "Nuestro equipo experimentado trabaja de cerca con usted y con su médico u otro proveedor de salud para asegurar un ajuste adecuado y la cobertura correspondiente. Ya sea que esté pagando de su bolsillo o utilizando FSA o HSA, estamos comprometidos a mantenerlo cómodo, seguro y en movimiento, porque entendemos que el calzado adecuado es esencial para su salud y movilidad en general."
+        ],
+        "alt-title": "Exhibición de zapatos Doctor Comfort"
+      },
+
+      "mobility-aids": {
+        "title": [
+          "Ayudas de Movilidad",
+          "Apoyando su Independencia"
+        ],
+        "paragraph": [
+          "Entendemos que mantener su movilidad e independencia es esencial para su calidad de vida. Nuestro equipo médico duradero incluye una selección cuidadosamente elegida de ayudas de movilidad diseñadas para satisfacer sus necesidades únicas con dignidad y respeto. Nuestra línea incluye andadores, rollators, sillas de ruedas, barras de apoyo y sillones elevadores. Ya sea que su seguro cubra estos productos, esté utilizando métodos de pago FSA/HSA, o esté pagando de su bolsillo, estamos aquí para apoyarlo en cada paso del proceso.",
+          "Nuestros especialistas en equipos médicos duraderos trabajan de manera discreta con usted y su proveedor de salud para garantizar que reciba exactamente el equipo que necesita, en el momento adecuado, para apoyar su estilo de vida. Nos esforzamos por asegurar que todos nuestros pacientes vivan vidas felices e independientes, porque su comodidad y confianza son importantes para nosotros."
+        ],
+        "alt-title": "Ayudas de movilidad (silla de ruedas, andador, rollator) proporcionadas por Golden Gate Medical Supply"
+      },
+
+      "wound-care": {
+        "title": [
+          "Cuidado de Heridas",
+          "Sanación con Atención Compasiva"
+        ],
+        "paragraph": [
+          "Cuando se trata de recuperarse de una lesión o cirugía, el cuidado adecuado de heridas es fundamental. Desde vendajes y envolturas hasta cuidado avanzado de heridas, estamos comprometidos a brindarle suministros médicos de la más alta calidad y el apoyo necesario a través de proveedores reconocidos y confiables. Nos esforzamos por mantener el estrés al mínimo para que usted pueda concentrarse en su recuperación, por lo que aceptamos FSA/HSA y seguros para ayudar con productos como gasas, apósitos, xeroform y otros suministros especializados.",
+          "Entendemos que cada proceso de recuperación es personal, por lo que manejamos todas las necesidades de cuidado de heridas con la máxima discreción y profesionalismo. Nuestro objetivo es garantizar que tenga acceso a los productos adecuados para una recuperación rápida y sencilla, manteniendo siempre su privacidad y dignidad durante todo el proceso."
+        ],
+        "alt-title": "Vendajes de gasa - suministros para el cuidado de heridas"
+      },
+
+      "ostomy": {
+        "title": [
+          "Cuidado de Ostomía",
+          "Viva Plenamente con Confianza"
+        ],
+        "paragraph": [
+          "La vida y la confianza no deberían verse limitadas por el manejo de una ostomía. Por eso ofrecemos una línea completa de suministros de ostomía y dispositivos de apoyo para asegurar que pueda vivir cómodamente y con confianza. Nos aseguramos de que durante todo el proceso de pedido de suministros médicos su privacidad esté protegida mediante nuestros servicios discretos. Entendemos que estos productos requieren un manejo sensible para adaptarse a sus necesidades específicas.",
+          "Además, nos esforzamos por hacer el proceso lo más sencillo posible, ya sea que pague de su bolsillo, utilice FSA/HSA o desee verificar cobertura con su seguro. Estamos comprometidos a proporcionar suministros médicos confiables y de alta calidad de proveedores reconocidos. Nuestro equipo está aquí para ayudarle a seleccionar todo lo necesario, desde bolsas y barreras hasta accesorios y productos para el cuidado de la piel, para que pueda vivir su vida al máximo."
+        ],
+        "alt-title": "Ejemplo de suministros para ostomía"
+      },
+
+      "incontinence": {
+        "title": [
+          "Cuidado de Incontinencia",
+          "Dignidad y Comodidad Primero"
+        ],
+        "paragraph": [
+          "Entendemos que el cuidado de la incontinencia no solo requiere productos confiables y de alta calidad, sino también respeto y sensibilidad. Nuestro personal está capacitado para asegurar que el proceso de selección de suministros se realice teniendo en cuenta su comodidad, dignidad y estilo de vida. Manejamos cada aspecto de su atención con total discreción y respeto, garantizando que reciba los productos adecuados sin comprometer su privacidad personal.",
+          "Desde protectores absorbentes, cubiertas para cama, pañales, briefs y almohadillas, nuestro equipo está dedicado a brindarle un servicio confiable y discreto que le ayude a mantener su independencia y confianza. Ya sea que esté pagando de su bolsillo, utilizando FSA/HSA o verificando elegibilidad con su seguro, estamos aquí para apoyarlo en cada paso del camino."
+        ],
+        "alt-title": "Ejemplo de incontinencia (brief absorbente)"
+      },
+
+      "urology": {
+        "title": [
+          "Suministros de Urología",
+          "Atención Especializada en la que Puede Confiar"
+        ],
+        "paragraph": [
+          "La salud urológica requiere atención especializada y los suministros adecuados para un cuidado y comodidad óptimos. Ofrecemos una gama completa de productos y equipos de urología de proveedores reconocidos y confiables. Ya sea que esté comprando de su bolsillo, utilizando FSA/HSA o consultando sobre cobertura de seguro, nuestro equipo profesional trabaja con usted y sus proveedores de salud para asegurar que reciba los productos adecuados.",
+          "Nuestro equipo está capacitado para manejar todos los asuntos relacionados con suministros médicos con total confidencialidad y discreción. Estamos comprometidos a apoyarlo en su camino de salud con dignidad, respeto y el cuidado especializado que necesita. Ya sea que necesite ayuda para seleccionar el catéter adecuado o accesorios como bolsas urinarias o cubiertas, estamos aquí para ayudarle en todo lo necesario para que se sienta cómodo y seguro."
+        ],
+        "alt-title": "Ejemplo de suministros de urología (catéter)"
+      },
+
+      "button": {
+        "contact": "Contáctenos",
+        "view": "Ver productos"
+      }
+    },
+    "insurance-information": {
+      "title": "Información de Seguro",
+      "faqs": {
+        "title": "Preguntas Frecuentes",
+        "insurances": {
+          "label": "¿Qué seguros aceptan?",
+          "paragraph": [
+            "Actualmente aceptamos los siguientes seguros para equipos médicos duraderos. Estamos trabajando para ampliar nuestra disponibilidad en cuanto a seguros. Si tiene alguna pregunta o inquietud relacionada con el seguro, puede comunicarse con nosotros por",
+            "o por"
+          ],
+          "link": [
+            "teléfono",
+            "correo electrónico"
+          ]
+        },
+        "coverage": {
+          "label": "¿Qué cubre mi seguro?",
+          "paragraph": "Comuníquese con su proveedor de seguros para verificar si el artículo que está solicitando está cubierto por su plan."
+        },
+        "how-to-request": {
+          "label": "¿Qué debo completar para solicitar equipo médico duradero o suministros?",
+          "paragraph": "Antes de comenzar el proceso de solicitud de equipo médico duradero y/o suministros, verifique con su proveedor de seguros si el artículo solicitado está cubierto por su plan. Una vez verificada la cobertura, comuníquese con un médico o profesional de salud que pueda emitir una prescripción para evaluar la necesidad del equipo o suministros. El médico o profesional iniciará el proceso de recopilación de la documentación necesaria para demostrar la necesidad médica y enviarla a nuestros especialistas en equipos médicos duraderos. No podemos completar ningún pedido sin contar con toda la documentación requerida indicada en la sección titulada \"Lo que necesitamos para procesar pedidos\"."
+        },
+        "medicare": {
+          "label": "¿Cuál es la definición de equipo médico duradero según Medicare?",
+          "definition": [
+            "Duradero (puede soportar uso repetido).",
+            "Apropiado para uso en el hogar (\"principalmente utilizado en el hogar\", aunque no exclusivamente).",
+            "Principalmente y comúnmente necesario para un propósito médico (el equipo o suministro no sería útil para alguien que no lo necesita).",
+            "Necesario y razonable para el tratamiento de una condición o lesión."
+          ]
+        },
+        "repairs": {
+          "label": "¿Golden Gate Medical Supply realiza reparaciones?",
+          "paragraph": "No nos especializamos en reparaciones, pero en ocasiones realizamos reparaciones simples como reemplazo de frenos, ruedas, accesorios, entre otros. Las reparaciones deben realizarse a discreción del paciente a través de un servicio certificado."
+        },
+        "out-of-pocket": {
+          "label": "¿Puedo obtener equipo médico duradero o suministros pagando de mi bolsillo?",
+          "paragraph": "Si está buscando obtener equipo médico o suministros, no es necesario pasar por un proveedor médico para adquirir los artículos que necesita. Sin embargo, antes de realizar cualquier compra por su cuenta, se recomienda hablar con un médico o profesional de salud para asegurarse de que está adquiriendo los productos adecuados para sus necesidades. Pregunte sobre nuestros programas exclusivos de renta con opción a compra para ayudar a que el proceso sea más accesible económicamente."
+        }
+      },
+      "check-eligibility": {
+        "title": "¿Cómo puedo verificar mi elegibilidad?",
+        "list": [
+          "El proceso es sencillo independientemente de su proveedor de seguros. Primero, hable con su médico sobre sus necesidades de equipo o suministros médicos para obtener una receta. A partir de ahí, puede comunicarse con su compañía de seguros para verificar la cobertura de equipos médicos duraderos y suministros, o podemos hacerlo por usted; solo pídale a su médico que envíe la receta por fax a",
+          "y verificaremos su elegibilidad y nos comunicaremos con usted.",
+          "Una vez confirmada su cobertura, nosotros nos encargamos del resto. Trabajaremos con su médico para recopilar cualquier información adicional necesaria y luego le haremos llegar sus suministros de la manera que mejor le convenga, ya sea entregados directamente en su hogar o disponibles para recoger en nuestra tienda ubicada en"
+        ],
+        "button": "Contáctenos en línea"
+      }
+    }
+  },
+  "accessibility": {
+    "meta": {
+      "title": "Declaración de Accesibilidad",
+      "description": "Golden Gate Manor Inc. está comprometido a garantizar la accesibilidad digital y física para personas con discapacidades. Lea aquí nuestra declaración completa de accesibilidad."
+    },
+    "commitment": {
+      "title": "Nuestro Compromiso",
+      "paragraphs": [
+        "Como empresa que sirve al bien público, estamos comprometidos con brindar accesibilidad digital para las personas con discapacidades. Continuamos trabajando para mejorar la experiencia del usuario para todos mientras aplicamos herramientas y estándares de accesibilidad relevantes.",
+        "Nuestro sitio está construido con código que cumple con los estándares W3C para HTML y CSS. El sitio se muestra correctamente en los navegadores actuales que han sido probados usando código HTML/CSS conforme a estándares y debería seguir mostrándose correctamente en futuros navegadores."
+      ]
+    },
+    "measures": {
+      "title": "Medidas para Apoyar la Accesibilidad",
+      "intro": "Nuestra empresa toma las siguientes medidas para garantizar la accesibilidad del sitio:",
+      "items": [
+        "Garantiza que la accesibilidad forme parte de su proceso de mejora continua",
+        "Emplea métodos formales de aseguramiento de calidad de accesibilidad",
+        "Se mantiene al tanto de los aspectos técnicos y legales de la accesibilidad en la medida de sus posibilidades"
+      ],
+      "paragraphs": [
+        "Como empresa, hacemos todo lo posible para garantizar que la información relacionada con nuestros precios, promociones y eventos sea comprensible para todos los visitantes, así como también nuestros horarios de atención y ubicación.",
+        "Aunque no existen requisitos legales claramente definidos para los sitios web comerciales que sirven al público, tenemos un fuerte compromiso con satisfacer las necesidades de todos los visitantes. Si encuentra contenido o funciones del sitio que no sean accesibles para personas con discapacidades, puede comunicarse con nosotros usando el formulario a continuación o enviándonos un correo electrónico directamente a",
+        "Por favor proporcione la página y una breve descripción del contenido o funcionalidad donde encontró el problema, junto con una sugerencia de mejora. Agradecemos sus comentarios y observaciones mientras continuamos nuestro camino para adaptarnos a todos los visitantes de nuestro sitio en términos de accesibilidad."
+      ]
+    },
+    "language": {
+      "title": "Accesibilidad de Idioma",
+      "paragraphs": [
+        "Actualmente estamos en el proceso de hacer que nuestro sitio web sea más accesible para el contenido traducido, para que más visitantes puedan entender más fácilmente la información que proporcionamos.",
+        "En este momento, partes de este sitio web pueden estar traducidas del inglés al español mediante herramientas de traducción asistidas por IA. Aún no todo el contenido ha sido traducido, y algunas páginas todavía pueden estar en proceso de actualización o traducción.",
+        "Aunque hacemos todo lo posible por ofrecer contenido traducido claro y útil, la traducción automatizada puede no ser siempre completamente precisa, completa o correcta en su contexto.",
+        "Si nota un error en el contenido traducido, comuníquese con nosotros usando el formulario a continuación y seleccione 'Translation' como el motivo de su mensaje. Al comunicarse, incluya la página donde aparece el problema y el texto traducido específico que considera incorrecto para que podamos revisarlo y mejorarlo.",
+        "Agradecemos su paciencia y sus comentarios mientras seguimos trabajando para hacer que nuestro sitio web sea más accesible y comprensible para todos los visitantes."
+      ]
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contactar a Golden Gate Manor Inc. | Sur de Colorado",
+      "description": "Comuníquese con Golden Gate Manor Inc. para servicios de transporte, vida asistida y suministros médicos. Orgullosamente sirviendo a Pueblo y el sur de Colorado."
+    },
+    "sections": {
+      "left": {
+        "title": "PÓNGASE EN CONTACTO:",
+        "description": "Envíenos un mensaje para comunicarse con uno de los miembros de nuestro equipo. Estamos aquí para atender cualquier consulta, pregunta o inquietud que pueda tener sobre nuestros servicios de transporte, vida asistida o suministros médicos."
+      },
+      "note": {
+        "paragraphs": [
+          "Este formulario está destinado específicamente para consultas generales y asuntos relacionados con el servicio al cliente. Si necesita programar un viaje con nuestro servicio de transporte, utilice nuestro formulario dedicado de",
+          ".",
+          "Damos prioridad a las solicitudes de transporte enviadas a través de ese formulario y no podemos garantizar la atención de solicitudes realizadas mediante este formulario de contacto. ¡Agradecemos su comprensión y esperamos poder ayudarle!"
+        ],
+        "link": "Programar un Viaje"
+      },
+      "business": {
+        "phone": "Teléfono",
+        "hours": "Horario",
+        "connected": "Conéctese con Nosotros:"
+      },
+      "form": {
+        "title": "CONTÁCTENOS:"
+      }
+    },
+    "map": {
+      "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
+    }
   }
 }
