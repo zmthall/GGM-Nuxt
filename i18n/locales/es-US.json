@@ -1063,6 +1063,19 @@
           ]
         }
       }
+    },
+    "location": {
+      "contact-info": {
+        "title": "Información de contacto",
+        "address": "Dirección: ",
+        "phone": "Teléfono: "
+      },
+      "reservation": {
+        "title": "Horario de reservaciones"
+      },
+      "connected": {
+        "title": "Conéctese con nosotros"
+      }
     }
   },
   "accessibility": {

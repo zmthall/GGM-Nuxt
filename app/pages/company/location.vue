@@ -11,17 +11,17 @@
       <BaseLayoutPageSection margin="default" class="cv-auto">
         <div>
           <BaseLayoutPageListItem has-left-border class="my-4 font-bold">
-            <h2 class="text-2xl text-brand-primary mb-4">Contact Information</h2>
+            <h2 class="text-2xl text-brand-primary mb-4">{{ $t('company.location.contact-info.title') }}</h2>
             <p><span>{{ company.name }}</span></p>
-            <p><span>Address: </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="noopener noreferrer" target="_blank" class="link">{{ company.address }}</a></p>
-            <p><span>Phone: </span><a :href="`tel:${company.phone}`" class="link">{{ company.phone }}</a></p>
+            <p><span>{{ $t('company.location.contact-info.address') }} </span><a href="https://maps.app.goo.gl/gdz3Pwu5c1M24grU7" rel="noopener noreferrer" target="_blank" class="link">{{ company.address }}</a></p>
+            <p><span>{{ $t('company.location.contact-info.phone') }} </span><a :href="`tel:${company.phone}`" class="link">{{ company.phone }}</a></p>
           </BaseLayoutPageListItem>
           <BaseLayoutPageListItem has-left-border class="mt-12 font-bold">
-            <h2 class="text-2xl font-bold text-brand-primary mb-4">Reservation Hours</h2>
+            <h2 class="text-2xl font-bold text-brand-primary mb-4">{{ $t('company.location.reservation.title') }}</h2>
             <p class="border-b border-b-black w-max">{{ $t('company.hours') }}</p>
           </BaseLayoutPageListItem>
           <BaseLayoutPageListItem class="mt-12 font-bold" has-left-border>
-            <h2 class="text-2xl font-bold text-brand-primary mb-4">Get Connected</h2>
+            <h2 class="text-2xl font-bold text-brand-primary mb-4">{{ $t('company.location.connected.title') }}</h2>
             <div>
               <ul v-if="socialHandles" class="flex gap-4">
                 <li v-for="socialHandle in activeSocialHandles" :key="socialHandle.id">

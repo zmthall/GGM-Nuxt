@@ -1025,6 +1025,19 @@
           ]
         }
       }
+    },
+    "location": {
+      "contact-info": {
+        "title": "Contact Information",
+        "address": "Address: ",
+        "phone": "Phone: "
+      },
+      "reservation": {
+        "title": "Reservation Hours"
+      },
+      "connected": {
+        "title": "Get Connected"
+      }
     }
   },
   "accessibility": {
