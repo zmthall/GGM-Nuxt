@@ -21,8 +21,8 @@
           {{ podcast.fullDescription }}
         </p>
         <button class="hover:text-brand-link-hover" @click="toggleFeaturedDescription">
-          <span v-if="!featuredDescriptionShow">Show More</span>
-          <span v-else>Show Less</span>
+          <span v-if="!featuredDescriptionShow">{{ $t('news.podcast.featured.show.more') }}</span>
+          <span v-else>{{ $t('news.podcast.featured.show.less') }}</span>
         </button>
       </div>
 
@@ -38,7 +38,7 @@
           :href="getYoutubeLink(podcast.youtubeId)"
         >
           <BaseIcon name="material-symbols:play-arrow-rounded" class="transition-colors duration-500 ease-in-out" color="text-white" hover-color="group-hover:text-brand-primary"/>
-          <span>Watch on YouTube</span>
+          <span>{{ $t('news.podcast.featured.watch') }}</span>
         </BaseUiAction>
 
 

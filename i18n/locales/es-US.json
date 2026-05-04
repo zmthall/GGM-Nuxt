@@ -938,6 +938,47 @@
       "image-carousel": {
           "title": "Imágenes de la comunidad 2025"
         }
+    },
+    "podcast": {
+      "top": {
+        "paragraph": "Gridlock & Gridlines es un podcast centrado en la comunidad con base en Pueblo, que sirve al sur de Colorado. El programa explora a las personas, los servicios y las realidades cotidianas que mantienen a nuestra región en movimiento—literal y figurativamente. A través de conversaciones sobre transporte, vida asistida, suministros médicos y otros servicios de apoyo, brindamos claridad a sistemas complejos y conectamos a las personas con recursos disponibles y accesibles. Espere conversaciones honestas, perspectivas prácticas y una voz local que pone a las personas primero. Las preguntas que ha querido hacer—respondidas.",
+        "button": "Ver lista completa",
+        "video": {
+          "title": "Introducción: ¿Quién es Golden Gate Manor?"
+        }
+      },
+      "featured": {
+        "title": "Video destacado",
+        "show": {
+          "more": "Ver más",
+          "less": "Ver menos"
+        },
+        "watch": "Ver en YouTube"
+      },
+      "posts": {
+        "title": "Podcasts"
+      }
+    },
+    "blog": {
+      "latest": {
+        "title": "Última publicación - Vea lo más reciente:",
+        "badge": "Reciente"
+      },
+      "staff-picks": {
+        "title": "Selecciones del equipo"
+      },
+      "posts": {
+        "title": "Todas las publicaciones",
+        "view-more": "Ver más",
+        "loading": "Cargando publicaciones...",
+        "no-posts": [
+          "¡Se están preparando nuevas publicaciones! Vuelva pronto o",
+          "para mantenerse actualizado."
+        ],
+        "contact": "contáctenos",
+        "read-time": "Tiempo de lectura"
+      },
+      "published": "Publicado el:"
     }
   },
   "accessibility": {
