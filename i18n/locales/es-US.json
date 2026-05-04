@@ -1076,7 +1076,34 @@
       "connected": {
         "title": "Conéctese con nosotros"
       }
-    }
+    },
+    "policies": {
+      "website": {
+        "title": "Políticas del sitio web de Golden Gate Manor Inc.",
+        "policy": [
+          { "content": "Términos y condiciones", "icon": "game-icons:scales", "to": "/company/policies/terms-and-conditions" },
+          { "content": "Política de privacidad", "icon": "solar:shield-bold", "to": "/company/policies/privacy" },
+          { "content": "Accesibilidad", "icon": "ic:round-handshake", "to": "/company/policies/accessibility" }
+        ]
+      },
+      "transportation": {
+        "title": "Políticas de transporte",
+        "policy": [
+          { "content": "Política de cancelación de viajes" }
+        ],
+        "button": "Contacto de transporte"
+      },
+      "medical-ecommerce": {
+        "title": "Políticas de comercio médico",
+        "policy": [
+          { "content": "Términos y condiciones", "icon": "game-icons:scales", "href": "https://goldengatemedicalsupply.com/pages/terms-conditions" },
+          { "content": "Política de privacidad", "icon": "solar:shield-bold", "href": "https://goldengatemedicalsupply.com/pages/privacy-policy" },
+          { "content": "Política de envío", "icon": "hugeicons:shipping-truck-02", "href": "https://goldengatemedicalsupply.com/pages/shipping-policy" },
+          { "content": "Política de devoluciones", "icon": "tabler:truck-return", "href": "https://goldengatemedicalsupply.com/pages/return-policy" }
+        ],
+        "button": "Contacto de suministros médicos"
+      }
+    }  
   },
   "accessibility": {
     "meta": {

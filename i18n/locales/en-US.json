@@ -1038,7 +1038,34 @@
       "connected": {
         "title": "Get Connected"
       }
-    }
+    },
+    "policies": {
+      "website": {
+        "title": "Golden Gate Manor Inc Website Policies",
+        "policy": [
+          { "content": "Terms and Conditions", "icon": "game-icons:scales", "to": "/company/policies/terms-and-conditions" },
+          { "content": "Privacy Policy", "icon": "solar:shield-bold", "to": "/company/policies/privacy" },
+          { "content": "Accessibility", "icon": "ic:round-handshake", "to": "/company/policies/accessibility" }
+        ]
+      },
+      "transportation": {
+        "title": "Transportation Policies",
+        "policy": [
+          { "content": "Ride Cancellation Policy"}
+        ],
+        "button": "Transportation Contact"
+      },
+      "medical-ecommerce": {
+        "title": "Medical Ecommerce Policies",
+        "policy": [
+          { "content": "Terms and Conditions", "icon": "game-icons:scales", "href": "https://goldengatemedicalsupply.com/pages/terms-conditions" },
+          { "content": "Privacy Policy", "icon": "solar:shield-bold", "href": "https://goldengatemedicalsupply.com/pages/privacy-policy" },
+          { "content": "Shipping Policy", "icon": "hugeicons:shipping-truck-02", "href": "https://goldengatemedicalsupply.com/pages/shipping-policy" },
+          { "content": "Return Policy", "icon": "tabler:truck-return", "href": "https://goldengatemedicalsupply.com/pages/return-policy" }
+        ],
+        "button": "Medical Supply Contact"
+      }
+    }  
   },
   "accessibility": {
     "meta": {
