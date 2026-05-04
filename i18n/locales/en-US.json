@@ -383,6 +383,56 @@
       }
     }
   },
+  "assisted-living": {
+    "top": {
+      "title": "Assisted Living Facilities",
+      "paragraph": [
+        "Golden Gate Assisted Living houses are highly respected Medicaid-certified assisted living facilities located in Pueblo, Colorado. At each of our five house locations, trained staff members are present 24/7 to provide care, assistance with medication, daily living skills, meals, transportation and treatment management.",
+        "Each home has specific accommodations that are available for our residents such as their own bed, dresser, closet space, shared bathrooms or private bathrooms depending on availability, and shared common areas. This is the best type of housing for people who are elderly and people experiencing a mental illness, which may affect their ability to perform their daily tasks. Our houses specialize in care plans to make sure that our residents have the care they need when they need it.",
+        "On top of our in house accommodations, our non-emergency medical transportation (NEMT) services are utilized to transport our residents to and from covered medical appointments or services, if the resident chooses to utilize these services. These services are provided through Colorado's Medicaid program Health First Colorado.",
+        "With our fleet of 40+ vehicles, and our helpful housing staff, we make sure that our residents make it to and from their appointments on time. Our goal in our houses it for our residents to feel at home and that they have the independence they want with the additional help they may need. We are here for all of our residents."
+      ]
+    },
+    "carousel": {
+      "title": "Assisted Living Houses",
+      "additional": {
+        "gvalley": "*Offering private bedrooms & bathrooms",
+        "gview": "*Handicap accessible facility"
+      },
+      "button": {
+        "view-more": "View More",
+        "directions": "Directions"
+      },
+      "image-slider": {
+        "loading": "Loading images...",
+        "counter": ["Image", "of"],
+        "no-images": "No images"
+      }
+    },
+    "amenities-section": {
+      "title": "ASSISTED LIVING AMENITIES",
+      "paragraph": "Our comprehensive monthly fee covers all assisted living services in Pueblo, including an appointed semi-private or private room, and a wide range of services and amenities for residents 18 and older, including but not limited to:",
+      "card": [
+        ["24-hour staffing", "Assistance with bathing, dressing, and personal hygiene", "On-call Nurse", "Medication management"],
+        ["Three nutritious daily meals, including snacks", "Food available 24 Hours", "Multiple TV & lounge rooms", "Free Wi-Fi & cable"],
+        ["Appointment scheduling & reminders", "Transportation to medical appointments, groups, activities, etc.", "Accompany to appointments (if necessary)"]
+      ]
+    },
+    "cta": {
+      "title": "Call Us Today and Get More Details",
+      "description": "Set up an appointment to visit one of our assisted living houses. Meet our dedicated staff, some of the residents, and see for yourself all that Golden Gate Manor Assisted Living houses have to offer. Our staff happily provides brochures, cards, tours, respite care, and lunches for interested families and residents.",
+      "button-label": "Reach Out Now"
+    },
+    "consultation-section": {
+      "title": "Personalized Assisted Living Consultations in Pueblo",
+      "paragraph": [
+        "Every consultation at one of our Assisted Living houses is curated to fit individual needs. We understand the process of choosing a new place to live for a family member and for the family is significant, so our process is made to be friendly, personable, informative, and pressure-free.",
+        "Our experienced house care coordinator conducts all of our consultations, bringing years of hands-on experience from working with other clients in Pueblo, Colorado. We'll tour the houses that have availability, show the actual living conditions, and invite you to join us for lunch to experience our home-like atmospheres.",
+        "We'll sit down and explain daily life, discuss our resident expectations, and make sure that our community feels right for you or your loved one's needs. You're welcome to visit any houses that have openings and ask any questions that come to mind. Our goal is simple: we want you to leave knowing more than when you arrived, with reduced anxiety and clear expectations - just transparent and honest guidance from people who care."
+      ],
+      "button": "GET FREE CONSULTATION"
+    }
+  },
   "accessibility": {
     "meta": {
       "title": "Accessibility Statement",
@@ -562,6 +612,15 @@
           ["Mileage Reimbursement"]
         ]
       }
+    },
+    "slv-information": {
+      "title": "Coming Soon: Expanding Into the San Luis Valley",
+      "paragraph": [
+        "Golden Gate Manor Inc. is expanding its non-emergency medical transportation services into the San Luis Valley through SLV Transportation Red Willows.",
+        "With an established fleet and a strong local presence in Alamosa, SLV Transportation has been a trusted provider in the region. This expansion allows us to build on that foundation while introducing additional resources, coordination, and support.",
+        "Our goal is simple: to improve access to reliable transportation for individuals who depend on it—while maintaining the same trusted service the community already knows."
+      ],
+      "coming-soon": "Coming Soon to the San Luis Valley"
     },
     "transportation-information": {
       "title": "Transportation Information",

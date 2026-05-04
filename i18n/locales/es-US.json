@@ -400,6 +400,56 @@
       }
     }
   },
+  "assisted-living": {
+    "top": {
+      "title": "Instalaciones de Vida Asistida",
+      "paragraph": [
+        "Las casas de vida asistida de Golden Gate son instalaciones altamente respetadas certificadas por Medicaid, ubicadas en Pueblo, Colorado. En cada una de nuestras cinco ubicaciones, contamos con personal capacitado disponible las 24 horas del día, los 7 días de la semana, para brindar atención, asistencia con medicamentos, habilidades de la vida diaria, comidas, transporte y gestión de tratamientos.",
+        "Cada hogar cuenta con acomodaciones específicas disponibles para nuestros residentes, como cama propia, cómoda, espacio de clóset, baños compartidos o privados según disponibilidad, y áreas comunes compartidas. Este es el tipo de vivienda ideal para personas mayores y para quienes experimentan enfermedades mentales que pueden afectar su capacidad para realizar tareas diarias. Nuestras casas se especializan en planes de cuidado para garantizar que los residentes reciban la atención que necesitan, cuando la necesitan.",
+        "Además de nuestras acomodaciones internas, nuestros servicios de transporte médico no urgente (NEMT) se utilizan para trasladar a los residentes hacia y desde citas o servicios médicos cubiertos, si el residente decide utilizar estos servicios. Estos servicios se brindan a través del programa Medicaid de Colorado, Health First Colorado.",
+        "Con nuestra flota de más de 40 vehículos y nuestro dedicado personal de vivienda, nos aseguramos de que los residentes lleguen a sus citas a tiempo y regresen de manera segura. Nuestro objetivo es que nuestros residentes se sientan como en casa, con la independencia que desean y el apoyo adicional que puedan necesitar. Estamos aquí para todos nuestros residentes."
+      ]
+    },
+    "carousel": {
+      "title": "Casas de Vida Asistida",
+      "additional": {
+        "gvalley": "*Ofrece habitaciones y baños privados",
+        "gview": "*Instalación accesible para personas con discapacidad"
+      },
+      "button": {
+        "view-more": "Ver más",
+        "directions": "Cómo llegar"
+      },
+      "image-slider": {
+        "loading": "Cargando imágenes...",
+        "counter": ["Imagen", "de"],
+        "no-images": "No hay imágenes"
+      }
+    },
+    "amenities-section": {
+      "title": "SERVICIOS DE VIDA ASISTIDA",
+      "paragraph": "Nuestra tarifa mensual integral cubre todos los servicios de vida asistida en Pueblo, incluyendo una habitación semi-privada o privada, y una amplia gama de servicios y comodidades para residentes de 18 años en adelante, incluyendo, entre otros:",
+      "card": [
+        ["Personal disponible las 24 horas", "Asistencia con baño, vestimenta e higiene personal", "Enfermera de guardia", "Administración de medicamentos"],
+        ["Tres comidas nutritivas diarias, incluyendo refrigerios", "Comida disponible las 24 horas", "Múltiples salas de TV y descanso", "Wi-Fi y cable gratuitos"],
+        ["Programación de citas y recordatorios", "Transporte a citas médicas, grupos y actividades", "Acompañamiento a citas (si es necesario)"]
+      ]
+    },
+    "cta": {
+      "title": "Llámenos hoy para obtener más información",
+      "description": "Programe una cita para visitar una de nuestras casas de vida asistida. Conozca a nuestro dedicado personal, a algunos de los residentes, y vea por usted mismo todo lo que las casas de Golden Gate Manor tienen para ofrecer. Nuestro personal con gusto proporciona folletos, tarjetas, recorridos, cuidado de relevo y almuerzos para familias y residentes interesados.",
+      "button-label": "Contáctenos ahora"
+    },
+    "consultation-section": {
+      "title": "Consultas Personalizadas de Vida Asistida en Pueblo",
+      "paragraph": [
+        "Cada consulta en una de nuestras casas de vida asistida está diseñada para adaptarse a las necesidades individuales. Entendemos que el proceso de elegir un nuevo lugar para vivir, tanto para el residente como para su familia, es importante, por lo que nuestro enfoque es amigable, cercano, informativo y sin presión.",
+        "Nuestro coordinador de cuidado, con amplia experiencia trabajando con clientes en Pueblo, Colorado, realiza todas las consultas. Recorreremos las casas con disponibilidad, mostraremos las condiciones reales de vida y le invitaremos a compartir un almuerzo con nosotros para que experimente nuestro ambiente acogedor.",
+        "Nos sentaremos con usted para explicar la vida diaria, hablar sobre las expectativas de nuestros residentes y asegurarnos de que nuestra comunidad sea adecuada para usted o su ser querido. Puede visitar cualquier casa con disponibilidad y hacer todas las preguntas que desee. Nuestro objetivo es simple: que se vaya con más información de la que tenía al llegar, con menos ansiedad y con expectativas claras, brindándole orientación transparente y honesta de personas que realmente se preocupan."
+      ],
+      "button": "OBTENER CONSULTA GRATIS"
+    }
+  },
   "accessibility": {
     "meta": {
       "title": "Declaración de Accesibilidad",
@@ -564,14 +614,14 @@
     "banner": {
       "alt-title": "Fila de vehículos de Golden Gate Manor Inc. en Pueblo, Colorado"
     },
-    "pdf": {
-      "label": "Certificado Médico de Transporte"
-    },
     "top": {
       "title": "¿Qué es el Transporte Médico No Urgente (NEMT)?",
       "paragraph": "El Transporte Médico No Urgente (NEMT) es el transporte hacia y desde citas y servicios médicos no urgentes cubiertos; si se trata de una cita aprobada por Medicaid, podemos llevarlo. Con nuestra flotilla de más de 40 vehículos, incluidas vans accesibles para sillas de ruedas, podemos asegurarnos de que nuestros clientes lleguen y regresen de sus citas a tiempo en cualquier lugar dentro de nuestra área de servicio en el sur de Colorado.",
       "video": {
         "title": "Comercial de Golden Gate Manor del Super Bowl 2025"
+      },
+      "pdf": {
+        "label": "Certificado Médico de Transporte"
       },
       "table": {
         "title": "Tipos de Transporte Disponibles en Pueblo, Colorado",
@@ -582,6 +632,15 @@
           ["Reembolso de Millaje"]
         ]
       }
+    },
+    "slv-information": {
+      "title": "Próximamente: Expansión hacia el Valle de San Luis",
+      "paragraph": [
+        "Golden Gate Manor Inc. está ampliando sus servicios de transporte médico no urgente hacia el Valle de San Luis a través de SLV Transportation Red Willows.",
+        "Con una flota establecida y una fuerte presencia local en Alamosa, SLV Transportation ha sido un proveedor confiable en la región. Esta expansión nos permite aprovechar esa base mientras incorporamos recursos adicionales, mejor coordinación y mayor apoyo.",
+        "Nuestro objetivo es simple: mejorar el acceso a transporte confiable para las personas que dependen de él, manteniendo el mismo servicio de confianza que la comunidad ya conoce."
+      ],
+      "coming-soon": "Próximamente en el Valle de San Luis"
     },
     "transportation-information": {
       "title": "Información de Transporte",

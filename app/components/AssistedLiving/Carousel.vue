@@ -1,7 +1,7 @@
 <!-- components/BaseCarousel.vue -->
 <template>
   <section>
-    <h2 class="text-2xl text-center font-bold text-brand-primary mb-8">Assisted Living Houses</h2>
+    <h2 class="text-2xl text-center font-bold text-brand-primary mb-8">{{ $t('assisted-living.carousel.title') }}</h2>
         <div class="relative">
             <div class="flex items-center gap-3">
             <BaseUiAction v-if="!isCarouselLoading" type="button" class="px-3 py-6 bg-black text-white rounded flex justify-center items-center" @click="carousel?.prev()">‹</BaseUiAction>
@@ -20,11 +20,11 @@
                         <div class="absolute left-0 top-0 flex flex-col items-center w-full bg-black/50 py-4 overflow-hidden">
                             <h2 class="text-white font-bold">{{ (item as House).name }}</h2>
                             <p class="text-white font-bold sm:max-h-0 sm:opacity-0 sm:group-hover:max-h-16 sm:group-hover:opacity-100 transition-all ease-in-out duration-500 text-center">{{ (item as House).address }}</p>
-                            <p v-if="(item as House).additional" class="text-white font-bold max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all ease-in-out duration-500 text-center">{{ (item as House).additional }}</p>
+                            <p v-if="getAdditionalText(item as any)" class="text-white font-bold max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all ease-in-out duration-500 text-center">{{ getAdditionalText(item as any) }}</p>
                         </div>
                         <div class="absolute left-0 bottom-4 flex justify-center w-full gap-4 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity ease-in-out duration-500">
-                          <button class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">View More</button>
-                          <a class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" :href="(item as House).mapsURL" target="_blank" rel="noreferrer noopener" title="Opens in new tab">Directions</a>
+                          <button class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">{{ $t('assisted-living.carousel.button.view-more') }}</button>
+                          <a class="text-xs font-bold uppercase px-4 py-2 rounded-lg bg-black/50 text-white hover:bg-white/50 hover:text-black" :href="(item as House).mapsURL" target="_blank" rel="noreferrer noopener" title="Opens in new tab">{{ $t('assisted-living.carousel.button.directions') }}</a>
                         </div>
                     </div>
                     <!-- <div v-else class="image-loader" /> -->
@@ -38,7 +38,7 @@
               <template #default>
                 <div v-show="!modalImagesLoading" class="h-[90vh] mt-2">
                   <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute top-4 sm:left-1/2 sm:-translate-x-1/2 w-max">{{ modalHouseName }}</h2>
-                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">Image {{ currentImage }} of {{ totalImages }}</span>
+                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">{{ $t('assisted-living.carousel.image-slider.counter[0]') }} {{ currentImage }} {{ $t('assisted-living.carousel.image-slider.counter[1]') }} {{ totalImages }}</span>
                   <BaseInteractiveImageSlider v-model="modalImages" show-thumbnails show-dots :max-height="'90vh'" @images-loaded="imagesLoaded" @change="setCurrentPage" @initial-load="setImageTotal"/>
                 </div>
                 <div v-show="modalImagesLoading" class="flex justify-center items-center h-full">
@@ -74,6 +74,18 @@ const currentImage = ref<number>(1)
 const totalImages = ref<number>()
 const modalImagesLoading = ref<boolean>(false);
 const imageModalOpen = ref<boolean>(false);
+
+const getAdditionalText = (house: {id: string, additional: string}) => {
+  const key = `assisted-living.carousel.additional.${house.id}`
+
+  // Only translate if key exists (prevents warning)
+  if ($te(key)) {
+    return $t(key)
+  }
+
+  // fallback to JSON value (or empty)
+  return house.additional || ''
+}
 
 const openImageModal = async (houseId: string) => { 
   modalImagesLoading.value = true

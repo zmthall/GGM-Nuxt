@@ -70,7 +70,7 @@
       <BaseLayoutPageContainer>
         <div class="flex flex-col md:flex-row items-center justify-center gap-8">
           <h2 class="text-2xl font-bold mb-6 md:hidden">
-              Coming Soon: Expanding Into the San Luis Valley
+              {{ $t('nemt.slv-information.title')}}
           </h2>
           <div class="md:flex-shrink-0">
             <NuxtImg 
@@ -84,23 +84,23 @@
           </div>
           <div>
             <h2 class="text-2xl font-bold mb-6 max-md:hidden">
-              Coming Soon: Expanding Into the San Luis Valley
+              {{ $t('nemt.slv-information.title')}}
             </h2>
             <p class="text-lg">
-              Golden Gate Manor Inc. is expanding its non-emergency medical transportation services into the San Luis Valley through SLV Transportation Red Willows.
+              {{ $t('nemt.slv-information.paragraph[0]') }}
             </p>
     
             <p class="text-lg mt-4">
-              With an established fleet and a strong local presence in Alamosa, SLV Transportation has been a trusted provider in the region. This expansion allows us to build on that foundation while introducing additional resources, coordination, and support.
+              {{ $t('nemt.slv-information.paragraph[1]') }}
             </p>
     
             <p class="text-lg mt-4">
-              Our goal is simple: to improve access to reliable transportation for individuals who depend on it—while maintaining the same trusted service the community already knows.
+              {{ $t('nemt.slv-information.paragraph[2]') }}
             </p>
 
             <div class="mt-6 max-md:justify-self-center">
-              <BaseUiAction to="/resources/schedule-a-ride" variant="secondary" styling="px-6 py-3">
-                Schedule a Ride
+              <BaseUiAction :to="$localePath('/resources/schedule-a-ride')" variant="secondary" styling="px-6 py-3">
+                {{ $t('nemt.button') }}
               </BaseUiAction>
             </div>
           </div>
@@ -431,7 +431,7 @@
     <div>
       <div class="text-center">
         <p class="text-base font-semibold text-slate-700 mb-2 tracking-wide">
-          Coming Soon to the San Luis Valley
+          {{ $t('nemt.slv-information.coming-soon')}}
         </p>
       </div>
       <div class="relative mt-4">
