@@ -1102,6 +1102,157 @@
           { "content": "Política de devoluciones", "icon": "tabler:truck-return", "href": "https://goldengatemedicalsupply.com/pages/return-policy" }
         ],
         "button": "Contacto de suministros médicos"
+      },
+      "terms-and-conditions": {
+        "title": "Términos y Condiciones del Sitio Web",
+        "header": {
+          "title": [
+            "Responsable del documento:",
+            "Versión:",
+            "Última actualización:"
+          ]
+        },
+        "policy-items": [
+          { 
+            "title": "Aceptación de los Términos", 
+            "content": {
+              "paragraph": "Al acceder o utilizar este sitio web (el “Sitio”), usted acepta estar sujeto a estos Términos y Condiciones (“Términos”). Si no está de acuerdo, no debe utilizar el Sitio. El uso continuo después de que publiquemos revisiones constituye la aceptación de los Términos actualizados."
+            }
+          },
+          {
+            "title": "Definiciones",
+            "content": {
+              "ulist": [
+                "“Empresa”, “nosotros” o “nuestro” — Golden Gate Manor Inc. y sus afiliados.",
+                "“Usuario” o “usted” — cualquier persona o entidad que accede, navega o envía información a través del Sitio.",
+                "“Contenido” — todo texto, gráficos, imágenes, audio, video, software y otros materiales mostrados o descargables del Sitio.",
+                "“Componentes/Formularios interactivos” — cualquier formulario en línea, portales de solicitud de empleo, campos de contacto u otros módulos que permitan a los usuarios ingresar y transmitir datos."
+              ]
+            }
+          },
+          {
+            "title": "Usos Permitidos y Prohibidos",
+            "content": {
+              "stack": [
+                {
+                  "title": "Usos Permitidos",
+                  "content": {
+                    "ulist": [
+                      "Visualizar, descargar o imprimir contenido para uso personal y no comercial.",
+                      "Enviar información precisa a través de los componentes/formularios interactivos del Sitio."
+                    ]
+                  }
+                },
+                {
+                  "title": "Usos Prohibidos",
+                  "content": {
+                    "intro": "Usted no debe:",
+                    "ulist": [
+                      "Modificar, adaptar, realizar ingeniería inversa o intentar vulnerar el Sitio o cualquier software asociado.",
+                      "Utilizar scripts automatizados, bots o scrapers para recopilar datos.",
+                      "Subir o transmitir virus, malware u otro código dañino.",
+                      "Acosar, difamar o violar los derechos de otras personas a través del Sitio.",
+                      "Utilizar el Sitio para cualquier propósito ilegal, fraudulento o no autorizado."
+                    ],
+                    "text": {
+                      "bold": "Cumplimiento: ",
+                      "sentence": "Podemos, a nuestra entera discreción y sin previo aviso, bloquear direcciones IP, eliminar envíos o tomar otras medidas técnicas o legales para hacer cumplir estos Términos."
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "Envío de Formularios y Restricciones de Datos",
+            "content": {
+              "ulist": [
+                "Los usuarios deben enviar únicamente información precisa y no engañosa.",
+                "No incluya datos personales sensibles (por ejemplo, números de Seguro Social, números completos de licencia de conducir, información médica o datos de tarjetas de crédito). Las imágenes de identificación requeridas deben tener toda la información no esencial oculta.",
+                "Los envíos se almacenan en nuestra base de datos segura para su procesamiento y registro."
+              ]
+            }
+          },
+          {
+            "title": "Cookies y Analítica",
+            "content": {
+              "paragraph": "Utilizamos cookies de Google Analytics para comprender el tráfico del sitio y mejorar su rendimiento. Al utilizar el Sitio, usted acepta la colocación de cookies de análisis en su navegador. Un aviso de cookies aparece en su primera visita; el uso continuo implica su aceptación. Para más detalles, consulte nuestra próxima Política de Cookies."
+            }    
+          },
+          {
+            "title": "Propiedad Intelectual",
+            "content": {
+              "paragraph": "Todo el contenido del Sitio es propiedad de la Empresa o de sus licenciantes y está protegido por las leyes de derechos de autor, marcas registradas y otras leyes de Estados Unidos e internacionales. Usted recibe una licencia limitada, revocable y no exclusiva para acceder y utilizar el Sitio con fines personales y no comerciales. Cualquier otro uso requiere nuestro consentimiento previo por escrito."
+            }
+          },
+          {
+            "title": "Enlaces e Integraciones de Terceros",
+            "content": {
+              "paragraph": "El Sitio puede contener enlaces a sitios web externos o servicios integrados que no controlamos. No somos responsables del contenido ni de las prácticas de privacidad de dichos sitios de terceros, y la inclusión de enlaces no implica aprobación."
+            }
+          },
+          {
+            "title": "Exención de Garantías",
+            "content": {
+              "paragraph": "El Sitio y todo su contenido se proporcionan “tal cual” y “según disponibilidad”. Rechazamos todas las garantías, expresas o implícitas, incluyendo, entre otras, garantías de exactitud, idoneidad para un propósito particular y no infracción. No garantizamos que el Sitio sea ininterrumpido, seguro o libre de errores."
+            }
+          },
+          {
+            "title": "Limitación de Responsabilidad",
+            "content": {
+              "paragraph": "En la máxima medida permitida por la ley, la Empresa no será responsable de daños indirectos, incidentales, consecuentes, especiales o punitivos derivados del uso del Sitio, incluso si se ha advertido sobre la posibilidad de dichos daños. Nuestra responsabilidad total no excederá los $100 o el monto que usted haya pagado (si corresponde) para acceder al Sitio, lo que sea menor."
+            }
+          },
+          {
+            "title": "Indemnización",
+            "content": {
+              "paragraph": "Usted acepta defender, indemnizar y mantener indemne a la Empresa y a sus directivos, empleados y agentes frente a cualquier reclamación, daño, responsabilidad o gasto (incluidos honorarios razonables de abogados) derivados de su incumplimiento de estos Términos o del uso indebido del Sitio."
+            }
+          },
+          {
+            "title": "Aviso sobre Asesoramiento Profesional",
+            "content": {
+              "paragraph": "El contenido del Sitio se proporciona únicamente con fines informativos generales. No constituye asesoramiento médico, legal, financiero ni de otro tipo profesional. Debe consultar con profesionales calificados antes de actuar con base en cualquier información presentada aquí."
+            }
+          },
+          {
+            "title": "Compromiso de Accesibilidad",
+            "content": {
+              "paragraph": "Estamos comprometidos con la accesibilidad digital para personas con discapacidades. Para más detalles, consulte nuestra Declaración de Accesibilidad, donde se describen nuestras medidas, mecanismos de retroalimentación y datos de contacto."
+            }
+          },
+          {
+            "title": "Terminación y Suspensión",
+            "content": {
+              "paragraph": "Podemos suspender o terminar su acceso al Sitio, bloquear direcciones IP o eliminar envíos a nuestra entera discreción y sin obligación de revisar o responder apelaciones, especialmente en casos de acoso o amenazas de seguridad."
+            }
+          },
+          {
+            "title": "Ley Aplicable y Jurisdicción",
+            "content": {
+              "paragraph": "Estos Términos se rigen por las leyes del Estado de Colorado, sin tener en cuenta los principios de conflicto de leyes. Cualquier disputa se resolverá exclusivamente en los tribunales estatales o federales ubicados en el condado de Pueblo, Colorado, y usted acepta su jurisdicción."
+            }
+          },
+          {
+            "title": "Cambios a Estos Términos",
+            "content": {
+              "paragraph": "Podemos modificar estos Términos en cualquier momento. La fecha de “Última actualización” se actualizará al publicarse los cambios. Es su responsabilidad revisar periódicamente estos Términos; el uso continuo constituye aceptación de las modificaciones."
+            }
+          },
+          {
+            "title": "Divisibilidad y Acuerdo Completo",
+            "content": {
+              "paragraph": "Si alguna disposición de estos Términos se considera inválida o inaplicable, las disposiciones restantes seguirán en pleno vigor. Estos Términos constituyen el acuerdo completo entre usted y la Empresa respecto al uso del Sitio y sustituyen cualquier acuerdo previo."
+            }
+          },
+          {
+            "title": "Información de Contacto y Reporte de Abuso",
+            "content": {
+              "paragraph": "Para preguntas, reportes de abuso o presuntas violaciones de estos Términos, envíe un correo electrónico a",
+              "email": true
+            }
+          }
+        ]
       }
     }  
   },

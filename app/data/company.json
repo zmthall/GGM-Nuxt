@@ -64,6 +64,7 @@
     }
   },
   "emails": {
-    "accessibility": "accessibility@goldengatemanor.com"
+    "accessibility": "accessibility@goldengatemanor.com",
+    "contact": "contact@goldengatemanor.com"
   }
 }
