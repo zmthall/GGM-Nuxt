@@ -4,11 +4,8 @@
       <BaseLayoutPageContainer>
         <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.commitment.title') }}</h2>
         <div class="space-y-2">
-          <p class="text-xl text-brand-main-text">
-              {{ $t('company.policies.accessibility.commitment.paragraphs[0]')}}
-          </p>
-          <p class="text-xl text-brand-main-text">
-              {{ $t('company.policies.accessibility.commitment.paragraphs[1]') }}
+          <p v-for="paragraph in $tm('company.policies.accessibility.commitment.paragraphs')" :key="paragraph" class="text-xl text-brand-main-text">
+              {{ $rt(paragraph) }}
           </p>
         </div>
       </BaseLayoutPageContainer>
@@ -22,9 +19,9 @@
               {{ $t('company.policies.accessibility.measures.intro') }}
           </p>
           <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text">
-              <li>{{ $t('company.policies.accessibility.measures.items[0]') }}</li>
-              <li>{{ $t('company.policies.accessibility.measures.items[1]') }}</li>
-              <li>{{ $t('company.policies.accessibility.measures.items[2]') }}</li>
+              <li v-for="item in $tm('company.policies.accessibility.measures.items')" :key="item">
+                {{ $rt(item) }}
+              </li>
           </ul>
           <p class="text-xl text-brand-main-text">
               {{ $t('company.policies.accessibility.measures.paragraphs[0]') }}
@@ -42,20 +39,8 @@
     <BaseLayoutPageContainer>
       <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.language.title')}}</h2>
       <div class="space-y-2">
-        <p class="text-xl text-brand-main-text">
-            {{ $t('company.policies.accessibility.language.paragraphs[0]') }}
-        </p>
-        <p class="text-xl text-brand-main-text">
-            {{ $t('company.policies.accessibility.language.paragraphs[1]') }}
-        </p>
-        <p class="text-xl text-brand-main-text">
-            {{ $t('company.policies.accessibility.language.paragraphs[2]') }}
-        </p>
-        <p class="text-xl text-brand-main-text">
-            {{ $t('company.policies.accessibility.language.paragraphs[3]') }}
-        </p>
-        <p class="text-xl text-brand-main-text">
-            {{ $t('company.policies.accessibility.language.paragraphs[4]') }}
+        <p v-for="paragraph in $tm('company.policies.accessibility.language.paragraphs')" :key="paragraph" class="text-xl text-brand-main-text">
+            {{ $rt(paragraph) }}
         </p>
       </div>
     </BaseLayoutPageContainer>
