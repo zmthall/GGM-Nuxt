@@ -4,18 +4,18 @@
         <BaseLayoutPageSection margin="pTop" class="md:grid md:grid-cols-2 md:max-w-[1200px] md:mx-auto md:gap-8">
         <!-- Left Page -->
             <div class="space-y-2">
-                <h2 class="font-extrabold text-2xl max-sm:hidden">{{ $t('contact.sections.left.title') }}</h2>
+                <h2 class="font-extrabold text-2xl max-sm:hidden">{{ $t('company.contact.sections.left.title') }}</h2>
                 <p class="text-xl ">
-                    {{ $t('contact.sections.left.description') }}
+                    {{ $t('company.contact.sections.left.description') }}
                 </p>
                 <PleaseNote class="text-xl">
                     <div class="space-y-2">
                         <p>
-                            {{ $t('contact.sections.note.paragraphs[0]') }}
-                            <NuxtLink :to="$localePath('/resources/schedule-a-ride')" class="link">{{ $t('contact.sections.note.link') }}</NuxtLink>{{ $t('contact.sections.note.paragraphs[1]') }}
+                            {{ $t('company.contact.sections.note.paragraphs[0]') }}
+                            <NuxtLink :to="$localePath('/resources/schedule-a-ride')" class="link">{{ $t('company.contact.sections.note.link') }}</NuxtLink>{{ $t('company.contact.sections.note.paragraphs[1]') }}
                         </p>
                         <p>
-                            {{ $t('contact.sections.note.paragraphs[2]') }}
+                            {{ $t('company.contact.sections.note.paragraphs[2]') }}
                         </p>
                     </div>
                 </PleaseNote>
@@ -23,14 +23,14 @@
                     <BaseLayoutPageListItem :title="company.name" has-icon :size="12" icon-name="material-symbols:location-on-rounded">
                         <NuxtLink to="/company/location" class="link">{{ company.address }}</NuxtLink>
                     </BaseLayoutPageListItem>
-                    <BaseLayoutPageListItem  :title="$t('contact.sections.business.phone')" has-icon :size="12" icon-name="ic:round-call">
+                    <BaseLayoutPageListItem  :title="$t('company.contact.sections.business.phone')" has-icon :size="12" icon-name="ic:round-call">
                         <a :href="`tel:${company.phone}`" class="link">{{ company.phone }}</a>
                     </BaseLayoutPageListItem>
-                    <BaseLayoutPageListItem :title="$t('contact.sections.business.hours')" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
+                    <BaseLayoutPageListItem :title="$t('company.contact.sections.business.hours')" has-icon :size="12" icon-name="material-symbols:alarm-outline-rounded">
                         <span>{{ $t('company.hours') }}</span>
                     </BaseLayoutPageListItem>
                     <BaseLayoutPageListItem class="mt-4 mb-8 ml-2 font-bold">
-                        <h2 class="text-2xl font-bold uppercase mb-4">{{ $t('contact.sections.business.connected') }}</h2>
+                        <h2 class="text-2xl font-bold uppercase mb-4">{{ $t('company.contact.sections.business.connected') }}</h2>
                         <div>
                             <ul v-if="socialHandles" class="flex gap-4">
                             <li v-for="socialHandle in activeSocialHandles" :key="socialHandle.id">
@@ -47,7 +47,7 @@
             <!-- Right Page -->
              <DeferRender when="visible" eager-if-in-view>
                  <div class="space-y-2 cv-auto">
-                     <h2 class="font-extrabold text-2xl">{{ $t('contact.sections.form.title') }}</h2>
+                     <h2 class="font-extrabold text-2xl">{{ $t('company.contact.sections.form.title') }}</h2>
                      <ContactUsForm />
                  </div>
              </DeferRender>
