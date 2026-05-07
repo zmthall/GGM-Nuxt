@@ -1253,8 +1253,352 @@
             }
           }
         ]
+      },
+      "privacy": {
+        "top": {
+          "updated": "Última actualización:",
+          "paragraph": [
+            "El uso de este sitio web reconoce su consentimiento a esta Política de Privacidad de Golden Gate Manor. Proteger su información privada es nuestra prioridad y estamos comprometidos con la protección de su privacidad en línea.",
+            "Esta Política de Privacidad explica qué información personal podemos recopilar sobre usted a través de nuestro sitio web, cuándo la recopilamos, cómo podemos utilizarla, con quién podemos compartirla y tiene como objetivo ayudarle a comprender los términos y condiciones relacionados con la recopilación y el uso de sus datos."
+          ]
+        },
+        "personal-information": {
+          "title": "Información Personal que Recopilamos",
+          "paragraph": [
+            "Nuestro objetivo principal al recopilar su información personal es permitirnos personalizar sus interacciones y experiencias con nuestro sitio web.",
+            "Podemos recopilar información que lo identifique, se relacione con usted, lo describa, haga referencia a usted, pueda asociarse o vincularse razonablemente con usted, directa o indirectamente, con usted (“Información Personal”). En particular, nuestro sitio web ha recopilado las siguientes categorías de Información Personal en los últimos doce (12) meses:"
+          ],
+          "table": {
+            "th": [
+              "Categorías de Información Personal",
+              "Tipos de Información Personal Recopilada"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "A. Identificadores",
+                  "Nombre, número de teléfono, dirección postal, dirección de correo electrónico, número de seguro social, fecha de nacimiento, nombre de cuenta, dirección IP u otra información que usted proporcione voluntariamente para iniciar una transacción de compra o para optar por recibir futuras comunicaciones nuestras."
+                ]
+              },
+              {
+                "td": [
+                  "B. Información personal que identifica, se relaciona con, describe o puede asociarse con una persona en particular, incluyendo, entre otros, nombre, firma, número de seguro social, características físicas o descripción, dirección, número de teléfono, número de pasaporte, número de licencia de conducir o tarjeta de identificación estatal, número de póliza de seguro, educación, empleo, historial laboral, número de cuenta bancaria, número de tarjeta de crédito, número de tarjeta de débito o cualquier otra información financiera.",
+                  "Nombre, dirección, número de teléfono, dirección física, código postal, dirección de correo electrónico, nombre de empresa, número de tarjeta de crédito, ingresos u otra información financiera que pueda proporcionar para obtener una cotización o completar una transacción de compra."
+                ]
+              },
+              {
+                "td": [
+                  "C. Información comercial",
+                  "Información de vivienda, productos o servicios comprados e historial o tendencias de compra y consumo."
+                ]
+              },
+              {
+                "td": [
+                  "D. Actividad en internet u otra red similar",
+                  "Tipo y versión del navegador, proveedor de servicios, información de identificación del dispositivo, cualquier motor de búsqueda u otro sitio de referencia que haya utilizado para encontrar nuestro sitio web e información relacionada con su interacción con el sitio web, aplicación o anuncios."
+                ]
+              },
+              {
+                "td": [
+                  "E. Datos de geolocalización.",
+                  "Señales de su dispositivo que nos permiten determinar su ubicación con precisión razonable."
+                ]
+              },
+              {
+                "td": [
+                  "F. Información profesional o relacionada con el empleo.",
+                  "Ocupación, nombre del empleador, estado laboral, historial laboral o dirección de correo electrónico empresarial."
+                ]
+              },
+              {
+                "td": [
+                  "G. Inferencias obtenidas de otra Información Personal.",
+                  "Información relacionada con su interacción con el sitio web, aplicación o anuncios; historial de navegación."
+                ]
+              }
+            ]
+          }
+        },
+        "information-collection": {
+          "title": "Cómo Recopilamos su Información Personal",
+          "paragraph": "Recopilamos Información Personal que usted proporciona voluntariamente o que ha sido proporcionada mediante algún otro contacto directo con usted. Cuando accede a nuestro sitio web, también podemos recopilar de manera pasiva o automática Información Personal adicional y datos no personalmente identificables relacionados con los medios que utiliza para acceder a nuestro sitio web y el contenido que visualiza al utilizarlo, por ejemplo, mediante cookies en nuestro sitio web.",
+          "ol-item": [
+            { 
+              "title": "Solicitudes de Cotización de Unidades", 
+              "information": [
+                "Si solicita una cotización de precio para una unidad, es posible que se le solicite proporcionar Información Personal como su nombre, dirección, número de teléfono, código postal, dirección de correo electrónico y otra información transaccional relacionada con la compra deseada de la unidad. Su Información Personal puede utilizarse para comunicarnos con usted respecto a la cotización solicitada o para solicitar información adicional.",
+                "Aunque no es obligatorio, usted puede proporcionar voluntariamente información financiera para que se pueda determinar qué unidades cumplen con los parámetros de su solicitud de cotización o su precalificación para financiamiento, si está interesado."
+              ]
+            },
+            { 
+              "title": "Pedidos de Unidades en Línea", 
+              "information": [
+                "Si envía un pedido de unidad en línea, deberá proporcionar Información Personal para completar la transacción de compra. Esta información incluye su nombre, dirección de correo electrónico, dirección de envío y también información financiera para facilitar el pago de la transacción y fines de facturación.",
+                "Si su pedido en línea no se procesa correctamente, su Información Personal puede utilizarse para comunicarnos con usted y finalizar la transacción. Para procesar una transacción de compra, puede ser necesario complementar la información que usted proporciona con información recibida de fuentes de terceros para obtener la aprobación de una institución financiera.",
+                "Su Información Personal también puede compartirse con terceros para ayudar a finalizar la transacción de compra, como compañías de envío (por ejemplo, UPS, USPS, FedEx) y compañías procesadoras de tarjetas de crédito. Estas compañías de terceros no retienen, comparten, almacenan ni utilizan Información Personal para ningún propósito secundario fuera del propósito de proporcionar los servicios requeridos, según nuestro conocimiento."
+              ]
+            },
+            { 
+              "title": "Cálculos de Pagos Mensuales",
+              "information": [
+                "Si utiliza la herramienta digital de ventas para calcular su pago mensual estimado, no está obligado a proporcionar Información Personal a menos que decida comunicarse con el distribuidor para obtener información adicional sobre la unidad que le interesa.",
+                "Si decide comunicarse con el distribuidor, se le solicitará proporcionar su nombre, dirección de correo electrónico, dirección de envío y número de teléfono. Su Información Personal será utilizada para comunicarnos con usted respecto a su consulta."
+              ]
+            },
+            { 
+              "title": "Archivos de Registro", 
+              "information": [
+                "Utilizamos direcciones IP para analizar tendencias, administrar el sitio, rastrear el movimiento de los usuarios y recopilar información demográfica y geográfica amplia para uso agregado. Las direcciones IP solo se vinculan con Información Personal si usted envía un formulario solicitando información adicional."
+              ]
+            },
+            { 
+              "title": "Encuestas y Concursos", 
+              "information": [
+                "De vez en cuando, este sitio web puede ofrecer concursos o solicitar información mediante encuestas para investigar su opinión sobre servicios actuales o posibles nuevos servicios que puedan ofrecerse. La participación en estas encuestas o concursos es completamente voluntaria y usted no está obligado a divulgar la Información Personal solicitada, como su nombre, dirección de correo electrónico, dirección postal o información demográfica (por ejemplo, edad o código postal).",
+                "Si decide participar en un concurso, la información de contacto proporcionada solo se utilizará para notificar a los ganadores y otorgar premios. La información recopilada mediante encuestas solo se utilizará con el propósito de monitorear o mejorar el uso y la satisfacción de este sitio web."
+              ]
+            }
+          ]
+        },
+        "use-of-information": {
+          "title": "Uso de su Información Personal",
+          "intro": "Podemos utilizar o divulgar la Información Personal que recopilamos para uno o más de los siguientes propósitos comerciales:",
+          "uses": [
+            {
+              "paragraph": [
+                "Operar nuestro sitio web y proporcionar los productos y/o servicios que usted ha solicitado, así como para fines de marketing. Si no proporciona la Información Personal que solicitamos, esto puede retrasar o impedir que podamos proporcionarle productos y/o servicios."
+              ]
+            },
+            {
+              "paragraph": [
+                "Para más de un interés legítimo dependiendo del propósito específico para el cual estemos utilizando su Información Personal. Por ejemplo, si completa una compra en línea, podemos recopilar su información para cumplir nuestro contrato con usted, pero también podemos mantener su Información Personal después de completar la transacción para poder responder de manera rápida y sencilla cualquier pregunta relacionada con su pedido.",
+                "Como resultado, nuestra recopilación y procesamiento de su Información Personal se basa en su consentimiento, nuestra necesidad de cumplir un contrato, nuestras obligaciones legales y/o nuestro interés legítimo en operar nuestro negocio. Un interés legítimo existe cuando tenemos una razón comercial válida para utilizar su información, siempre que esto no prevalezca sobre sus propios derechos e intereses."
+              ]
+            },
+            {
+              "paragraph": [
+                "Compartir datos con socios confiables o anunciantes para ayudar a realizar análisis estadísticos, enviarle correos electrónicos o correo postal, proporcionar soporte al cliente, coordinar entregas o para fines de marketing. Todos esos terceros tienen prohibido utilizar su Información Personal excepto para proporcionar estos servicios para nosotros y están obligados a mantener la confidencialidad de su información."
+              ]
+            },
+            {
+              "paragraph": [
+                "Compartir datos de clientes potenciales o análisis con fabricantes de equipos originales con quienes colaboramos. Estos datos pueden compartirse para que dichos fabricantes realicen análisis estadísticos y midan el desempeño de distribuidores."
+              ]
+            },
+            {
+              "paragraph": [
+                "Crear, mantener, personalizar y asegurar su cuenta con nosotros."
+              ]
+            },
+            {
+              "paragraph": [
+                "Informarle sobre otros productos o servicios disponibles de nosotros o nuestros afiliados."
+              ]
+            },
+            {
+              "paragraph": [
+                "Contactarlo mediante encuestas para realizar investigaciones sobre su opinión acerca de servicios actuales o posibles nuevos servicios que puedan ofrecerse."
+              ]
+            },
+            {
+              "paragraph": [
+                "Ayudarle a localizar un distribuidor cercano."
+              ]
+            },
+            {
+              "paragraph": [
+                "Responderle respecto al motivo por el cual nos contactó o para futuros fines de marketing. A menos que nos solicite no hacerlo, podremos comunicarnos con usted por teléfono o correo electrónico en el futuro para informarle sobre promociones, nuevos productos o servicios, cambios en esta Política de Privacidad o para enviarle actualizaciones importantes relacionadas con el sitio web y nuestros servicios.",
+                "También podremos comunicarnos con usted para proporcionar servicios solicitados y respecto a asuntos relacionados con su cuenta por correo electrónico o teléfono."
+              ]
+            },
+            {
+              "paragraph": [
+                "Ayudar a diagnosticar problemas con nuestro servidor, administrar el sitio web, realizar informes de atribución, personalizar experiencias de usuario (incluyendo publicidad o funciones dirigidas, como mostrar unidades previamente visualizadas) y recopilar datos estadísticos generales."
+              ]
+            },
+            {
+              "paragraph": [
+                "Recopilar cierta información de navegación relacionada con los lugares que visita dentro de nuestro sitio web para determinar qué servicios o productos son los más populares. Estos datos se utilizan para ofrecer contenido y publicidad personalizados dentro de nuestro sitio web a clientes cuyo comportamiento indica interés en un área temática específica.",
+                "Dicha información es recopilada por nosotros de forma agregada y no se asociará con una persona específica, excepto en relación con servicios y operaciones específicas como informes de atribución y mantenimiento de cuentas de clientes."
+              ]
+            },
+            {
+              "paragraph": [
+                "Responder a solicitudes de las autoridades y según lo exija la ley aplicable, órdenes judiciales o regulaciones gubernamentales."
+              ]
+            },
+            {
+              "paragraph": [
+                "Según se le describa al recopilar su Información Personal o según lo establecido en la CCPA o CPRA."
+              ]
+            }
+          ]
+        },
+        "use-of-cookies": {
+          "title": "Uso de Cookies",
+          "paragraph": [
+            "Nuestro sitio web puede utilizar “cookies” para ayudarle a personalizar su experiencia en línea. Una cookie es un archivo de texto que un servidor web coloca en su disco duro. Las cookies no pueden utilizarse para ejecutar programas ni transmitir virus a su computadora. Las cookies se asignan de manera única a usted y solo pueden ser leídas por un servidor web dentro del dominio que emitió la cookie.",
+            "Las cookies pueden utilizarse para diversos propósitos, como detectar si su dispositivo ha accedido previamente a un servicio en línea específico. Utilizamos cookies en nuestras páginas para hacer su visita a nuestro sitio web más agradable y para habilitar ciertas funciones, incluyendo la capacidad de identificar unidades que hayan sido visualizadas previamente en su dispositivo."
+          ]
+        },
+        "information-sharing": {
+          "title": "Con Quién Compartimos su Información",
+          "ulist": [
+            {
+              "intro": "No vendemos, alquilamos ni arrendamos nuestras listas de clientes a terceros. Podemos compartir su Información Personal con:",
+              "items": [
+                "Nuestros afiliados",
+                "Proveedores de servicios que utilizamos para ayudar a brindarle nuestros servicios, como proveedores de procesamiento de pagos",
+                "Otros terceros que utilizamos para ayudarnos a operar nuestro negocio, como agencias de marketing y agregadores de datos",
+                "Terceros aprobados por usted, incluidos sitios de redes sociales que decida vincular con su cuenta o proveedores de pago de terceros"
+              ]
+            },
+            {
+              "intro": "Durante los doce (12) meses anteriores, hemos divulgado las siguientes categorías de Información Personal con fines comerciales:",
+              "items": [
+                "Categoría A: Identificadores",
+                "Categoría B: Información personal que identifica, se relaciona con, describe o puede asociarse con una persona en particular",
+                "Categoría C: Información comercial",
+                "Categoría D: Actividad en internet u otra actividad similar de red",
+                "Categoría E: Datos de geolocalización",
+                "Categoría F: Información profesional o relacionada con el empleo",
+                "Categoría G: Inferencias derivadas de otra Información Personal"
+              ]
+            }
+          ],
+          "paragraph": "Si la ley nos exige hacerlo, o si creemos de buena fe que dicha acción es necesaria, divulgaremos su Información Personal, sin previo aviso, para: (a) cumplir con la ley o con procesos legales presentados a nuestra empresa o al sitio web; (b) proteger y defender los derechos o la propiedad de nuestra empresa; y (c) actuar bajo circunstancias urgentes para proteger la seguridad personal de los usuarios de nuestro sitio web o del público."
+        },
+        "data-retention": {
+          "title": "Retención de Datos",
+          "paragraph": "Conservamos la Información Personal que recopilamos de usted durante el período necesario para cumplir con los propósitos descritos en esta Política de Privacidad (por ejemplo, proporcionarle un servicio solicitado o cumplir con requisitos legales, fiscales o contables aplicables), a menos que la ley requiera o permita un período de retención más largo."
+        },
+        "3rd-party-access": {
+          "title": "Acceso a Sitios Web de Terceros",
+          "paragraph": "Este sitio web puede contener enlaces a otros sitios. Tenga en cuenta que no somos responsables de las prácticas de privacidad de dichos sitios externos. Recomendamos a nuestros usuarios leer las políticas de privacidad de cada sitio web que recopile información personalmente identificable. Esta Política de Privacidad se aplica únicamente a la información recopilada por este sitio web."
+        },
+        "security": {
+          "title": "Seguridad",
+          "paragraph": "Tomamos precauciones para proteger su información. Cuando envía información sensible a través de nuestro sitio web, su información está protegida tanto en línea como fuera de línea. Siempre que recopilamos información sensible, dicha información es cifrada y transmitida de manera segura. Recopilamos Información Personal sensible mediante formularios en línea que usted puede completar voluntariamente para indicar interés en una unidad o servicio. Las computadoras y servidores en los que almacenamos Información Personal se mantienen en un entorno seguro."
+        },
+        "children": {
+          "title": "Niños Menores de Trece Años",
+          "paragraph": "No recopilamos conscientemente información personalmente identificable de niños menores de trece años. Si usted es menor de trece años, por favor no envíe información personal a través de nuestro sitio web. Si descubrimos que hemos recopilado información personal de un menor de trece años sin verificar el consentimiento de los padres, eliminaremos dicha información lo antes posible."
+        },
+        "california-residents": {
+          "title": "Aviso de Privacidad para Residentes de California",
+          "top": {
+            "paragraph": [
+              "Este Aviso de Privacidad para Residentes de California complementa y forma expresamente parte de la información contenida en la Política de Privacidad y se aplica exclusivamente a todos los visitantes, usuarios y demás personas que residan en el Estado de California (“consumidores” o “usted”). Adoptamos este Aviso para cumplir con la Ley de Privacidad del Consumidor de California, modificada por la Ley de Derechos de Privacidad de California (“CCPA”). Cualquier término definido en la CCPA tendrá el mismo significado cuando se utilice en este Aviso.",
+              "Según la CCPA, estamos obligados a revelar si vendemos Información Personal. No vendemos Información Personal, pero podemos compartir Información Personal con terceros o permitir que terceros recopilen Información Personal desde nuestro Sitio o servicios si dichos terceros son proveedores de servicios autorizados o socios comerciales que hayan aceptado nuestras limitaciones contractuales respecto a la retención, uso y divulgación de dicha Información Personal, o si usted nos indica divulgar su Información Personal a terceros."
+            ]
+          },
+          "list": [
+            {
+              "intro": "La ley de California le otorga el derecho de conocer:",
+              "items": [
+                "Las categorías de Información Personal que hemos recopilado sobre usted.",
+                "Las categorías de fuentes de las cuales se recopila la Información Personal.",
+                "Nuestro propósito comercial o empresarial para recopilar o vender dicha Información Personal.",
+                "Las categorías de terceros con quienes compartimos dicha Información Personal.",
+                "Las piezas específicas de Información Personal que hemos recopilado sobre usted (también llamada solicitud de portabilidad de datos).",
+                "Si hemos vendido su Información Personal, las categorías de Información Personal que cada categoría de destinatario compró."
+              ]
+            },
+            {
+              "intro": "Tenga en cuenta que no estamos obligados a:",
+              "items": [
+                "Conservar Información Personal sobre usted recopilada para una sola transacción única si, en el curso normal de los negocios, dicha información no se conserva,",
+                "Reidentificar o vincular datos que, en el curso normal de los negocios, no se mantienen de una manera que se considere Información Personal, o",
+                "Proporcionarle Información Personal más de dos veces en un período de 12 meses."
+              ]
+            },
+            {
+              "intro": "En relación con cualquier Información Personal que podamos compartir o divulgar a terceros con fines comerciales, usted tiene derecho a conocer las categorías de Información Personal que nosotros:",
+              "items": [
+                "vendimos o compartimos y las categorías de terceros a quienes pudimos haber vendido o compartido Información Personal; y/o",
+                "divulgamos sobre usted con fines comerciales y las categorías de terceros con quienes su información personal pudo haber sido compartida."
+              ]
+            }
+          ],
+          "middle": {
+            "paragraph": [
+              "Bajo la CCPA y ciertas otras leyes de privacidad y protección de datos aplicables, usted tiene el derecho de optar por no participar en la venta o intercambio de su Información Personal y el derecho de optar por no participar en el uso o divulgación de su Información Personal sensible. Si ejerce su derecho de exclusión, nos abstendremos de vender o compartir su Información Personal o divulgar su Información Personal sensible, a menos que posteriormente nos proporcione autorización expresa para la venta, intercambio o divulgación de su Información Personal.",
+              "Para optar por no participar en la divulgación de su Información Personal, comuníquese con Golden Gate Manor Inc. en contact\\@goldengatemanor.com. Debe comunicarse con Golden Gate Manor respecto a solicitudes relacionadas con datos personales recopilados y procesados por Golden Gate Manor."
+            ]
+          },
+          "nested-ulist": {
+            "level-1": {
+              "intro": "Sujeto a ciertas excepciones establecidas a continuación, al recibir una solicitud verificable de su parte, nosotros:",
+              "items": [
+                "Le proporcionaremos las piezas específicas de Información Personal que hemos recopilado sobre usted, sin costo, en un formato portátil y, en la medida técnicamente posible, fácilmente utilizable que le permita transmitir esta información a otra entidad sin impedimentos; y",
+                "Eliminaremos su Información Personal de nuestros registros, a menos que se aplique una excepción."
+              ]
+            },
+            "level-2": {
+              "intro": "Tenga en cuenta que es posible que no eliminemos su Información Personal si es necesario para:",
+              "items": [
+                "Completar la transacción para la cual se recopiló la Información Personal, proporcionar un bien o servicio solicitado por usted, o razonablemente anticipado dentro del contexto de nuestra relación comercial continua con usted, o de otra manera cumplir un contrato entre usted y nosotros,",
+                "Detectar incidentes de seguridad, proteger contra actividades maliciosas, engañosas, fraudulentas o ilegales; o procesar a los responsables de dichas actividades,",
+                "Depurar para identificar y reparar errores que afecten la funcionalidad prevista existente,",
+                "Ejercer la libertad de expresión, garantizar el derecho de otro consumidor a ejercer su derecho de libertad de expresión o ejercer otro derecho previsto por la ley,",
+                "Cumplir con la Ley de Privacidad de Comunicaciones Electrónicas de California,",
+                "Permitir únicamente usos internos razonablemente alineados con sus expectativas basadas en su relación con nosotros,",
+                "Cumplir con una obligación legal existente, o",
+                "Utilizar de otra manera su Información Personal, internamente, de manera legal y compatible con el contexto en el que proporcionó la información."
+              ]
+            }
+          },
+          "email-paragraph": [
+            "Los consumidores de California pueden visitar el sitio indicado a continuación para solicitar ver la Información Personal que ha sido recopilada. También puede solicitar la corrección de su Información Personal o solicitar que eliminemos cualquier Información Personal recopilada. Dichas solicitudes pueden enviarse por correo electrónico a",
+            "Es importante tener en cuenta que, bajo la CCPA, solo puede realizar una solicitud de acceso o portabilidad de datos dos veces dentro de un período de doce (12) meses."
+          ],
+          "bottom": {
+            "paragraph": [
+              "Usted tiene el derecho de no ser discriminado por nosotros debido a que ejerció cualquiera de sus derechos bajo la CCPA. Como resultado, no le negaremos bienes o servicios por ejercer estos derechos, no le cobraremos un precio diferente por bienes o servicios por ejercer estos derechos, no le proporcionaremos un nivel o calidad diferente de bienes o servicios por ejercer estos derechos, ni siquiera sugeriremos que recibirá un precio o nivel de calidad diferente por ejercer estos derechos.",
+              "Sin embargo, podemos ofrecer ciertos incentivos financieros permitidos por la CCPA que pueden resultar en diferentes precios, tarifas o niveles de calidad. Cualquier incentivo financiero permitido por la CCPA que ofrezcamos estará razonablemente relacionado con el valor de su Información Personal y contendrá términos escritos que describan los aspectos materiales del programa. La participación en un programa de incentivos financieros requiere su consentimiento previo de aceptación, el cual puede revocar en cualquier momento."
+            ]
+          }
+        },
+        "unsubscribe": {
+          "title": "Exclusión y Cancelación",
+          "paragraph": [
+            "Respetamos su privacidad y le brindamos la oportunidad de optar por no recibir ciertos anuncios o comunicaciones en cualquier momento. Los usuarios pueden optar por no recibir comunicaciones de marketing de nuestra parte comunicándose con nosotros por correo electrónico a",
+            "Los usuarios también pueden cancelar su suscripción a boletines utilizando el enlace de cancelación de suscripción ubicado en la parte inferior del boletín."
+          ]
+        },
+  
+        "accessing-website": {
+          "title": "Acceso a este Sitio Web",
+          "paragraph": "Este sitio web está alojado en servidores ubicados en los Estados Unidos. Como tal, su conexión será a través de y hacia servidores ubicados en los Estados Unidos. Cualquier Información Personal que proporcione durante su visita será procesada y mantenida en nuestros servidores web y otros sistemas internos ubicados dentro de los Estados Unidos. Al utilizar este sitio web, usted acepta la recopilación y el uso de sus datos anónimos, Información Personal y/o envíos de formularios para fines de análisis y/o publicidad."
+        },
+  
+        "policy-updates": {
+          "title": "Actualizaciones a esta Política de Privacidad",
+          "paragraph": "Nos reservamos el derecho de modificar y actualizar esta Política de Privacidad. Estos cambios se realizarán cuando sea apropiado y de manera oportuna. Le recomendamos revisar esta Política de Privacidad periódicamente para asegurarse de estar al tanto de cualquier cambio que podamos haber realizado. El uso continuo de nuestro sitio web después de una actualización de esta Política de Privacidad indica su aceptación de dichos cambios."
+        },
+  
+        "exercising-rights": {
+          "title": "Cómo Ejercer sus Derechos y Contactarnos",
+          "top": {
+            "paragraph": "Si su Información Personal cambia (por ejemplo, dirección de correo electrónico o dirección postal), o si ya no desea recibir información de nuestra parte, haremos todo lo posible por corregir, actualizar o eliminar su Información Personal de nuestros registros. Si tiene preguntas o comentarios sobre esta Política de Privacidad, las formas en que recopilamos y utilizamos su información descritas anteriormente, o sus opciones y derechos relacionados con dicho uso, no dude en comunicarse con nosotros en"
+          },
+          "list": {
+            "intro": "Si se comunica con nosotros directamente por correo electrónico, es posible que le solicitemos cierta información para verificar su identidad. Podemos pedirle que proporcione:",
+            "items": [
+              "Información suficiente para identificarlo (por ejemplo, su nombre completo, dirección de correo electrónico y número de teléfono)",
+              "Una descripción del derecho que desea ejercer y la información relacionada con su solicitud."
+            ]
+          },
+          "bottom": {
+            "paragraph": [
+              "Si desea ejercer sus derechos bajo la CCPA, por favor envíe un correo electrónico a",
+              "Si no podemos verificar su identidad o confirmar que la persona que realiza la solicitud es la persona sobre la cual recopilamos la información, no estaremos obligados a proporcionar una divulgación de acceso o portabilidad de datos.",
+              "Cualquier Información Personal que recopilemos de usted para verificar su identidad en relación con su solicitud será utilizada únicamente con fines de verificación."
+            ]
+          }
+        }
       }
-    }  
+    } 
   },
   "accessibility": {
     "meta": {
