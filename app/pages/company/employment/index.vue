@@ -3,136 +3,42 @@
     <!-- Top Page Hero Shots -->
     <BaseLayoutPageHeroSection src="/images/pages/employment/employment-hero.webp" styling="max-sm:w-full" alt="Image of someone looking at jobs in a newspaper" title="Image of someone looking at jobs in a newspaper" loading="eager">
       <BaseInteractiveFloatingCard styling="xs:absolute max-xs:w-full xs:top-8 xs:left-8">
-        <h1 class="text-3xl font-extrabold">Looking for employment?</h1>
-        <p class="mt-8 font-bold">We are looking for potential employees who are:</p>
+        <h1 class="text-3xl font-extrabold">{{ $t('company.employment.hero-card.title')}}</h1>
+        <p class="mt-8 font-bold">{{ $t('company.employment.hero-card.ulist.intro') }}</p>
         <ul class="">
-          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Reliable and punctual</li>
-          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Solution oriented</li>
-          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Friendly to customers and associates</li>
-          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Team oriented</li>
-          <li class="flex items-center gap-2"><BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />Eager to learn</li>
+          <li v-for="item in $tm('company.employment.hero-card.ulist.items')" :key="item" class="flex items-center gap-2">
+            <BaseIcon name="material-symbols:fitbit-check-small-rounded" color="text-white" size="size-8" class="shrink-0" />
+            {{ $rt(item)}}
+          </li>
         </ul>
-        <BaseUiAction to="/company/employment/apply" class="mt-4 p-4">Apply Now!</BaseUiAction>
+        <BaseUiAction :to="$localePath('/company/employment/apply')" class="mt-4 p-4">{{ $t('company.employment.hero-card.button') }}</BaseUiAction>
       </BaseInteractiveFloatingCard>
     </BaseLayoutPageHeroSection>
 
     <!-- Job Opportunities -->
      <DeferRender when="visible">
        <BaseLayoutPageSection margin="default" class="cv-auto">
-         <h2 class="text-2xl text-center font-bold text-brand-primary">Job Opportunities</h2>
+         <h2 class="text-2xl text-center font-bold text-brand-primary">{{ $t('company.employment.job-opportunities.title')}}</h2>
          <div class="flex flex-col items-center mt-8 gap-8 md:grid md:grid-cols-2 md:w-max md:mx-auto lg:flex lg:flex-row lg:flex-wrap lg:w-full lg:justify-center">
-           <LazyBaseInteractiveFlipCard src="/images/pages/employment/ggmt-flipcard.jpg">
+           <LazyBaseInteractiveFlipCard v-for="(card, i) in jobOpportunityCards" :key="`opportunity-card-${i}`" :src="opportunityCardMeta[i]?.src">
              <template #front>
                <div class="flex flex-col justify-between h-full font-extrabold">
-                   <h2 class="text-2xl">Transportation</h2>
-                   <p>Join our team of dedicated drivers and dispatchers</p>
+                   <h2 v-if="card.title" class="text-2xl">{{ $rt(card.title[0] || '') }}</h2>
+                   <p>{{ $rt(card.description)}}</p>
                </div>
              </template>
              <template #back>
-               <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Transportation Positions</h2>
+               <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">{{ $rt(card.title[1] || '') }}</h2>
                <div class="flex flex-col h-full justify-between">
                  <div>
-                   <BaseLayoutPageListItem title="City Cab" has-left-border small-border small-text class="mt-4">
+                   <BaseLayoutPageListItem v-for="position in card.positions" :key="$rt(position.department)" :title="$rt(position.department)" has-left-border small-border small-text class="mt-4">
                      <ul>
-                       <li>Dispatcher — <button type="button" class="link" data-select="city_cab-dispatch" @click="openModal">Job Description</button></li>
-                       <li>Driver — <button type="button" class="link" data-select="city_cab-driver" @click="openModal">Job Description</button></li>
-                       <li>Admin Asst. — <button type="button" class="link" data-select="city_cab-admin_assistant" @click="openModal">Job Description</button></li>
-                     </ul>
-                   </BaseLayoutPageListItem>
-                   <BaseLayoutPageListItem title="Non-Emergency" has-left-border small-border small-text class="mt-4">
-                     <ul>
-                       <li>Customer Service — <button type="button" class="link" data-select="ggmt-csr" @click="openModal">Job Description</button></li>
-                       <li>Driver — <button type="button" class="link" data-select="ggmt-driver" @click="openModal">Job Description</button></li>
+                       <li v-for="(job, j) in position.jobs" :key="job">{{ $rt(job) }} <button type="button" class="link" :data-select="`${opportunityCardDataSelects[i]?.[j] ?? 'invalid'}`" @click="openModal">{{ $t('company.employment.job-opportunities.button.job-description') }}</button></li>
                      </ul>
                    </BaseLayoutPageListItem>
                  </div>
                  <div class="mt-4 self-center">
-                   <BaseUiAction to="/company/employment/apply?select=transportation_general" class="py-2 px-4">Apply Now</BaseUiAction>
-                 </div>
-               </div>
-             </template>
-           </LazyBaseInteractiveFlipCard>
-           <LazyBaseInteractiveFlipCard src="/images/pages/employment/ggmal-flipcard.jpg">
-             <template #front>
-               <div class="flex flex-col justify-between h-full font-extrabold">
-                 <h2 class="text-2xl">Assisted Living</h2>
-                 <p>Care for our community with compassion</p>
-               </div>
-             </template>
-             <template #back>
-               <div>
-                 <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Assisted Living Positions</h2>
-                 <div class="flex flex-col h-full justify-between">
-                   <div>
-                     <BaseLayoutPageListItem title="Assisted Care Facility" has-left-border small-border small-text class="mt-4">
-                       <ul>
-                         <li>
-                           QMAP — <button type="button" class="link" data-select="acf-qmap" @click="openModal">Job Description</button>
-                         </li>
-                         <li>PCP — <button type="button" class="link" data-select="acf-pcp" @click="openModal">Job Description</button></li>
-                       </ul>
-                     </BaseLayoutPageListItem>
-                   </div>
-                   <div class="mt-4 self-center">
-                     <BaseUiAction href="/company/employment/apply?select=al_general" class="py-2 px-4">Apply Now</BaseUiAction>
-                   </div>
-                 </div>
-               </div>
-             </template>
-           </LazyBaseInteractiveFlipCard>
-           <LazyBaseInteractiveFlipCard src="/images/pages/employment/ggms-flipcard.jpg">
-             <template #front>
-               <div class="flex flex-col justify-between h-full font-extrabold">
-                 <h2 class="text-2xl">Medical Supply</h2>
-                 <p>Support our community's health and well-being</p>
-               </div>
-             </template>
-             <template #back>
-               <div>
-                 <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Medical Supply Positions</h2>
-                 <div class="flex flex-col h-full justify-between">
-                   <div>
-                     <BaseLayoutPageListItem title="DME Store" has-left-border small-border small-text class="mt-4">
-                       <ul>
-                         <li>DME Specialist — <button type="button" class="link" data-select="medical_supply-dme_specialist" @click="openModal">Job Description</button>
-                         </li>
-                         <li>Delivery Driver — <button type="button" class="link" data-select="medical_supply-deliver_tech" @click="openModal">Job Description</button>
-                         </li>
-                         <li>Inventory Tech. — <button type="button" class="link" data-select="medical_supply-inventory_tech" @click="openModal">Job Description</button>
-                         </li>
-                       </ul>
-                     </BaseLayoutPageListItem>
-                   </div>
-                   <div class="mt-4 self-center">
-                     <BaseUiAction href="/company/employment/apply?select=ms_general" class="py-2 px-4">Apply Now</BaseUiAction>
-                   </div>
-                 </div>
-               </div>
-             </template>
-           </LazyBaseInteractiveFlipCard>
-           <LazyBaseInteractiveFlipCard src="/images/pages/employment/ggmc-flipcard.jpg">
-             <template #front>
-               <div class="flex flex-col justify-between h-full font-extrabold">
-                 <h2 class="text-2xl">Gas Station</h2>
-                 <p>Join us on our newest adventure</p>
-               </div>
-             </template>
-             <template #back>
-               <div>
-                 <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">Gas Station Positions</h2>
-                 <div class="flex flex-col h-full justify-between">
-                   <div>
-                     <BaseLayoutPageListItem title="Convenience Store" has-left-border small-border small-text class="mt-4">
-                       <ul>
-                         <li>Manager — <button type="button" class="link" data-select="gas_station-manager" @click="openModal">Job Description</button></li>
-                         <li>Assistant Manager — <button type="button" class="link" data-select="gas_station-assistant_manager" @click="openModal">Job Description</button></li>
-                         <li>Attendant — <button type="button" class="link" data-select="gas_station-attendant" @click="openModal">Job Description</button></li>
-                       </ul>
-                     </BaseLayoutPageListItem>
-                   </div>
-                   <div class="mt-4 self-center">
-                     <BaseUiAction href="/company/employment/apply?select=gs_general" class="py-2 px-4">Apply Now</BaseUiAction>
-                   </div>
+                   <BaseUiAction :to="$localePath(`/company/employment/apply?select=${opportunityCardMeta[i]?.selectValue}`)" class="py-2 px-4">{{ $t('company.employment.job-opportunities.button.apply-now')}}</BaseUiAction>
                  </div>
                </div>
              </template>
@@ -141,33 +47,41 @@
        </BaseLayoutPageSection>
      </DeferRender>
 
+     <!-- Physical Application -->
      <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt">
         <BaseLayoutPageContainer class="space-y-8">
           <section class="space-y-2">
-            <h2 class="text-2xl font-bold text-brand-primary">Prefer to fill out a physical application?</h2>
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.employment.physical-application.title') }}</h2>
             <p class="text-xl text-brand-main-text">
-              Sometimes it's easier to complete an application by hand, or type it out, and drop it off in person or send it via email. 
-              If that's your preferred method of applying, please use the links below to download and fill out the application. Once complete, you can:
+              {{ $t('company.employment.physical-application.ulist.intro') }}
             </p>
             <ul class="text-xl text-brand-main-text ml-8 list-disc">
-              <li>
-                Bring it to our Administration Office at <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="link">612 S. Union Ave., Pueblo, CO 81004</a>, or
-              </li>
-              <li>
-                Email it to <a href="mailto:apply@goldengatemanor.com" class="link">apply@goldengatemanor.com</a> (just put the subject line as your first and last name along with application)
+              <li v-for="(item, i) in $tm('company.employment.physical-application.ulist.items')" :key="item[0]">
+                <p v-if="i == 0">
+                  {{ $rt(item[0]) }} <a href="https://maps.app.goo.gl/kEzjKfbBfLnWwRRTA" class="link">612 S. Union Ave., Pueblo, CO 81004</a>, {{ $rt(item[1])}}
+                </p>
+                <p v-else>
+                  {{ $rt(item[0]) }} <a href="mailto:apply@goldengatemanor.com" class="link">apply@goldengatemanor.com</a> {{ $rt(item[1])}}
+                </p>
               </li>
             </ul>
             <p class="text-xl text-brand-main-text">
-              If you are applying for a driver position, please be sure to use the driver-specific application and please make sure to read the note below the application pdf links. Thanks for your interesting in joining the Golden Gate Manor Inc. Team!
+              {{ $t('company.employment.physical-application.paragraph') }}
             </p>
             <div>
               <div class="flex gap-4 flex-wrap justify-center !my-8">
-                <LazySupportCenterTile href="/pdfs/applications/driver-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:directions-car" title="Driver Application" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
-                <LazySupportCenterTile href="/pdfs/applications/general-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:work" title="General Application" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
-                <LazySupportCenterTile href="/pdfs/applications/house-application.pdf" target="_blank" rel="noopener noreferrer" name="medical-icon:i-care-staff-area" title="Assisted Living Application" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
+                <LazySupportCenterTile href="/pdfs/applications/driver-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:directions-car" :title="$t('company.employment.physical-application.cards[0]')" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
+                <LazySupportCenterTile href="/pdfs/applications/general-application.pdf" target="_blank" rel="noopener noreferrer" name="material-symbols:work" :title="$t('company.employment.physical-application.cards[1]')" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
+                <LazySupportCenterTile href="/pdfs/applications/house-application.pdf" target="_blank" rel="noopener noreferrer" name="medical-icon:i-care-staff-area" :title="$t('company.employment.physical-application.cards[2]')" class="hover:scale-105 transition-transform ease-in-out duration-500"/>
               </div>
-              <PleaseNote>If the application being applied for is a driving position, a Motor Vehicle Record (MVR) from the last 30 days is required. A non-certified MVR showing a 7-year driving history can be obtained from the DMV at <a href="https://maps.app.goo.gl/1CbsxZVTiVfcmWTAA" target="_blank" rel="noopener noreferrer" class="link">827 W 4th St, Pueblo, CO 81003</a>, or online using the <a href="https://mydmv.colorado.gov/_/" target="_blank" rel="noopener noreferrer" class="link">DMV - MVR Online Form</a> and request a driving record. The MVR must be brought before an interview will be considered.</PleaseNote>
+              <PleaseNote>
+                {{ $t('company.employment.physical-application.please-note.paragraph[0]') }}
+                <BaseUiAction href="https://maps.app.goo.gl/1CbsxZVTiVfcmWTAA" new-page variant="blank" class="link inline-block">827 W 4th St, Pueblo, CO 81003</BaseUiAction>, 
+                {{ $t('company.employment.physical-application.please-note.paragraph[1]') }}
+                <BaseUiAction href="https://mydmv.colorado.gov/_/" new-page variant="blank" class="link inline-block">{{ $t('company.employment.physical-application.please-note.link') }}</BaseUiAction> 
+                {{ $t('company.employment.physical-application.please-note.paragraph[2]') }}
+              </PleaseNote>
             </div>
           </section>
         </BaseLayoutPageContainer>
@@ -177,10 +91,10 @@
     <!-- CTA Section -->
      <DeferRender when="visible">
        <BaseLayoutPageCTA 
-         title="Explore Career Opportunities"
-         description="We're always on the lookout for passionate individuals to join our diverse team! As our company expands, new opportunities arise across our different businesses. Discover where you can make an impact!"
-         to="/company/employment/apply?select=general"
-         button-label="Join Our Team"
+         :title="$t('company.employment.cta.title')"
+         :description="$t('company.employment.cta.description')"
+         :to="$localePath('/company/employment/apply?select=general')"
+         :button-label="$t('company.employment.cta.button-label')"
        />
      </DeferRender>
 
@@ -189,25 +103,19 @@
       <BaseLayoutPageSection margin="default">
         <BaseLayoutPageContainer class="space-y-8">
           <section class="space-y-1">
-            <h2 class="text-2xl font-bold text-brand-primary">About Golden Gate Manor Inc.</h2>
-            <p class="text-xl text-brand-main-text">PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US.</p>
-            <p class="text-xl text-brand-main-text">Welcome to Golden Gate Manor! Here at Golden Gate Manor, Our
-            Mission Is Simple: To Improve The Quality of Life Each and Every Day. We
-            are a family-owned and operated facility that offers highly personalized,
-            compassionate, and direct care to members of our community in Pueblo, CO.
-            Our services include assisted living, medical and non-medical transportation
-            services, and medical supply sales.</p>
-          </section>
-          <section class="space-y-1">
-            <h2 class="text-2xl font-bold text-brand-primary">Our Team</h2>
-            <p class="text-xl text-brand-main-text">The management team at Golden Gate Manor brings over 35 years
-              of experience in caring and providing for older adults, individuals with mental illness,
-              and overseeing transportation operations. Our mission is to foster a welcoming and relaxing
-              environment, whether someone is living in our assisted living or utilizing our transportation services.
-              Fostering this environment is part of our standard of care and this is an expectation from all employees
-              working at Golden Gate Manor.
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.employment.about-us.top.title') }}</h2>
+            <p class="text-xl text-brand-main-text">{{ $t('company.employment.about-us.top.motto') }}</p>
+            <p class="text-xl text-brand-main-text">
+              {{ $t('company.employment.about-us.top.paragraph') }}
             </p>
           </section>
+          <section class="space-y-1">
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.employment.about-us.our-team.title') }}</h2>
+            <p class="text-xl text-brand-main-text">
+              {{ $t('company.employment.about-us.our-team.paragraph') }}
+            </p>
+          </section>
+          <BaseUiAction :to="$localePath('/company/about-us')" class="!mt-4" styling="px-4 py-2">{{ $t('company.employment.about-us.button') }}</BaseUiAction>
         </BaseLayoutPageContainer>
       </BaseLayoutPageSection>
     </DeferRender>
@@ -283,6 +191,46 @@ const openModal = async (event: Event) => {
 const clearModalContent = () => {
   modalContent.value = null;
 }
+
+type OpportunityCard = {
+  title: string[];
+  description: string;
+  positions: {
+    department: string;
+    jobs: string;
+  }[];
+}
+
+type OpportunityCardMeta = {
+  src: string;
+  selectValue:string;
+}
+
+const jobOpportunityCards = $tm('company.employment.job-opportunities.cards') as OpportunityCard[]
+const opportunityCardMeta: OpportunityCardMeta[] = [
+  {
+    src: '/images/pages/employment/ggmt-flipcard.jpg',
+    selectValue: "transportation_general"
+  },
+  {
+    src: '/images/pages/employment/ggmal-flipcard.jpg',
+    selectValue: "al_general"
+  },
+  {
+    src: '/images/pages/employment/ggms-flipcard.jpg',
+    selectValue: "ms_general"
+  },
+  {
+    src: '/images/pages/employment/ggmc-flipcard.jpg',
+    selectValue: "gs_general"
+  }
+]
+const opportunityCardDataSelects: string[][] = [
+  ['city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant'],
+  ['acf-qmap', 'acf-pcp'],
+  ['medical_supply-dme_specialist', 'medical_supply-deliver_tech', 'medical_supply-inventory_tech'],
+  ['gas_station-manager', 'gas_station-assistant_manager', 'gas_station-attendant']
+]
 </script>
 
 <style></style>

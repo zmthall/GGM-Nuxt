@@ -1809,6 +1809,134 @@
       "map": {
         "alt": "Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"
       }
+    },
+    "employment": {
+      "hero-card": {
+        "title": "Looking for employment?",
+        "ulist": {
+          "intro": "We are looking for potential employees who are:",
+          "items": [
+            "Reliable and punctual",
+            "Solution oriented",
+            "Friendly to customers and associates",
+            "Team oriented",
+            "Eager to learn"
+          ]
+        },
+        "button": "Apply Now!"
+      },
+      "job-opportunities": {
+        "title": "Job Opportunities",
+        "cards": [
+          {
+            "title": ["Transportation", "Transportation Positions"],
+            "description": "Join our team of dedicated drivers and dispatchers",
+            "positions": [
+              {
+                "department": "City Cab",
+                "jobs": [
+                  "Dispatcher —",
+                  "Driver —", 
+                  "Admin Asst. —"
+                ]
+              },
+              {
+                "department": "Medicaid NEMT",
+                "jobs": [
+                  "Customer Service —",
+                  "Driver —"
+                ]
+              }
+            ]
+          },
+          {
+            "title": ["Assisted Living", "Assisted Living Positions"],
+            "description": "Care for our community with compassion",
+            "positions": [
+              {
+                "department": "Assisted Care Facility",
+                "jobs": [
+                  "QMAP —",
+                  "PCP —"
+                ]
+              }
+            ]
+          },
+          {
+            "title": ["Medical Supply", "Medical Supply Positions"],
+            "description": "Support our community's health and well-being",
+            "positions": [
+              {
+                "department": "DME Store",
+                "jobs": [
+                  "DME Specialist —",
+                  "Delivery Driver —",
+                  "Inventory Tech. —"
+                ]
+              }
+            ]
+          },
+          {
+            "title": ["Gas Station", "Gas Station Positions"],
+            "description": "Join us on our newest adventure",
+            "positions": [
+              {
+                "department": "Convenience Store",
+                "jobs": [
+                  "Manager —",
+                  "Assistant Manager —",
+                  "Attendant —"
+                ]
+              }
+            ]
+          }
+        ],
+        "button": {
+          "apply-now": "Apply Now",
+          "job-description": "Job Description"
+        }
+      },
+      "physical-application": {
+        "title": "Prefer to fill out a physical application?",
+        "ulist": {
+          "intro": "Sometimes it's easier to complete an application by hand, or type it out, and drop it off in person or send it via email. If that's your preferred method of applying, please use the links below to download and fill out the application. Once complete, you can:",
+          "items": [
+            ["Bring the application to our Administration Office at", "or"],
+            ["Email it to", " (just put the subject line as your first and last name along with application. If you are filling out a general application please state which position you are applying for.)"]
+          ]
+        },
+        "paragraph": "If you are applying for a driver position, please be sure to use the driver-specific application and please make sure to read the note below the application pdf links. Thanks for your interesting in joining the Golden Gate Manor Inc. Team!",        
+        "cards": [
+          "Driver Application",
+          "General Application",
+          "Assisted Living Application"
+        ],
+        "please-note": {
+          "paragraph": [
+            "If the application being applied for is a driving position, a Motor Vehicle Record (MVR) from the last 30 days is required. A non-certified MVR showing a 7-year driving history can be obtained from the DMV at",
+            "or online using the",
+            "and request a driving record. The MVR must be brought before an interview will be considered."
+          ],
+          "link": "DMV - MVR Online Form"
+        }
+      },
+      "cta": {
+        "title": "Explore Career Opportunities",
+        "description":"We're always on the lookout for passionate individuals to join our diverse team! As our company expands, new opportunities arise across our different businesses. Discover where you can make an impact!",
+        "button-label":"Join Our Team"
+      },
+      "about-us": {
+        "top": {
+          "title": "About Golden Gate Manor Inc.",
+          "motto": "PEOPLE WHO VALUE THEIR QUALITY OF LIFE CAN DEPEND ON US.",
+          "paragraph": "Welcome to Golden Gate Manor! Here at Golden Gate Manor, Our Mission Is Simple: To Improve The Quality of Life Each and Every Day. We are a family-owned and operated facility that offers highly personalized, compassionate, and direct care to members of our community in Pueblo, CO. Our services include assisted living, medical and non-medical transportation services, and medical supply sales."
+        },
+        "our-team": {
+          "title": "Our Team",
+          "paragraph": "The management team at Golden Gate Manor brings over 35 years of experience in caring and providing for older adults, individuals with mental illness, and overseeing transportation operations. Our mission is to foster a welcoming and relaxing environment, whether someone is living in our assisted living or utilizing our transportation services. Fostering this environment is part of our standard of care and this is an expectation from all employees working at Golden Gate Manor."
+        },
+        "button": "Read More"
+      }
     }
   }
 }

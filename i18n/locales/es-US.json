@@ -14,36 +14,36 @@
     },
     "please-note": {
       "title": "Por Favor Tenga en Cuenta:"
-     },
-     "interactive-map": {
+    },
+    "interactive-map": {
       "cta": "Haga clic para cargar el mapa interactivo",
       "loading": "Cargando mapa…"
-     },
-      "city-cab-link": {
-        "label": "Visite Nuestro Sitio Web de City Cab"
+    },
+    "city-cab-link": {
+      "label": "Visite Nuestro Sitio Web de City Cab"
+    },
+    "service-area-map": {
+      "legend": {
+        "title": "Área de Servicio",
+        "not-included": "No incluido en el área de servicio",
+        "included": "Incluido en el área de servicio"
       },
-      "service-area-map": {
-        "legend": {
-          "title": "Área de Servicio",
-          "not-included": "No incluido en el área de servicio",
-          "included": "Incluido en el área de servicio"
-        },
-        "alt-title": "Visualización del área de servicio"
-      },
-      "events": {
-        "planned-events": [
-          "¡Se están planificando nuevos eventos! Vuelva pronto o",
-          "para mantenerse actualizado."
-        ],
-        "contact": "contáctenos"
-      },
-      "image-carousel": {
-        "view-more": "Ver más",
-        "loading": "Cargando imágenes...",
-        "counter": ["Imagen", "de"],
-        "no-images": "No hay imágenes"
-      },
-      "new-tab-title":  "Abre en una nueva pestaña"
+      "alt-title": "Visualización del área de servicio"
+    },
+    "events": {
+      "planned-events": [
+        "¡Se están planificando nuevos eventos! Vuelva pronto o",
+        "para mantenerse actualizado."
+      ],
+      "contact": "contáctenos"
+    },
+    "image-carousel": {
+      "view-more": "Ver más",
+      "loading": "Cargando imágenes...",
+      "counter": ["Imagen", "de"],
+      "no-images": "No hay imágenes"
+    },
+    "new-tab-title": "Abre en una nueva pestaña"
   },
   "header": {
     "links": {
@@ -290,37 +290,22 @@
       "button": "Más Información"
     },
     "services-section": {
-      "title": [
-        "Servicios",
-        "Que Ofrecemos"
-      ],
+      "title": ["Servicios", "Que Ofrecemos"],
       "cards": {
         "assisted-living": {
-          "title": [
-            "Vida",
-            "Asistida"
-          ],
+          "title": ["Vida", "Asistida"],
           "description": "Las casas de vida asistida de Golden Gate Manor son instalaciones altamente respetadas y certificadas por Medicaid ubicadas en Pueblo, Colorado. En cada una de nuestras 5 ubicaciones, hay personal capacitado disponible las 24 horas del día, los 7 días de la semana, para brindar atención, ayuda con medicamentos, habilidades de vida diaria, comidas, transporte y manejo del tratamiento."
         },
         "nemt": {
-          "title": [
-            "Transporte",
-            "NEMT"
-          ],
+          "title": ["Transporte", "NEMT"],
           "description": "Nuestra flotilla de más de 40 vehículos, incluidas vans accesibles para sillas de ruedas, brinda nuestro servicio de transporte médico no urgente (NEMT) en todo el sur de Colorado y hacia principales zonas de citas, como Denver. De manera confiable, lo llevamos a sus citas médicas cubiertas y servicios aprobados, y de regreso a casa, cuando necesita una mano amiga."
         },
         "non-medical": {
-          "title": [
-            "Transporte",
-            "No Médico"
-          ],
+          "title": ["Transporte", "No Médico"],
           "description": "Nos enorgullece ser una de las únicas empresas en el condado de Pueblo, incluido Pueblo West, que ofrece servicios de transporte no médico a miembros elegibles de la comunidad que son personas mayores o viven con una discapacidad y reciben asistencia de Medicaid. Podemos llevarlo a hacer diligencias personales, asistir a eventos familiares o incluso simplemente salir a un lugar para relajarse; estamos aquí para ayudar."
         },
         "medical-supplies": {
-          "title": [
-            "Equipo Médico",
-            "y Suministros"
-          ],
+          "title": ["Equipo Médico", "y Suministros"],
           "description": "Golden Gate Medical Supplies ofrece equipo y suministros médicos duraderos de alta calidad a precios accesibles en todo Colorado. Trabajamos de cerca para garantizar que nuestro compromiso con la atención de calidad se entregue cuando y donde se necesite. Además, ofrecemos entrega a domicilio y envíos para facilitar el acceso."
         },
         "button": "Más Información"
@@ -332,10 +317,7 @@
       "button": "Programe un Viaje"
     },
     "why-us": {
-      "title": [
-        "Más que un Viaje.",
-        "Más que una Empresa."
-      ],
+      "title": ["Más que un Viaje.", "Más que una Empresa."],
       "intro": "Somos uno de los proveedores de transporte médico no urgente (NEMT) con más trayectoria en el sur de Colorado, y mucho más. Golden Gate Manor Inc. conecta nuestros servicios: vida asistida, transporte, suministros médicos, gasolineras y apoyo comunitario bajo un mismo paraguas para facilitar que nuestros clientes reciban la atención y el apoyo que necesitan, cuando lo necesitan. Como empresa familiar, entendemos la importancia de una ayuda impulsada por la comunidad, envuelta en cuidado y compasión; no es solo lo que hacemos, es quienes somos.",
       "mission": {
         "title": "Una Misión Basada en el Cuidado, Construida para la Independencia",
@@ -427,9 +409,23 @@
       "title": "SERVICIOS DE VIDA ASISTIDA",
       "paragraph": "Nuestra tarifa mensual integral cubre todos los servicios de vida asistida en Pueblo, incluyendo una habitación semi-privada o privada, y una amplia gama de servicios y comodidades para residentes de 18 años en adelante, incluyendo, entre otros:",
       "card": [
-        ["Personal disponible las 24 horas", "Asistencia con baño, vestimenta e higiene personal", "Enfermera de guardia", "Administración de medicamentos"],
-        ["Tres comidas nutritivas diarias, incluyendo refrigerios", "Comida disponible las 24 horas", "Múltiples salas de TV y descanso", "Wi-Fi y cable gratuitos"],
-        ["Programación de citas y recordatorios", "Transporte a citas médicas, grupos y actividades", "Acompañamiento a citas (si es necesario)"]
+        [
+          "Personal disponible las 24 horas",
+          "Asistencia con baño, vestimenta e higiene personal",
+          "Enfermera de guardia",
+          "Administración de medicamentos"
+        ],
+        [
+          "Tres comidas nutritivas diarias, incluyendo refrigerios",
+          "Comida disponible las 24 horas",
+          "Múltiples salas de TV y descanso",
+          "Wi-Fi y cable gratuitos"
+        ],
+        [
+          "Programación de citas y recordatorios",
+          "Transporte a citas médicas, grupos y actividades",
+          "Acompañamiento a citas (si es necesario)"
+        ]
       ]
     },
     "cta": {
@@ -689,10 +685,7 @@
       },
 
       "mobility-aids": {
-        "title": [
-          "Ayudas de Movilidad",
-          "Apoyando su Independencia"
-        ],
+        "title": ["Ayudas de Movilidad", "Apoyando su Independencia"],
         "paragraph": [
           "Entendemos que mantener su movilidad e independencia es esencial para su calidad de vida. Nuestro equipo médico duradero incluye una selección cuidadosamente elegida de ayudas de movilidad diseñadas para satisfacer sus necesidades únicas con dignidad y respeto. Nuestra línea incluye andadores, rollators, sillas de ruedas, barras de apoyo y sillones elevadores. Ya sea que su seguro cubra estos productos, esté utilizando métodos de pago FSA/HSA, o esté pagando de su bolsillo, estamos aquí para apoyarlo en cada paso del proceso.",
           "Nuestros especialistas en equipos médicos duraderos trabajan de manera discreta con usted y su proveedor de salud para garantizar que reciba exactamente el equipo que necesita, en el momento adecuado, para apoyar su estilo de vida. Nos esforzamos por asegurar que todos nuestros pacientes vivan vidas felices e independientes, porque su comodidad y confianza son importantes para nosotros."
@@ -701,10 +694,7 @@
       },
 
       "wound-care": {
-        "title": [
-          "Cuidado de Heridas",
-          "Sanación con Atención Compasiva"
-        ],
+        "title": ["Cuidado de Heridas", "Sanación con Atención Compasiva"],
         "paragraph": [
           "Cuando se trata de recuperarse de una lesión o cirugía, el cuidado adecuado de heridas es fundamental. Desde vendajes y envolturas hasta cuidado avanzado de heridas, estamos comprometidos a brindarle suministros médicos de la más alta calidad y el apoyo necesario a través de proveedores reconocidos y confiables. Nos esforzamos por mantener el estrés al mínimo para que usted pueda concentrarse en su recuperación, por lo que aceptamos FSA/HSA y seguros para ayudar con productos como gasas, apósitos, xeroform y otros suministros especializados.",
           "Entendemos que cada proceso de recuperación es personal, por lo que manejamos todas las necesidades de cuidado de heridas con la máxima discreción y profesionalismo. Nuestro objetivo es garantizar que tenga acceso a los productos adecuados para una recuperación rápida y sencilla, manteniendo siempre su privacidad y dignidad durante todo el proceso."
@@ -713,10 +703,7 @@
       },
 
       "ostomy": {
-        "title": [
-          "Cuidado de Ostomía",
-          "Viva Plenamente con Confianza"
-        ],
+        "title": ["Cuidado de Ostomía", "Viva Plenamente con Confianza"],
         "paragraph": [
           "La vida y la confianza no deberían verse limitadas por el manejo de una ostomía. Por eso ofrecemos una línea completa de suministros de ostomía y dispositivos de apoyo para asegurar que pueda vivir cómodamente y con confianza. Nos aseguramos de que durante todo el proceso de pedido de suministros médicos su privacidad esté protegida mediante nuestros servicios discretos. Entendemos que estos productos requieren un manejo sensible para adaptarse a sus necesidades específicas.",
           "Además, nos esforzamos por hacer el proceso lo más sencillo posible, ya sea que pague de su bolsillo, utilice FSA/HSA o desee verificar cobertura con su seguro. Estamos comprometidos a proporcionar suministros médicos confiables y de alta calidad de proveedores reconocidos. Nuestro equipo está aquí para ayudarle a seleccionar todo lo necesario, desde bolsas y barreras hasta accesorios y productos para el cuidado de la piel, para que pueda vivir su vida al máximo."
@@ -725,10 +712,7 @@
       },
 
       "incontinence": {
-        "title": [
-          "Cuidado de Incontinencia",
-          "Dignidad y Comodidad Primero"
-        ],
+        "title": ["Cuidado de Incontinencia", "Dignidad y Comodidad Primero"],
         "paragraph": [
           "Entendemos que el cuidado de la incontinencia no solo requiere productos confiables y de alta calidad, sino también respeto y sensibilidad. Nuestro personal está capacitado para asegurar que el proceso de selección de suministros se realice teniendo en cuenta su comodidad, dignidad y estilo de vida. Manejamos cada aspecto de su atención con total discreción y respeto, garantizando que reciba los productos adecuados sin comprometer su privacidad personal.",
           "Desde protectores absorbentes, cubiertas para cama, pañales, briefs y almohadillas, nuestro equipo está dedicado a brindarle un servicio confiable y discreto que le ayude a mantener su independencia y confianza. Ya sea que esté pagando de su bolsillo, utilizando FSA/HSA o verificando elegibilidad con su seguro, estamos aquí para apoyarlo en cada paso del camino."
@@ -763,10 +747,7 @@
             "Actualmente aceptamos los siguientes seguros para equipos médicos duraderos. Estamos trabajando para ampliar nuestra disponibilidad en cuanto a seguros. Si tiene alguna pregunta o inquietud relacionada con el seguro, puede comunicarse con nosotros por",
             "o por"
           ],
-          "link": [
-            "teléfono",
-            "correo electrónico"
-          ]
+          "link": ["teléfono", "correo electrónico"]
         },
         "coverage": {
           "label": "¿Qué cubre mi seguro?",
@@ -815,10 +796,7 @@
         "Este es solo el comienzo de nuestro camino, y siempre estamos abiertos a recibir comentarios mientras continuamos dando forma a espacios que realmente cumplen su propósito. Ya sea que se detenga por combustible en una ubicación o visite una tienda centrada en conveniencia en otra, nuestro objetivo sigue siendo el mismo: brindar un lugar confiable y acogedor para nuestra comunidad.",
         "Lo invitamos a experimentar la diferencia en Golden Gate Gas & Goods, donde nuestro proceso de renovación continúa con usted, nuestros valiosos clientes, en el centro de cada decisión que tomamos. Esta transformación marca solo el primer capítulo de nuestra historia."
       ],
-      "button": [
-        "Contáctenos",
-        "Sobre Nosotros"
-      ]
+      "button": ["Contáctenos", "Sobre Nosotros"]
     },
 
     "elizabeth": {
@@ -883,19 +861,37 @@
           "title": "Bebidas y Snacks",
           "details": [
             { "content": "Granizados y batidos", "icon": "tabler:milkshake" },
-            { "content": "Hot dogs", "icon": "game-icons:hot-dog"},
-            { "content": "Café y bebidas", "icon": "simple-icons:buymeacoffee"},
-            { "content": "Snacks para llevar", "icon": "game-icons:chips-bag"},
-            { "content": "¡Más próximamente!", "icon": "bi:patch-exclamation-fill"}
+            { "content": "Hot dogs", "icon": "game-icons:hot-dog" },
+            {
+              "content": "Café y bebidas",
+              "icon": "simple-icons:buymeacoffee"
+            },
+            { "content": "Snacks para llevar", "icon": "game-icons:chips-bag" },
+            {
+              "content": "¡Más próximamente!",
+              "icon": "bi:patch-exclamation-fill"
+            }
           ]
         },
         {
           "title": "Esenciales de Tienda",
           "details": [
-            { "content": "Productos locales", "icon": "fluent:people-community-12-filled"},
-            { "content": "Cerveza y bebidas", "icon": "streamline:beer-pitch-solid"},
-            { "content": "Artículos de uso diario", "icon": "material-symbols:local-mall-sharp"},
-            { "content": "Favoritos locales", "icon": "material-symbols:family-home-rounded"}
+            {
+              "content": "Productos locales",
+              "icon": "fluent:people-community-12-filled"
+            },
+            {
+              "content": "Cerveza y bebidas",
+              "icon": "streamline:beer-pitch-solid"
+            },
+            {
+              "content": "Artículos de uso diario",
+              "icon": "material-symbols:local-mall-sharp"
+            },
+            {
+              "content": "Favoritos locales",
+              "icon": "material-symbols:family-home-rounded"
+            }
           ]
         }
       ]
@@ -925,8 +921,8 @@
         "no-more-events": "No hay más eventos para mostrar"
       },
       "image-carousel": {
-          "title": "Imágenes de la comunidad 2025"
-        }
+        "title": "Imágenes de la comunidad 2025"
+      }
     },
     "podcast": {
       "top": {
@@ -1081,25 +1077,51 @@
       "website": {
         "title": "Políticas del sitio web de Golden Gate Manor Inc.",
         "policy": [
-          { "content": "Términos y condiciones", "icon": "game-icons:scales", "to": "/company/policies/terms-and-conditions" },
-          { "content": "Política de privacidad", "icon": "solar:shield-bold", "to": "/company/policies/privacy" },
-          { "content": "Accesibilidad", "icon": "ic:round-handshake", "to": "/company/policies/accessibility" }
+          {
+            "content": "Términos y condiciones",
+            "icon": "game-icons:scales",
+            "to": "/company/policies/terms-and-conditions"
+          },
+          {
+            "content": "Política de privacidad",
+            "icon": "solar:shield-bold",
+            "to": "/company/policies/privacy"
+          },
+          {
+            "content": "Accesibilidad",
+            "icon": "ic:round-handshake",
+            "to": "/company/policies/accessibility"
+          }
         ]
       },
       "transportation": {
         "title": "Políticas de transporte",
-        "policy": [
-          { "content": "Política de cancelación de viajes" }
-        ],
+        "policy": [{ "content": "Política de cancelación de viajes" }],
         "button": "Contacto de transporte"
       },
       "medical-ecommerce": {
         "title": "Políticas de comercio médico",
         "policy": [
-          { "content": "Términos y condiciones", "icon": "game-icons:scales", "href": "https://goldengatemedicalsupply.com/pages/terms-conditions" },
-          { "content": "Política de privacidad", "icon": "solar:shield-bold", "href": "https://goldengatemedicalsupply.com/pages/privacy-policy" },
-          { "content": "Política de envío", "icon": "hugeicons:shipping-truck-02", "href": "https://goldengatemedicalsupply.com/pages/shipping-policy" },
-          { "content": "Política de devoluciones", "icon": "tabler:truck-return", "href": "https://goldengatemedicalsupply.com/pages/return-policy" }
+          {
+            "content": "Términos y condiciones",
+            "icon": "game-icons:scales",
+            "href": "https://goldengatemedicalsupply.com/pages/terms-conditions"
+          },
+          {
+            "content": "Política de privacidad",
+            "icon": "solar:shield-bold",
+            "href": "https://goldengatemedicalsupply.com/pages/privacy-policy"
+          },
+          {
+            "content": "Política de envío",
+            "icon": "hugeicons:shipping-truck-02",
+            "href": "https://goldengatemedicalsupply.com/pages/shipping-policy"
+          },
+          {
+            "content": "Política de devoluciones",
+            "icon": "tabler:truck-return",
+            "href": "https://goldengatemedicalsupply.com/pages/return-policy"
+          }
         ],
         "button": "Contacto de suministros médicos"
       },
@@ -1113,8 +1135,8 @@
           ]
         },
         "policy-items": [
-          { 
-            "title": "Aceptación de los Términos", 
+          {
+            "title": "Aceptación de los Términos",
             "content": {
               "paragraph": "Al acceder o utilizar este sitio web (el “Sitio”), usted acepta estar sujeto a estos Términos y Condiciones (“Términos”). Si no está de acuerdo, no debe utilizar el Sitio. El uso continuo después de que publiquemos revisiones constituye la aceptación de los Términos actualizados."
             }
@@ -1177,7 +1199,7 @@
             "title": "Cookies y Analítica",
             "content": {
               "paragraph": "Utilizamos cookies de Google Analytics para comprender el tráfico del sitio y mejorar su rendimiento. Al utilizar el Sitio, usted acepta la colocación de cookies de análisis en su navegador. Un aviso de cookies aparece en su primera visita; el uso continuo implica su aceptación. Para más detalles, consulte nuestra próxima Política de Cookies."
-            }    
+            }
           },
           {
             "title": "Propiedad Intelectual",
@@ -1323,36 +1345,36 @@
           "title": "Cómo Recopilamos su Información Personal",
           "paragraph": "Recopilamos Información Personal que usted proporciona voluntariamente o que ha sido proporcionada mediante algún otro contacto directo con usted. Cuando accede a nuestro sitio web, también podemos recopilar de manera pasiva o automática Información Personal adicional y datos no personalmente identificables relacionados con los medios que utiliza para acceder a nuestro sitio web y el contenido que visualiza al utilizarlo, por ejemplo, mediante cookies en nuestro sitio web.",
           "ol-item": [
-            { 
-              "title": "Solicitudes de Cotización de Unidades", 
+            {
+              "title": "Solicitudes de Cotización de Unidades",
               "information": [
                 "Si solicita una cotización de precio para una unidad, es posible que se le solicite proporcionar Información Personal como su nombre, dirección, número de teléfono, código postal, dirección de correo electrónico y otra información transaccional relacionada con la compra deseada de la unidad. Su Información Personal puede utilizarse para comunicarnos con usted respecto a la cotización solicitada o para solicitar información adicional.",
                 "Aunque no es obligatorio, usted puede proporcionar voluntariamente información financiera para que se pueda determinar qué unidades cumplen con los parámetros de su solicitud de cotización o su precalificación para financiamiento, si está interesado."
               ]
             },
-            { 
-              "title": "Pedidos de Unidades en Línea", 
+            {
+              "title": "Pedidos de Unidades en Línea",
               "information": [
                 "Si envía un pedido de unidad en línea, deberá proporcionar Información Personal para completar la transacción de compra. Esta información incluye su nombre, dirección de correo electrónico, dirección de envío y también información financiera para facilitar el pago de la transacción y fines de facturación.",
                 "Si su pedido en línea no se procesa correctamente, su Información Personal puede utilizarse para comunicarnos con usted y finalizar la transacción. Para procesar una transacción de compra, puede ser necesario complementar la información que usted proporciona con información recibida de fuentes de terceros para obtener la aprobación de una institución financiera.",
                 "Su Información Personal también puede compartirse con terceros para ayudar a finalizar la transacción de compra, como compañías de envío (por ejemplo, UPS, USPS, FedEx) y compañías procesadoras de tarjetas de crédito. Estas compañías de terceros no retienen, comparten, almacenan ni utilizan Información Personal para ningún propósito secundario fuera del propósito de proporcionar los servicios requeridos, según nuestro conocimiento."
               ]
             },
-            { 
+            {
               "title": "Cálculos de Pagos Mensuales",
               "information": [
                 "Si utiliza la herramienta digital de ventas para calcular su pago mensual estimado, no está obligado a proporcionar Información Personal a menos que decida comunicarse con el distribuidor para obtener información adicional sobre la unidad que le interesa.",
                 "Si decide comunicarse con el distribuidor, se le solicitará proporcionar su nombre, dirección de correo electrónico, dirección de envío y número de teléfono. Su Información Personal será utilizada para comunicarnos con usted respecto a su consulta."
               ]
             },
-            { 
-              "title": "Archivos de Registro", 
+            {
+              "title": "Archivos de Registro",
               "information": [
                 "Utilizamos direcciones IP para analizar tendencias, administrar el sitio, rastrear el movimiento de los usuarios y recopilar información demográfica y geográfica amplia para uso agregado. Las direcciones IP solo se vinculan con Información Personal si usted envía un formulario solicitando información adicional."
               ]
             },
-            { 
-              "title": "Encuestas y Concursos", 
+            {
+              "title": "Encuestas y Concursos",
               "information": [
                 "De vez en cuando, este sitio web puede ofrecer concursos o solicitar información mediante encuestas para investigar su opinión sobre servicios actuales o posibles nuevos servicios que puedan ofrecerse. La participación en estas encuestas o concursos es completamente voluntaria y usted no está obligado a divulgar la Información Personal solicitada, como su nombre, dirección de correo electrónico, dirección postal o información demográfica (por ejemplo, edad o código postal).",
                 "Si decide participar en un concurso, la información de contacto proporcionada solo se utilizará para notificar a los ganadores y otorgar premios. La información recopilada mediante encuestas solo se utilizará con el propósito de monitorear o mejorar el uso y la satisfacción de este sitio web."
@@ -1401,9 +1423,7 @@
               ]
             },
             {
-              "paragraph": [
-                "Ayudarle a localizar un distribuidor cercano."
-              ]
+              "paragraph": ["Ayudarle a localizar un distribuidor cercano."]
             },
             {
               "paragraph": [
@@ -1566,17 +1586,17 @@
             "Los usuarios también pueden cancelar su suscripción a boletines utilizando el enlace de cancelación de suscripción ubicado en la parte inferior del boletín."
           ]
         },
-  
+
         "accessing-website": {
           "title": "Acceso a este Sitio Web",
           "paragraph": "Este sitio web está alojado en servidores ubicados en los Estados Unidos. Como tal, su conexión será a través de y hacia servidores ubicados en los Estados Unidos. Cualquier Información Personal que proporcione durante su visita será procesada y mantenida en nuestros servidores web y otros sistemas internos ubicados dentro de los Estados Unidos. Al utilizar este sitio web, usted acepta la recopilación y el uso de sus datos anónimos, Información Personal y/o envíos de formularios para fines de análisis y/o publicidad."
         },
-  
+
         "policy-updates": {
           "title": "Actualizaciones a esta Política de Privacidad",
           "paragraph": "Nos reservamos el derecho de modificar y actualizar esta Política de Privacidad. Estos cambios se realizarán cuando sea apropiado y de manera oportuna. Le recomendamos revisar esta Política de Privacidad periódicamente para asegurarse de estar al tanto de cualquier cambio que podamos haber realizado. El uso continuo de nuestro sitio web después de una actualización de esta Política de Privacidad indica su aceptación de dichos cambios."
         },
-  
+
         "exercising-rights": {
           "title": "Cómo Ejercer sus Derechos y Contactarnos",
           "top": {
@@ -1663,10 +1683,7 @@
         "definitions": {
           "title": "Definiciones",
           "table": {
-            "th": [
-              "Término",
-              "Definición"
-            ],
+            "th": ["Término", "Definición"],
             "rows": [
               {
                 "td": [
@@ -1764,16 +1781,10 @@
         "enforcement": {
           "title": "Cumplimiento (Sistema de Infracciones)",
           "table": {
-            "th": [
-              "Infracción",
-              "Cantidad de Infracciones"
-            ],
+            "th": ["Infracción", "Cantidad de Infracciones"],
             "rows": [
               {
-                "td": [
-                  "Ausencia",
-                  "1 infracción"
-                ]
+                "td": ["Ausencia", "1 infracción"]
               },
               {
                 "td": [
@@ -1869,6 +1880,128 @@
       "map": {
         "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
       }
-    } 
+    },
+    "employment": {
+      "hero-card": {
+        "title": "¿Busca empleo?",
+        "ulist": {
+          "intro": "Estamos buscando posibles empleados que sean:",
+          "items": [
+            "Confiables y puntuales",
+            "Orientados a soluciones",
+            "Amables con clientes y compañeros de trabajo",
+            "Orientados al trabajo en equipo",
+            "Con ganas de aprender"
+          ]
+        },
+        "button": "¡Solicite Ahora!"
+      },
+      "job-opportunities": {
+        "title": "Oportunidades de Empleo",
+        "cards": [
+          {
+            "title": ["Transporte", "Puestos de Transporte"],
+            "description": "Únase a nuestro equipo de conductores y despachadores dedicados",
+            "positions": [
+              {
+                "department": "City Cab",
+                "jobs": [
+                  "Despachador —",
+                  "Conductor —",
+                  "Asistente Administrativo —"
+                ]
+              },
+              {
+                "department": "NEMT Medicaid",
+                "jobs": ["Servicio al Cliente —", "Conductor —"]
+              }
+            ]
+          },
+          {
+            "title": ["Vida Asistida", "Puestos de Vida Asistida"],
+            "description": "Cuide de nuestra comunidad con compasión",
+            "positions": [
+              {
+                "department": "Centro de Atención Asistida",
+                "jobs": ["QMAP —", "PCP —"]
+              }
+            ]
+          },
+          {
+            "title": ["Suministros Médicos", "Puestos de Suministros Médicos"],
+            "description": "Apoye la salud y el bienestar de nuestra comunidad",
+            "positions": [
+              {
+                "department": "Tienda DME",
+                "jobs": [
+                  "Especialista DME —",
+                  "Conductor de Entregas —",
+                  "Técnico de Inventario —"
+                ]
+              }
+            ]
+          },
+          {
+            "title": ["Gasolinera", "Puestos de Gasolinera"],
+            "description": "Únase a nuestra nueva aventura",
+            "positions": [
+              {
+                "department": "Tienda de Conveniencia",
+                "jobs": ["Gerente —", "Subgerente —", "Empleado —"]
+              }
+            ]
+          }
+        ],
+        "button": {
+          "apply-now": "Solicite Ahora",
+          "job-description": "Descripción del Puesto"
+        }
+      },
+      "physical-application": {
+        "title": "¿Prefiere completar una solicitud física?",
+        "ulist": {
+          "intro": "A veces es más fácil completar una solicitud a mano o escribirla y entregarla en persona o enviarla por correo electrónico. Si ese es su método preferido para solicitar empleo, utilice los enlaces a continuación para descargar y completar la solicitud. Una vez terminada, puede:",
+          "items": [
+            ["Traer la solicitud a nuestra Oficina Administrativa en", "o"],
+            [
+              "Enviarla por correo electrónico a",
+              " (simplemente coloque en el asunto su nombre y apellido junto con la palabra solicitud. Si está completando una solicitud general, indique para qué puesto está aplicando.)"
+            ]
+          ]
+        },
+        "paragraph": "Si está solicitando un puesto de conductor, asegúrese de utilizar la solicitud específica para conductores y de leer la nota debajo de los enlaces PDF de las solicitudes. ¡Gracias por su interés en unirse al equipo de Golden Gate Manor Inc.!",
+        "cards": [
+          "Solicitud para Conductores",
+          "Solicitud General",
+          "Solicitud de Vida Asistida"
+        ],
+        "please-note": {
+          "paragraph": [
+            "Si la solicitud es para un puesto de conducción, se requiere un Registro de Vehículo Motorizado (MVR) de los últimos 30 días. Puede obtener un MVR no certificado que muestre un historial de conducción de 7 años en el DMV en",
+            "o en línea utilizando el",
+            "y solicitando un historial de conducción. El MVR debe entregarse antes de que se considere una entrevista."
+          ],
+          "link": "DMV - Formulario en Línea de MVR"
+        }
+      },
+      "cta": {
+        "title": "Explore Oportunidades Profesionales",
+        "description": "¡Siempre estamos buscando personas apasionadas para unirse a nuestro diverso equipo! A medida que nuestra empresa continúa creciendo, surgen nuevas oportunidades en nuestras diferentes divisiones. ¡Descubra dónde puede generar un impacto!",
+        "button-label": "Únase a Nuestro Equipo"
+      },
+      "about-us": {
+        "top": {
+          "title": "Sobre Golden Gate Manor Inc.",
+          "motto": "LAS PERSONAS QUE VALORAN SU CALIDAD DE VIDA PUEDEN DEPENDER DE NOSOTROS.",
+          "paragraph": "¡Bienvenido a Golden Gate Manor! Aquí en Golden Gate Manor, nuestra misión es simple: mejorar la calidad de vida todos los días. Somos una empresa familiar que ofrece atención altamente personalizada, compasiva y directa a miembros de nuestra comunidad en Pueblo, Colorado. Nuestros servicios incluyen vida asistida, transporte médico y no médico, y venta de suministros médicos."
+        },
+        "our-team": {
+          "title": "Nuestro Equipo",
+
+          "paragraph": "El equipo administrativo de Golden Gate Manor cuenta con más de 35 años de experiencia en el cuidado y apoyo de adultos mayores, personas con enfermedades mentales y la supervisión de operaciones de transporte. Nuestra misión es fomentar un ambiente acogedor y relajante, ya sea que alguien viva en nuestras instalaciones de vida asistida o utilice nuestros servicios de transporte. Mantener este ambiente es parte de nuestro estándar de atención y es una expectativa para todos los empleados que trabajan en Golden Gate Manor."
+        },
+        "button": "Leer Más"
+      }
+    }
   }
 }
