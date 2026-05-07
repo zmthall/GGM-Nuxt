@@ -231,15 +231,13 @@
                 <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.privacy.unsubscribe.title') }}</h2>
                 <p class="text-xl text-brand-main-text">
                     {{ $t('company.policies.privacy.unsubscribe.paragraph[0]') }}
-                    <a 
-                        href="mailto:contact@goldengatemanor.com"
-                        class="link">contact@goldengatemanor.com
-                    </a>. 
+                    <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>. 
                     {{ $t('company.policies.privacy.unsubscribe.paragraph[1]') }}
                 </p>
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
+        <!-- Accessing the Website -->
         <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
@@ -251,6 +249,7 @@
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
+        <!-- Policy Updates -->
         <BaseLayoutPageSection class="cv-auto">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
@@ -262,6 +261,7 @@
             </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
 
+        <!-- Exercising Rights -->
         <BaseLayoutPageSection class="cv-auto" margin="pDefault">
             <BaseLayoutPageContainer class="space-y-2">
                 <h2 class="text-2xl font-bold text-brand-primary">
@@ -269,10 +269,7 @@
                 </h2>
                 <p class="text-xl text-brand-main-text">
                     {{ $t('company.policies.privacy.exercising-rights.top.paragraph') }}
-                    <a 
-                        href="mailto:contact@goldengatemanor.com"
-                        class="link">contact@goldengatemanor.com
-                    </a>.
+                    <a href="mailto:contact@goldengatemanor.com" class="link">contact@goldengatemanor.com</a>.
                 </p>
                 <p class="text-xl text-brand-main-text policy-list-title">
                     {{ $t('company.policies.privacy.exercising-rights.list.intro') }}

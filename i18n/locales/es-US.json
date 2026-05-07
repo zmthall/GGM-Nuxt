@@ -1597,79 +1597,79 @@
             ]
           }
         }
+      },
+      "accessibility": {
+        "meta": {
+          "title": "Declaración de Accesibilidad",
+          "description": "Golden Gate Manor Inc. está comprometido a garantizar la accesibilidad digital y física para personas con discapacidades. Lea aquí nuestra declaración completa de accesibilidad."
+        },
+        "commitment": {
+          "title": "Nuestro Compromiso",
+          "paragraphs": [
+            "Como empresa que sirve al bien público, estamos comprometidos con brindar accesibilidad digital para las personas con discapacidades. Continuamos trabajando para mejorar la experiencia del usuario para todos mientras aplicamos herramientas y estándares de accesibilidad relevantes.",
+            "Nuestro sitio está construido con código que cumple con los estándares W3C para HTML y CSS. El sitio se muestra correctamente en los navegadores actuales que han sido probados usando código HTML/CSS conforme a estándares y debería seguir mostrándose correctamente en futuros navegadores."
+          ]
+        },
+        "measures": {
+          "title": "Medidas para Apoyar la Accesibilidad",
+          "intro": "Nuestra empresa toma las siguientes medidas para garantizar la accesibilidad del sitio:",
+          "items": [
+            "Garantiza que la accesibilidad forme parte de su proceso de mejora continua",
+            "Emplea métodos formales de aseguramiento de calidad de accesibilidad",
+            "Se mantiene al tanto de los aspectos técnicos y legales de la accesibilidad en la medida de sus posibilidades"
+          ],
+          "paragraphs": [
+            "Como empresa, hacemos todo lo posible para garantizar que la información relacionada con nuestros precios, promociones y eventos sea comprensible para todos los visitantes, así como también nuestros horarios de atención y ubicación.",
+            "Aunque no existen requisitos legales claramente definidos para los sitios web comerciales que sirven al público, tenemos un fuerte compromiso con satisfacer las necesidades de todos los visitantes. Si encuentra contenido o funciones del sitio que no sean accesibles para personas con discapacidades, puede comunicarse con nosotros usando el formulario a continuación o enviándonos un correo electrónico directamente a",
+            "Por favor proporcione la página y una breve descripción del contenido o funcionalidad donde encontró el problema, junto con una sugerencia de mejora. Agradecemos sus comentarios y observaciones mientras continuamos nuestro camino para adaptarnos a todos los visitantes de nuestro sitio en términos de accesibilidad."
+          ]
+        },
+        "language": {
+          "title": "Accesibilidad de Idioma",
+          "paragraphs": [
+            "Actualmente estamos en el proceso de hacer que nuestro sitio web sea más accesible para el contenido traducido, para que más visitantes puedan entender más fácilmente la información que proporcionamos.",
+            "En este momento, partes de este sitio web pueden estar traducidas del inglés al español mediante herramientas de traducción asistidas por IA. Aún no todo el contenido ha sido traducido, y algunas páginas todavía pueden estar en proceso de actualización o traducción.",
+            "Aunque hacemos todo lo posible por ofrecer contenido traducido claro y útil, la traducción automatizada puede no ser siempre completamente precisa, completa o correcta en su contexto.",
+            "Si nota un error en el contenido traducido, comuníquese con nosotros usando el formulario a continuación y seleccione 'Translation' como el motivo de su mensaje. Al comunicarse, incluya la página donde aparece el problema y el texto traducido específico que considera incorrecto para que podamos revisarlo y mejorarlo.",
+            "Agradecemos su paciencia y sus comentarios mientras seguimos trabajando para hacer que nuestro sitio web sea más accesible y comprensible para todos los visitantes."
+          ]
+        },
+        "contact": {
+          "title": "Contáctenos",
+          "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
+        }
       }
-    } 
-  },
-  "accessibility": {
-    "meta": {
-      "title": "Declaración de Accesibilidad",
-      "description": "Golden Gate Manor Inc. está comprometido a garantizar la accesibilidad digital y física para personas con discapacidades. Lea aquí nuestra declaración completa de accesibilidad."
-    },
-    "commitment": {
-      "title": "Nuestro Compromiso",
-      "paragraphs": [
-        "Como empresa que sirve al bien público, estamos comprometidos con brindar accesibilidad digital para las personas con discapacidades. Continuamos trabajando para mejorar la experiencia del usuario para todos mientras aplicamos herramientas y estándares de accesibilidad relevantes.",
-        "Nuestro sitio está construido con código que cumple con los estándares W3C para HTML y CSS. El sitio se muestra correctamente en los navegadores actuales que han sido probados usando código HTML/CSS conforme a estándares y debería seguir mostrándose correctamente en futuros navegadores."
-      ]
-    },
-    "measures": {
-      "title": "Medidas para Apoyar la Accesibilidad",
-      "intro": "Nuestra empresa toma las siguientes medidas para garantizar la accesibilidad del sitio:",
-      "items": [
-        "Garantiza que la accesibilidad forme parte de su proceso de mejora continua",
-        "Emplea métodos formales de aseguramiento de calidad de accesibilidad",
-        "Se mantiene al tanto de los aspectos técnicos y legales de la accesibilidad en la medida de sus posibilidades"
-      ],
-      "paragraphs": [
-        "Como empresa, hacemos todo lo posible para garantizar que la información relacionada con nuestros precios, promociones y eventos sea comprensible para todos los visitantes, así como también nuestros horarios de atención y ubicación.",
-        "Aunque no existen requisitos legales claramente definidos para los sitios web comerciales que sirven al público, tenemos un fuerte compromiso con satisfacer las necesidades de todos los visitantes. Si encuentra contenido o funciones del sitio que no sean accesibles para personas con discapacidades, puede comunicarse con nosotros usando el formulario a continuación o enviándonos un correo electrónico directamente a",
-        "Por favor proporcione la página y una breve descripción del contenido o funcionalidad donde encontró el problema, junto con una sugerencia de mejora. Agradecemos sus comentarios y observaciones mientras continuamos nuestro camino para adaptarnos a todos los visitantes de nuestro sitio en términos de accesibilidad."
-      ]
-    },
-    "language": {
-      "title": "Accesibilidad de Idioma",
-      "paragraphs": [
-        "Actualmente estamos en el proceso de hacer que nuestro sitio web sea más accesible para el contenido traducido, para que más visitantes puedan entender más fácilmente la información que proporcionamos.",
-        "En este momento, partes de este sitio web pueden estar traducidas del inglés al español mediante herramientas de traducción asistidas por IA. Aún no todo el contenido ha sido traducido, y algunas páginas todavía pueden estar en proceso de actualización o traducción.",
-        "Aunque hacemos todo lo posible por ofrecer contenido traducido claro y útil, la traducción automatizada puede no ser siempre completamente precisa, completa o correcta en su contexto.",
-        "Si nota un error en el contenido traducido, comuníquese con nosotros usando el formulario a continuación y seleccione 'Translation' como el motivo de su mensaje. Al comunicarse, incluya la página donde aparece el problema y el texto traducido específico que considera incorrecto para que podamos revisarlo y mejorarlo.",
-        "Agradecemos su paciencia y sus comentarios mientras seguimos trabajando para hacer que nuestro sitio web sea más accesible y comprensible para todos los visitantes."
-      ]
     },
     "contact": {
-      "title": "Contáctenos",
-      "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
-    }
-  },
-  "contact": {
-    "meta": {
-      "title": "Contactar a Golden Gate Manor Inc. | Sur de Colorado",
-      "description": "Comuníquese con Golden Gate Manor Inc. para servicios de transporte, vida asistida y suministros médicos. Orgullosamente sirviendo a Pueblo y el sur de Colorado."
-    },
-    "sections": {
-      "left": {
-        "title": "PÓNGASE EN CONTACTO:",
-        "description": "Envíenos un mensaje para comunicarse con uno de los miembros de nuestro equipo. Estamos aquí para atender cualquier consulta, pregunta o inquietud que pueda tener sobre nuestros servicios de transporte, vida asistida o suministros médicos."
+      "meta": {
+        "title": "Contactar a Golden Gate Manor Inc. | Sur de Colorado",
+        "description": "Comuníquese con Golden Gate Manor Inc. para servicios de transporte, vida asistida y suministros médicos. Orgullosamente sirviendo a Pueblo y el sur de Colorado."
       },
-      "note": {
-        "paragraphs": [
-          "Este formulario está destinado específicamente para consultas generales y asuntos relacionados con el servicio al cliente. Si necesita programar un viaje con nuestro servicio de transporte, utilice nuestro formulario dedicado de",
-          ".",
-          "Damos prioridad a las solicitudes de transporte enviadas a través de ese formulario y no podemos garantizar la atención de solicitudes realizadas mediante este formulario de contacto. ¡Agradecemos su comprensión y esperamos poder ayudarle!"
-        ],
-        "link": "Programar un Viaje"
+      "sections": {
+        "left": {
+          "title": "PÓNGASE EN CONTACTO:",
+          "description": "Envíenos un mensaje para comunicarse con uno de los miembros de nuestro equipo. Estamos aquí para atender cualquier consulta, pregunta o inquietud que pueda tener sobre nuestros servicios de transporte, vida asistida o suministros médicos."
+        },
+        "note": {
+          "paragraphs": [
+            "Este formulario está destinado específicamente para consultas generales y asuntos relacionados con el servicio al cliente. Si necesita programar un viaje con nuestro servicio de transporte, utilice nuestro formulario dedicado de",
+            ".",
+            "Damos prioridad a las solicitudes de transporte enviadas a través de ese formulario y no podemos garantizar la atención de solicitudes realizadas mediante este formulario de contacto. ¡Agradecemos su comprensión y esperamos poder ayudarle!"
+          ],
+          "link": "Programar un Viaje"
+        },
+        "business": {
+          "phone": "Teléfono",
+          "hours": "Horario",
+          "connected": "Conéctese con Nosotros:"
+        },
+        "form": {
+          "title": "CONTÁCTENOS:"
+        }
       },
-      "business": {
-        "phone": "Teléfono",
-        "hours": "Horario",
-        "connected": "Conéctese con Nosotros:"
-      },
-      "form": {
-        "title": "CONTÁCTENOS:"
+      "map": {
+        "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
       }
-    },
-    "map": {
-      "alt": "Vista de Google Maps del área central y sur de Pueblo mostrando las ubicaciones de Golden Gate Manor Inc. como marcadores en el mapa"
-    }
+    } 
   }
 }

@@ -2,13 +2,13 @@
   <div class="space-y-4">
     <BaseLayoutPageSection margin="pTop" bg="transparent">
       <BaseLayoutPageContainer>
-        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.commitment.title') }}</h2>
+        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.commitment.title') }}</h2>
         <div class="space-y-2">
           <p class="text-xl text-brand-main-text">
-              {{ $t('accessibility.commitment.paragraphs[0]')}}
+              {{ $t('company.policies.accessibility.commitment.paragraphs[0]')}}
           </p>
           <p class="text-xl text-brand-main-text">
-              {{ $t('accessibility.commitment.paragraphs[1]') }}
+              {{ $t('company.policies.accessibility.commitment.paragraphs[1]') }}
           </p>
         </div>
       </BaseLayoutPageContainer>
@@ -16,23 +16,23 @@
 
     <BaseLayoutPageSection bg="transparent">
       <BaseLayoutPageContainer>
-        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.measures.title') }}</h2>
+        <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.measures.title') }}</h2>
         <div class="space-y-2">
           <p class="text-xl text-brand-main-text">
-              {{ $t('accessibility.measures.intro') }}
+              {{ $t('company.policies.accessibility.measures.intro') }}
           </p>
           <ul class="!mt-0 list-disc ml-8 text-xl text-brand-main-text">
-              <li>{{ $t('accessibility.measures.items[0]') }}</li>
-              <li>{{ $t('accessibility.measures.items[1]') }}</li>
-              <li>{{ $t('accessibility.measures.items[2]') }}</li>
+              <li>{{ $t('company.policies.accessibility.measures.items[0]') }}</li>
+              <li>{{ $t('company.policies.accessibility.measures.items[1]') }}</li>
+              <li>{{ $t('company.policies.accessibility.measures.items[2]') }}</li>
           </ul>
           <p class="text-xl text-brand-main-text">
-              {{ $t('accessibility.measures.paragraphs[0]') }}
+              {{ $t('company.policies.accessibility.measures.paragraphs[0]') }}
           </p>
           <p class="text-xl text-brand-main-text">
-              {{ $t('accessibility.measures.paragraphs[1]') }}
+              {{ $t('company.policies.accessibility.measures.paragraphs[1]') }}
               <a :href="`mailto:${emails.accessibility}`" class="link break-all">{{ emails.accessibility }}</a>. 
-              {{ $t('accessibility.measures.paragraphs[2]') }}
+              {{ $t('company.policies.accessibility.measures.paragraphs[2]') }}
           </p>
         </div>
       </BaseLayoutPageContainer>
@@ -40,22 +40,22 @@
 
     <BaseLayoutPageSection bg="transparent">
     <BaseLayoutPageContainer>
-      <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.language.title')}}</h2>
+      <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.language.title')}}</h2>
       <div class="space-y-2">
         <p class="text-xl text-brand-main-text">
-            {{ $t('accessibility.language.paragraphs[0]') }}
+            {{ $t('company.policies.accessibility.language.paragraphs[0]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            {{ $t('accessibility.language.paragraphs[1]') }}
+            {{ $t('company.policies.accessibility.language.paragraphs[1]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            {{ $t('accessibility.language.paragraphs[2]') }}
+            {{ $t('company.policies.accessibility.language.paragraphs[2]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            {{ $t('accessibility.language.paragraphs[3]') }}
+            {{ $t('company.policies.accessibility.language.paragraphs[3]') }}
         </p>
         <p class="text-xl text-brand-main-text">
-            {{ $t('accessibility.language.paragraphs[4]') }}
+            {{ $t('company.policies.accessibility.language.paragraphs[4]') }}
         </p>
       </div>
     </BaseLayoutPageContainer>
@@ -65,10 +65,10 @@
       <BaseLayoutPageSection margin="pDefault" bg="transparent">
         <BaseLayoutPageContainer>
           <div>
-            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('accessibility.contact.title') }}</h2>
+            <h2 class="text-2xl font-bold text-brand-primary">{{ $t('company.policies.accessibility.contact.title') }}</h2>
             <div class="space-y-4">
               <p class="text-xl text-brand-main-text">
-                  {{ $t('accessibility.contact.paragraph') }}
+                  {{ $t('company.policies.accessibility.contact.paragraph') }}
                   <a :href="`mailto:${emails.accessibility}`" class="link break-all">
                       {{ emails.accessibility }}</a>.
               </p>
@@ -84,8 +84,8 @@
 <script lang="ts" setup>
 import { emails } from '@/data/company.json'
 
-const pageTitle = computed(() => $t('accessibility.meta.title'))
-const pageDescription = computed(() => $t('accessibility.meta.description'))
+const pageTitle = computed(() => $t('company.policies.accessibility.meta.title'))
+const pageDescription = computed(() => $t('company.policies.accessibility.meta.description'))
 
 definePageMeta({
   title: 'Accessibility Statement',
