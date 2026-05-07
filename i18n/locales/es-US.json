@@ -1638,6 +1638,205 @@
           "title": "Contáctenos",
           "paragraph": "Si desea reportar un problema de accesibilidad, tiene alguna pregunta, necesita ayuda o desea reportar un problema de traducción, comuníquese con nosotros a través del formulario de contacto a continuación o por correo electrónico a"
         }
+      },
+      "ride-cancellation": {
+        "top": {
+          "title": "Política de Cancelación de Viajes y Ausencias",
+          "version": "Versión:",
+          "updated": "Última actualización:"
+        },
+        "purpose": {
+          "title": "Propósito",
+          "paragraph": "Las cancelaciones tardías frecuentes y las ausencias de pasajeros dejan espacios de vehículos sin utilizar, aumentan los costos operativos y reducen el acceso para los pasajeros que realmente necesitan el servicio. Esta política establece requisitos claros de notificación, medidas de cumplimiento y reglas de reprogramación para fomentar cancelaciones oportunas y mejorar la eficiencia de la programación."
+        },
+        "scope": {
+          "title": "Alcance",
+          "ulist": {
+            "intro": "Esta política cubre todos los viajes programados proporcionados por Golden Gate Manor Inc., incluyendo:",
+            "items": [
+              "Viajes NEMT (financiados por Medicaid)",
+              "Transporte no médico autorizado por DSS/DHS",
+              "Servicio de transporte médico no urgente (NEMT) bajo demanda y programado de Pueblo City Cab"
+            ]
+          }
+        },
+        "definitions": {
+          "title": "Definiciones",
+          "table": {
+            "th": [
+              "Término",
+              "Definición"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "Cancelación",
+                  "El pasajero notifica a Despacho y el viaje es eliminado del itinerario."
+                ]
+              },
+              {
+                "td": [
+                  "Cancelación a tiempo",
+                  "Aviso recibido ≥24 horas antes de la recogida (≥48 horas es preferido). Para viajes de larga distancia, ≥24 horas es obligatorio."
+                ]
+              },
+              {
+                "td": [
+                  "Cancelación el mismo día",
+                  "Aviso recibido <24 horas pero ≥2 horas antes de la recogida."
+                ]
+              },
+              {
+                "td": [
+                  "Ausencia",
+                  "El conductor llega, espera el período de gracia (5-10 minutos), y el pasajero no responde o rechaza el servicio."
+                ]
+              },
+              {
+                "td": [
+                  "Infracción",
+                  "Una ausencia registrada o una cancelación con menos de 2 horas de aviso contada para los límites de cumplimiento."
+                ]
+              }
+            ]
+          }
+        },
+        "notice-requirements": {
+          "title": "Requisitos de Aviso",
+          "table": {
+            "th": [
+              "Tipo de Viaje",
+              "Aviso Mínimo (A Tiempo)",
+              "Ventana de Cancelación el Mismo Día"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "Viajes locales (≤40 millas ida y vuelta)",
+                  "≥24 horas",
+                  "≥2 horas o durante la llamada inicial de confirmación"
+                ]
+              },
+              {
+                "td": [
+                  "Larga distancia (>40 millas ida y vuelta)",
+                  "≥24 horas (obligatorio)",
+                  "N/A - cancelaciones con menos de 24 horas cuentan como ausencia"
+                ]
+              },
+              {
+                "td": [
+                  "Viajes recurrentes o permanentes",
+                  "Seguir la regla de viaje local o larga distancia para cada ocurrencia",
+                  "Los pasajeros deben solicitar nuevos viajes ≥24-48 horas antes para maximizar la disponibilidad."
+                ]
+              }
+            ]
+          }
+        },
+        "how-to-cancel": {
+          "title": "Cómo Cancelar",
+          "olists": [
+            {
+              "intro": "Llame a nuestros representantes de servicio al cliente/Despacho:",
+              "items": [
+                "Las líneas administrativas están disponibles de 8:00AM a 4:00PM. Llame al",
+                "Si es después del horario de oficina, llame a nuestra línea de despacho disponible 24/7 al"
+              ]
+            },
+            {
+              "intro": "La cancelación solo es efectiva cuando un despachador confirma verbalmente que el viaje ha sido eliminado del horario.",
+              "items": [
+                "Otros medios (formularios web, correo electrónico o aplicaciones) no se supervisan continuamente y no deben utilizarse para cancelaciones urgentes."
+              ]
+            }
+          ]
+        },
+        "grace-and-driver-arrival": {
+          "ulist": {
+            "items": [
+              "El conductor llama al llegar.",
+              "El pasajero tiene entre 5 y 10 minutos para abordar.",
+              "Después del período de gracia, el viaje se marcará como ausencia a menos que el pasajero se comunique y Despacho apruebe una espera adicional."
+            ]
+          }
+        },
+        "enforcement": {
+          "title": "Cumplimiento (Sistema de Infracciones)",
+          "table": {
+            "th": [
+              "Infracción",
+              "Cantidad de Infracciones"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "Ausencia",
+                  "1 infracción"
+                ]
+              },
+              {
+                "td": [
+                  "Cancelación con menos de 2 horas de aviso",
+                  "1 infracción"
+                ]
+              }
+            ]
+          },
+          "ulist": {
+            "items": [
+              "La acumulación de tres infracciones resultará en la suspensión y cancelación de todos los servicios para el cliente. Esta política protege nuestra capacidad de servir a los miembros de la comunidad que necesitan estos servicios esenciales y siguen las normas establecidas.",
+              "Registramos y rastreamos diligentemente todas las infracciones en las cuentas de los clientes debido a la importancia de mantener los estándares del servicio, y estos registros se conservan permanentemente sin vencimiento.",
+              "Las decisiones de reincorporación quedan a la entera discreción de Golden Gate Manor Inc. La empresa se reserva el derecho de rechazar solicitudes de reincorporación sin obligación de reconsiderarlas."
+            ]
+          }
+        },
+        "exceptions": {
+          "title": "Excepciones",
+          "ulist": {
+            "intro": "Golden Gate Manor Inc. puede eliminar infracciones bajo las siguientes circunstancias:",
+            "items": [
+              "Emergencias médicas documentadas o admisión hospitalaria",
+              "Condiciones climáticas severas o cierres oficiales de carreteras",
+              "Errores de Despacho o del conductor"
+            ]
+          },
+          "paragraph": "Todas las solicitudes de exención se evalúan caso por caso. A los clientes con un patrón de problemas recurrentes se les puede negar la exención independientemente de las circunstancias individuales."
+        },
+        "rescheduling": {
+          "title": "Reprogramación Después de una Cancelación",
+          "ulist": {
+            "items": [
+              "Las cancelaciones realizadas a tiempo pueden reprogramarse inmediatamente, sujetas a disponibilidad de vehículos.",
+              "Las cancelaciones el mismo día pueden solicitar un nuevo horario, pero la disponibilidad no está garantizada.",
+              "Siempre que sea posible, todas las nuevas solicitudes de viaje deben hacerse al menos ≥24 horas antes de la recogida deseada."
+            ]
+          }
+        },
+        "recordkeeping": {
+          "title": "Mantenimiento de Registros",
+          "ulist": {
+            "items": [
+              "Las cancelaciones y ausencias se registran en el expediente del pasajero y en el software de despacho.",
+              "Los registros se conservan durante 7 años para cumplir con las regulaciones estatales."
+            ]
+          }
+        },
+        "policy-review": {
+          "title": "Revisión y Actualizaciones de la Política",
+          "ulist": {
+            "items": [
+              "Esta política se revisa anualmente para garantizar que siga siendo efectiva y esté alineada con los requisitos regulatorios y las necesidades operativas.",
+              "Pueden emitirse actualizaciones provisionales cuando los cambios regulatorios u operativos lo requieran."
+            ]
+          }
+        },
+        "contact": {
+          "paragraph": [
+            "Las preguntas sobre esta política o las apelaciones de infracciones registradas pueden dirigirse a",
+            "o puede utilizar el formulario de contacto a continuación. Golden Gate Manor Inc. requiere que toda correspondencia sea respetuosa y apropiada. Nos reservamos el derecho de ignorar comunicaciones que sean acosadoras o poco profesionales."
+          ]
+        }
       }
     },
     "contact": {

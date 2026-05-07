@@ -1577,6 +1577,206 @@
           "title": "Contact Us",
           "paragraph": "If you wish to report an accessibility issue, have any questions, need assistance, or would like to report a translation issue, please contact us via the Contact Form below or via email at"
         }
+      },
+      "ride-cancellation": {
+        "top": {
+          "title": "Ride Cancellation & No-Show Policy",
+          "version": "Version:",
+          "updated": "Last Updated:"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "paragraph": "Frequent late cancellations and rider no-shows leave vehicle slots unused, drive up operating costs, and reduce access for riders who genuinely need service. This policy establishes clear notice requirements, enforcement actions, and rescheduling rules to encourage timely cancellations and improve scheduling efficiency."
+        },
+        "scope": {
+          "title": "Scope",
+          "ulist": {
+            "intro": "This policy covers all scheduled trips provided by Golden Gate Manor Inc., including:",
+            "items": [
+              "NEMT rides (Medicaid-funded)",
+              "Non-medical transportation authorized by DSS/DHS",
+              "Pueblo City Cab non-emergency medical transportation (NEMT) on-demand and pre-scheduled service"
+             ]
+          }
+        },
+        "definitions": {
+          "title": "Definitions",
+          "table": {
+            "th": [
+              "Term",
+              "Definition"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "Cancellation",
+                  "Rider notifies Dispatch and the trip is removed from the manifest."
+                ]
+              },
+              {
+                "td": [
+                  "On-time cancellation",	
+                  "Notice received ≥24 hours before pickup (≥48hrs preferred). For long-distance trips, ≥24hrs is mandatory."
+                ]
+              },
+              {
+                "td": [
+                  "Same-day cancellation", 
+                  "Notice received <24hrs but ≥2hrs before pickup."                  
+                ]
+              },
+              { 
+                "td": [
+                  "No-show",	
+                  "Driver arrives, waits the grace period (5-10 minutes), and the rider is unreachable or declines service."
+                ]
+              },
+              {
+                "td": [
+                  "Strike",	
+                  "A recorded no-show or <2hrs cancellation counted toward enforcement limits."
+                ]
+              }
+            ]
+          }
+        },
+        "notice-requirements": {
+          "title": "Notice Requirements",
+          "table": {
+            "th": [
+              "Ride Type",	
+              "Minimum Notice (On-Time)",	
+              "Same-Day Window"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "Local trips (≤40mi round-trip)",	
+                  "≥24hrs",
+                  "≥2hrs or during initial check-in phone call"
+                ]
+              },
+              {
+                "td": [
+                  "Long-distance (>40mi round-trip)",	
+                  "≥24hrs (mandatory)",	
+                  "N/A - cancellations <24hrs count as no-show"
+                ]
+              },
+              {
+                "td": [
+                  "Standing / recurring rides",	
+                  "Follow local vs. long-distance rule for each occurrence",	
+                  "Riders should request new trips ≥24-48hrs in advance to maximize availability."
+                ]
+              }
+            ]
+          }
+        },
+        "how-to-cancel": {
+          "title": "How to Cancel",
+          "olists": [
+            {
+              "intro": "Call Our Customer Service Representatives/Dispatch:",
+              "items": [
+                "Administrative phones are staffed 8:00AM to 4:00PM. Call",
+                "If after hours call our dispatch line, which is 24/7, at"
+              ]
+            },
+            {
+              "intro": "Cancellation is effective only when a dispatcher verbally confirms the ride is removed from the schedule.",
+              "items": [
+                "Other channels (web forms, email, app) are not guaranteed to be monitored continuously and must not be used for time-sensitive cancellations."
+              ]
+            }
+          ]
+        },
+        "grace-and-driver-arrival": {
+          "title": "Grace Period & Driver Arrival",
+          "ulist": {
+            "items": [
+              "Driver calls on arrival.",
+              "Rider is allowed 5-10 minutes to board.",
+              "After the grace period, the trip is marked no-show unless rider makes contact and an extended wait is approved by Dispatch."
+            ]
+          }
+        },
+        "enforcement": {
+          "title": "Enforcement (Strike System)",
+          "table": {
+            "th": [
+              "Infraction",	
+              "Strike Count"
+            ],
+            "rows": [
+              {
+                "td": [
+                  "No-show",	
+                  "1 strike"
+                ]
+              },
+              {
+                "td": [
+                  "Cancellation <2hrs notice",	
+                  "1 strike"
+                ]
+              }
+            ]
+          },
+          "ulist": {
+            "items": [
+              "Accumulation of three strikes results in service suspension and discontinuation of all client services. This policy protects our ability to serve community members who need these essential services and follow established guidelines.",
+              "We diligently track and record all strikes on client accounts due to the importance of maintaining service standards, and these records are maintained permanently without expiration.",
+              "Reinstatement decisions are made at the sole discretion of Golden Gate Manor Inc. The company reserves the right to deny reinstatement requests without obligation to reconsider."
+            ]
+          }
+        },
+        "exceptions": {
+          "title": "Exceptions",
+          "ulist": {
+            "intro": "Golden Gate Manor Inc. may waive strikes under the following circumstances:",
+            "items": [
+              "Documented medical emergencies or hospital admission",
+              "Severe weather conditions or official road closures",
+              "Dispatch or driver error"
+            ]
+          },
+          "paragraph": "All waiver requests are evaluated on a case-by-case basis. Clients with a pattern of recurring issues may be denied waivers regardless of individual circumstances."
+        },
+        "rescheduling": {
+          "title": "Rescheduling After Cancellation",
+          "ulist": {
+            "items": [
+              "On-time cancellations may be re-booked immediately, subject to vehicle availability.",
+              "Same-day cancellations can request a new slot, but availability is not guaranteed.",
+              "All new ride requests must be placed at least ≥24hrs before desired pickup whenever possible."
+            ]
+          }
+        },
+        "recordkeeping": {
+          "title": "Recordkeeping",
+          "ulist": {
+            "items": [
+              "Cancellations and no-shows are logged in the rider's file and dispatch software.",
+              "Records are retained 7 years to comply with state program rules."
+            ]
+          }
+        },
+        "policy-review": {
+          "title": "Policy Review & Updates",
+          "ulist": {
+            "items": [
+              "This policy is reviewed annually to ensure it remains effective and aligned with regulatory requirements and operational needs.",
+              "Interim updates may be issued when regulatory or operational changes require."
+            ]
+          }
+        },
+        "contact": {
+          "paragraph": [
+            "Questions about this policy or appeals of recorded strikes may be directed to",
+            "or you can use the contact form below. Golden Gate Manor Inc. requires all correspondence to be respectful and appropriate. We reserve the right to ignore communications that are harassing or unprofessional in nature."
+          ]
+        }
       }
     },
     "contact": {
@@ -1609,6 +1809,6 @@
       "map": {
         "alt": "Google maps view of central Pueblo and Pueblo South side showing Golden Gate Manor Inc locations as map marker icons"
       }
-    } 
+    }
   }
 }
