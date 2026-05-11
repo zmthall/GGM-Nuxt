@@ -166,6 +166,7 @@
       "message": "Comentario/Consulta/Mensaje*"
     },
     "contact-method-options": {
+      "label": "Método de contacto preferido",
       "email": "Correo Electrónico",
       "phone": "Teléfono"
     },

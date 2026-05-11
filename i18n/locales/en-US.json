@@ -166,6 +166,7 @@
       "message": "Comment/Inquiry/Message*"
     },
     "contact-method-options": {
+      "label": "Preferred Contact Method",
       "email": "Email",
       "phone": "Phone"
     },
@@ -178,6 +179,34 @@
       "error": "Message failed to send. Please try again.",
       "submitting": "Submitting message, please wait...",
       "required-fields": "Please fill in all required fields"
+    }
+  },
+  "consultation-form": {
+    "title": "Request a Consultation:",
+    "fields": {
+      "first-name": "First Name*",
+      "last-name": "Last Name*",
+      "email": "Email*",
+      "phone": "Phone",
+      "contact-method-options": {
+        "label": "Preferred Contact Method",
+        "labels": {
+          "email": "Email",
+          "phone": "Phone"
+        }
+      },
+      "person-seeking-care": {
+        "label": "Who is the consultation for?",
+        "labels": {
+          "self": "Myself",
+          "parent": "Parent",
+          "family-member": "Family Member",
+          "friend": "Friend",
+          "client-patient": "Client/Patient",
+          "other": "Other"
+        },
+        "other": "Please specify who the consultation is for"
+      }
     }
   },
   "schedule-form": {
@@ -428,6 +457,17 @@
         "We'll sit down and explain daily life, discuss our resident expectations, and make sure that our community feels right for you or your loved one's needs. You're welcome to visit any houses that have openings and ask any questions that come to mind. Our goal is simple: we want you to leave knowing more than when you arrived, with reduced anxiety and clear expectations - just transparent and honest guidance from people who care."
       ],
       "button": "GET FREE CONSULTATION"
+    },
+    "consultation": {
+      "left": {
+        "title":  "Looking for Assisted Living Support?",
+        "paragraph": [
+          "Our team is here to help guide you through the process of finding the right assisted living environment for yourself or a loved one.",
+          "Whether you are exploring care options, transitioning from home care, recovering from a hospital stay, or simply looking for additional daily support, our Resident Care Specialists are available to help answer questions and discuss available options.",
+          "By completing this consultation request form, our team can better understand your situation before reaching out."
+        ],
+        "please-note": "Submitting this form does not guarantee placement or eligibility for services. A member of our team will review your information and contact you to discuss available options, next steps, and any additional information that may be needed."
+      }
     }
   },
   "non-medical": {

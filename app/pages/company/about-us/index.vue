@@ -38,7 +38,7 @@
               {{ $t('company.about-us.assisted-living.paragraph[0]') }}
             </p>
             <p class="text-xl text-brand-main-text">
-              {{ $t('company.about-us.assisted-living.paragraph[1]') }} <a :href="`tel:${company?.assitedLiving.phone}`" class="link">{{ company?.assitedLiving.phone }}</a> 
+              {{ $t('company.about-us.assisted-living.paragraph[1]') }} <a :href="`tel:${company?.assistedLiving.phone}`" class="link">{{ company?.assistedLiving.phone }}</a> 
               {{ $t('company.about-us.assisted-living.paragraph[2]') }}
             </p>
             <div>
