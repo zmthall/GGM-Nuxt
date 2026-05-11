@@ -1,4 +1,4 @@
-<!-- components/BaseCarousel.vue -->
+<!-- components/AssistedLivingCarousel.vue -->
 <template>
   <section>
     <h2 class="text-2xl text-center font-bold text-brand-primary mb-8">{{ $t('assisted-living.carousel.title') }}</h2>
@@ -11,7 +11,7 @@
                     <div class="h-full bg-zinc-200/80 relative overflow-hidden rounded-lg group">
                       <button v-if="Array.isArray((item as House).mainImage)" class="w-full h-full absolute" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">
                         <div class="flex flex-wrap w-full h-full">
-                            <NuxtImg v-for="image in (item as House).mainImage" :key="image" format="webp, avif" :src="image" class="object-cover w-1/2 h-1/2" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
+                            <NuxtImg v-for="image in (item as House).mainImage" :key="`${(item as House).id}-${image}`" format="webp, avif" :src="image" class="object-cover w-1/2 h-1/2" height="350" width="350" :alt="(item as House).mainAlt" :title="(item as House).mainAlt" loading="eager" />
                         </div>
                       </button>
                       <button v-else class="w-full h-full absolute" @click.stop="openImageModal((item as House).id)" @touchstart.passive="() => {}">
@@ -36,13 +36,26 @@
 
             <BaseInteractiveModal v-model="imageModalOpen" :normal-modal="false" custom-modal="w-full h-full overflow-hidden top-0 left-0" :padding="4" @close="closeImageModal">
               <template #default>
-                <div v-show="!modalImagesLoading" class="h-[90vh] mt-2">
-                  <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute top-4 sm:left-1/2 sm:-translate-x-1/2 w-max">{{ modalHouseName }}</h2>
-                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-10 h-max">{{ $t('components.image-carousel.counter[0]') }} {{ currentImage }} {{ $t('components.image-carousel.counter[1]') }} {{ totalImages }}</span>
-                  <BaseInteractiveImageSlider v-model="modalImages" show-thumbnails show-dots :max-height="'90vh'" @images-loaded="imagesLoaded" @change="setCurrentPage" @initial-load="setImageTotal"/>
-                </div>
-                <div v-show="modalImagesLoading" class="flex justify-center items-center h-full">
-                  <div class="image-loader" />
+                <div class="relative h-[90vh] mt-2">
+                  <h2 class="text-xl sm:text-2xl font-bold text-brand-primary absolute -top-8 sm:left-1/2 sm:-translate-x-1/2 w-max z-20">
+                    {{ modalHouseName }}
+                  </h2>
+
+                  <span class="absolute bottom-6 left-6 sm:top-2 font-bold z-20 h-max">
+                    {{ $t('components.image-carousel.counter[0]') }}
+                    {{ currentImage }}
+                    {{ $t('components.image-carousel.counter[1]') }}
+                    {{ totalImages }}
+                  </span>
+
+                  <BaseInteractiveImageSlider
+                    v-model="modalImages"
+                    show-thumbnails
+                    show-dots
+                    :max-height="'90vh'"
+                    @change="setCurrentPage"
+                    @initial-load="setImageTotal"
+                  />
                 </div>
               </template>
             </BaseInteractiveModal>
@@ -72,7 +85,6 @@ const modalImages = ref<Slide[]>([]);
 const modalHouseName = ref<string>('');
 const currentImage = ref<number>(1)
 const totalImages = ref<number>()
-const modalImagesLoading = ref<boolean>(false);
 const imageModalOpen = ref<boolean>(false);
 
 const getAdditionalText = (house: {id: string, additional: string}) => {
@@ -88,7 +100,6 @@ const getAdditionalText = (house: {id: string, additional: string}) => {
 }
 
 const openImageModal = async (houseId: string) => { 
-  modalImagesLoading.value = true
   const currentHouse = houses.value.find((house) => house.id === houseId);
   try {
     const response = await $fetch<{ success: boolean, data: { houseId: string, items: Slide[] } }>(`/api/houses/images/${houseId}?signed=true`, {
@@ -98,8 +109,11 @@ const openImageModal = async (houseId: string) => {
 
     if(response.success) {
       modalImages.value = response.data.items;
+      modalHouseName.value = currentHouse?.name || '';
+
+      await nextTick();
+
       imageModalOpen.value = true;
-      modalHouseName.value = currentHouse?.name || '';   
     }
   } catch (error) {
     console.error((error as Error).message)
@@ -124,10 +138,6 @@ const closeImageModal = () => {
   })
 }
 
-const imagesLoaded = () => {
-  modalImagesLoading.value = false;
-}
-
 const carousel = ref<InstanceType<typeof BaseInteractiveCarousel> | null>(null)
 
 const isCarouselLoading = ref<boolean>(true);
@@ -147,9 +157,5 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
-const houses = ref<House[]>([])
-
-onMounted(() => {
-  houses.value = shuffleArray(originalHouses)
-})
+const houses = ref<House[]>(shuffleArray(originalHouses))
 </script>
