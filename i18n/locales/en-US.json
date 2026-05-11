@@ -185,8 +185,8 @@
     "title": "Request a Consultation:",
     "fields": {
       "first-name": "First Name*",
-      "last-name": "Last Name*",
-      "email": "Email*",
+      "last-name": "Last Name",
+      "email": "Email",
       "phone": "Phone",
       "contact-method-options": {
         "label": "Preferred Contact Method",
@@ -196,7 +196,7 @@
         }
       },
       "person-seeking-care": {
-        "label": "Who is the consultation for?",
+        "label": "The Consultation is for",
         "labels": {
           "self": "Myself",
           "parent": "Parent",
@@ -206,8 +206,56 @@
           "other": "Other"
         },
         "other": "Please specify who the consultation is for"
+      },
+      "age-range": {
+        "label": "Age Range",
+        "no-answer": "Prefer not to answer"
+      },
+      "insurance-type": {
+        "label": "Type of Insurance",
+        "labels": [
+          "Medicaid",
+          "Medicare",
+          "Private Insurance",
+          "VA Benefits",
+          "Unknown",
+          "Other"
+        ],
+        "other": "Please specify the type of insurance"
+      },
+      "yes-no": {
+        "questions": {
+          "income-assistance": "Does the individual currently receive income assistance?",
+          "ada-accommodations": "Are you looking for ADA-accessible accommodations?",
+          "daily-living-assistance": "Is assistance needed with daily living activities?"
+        },
+
+        "yes": "Yes",
+        "no": "No",
+        "unsure": "Unsure"
+      },
+      "placement": {
+        "label": "How soon are you looking for placement?",
+        "labels": {
+           "immediate": "Immediately",
+           "thirty-days": "Within 30 Days",
+           "one-to-three-months": "1–3 Months",
+           "exploring": "Exploring Options"
+        }
+      },
+      "message": "Message / Additional Information / Questions*",
+      "message-placeholder": "Please briefly tell us about your situation or what kind of support you're looking for."
+      },
+      "submit": {
+        "idle": "Send Request",
+        "loading": "Sending Request..."
+      },
+      "feedback": {
+        "success": "Request sent successfully!",
+        "error": "Request failed to send. Please try again.",
+        "submitting": "Submitting request, please wait...",
+        "required-fields": "Please fill in all required fields"
       }
-    }
   },
   "schedule-form": {
     "sections": {
