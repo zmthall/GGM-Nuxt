@@ -12,6 +12,9 @@
                 <div v-if="$slots.attestation" :class="['mt-2 min-h-[40px]', styling]">
                     <slot name="attestation" />
                 </div>
+                <div v-if="$slots.closeButton" class="mt-2 shrink-0">
+                    <slot name="closeButton" />
+                </div>
             </div>
         </div>
     </Teleport>

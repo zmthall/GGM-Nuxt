@@ -4,8 +4,8 @@
       <div class="flex flex-col gap-5 h-full min-h-0 pb-2">
         <div class="flex flex-col gap-2">
           <h2 class="text-2xl font-semibold text-gray-900">Support Golden Gate on Pueblo CommunityVotes</h2>
-          <p class="text-sm text-gray-600">Click each button to open the official nomination page. We’ll remember when you last clicked on this device (1x/day rule).</p>
-          <div v-if="allDoneToday" class="mt-1 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800"><span class="font-semibold">All set!</span><span>You’ve already done all three today.</span></div>
+          <p class="text-sm text-gray-600">Voting is now open. Please sign in to your CommunityVotes account and vote once per day. We'll remember when you last opened each voting page on this device.</p>
+          <div v-if="allDoneToday" class="mt-1 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800"><span class="font-semibold">All set!</span><span>You've already done all three today.</span></div>
         </div>
 
         <div class="flex flex-col gap-4">
@@ -18,24 +18,26 @@
 
               <div class="flex flex-col sm:flex-row sm:items-center gap-3">
                 <button type="button" :disabled="didToday(t.id)" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed" :class="didToday(t.id) ? 'bg-gray-200 text-gray-700' : 'bg-brand-primary text-white hover:opacity-90'" @click="openAndMark(t)">
-                  {{ didToday(t.id) ? 'Done today' : 'Nominate today' }}
+                  {{ didToday(t.id) ? 'Opened today' : 'Vote today' }}
                 </button>
 
                 <a :href="t.url" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-brand-primary hover:underline">Open page</a>
               </div>
 
               <div class="text-xs text-gray-600">
-                <span v-if="didToday(t.id)">Marked as done today ({{ formatDenverDate(getTs(t.id)!) }}).</span>
-                <span v-else-if="hasTs(t.id)">Last marked: {{ formatDenverDate(getTs(t.id)!) }}.</span>
-                <span v-else>Not marked yet on this device.</span>
+                <span v-if="didToday(t.id)">Opened today ({{ formatDenverDate(getTs(t.id)!) }}).</span>
+                <span v-else-if="hasTs(t.id)">Last opened: {{ formatDenverDate(getTs(t.id)!) }}.</span>
+                <span v-else>Not opened yet on this device.</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <template #attestation>
-        <div class="mt-auto py-2 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 border-t border-gray-200">
-          <button type="button" class="inline-flex items-center justify-center rounded-lg bg-gray-900 px-4 h-full text-sm font-semibold text-white hover:opacity-90" @click="modalOpen = false">Done</button>
+      <template #closeButton>
+        <div class="pt-4 flex justify-end border-t border-gray-200">
+          <button type="button" class="inline-flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-900 px-4 py-2 text-base font-semibold text-white" @click="modalOpen = false">
+            Done
+          </button>
         </div>
       </template>
     </BaseInteractiveModal>
@@ -67,7 +69,8 @@ const props = withDefaults(defineProps<{
   maxPromptsPerSession: 2
 })
 
-const NOM_STORAGE_KEY = 'ggm_cv_nominations_v1'
+// const NOM_STORAGE_KEY = 'ggm_cv_nominations_v1'
+const VOTE_STORAGE_KEY = 'ggm_cv_votes_v1'
 const PROMPT_TS_KEY = 'ggm_cv_prompt_last_ts_v1'
 const DISMISS_TS_KEY = 'ggm_cv_prompt_dismiss_ts_v1'
 const SESSION_VIEWS_KEY = 'ggm_cv_session_views_v1'
@@ -100,7 +103,7 @@ watch(modalOpen, (next, prev) => {
 function readNoms(): Record<string, number> {
   if (!import.meta.client) return {}
   try {
-    const raw = localStorage.getItem(NOM_STORAGE_KEY)
+    const raw = localStorage.getItem(VOTE_STORAGE_KEY)
     if (!raw) return {}
     const parsed = JSON.parse(raw) as Record<string, unknown>
     const cleaned: Record<string, number> = {}
@@ -113,7 +116,7 @@ function readNoms(): Record<string, number> {
 
 function writeNoms(next: Record<string, number>) {
   if (!import.meta.client) return
-  try { localStorage.setItem(NOM_STORAGE_KEY, JSON.stringify(next)) } catch {
+  try { localStorage.setItem(VOTE_STORAGE_KEY, JSON.stringify(next)) } catch {
     //
   }
 }
