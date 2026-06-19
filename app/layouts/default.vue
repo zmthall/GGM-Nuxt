@@ -29,7 +29,7 @@ const isNomination = computed(() => {
   return Date.now() < cutoff.getTime()
 })
 
-const cvOpen = ref(true)
+const cvOpen = ref(false)
 
 defineOptions({
   name: "DefaultPages"
