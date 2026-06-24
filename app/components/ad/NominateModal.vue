@@ -33,9 +33,11 @@
           </div>
         </div>
       </div>
-      <template #attestation>
-        <div class="mt-auto py-2 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 border-t border-gray-200">
-          <button type="button" class="inline-flex items-center justify-center rounded-lg bg-gray-900 px-4 h-full text-sm font-semibold text-white hover:opacity-90" @click="modalOpen = false">Done</button>
+      <template #closeButton>
+        <div class="pt-4 flex justify-end border-t border-gray-200">
+          <button type="button" class="inline-flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-900 px-4 py-2 text-base font-semibold text-white" @click="modalOpen = false">
+            Done
+          </button>
         </div>
       </template>
     </BaseInteractiveModal>

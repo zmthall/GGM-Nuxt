@@ -16,9 +16,20 @@
     "youtubeId": "CfQfXWqUSKA",
     "description": "A discussion on rural transportation challenges in Colorado and the impact of broker-based Medicaid systems on local providers.",
     "fullDescription": "In this episode, we sit down with guests from the San Luis Valley, Red Willows (Mark and Kindra), to discuss the real challenges facing rural transportation providers in Colorado with a broker-based system. We break down the impact of broker-based systems in Medicaid transportation and why many rural operators struggle under centralized control. From dispatching and compliance to scheduling and patient care, local providers understand their communities in ways outside systems cannot replicate. Senate Bill 26-063 represents a critical step toward preserving independent operations, allowing providers to maintain accountability, reliability, and service quality for the people who depend on them. This conversation highlights the difference between systems designed from a distance and services built within the communities they serve.",
-    "featured": true,
+    "featured": false,
     "publishedAt": "2026-03-27",
     "duration": "43:57",
     "category": "Policy"
+  },
+  {
+    "id": "ep-003",
+    "title": "The Human Side of Assisted Living",
+    "youtubeId": "3CSLXBjrsNQ",
+    "description": "A discussion on assisted living in Pueblo Colorado",
+    "fullDescription": "What does assisted living actually feel like day to day? In this episode, Ruby and Jennifer join us for a real conversation about caregiving, residents, family relationships, independence, and the moments that make assisted living feel like home. We talk about the challenges families face, the things people misunderstand most about assisted living, and the human side of caring for others every day.",
+    "featured": true,
+    "publishedAt": "2026-05-15",
+    "duration": "35:47",
+    "category": "Assisted Living"
   }
 ]

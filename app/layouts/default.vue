@@ -16,12 +16,18 @@
       <LazyBaseLayoutFooter />
     </DeferRender>  
 
-    <AdCommunityVotesSupportModal v-model="cvOpen" :open-chance="0.65" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
+    <AdNominateModal v-if="isNomination" v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
+    <AdVoteModal v-else v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
   </main>
 </template>
 
 <script setup lang="ts">
 import ORG_SCHEMA from '@/data/orgSchema.json'
+
+const isNomination = computed(() => {
+  const cutoff = new Date('2026-05-28T00:00:00-06:00')
+  return Date.now() < cutoff.getTime()
+})
 
 const cvOpen = ref(false)
 

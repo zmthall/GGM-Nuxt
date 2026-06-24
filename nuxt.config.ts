@@ -127,6 +127,7 @@ export default defineNuxtConfig({
       googleMapsKey: process.env.GOOGLE_MAPS_KEY,
       siteUrl: process.env.SITE_URL,
       recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+      googleTagManagerId: process.env.GOOGLE_TAG_MANAGER_ID,
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
       microsoftUetId: process.env.MICROSOFT_UET_ID,
       buildType: process.env.BUILD_TYPE,
