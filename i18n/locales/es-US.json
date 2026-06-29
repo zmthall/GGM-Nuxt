@@ -45,6 +45,13 @@
     },
     "new-tab-title": "Abre en una nueva pestaña"
   },
+  "announcements": {
+    "announcement-1": {
+      "title": "Actualización Importante:",
+      "content": "Los viajes de Health First Colorado para el Transporte Médico No Urgente (NEMT) ahora serán programados a través de MediDrive a partir del 1 de julio de 2026.",
+      "cta": "Más Información"
+    }
+  },
   "header": {
     "links": {
       "home": "Inicio",

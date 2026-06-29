@@ -1,0 +1,10 @@
+[
+    {
+        "id": "announcement-1",
+        "icon": "streamline-plump:announcement-megaphone-solid",
+        "cta": { 
+            "url": "/news/information/MediDrive",
+            "icon": "ic:baseline-arrow-forward"
+        }
+    }
+]

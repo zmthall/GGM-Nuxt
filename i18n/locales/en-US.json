@@ -45,6 +45,13 @@
     },
     "new-tab-title": "Opens in a new tab"
   },
+  "announcements": {
+    "announcement-1": {
+      "title": "Important Update:",
+      "content": "Health First Colorado rides for NEMT are now scheduled through MediDrive Beginning July 1st, 2026.",
+      "cta": "Learn More"
+    }
+  },
   "header": {
     "links": {
       "home": "Home",
