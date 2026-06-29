@@ -104,7 +104,7 @@
                             <p class="text-xl text-brand-main-text">
                                 {{ $t('assisted-living.consultation-section.paragraph[2]') }}
                             </p>
-                            <BaseUiAction :to="$localePath('/company/contact-us')" class="self-center !mt-8 py-4 px-8">{{ $t('assisted-living.consultation-section.button') }}</BaseUiAction>
+                            <BaseUiAction :to="$localePath('/ass')" class="self-center !mt-8 py-4 px-8">{{ $t('assisted-living.consultation-section.button') }}</BaseUiAction>
                         </div>
                     </div>
                 </BaseLayoutCard>
