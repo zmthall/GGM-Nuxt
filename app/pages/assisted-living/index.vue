@@ -41,6 +41,48 @@
             <AssistedLivingCarousel />
         </BaseLayoutPageSection>
     </DeferRender>
+
+    <DeferRender when="visible">
+        <BaseLayoutPageSection margin="default" class="cv-auto">
+            <BaseLayoutPageContainer class="">
+                <BaseLayoutCard :has-padding="false">
+                    <div class="flex flex-col w-full gap-8 lg:flex-row">
+                        <!-- Left Side -->
+                        <div class="lg:w-1/2">
+                            <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp,avif" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
+                        </div>
+                        <!-- Right Side -->
+                        <div class="p-4 flex flex-col lg:w-1/2 space-y-2">
+                            <h2 class="text-2xl font-bold text-brand-primary mb-4 text-center md:text-left">
+                                {{ $t('assisted-living.consultation-section.title') }}
+                            </h2>
+                            <p class="text-xl text-brand-main-text">
+                                {{  $t('assisted-living.consultation-section.paragraph[0]') }}
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                {{ $t('assisted-living.consultation-section.paragraph[1]') }}
+                            </p>
+                            <p class="text-xl text-brand-main-text">
+                                {{ $t('assisted-living.consultation-section.paragraph[2]') }}
+                            </p>
+                            <BaseUiAction :to="$localePath('/assisted-living/consultation')" class="self-center !mt-8 py-4 px-8">{{ $t('assisted-living.consultation-section.button') }}</BaseUiAction>
+                        </div>
+                    </div>
+                </BaseLayoutCard>
+          </BaseLayoutPageContainer>
+        </BaseLayoutPageSection>
+    </DeferRender>
+
+      <!-- Bottom Page -->
+
+    <DeferRender when="visible">
+        <BaseLayoutPageCTA 
+            :title="$t('assisted-living.cta.title')"
+            :description="$t('assisted-living.cta.description')"
+            :button-label="$t('assisted-living.cta.button-label')"
+            :to="$localePath('/company/contact-us')"
+            />
+    </DeferRender>
     <DeferRender when="visible">
         <BaseLayoutPageSection margin="default" class="cv-auto">
             <BaseLayoutPageContainer class="">
@@ -68,47 +110,6 @@
                     </div>
                 </div>
             </BaseLayoutPageContainer>
-        </BaseLayoutPageSection>
-    </DeferRender>
-
-      <!-- Bottom Page -->
-
-    <DeferRender when="visible">
-        <BaseLayoutPageCTA 
-            :title="$t('assisted-living.cta.title')"
-            :description="$t('assisted-living.cta.description')"
-            :button-label="$t('assisted-living.cta.button-label')"
-            :to="$localePath('/company/contact-us')"
-            />
-    </DeferRender>
-    <DeferRender when="visible">
-        <BaseLayoutPageSection margin="default" class="cv-auto">
-            <BaseLayoutPageContainer class="">
-                <BaseLayoutCard :has-padding="false">
-                    <div class="flex flex-col w-full gap-8 lg:flex-row">
-                        <!-- Left Side -->
-                        <div class="lg:w-1/2">
-                            <NuxtImg src="/images/pages/assisted-living/nursing-care.jpg" width="1280" height="720" format="webp,avif" quality="60" alt="Photo of a nurse and a resident" title="Photo of a nurse and a resident" loading="lazy" class="h-full w-full object-cover" placeholder/>
-                        </div>
-                        <!-- Right Side -->
-                        <div class="p-4 flex flex-col lg:w-1/2 space-y-2">
-                            <h2 class="text-2xl font-bold text-brand-primary mb-4 text-center md:text-left">
-                                {{ $t('assisted-living.consultation-section.title') }}
-                            </h2>
-                            <p class="text-xl text-brand-main-text">
-                                {{  $t('assisted-living.consultation-section.paragraph[0]') }}
-                            </p>
-                            <p class="text-xl text-brand-main-text">
-                                {{ $t('assisted-living.consultation-section.paragraph[1]') }}
-                            </p>
-                            <p class="text-xl text-brand-main-text">
-                                {{ $t('assisted-living.consultation-section.paragraph[2]') }}
-                            </p>
-                            <BaseUiAction :to="$localePath('/company/contact-us')" class="self-center !mt-8 py-4 px-8">{{ $t('assisted-living.consultation-section.button') }}</BaseUiAction>
-                        </div>
-                    </div>
-                </BaseLayoutCard>
-          </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
     </DeferRender>
   </div>

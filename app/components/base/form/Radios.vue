@@ -2,10 +2,18 @@
   <div>
     <label v-if="name" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
     <div :class="styling">
-      <div v-for="(value, idx) in values" :key="value">
-        <BaseFormRadio v-model="checkedValue" :value :name >{{ labels[idx] }}</BaseFormRadio>
-      </div>
+    <div
+      v-for="(value, idx) in values"
+      :key="value"
+      class="min-w-0"
+    >
+      <BaseFormRadio v-model="checkedValue" :value="value" :name="name">
+        <span class="leading-snug">
+          {{ labels[idx] }}
+        </span>
+      </BaseFormRadio>
     </div>
+  </div>
   </div>
 </template>
 
@@ -23,7 +31,6 @@ defineProps<{
   styling?: string;
   name: string;
 }>()
-
 
 </script>
 

@@ -21,7 +21,7 @@
           v-model="form.contact_method"
           :values="['email', 'phone']"
           :labels="contactMethodOptions"
-          :label="$t('contact-form.contact-method-options.email')"
+          :label="$t('contact-form.contact-method-options.label')"
         />
 
         <BaseFormTextArea v-model="form.message" name="message" :label="$t('contact-form.fields.message')" required aria-required />

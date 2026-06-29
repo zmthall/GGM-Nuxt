@@ -79,7 +79,8 @@
       "faq": "FAQ",
       "map": "Service Area Map",
       "forms": "Forms & Documents",
-      "schedule": "Schedule a Ride"
+      "schedule": "Schedule a Ride",
+      "consultation": "Consultation Request"
     },
     "cta": {
       "schedule": "Schedule a Ride",
@@ -176,6 +177,7 @@
       "message": "Comment/Inquiry/Message*"
     },
     "contact-method-options": {
+      "label": "Preferred Contact Method",
       "email": "Email",
       "phone": "Phone"
     },
@@ -188,6 +190,93 @@
       "error": "Message failed to send. Please try again.",
       "submitting": "Submitting message, please wait...",
       "required-fields": "Please fill in all required fields"
+    }
+  },
+  "consultation-form": {
+    "title": "Request a Consultation:",
+    "fields": {
+      "first-name": "First Name*",
+      "last-name": "Last Name*",
+      "email": "Email",
+      "phone": "Phone",
+      "contact-method-options": {
+        "label": "Preferred Contact Method",
+        "labels": {
+          "email": "Email",
+          "phone": "Phone"
+        }
+      },
+      "person-seeking-care": {
+        "label": "The Consultation is for",
+        "labels": {
+          "self": "Myself",
+          "parent": "Parent",
+          "family-member": "Family Member",
+          "friend": "Friend",
+          "client-patient": "Client/Patient",
+          "other": "Other"
+        },
+        "other": "Please specify who the consultation is for"
+      },
+      "age-range": {
+        "label": "Age Range",
+        "no-answer": "Prefer not to answer"
+      },
+      "insurance-type": {
+        "label": "Insurance",
+        "labels": [
+          "Medicaid",
+          "Medicare",
+          "Private Insurance",
+          "VA Benefits",
+          "Unknown",
+          "Other"
+        ],
+        "other": "Please specify the type of insurance"
+      },
+      "yes-no": {
+        "questions": {
+          "income-assistance": "Does the individual currently receive income assistance?",
+          "ada-accommodations": "Are you looking for ADA-accessible accommodations?",
+          "daily-living-assistance": "Is assistance needed with daily living activities?"
+        },
+
+        "yes": "Yes",
+        "no": "No",
+        "unsure": "Unsure"
+      },
+      "placement": {
+        "label": "How soon are you looking for placement?",
+        "labels": {
+           "immediate": "Immediately",
+           "thirty-days": "Within 30 Days",
+           "one-to-three-months": "1–3 Months",
+           "exploring": "Exploring Options"
+        }
+      },
+      "message": "Message / Additional Information / Questions*",
+      "message-placeholder": "Please briefly tell us about your situation or what kind of support you're looking for."
+      },
+      "submit": {
+        "idle": "Send Request",
+        "loading": "Sending Request..."
+      },
+      "feedback": {
+      "success": "Request sent successfully!",
+      "error": "Request failed to send. Please try again.",
+      "submitting": "Submitting request, please wait...",
+      "required-fields": "Please fill in all required fields",
+      "first-name-required": "First name is required.",
+      "last-name-required": "Last name is required.",
+      "message-required": "Message is required.",
+      "email-required": "Email is required because you selected email as your preferred contact method.",
+      "email-invalid": "Please enter a valid email address.",
+      "phone-required": "Phone number is required because you selected phone as your preferred contact method.",
+      "phone-invalid": "Please enter a valid 10-digit phone number.",
+      "person-seeking-care-other-required": "Please describe who the consultation is for.",
+      "insurance-type-other-required": "Please describe the insurance type.",
+      "recaptcha-failed": "ReCAPTCHA verification failed.",
+      "submit-success": "Consultation request submitted successfully!"
     }
   },
   "schedule-form": {
@@ -500,6 +589,32 @@
         "We'll sit down and explain daily life, discuss our resident expectations, and make sure that our community feels right for you or your loved one's needs. You're welcome to visit any houses that have openings and ask any questions that come to mind. Our goal is simple: we want you to leave knowing more than when you arrived, with reduced anxiety and clear expectations - just transparent and honest guidance from people who care."
       ],
       "button": "GET FREE CONSULTATION"
+    },
+    "consultation": {
+      "left": {
+        "title":  "Looking for Assisted Living Support?",
+        "paragraph": [
+          "Our team is here to help guide you through the process of finding the right assisted living environment for yourself or a loved one.",
+          "Whether you are exploring care options, transitioning from home care, recovering from a hospital stay, or simply looking for additional daily support, our Resident Care Specialists are available to help answer questions and discuss available options.",
+          "By completing this consultation request form, our team can better understand your situation before reaching out."
+        ],
+        "please-note": "Submitting this form does not guarantee placement or eligibility for services. A member of our team will review your information and contact you to discuss available options, next steps, and any additional information that may be needed.",
+        "steps": {
+          "title": "What Happens Next?",
+          "step-1": {
+            "title": "Submit Your Consultation Request",
+            "description": "Complete the consultation form with as much information as you feel comfortable providing."
+          },
+          "step-2": {
+            "title": "Speak With Our Care Team",
+            "description": "A member of our Resident Care team will review your information and contact you to discuss your situation, questions, and care needs."
+          },
+          "step-3": {
+            "title": "Explore Care & Placement Options",
+            "description": "We'll help guide you through available assisted living options, accommodations, and next steps based on your individual needs."
+          }
+        }
+      }
     }
   },
   "non-medical": {

@@ -76,7 +76,8 @@
       "faq": "Preguntas Frecuentes",
       "map": "Mapa de Servicio",
       "forms": "Formularios y Documentos",
-      "schedule": "Programe un Viaje"
+      "schedule": "Programe un Viaje",
+      "consultation": "Solicitud de Consulta"
     },
     "cta": {
       "schedule": "Programe un Viaje",
@@ -173,6 +174,7 @@
       "message": "Comentario/Consulta/Mensaje*"
     },
     "contact-method-options": {
+      "label": "Método de contacto preferido",
       "email": "Correo Electrónico",
       "phone": "Teléfono"
     },
@@ -185,6 +187,92 @@
       "error": "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo.",
       "submitting": "Enviando mensaje, por favor espere...",
       "required-fields": "Por favor complete todos los campos obligatorios"
+    }
+  },
+  "consultation-form": {
+    "title": "Solicitar una Consulta:",
+    "fields": {
+      "first-name": "Nombre*",
+      "last-name": "Apellido*",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "contact-method-options": {
+        "label": "Método de Contacto Preferido",
+        "labels": {
+          "email": "Correo Electrónico",
+          "phone": "Teléfono"
+        }
+      },
+      "person-seeking-care": {
+        "label": "La consulta es para",
+        "labels": {
+          "self": "Para mí",
+          "parent": "Padre o Madre",
+          "family-member": "Familiar",
+          "friend": "Amigo",
+          "client-patient": "Cliente/Paciente",
+          "other": "Otro"
+        },
+        "other": "Por favor, especifique para quién es la consulta"
+      },
+      "age-range": {
+        "label": "Rango de Edad",
+        "no-answer": "Prefiero no responder"
+      },
+      "insurance-type": {
+        "label": "Seguro",
+        "labels": [
+          "Medicaid",
+          "Medicare",
+          "Seguro Privado",
+          "Beneficios de VA",
+          "No lo sé",
+          "Otro"
+        ],
+        "other": "Por favor, especifique el tipo de seguro"
+      },
+      "yes-no": {
+        "questions": {
+          "income-assistance": "¿La persona recibe actualmente asistencia económica?",
+          "ada-accommodations": "¿Está buscando alojamiento accesible conforme a la ADA?",
+          "daily-living-assistance": "¿Se necesita ayuda con las actividades de la vida diaria?"
+        },
+        "yes": "Sí",
+        "no": "No",
+        "unsure": "No estoy seguro"
+      },
+      "placement": {
+        "label": "¿Qué tan pronto está buscando una colocación?",
+        "labels": {
+          "immediate": "De inmediato",
+          "thirty-days": "Dentro de 30 días",
+          "one-to-three-months": "De 1 a 3 meses",
+          "exploring": "Explorando opciones"
+        }
+      },
+      "message": "Mensaje / Información Adicional / Preguntas*",
+      "message-placeholder": "Cuéntenos brevemente sobre su situación o el tipo de apoyo que está buscando."
+    },
+    "submit": {
+      "idle": "Enviar Solicitud",
+      "loading": "Enviando Solicitud..."
+    },
+    "feedback": {
+      "success": "¡La solicitud se envió correctamente!",
+      "error": "No se pudo enviar la solicitud. Inténtelo de nuevo.",
+      "submitting": "Enviando la solicitud, por favor espere...",
+      "required-fields": "Por favor complete todos los campos obligatorios.",
+      "first-name-required": "El nombre es obligatorio.",
+      "last-name-required": "El apellido es obligatorio.",
+      "message-required": "El mensaje es obligatorio.",
+      "email-required": "El correo electrónico es obligatorio porque seleccionó el correo electrónico como su método de contacto preferido.",
+      "email-invalid": "Por favor, introduzca una dirección de correo electrónico válida.",
+      "phone-required": "El número de teléfono es obligatorio porque seleccionó el teléfono como su método de contacto preferido.",
+      "phone-invalid": "Por favor, introduzca un número de teléfono válido de 10 dígitos.",
+      "person-seeking-care-other-required": "Por favor, describa para quién es la consulta.",
+      "insurance-type-other-required": "Por favor, especifique el tipo de seguro.",
+      "recaptcha-failed": "La verificación de reCAPTCHA falló.",
+      "submit-success": "¡La solicitud de consulta se envió correctamente!"
     }
   },
   "schedule-form": {
@@ -448,6 +536,32 @@
         "Nos sentaremos con usted para explicar la vida diaria, hablar sobre las expectativas de nuestros residentes y asegurarnos de que nuestra comunidad sea adecuada para usted o su ser querido. Puede visitar cualquier casa con disponibilidad y hacer todas las preguntas que desee. Nuestro objetivo es simple: que se vaya con más información de la que tenía al llegar, con menos ansiedad y con expectativas claras, brindándole orientación transparente y honesta de personas que realmente se preocupan."
       ],
       "button": "OBTENER CONSULTA GRATIS"
+    },
+    "consultation": {
+      "left": {
+        "title": "¿Busca apoyo para vida asistida?",
+        "paragraph": [
+          "Nuestro equipo está aquí para ayudarle a encontrar el entorno de vida asistida adecuado para usted o un ser querido.",
+          "Ya sea que esté explorando opciones de atención, haciendo la transición desde el cuidado en el hogar, recuperándose de una estancia hospitalaria o simplemente buscando apoyo adicional para las actividades diarias, nuestros Especialistas en Atención a Residentes están disponibles para responder sus preguntas y conversar sobre las opciones disponibles.",
+          "Al completar este formulario de solicitud de consulta, nuestro equipo podrá comprender mejor su situación antes de ponerse en contacto con usted."
+        ],
+        "please-note": "El envío de este formulario no garantiza la admisión ni la elegibilidad para nuestros servicios. Un miembro de nuestro equipo revisará su información y se comunicará con usted para conversar sobre las opciones disponibles, los siguientes pasos y cualquier información adicional que pueda ser necesaria.",
+        "steps": {
+          "title": "¿Qué sucede después?",
+          "step-1": {
+            "title": "Envíe su Solicitud de Consulta",
+            "description": "Complete el formulario de consulta con toda la información que se sienta cómodo compartiendo."
+          },
+          "step-2": {
+            "title": "Hable con Nuestro Equipo de Atención",
+            "description": "Un miembro de nuestro equipo de Atención a Residentes revisará su información y se comunicará con usted para conversar sobre su situación, responder sus preguntas y conocer sus necesidades de atención."
+          },
+          "step-3": {
+            "title": "Explore las Opciones de Atención y Alojamiento",
+            "description": "Le ayudaremos a conocer las opciones de vida asistida disponibles, los servicios, las adaptaciones y los siguientes pasos según sus necesidades individuales."
+          }
+        }
+      }
     }
   },
   "non-medical": {

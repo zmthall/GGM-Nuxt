@@ -68,6 +68,13 @@ const {
 
 const items = computed(() => ([
   {
+    key: 'messages',
+    label: 'Messages',
+    icon: 'material-symbols:android-messages',
+    count: counts.value.messagesNew,
+    to: '/admin/correspondence/messages'
+  },
+  {
     key: 'ride_requests',
     label: 'Ride Requests',
     icon: 'material-symbols:directions-car-rounded',
@@ -75,11 +82,11 @@ const items = computed(() => ([
     to: '/admin/correspondence/ride-requests'
   },
   {
-    key: 'messages',
-    label: 'Messages',
-    icon: 'material-symbols:android-messages',
-    count: counts.value.messagesNew,
-    to: '/admin/correspondence/messages'
+    key: 'consultation_requests',
+    label: 'Consultation Requests',
+    icon: 'material-symbols:medical-services-rounded',
+    count: counts.value.consultationRequestsNew,
+    to: '/admin/correspondence/consultation-requests'
   },
   {
     key: 'applications',

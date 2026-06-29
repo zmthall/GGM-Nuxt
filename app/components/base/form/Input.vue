@@ -3,16 +3,16 @@
         <label v-if="label" :for="name" class="font-extrabold text-xs inline-block mb-1 text-brand-primary capitalize">{{ label }}</label>
         <input
             v-if="type === 'tel'"
-            :id="name" ref="inputRef" v-model="textValue" :name="name"
+            :id="name" ref="inputRef" v-model="textValue" :name="name" :required="required"
             :class="['border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
             pattern="^(?:\+?1[\s-]?)?(?:\(\d{3}\)\s?\d{3}[\s-]?\d{4}|\d{3}[\s-]?\d{3}[\s-]?\d{4})$"
-            type="tel" :placeholder :autocomplete
+            type="tel" :placeholder :autocomplete="autocomplete"
             @keydown="restrictPhoneInput">
         <input 
             v-else
-            :id="name" ref="inputRef" v-model="textValue" :name="name"
+            :id="name" ref="inputRef" v-model="textValue" :name="name" :required="required"
             :class="['border-2 w-full rounded-md p-1 text-base font-semibold text-gray-900 hover:border-brand-primary/50 bg-gray-50 focus-visible:outline-none focus:border-brand-primary focus:shadow-input']"
-            :type :placeholder :autocomplete>
+            :type :placeholder :autocomplete="autocomplete">
         <button 
             v-if="isPassword" :class="['absolute flex items-center right-4 cursor-pointer', {'top-1/2 -translate-y-1/2': !hasLabel, 'top-[57%]': hasLabel}]"
             type="button"
@@ -41,12 +41,14 @@ const props = withDefaults(defineProps<{
     placeholder?: string | undefined;
     label?: string | undefined
     autocomplete?: string;
+    required?: boolean;
 }>(), {
     type: "text",
     placeholder: undefined,
     name: undefined,
     label: undefined,
-    autocomplete: 'off'
+    autocomplete: undefined,
+    required: false
 })
 
 const isPassword = computed(() => {
