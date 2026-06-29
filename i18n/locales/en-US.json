@@ -69,7 +69,8 @@
       "faq": "FAQ",
       "map": "Service Area Map",
       "forms": "Forms & Documents",
-      "schedule": "Schedule a Ride"
+      "schedule": "Schedule a Ride",
+      "consultation": "Consultation Request"
     },
     "cta": {
       "schedule": "Schedule a Ride",
@@ -185,7 +186,7 @@
     "title": "Request a Consultation:",
     "fields": {
       "first-name": "First Name*",
-      "last-name": "Last Name",
+      "last-name": "Last Name*",
       "email": "Email",
       "phone": "Phone",
       "contact-method-options": {
@@ -212,7 +213,7 @@
         "no-answer": "Prefer not to answer"
       },
       "insurance-type": {
-        "label": "Type of Insurance",
+        "label": "Insurance",
         "labels": [
           "Medicaid",
           "Medicare",
@@ -251,11 +252,22 @@
         "loading": "Sending Request..."
       },
       "feedback": {
-        "success": "Request sent successfully!",
-        "error": "Request failed to send. Please try again.",
-        "submitting": "Submitting request, please wait...",
-        "required-fields": "Please fill in all required fields"
-      }
+      "success": "Request sent successfully!",
+      "error": "Request failed to send. Please try again.",
+      "submitting": "Submitting request, please wait...",
+      "required-fields": "Please fill in all required fields",
+      "first-name-required": "First name is required.",
+      "last-name-required": "Last name is required.",
+      "message-required": "Message is required.",
+      "email-required": "Email is required because you selected email as your preferred contact method.",
+      "email-invalid": "Please enter a valid email address.",
+      "phone-required": "Phone number is required because you selected phone as your preferred contact method.",
+      "phone-invalid": "Please enter a valid 10-digit phone number.",
+      "person-seeking-care-other-required": "Please describe who the consultation is for.",
+      "insurance-type-other-required": "Please describe the insurance type.",
+      "recaptcha-failed": "ReCAPTCHA verification failed.",
+      "submit-success": "Consultation request submitted successfully!"
+    }
   },
   "schedule-form": {
     "sections": {
@@ -514,7 +526,22 @@
           "Whether you are exploring care options, transitioning from home care, recovering from a hospital stay, or simply looking for additional daily support, our Resident Care Specialists are available to help answer questions and discuss available options.",
           "By completing this consultation request form, our team can better understand your situation before reaching out."
         ],
-        "please-note": "Submitting this form does not guarantee placement or eligibility for services. A member of our team will review your information and contact you to discuss available options, next steps, and any additional information that may be needed."
+        "please-note": "Submitting this form does not guarantee placement or eligibility for services. A member of our team will review your information and contact you to discuss available options, next steps, and any additional information that may be needed.",
+        "steps": {
+          "title": "What Happens Next?",
+          "step-1": {
+            "title": "Submit Your Consultation Request",
+            "description": "Complete the consultation form with as much information as you feel comfortable providing."
+          },
+          "step-2": {
+            "title": "Speak With Our Care Team",
+            "description": "A member of our Resident Care team will review your information and contact you to discuss your situation, questions, and care needs."
+          },
+          "step-3": {
+            "title": "Explore Care & Placement Options",
+            "description": "We'll help guide you through available assisted living options, accommodations, and next steps based on your individual needs."
+          }
+        }
       }
     }
   },

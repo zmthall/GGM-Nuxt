@@ -20,7 +20,7 @@
           
           <div class="!my-16 rounded-xl border border-brand-primary/15 bg-white/40 p-8 space-y-4">
             <h2 class="text-2xl font-bold text-brand-primary">
-              What Happens Next?
+              {{ $t('assisted-living.consultation.left.steps.title')  }}
             </h2>
             <div class="mt-4 flex items-center gap-4">
               <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full overflow-hidden bg-brand-primary text-white font-bold">
@@ -29,11 +29,11 @@
 
               <div>
                 <h4 class="font-semibold">
-                  Submit Your Consultation Request
+                  {{ $t('assisted-living.consultation.left.steps.step-1.title') }}
                 </h4>
 
                 <p class="text-sm text-brand-main-text/80">
-                  Complete the consultation form with as much information as you feel comfortable providing.
+                  {{ $t('assisted-living.consultation.left.steps.step-1.description') }}
                 </p>
               </div>
             </div>
@@ -44,11 +44,11 @@
               
               <div>
                 <h4 class="font-semibold">
-                  Speak With Our Care Team
+                  {{ $t('assisted-living.consultation.left.steps.step-2.title') }}
                 </h4>
                 
                 <p class="text-sm text-brand-main-text/80">
-                  A member of our Resident Care team will review your information and contact you to discuss your situation, questions, and care needs.
+                  {{ $t('assisted-living.consultation.left.steps.step-2.description') }}
                 </p>
               </div>
             </div>
@@ -59,11 +59,11 @@
 
               <div>
                 <h4 class="font-semibold">
-                  Explore Care & Placement Options
+                  {{ $t('assisted-living.consultation.left.steps.step-3.title') }}
                 </h4>
 
                 <p class="text-sm text-brand-main-text/80">
-                  We'll help guide you through available assisted living options, accommodations, and next steps based on your individual needs.
+                  {{ $t('assisted-living.consultation.left.steps.step-3.description') }}
                 </p>
               </div>
             </div>
@@ -72,7 +72,7 @@
             <BaseLayoutPageListItem :title="company.assistedLiving.name" has-icon :size="12" icon-name="material-symbols:location-on-rounded">
                 <NuxtLink :to="$localePath('/company/location')" class="link">{{ company.assistedLiving.address }}</NuxtLink>
             </BaseLayoutPageListItem>
-            <BaseLayoutPageListItem  :title="$t('company.contact.sections.business.phone')" has-icon :size="12" icon-name="ic:round-call">
+            <BaseLayoutPageListItem  :title="phoneTitle" has-icon :size="12" icon-name="ic:round-call">
                 <a :href="`tel:${company.assistedLiving.phone}`" class="link">{{ company.assistedLiving.phone }}</a>
             </BaseLayoutPageListItem>
           </div>
@@ -92,6 +92,10 @@
 
 <script lang="ts" setup>
 import company from '@/data/company.json'
+
+const phoneTitle = computed(() => {
+  return $t('company.contact.sections.business.phone')
+})
 
 definePageMeta({
   title: 'Request an Assisted Living Consultation',

@@ -2,8 +2,9 @@ export type NotificationResponse = {
   success: boolean
   data: {
     totalNew: number
-    rideRequestsNew: number
     messagesNew: number
+    rideRequestsNew: number
+    consultationRequestsNew: number
     applicationsNew: number
     updatedAt?: string
   }
@@ -15,8 +16,9 @@ export const useAdminNotifications = () => {
 
   const counts = useState('admin-notifications-counts', () => ({
     totalNew: 0,
-    rideRequestsNew: 0,
     messagesNew: 0,
+    rideRequestsNew: 0,
+    consultationRequestsNew: 0,
     applicationsNew: 0
   }))
 
@@ -40,8 +42,9 @@ export const useAdminNotifications = () => {
 
       counts.value = {
         totalNew: Number(d.totalNew ?? 0),
-        rideRequestsNew: Number(d.rideRequestsNew ?? 0),
         messagesNew: Number(d.messagesNew ?? 0),
+        rideRequestsNew: Number(d.rideRequestsNew ?? 0),
+        consultationRequestsNew: Number(d.consultationRequestsNew ?? 0),
         applicationsNew: Number(d.applicationsNew ?? 0)
       }
     } catch (err) {

@@ -53,7 +53,31 @@
                         </template>            
                     </AdminContactFormTable>
                 </BaseLayoutCard>
-                
+            </BaseLayoutPageContainer>
+            <BaseLayoutPageContainer class="mt-8">
+              <BaseLayoutCard :centered="false" class="w-full mx-auto" :has-padding="false">
+                <h2 class="bg-brand-primary pl-2 py-2 text-white">Received Consultation Requests</h2>
+                <AdminConsultationRequestFormTable
+                  v-model="consultationModalOpen"
+                  v-model:data="consultationRequestModalData"
+                  :loading="loadingConsultationRequests"
+                  :consultation-requests="consultationRequests"
+                  :pagination="consultationRequestsPagination"
+                  @change-status="(payload) => updateConsultationStatus(payload, 3, consultationRequestPage)"
+                  @change-tags="(payload) => updateConsultationTags(payload, 3, consultationRequestPage)"
+                  @export-pdf="exportConsultationPDF"
+                  @prev-page="prevConsultationPage"
+                  @next-page="nextConsultationPage"
+                  @page-change="setConsultationPage"
+                >
+                  <template #actions="{ consultationRequest }">
+                            <div class="inline-flex items-center gap-2">
+                                <button v-if="authStore.role !== 'correspondence'" class="bg-red-600 px-2 py-1 text-white rounded-md border border-black hover:bg-red-700" @click.stop="deleteConsultationRequest(consultationRequest.id, 3)">Delete</button>
+                                <button class="bg-blue-600 px-2 py-1 text-white rounded-md border border-black hover:bg-blue-700 group flex items-center gap-2" @click.stop="exportConsultationPDF(consultationRequest)">Export<BaseIcon name="fa6-solid:file-pdf" size="size-4" color="text-white" /></button>
+                            </div>
+                        </template>   
+                </AdminConsultationRequestFormTable>
+              </BaseLayoutCard>
             </BaseLayoutPageContainer>
             <BaseLayoutPageContainer class="mt-8">
                 <h2 class="text-2xl font-bold text-brand-primary mb-4">Application Submissions</h2>
@@ -133,10 +157,10 @@
                     </template>
                   </AdminJobApplicationTable>
                 </BaseLayoutCard>
-                <div class="flex justify-center mt-8">
-                    <BaseUiAction to="/admin/correspondence" class="py-2 px-4">View All Correspondence</BaseUiAction>
-                </div>
               </BaseLayoutPageContainer>
+              <div class="flex justify-center mt-8">
+                  <BaseUiAction to="/admin/correspondence" class="py-2 px-4">View All Correspondence</BaseUiAction>
+              </div>
         </BaseLayoutPageSection>
         <BaseLayoutPageSection v-if="authStore.role !== 'correspondence'" bg="default" margin="default">
             <BaseLayoutPageContainer>
@@ -182,6 +206,7 @@
 </template>
 
 <script setup lang='ts'>
+import type { ConsultationRequestFormData } from '~/models/admin/ConsultationForm';
 import type { ContactFormData } from '../../models/admin/ContactForm';
 import type { RideRequestFormData } from '../../models/admin/RideRequestForm';
 import type { ApplicationFormData } from '../../models/Application';
@@ -208,10 +233,12 @@ const departmentValues = [
   'general'
 ]
 
-const rideModalOpen = ref<boolean>(false);
-const rideRequestModalData = ref<RideRequestFormData | null>(null)
 const contactModalOpen = ref<boolean>(false);
 const contactMessageModalData = ref<ContactFormData | null>(null)
+const rideModalOpen = ref<boolean>(false);
+const rideRequestModalData = ref<RideRequestFormData | null>(null)
+const consultationModalOpen = ref<boolean>(false);
+const consultationRequestModalData = ref<ConsultationRequestFormData | null>(null)
 const applicationModalOpen = ref<boolean>(false)
 const applicationModalData = ref<ApplicationFormData | null>(null)
 
@@ -227,13 +254,17 @@ const queryFilters = computed(() => {
   return filters
 })
 
+const nextContactPage = () => fetchContactMessages(false, 3, contactPage.value + 1)
+const prevContactPage = () => fetchContactMessages(false, 3, Math.max(1, contactPage.value - 1))
+const setContactPage  = (p: number) => fetchContactMessages(false, 3, p)
+
 const nextRidePage = () => fetchRideRequests(false, 3, requestPage.value + 1)
 const prevRidePage = () => fetchRideRequests(false, 3, Math.max(1, requestPage.value - 1))
 const setRidePage  = (p: number) => fetchRideRequests(false, 3, p)
 
-const nextContactPage = () => fetchContactMessages(false, 3, contactPage.value + 1)
-const prevContactPage = () => fetchContactMessages(false, 3, Math.max(1, contactPage.value - 1))
-const setContactPage  = (p: number) => fetchContactMessages(false, 3, p)
+const nextConsultationPage = () => fetchConsultationRequests(false, 3, consultationRequestPage.value + 1)
+const prevConsultationPage = () => fetchConsultationRequests(false, 3, Math.max(1, consultationRequestPage.value - 1))
+const setConsultationPage = (p: number) => fetchConsultationRequests(false, 3, p)
 
 const nextApplicationPage = () => fetchApplications(false, 3, applicationPage.value + 1, true, queryFilters.value)
 const prevApplicationPage = () => fetchApplications(false, 3, Math.max(1, applicationPage.value - 1), true, queryFilters.value)
@@ -275,6 +306,18 @@ const exportCurrentPageZip = async () => {
   }
 }
 
+const { 
+    fetchContactMessages, 
+    updateContactStatus, 
+    updateContactTags, 
+    exportContactPDF,
+    deleteContactMessage,
+    contactPage,
+    contactMessages,
+    contactMessagesPagination,
+    loadingContactMessages
+} = useContactMessages();
+
 const {
     fetchRideRequests,
     updateRideStatus,
@@ -287,17 +330,17 @@ const {
     requestPage
 } = useRideRequests();
 
-const { 
-    fetchContactMessages, 
-    updateContactStatus, 
-    updateContactTags, 
-    exportContactPDF,
-    deleteContactMessage,
-    contactPage,
-    contactMessages,
-    contactMessagesPagination,
-    loadingContactMessages
-} = useContactMessages();
+const {
+    fetchConsultationRequests,
+    updateConsultationStatus,
+    updateConsultationTags,
+    deleteConsultationRequest,
+    exportConsultationPDF,
+    consultationRequests,
+    consultationRequestsPagination,
+    loadingConsultationRequests,
+    consultationRequestPage
+} = useConsultationRequests();
 
 const {
   fetchApplications,
@@ -396,8 +439,9 @@ onMounted(async () => {
 
   if (authStore.isFirebaseReady && authStore.authorized) {
     await Promise.allSettled([
-      fetchRideRequests(true, 3, requestPage.value),
       fetchContactMessages(true, 3, contactPage.value),
+      fetchRideRequests(true, 3, requestPage.value),
+      fetchConsultationRequests(true, 3, consultationRequestPage.value),
       fetchApplications(true, 3, applicationPage.value, true, queryFilters.value),
       fetchEvents(),
     ])
@@ -411,8 +455,9 @@ onMounted(async () => {
       if (!ok) return
       stop()
       await Promise.allSettled([
+        fetchContactMessages(true, 3, contactPage.value),  
         fetchRideRequests(true, 3, requestPage.value),
-        fetchContactMessages(true, 3, contactPage.value),
+        fetchConsultationRequests(true, 3, consultationRequestPage.value),
         fetchApplications(true, 3, applicationPage.value, true, queryFilters.value),
         fetchEvents(),
       ])

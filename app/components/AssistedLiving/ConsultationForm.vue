@@ -6,18 +6,32 @@
         <div class="space-y-1">
           <h3 class="border-b border-b-black/15 text-brand-primary font-bold">Contact Information</h3>
           <div class="lg:flex lg:gap-2">
-            <BaseFormInput v-model="form.personal_information.first_name" autocomplete="given-name" name="first-name" :label="$t('consultation-form.fields.first-name')" required aria-required />
-            <BaseFormInput v-model="form.personal_information.last_name" autocomplete="family-name" name="last-name" :label="$t('consultation-form.fields.last-name')" />
+            <BaseFormInput
+              v-model="form.personal_information.first_name"
+              autocomplete="given-name"
+              name="given-name"
+              :label="$t('consultation-form.fields.first-name')"
+              required
+            />
+
+            <BaseFormInput
+              v-model="form.personal_information.last_name"
+              autocomplete="family-name"
+              name="family-name"
+              :label="$t('consultation-form.fields.last-name')"
+              required
+            />
           </div>
   
           <BaseFormInput v-model="form.personal_information.email" type="email" autocomplete="email" name="email" :label="`${prefersEmailContact ? `${$t('consultation-form.fields.email')}*` : $t('consultation-form.fields.email')}`" :required="prefersEmailContact" :aria-required="prefersEmailContact" />
-          <BaseFormInput v-model="form.personal_information.phone" type="tel" autocomplete="tel" name="phone" :label="`${prefersPhoneContact ? `${$t('consultation-form.fields.phone')}*` : $t('consultation-form.fields.phone')}`" :required="prefersPhoneContact" :aria-required="prefersPhoneContact" />
+          <BaseFormInput v-model="form.personal_information.phone" type="tel" autocomplete="tel" name="tel" :label="`${prefersPhoneContact ? `${$t('consultation-form.fields.phone')}*` : $t('consultation-form.fields.phone')}`" :required="prefersPhoneContact" :aria-required="prefersPhoneContact" />
   
           <BaseFormSelect 
             v-model="form.personal_information.contact_method"
             :values="['email', 'phone']"
             :labels="consultationContactMethodLabels"
             :label="$t('consultation-form.fields.contact-method-options.label')"
+            no-initial-select
           />
         </div>
 
@@ -33,7 +47,7 @@
               name="seeking-care"
               styling="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
             />
-            <BaseFormInput v-if="personSeekingCareOtherSelected" v-model="form.individual_care_information.person_seeking_care.other" type="text" name="person-seeking-care-other" :label="$t('consultation-form.fields.person-seeking-care.other')" required aria-required />
+            <BaseFormInput v-if="personSeekingCareOtherSelected" v-model="form.individual_care_information.person_seeking_care.other" type="text" name="person-seeking-care-other" :label="$t('consultation-form.fields.person-seeking-care.other')" required aria-required="true" />
           </div>
           
           <div class="space-y-2">
@@ -60,7 +74,7 @@
               name="insurance-type"
               styling="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
             />
-            <BaseFormInput v-if="insuranceTypeOtherSelected" v-model="form.individual_care_information.insurance_type.other" type="text" name="insurance-type-other" :label="$t('consultation-form.fields.insurance-type.other')" required aria-required />
+            <BaseFormInput v-if="insuranceTypeOtherSelected" v-model="form.individual_care_information.insurance_type.other" type="text" name="insurance-type-other" :label="$t('consultation-form.fields.insurance-type.other')" required aria-required="true" />
           </div>
           <div class="space-y-2">
             <BaseFormRadios
@@ -95,7 +109,7 @@
 
         <!-- Additonal information textarea -->
          <div>
-           <BaseFormTextArea v-model="form.message" name="message" :label="$t('consultation-form.fields.message')" required aria-required />
+           <BaseFormTextArea v-model="form.message" name="message" :label="$t('consultation-form.fields.message')" required aria-required="true" />
          </div>
 
         <BaseUiAction :disabled="isSubmitting" :aria-disabled="isSubmitting" type="submit" class="w-full p-2" >
@@ -116,11 +130,8 @@
         <div 
           v-if="submitResult" class="mt-4 p-3 rounded-md" 
           :class="submitResult.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-          <div v-if="submitResult.success && submitResult.score" class="text-sm">
-            {{ $t('consultation-form.feedback.success')}}
-          </div>
-          <div v-else>
-            {{ $t('consultation-form.feedback.error')}}
+          <div class="text-sm">
+            {{ submitResult.message }}
           </div>
         </div>
         <div v-if="isSubmitting" class="bg-blue-100 mt-4 p-3 rounded-md text-sm">
@@ -133,8 +144,9 @@
 
 <script lang="ts" setup>
 import { useRecaptcha } from '../../composables/messages/recaptcha';
+import type { ConsultationForm } from '~/models/admin/ConsultationForm'
 
-const form = reactive({
+const form = reactive<ConsultationForm>({
   personal_information: {
     first_name: '',
     last_name: '',
@@ -149,10 +161,10 @@ const form = reactive({
     },
     age_range: '18-40',
     insurance_type: {
-      value: 'unknown',
+      value: 'medicaid',
       other: ''
     },
-   questions: [
+    questions: [
       {
         name: 'income_assistance',
         label: 'consultation-form.fields.yes-no.questions.income-assistance',
@@ -248,27 +260,86 @@ const { trigger: triggerVirtualThankYou } = useVirtualThankYou({
   extraData: { debug_mode: true } // helps show up in GA4 DebugView
 })
 
+type ValidationRule = {
+  condition: boolean
+  message: string
+}
+
+const isValidEmail = (email: string) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+}
+
+const isValidPhone = (phone: string) => {
+  const digits = phone.replace(/\D/g, '')
+
+  return digits.length === 10 || (digits.length === 11 && digits.startsWith('1'))
+}
+
+const validateConsultationForm = () => {
+  const firstName = form.personal_information.first_name.trim()
+  const lastName = form.personal_information.last_name.trim()
+  const email = form.personal_information.email.trim()
+  const phone = form.personal_information.phone.trim()
+  const message = form.message.trim()
+  const personSeekingCare = form.individual_care_information.person_seeking_care
+  const insuranceType = form.individual_care_information.insurance_type
+
+  const rules: ValidationRule[] = [
+    {
+      condition: !firstName,
+      message: $t('consultation-form.feedback.first-name-required'),
+    },
+    {
+      condition: !lastName,
+      message: $t('consultation-form.feedback.last-name-required'),
+    },
+    {
+      condition: !message,
+      message: $t('consultation-form.feedback.message-required'),
+    },
+    {
+      condition: prefersEmailContact.value && !email,
+      message: $t('consultation-form.feedback.email-required'),
+    },
+    {
+      condition: !!email && !isValidEmail(email),
+      message: $t('consultation-form.feedback.email-invalid'),
+    },
+    {
+      condition: prefersPhoneContact.value && !phone,
+      message: $t('consultation-form.feedback.phone-required'),
+    },
+    {
+      condition: !!phone && !isValidPhone(phone),
+      message: $t('consultation-form.feedback.phone-invalid'),
+    },
+    {
+      condition: personSeekingCare.value === 'other' && !personSeekingCare.other.trim(),
+      message: $t('consultation-form.feedback.person-seeking-care-other-required'),
+    },
+    {
+      condition: insuranceType.value === 'other' && !insuranceType.other.trim(),
+      message: $t('consultation-form.feedback.insurance-type-other-required'),
+    },
+  ]
+
+  return rules
+    .filter(rule => rule.condition)
+    .map(rule => rule.message)
+}
+
 const submitConsultationRequest = async () => {
   try {
     isSubmitting.value = true
     submitResult.value = null
 
     // Validate required fields
-    if (
-      !form.personal_information.first_name ||
-      !form.message ||
-      (
-        prefersEmailContact.value &&
-        !form.personal_information.email
-      ) ||
-      (
-        prefersPhoneContact.value &&
-        !form.personal_information.phone
-      )
-    ) {
+    const validationErrors = validateConsultationForm()
+
+    if (validationErrors.length) {
       submitResult.value = {
         success: false,
-        message: $t('consultation-form.feedback.required-fields')
+        message: validationErrors.join(' ')
       }
 
       return
@@ -279,7 +350,7 @@ const submitConsultationRequest = async () => {
     const verification = await verifyWithServer(token)
 
     if (verification.success && verification.data?.valid) {
-      await $fetch('/api/consultation-form/submit', {
+      await $fetch('/api/consultation-request/submit', {
         baseURL: useRuntimeConfig().public.useLocalApi
           ? 'http://127.0.0.1:4000'
           : 'https://api.goldengatemanor.com',
@@ -295,7 +366,7 @@ const submitConsultationRequest = async () => {
 
       submitResult.value = {
         success: true,
-        message: 'Consultation request submitted successfully!',
+        message: $t('consultation-form.feedback.submit-success'),
         score: verification.data.score
       }
 
@@ -356,7 +427,7 @@ const submitConsultationRequest = async () => {
     } else {
       submitResult.value = {
         success: false,
-        message: verification.message || 'ReCAPTCHA verification failed'
+        message: verification.message || $t('consultation-form.feedback.recaptcha-failed')
       }
     }
   } catch (error) {

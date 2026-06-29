@@ -5,7 +5,10 @@
   },
   {
     "id": "assisted-living",
-    "slug": "/assisted-living"
+    "slug": "/assisted-living",
+    "sublinks": [
+      { "id": "consultation", "slug": "/assisted-living/consultation" }
+    ]
   },
   {
     "id": "non-medical",
