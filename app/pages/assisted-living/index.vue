@@ -41,46 +41,7 @@
             <AssistedLivingCarousel />
         </BaseLayoutPageSection>
     </DeferRender>
-    <DeferRender when="visible">
-        <BaseLayoutPageSection margin="default" class="cv-auto">
-            <BaseLayoutPageContainer class="">
-                <div class="bg-[#365dba] text-white px-2 lg:px-12 py-16 rounded-lg">
-                    <h2 class="text-2xl font-extrabold px-2 text-center mb-8 lg:text-left lg:px-0">{{ $t('assisted-living.amenities-section.title') }}</h2>
-                    <p class="text-xl font-semibold px-2 lg:px-0">{{  $t('assisted-living.amenities-section.paragraph') }}</p>
-                    <div class="flex flex-col lg:flex-row justify-center gap-8 my-16 mx-8"> 
-                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                            <li class="">{{ $t('assisted-living.amenities-section.card[0][0]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[0][1]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[0][2]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[0][3]') }}</li>
-                        </ul>
-                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                            <li class="">{{ $t('assisted-living.amenities-section.card[1][0]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[1][1]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[1][2]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[1][3]') }}</li>
-                        </ul>
-                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
-                            <li class="">{{ $t('assisted-living.amenities-section.card[2][0]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[2][1]') }}</li>
-                            <li class="">{{ $t('assisted-living.amenities-section.card[2][2]') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </BaseLayoutPageContainer>
-        </BaseLayoutPageSection>
-    </DeferRender>
 
-      <!-- Bottom Page -->
-
-    <DeferRender when="visible">
-        <BaseLayoutPageCTA 
-            :title="$t('assisted-living.cta.title')"
-            :description="$t('assisted-living.cta.description')"
-            :button-label="$t('assisted-living.cta.button-label')"
-            :to="$localePath('/company/contact-us')"
-            />
-    </DeferRender>
     <DeferRender when="visible">
         <BaseLayoutPageSection margin="default" class="cv-auto">
             <BaseLayoutPageContainer class="">
@@ -109,6 +70,46 @@
                     </div>
                 </BaseLayoutCard>
           </BaseLayoutPageContainer>
+        </BaseLayoutPageSection>
+    </DeferRender>
+
+      <!-- Bottom Page -->
+
+    <DeferRender when="visible">
+        <BaseLayoutPageCTA 
+            :title="$t('assisted-living.cta.title')"
+            :description="$t('assisted-living.cta.description')"
+            :button-label="$t('assisted-living.cta.button-label')"
+            :to="$localePath('/company/contact-us')"
+            />
+    </DeferRender>
+    <DeferRender when="visible">
+        <BaseLayoutPageSection margin="default" class="cv-auto">
+            <BaseLayoutPageContainer class="">
+                <div class="bg-[#365dba] text-white px-2 lg:px-12 py-16 rounded-lg">
+                    <h2 class="text-2xl font-extrabold px-2 text-center mb-8 lg:text-left lg:px-0">{{ $t('assisted-living.amenities-section.title') }}</h2>
+                    <p class="text-xl font-semibold px-2 lg:px-0">{{  $t('assisted-living.amenities-section.paragraph') }}</p>
+                    <div class="flex flex-col lg:flex-row justify-center gap-8 my-16 mx-8"> 
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">{{ $t('assisted-living.amenities-section.card[0][0]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[0][1]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[0][2]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[0][3]') }}</li>
+                        </ul>
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">{{ $t('assisted-living.amenities-section.card[1][0]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[1][1]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[1][2]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[1][3]') }}</li>
+                        </ul>
+                        <ul class="bg-gray-200 font-bold text-brand-main-text px-4 lg:px-8 py-12 rounded-2xl text-xl lg:w-1/3 shadow-primary text-center space-y-4 flex flex-col justify-center">
+                            <li class="">{{ $t('assisted-living.amenities-section.card[2][0]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[2][1]') }}</li>
+                            <li class="">{{ $t('assisted-living.amenities-section.card[2][2]') }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
     </DeferRender>
   </div>
