@@ -43,6 +43,9 @@
       "counter": ["Image", "of"],
       "no-images": "No images"
     },
+    "infinite-carousel": {
+      "loading": "loading..."
+    },
     "new-tab-title": "Opens in a new tab"
   },
   "announcements": {
@@ -290,6 +293,68 @@
         "play": "Play",
         "pause": "Pause",
         "autoplay": "Autoplay"
+      }
+    },
+    "hero-slides": {
+      "transportation": {
+        "left": {
+          "eyebrow": "MEDICAID & PRIVATE TRANSPORTATION",
+          "headline": [
+            "Where you need.",
+            "When you need",
+            "to be there."
+          ],
+          "description": "Wheelchair-accessible, ambulatory, and long-distance transportation throughout Southern Colorado. Safe, reliable rides for medical appointments, dialysis, hospital discharges, and more.",
+          "cta": "Explore Transportation"
+        },
+        "right": {
+          "alt": ""
+        }
+      },
+      "medidrive-update": {
+        "left": {
+          "eyebrow": "HEALTH FIRST COLORADO UPDATE",
+          "headline": [
+            "New scheduling.",
+            "Same trusted",
+            "transportation."
+          ],
+          "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. Your transportation provider isn't changing—only the scheduling process is.",
+          "cta": "Learn About the Change"
+        },
+        "right": {
+          "alt": "Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026"
+        }
+      },
+      "medical-supplies": {
+        "left": {
+          "eyebrow": "DURABLE MEDICAL EQUIPMENT & SUPPLIES",
+          "headline": [
+            "Products that",
+            "support every",
+            "stage of care."
+          ],
+          "description": "From mobility equipment and compression garments to wound care, ostomy, urology, breast pumps, and daily living aids, we're here to help you stay independent and comfortable.",
+          "cta": "Shop Medical Supplies"
+        },
+        "right": {
+          "alt": ""
+        }
+      },
+      "assisted-living": {
+        "left": {
+          "eyebrow": "ASSISTED LIVING IN PUEBLO, COLORADO",
+          "headline": [
+            "Feel at home.",
+            "Receive the care",
+            "you deserve."
+          ],
+          "description": "Our family-owned assisted living homes provide personalized care, home-cooked meals, medication assistance, engaging activities, and a welcoming environment where residents can thrive with dignity and independence.",
+          "cta": "Schedule a Consultation"
+        },
+        "right": {
+          "alt": ""
+        }
       }
     },
     "overview-section": {
