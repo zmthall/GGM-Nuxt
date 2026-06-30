@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-col gap-4 my-8">
+        <div class="flex flex-col gap-3 my-8">
           <h2 class="text-2xl text-brand-primary font-bold">
             Understanding the Transition
           </h2>
@@ -61,8 +61,8 @@
               Golden Gate Manor Transportation created this guide to answer common questions, explain how scheduling works under the new system, and provide helpful resources for members, caregivers, healthcare providers, and anyone coordinating transportation for medical appointments.
             </p>
           </div>
-          <h2 class="text-xl font-bold text-brand-primary text-center">Official MediDrive Links</h2>
-          <div class="flex gap-8 justify-center mt-4">
+          <h2 class="text-md underline font-bold text-brand-primary text-center">Official MediDrive Links</h2>
+          <div class="flex gap-8 justify-center">
             <BaseUiAction href="https://medidrive.com/facilities/co" class="px-4 py-2">
               Visit MediDrive
             </BaseUiAction>
