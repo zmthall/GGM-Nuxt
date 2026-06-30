@@ -6,16 +6,16 @@
 
         <BaseLayoutPageSection margin="default" class="cv-auto max-[550px]:hidden">
             <BaseLayoutPageContainer>
-                    <BaseInteractiveCarousel
-                        :items="homeHeroSlides"
-                        item-key="id"
-                        variant="hero"
-                        :height="460"
-                        :gap="0"
-                        :max-visible="1"
-                        :min-item-width="1"
-                        >
-                        <template #item="{ item }">
+                <BaseInteractiveCarousel
+                    :items="homeHeroSlides"
+                    item-key="id"
+                    variant="hero"
+                    :height="460"
+                    :gap="0"
+                    :max-visible="1"
+                    :min-item-width="1"
+                    >
+                    <template #item="{ item }">
                             <div
                                 class="relative h-full w-full overflow-hidden rounded-xl"
                                 :class="bgClass(item.bg)"
@@ -77,9 +77,9 @@
                                     </div>
                                 </div>
                             </div>
-                            </template>
-                    </BaseInteractiveCarousel>
-                </BaseLayoutPageContainer>
+                        </template>
+                </BaseInteractiveCarousel>
+            </BaseLayoutPageContainer>
         </BaseLayoutPageSection>
         
         <!-- Overview (our company) -->
