@@ -408,7 +408,7 @@
             "Same trusted",
             "transportation."
           ],
-          "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. Your transportation provider isn't changing—only the scheduling process is.",
+          "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. If you'd like to ride with Golden Gate Manor Transportation, you may request us when scheduling your trip. Provider requests are accommodated whenever possible but cannot be guaranteed.",
           "cta": "Learn About the Change"
         },
         "right": {
@@ -1080,6 +1080,321 @@
       },
       "image-carousel": {
         "title": "Community Images 2025"
+      }
+    },
+    "information": {
+      "medidrive": {
+        "hero": {
+          "left": {
+            "eyebrow": "HEALTH FIRST COLORADO UPDATE",
+            "headline": [
+              "New scheduling.",
+              "Same trusted",
+              "transportation."
+            ],
+            "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. If you'd like to ride with Golden Gate Manor Transportation, you may request us when scheduling your trip through MediDrive. This guide explains the transition, answers common questions, and provides links to official MediDrive resources."
+          }
+        },
+        "top-page": {
+          "title": "Understanding the Transition",
+          "paragraph": [
+            "Beginning July 1, 2026, Health First Colorado will begin using MediDrive as its statewide transportation broker for non-emergency medical transportation (NEMT). While the scheduling process is changing, Golden Gate Manor Transportation remains committed to serving our community and helping members understand what to expect during the transition.",
+            "Golden Gate Manor Transportation created this guide to answer common questions, explain how scheduling works under the new system, and provide helpful resources for members, caregivers, healthcare providers, and anyone coordinating transportation for medical appointments."
+          ],
+          "links": {
+            "title": "Official MediDrive Links",
+            "visit-medidrive": "Visit MediDrive",
+            "member-portal": "Member Portal"
+          },
+          "questions": {
+            "bold": "Have questions before scheduling?", 
+            "text": "Continue reading below for frequently asked questions, transition details, and helpful resources."
+          }
+        },
+        "at-a-glance": [
+          {
+            "id": "official-medidrive-resources",
+            "bold": "Official MediDrive Resources:",
+            "text": "Access the MediDrive member portal, mobile app, and official Colorado resources to schedule and manage your transportation."
+          },
+          {
+            "id": "request-golden-gate",
+            "bold": "Request Golden Gate Manor Transportation:",
+            "text": "Learn how to request Golden Gate Manor Transportation as your preferred transportation provider and what to expect after making your request."
+          },
+          {
+            "id": "frequently-asked-questions",
+            "bold": "Frequently Asked Questions:",
+            "text": "Find answers to common questions about scheduling, provider requests, recurring trips, eligibility, cancellations, and mobility accommodations."
+          },
+          {
+            "id": "contact-support",
+            "bold": "Contact & Support:",
+            "text": "Find MediDrive member services, technical support, interpreter services, and other helpful contact information."
+          },
+          {
+            "id": "mileage-reimbursement",
+            "bold": "Mileage Reimbursement:",
+            "text": "Learn when mileage reimbursement may be available and how to contact MediDrive for reimbursement information."
+          },
+          {
+            "id": "healthcare-facilities",
+            "bold": "Healthcare Facilities:",
+            "text": "Information for clinics, hospitals, physician offices, dialysis centers, and other healthcare providers assisting Health First Colorado members."
+          },
+          {
+            "id": "transportation-providers",
+            "bold": "Transportation Providers:",
+            "text": "Helpful information for participating transportation providers and how Golden Gate Manor Transportation continues serving Southern Colorado."
+          },
+          {
+            "id": "golden-gate-contact",
+            "bold": "We're Still Here to Help:",
+            "text": "Learn how Golden Gate Manor Transportation can assist with general questions about the MediDrive transition and find our contact information if you need additional guidance."
+          }
+        ],
+        "jump-to": "Jump to Section",
+        "requesting-ggm": {
+          "title": "How to Request Golden Gate Manor Transportation",
+          "eyebrow": "Ride with the transportation provider you know and trust",
+          "paragraph": [
+            "If you'd like to ride with Golden Gate Manor Transportation, you may request us when scheduling your trip through MediDrive. While provider requests are accommodated whenever possible, they are not guaranteed. Final transportation assignments are determined by MediDrive based on availability, scheduling, and operational considerations.",
+            "We recommend requesting Golden Gate Manor Transportation each time you schedule a ride."
+          ],
+          "why-us": {
+            "title": "Why Riders Choose Golden Gate Manor Transportation",
+            "paragraph": [
+              "For years, Golden Gate Manor Transportation has proudly served Pueblo and communities throughout Southern Colorado with dependable, compassionate non-emergency medical transportation. Our team understands that getting to healthcare appointments is about more than simply arriving on time—it's about providing a safe, comfortable, and respectful experience from pickup to drop-off.",
+              "Our professionally trained drivers are committed to treating every passenger with dignity and courtesy while providing reliable wheelchair-accessible transportation for those who need it. Whether you're traveling to a routine doctor's appointment, dialysis treatment, physical therapy, or a specialist visit, our goal is to make every ride as smooth and stress-free as possible.",
+              "Many members choose to request Golden Gate Manor Transportation because they appreciate our friendly local service, experienced drivers, and long-standing commitment to the Pueblo community. While MediDrive determines final provider assignments, requesting Golden Gate Manor gives you the opportunity to ride with a transportation team you already know and trust whenever possible."
+            ]
+          },
+          "scheduling": {
+            "title": "How to Schedule Your Medicaid Approved Trips",
+            "steps": [
+              {
+                "title": "Schedule your ride with MediDrive",
+                "paragraph": [
+                  "Beginning July 1, 2026, Health First Colorado members schedule all non-emergency medical transportation directly through MediDrive. If you are eligible for transportation benefits, MediDrive will help arrange your ride to and from covered medical appointments.",
+                  "To avoid delays, we recommend scheduling your trip as early as possible after your appointment is made. Having your appointment information available before calling can make the scheduling process faster and easier."
+                ],
+                "list": {
+                  "title": "When scheduling, be prepared to provide:",
+                  "items": [
+                    "Your Health First Colorado Member ID",
+                    "Date and time of your appointment",
+                    "Medical provider's name and address",
+                    "Your pick-up address",
+                    "Any mobility or accessibility needs (wheelchair, walker, oxygen, etc.)",
+                    "Return trip information, if applicable"
+                  ]
+                }
+              },
+              {
+                "title": "Request Golden Gate Manor Transportation",
+                "paragraph": [
+                  "After providing your trip information, you may request Golden Gate Manor Transportation as your preferred transportation provider. This lets MediDrive know which provider you would like to complete your trip.",
+                  "Many members appreciate riding with drivers and vehicles they already know, especially for recurring appointments such as dialysis, physical therapy, or specialist visits."
+                ],
+                "blockquote": [
+                  {
+                    "title": "If scheduling by phone, simply tell the MediDrive representative:",
+                    "quote": "I would like to request Golden Gate Manor Transportation as my preferred transportation provider."
+                  },
+                  {
+                    "title": "If scheduling online or through the member portal:",
+                    "quote": "If a preferred transportation provider or notes field is available, request Golden Gate Manor Transportation there as well."
+                  }
+                ],
+                "paragraph2": [
+                  "If you are scheduling online or through a member portal that allows provider preferences, select Golden Gate Manor Transportation whenever that option is available."
+                ]
+              },
+              {
+                "title": "Wait for trip confirmation",
+                "paragraph": [
+                  "After your reservation is submitted, MediDrive reviews the request and coordinates transportation with participating providers. While they make every effort to honor provider requests, assignments depend on operational availability."
+                ],
+                "list": {
+                  "title": "Assignments may depend on:",
+                  "items": [
+                    "Vehicle availability",
+                    "Driver availability",
+                    "Trip location",
+                    "Scheduling capacity",
+                    "Operational requirements"
+                  ]
+                }
+              },
+              {
+                "title": "Ride with confidence",
+                "paragraph": [
+                  "If your request is approved, Golden Gate Manor Transportation will provide your ride as scheduled.",
+                  "If another transportation provider is assigned, your trip will still be coordinated through MediDrive to help ensure you arrive safely at your medical appointment."
+                ]
+              }
+            ],
+            "please-note": "Requesting Golden Gate Manor Transportation does not guarantee assignment to our fleet. However, requesting your preferred transportation provider gives MediDrive the opportunity to accommodate your preference whenever possible."
+          }
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "description": "Answers to common questions about scheduling through MediDrive and requesting Golden Gate Manor Transportation.",
+          "items": [
+            {
+              "id": "ride-with-ggm",
+              "label": "Can I still ride with Golden Gate Manor Transportation?",
+              "paragraph": "Beginning July 1, 2026, Health First Colorado members schedule rides through MediDrive. You can still request Golden Gate Manor Transportation as your preferred transportation provider when scheduling your trip. While MediDrive makes the final provider assignment, requesting us gives them the opportunity to accommodate your preference whenever possible."
+            },
+            {
+              "id": "still-medicaid-provider",
+              "label": "Is Golden Gate Manor Transportation still a Medicaid transportation provider?",
+              "paragraph": "Yes. Golden Gate Manor Transportation continues to provide non-emergency medical transportation for eligible Health First Colorado members. The only change is that MediDrive now coordinates scheduling and trip assignments."
+            },
+            {
+              "id": "provider-request-guarantee",
+              "label": "Does requesting Golden Gate Manor guarantee I'll ride with your company?",
+              "paragraph": "No. Provider requests are considered by MediDrive, but assignments depend on factors such as vehicle availability, driver availability, scheduling capacity, trip location, and other operational considerations."
+            },
+            {
+              "id": "schedule-in-advance",
+              "label": "How far in advance should I schedule my ride?",
+              "paragraph": "We recommend scheduling your transportation as soon as your medical appointment is confirmed whenever possible. Scheduling early gives MediDrive more flexibility when coordinating your trip."
+            },
+            {
+              "id": "recurring-trips",
+              "label": "Can I schedule recurring trips for dialysis or ongoing treatments?",
+              "paragraph": "Yes. If you have recurring medical appointments such as dialysis, physical therapy, or other ongoing treatments, discuss your schedule with MediDrive. They can explain the options available for recurring transportation."
+            },
+            {
+              "id": "scheduling-information-needed",
+              "label": "What information do I need when scheduling?",
+              "paragraph": "Have your Health First Colorado Member ID, appointment date and time, medical provider information, pickup address, mobility needs, and return trip information available before contacting MediDrive."
+            },
+            {
+              "id": "cancel-or-change-ride",
+              "label": "Who do I call if I need to cancel or change my ride?",
+              "paragraph": "Contact MediDrive as soon as possible if you need to cancel or make changes to your scheduled transportation. They coordinate scheduling for Health First Colorado transportation services."
+            },
+            {
+              "id": "wheelchair-mobility-equipment",
+              "label": "Can I ride if I use a wheelchair or other mobility equipment?",
+              "paragraph": "Yes. When scheduling your trip, let MediDrive know about any mobility or accessibility needs, including wheelchairs, walkers, oxygen equipment, or other accommodations so the appropriate vehicle can be arranged."
+            },
+            {
+              "id": "eligibility-question",
+              "label": "What if I don't know whether I'm eligible?",
+              "paragraph": "If you're unsure whether you qualify for Health First Colorado transportation benefits, MediDrive can help explain eligibility and the scheduling process. You can also speak with your Health First Colorado health plan for additional assistance."
+            }
+          ]
+        },
+        "resources": {
+          "title": "Official MediDrive Resources",
+          "description": "These official MediDrive resources can help you schedule rides, manage existing reservations, and learn more about transportation benefits available through Health First Colorado.",
+          "items": [
+            {
+              "icon": "material-symbols:login-rounded",
+              "title": "Member Portal",
+              "description": "Log in to schedule eligible rides, review upcoming trips, and manage your transportation online.",
+              "button": "Open Member Portal",
+              "link": "https://member.medidrive.com/login"
+            },
+            {
+              "icon": "material-symbols:smartphone",
+              "title": "Mobile App",
+              "description": "Download the MediDrive Member App to schedule rides, track your driver, and manage transportation from your mobile device.",
+              "button": "Download the App",
+              "link": "https://medidrive.com/facilities/co#mobile-app"
+            },
+            {
+              "icon": "material-symbols:language",
+              "title": "Colorado Information",
+              "description": "Visit MediDrive's Colorado information page to learn more about Health First Colorado transportation services.",
+              "button": "Visit MediDrive",
+              "link": "https://medidrive.com/facilities/co"
+            }
+          ]
+        },
+        "contact-support": {
+          "title": "Contact & Support",
+          "description": "Use these MediDrive contact options for ride scheduling, trip assistance, language support, or technical help with the member portal and mobile app.",
+          "member-services": {
+            "title": "MediDrive Member Services",
+            "description": "Call MediDrive Member Services to schedule a ride, ask about an existing reservation, or get help with transportation coordination.",
+            "booking-hours-label": "Routine ride scheduling:",
+            "booking-hours": "Monday–Friday, 8:00 AM–5:00 PM MST",
+            "urgent-label": "Urgent ride assistance:",
+            "urgent": "Available 24/7",
+            "language-label": "Interpreter services:",
+            "language": "Available in 200+ languages at no additional cost"
+          },
+          "technical-support": {
+            "title": "Technical Support",
+            "description": "For help using the MediDrive mobile app or member portal, contact MediDrive technical support directly.",
+            "help-with-title": "Technical support can help with:",
+            "help-with": [
+              "MediDrive Member Portal access",
+              "MediDrive mobile app support",
+              "Login or account issues",
+              "Technical problems while managing rides online"
+            ]
+          }
+        },
+        "mileage-reimbursement": {
+          "title": "Mileage Reimbursement",
+          "paragraph": [
+            "Some Health First Colorado members may be eligible for mileage reimbursement when they use their own vehicle, a family member, friend, or caregiver to get to a covered medical appointment.",
+            "Mileage reimbursement is different from scheduling a ride with a transportation provider. Instead of assigning a vehicle and driver, MediDrive may review reimbursement requests for eligible trips when a member has arranged their own transportation."
+          ],
+          "when-to-use": {
+            "title": "When mileage reimbursement may apply",
+            "text": "Mileage reimbursement may be an option when you or someone you know can drive you to an eligible medical appointment and reimbursement is approved through the proper process."
+          },
+          "how-to-request": {
+            "title": "How to request reimbursement",
+            "text": "Contact MediDrive or use the official MediDrive member resources to ask about mileage reimbursement requirements, trip approval, documentation, and how claims are submitted."
+          },
+          "note": {
+            "bold": "Please note:",
+            "text": " Golden Gate Manor Transportation does not process mileage reimbursement requests. Mileage reimbursement questions should be directed to MediDrive."
+          }
+        },
+        "healthcare-facilities": {
+          "title": "Healthcare Facilities",
+          "paragraph": [
+            "Healthcare facilities can help Health First Colorado members by reminding them that eligible non-emergency medical transportation is scheduled through MediDrive beginning July 1, 2026.",
+            "When speaking with patients, facilities may encourage members to have their Health First Colorado Member ID, appointment date and time, facility address, pickup address, and mobility needs ready before scheduling transportation.",
+            "If a patient prefers Golden Gate Manor Transportation, they may request us as their preferred transportation provider when scheduling through MediDrive. Final transportation assignments are coordinated by MediDrive."
+          ]
+        },
+        "transportation-providers": {
+          "title": "Transportation Providers",
+          "paragraph": [
+            "Transportation providers participating in the MediDrive network should follow MediDrive’s official procedures for trip assignments, scheduling updates, cancellations, and communication.",
+            "Golden Gate Manor Transportation remains committed to serving eligible Health First Colorado members with safe, respectful, and reliable non-emergency medical transportation throughout Pueblo and Southern Colorado."
+          ],
+          "note": {
+            "bold": "Reminder:",
+            "text": " Golden Gate Manor Transportation continues to proudly serve eligible Health First Colorado members as a participating transportation provider within the MediDrive network."
+          }
+        },
+        "ggm-contact": {
+          "eyebrow": "We're still here to help",
+          "title": "Have Questions About the MediDrive Transition?",
+          "paragraph": [
+            "The transition to MediDrive is a new process for many Health First Colorado members, and we understand that changes to transportation scheduling can feel confusing at first.",
+            "While ride scheduling, trip changes, cancellations, and transportation coordination are handled directly through MediDrive, Golden Gate Manor Transportation is happy to answer general questions about the transition and help point you in the right direction."
+          ],
+          "note": {
+            "bold": "Please note:",
+            "text": "Golden Gate Manor Transportation cannot schedule, modify, or cancel MediDrive reservations. Those requests must be made directly through MediDrive."
+          },
+          "card": {
+            "title": "Contact Golden Gate Manor",
+            "hours-label": "Office hours:",
+            "button": "Contact Us"
+          }
+        }
       }
     },
     "podcast": {
