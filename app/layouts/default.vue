@@ -16,8 +16,8 @@
       <LazyBaseLayoutFooter />
     </DeferRender>  
 
-    <AdNominateModal v-if="isNomination" v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
-    <AdVoteModal v-else v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
+    <!-- <AdNominateModal v-if="isNomination" v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
+    <AdVoteModal v-else v-model="cvOpen" :open-chance="0.40" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" /> -->
   </main>
 </template>
 

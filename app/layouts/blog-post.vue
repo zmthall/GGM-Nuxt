@@ -9,7 +9,7 @@
     <BaseUiLanguageSwitcher />
     <BaseLayoutFooter />
     
-    <AdCommunityVotesSupportModal v-model="cvOpen" :open-chance="0.65" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" />
+    <!-- <AdCommunityVotesSupportModal v-model="cvOpen" :open-chance="0.65" :prompt-cooldown-ms="1000*60*25" :dismiss-cooldown-ms="1000*60*10" :min-page-views-before-prompt="1" :max-prompts-per-session="2" /> -->
   </main>
 </template>
 
