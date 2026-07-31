@@ -320,7 +320,10 @@ const createBlogPost = async () => {
       return null
     }
 
-    const payload: BlogPostFull = { ...toRaw(meta.value) }
+    const payload: BlogPostFull = { 
+      ...toRaw(meta.value),
+      readTime: readingStats.value.minutes
+    }
 
     const uniqueCheck = await blogPostsAPI.checkUniquePost({
       id: payload.id,
@@ -402,7 +405,10 @@ const editBlogPost = async () => {
       return null
     }
 
-    const payload: BlogPostFull = { ...toRaw(meta.value) }
+    const payload: BlogPostFull = { 
+      ...toRaw(meta.value), 
+      readTime: readingStats.value.minutes 
+    }
 
     const uniqueCheck = await blogPostsAPI.checkUniquePost({
       id: payload.id,
