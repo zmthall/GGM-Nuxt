@@ -43,7 +43,15 @@
                     <div class="flex flex-col items-start justify-center">
                       <p class="text-xs">Last Updated: {{ formatDates.formatShortDateNoLeadingZero(post.updatedAt) }}</p>
                       <h3 :title="post.title" class="post-title text-xl text-brand-primary font-bold">{{ text.truncateText(post.title, 50) }}</h3>
-                      <NuxtLink :to="post.published ? blogPostsAPI.getBlogPostLink(post.slug) : blogPostsAPI.getBlogPostLinkAdmin(post.slug)" class="text-brand-primary/75 underline hover:text-brand-link-hover" @click.stop>
+                      <NuxtLink
+                        :to="
+                          isPostPubliclyAvailable(post)
+                            ? blogPostsAPI.getBlogPostLink(post.slug)
+                            : blogPostsAPI.getBlogPostLinkAdmin(post.slug)
+                        "
+                        class="text-brand-primary/75 underline hover:text-brand-link-hover"
+                        @click.stop
+                      >
                         {{ post.slug }}
                       </NuxtLink>
                     </div>
@@ -57,10 +65,43 @@
 
                   <div class="min-w-[100px] flex flex-col justify-center items-center self-end gap-2 h-full">
                     <div class="space-y-2 flex items-center">
-                      <span v-if="post.draft" class="bg-blue-300 px-2 py-1 rounded-full text-blue-800 text-xs">Draft</span>
-                      <div v-if="post.published && !post.draft" class="flex flex-col items-center">
-                        <span class="bg-green-300 px-2 py-1 rounded-full text-green-800">Published</span>
-                        <time :datetime="post.publishTimestamp ?? undefined" class="w-max">{{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}</time>
+                      <span
+                        v-if="post.draft"
+                        class="rounded-full bg-blue-300 px-2 py-1 text-xs text-blue-800"
+                      >
+                        Draft
+                      </span>
+
+                      <div
+                        v-else-if="isPostScheduled(post)"
+                        class="flex flex-col items-center"
+                      >
+                        <span class="rounded-full bg-amber-200 px-2 py-1 text-amber-800">
+                          Scheduled
+                        </span>
+
+                        <time
+                          :datetime="post.publishTimestamp ?? undefined"
+                          class="w-max"
+                        >
+                          {{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}
+                        </time>
+                      </div>
+
+                      <div
+                        v-else-if="isPostPubliclyAvailable(post)"
+                        class="flex flex-col items-center"
+                      >
+                        <span class="rounded-full bg-green-300 px-2 py-1 text-green-800">
+                          Published
+                        </span>
+
+                        <time
+                          :datetime="post.publishTimestamp ?? undefined"
+                          class="w-max"
+                        >
+                          {{ formatDates.formatShortDateNoLeadingZero(post.publishTimestamp ?? '') }}
+                        </time>
                       </div>
                     </div>
                     <BaseUiAction v-if="!post.published" type="button" stop-propagation class="p-1" @click="showPublishModal(post.id)">Publish</BaseUiAction>
@@ -218,6 +259,28 @@ watchEffect(() => {
 
 const allPosts = computed(() => blogState.value.posts)
 const postPagination = computed(() => blogState.value.pagination)
+
+const isPostPubliclyAvailable = (post: BlogPostPreview): boolean => {
+  if (!post.published || post.draft || !post.publishTimestamp) {
+    return false
+  }
+
+  const publishTime = new Date(post.publishTimestamp).getTime()
+
+  return Number.isFinite(publishTime)
+    && publishTime <= Date.now()
+}
+
+const isPostScheduled = (post: BlogPostPreview): boolean => {
+  if (!post.published || post.draft || !post.publishTimestamp) {
+    return false
+  }
+
+  const publishTime = new Date(post.publishTimestamp).getTime()
+
+  return Number.isFinite(publishTime)
+    && publishTime > Date.now()
+}
 
 const isLoadingPage = computed(() => {
   if (!authStore.isFirebaseReady) return true

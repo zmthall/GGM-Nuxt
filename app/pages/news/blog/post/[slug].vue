@@ -232,24 +232,43 @@ const resolvedSlug = computed(() => {
 
 const {
   data: post,
-  pending: postPending
+  pending: postPending,
+  error: postError
 } = await useAsyncData(
-  () => resolvedSlug.value ? `blog-post-${resolvedSlug.value}` : 'blog-post-null',
+  () => resolvedSlug.value
+    ? `blog-post-${resolvedSlug.value}`
+    : 'blog-post-null',
   async () => {
     if (!resolvedSlug.value) return null
 
-    const result = await blogPostsAPI.getPublishedPostBySlug(resolvedSlug.value)
-
-    if (!result) {
-      throw createError({
-        statusCode: 404,
-        statusMessage: 'Blog post not found'
-      })
-    }
-
-    return result
+    return await blogPostsAPI.getPublishedPostBySlug(
+      resolvedSlug.value
+    )
   }
 )
+
+const publishTime = post.value?.publishTimestamp
+  ? new Date(post.value.publishTimestamp).getTime()
+  : Number.NaN
+
+const isDraft = post.value?.draft === true
+const hasInvalidPublishDate = !Number.isFinite(publishTime)
+const isScheduledForFuture = Number.isFinite(publishTime)
+  && publishTime > Date.now()
+
+if (
+  postError.value
+  || !post.value
+  || isDraft
+  || hasInvalidPublishDate
+  || isScheduledForFuture
+) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Blog post not found',
+    fatal: true
+  })
+}
 
 const TOC = computed(() => buildTocFromMdc(post.value?.content ?? ''))
 
