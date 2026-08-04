@@ -10,11 +10,11 @@
                     :items="homeHeroSlides"
                     item-key="id"
                     variant="hero"
-                    :height="460"
+                    height="clamp(460px, 550px, 700px)"
                     :gap="0"
                     :max-visible="1"
                     :min-item-width="1"
-                    >
+                >
                     <template #item="{ item }">
                             <div
                                 class="relative h-full w-full overflow-hidden rounded-xl"

@@ -94,7 +94,7 @@
                   <div class="flex items-start gap-3">
                     <BaseIcon
                       name="material-symbols:arrow-forward-rounded"
-                      class="mt-1 text-brand-primary transition-transform group-hover:translate-x-1"
+                      class="mt-1 text-brand-primary shrink-0 transition-transform group-hover:translate-x-1"
                     />
 
                     <div>
@@ -111,6 +111,111 @@
               </li>
             </ul>
           </PostAtAGlance>
+        </section>
+
+        <section
+          id="transition-overview"
+          class="my-12 scroll-mt-24 space-y-6"
+          aria-labelledby="transition-overview-title"
+        >
+          <div class="space-y-4">
+            <h2
+              id="transition-overview-title"
+              class="font-serif text-2xl font-bold text-[#121b75] md:text-3xl"
+            >
+              {{ $t('news.information.medidrive.transition-overview.title') }}
+            </h2>
+
+            <p class="text-lg leading-relaxed text-[#1e1e1e] md:text-xl">
+              {{ $t('news.information.medidrive.transition-overview.paragraph.0') }}
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#1e1e1e] md:text-xl">
+              {{ $t('news.information.medidrive.transition-overview.paragraph.1') }}
+            </p>
+          </div>
+
+          <!-- Transition phases -->
+          <div class="grid gap-6 md:grid-cols-2">
+            <!-- Phase 1 -->
+            <article
+              class="flex h-full flex-col rounded-2xl border border-[#121b75]/20 bg-white p-6 shadow-sm"
+            >
+              <div class="mb-5 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p
+                    class="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#121b75]"
+                  >
+                    {{ $t('news.information.medidrive.transition-overview.phases.0.eyebrow') }}
+                  </p>
+
+                  <h3 class="font-serif text-xl font-bold text-[#121b75] md:text-2xl">
+                    {{ $t('news.information.medidrive.transition-overview.phases.0.title') }}
+                  </h3>
+                </div>
+
+                <span
+                  class="inline-flex rounded-full bg-[#121b75] px-3 py-1 text-sm font-semibold text-white"
+                >
+                  {{ $t('news.information.medidrive.transition-overview.phases.0.status') }}
+                </span>
+              </div>
+
+              <p class="mb-4 font-semibold text-[#121b75]">
+                {{ $t('news.information.medidrive.transition-overview.phases.0.date') }}
+              </p>
+
+              <p class="text-base leading-relaxed text-[#1e1e1e] md:text-lg">
+                {{ $t('news.information.medidrive.transition-overview.phases.0.description') }}
+              </p>
+            </article>
+
+            <!-- Phase 2 -->
+            <article
+              class="flex h-full flex-col rounded-2xl border border-[#eae39e] bg-[#fdfbf6] p-6 shadow-sm"
+            >
+              <div class="mb-5 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p
+                    class="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-[#121b75]"
+                  >
+                    {{ $t('news.information.medidrive.transition-overview.phases.1.eyebrow') }}
+                  </p>
+
+                  <h3 class="font-serif text-xl font-bold text-[#121b75] md:text-2xl">
+                    {{ $t('news.information.medidrive.transition-overview.phases.1.title') }}
+                  </h3>
+                </div>
+
+                <span
+                  class="inline-flex rounded-full bg-[#eae39e] px-3 py-1 text-sm font-semibold text-[#121b75]"
+                >
+                  {{ $t('news.information.medidrive.transition-overview.phases.1.status') }}
+                </span>
+              </div>
+
+              <p class="mb-4 font-semibold text-[#121b75]">
+                {{ $t('news.information.medidrive.transition-overview.phases.1.date') }}
+              </p>
+
+              <p class="text-base leading-relaxed text-[#1e1e1e] md:text-lg">
+                {{ $t('news.information.medidrive.transition-overview.phases.1.description') }}
+              </p>
+            </article>
+          </div>
+
+          <!-- Southern Colorado notice -->
+          <div
+            class="rounded-xl border-l-4 border-[#121b75] bg-white px-5 py-4 shadow-sm"
+            role="note"
+          >
+            <p class="text-base leading-relaxed text-[#1e1e1e] md:text-lg">
+              <strong class="font-bold text-[#121b75]">
+                {{ $t('news.information.medidrive.transition-overview.please-note.bold') }}
+              </strong>
+              {{ $t('news.information.medidrive.transition-overview.please-note.text') }}
+            </p>
+          </div>
         </section>
 
         <!-- Official MediDrive Resources -->

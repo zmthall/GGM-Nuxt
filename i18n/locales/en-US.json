@@ -51,7 +51,7 @@
   "announcements": {
     "announcement-1": {
       "title": "Important Update:",
-      "content": "Health First Colorado rides for NEMT are now scheduled through MediDrive Beginning July 1st, 2026.",
+      "content": "Health First Colorado is transitioning to MediDrive as Colorado's statewide NEMT broker. Southern Colorado is expected to transition during Phase 2 in Fall 2026.",
       "cta": "Learn More"
     }
   },
@@ -397,7 +397,7 @@
           "cta": "Explore Transportation"
         },
         "right": {
-          "alt": ""
+          "alt": "Golden Gate Manor Transportation provides wheelchair-accessible, ambulatory, and long-distance medical transportation throughout Southern Colorado"
         }
       },
       "medidrive-update": {
@@ -408,11 +408,11 @@
             "Same trusted",
             "transportation."
           ],
-          "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. If you'd like to ride with Golden Gate Manor Transportation, you may request us when scheduling your trip. Provider requests are accommodated whenever possible but cannot be guaranteed.",
-          "cta": "Learn About the Change"
+          "description": "Health First Colorado is transitioning to MediDrive as Colorado's statewide NEMT broker. Southern Colorado is expected to move to MediDrive during Phase 2 in Fall 2026. Once the transition reaches our region, members may request Golden Gate Manor Transportation when scheduling, although provider requests cannot be guaranteed.",
+          "cta": "View Transition Guide"
         },
         "right": {
-          "alt": "Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026"
+          "alt": "Health First Colorado is transitioning to MediDrive in phases, with Southern Colorado expected to transition in Fall 2026"
         }
       },
       "medical-supplies": {
@@ -427,7 +427,7 @@
           "cta": "Shop Medical Supplies"
         },
         "right": {
-          "alt": ""
+          "alt": "Golden Gate Medical Supply products and equipment that support mobility, comfort, independence, and everyday care"
         }
       },
       "assisted-living": {
@@ -442,7 +442,7 @@
           "cta": "Schedule a Consultation"
         },
         "right": {
-          "alt": ""
+          "alt": "Golden Gate Manor assisted living residents receiving compassionate support in a comfortable, home-like setting"
         }
       }
     },
@@ -1092,13 +1092,13 @@
               "Same trusted",
               "transportation."
             ],
-            "description": "Beginning July 1, 2026, Health First Colorado members will schedule rides through MediDrive. If you'd like to ride with Golden Gate Manor Transportation, you may request us when scheduling your trip through MediDrive. This guide explains the transition, answers common questions, and provides links to official MediDrive resources."
+            "description": "Health First Colorado is transitioning to MediDrive as the state's new non-emergency medical transportation (NEMT) broker. The transition is being rolled out in phases across Colorado. Members in Southern Colorado should expect to begin scheduling through MediDrive when Phase 2 launches in Fall 2026."
           }
         },
         "top-page": {
           "title": "Understanding the Transition",
           "paragraph": [
-            "Beginning July 1, 2026, Health First Colorado will begin using MediDrive as its statewide transportation broker for non-emergency medical transportation (NEMT). While the scheduling process is changing, Golden Gate Manor Transportation remains committed to serving our community and helping members understand what to expect during the transition.",
+            "Health First Colorado is transitioning to MediDrive as its statewide transportation broker for non-emergency medical transportation (NEMT). The transition is occurring in phases, beginning with the nine-county Denver metro area on July 1, 2026. Southern Colorado, including the communities served by Golden Gate Manor Transportation, is expected to transition during Phase 2 in Fall 2026. While the scheduling process is changing, Golden Gate Manor Transportation remains committed to serving our community and helping members understand what to expect during the transition.",
             "Golden Gate Manor Transportation created this guide to answer common questions, explain how scheduling works under the new system, and provide helpful resources for members, caregivers, healthcare providers, and anyone coordinating transportation for medical appointments."
           ],
           "links": {
@@ -1112,6 +1112,11 @@
           }
         },
         "at-a-glance": [
+          {
+            "id": "transition-overview",
+            "bold": "Statewide Transition Timeline:",
+            "text": "Health First Colorado is transitioning to MediDrive in two phases. Phase 1 begins July 1, 2026, in the Denver metro area. Southern Colorado is expected to transition during Phase 2 in Fall 2026."
+          },
           {
             "id": "official-medidrive-resources",
             "bold": "Official MediDrive Resources:",
@@ -1154,6 +1159,34 @@
           }
         ],
         "jump-to": "Jump to Section",
+        "transition-overview": {
+          "id": "transition-overview",
+          "title": "MediDrive Transition Overview",
+          "paragraph": [
+            "Health First Colorado is transitioning to a single statewide broker for non-emergency medical transportation (NEMT). MediDrive will eventually manage trip scheduling, transportation-provider assignments, member support, and related transportation coordination throughout Colorado.",
+            "The transition is being completed in phases. Phase 1 began in the nine-county Denver metro area on July 1, 2026. Pueblo, Southern Colorado, and the remaining counties are expected to transition during Phase 2 in Fall 2026, although a specific implementation date has not yet been announced."
+          ],
+          "phases": [
+            {
+              "eyebrow": "PHASE 1",
+              "title": "Denver Metro Area",
+              "date": "Effective July 1, 2026",
+              "status": "Now in effect",
+              "description": "Health First Colorado members in Adams, Arapahoe, Boulder, Broomfield, Denver, Douglas, Jefferson, Larimer, and Weld counties now schedule eligible NEMT services through MediDrive."
+            },
+            {
+              "eyebrow": "PHASE 2",
+              "title": "Southern Colorado & Remaining Counties",
+              "date": "Expected Fall 2026",
+              "status": "Upcoming",
+              "description": "MediDrive is expected to expand to Pueblo, Southern Colorado, and all remaining Colorado counties during Phase 2. A definitive transition date has not yet been announced."
+            }
+          ],
+          "please-note": {
+            "bold": "Southern Colorado members:",
+            "text": " Continue using the current transportation scheduling process until the Phase 2 implementation date is officially announced. This page will be updated as additional information becomes available."
+          }
+        },
         "requesting-ggm": {
           "title": "How to Request Golden Gate Manor Transportation",
           "eyebrow": "Ride with the transportation provider you know and trust",
@@ -1175,7 +1208,7 @@
               {
                 "title": "Schedule your ride with MediDrive",
                 "paragraph": [
-                  "Beginning July 1, 2026, Health First Colorado members schedule all non-emergency medical transportation directly through MediDrive. If you are eligible for transportation benefits, MediDrive will help arrange your ride to and from covered medical appointments.",
+                  "Once Phase 2 begins in Southern Colorado, eligible Health First Colorado members will schedule non-emergency medical transportation directly through MediDrive.",
                   "To avoid delays, we recommend scheduling your trip as early as possible after your appointment is made. Having your appointment information available before calling can make the scheduling process faster and easier."
                 ],
                 "list": {
@@ -1242,9 +1275,14 @@
           "description": "Answers to common questions about scheduling through MediDrive and requesting Golden Gate Manor Transportation.",
           "items": [
             {
+              "id": "transition-timeline",
+              "label": "When will the transition to MediDrive occur in Pueblo and Southern Colorado?",
+              "paragraph": "MediDrive is being implemented in phases across Colorado. The first phase begins July 1, 2026, in the nine-county Denver metro area. Southern Colorado is expected to transition during Phase 2 in Fall 2026. Until the transition occurs, continue following your current transportation scheduling process. Once additional implementation dates are announced, this guide will be updated."
+            },
+            {
               "id": "ride-with-ggm",
               "label": "Can I still ride with Golden Gate Manor Transportation?",
-              "paragraph": "Beginning July 1, 2026, Health First Colorado members schedule rides through MediDrive. You can still request Golden Gate Manor Transportation as your preferred transportation provider when scheduling your trip. While MediDrive makes the final provider assignment, requesting us gives them the opportunity to accommodate your preference whenever possible."
+              "paragraph": "Beginning Fall 2026, Health First Colorado members in Pueblo and Southern Colorado will schedule rides through MediDrive. You can still request Golden Gate Manor Transportation as your preferred transportation provider when scheduling your trip. While MediDrive makes the final provider assignment, requesting us gives them the opportunity to accommodate your preference whenever possible."
             },
             {
               "id": "still-medicaid-provider",
@@ -1362,7 +1400,7 @@
         "healthcare-facilities": {
           "title": "Healthcare Facilities",
           "paragraph": [
-            "Healthcare facilities can help Health First Colorado members by reminding them that eligible non-emergency medical transportation is scheduled through MediDrive beginning July 1, 2026.",
+            "When speaking with patients, healthcare facilities can help prepare members for the upcoming transition by encouraging them to have their Health First Colorado Member ID, appointment date and time, facility address, pickup address, and any mobility needs available when scheduling through MediDrive.",
             "When speaking with patients, facilities may encourage members to have their Health First Colorado Member ID, appointment date and time, facility address, pickup address, and mobility needs ready before scheduling transportation.",
             "If a patient prefers Golden Gate Manor Transportation, they may request us as their preferred transportation provider when scheduling through MediDrive. Final transportation assignments are coordinated by MediDrive."
           ]
