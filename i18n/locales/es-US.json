@@ -45,6 +45,13 @@
     },
     "new-tab-title": "Abre en una nueva pestaña"
   },
+  "announcements": {
+    "announcement-1": {
+      "title": "Actualización Importante:",
+      "content": "Los viajes de Health First Colorado para el Transporte Médico No Urgente (NEMT) ahora serán programados a través de MediDrive a partir del 1 de julio de 2026.",
+      "cta": "Más Información"
+    }
+  },
   "header": {
     "links": {
       "home": "Inicio",
@@ -370,6 +377,68 @@
         "play": "Reproducir",
         "pause": "Pausar",
         "autoplay": "Reproducción Automática"
+      }
+    },
+    "hero-slides": {
+      "transportation": {
+        "left": {
+          "eyebrow": "TRANSPORTE DE MEDICAID Y TRANSPORTE PRIVADO",
+          "headline": [
+            "Adonde necesite ir.",
+            "Cuando necesite",
+            "estar allí."
+          ],
+          "description": "Transporte accesible para personas que usan silla de ruedas, transporte ambulatorio y viajes de larga distancia en todo el sur de Colorado. Viajes seguros y confiables para citas médicas, diálisis, altas hospitalarias y más.",
+          "cta": "Explorar transporte"
+        },
+        "right": {
+          "alt": "Golden Gate Manor Transportation ofrece transporte médico accesible para sillas de ruedas, transporte ambulatorio y viajes de larga distancia en todo el sur de Colorado"
+        }
+      },
+      "medidrive-update": {
+        "left": {
+          "eyebrow": "ACTUALIZACIÓN DE HEALTH FIRST COLORADO",
+          "headline": [
+            "Nueva forma de programar.",
+            "El mismo transporte",
+            "de confianza."
+          ],
+          "description": "Health First Colorado está realizando la transición a MediDrive como el corredor estatal de transporte médico no emergente (NEMT) de Colorado. Se espera que el sur de Colorado pase a MediDrive durante la Fase 2 en el otoño de 2026. Una vez que la transición llegue a nuestra región, los miembros podrán solicitar a Golden Gate Manor Transportation al programar su viaje, aunque no se pueden garantizar las solicitudes de proveedor.",
+          "cta": "Ver la guía de transición"
+        },
+        "right": {
+          "alt": "Health First Colorado está realizando la transición a MediDrive por fases, y se espera que el sur de Colorado haga la transición en el otoño de 2026"
+        }
+      },
+      "medical-supplies": {
+        "left": {
+          "eyebrow": "EQUIPO MÉDICO DURADERO Y SUMINISTROS",
+          "headline": [
+            "Productos que",
+            "apoyan cada",
+            "etapa del cuidado."
+          ],
+          "description": "Desde equipos de movilidad y prendas de compresión hasta suministros para el cuidado de heridas, ostomía, urología, extractores de leche y artículos para la vida diaria, estamos aquí para ayudarle a mantener su independencia y comodidad.",
+          "cta": "Ver suministros médicos"
+        },
+        "right": {
+          "alt": "Productos y equipos de Golden Gate Medical Supply que apoyan la movilidad, la comodidad, la independencia y el cuidado diario"
+        }
+      },
+      "assisted-living": {
+        "left": {
+          "eyebrow": "VIDA ASISTIDA EN PUEBLO, COLORADO",
+          "headline": [
+            "Siéntase en casa.",
+            "Reciba el cuidado",
+            "que merece."
+          ],
+          "description": "Nuestros hogares familiares de vida asistida ofrecen atención personalizada, comidas caseras, asistencia con medicamentos, actividades enriquecedoras y un ambiente acogedor donde los residentes pueden prosperar con dignidad e independencia.",
+          "cta": "Programar una consulta"
+        },
+        "right": {
+          "alt": "Residentes de vida asistida de Golden Gate Manor recibiendo apoyo compasivo en un ambiente cómodo y hogareño"
+        }
       }
     },
     "overview-section": {
@@ -1036,6 +1105,359 @@
       },
       "image-carousel": {
         "title": "Imágenes de la comunidad 2025"
+      }
+    },
+    "information": {
+      "medidrive": {
+        "hero": {
+          "left": {
+            "eyebrow": "ACTUALIZACIÓN DE HEALTH FIRST COLORADO",
+            "headline": [
+              "Nueva forma de programar.",
+              "El mismo transporte",
+              "de confianza."
+            ],
+            "description": "Health First Colorado está realizando la transición a MediDrive como el nuevo corredor estatal de transporte médico no emergente (NEMT). La transición se está implementando por fases en todo Colorado. Los miembros del sur de Colorado deben esperar comenzar a programar sus viajes a través de MediDrive cuando comience la Fase 2 en el otoño de 2026."
+          }
+        },
+        "top-page": {
+          "title": "Entendiendo la transición",
+          "paragraph": [
+            "Health First Colorado está realizando la transición a MediDrive como su corredor estatal de transporte médico no emergente (NEMT). La transición se está llevando a cabo por fases, comenzando con los nueve condados del área metropolitana de Denver el 1 de julio de 2026. Se espera que el sur de Colorado, incluidas las comunidades atendidas por Golden Gate Manor Transportation, haga la transición durante la Fase 2 en el otoño de 2026. Aunque el proceso de programación está cambiando, Golden Gate Manor Transportation continúa comprometido con nuestra comunidad y con ayudar a los miembros a comprender qué pueden esperar durante la transición.",
+            "Golden Gate Manor Transportation creó esta guía para responder preguntas comunes, explicar cómo funcionará la programación bajo el nuevo sistema y proporcionar recursos útiles para miembros, cuidadores, proveedores de atención médica y cualquier persona que coordine transporte para citas médicas."
+          ],
+          "links": {
+            "title": "Enlaces oficiales de MediDrive",
+            "visit-medidrive": "Visitar MediDrive",
+            "member-portal": "Portal para miembros"
+          },
+          "questions": {
+            "bold": "¿Tiene preguntas antes de programar?",
+            "text": "Continúe leyendo para encontrar preguntas frecuentes, detalles de la transición y recursos útiles."
+          }
+        },
+        "at-a-glance": [
+          {
+            "id": "transition-overview",
+            "bold": "Cronograma de la transición estatal:",
+            "text": "Health First Colorado está realizando la transición a MediDrive en dos fases. La Fase 1 comienza el 1 de julio de 2026 en el área metropolitana de Denver. Se espera que el sur de Colorado haga la transición durante la Fase 2 en el otoño de 2026."
+          },
+          {
+            "id": "official-medidrive-resources",
+            "bold": "Recursos oficiales de MediDrive:",
+            "text": "Acceda al portal para miembros de MediDrive, la aplicación móvil y los recursos oficiales de Colorado para programar y administrar su transporte."
+          },
+          {
+            "id": "request-golden-gate",
+            "bold": "Solicitar Golden Gate Manor Transportation:",
+            "text": "Aprenda cómo solicitar a Golden Gate Manor Transportation como su proveedor de transporte preferido y qué puede esperar después de hacer su solicitud."
+          },
+          {
+            "id": "frequently-asked-questions",
+            "bold": "Preguntas frecuentes:",
+            "text": "Encuentre respuestas a preguntas comunes sobre programación, solicitudes de proveedor, viajes recurrentes, elegibilidad, cancelaciones y adaptaciones de movilidad."
+          },
+          {
+            "id": "contact-support",
+            "bold": "Contacto y asistencia:",
+            "text": "Encuentre servicios para miembros de MediDrive, soporte técnico, servicios de interpretación y otra información de contacto útil."
+          },
+          {
+            "id": "mileage-reimbursement",
+            "bold": "Reembolso de millaje:",
+            "text": "Conozca cuándo podría estar disponible el reembolso de millaje y cómo comunicarse con MediDrive para obtener información sobre reembolsos."
+          },
+          {
+            "id": "healthcare-facilities",
+            "bold": "Centros de atención médica:",
+            "text": "Información para clínicas, hospitales, consultorios médicos, centros de diálisis y otros proveedores de atención médica que ayudan a miembros de Health First Colorado."
+          },
+          {
+            "id": "transportation-providers",
+            "bold": "Proveedores de transporte:",
+            "text": "Información útil para los proveedores de transporte participantes y sobre cómo Golden Gate Manor Transportation continúa atendiendo al sur de Colorado."
+          },
+          {
+            "id": "golden-gate-contact",
+            "bold": "Seguimos aquí para ayudar:",
+            "text": "Conozca cómo Golden Gate Manor Transportation puede ayudar con preguntas generales sobre la transición a MediDrive y encuentre nuestra información de contacto si necesita orientación adicional."
+          }
+        ],
+        "jump-to": "Ir a la sección",
+        "transition-overview": {
+          "id": "transition-overview",
+          "title": "Resumen de la transición a MediDrive",
+          "paragraph": [
+            "Health First Colorado está realizando la transición a un solo corredor estatal para el transporte médico no emergente (NEMT). Con el tiempo, MediDrive administrará la programación de viajes, las asignaciones de proveedores de transporte, la asistencia para miembros y otros aspectos de la coordinación del transporte en todo Colorado.",
+            "La transición se está completando por fases. La Fase 1 comenzó en los nueve condados del área metropolitana de Denver el 1 de julio de 2026. Se espera que Pueblo, el sur de Colorado y los condados restantes hagan la transición durante la Fase 2 en el otoño de 2026, aunque todavía no se ha anunciado una fecha específica de implementación."
+          ],
+          "phases": [
+            {
+              "eyebrow": "FASE 1",
+              "title": "Área metropolitana de Denver",
+              "date": "En vigor desde el 1 de julio de 2026",
+              "status": "Actualmente en vigor",
+              "description": "Los miembros de Health First Colorado en los condados de Adams, Arapahoe, Boulder, Broomfield, Denver, Douglas, Jefferson, Larimer y Weld ahora programan los servicios de NEMT elegibles a través de MediDrive."
+            },
+            {
+              "eyebrow": "FASE 2",
+              "title": "Sur de Colorado y condados restantes",
+              "date": "Prevista para el otoño de 2026",
+              "status": "Próximamente",
+              "description": "Se espera que MediDrive se amplíe a Pueblo, el sur de Colorado y todos los condados restantes de Colorado durante la Fase 2. Todavía no se ha anunciado una fecha definitiva para la transición."
+            }
+          ],
+          "please-note": {
+            "bold": "Miembros del sur de Colorado:",
+            "text": " Continúen utilizando el proceso actual de programación de transporte hasta que se anuncie oficialmente la fecha de implementación de la Fase 2. Esta página se actualizará cuando haya más información disponible."
+          }
+        },
+        "requesting-ggm": {
+          "title": "Cómo solicitar Golden Gate Manor Transportation",
+          "eyebrow": "Viaje con el proveedor de transporte que conoce y en quien confía",
+          "paragraph": [
+            "Si desea viajar con Golden Gate Manor Transportation, puede solicitarnos cuando programe su viaje a través de MediDrive. Aunque las solicitudes de proveedor se atienden siempre que sea posible, no están garantizadas. MediDrive determina las asignaciones finales de transporte según la disponibilidad, la programación y las necesidades operativas.",
+            "Recomendamos solicitar a Golden Gate Manor Transportation cada vez que programe un viaje."
+          ],
+          "why-us": {
+            "title": "Por qué los pasajeros eligen Golden Gate Manor Transportation",
+            "paragraph": [
+              "Durante años, Golden Gate Manor Transportation ha atendido con orgullo a Pueblo y a comunidades de todo el sur de Colorado con transporte médico no emergente confiable y compasivo. Nuestro equipo comprende que llegar a una cita médica significa mucho más que simplemente llegar a tiempo: se trata de proporcionar una experiencia segura, cómoda y respetuosa desde la recogida hasta el destino.",
+              "Nuestros conductores capacitados profesionalmente están comprometidos a tratar a cada pasajero con dignidad y cortesía, además de proporcionar transporte confiable y accesible para personas que usan silla de ruedas. Ya sea que viaje a una cita médica de rutina, tratamiento de diálisis, terapia física o una consulta con un especialista, nuestra meta es que cada viaje sea lo más cómodo y libre de estrés posible.",
+              "Muchos miembros solicitan Golden Gate Manor Transportation porque valoran nuestro servicio local y amable, nuestros conductores experimentados y nuestro compromiso de muchos años con la comunidad de Pueblo. Aunque MediDrive determina las asignaciones finales de proveedor, solicitar Golden Gate Manor le brinda la oportunidad de viajar con un equipo de transporte que ya conoce y en quien confía, siempre que sea posible."
+            ]
+          },
+          "scheduling": {
+            "title": "Cómo programar sus viajes aprobados por Medicaid",
+            "steps": [
+              {
+                "title": "Programe su viaje con MediDrive",
+                "paragraph": [
+                  "Una vez que comience la Fase 2 en el sur de Colorado, los miembros elegibles de Health First Colorado programarán el transporte médico no emergente directamente a través de MediDrive.",
+                  "Para evitar retrasos, recomendamos programar su viaje lo antes posible después de confirmar su cita. Tener disponible la información de su cita antes de llamar puede hacer que el proceso de programación sea más rápido y sencillo."
+                ],
+                "list": {
+                  "title": "Al programar, esté preparado para proporcionar:",
+                  "items": [
+                    "Su identificación de miembro de Health First Colorado",
+                    "La fecha y hora de su cita",
+                    "El nombre y la dirección del proveedor médico",
+                    "Su dirección de recogida",
+                    "Cualquier necesidad de movilidad o accesibilidad, como silla de ruedas, andador u oxígeno",
+                    "Información del viaje de regreso, si corresponde"
+                  ]
+                }
+              },
+              {
+                "title": "Solicite Golden Gate Manor Transportation",
+                "paragraph": [
+                  "Después de proporcionar la información de su viaje, puede solicitar a Golden Gate Manor Transportation como su proveedor de transporte preferido. Esto permite que MediDrive sepa qué proveedor le gustaría que realizara su viaje.",
+                  "Muchos miembros prefieren viajar con conductores y vehículos que ya conocen, especialmente para citas recurrentes como diálisis, terapia física o consultas con especialistas."
+                ],
+                "blockquote": [
+                  {
+                    "title": "Si programa por teléfono, simplemente dígale al representante de MediDrive:",
+                    "quote": "Me gustaría solicitar a Golden Gate Manor Transportation como mi proveedor de transporte preferido."
+                  },
+                  {
+                    "title": "Si programa en línea o mediante el portal para miembros:",
+                    "quote": "Si hay un campo para indicar un proveedor de transporte preferido o agregar notas, solicite también a Golden Gate Manor Transportation allí."
+                  }
+                ],
+                "paragraph2": [
+                  "Si está programando en línea o mediante un portal para miembros que permite indicar preferencias de proveedor, seleccione Golden Gate Manor Transportation siempre que esa opción esté disponible."
+                ]
+              },
+              {
+                "title": "Espere la confirmación del viaje",
+                "paragraph": [
+                  "Después de enviar su reservación, MediDrive revisará la solicitud y coordinará el transporte con los proveedores participantes. Aunque harán todo lo posible por respetar las solicitudes de proveedor, las asignaciones dependen de la disponibilidad operativa."
+                ],
+                "list": {
+                  "title": "Las asignaciones pueden depender de:",
+                  "items": [
+                    "Disponibilidad de vehículos",
+                    "Disponibilidad de conductores",
+                    "Ubicación del viaje",
+                    "Capacidad de programación",
+                    "Requisitos operativos"
+                  ]
+                }
+              },
+              {
+                "title": "Viaje con confianza",
+                "paragraph": [
+                  "Si se aprueba su solicitud, Golden Gate Manor Transportation proporcionará su viaje según lo programado.",
+                  "Si se asigna otro proveedor de transporte, MediDrive continuará coordinando su viaje para ayudarle a llegar de manera segura a su cita médica."
+                ]
+              }
+            ],
+            "please-note": "Solicitar Golden Gate Manor Transportation no garantiza que el viaje sea asignado a nuestra flota. Sin embargo, solicitar a su proveedor de transporte preferido le brinda a MediDrive la oportunidad de respetar su preferencia siempre que sea posible."
+          }
+        },
+        "faq": {
+          "title": "Preguntas frecuentes",
+          "description": "Respuestas a preguntas comunes sobre la programación a través de MediDrive y cómo solicitar Golden Gate Manor Transportation.",
+          "items": [
+            {
+              "id": "transition-timeline",
+              "label": "¿Cuándo ocurrirá la transición a MediDrive en Pueblo y el sur de Colorado?",
+              "paragraph": "MediDrive se está implementando por fases en todo Colorado. La primera fase comienza el 1 de julio de 2026 en los nueve condados del área metropolitana de Denver. Se espera que el sur de Colorado haga la transición durante la Fase 2 en el otoño de 2026. Hasta que ocurra la transición, continúe siguiendo el proceso actual de programación de transporte. Esta guía se actualizará cuando se anuncien fechas adicionales de implementación."
+            },
+            {
+              "id": "ride-with-ggm",
+              "label": "¿Todavía puedo viajar con Golden Gate Manor Transportation?",
+              "paragraph": "A partir del otoño de 2026, los miembros de Health First Colorado en Pueblo y el sur de Colorado programarán sus viajes a través de MediDrive. Aun así, puede solicitar a Golden Gate Manor Transportation como su proveedor de transporte preferido al programar su viaje. Aunque MediDrive realiza la asignación final del proveedor, solicitarnos les brinda la oportunidad de respetar su preferencia siempre que sea posible."
+            },
+            {
+              "id": "still-medicaid-provider",
+              "label": "¿Golden Gate Manor Transportation sigue siendo un proveedor de transporte de Medicaid?",
+              "paragraph": "Sí. Golden Gate Manor Transportation continúa proporcionando transporte médico no emergente para miembros elegibles de Health First Colorado. El cambio consiste en que MediDrive coordinará la programación y las asignaciones de viajes una vez que la transición llegue a nuestra región."
+            },
+            {
+              "id": "provider-request-guarantee",
+              "label": "¿Solicitar Golden Gate Manor garantiza que viajaré con su compañía?",
+              "paragraph": "No. MediDrive toma en cuenta las solicitudes de proveedor, pero las asignaciones dependen de factores como la disponibilidad de vehículos, la disponibilidad de conductores, la capacidad de programación, la ubicación del viaje y otras necesidades operativas."
+            },
+            {
+              "id": "schedule-in-advance",
+              "label": "¿Con cuánta anticipación debo programar mi viaje?",
+              "paragraph": "Recomendamos programar su transporte tan pronto como se confirme su cita médica, siempre que sea posible. Programar con anticipación le brinda a MediDrive más flexibilidad para coordinar su viaje."
+            },
+            {
+              "id": "recurring-trips",
+              "label": "¿Puedo programar viajes recurrentes para diálisis o tratamientos continuos?",
+              "paragraph": "Sí. Si tiene citas médicas recurrentes, como diálisis, terapia física u otros tratamientos continuos, hable con MediDrive sobre su horario. Ellos pueden explicarle las opciones disponibles para transporte recurrente."
+            },
+            {
+              "id": "scheduling-information-needed",
+              "label": "¿Qué información necesito al programar?",
+              "paragraph": "Tenga disponible su identificación de miembro de Health First Colorado, la fecha y hora de la cita, la información del proveedor médico, la dirección de recogida, sus necesidades de movilidad y la información del viaje de regreso antes de comunicarse con MediDrive."
+            },
+            {
+              "id": "cancel-or-change-ride",
+              "label": "¿A quién llamo si necesito cancelar o cambiar mi viaje?",
+              "paragraph": "Comuníquese con MediDrive lo antes posible si necesita cancelar o modificar su transporte programado. MediDrive coordinará la programación de los servicios de transporte de Health First Colorado una vez que la transición llegue a su región."
+            },
+            {
+              "id": "wheelchair-mobility-equipment",
+              "label": "¿Puedo viajar si uso una silla de ruedas u otro equipo de movilidad?",
+              "paragraph": "Sí. Al programar su viaje, informe a MediDrive sobre cualquier necesidad de movilidad o accesibilidad, incluidas sillas de ruedas, andadores, equipo de oxígeno u otras adaptaciones, para que se pueda coordinar el vehículo apropiado."
+            },
+            {
+              "id": "eligibility-question",
+              "label": "¿Qué sucede si no sé si soy elegible?",
+              "paragraph": "Si no está seguro de si reúne los requisitos para recibir beneficios de transporte de Health First Colorado, MediDrive puede ayudarle a comprender la elegibilidad y el proceso de programación. También puede comunicarse con su plan de salud de Health First Colorado para recibir ayuda adicional."
+            }
+          ]
+        },
+        "resources": {
+          "title": "Recursos oficiales de MediDrive",
+          "description": "Estos recursos oficiales de MediDrive pueden ayudarle a programar viajes, administrar reservaciones existentes y obtener más información sobre los beneficios de transporte disponibles a través de Health First Colorado.",
+          "items": [
+            {
+              "icon": "material-symbols:login-rounded",
+              "title": "Portal para miembros",
+              "description": "Inicie sesión para programar viajes elegibles, revisar próximos viajes y administrar su transporte en línea.",
+              "button": "Abrir el portal para miembros",
+              "link": "https://member.medidrive.com/login"
+            },
+            {
+              "icon": "material-symbols:smartphone",
+              "title": "Aplicación móvil",
+              "description": "Descargue la aplicación para miembros de MediDrive para programar viajes, seguir a su conductor y administrar su transporte desde un dispositivo móvil.",
+              "button": "Descargar la aplicación",
+              "link": "https://medidrive.com/facilities/co#mobile-app"
+            },
+            {
+              "icon": "material-symbols:language",
+              "title": "Información de Colorado",
+              "description": "Visite la página de información de Colorado de MediDrive para obtener más información sobre los servicios de transporte de Health First Colorado.",
+              "button": "Visitar MediDrive",
+              "link": "https://medidrive.com/facilities/co"
+            }
+          ]
+        },
+        "contact-support": {
+          "title": "Contacto y asistencia",
+          "description": "Utilice estas opciones de contacto de MediDrive para programar viajes, obtener ayuda con un viaje, solicitar asistencia de idioma o recibir soporte técnico con el portal para miembros y la aplicación móvil.",
+          "member-services": {
+            "title": "Servicios para miembros de MediDrive",
+            "description": "Llame a Servicios para Miembros de MediDrive para programar un viaje, preguntar sobre una reservación existente u obtener ayuda con la coordinación del transporte.",
+            "booking-hours-label": "Programación de viajes rutinarios:",
+            "booking-hours": "De lunes a viernes, de 8:00 a. m. a 5:00 p. m., hora de la montaña",
+            "urgent-label": "Asistencia para viajes urgentes:",
+            "urgent": "Disponible las 24 horas, los 7 días de la semana",
+            "language-label": "Servicios de interpretación:",
+            "language": "Disponibles en más de 200 idiomas sin costo adicional"
+          },
+          "technical-support": {
+            "title": "Soporte técnico",
+            "description": "Para obtener ayuda con la aplicación móvil o el portal para miembros de MediDrive, comuníquese directamente con el soporte técnico de MediDrive.",
+            "help-with-title": "El soporte técnico puede ayudar con:",
+            "help-with": [
+              "Acceso al portal para miembros de MediDrive",
+              "Asistencia con la aplicación móvil de MediDrive",
+              "Problemas para iniciar sesión o acceder a la cuenta",
+              "Problemas técnicos al administrar viajes en línea"
+            ]
+          }
+        },
+        "mileage-reimbursement": {
+          "title": "Reembolso de millaje",
+          "paragraph": [
+            "Algunos miembros de Health First Colorado podrían ser elegibles para recibir un reembolso de millaje cuando utilizan su propio vehículo o cuando un familiar, amigo o cuidador los lleva a una cita médica cubierta.",
+            "El reembolso de millaje es diferente de programar un viaje con un proveedor de transporte. En lugar de asignar un vehículo y un conductor, MediDrive puede revisar solicitudes de reembolso para viajes elegibles cuando el miembro ha organizado su propio transporte."
+          ],
+          "when-to-use": {
+            "title": "Cuándo podría corresponder el reembolso de millaje",
+            "text": "El reembolso de millaje podría ser una opción cuando usted o alguien que conoce puede llevarlo a una cita médica elegible y el reembolso se aprueba mediante el proceso correspondiente."
+          },
+          "how-to-request": {
+            "title": "Cómo solicitar el reembolso",
+            "text": "Comuníquese con MediDrive o utilice los recursos oficiales para miembros de MediDrive para preguntar sobre los requisitos de reembolso de millaje, la aprobación del viaje, la documentación y el proceso para presentar solicitudes."
+          },
+          "note": {
+            "bold": "Tenga en cuenta:",
+            "text": " Golden Gate Manor Transportation no procesa solicitudes de reembolso de millaje. Las preguntas sobre el reembolso de millaje deben dirigirse a MediDrive."
+          }
+        },
+        "healthcare-facilities": {
+          "title": "Centros de atención médica",
+          "paragraph": [
+            "Al hablar con pacientes, los centros de atención médica pueden ayudar a los miembros a prepararse para la próxima transición, animándolos a tener disponible su identificación de miembro de Health First Colorado, la fecha y hora de la cita, la dirección del centro, la dirección de recogida y cualquier necesidad de movilidad al programar a través de MediDrive.",
+            "Los centros también pueden recordarles a los miembros que tengan preparada la información de su cita y sus necesidades de accesibilidad antes de programar el transporte.",
+            "Si un paciente prefiere Golden Gate Manor Transportation, puede solicitarnos como su proveedor de transporte preferido al programar a través de MediDrive. MediDrive coordina las asignaciones finales de transporte."
+          ]
+        },
+        "transportation-providers": {
+          "title": "Proveedores de transporte",
+          "paragraph": [
+            "Los proveedores de transporte que participan en la red de MediDrive deben seguir los procedimientos oficiales de MediDrive para asignaciones de viajes, actualizaciones de programación, cancelaciones y comunicación.",
+            "Golden Gate Manor Transportation continúa comprometido con proporcionar transporte médico no emergente seguro, respetuoso y confiable para miembros elegibles de Health First Colorado en Pueblo y en todo el sur de Colorado."
+          ],
+          "note": {
+            "bold": "Recordatorio:",
+            "text": " Golden Gate Manor Transportation continúa atendiendo con orgullo a miembros elegibles de Health First Colorado como proveedor de transporte participante dentro de la red de MediDrive."
+          }
+        },
+        "ggm-contact": {
+          "eyebrow": "Seguimos aquí para ayudar",
+          "title": "¿Tiene preguntas sobre la transición a MediDrive?",
+          "paragraph": [
+            "La transición a MediDrive es un proceso nuevo para muchos miembros de Health First Colorado, y comprendemos que los cambios en la programación del transporte pueden resultar confusos al principio.",
+            "Aunque MediDrive gestionará directamente la programación de viajes, los cambios, las cancelaciones y la coordinación del transporte, Golden Gate Manor Transportation está disponible para responder preguntas generales sobre la transición y ayudarle a encontrar el recurso adecuado."
+          ],
+          "note": {
+            "bold": "Tenga en cuenta:",
+            "text": "Golden Gate Manor Transportation no puede programar, modificar ni cancelar reservaciones de MediDrive. Esas solicitudes deben realizarse directamente a través de MediDrive."
+          },
+          "card": {
+            "title": "Contactar a Golden Gate Manor",
+            "hours-label": "Horario de oficina:",
+            "button": "Contáctenos"
+          }
+        }
       }
     },
     "podcast": {

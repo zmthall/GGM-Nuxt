@@ -1,6 +1,7 @@
 <template>
   <main class="default bg-brand-background">
     <!-- Main header and page navigation -->
+    <BaseLayoutAnnouncementBar />
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <DeferRender when="idle">
