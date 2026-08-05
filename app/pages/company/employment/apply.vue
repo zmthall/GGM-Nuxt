@@ -18,12 +18,6 @@ definePageMeta({
     undefined,
     undefined
   ],
-  link: [
-    {
-      rel: 'canonical',
-      href: `${runtimeConfig.public.siteUrl}/company/employment/apply`
-    }
-  ]
 })
 
 useHead({

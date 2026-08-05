@@ -25,11 +25,6 @@
 <script setup lang="ts">
 import ORG_SCHEMA from '@/data/orgSchema.json'
 
-const localeHead = useLocaleHead({
-  addSeoAttributes: true,
-  identifierAttribute: 'id'
-})
-
 const cvOpen = ref(false)
 
 defineOptions({
@@ -62,10 +57,7 @@ useHead({
   ],
   bodyAttrs: {
     class: computed(() => (cvOpen.value) ? 'no-scroll' : '')
-  },
-  htmlAttrs: localeHead.value.htmlAttrs,
-  link: localeHead.value.link,
-  meta: localeHead.value.meta
+  }
 })
 
 useSeoMeta({
