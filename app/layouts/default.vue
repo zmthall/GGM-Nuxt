@@ -25,9 +25,9 @@
 <script setup lang="ts">
 import ORG_SCHEMA from '@/data/orgSchema.json'
 
-const isNomination = computed(() => {
-  const cutoff = new Date('2026-05-28T00:00:00-06:00')
-  return Date.now() < cutoff.getTime()
+const localeHead = useLocaleHead({
+  addSeoAttributes: true,
+  identifierAttribute: 'id'
 })
 
 const cvOpen = ref(false)
@@ -45,24 +45,27 @@ const authStore = useAuthStore();
 useHead({
   titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
   link: [
-  {
-    rel: 'preload',
-    href: '/fonts/Cabin-Regular.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossorigin: 'anonymous'
-  },
-  {
-    rel: 'preload',
-    href: '/fonts/NotoSerif-Regular.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossorigin: 'anonymous'
-  }
-],
+    {
+      rel: 'preload',
+      href: '/fonts/Cabin-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    },
+    {
+      rel: 'preload',
+      href: '/fonts/NotoSerif-Regular.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous'
+    }
+  ],
   bodyAttrs: {
     class: computed(() => (cvOpen.value) ? 'no-scroll' : '')
-  }
+  },
+  htmlAttrs: localeHead.value.htmlAttrs,
+  link: localeHead.value.link,
+  meta: localeHead.value.meta
 })
 
 useSeoMeta({

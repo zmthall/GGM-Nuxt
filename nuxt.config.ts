@@ -62,13 +62,11 @@ export default defineNuxtConfig({
 
     // Blog Posts
     '/blog/post/**': { redirect: { to: '/news/blog/post/**', statusCode: 308 } },
+    
     // dev domain shows /assets/* — cover that too
     '/assets/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
     },
-
-    // Redirects for i18n (Spanish) 
-    '/es/': { redirect: { to: '/es', statusCode: 308 } },
 
     // fonts
     '/fonts/**': {
