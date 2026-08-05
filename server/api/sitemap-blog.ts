@@ -5,7 +5,7 @@ export default defineSitemapEventHandler(async () => {
     ? 'http://127.0.0.1:4000'
     : 'https://api.goldengatemanor.com'
 
-  const siteBase = String(runtimeConfig.public.SITE_URL)
+  const siteBase = String(runtimeConfig.public.siteUrl)
     .replace(/\/+$/, '')
 
   type BlogPostSitemapRecord = {
@@ -24,6 +24,23 @@ export default defineSitemapEventHandler(async () => {
     `${apiBase}/api/blog-posts/sitemap`
   )
 
+  console.log(response.data
+    .filter(post => post.slug)
+    .map(post => ({
+      loc: `${siteBase}/news/blog/post/${post.slug}`,
+      lastmod: (
+        post.updated_at
+          ? new Date(post.updated_at)
+          : post.publish_timestamp
+            ? new Date(post.publish_timestamp)
+            : new Date()
+      ).toISOString(),
+      priority: 0.8,
+      changefreq: 'weekly' as const
+    })))
+
+  
+
   return response.data
     .filter(post => post.slug)
     .map(post => ({
@@ -36,6 +53,6 @@ export default defineSitemapEventHandler(async () => {
             : new Date()
       ).toISOString(),
       priority: 0.8,
-      changefreq: 'weekly'
+      changefreq: 'weekly' as const
     }))
 })
