@@ -36,6 +36,9 @@ export default defineNuxtConfig({
     '/nemt-transportation':  { redirect: { to: '/nemt', statusCode: 308 } },
     '/nemt-transportation/': { redirect: { to: '/nemt', statusCode: 308 } },
 
+    '/nemt_transportation': { redirect: { to: '/nemt', statusCode: 308 } },
+    '/nemt_transportation/': { redirect: { to: '/nemt', statusCode: 308 } },
+
     // Company / About
     '/about-us': { redirect: { to: '/company/about-us', statusCode: 308 } },
     '/about': { redirect: { to: '/company/about-us', statusCode: 308 } },
@@ -57,11 +60,13 @@ export default defineNuxtConfig({
     '/privacy-policy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
     '/privacypolicy': { redirect: { to: '/company/policies/privacy', statusCode: 308 }},
 
+    // Blog Posts
+    '/blog/post/**': { redirect: { to: '/news/blog/post/**', statusCode: 308 } },
     // dev domain shows /assets/* — cover that too
     '/assets/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
     },
-    // your fonts
+    // fonts
     '/fonts/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
     },
