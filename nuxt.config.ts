@@ -66,6 +66,10 @@ export default defineNuxtConfig({
     '/assets/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }
     },
+
+    // Redirects for i18n (Spanish) 
+    '/es/': { redirect: { to: '/es', statusCode: 308 } },
+
     // fonts
     '/fonts/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' }

@@ -17,6 +17,12 @@ definePageMeta({
     { label: 'About Us', to: '/company/about-us' },
     undefined,
     undefined
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: `${runtimeConfig.public.siteUrl}/company/employment/apply`
+    }
   ]
 })
 
