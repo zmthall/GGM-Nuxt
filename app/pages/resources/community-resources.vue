@@ -7,7 +7,7 @@
 <script setup lang='ts'>
 definePageMeta({
   title: 'Community Resources',
-  redirect: '/'
+  redirect: '/resources'
 })
 
 const runtimeConfig = useRuntimeConfig()

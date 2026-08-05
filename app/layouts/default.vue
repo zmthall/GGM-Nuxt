@@ -27,6 +27,10 @@ import ORG_SCHEMA from '@/data/orgSchema.json'
 
 const cvOpen = ref(false)
 
+const i18nHead = useLocaleHead({
+  seo: true
+})
+
 defineOptions({
   name: "DefaultPages"
 })
@@ -57,7 +61,12 @@ useHead({
   ],
   bodyAttrs: {
     class: computed(() => (cvOpen.value) ? 'no-scroll' : '')
-  }
+  },
+  htmlAttrs: {
+    lang: i18nHead.value.htmlAttrs?.lang
+  },
+  link: i18nHead.value.link || [],
+  meta: i18nHead.value.meta || []
 })
 
 useSeoMeta({

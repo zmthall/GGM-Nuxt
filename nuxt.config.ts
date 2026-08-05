@@ -111,9 +111,12 @@ export default defineNuxtConfig({
   ],
   i18n: {
     strategy: 'prefix_except_default',
+    baseUrl:
+      process.env.SITE_URL ||
+      'https://goldengatemanor.com',
     locales: [
-      { code: 'en', language: 'en-US', file: 'en-US.json' },
-      { code: 'es', language: 'es-US', file: 'es-US.json' }
+      { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
+      { code: 'es', language: 'es-US', name: 'Español', file: 'es-US.json' }
     ],
     defaultLocale: 'en',
   },
