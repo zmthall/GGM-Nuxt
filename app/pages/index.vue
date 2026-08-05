@@ -1,5 +1,9 @@
 <template>
     <div>
+        <h1 class="sr-only">
+            Golden Gate Manor Transportation, Assisted Living, and Medical Supplies
+        </h1>
+
         <BaseLayoutPageHeroSectionVideo video-src="/videos/Final_website_video_with_sound.mp4" :active="true" />
             
         <BaseInteractiveLogosNav :shows-on-mobile="false" />
@@ -405,17 +409,17 @@ useHead({
 
 definePageMeta({
     breadcrumb: false,
-})
+})    
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
-    title: $t('home.meta.title'),
-    ogTitle: $t('home.meta.title'),
-    description: $t('home.meta.description'),
-    ogDescription: $t('home.meta.description'),
+    title: "Golden Gate Manor Inc. | Transportation, Care & Medical Supplies",
+    ogTitle: "Golden Gate Manor Inc. | Transportation, Care & Medical Supplies",
+    description: "Golden Gate Manor provides transportation, assisted living, and medical supply services throughout Pueblo and Southern Colorado. Family-owned since 2008.",
+    ogDescription: "Golden Gate Manor provides transportation, assisted living, and medical supply services throughout Pueblo and Southern Colorado. Family-owned since 2008.",
     ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
-    twitterTitle: $t('home.meta.title'),
-    twitterDescription: $t('home.meta.description'),
+    twitterTitle: "Golden Gate Manor Inc. | Transportation, Care & Medical Supplies",
+    twitterDescription: "Golden Gate Manor provides transportation, assisted living, and medical supply services throughout Pueblo and Southern Colorado. Family-owned since 2008.",
     twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
     twitterCard: 'summary_large_image',
 })

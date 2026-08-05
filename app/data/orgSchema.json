@@ -40,12 +40,9 @@
     "https://www.facebook.com/GoldenGateMedicalSupply/",
     "https://www.linkedin.com/in/golden-gate-manor-inc/",
     "https://x.com/GoldenGateManor",
-    "https://www.youtube.com/@GoldenGateMedicalSupplies",
     "https://www.youtube.com/@GoldenGateManor",
     "https://nextdoor.com/pages/golden-gate-manor-pueblo-co-1/",
-    "https://www.alignable.com/pueblo-co/golden-gate-medical-supply?user=11514877",
-    "https://www.goldengatemedicalsupply.com",
-    "https://www.goldengatemedicalsupplies.com",
+    "https://goldengatemedicalsupply.com",
     "https://www.pueblocitycab.com"
   ],
   "department": [
@@ -55,7 +52,6 @@
       "name": "Non-Emergency Medical Transportation (NEMT)",
       "url": "https://goldengatemanor.com/nemt",
       "telephone": "+1-719-544-3231",
-      "priceRange": "Free with medicaid",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -92,7 +88,6 @@
       "name": "Golden Gate Manor I",
       "url": "https://goldengatemanor.com/assisted-living#ggmi",
       "telephone": "+1-719-583-9132",
-      "priceRange": "Free with medicaid",
       "paymentAccepted": "Medicaid",
       "currenciesAccepted": "USD",
       "openingHoursSpecification": [
@@ -125,7 +120,6 @@
       "name": "Golden Gate Manor II",
       "url": "https://goldengatemanor.com/assisted-living#ggmii",
       "telephone": "+1-719-542-0201",
-      "priceRange": "Free with medicaid",
       "paymentAccepted": "Medicaid",
       "currenciesAccepted": "USD",
       "openingHoursSpecification": [
@@ -158,7 +152,6 @@
       "name": "Golden Valley",
       "url": "https://goldengatemanor.com/assisted-living#valley",
       "telephone": "+1-719-545-0152",
-      "priceRange": "Free with medicaid",
       "paymentAccepted": "Medicaid",
       "currenciesAccepted": "USD",
       "openingHoursSpecification": [
@@ -191,7 +184,6 @@
       "name": "Golden Horizon",
       "url": "https://goldengatemanor.com/assisted-living#horizon",
       "telephone": "+1-719-564-8110",
-      "priceRange": "Free with medicaid",
       "paymentAccepted": "Medicaid",
       "currenciesAccepted": "USD",
       "openingHoursSpecification": [
@@ -224,7 +216,6 @@
       "name": "Golden View",
       "url": "https://goldengatemanor.com/assisted-living#view",
       "telephone": "+1-719-543-7320",
-      "priceRange": "Free with medicaid",
       "paymentAccepted": "Medicaid",
       "currenciesAccepted": "USD",
       "openingHoursSpecification": [
@@ -255,9 +246,8 @@
       "@type": "MedicalBusiness",
       "@id": "https://goldengatemanor.com/medical-supplies#store",
       "name": "Golden Gate Medical Supply - Medical Supply Store",
-      "url": "https://www.goldengatemedicalsupplies.com",
+      "url": "https://goldengatemedicalsupply.com",
       "telephone": "+1-719-569-7361",
-      "priceRange": "Insurance accepted: HSA, FSA, specific insurances",
       "image": "https://goldengatemanor.com/images/seo/ogImage-medical-supply.png",
       "openingHoursSpecification": [
         {
@@ -282,8 +272,8 @@
         "longitude": -104.6106
       },
       "sameAs": [
-        "https://www.goldengatemanor.com/medical-supplies",
-        "https://www.goldengatemedicalsupply.com"
+        "https://goldengatemanor.com/medical-supplies",
+        "https://goldengatemedicalsupply.com"
       ]
     },
     {
@@ -292,7 +282,6 @@
       "name": "Pueblo City Cab - Non-medical Transportation",
       "url": "https://goldengatemanor.com/non-medical",
       "telephone": "+1-719-543-2525",
-      "priceRange": "Varies by distance",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -328,9 +317,8 @@
       "@type": "GasStation",
       "@id": "https://goldengatemanor.com/gas-and-goods#location1",
       "name": "Golden Gate Gas & Goods I",
-      "url": "https://goldengatemanor.com/gas-and-goods#g&gi",
+      "url": "https://goldengatemanor.com/gas-and-goods#location1",
       "telephone": "+1-719-561-0062",
-      "priceRange": "Competitive fuel and convenience pricing",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -364,9 +352,8 @@
       "@type": "GasStation",
       "@id": "https://goldengatemanor.com/gas-and-goods#location2",
       "name": "Golden Gate Gas & Goods II",
-      "url": "https://goldengatemanor.com/gas-and-goods#g&gii",
+      "url": "https://goldengatemanor.com/gas-and-goods#location2",
       "telephone": "+1-719-253-9840",
-      "priceRange": "Varies by item",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",

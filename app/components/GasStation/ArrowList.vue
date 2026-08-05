@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseLayoutPageArrowListItem v-for="(location, idx) in locations" :key="location.id" :color="location.arrowColor">
+    <BaseLayoutPageArrowListItem v-for="(location, idx) in locations" :id="location.id" :key="location.id" :color="location.arrowColor">
       <template #number>{{ `0${idx + 1}`}}</template>
       <template #default>
         <div class="pl-0 sm:pl-28 md:pl-24 max-sm:pt-32">
@@ -35,14 +35,14 @@ const locations: Locations[] = [];
 if (company) {
   locations.push(
     {
-      id: "ggmc-1",
+      id: "location1",
       arrowColor: "red",
       title: `${$t('gas-and-goods.locations.arrow[0].title')} ${company.gasStation.ggmc1.address}`,
       phone: company.gasStation.ggmc1.phone,
       details: $tm('gas-and-goods.locations.arrow[0].details')
     },
     {
-      id: "ggmc-2",
+      id: "location2",
       arrowColor: "green",
       title: `${$t('gas-and-goods.locations.arrow[1].title')} ${company.gasStation.ggmc2.address}`,
       phone: company.gasStation.ggmc2.phone,

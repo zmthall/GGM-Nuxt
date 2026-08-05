@@ -1,4 +1,5 @@
 <template>
+  <!-- Desktop hero section -->
   <section v-if="active" class="hidden md:block relative h-[calc(100svh-35px-75px)] overflow-hidden z-6">
 
     <!-- Poster: NuxtImg for optimization + preload. Fades out once video is ready. -->
@@ -97,10 +98,10 @@
             ? 'absolute inset-0 flex items-center justify-center opacity-0 scale-95 -translate-y-2 pointer-events-none'
             : 'opacity-100 scale-100 translate-y-0'"
         >
-          <h1 class="flex gap-1 flex-wrap justify-center items-end text-3xl font-extrabold text-brand-primary whitespace-nowrap">
+          <div class="flex gap-1 flex-wrap justify-center items-end text-3xl font-extrabold text-brand-primary whitespace-nowrap">
             <span class="text-4xl">{{ $t('home.hero.titleLines[0]')}}</span>
             <span class="font-normal">{{ $t('home.hero.titleLines[1]') }}</span>
-          </h1>
+          </div>
           <div class="mt-4">
             <BaseInteractiveTextRotator
               :items="services"
@@ -115,6 +116,7 @@
     </div>
   </section>
 
+  <!-- Mobile Hero Section -->
   <BaseLayoutPageHeroSection
     :class="[{ 'md:hidden': active }]"
     src="/images/pages/home/hero.jpg"
@@ -126,10 +128,10 @@
     <div class="w-full p-4">
       <div class="flex flex-col items-center relative bg-color before:w-3/4 before:h-[2px] before:absolute before:bottom-0 mb-4 pb-4">
         <p class="text-3xl">{{ $t('home.hero.eyebrow')}}</p>
-        <h1 class="text-center flex flex-col">
+        <div class="text-center flex flex-col">
           <span class="text-6xl font-extrabold text-brand-secondary">Golden Gate Manor</span>
           <span class="text-2xl uppercase">{{ $t('home.hero.title')}}</span>
-        </h1>
+        </div>
       </div>
       <p class="text-xl text-center">
         {{ $t('home.hero.paragraph') }}
