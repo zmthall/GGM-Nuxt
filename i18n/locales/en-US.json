@@ -358,10 +358,6 @@
     }
   },
   "home": {
-    "meta": {
-      "title": "Golden Gate Manor Inc. | Transportation, Care & Medical Supplies",
-      "description": "Golden Gate Manor provides transportation, assisted living, and medical supply services throughout Pueblo and Southern Colorado. Family-owned since 2008."
-    },
     "hero": {
       "eyebrow": "Welcome to",
       "title": "One Company. Many services you can depend on.",
@@ -1784,7 +1780,7 @@
               },
               {
                 "td": [
-                  "B. Personal information that identifies, relates to, describes, or is capable of being associated with, a particular individual, including, but not limited to, his or her name, signature, social security number, physical characteristics or description, address, telephone number, passport number, driver’s license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information.",
+                  "B. Personal information that identifies, relates to, describes, or is capable of being associated with, a particular individual, including, but not limited to, his or her name, signature, social security number, physical characteristics or description, address, telephone number, passport number, driver's license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information.",
                   "Name, address, telephone number, physical address, zip code,email address, company name, credit card number, income, orother financial information you may provide to obtain a quoteor complete a purchase transaction."
                 ]
               },

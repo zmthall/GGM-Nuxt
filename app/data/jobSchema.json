@@ -1,0 +1,100 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "@id": "https://goldengatemanor.com/company/employment#city-cab-driver",
+    "title": "City Cab Driver",
+    "description": "Golden Gate Manor Inc. is hiring dependable City Cab drivers to provide safe, courteous transportation throughout Pueblo and surrounding communities. Responsibilities include safely transporting passengers, communicating with dispatch regarding trip assignments, pickups, drop-offs, and schedule changes, providing courteous customer service, assisting passengers when appropriate, completing required trip records and payment documentation, inspecting vehicles, and following company transportation and safety procedures. Qualifications include a valid driver's license, acceptable driving record, required background screening, dependable attendance, punctuality, professional communication skills, and customer-service experience.",
+    "datePosted": "2026-08-06",
+    "employmentType": [
+      "FULL_TIME",
+      "PART_TIME"
+    ],
+    "hiringOrganization": {
+      "@type": "Organization",
+      "@id": "https://goldengatemanor.com/#organization",
+      "name": "Golden Gate Manor Inc.",
+      "sameAs": "https://goldengatemanor.com",
+      "logo": "https://goldengatemanor.com/images/layout/Full%20company%20GGM%20Logo.png"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Golden Gate Manor Inc.",
+      "value": "GGM-CITY-CAB-DRIVER"
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "648 S. Union Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      }
+    },
+    "jobBenefits": [
+      "Commission-based compensation",
+      "Earn 36% commission on completed rides"
+    ],
+    "jobLocationType": "ON_SITE",
+    "directApply": true,
+    "url": "https://goldengatemanor.com/company/employment#city-cab-driver"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "@id": "https://goldengatemanor.com/company/employment#medicaid-nemt-driver",
+    "title": "Medicaid NEMT Driver",
+    "description": "Golden Gate Manor Inc. is hiring dependable Medicaid Non-Emergency Medical Transportation drivers to safely transport eligible passengers to and from medical appointments and covered healthcare services. Responsibilities include following assigned schedules, routes, pickup instructions, and dispatch directions, providing respectful service to older adults, people with disabilities, and passengers with mobility needs, assisting passengers and mobility devices as trained, securing wheelchairs and mobility equipment, maintaining passenger confidentiality, completing transportation documentation, inspecting vehicles, and keeping vehicles ready for service. Qualifications include a valid driver's license, acceptable driving record, background screening, drug screening, dependable attendance, professional communication skills, passenger assistance training, wheelchair securement training, and the ability to complete transportation documentation accurately.",
+    "datePosted": "2026-08-06",
+    "employmentType": [
+      "FULL_TIME",
+      "PART_TIME"
+    ],
+    "hiringOrganization": {
+      "@type": "Organization",
+      "@id": "https://goldengatemanor.com/#organization",
+      "name": "Golden Gate Manor Inc.",
+      "sameAs": "https://goldengatemanor.com",
+      "logo": "https://goldengatemanor.com/images/layout/Full%20company%20GGM%20Logo.png"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Golden Gate Manor Inc.",
+      "value": "GGM-MEDICAID-NEMT-DRIVER"
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "648 S. Union Ave.",
+        "addressLocality": "Pueblo",
+        "addressRegion": "CO",
+        "postalCode": "81004",
+        "addressCountry": "US"
+      }
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 17,
+        "maxValue": 19,
+        "unitText": "HOUR"
+      }
+    },
+    "directApply": true,
+    "jobLocationType": "ON_SITE",
+    "url": "https://goldengatemanor.com/company/employment#medicaid-nemt-driver"
+  }
+]

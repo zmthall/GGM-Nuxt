@@ -16,10 +16,17 @@
  * - robots?: 'noindex'
  */
 
+const route = useRoute()
+
 type Crumb = {
   path: string
   label: string
   isLast: boolean
+}
+
+type SchemaBreadcrumb = {
+  name: string
+  item?: string
 }
 
 const MAX_LABEL_LENGTH = 22
@@ -30,8 +37,11 @@ const toLabel = (segment: string): string => {
     .replaceAll(/\b\w/g, char => char.toUpperCase())
 }
 
+const schemaBreadcrumb = computed<SchemaBreadcrumb[] | null>(() => {
+  return (route.meta?.schemaBreadcrumbs as SchemaBreadcrumb[] | undefined) ?? null
+})
+
 export function buildCrumbs() {
-  const route = useRoute()
   const runtime = useRuntimeConfig()
 
   const baseUrl = String(runtime.public?.siteUrl || '').replace(/\/$/, '')
@@ -100,23 +110,45 @@ export function buildCrumbs() {
   })
 
   const schema = computed(() => {
+    if (isHome.value) {
+      return null
+    }
+
     const head = isAdmin.value
       ? { name: 'Dashboard Home', item: `${baseUrl}/admin` }
       : { name: 'Home', item: `${baseUrl}/` }
 
-    const tail = crumbs.value.map(crumb => {
-      if (crumb.isLast) {
-        return { name: crumb.label }
-      }
-
+      if (schemaBreadcrumb.value) {
       return {
-        name: crumb.label,
-        item: `${baseUrl}${crumb.path}`,
+        itemListElement: schemaBreadcrumb.value.map((crumb, index, arr) => {
+          const isLast = index === arr.length - 1
+
+          return isLast
+            ? { name: crumb.name }
+            : {
+                name: crumb.name,
+                item: `${baseUrl}${crumb.item}`
+              }
+        })
       }
-    })
+    }
 
     return {
-      itemListElement: [head, ...tail],
+      itemListElement: [
+        head,
+        ...crumbs.value.map(crumb => {
+          if (crumb.isLast) {
+            return {
+              name: crumb.label
+            }
+          }
+
+          return {
+            name: crumb.label,
+            item: `${baseUrl}${crumb.path}`
+          }
+        })
+      ]
     }
   })
 

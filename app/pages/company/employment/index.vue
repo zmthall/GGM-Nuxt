@@ -16,39 +16,64 @@
     </BaseLayoutPageHeroSection>
 
     <!-- Job Opportunities -->
-     <DeferRender when="visible">
-       <BaseLayoutPageSection margin="default" class="cv-auto">
-         <h2 class="text-2xl text-center font-bold text-brand-primary">{{ $t('company.employment.job-opportunities.title')}}</h2>
-         <div class="flex flex-col items-center mt-8 gap-8 md:grid md:grid-cols-2 md:w-max md:mx-auto lg:flex lg:flex-row lg:flex-wrap lg:w-full lg:justify-center">
-           <LazyBaseInteractiveFlipCard v-for="(card, i) in jobOpportunityCards" :key="`opportunity-card-${i}`" :src="opportunityCardMeta[i]?.src">
-             <template #front>
-               <div class="flex flex-col justify-between h-full font-extrabold">
-                   <h2 v-if="card.title" class="text-2xl">{{ $rt(card.title[0] || '') }}</h2>
-                   <p>{{ $rt(card.description)}}</p>
-               </div>
-             </template>
-             <template #back>
-               <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">{{ $rt(card.title[1] || '') }}</h2>
-               <div class="flex flex-col h-full justify-between">
-                 <div>
-                   <BaseLayoutPageListItem v-for="position in card.positions" :key="$rt(position.department)" :title="$rt(position.department)" has-left-border small-border small-text class="mt-4">
-                     <ul>
-                       <li v-for="(job, j) in position.jobs" :key="job">{{ $rt(job) }} <button type="button" class="link" :data-select="`${opportunityCardDataSelects[i]?.[j] ?? 'invalid'}`" @click="openModal">{{ $t('company.employment.job-opportunities.button.job-description') }}</button></li>
-                     </ul>
-                   </BaseLayoutPageListItem>
-                 </div>
-                 <div class="mt-4 self-center">
-                   <BaseUiAction :to="$localePath(`/company/employment/apply?select=${opportunityCardMeta[i]?.selectValue}`)" class="py-2 px-4">{{ $t('company.employment.job-opportunities.button.apply-now')}}</BaseUiAction>
-                 </div>
-               </div>
-             </template>
-           </LazyBaseInteractiveFlipCard>
-         </div>
-       </BaseLayoutPageSection>
-     </DeferRender>
+    <DeferRender when="visible">
+      <BaseLayoutPageSection margin="default" class="cv-auto">
+        <h2 class="text-2xl text-center font-bold text-brand-primary">{{ $t('company.employment.job-opportunities.title')}}</h2>
+        <div class="flex flex-col items-center mt-8 gap-8 md:grid md:grid-cols-2 md:w-max md:mx-auto lg:flex lg:flex-row lg:flex-wrap lg:w-full lg:justify-center">
+          <LazyBaseInteractiveFlipCard v-for="(card, i) in jobOpportunityCards" :key="`opportunity-card-${i}`" :src="opportunityCardMeta[i]?.src">
+            <template #front>
+              <div class="flex flex-col justify-between h-full font-extrabold">
+                  <h2 v-if="card.title" class="text-2xl">{{ $rt(card.title[0] || '') }}</h2>
+                  <p>{{ $rt(card.description)}}</p>
+              </div>
+            </template>
+            <template #back>
+              <h2 class="text-2xl font-extrabold pb-4 border-b border-b-black">{{ $rt(card.title[1] || '') }}</h2>
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <BaseLayoutPageListItem
+                    v-for="(position, positionIndex) in card.positions"
+                    :key="$rt(position.department)"
+                    :title="$rt(position.department)"
+                    has-left-border
+                    small-border
+                    small-text
+                    class="mt-4"
+                  >
+                    <ul>
+                      <li
+                        v-for="(job, jobIndex) in position.jobs"
+                        :key="`${$rt(position.department)}-${jobIndex}`"
+                      >
+                        {{ $rt(job) }}
 
-     <!-- Physical Application -->
-     <DeferRender when="visible">
+                        <button
+                          type="button"
+                          class="link"
+                          :data-select="
+                            opportunityCardDataSelects[i]?.[positionIndex]?.[jobIndex]
+                              ?? 'invalid'
+                          "
+                          @click="openModal"
+                        >
+                          {{ $t('company.employment.job-opportunities.button.job-description') }}
+                        </button>
+                      </li>
+                    </ul>
+                  </BaseLayoutPageListItem>
+                </div>
+                <div class="mt-4 self-center">
+                  <BaseUiAction :to="$localePath(`/company/employment/apply?select=${opportunityCardMeta[i]?.selectValue}`)" class="py-2 px-4">{{ $t('company.employment.job-opportunities.button.apply-now')}}</BaseUiAction>
+                </div>
+              </div>
+            </template>
+          </LazyBaseInteractiveFlipCard>
+        </div>
+      </BaseLayoutPageSection>
+    </DeferRender>
+
+      <!-- Physical Application -->
+    <DeferRender when="visible">
       <BaseLayoutPageSection margin="default" bg="alt">
         <BaseLayoutPageContainer class="space-y-8">
           <section class="space-y-2">
@@ -89,14 +114,14 @@
     </DeferRender>
 
     <!-- CTA Section -->
-     <DeferRender when="visible">
+    <DeferRender when="visible">
        <BaseLayoutPageCTA 
          :title="$t('company.employment.cta.title')"
          :description="$t('company.employment.cta.description')"
          :to="$localePath('/company/employment/apply?select=general')"
          :button-label="$t('company.employment.cta.button-label')"
        />
-     </DeferRender>
+    </DeferRender>
 
     <!-- About Us Section -->
     <DeferRender when="visible">
@@ -125,20 +150,31 @@
 </template>
 
 <script setup lang='ts'>
-import { BaseLayoutPageCTA, BaseLayoutPageSection, BaseUiAction } from '#components'
 import type { JobDescription, JobDescriptionFetch } from '../../../models/JobDescription'
+import JOB_SCHEMA from '@/data/jobSchema.json'
 
 const modalOpen = ref<boolean>(false)
 const modalContent = ref<JobDescription | null>(null)
 const loadingModal = ref<boolean>(false);
 
 definePageMeta({
-  breadcrumb: false
+  breadcrumb: false,
+  breadcrumbLabel: 'Employment',
+  breadcrumbOverrides: [
+    undefined,
+    {
+      label: 'About Us',
+      to: '/company/about-us',
+    },
+    undefined,
+  ],
 })
 
 useHead({
   titleTemplate: null
 })
+
+useSchemaOrg(JOB_SCHEMA)
 
 const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
@@ -225,11 +261,48 @@ const opportunityCardMeta: OpportunityCardMeta[] = [
     selectValue: "gs_general"
   }
 ]
-const opportunityCardDataSelects: string[][] = [
-  ['city_cab-dispatch', 'city_cab-driver', 'city_cab-admin_assistant'],
-  ['acf-qmap', 'acf-pcp'],
-  ['medical_supply-dme_specialist', 'medical_supply-deliver_tech', 'medical_supply-inventory_tech'],
-  ['gas_station-manager', 'gas_station-assistant_manager', 'gas_station-attendant']
+const opportunityCardDataSelects: string[][][] = [
+  // Transportation
+  [
+    // City Cab
+    [
+      'city_cab-dispatch',
+      'city_cab-driver',
+      'city_cab-admin_assistant',
+    ],
+
+    // Medicaid NEMT
+    [
+      'ggmt-csr',
+      'ggmt-driver',
+    ],
+  ],
+
+  // Assisted Living
+  [
+    [
+      'acf-qmap',
+      'acf-pcp',
+    ],
+  ],
+
+  // Medical Supply
+  [
+    [
+      'medical_supply-dme_specialist',
+      'medical_supply-deliver_tech',
+      'medical_supply-inventory_tech',
+    ],
+  ],
+
+  // Gas Station
+  [
+    [
+      'gas_station-manager',
+      'gas_station-assistant_manager',
+      'gas_station-attendant',
+    ],
+  ],
 ]
 </script>
 

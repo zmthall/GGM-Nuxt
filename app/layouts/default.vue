@@ -42,33 +42,39 @@ useSchemaOrg([
 const authStore = useAuthStore();
 
 useHead({
-  titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | Golden Gate Manor Inc.` : 'Golden Gate Manor Inc.',
+  titleTemplate: (titleChunk) =>
+    titleChunk
+      ? `${titleChunk} | Golden Gate Manor Inc.`
+      : 'Golden Gate Manor Inc.',
+
   link: [
     {
       rel: 'preload',
       href: '/fonts/Cabin-Regular.woff2',
       as: 'font',
       type: 'font/woff2',
-      crossorigin: 'anonymous'
+      crossorigin: 'anonymous',
     },
     {
       rel: 'preload',
       href: '/fonts/NotoSerif-Regular.woff2',
       as: 'font',
       type: 'font/woff2',
-      crossorigin: 'anonymous'
-    }
+      crossorigin: 'anonymous',
+    },
+    ...(i18nHead.value.link || []),
   ],
-  bodyAttrs: {
-    class: computed(() => (cvOpen.value) ? 'no-scroll' : '')
-  },
-  htmlAttrs: {
-    lang: i18nHead.value.htmlAttrs?.lang
-  },
-  link: i18nHead.value.link || [],
-  meta: i18nHead.value.meta || []
-})
 
+  bodyAttrs: {
+    class: computed(() => (cvOpen.value ? 'no-scroll' : '')),
+  },
+
+  htmlAttrs: {
+    lang: i18nHead.value.htmlAttrs?.lang,
+  },
+
+  meta: i18nHead.value.meta || [],
+})
 useSeoMeta({
   author: 'Zachary Thallas',
 })

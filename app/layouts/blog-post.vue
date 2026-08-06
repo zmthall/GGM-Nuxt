@@ -17,8 +17,6 @@
 <script setup lang="ts">
 import ORG_SCHEMA from '@/data/orgSchema.json'
 
-const cvOpen = ref(false)
-
 defineOptions({
   name: "BlogPostLayout"
 });

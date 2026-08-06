@@ -63,11 +63,11 @@ const runtimeConfig = useRuntimeConfig()
 useSeoMeta({
   title: 'Our Locations | Golden Gate Manor Inc. Serving Colorado',
   ogTitle: 'Our Locations | Golden Gate Manor Inc. Serving Colorado',
-  description: 'View locations for Golden Gate Manor Inc. facilities and services. Providing reliable healthcare transportation and assisted living across Southern Colorado.',
-  ogDescription: 'View locations for Golden Gate Manor Inc. facilities and services. Providing reliable healthcare transportation and assisted living across Southern Colorado.',
+  description: 'Find Golden Gate Manor Inc. locations for transportation, assisted living, medical supplies, and other services across Pueblo and Southern Colorado.',
+  ogDescription: 'Find Golden Gate Manor Inc. locations for transportation, assisted living, medical supplies, and other services across Pueblo and Southern Colorado.',
   ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterTitle: 'Our Locations | Golden Gate Manor Inc. Serving Colorado',
-  twitterDescription: 'View locations for Golden Gate Manor Inc. facilities and services. Providing reliable healthcare transportation and assisted living across Southern Colorado.',
+  twitterDescription: 'Find Golden Gate Manor Inc. locations for transportation, assisted living, medical supplies, and other services across Pueblo and Southern Colorado.',
   twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
   twitterCard: 'summary_large_image',
 })
