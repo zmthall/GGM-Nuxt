@@ -8,7 +8,7 @@
             
         <BaseInteractiveLogosNav :shows-on-mobile="false" />
 
-        <BaseLayoutPageSection margin="default" class="cv-auto max-[550px]:hidden">
+        <!-- <BaseLayoutPageSection margin="default" class="cv-auto max-[550px]:hidden">
             <BaseLayoutPageContainer>
                 <BaseInteractiveCarousel
                     :items="homeHeroSlides"
@@ -23,31 +23,31 @@
                             <div
                                 class="relative h-full w-full overflow-hidden rounded-xl"
                                 :class="bgClass(item.bg)"
-                            >
+                            > -->
                                 <!-- Background -->
-                                <img
+                                <!-- <img
                                 :src="item.right.image"
                                 :alt="item.right.alt"
                                 class="absolute inset-0 h-full w-full object-cover object-right"
-                                >
+                                > -->
                                 
                                 <!-- Overlay -->
-                                <div
+                                <!-- <div
                                 class="absolute inset-0 max-sm:bg-brand-primary/80 sm:bg-[linear-gradient(90deg,#121b76_0%,#121b76_30%,rgba(18,27,118,.95)_42%,rgba(18,27,118,.72)_54%,rgba(18,27,118,.28)_66%,transparent_80%)]"
                                     :class="overlayClass(item.bg)"
-                                />
+                                /> -->
 
                                 <!-- Content -->
-                                <div class="absolute inset-0 z-10 flex items-center pt-6">
-                                    <div class="max-w-[34rem] pl-16 pr-8">
+                                <!-- <div class="absolute inset-0 z-10 flex items-center pt-6">
+                                    <div class="max-w-[34rem] pl-16 pr-8"> -->
 
                                         <!-- Eyebrow -->
-                                        <p class="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-brand-secondary">
+                                        <!-- <p class="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-brand-secondary">
                                             {{ $t(`home.hero-slides.${item.id}.left.eyebrow`) }}
-                                        </p>
+                                        </p> -->
 
                                         <!-- Headline -->
-                                        <h2 class="font-serif text-[2.6rem] font-bold leading-[1.05] text-shadow">
+                                        <!-- <h2 class="font-serif text-[2.6rem] font-bold leading-[1.05] text-shadow">
                                             <span
                                                 v-for="(line, idx) in getHeadlineLines(item.id)"
                                                 :key="idx"
@@ -56,15 +56,15 @@
                                             >
                                                 {{ $rt(line) }}
                                             </span>
-                                        </h2>
+                                        </h2> -->
 
                                         <!-- Description -->
-                                        <p class="mt-6 max-w-md text-[16px] leading-7 text-white/90 text-shadow">
+                                        <!-- <p class="mt-6 max-w-md text-[16px] leading-7 text-white/90 text-shadow">
                                             {{ $t(`home.hero-slides.${item.id}.left.description`) }}
-                                        </p>
+                                        </p> -->
 
                                         <!-- CTA -->
-                                        <div class="mt-8">
+                                        <!-- <div class="mt-8">
                                         <NuxtLink
                                             :to="$localePath(item.to)"
                                             class="inline-flex items-center gap-3 rounded-full bg-brand-secondary px-7 py-3.5 font-semibold text-brand-primary transition duration-200 hover:brightness-105"
@@ -84,7 +84,7 @@
                         </template>
                 </BaseInteractiveCarousel>
             </BaseLayoutPageContainer>
-        </BaseLayoutPageSection>
+        </BaseLayoutPageSection> -->
         
         <!-- Overview (our company) -->
         <BaseLayoutPageSection margin="default" class="cv-auto">
@@ -330,74 +330,74 @@
 <script setup lang='ts'>
 import type { ImageData } from '../models/ImagesData';
 
-function getHeadlineLines(id: string) {
-  return $tm(`home.hero-slides.${id}.left.headline`) as string[]
-}
+// function getHeadlineLines(id: string) {
+//   return $tm(`home.hero-slides.${id}.left.headline`) as string[]
+// }
 
-const overlayClass = (bg: string) => {
-  switch (bg) {
-    case 'medical':
-      return 'max-sm:bg-brand-medical-primary/80 sm:bg-[linear-gradient(90deg,#a3150d_0%,#a3150d_30%,rgba(163,21,13,.95)_42%,rgba(163,21,13,.72)_54%,rgba(163,21,13,.28)_66%,transparent_80%)]'
+// const overlayClass = (bg: string) => {
+//   switch (bg) {
+//     case 'medical':
+//       return 'max-sm:bg-brand-medical-primary/80 sm:bg-[linear-gradient(90deg,#a3150d_0%,#a3150d_30%,rgba(163,21,13,.95)_42%,rgba(163,21,13,.72)_54%,rgba(163,21,13,.28)_66%,transparent_80%)]'
 
-    case 'acf':
-      return 'max-sm:bg-[#365dba]/80 sm:bg-[linear-gradient(90deg,#365dba_0%,#365dba_30%,rgba(54,93,186,.95)_42%,rgba(54,93,186,.72)_54%,rgba(54,93,186,.28)_66%,transparent_80%)]'
+//     case 'acf':
+//       return 'max-sm:bg-[#365dba]/80 sm:bg-[linear-gradient(90deg,#365dba_0%,#365dba_30%,rgba(54,93,186,.95)_42%,rgba(54,93,186,.72)_54%,rgba(54,93,186,.28)_66%,transparent_80%)]'
 
-    default:
-      return 'max-sm:bg-brand-primary/80 sm:bg-[linear-gradient(90deg,#121b75_0%,#121b75_30%,rgba(18,27,117,.95)_42%,rgba(18,27,117,.72)_54%,rgba(18,27,117,.28)_66%,transparent_80%)]'
-  }
-}
+//     default:
+//       return 'max-sm:bg-brand-primary/80 sm:bg-[linear-gradient(90deg,#121b75_0%,#121b75_30%,rgba(18,27,117,.95)_42%,rgba(18,27,117,.72)_54%,rgba(18,27,117,.28)_66%,transparent_80%)]'
+//   }
+// }
 
-const bgClass = (bg: string) => {
-  switch (bg) {
-    case 'medical':
-      return 'bg-brand-medical-primary'
+// const bgClass = (bg: string) => {
+//   switch (bg) {
+//     case 'medical':
+//       return 'bg-brand-medical-primary'
 
-    case 'acf':
-      return 'bg-[#365dba]'
+//     case 'acf':
+//       return 'bg-[#365dba]'
 
-    default:
-      return 'bg-brand-primary'
-  }
-}
+//     default:
+//       return 'bg-brand-primary'
+//   }
+// }
 
-const homeHeroSlides = [
-    {
-        id: 'transportation',
-        right: {
-            image: '/images/pages/home/hero-carousel/car-line-up.png', 
-            alt: 'Golden Gate Manor Transportation fleet of wheelchair-accessible vans and medical transport vehicles'
-        },
-        to: '/nemt',
-        bg: 'nemt'
-    },
-    {
-        id: 'medidrive-update',
-        right: {
-            image: '/images/pages/home/hero-carousel/van-and-road.png', 
-            alt: 'Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026'
-        },
-        to: '/news/information/MediDrive',
-        bg: 'nemt'
-    },
-    {
-        id: 'medical-supplies',
-        right: {
-            image: '/images/pages/home/hero-carousel/medical-showroom.png', 
-            alt: 'Golden Gate Medical Supply digital showroom featuring mobility equipment and medical supplies'
-        },
-        to: '/medical-supplies',
-        bg: 'medical'
-    },
-    {
-        id: 'assisted-living',
-        right: {
-            image: '/images/pages/home/hero-carousel/acf-dining-room.png', 
-            alt: 'Comfortable dining room inside a Golden Gate Manor assisted living home in Pueblo, Colorado'
-        },
-        to: '/assisted-living/consultation',
-        bg: 'acf'
-    }
-]
+// const homeHeroSlides = [
+//     {
+//         id: 'transportation',
+//         right: {
+//             image: '/images/pages/home/hero-carousel/car-line-up.png', 
+//             alt: 'Golden Gate Manor Transportation fleet of wheelchair-accessible vans and medical transport vehicles'
+//         },
+//         to: '/nemt',
+//         bg: 'nemt'
+//     },
+//     {
+//         id: 'medidrive-update',
+//         right: {
+//             image: '/images/pages/home/hero-carousel/van-and-road.png', 
+//             alt: 'Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026'
+//         },
+//         to: '/news/information/MediDrive',
+//         bg: 'nemt'
+//     },
+//     {
+//         id: 'medical-supplies',
+//         right: {
+//             image: '/images/pages/home/hero-carousel/medical-showroom.png', 
+//             alt: 'Golden Gate Medical Supply digital showroom featuring mobility equipment and medical supplies'
+//         },
+//         to: '/medical-supplies',
+//         bg: 'medical'
+//     },
+//     {
+//         id: 'assisted-living',
+//         right: {
+//             image: '/images/pages/home/hero-carousel/acf-dining-room.png', 
+//             alt: 'Comfortable dining room inside a Golden Gate Manor assisted living home in Pueblo, Colorado'
+//         },
+//         to: '/assisted-living/consultation',
+//         bg: 'acf'
+//     }
+// ]
 
 // const news = undefined;
 // const blogs = undefined;

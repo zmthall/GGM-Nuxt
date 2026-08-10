@@ -1,7 +1,7 @@
 <template>
   <main class="blog-post bg-brand-background">
     <!-- Main header and page navigation -->
-    <BaseLayoutAnnouncementBar />
+    <!-- <BaseLayoutAnnouncementBar /> -->
     <BaseLayoutHeader />
     <BaseLayoutNavigation />
     <AdminAllPageDashboard />

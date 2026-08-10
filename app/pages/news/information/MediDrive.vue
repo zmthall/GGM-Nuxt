@@ -1,33 +1,78 @@
 <template>
-  <div>
-    <!-- Hero Section -->
+  <div class="min-h-[60vh] flex items-center justify-center px-4 py-16">
+    <div
+      class="w-full max-w-3xl rounded-2xl border border-brand-primary/15 bg-white p-8 text-center shadow-sm sm:p-12"
+    >
+      <div
+        class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10"
+      >
+        <BaseIcon
+          name="material-symbols:construction-rounded"
+          class="text-brand-primary"
+          size="2rem"
+        />
+      </div>
+
+      <h1 class="font-serif text-3xl font-bold text-brand-primary sm:text-4xl">
+        MediDrive Transition Guide
+      </h1>
+
+      <p class="mt-4 text-lg leading-8 text-brand-main-text sm:text-xl">
+        This page is currently in development as we continue preparing updated
+        information about the transition to the MediDrive system.
+      </p>
+
+      <p class="mt-4 text-lg leading-8 text-brand-main-text">
+        If you have questions about MediDrive or the upcoming transition, please
+        contact our team and we will be happy to help.
+      </p>
+
+      <div
+        class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
+      >
+        <BaseUiAction
+          :to="$localePath('/company/contact-us')"
+          class="px-5 py-3"
+        >
+          Contact Us
+        </BaseUiAction>
+
+        <CallRailLink
+          tel="719-544-3231"
+          display="(719) 544-3231"
+          cls="group inline-flex items-center gap-2 rounded-md border-2 border-brand-primary px-5 py-3 font-bold text-brand-primary transition-colors hover:bg-brand-primary hover:text-white"
+        >
+          <template #default="{ display }">
+            <BaseIcon name="ic:round-call" hover-color="group-hover:text-white" />
+            <span>{{ display }}</span>
+          </template>
+        </CallRailLink>
+      </div>
+    </div>
+  </div>
+  <!-- <div>
     <BaseLayoutPageSection margin="top" class="cv-auto">
       <BaseLayoutPageContainer>
         <section
           class="relative w-full overflow-hidden rounded-xl bg-brand-primary h-[460px] max-sm:h-[500px]"
         >
-          <!-- Background -->
           <img
             :src="heroShot.right.image"
             :alt="heroShot.right.alt"
             class="absolute inset-0 h-full w-full object-cover object-right"
           >
           
-          <!-- Overlay -->
           <div
             class="absolute inset-0 max-sm:bg-brand-primary/80 sm:bg-[linear-gradient(90deg,#121b75_0%,#121b75_30%,rgba(18,27,117,.95)_42%,rgba(18,27,117,.72)_54%,rgba(18,27,117,.28)_66%,transparent_80%)]"
           />
 
-          <!-- Content -->
           <div class="absolute inset-0 z-10 flex heroShots-center pt-6">
             <div class="max-w-[34rem] pl-4 sm:pl-16 pr-8">
 
-              <!-- Eyebrow -->
               <p class="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-brand-secondary">
                 {{ $t(`news.information.medidrive.hero.left.eyebrow`) }}
               </p>
 
-              <!-- Headline -->
               <h2 class="font-serif text-[2.6rem] font-bold leading-[1.05] text-shadow">
                 <span
                     v-for="(line, idx) in getHeadlineLines()"
@@ -39,7 +84,6 @@
                 </span>
               </h2>
 
-              <!-- Description -->
               <p class="mt-6 max-w-md text-[16px] leading-7 text-white/90 text-shadow">
                 {{ $t('news.information.medidrive.hero.left.description') }}
               </p>
@@ -47,7 +91,6 @@
           </div>
         </section>
 
-        <!-- Top Page -->
         <section class="flex flex-col gap-3 my-8">
           <h2 class="text-2xl text-brand-primary font-bold">
             {{ $t('news.information.medidrive.top-page.title') }}
@@ -135,9 +178,7 @@
             </p>
           </div>
 
-          <!-- Transition phases -->
           <div class="grid gap-6 md:grid-cols-2">
-            <!-- Phase 1 -->
             <article
               class="flex h-full flex-col rounded-2xl border border-[#121b75]/20 bg-white p-6 shadow-sm"
             >
@@ -170,7 +211,6 @@
               </p>
             </article>
 
-            <!-- Phase 2 -->
             <article
               class="flex h-full flex-col rounded-2xl border border-[#eae39e] bg-[#fdfbf6] p-6 shadow-sm"
             >
@@ -204,7 +244,6 @@
             </article>
           </div>
 
-          <!-- Southern Colorado notice -->
           <div
             class="rounded-xl border-l-4 border-[#121b75] bg-white px-5 py-4 shadow-sm"
             role="note"
@@ -218,7 +257,6 @@
           </div>
         </section>
 
-        <!-- Official MediDrive Resources -->
         <section id="official-medidrive-resources" class="my-12 space-y-6">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -261,7 +299,6 @@
           </div>
         </section>
 
-        <!-- Requesting Golden Gate Manor -->
         <section id="request-golden-gate" class="space-y-4 mt-8">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -364,7 +401,6 @@
           </div>
         </section>
 
-        <!-- Frequently Asked Questions -->
         <section id="frequently-asked-questions" class="my-12 space-y-6">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -398,7 +434,6 @@
           </ul>
         </section>
 
-        <!-- Contact & Support -->
         <section id="contact-support" class="my-12 space-y-6">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -498,7 +533,6 @@
           </div>
         </section>
 
-        <!-- Mileage Reimbursement -->
         <section id="mileage-reimbursement" class="my-12 space-y-6 rounded-xl bg-brand-primary/5 p-6 sm:p-8">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -544,7 +578,6 @@
           </div>
         </section>
 
-        <!-- Healthcare Facilities -->
         <section id="healthcare-facilities" class="my-12 space-y-6">
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-brand-primary">
@@ -561,7 +594,6 @@
           </div>
         </section>
 
-        <!-- Transportation Providers -->
         <section
           id="transportation-providers"
           class="my-12 rounded-xl border border-gray-200 bg-gray-50 p-6 sm:p-8"
@@ -600,7 +632,6 @@
           </div>
         </section>
 
-        <!-- Golden Gate Manor Contact -->
         <section
           id="golden-gate-contact"
           class="my-12 rounded-xl bg-brand-primary p-6 text-white shadow-primary sm:p-8"
@@ -669,16 +700,10 @@
 
       </BaseLayoutPageContainer>
     </BaseLayoutPageSection>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
-
-const activeAccordionId = ref<string>('')
-
-const updateId = (val: string) => {
-  activeAccordionId.value = val
-}
 
 definePageMeta({
   title: 'Health First Colorado MediDrive Transition Guide',
@@ -690,19 +715,41 @@ definePageMeta({
   ]
 })
 
-function getHeadlineLines() {
-  return $tm('news.information.medidrive.hero.left.headline') as string[]
-}
+const runtimeConfig = useRuntimeConfig()
 
-const heroShot = {
-  id: 'medidrive-update',
-  right: {
-      image: '/images/pages/home/hero-carousel/van-and-road.png', 
-      alt: 'Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026'
-  },
-  to: '/news/information/MediDrive',
-  bg: 'nemt'
-}
+useSeoMeta({
+  title: 'MediDrive Transition Guide',
+  description: 'Golden Gate Manor is preparing updated information about the Health First Colorado transition to MediDrive. Contact our team with questions about NEMT scheduling and transportation.',
+  ogTitle: 'MediDrive Transition Guide | Golden Gate Manor',
+  ogDescription: 'Golden Gate Manor is preparing updated information about the Health First Colorado transition to MediDrive. Contact our team for help with NEMT transportation questions.',
+  ogImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  ogType: 'website',
+  twitterTitle: 'MediDrive Transition Guide | Golden Gate Manor',
+  twitterDescription: 'Updated MediDrive transition information is coming soon. Contact Golden Gate Manor with questions about Health First Colorado NEMT transportation.',
+  twitterImage: `${runtimeConfig.public.siteUrl}/images/seo/ogImage-golden-gate-manor.png`,
+  twitterCard: 'summary_large_image',
+  robots: 'noindex, follow'
+})
+
+// const activeAccordionId = ref<string>('')
+
+// const updateId = (val: string) => {
+//   activeAccordionId.value = val
+// }
+
+// function getHeadlineLines() {
+//   return $tm('news.information.medidrive.hero.left.headline') as string[]
+// }
+
+// const heroShot = {
+//   id: 'medidrive-update',
+//   right: {
+//       image: '/images/pages/home/hero-carousel/van-and-road.png', 
+//       alt: 'Health First Colorado NEMT rides are now scheduled through MediDrive beginning July 1, 2026'
+//   },
+//   to: '/news/information/MediDrive',
+//   bg: 'nemt'
+// }
 
 </script>
 
