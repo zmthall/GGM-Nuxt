@@ -97,7 +97,14 @@ export default defineNuxtConfig({
     // noindexing on deemed dev production
     ...(process.env.BUILD_TYPE === 'DEV'
       ? { '/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } } }
-      : { })
+      : { }),
+
+    // noindexing on non-indexed PDFs
+    '/pdfs/non-indexed/**': {
+    headers: {
+      'X-Robots-Tag': 'noindex, follow'
+    }
+  }
   },
   mdc: {
     components: {
@@ -171,21 +178,35 @@ export default defineNuxtConfig({
     sitemapsPathPrefix: '/',
     sitemaps: {
       'sitemap-main': {
-        exclude: ['/admin/**', '/news/blog/**', '/news'],
+        exclude: [
+          '/admin/**',
+          '/news/blog/**',
+          '/news',
+          '/pdfs/**'
+        ],
         includeAppSources: true,
       },
+
       'sitemap-blog': {
         includeAppSources: true,
         sources: ['/api/sitemap-blog'],
         include: ['/news/blog/**'],
         exclude: ['/news/blog/post']
+      },
+
+      'sitemap-pdfs': {
+        includeAppSources: false,
+        sources: ['/api/sitemap-pdfs']
       }
     },
+
     autoLastmod: true,
+
     xslColumns: [
       { label: 'URL', width: '75%' },
       { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
     ],
+
     xslTips: false,
   },
   schemaOrg: {
